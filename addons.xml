@@ -52,10 +52,7 @@
 		<summary lang="en">Script used by skins to show extended media info.</summary>
 		<description lang="en">This script fetches extended information for several media types (artists, albums, movie sets etc.). Needs skin support.</description>
 		<platform>all</platform>
-		<license>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</license>
-		<forum>-</forum>
 		<source>https://github.com/phil65/script.skin.info.service</source>
-		<email>-</email>
 	</extension>
 </addon>
 <addon id="script.user.rating" name="User Rating" version="1.0.3" provider-name="Regss">
