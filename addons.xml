@@ -44,15 +44,19 @@
 		<import addon="xbmc.python" version="2.1.0"/>
 		<import addon="script.module.simplejson" version="2.0.10"/>
 	</requires>
-	<extension point="xbmc.python.library" library="default.py" />
-    <extension point="xbmc.python.script" library="default.py">
+	<extension point="xbmc.python.library"          library="default.py" />
+    <extension point="xbmc.python.script"           library="default.py">
         <provides>executable</provides>
     </extension>
 	<extension point="xbmc.addon.metadata">
+		<language/>
 		<summary lang="en">Script used by skins to show extended media info.</summary>
 		<description lang="en">This script fetches extended information for several media types (artists, albums, movie sets etc.). Needs skin support.</description>
 		<platform>all</platform>
-		<source>https://github.com/phil65/script.skin.info.service</source>
+		<license>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</license>
+		<forum>-</forum>
+		<source>-</source>
+		<email>-</email>
 	</extension>
 </addon>
 <addon id="script.user.rating" name="User Rating" version="1.0.3" provider-name="Regss">
