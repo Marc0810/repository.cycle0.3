@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+<!-- Cycle 0.3 -->
+<defaultcontrol always="true">3</defaultcontrol>
+<onunload condition="String.IsEqual(skin.String(SelectDialog),Actor)">SetFocus(9001)</onunload><!-- Focus auf Standardliste -->
+<onunload condition="String.IsEqual(skin.String(SelectDialog),Search)">SetFocus(50)</onunload><!-- Sidebar Property fuer Animationen reset -->
+<controls>
+	<include condition="![String.IsEqual(skin.String(SelectDialog),Actor) | String.IsEqual(skin.String(SelectDialog),Rating) | String.IsEqual(skin.String(SelectDialog),Search)] | String.IsEmpty(skin.String(SelectDialog))">DialogSelectStandard</include>
+	<include condition="String.IsEqual(skin.String(SelectDialog),Rating)">DialogSelectRating</include>
+	<include condition="String.IsEqual(skin.String(SelectDialog),Actor)">DialogSelectActor</include>
+	<include condition="String.IsEqual(skin.String(SelectDialog),Search)">DialogSelectSuche</include>
+</controls>
+</window>

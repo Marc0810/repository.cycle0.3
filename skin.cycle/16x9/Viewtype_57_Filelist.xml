@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+<!-- Cycle 0.3 -->
+<include name="Viewtype_57_Filelist">
+	<control type="group">
+		<visible>Control.IsVisible(57)</visible>
+		<description>List View (id=57) nicht DB Ansicht</description>
+		<include>Open_Close_Visible_Hidden_Zoom_Animation</include>
+		<include>Conditional_Left_Slide_Animation395</include>
+		<include>Conditional_Viewinaktiv_Zoom_Animation</include>
+		<control type="list" id="57">
+			<left>150</left>
+			<top>120</top>
+			<width>1600</width>
+			<height>870</height>
+			<onleft>back</onleft>
+			<onright condition="Integer.IsGreater(Container(57).NumPages,1)">60</onright>
+			<onright condition="!Integer.IsGreater(Container(57).NumPages,1)">SetFocus(9900)</onright>
+			<onup>57</onup>
+			<ondown>57</ondown>
+			<oninfo condition="!String.IsEmpty(ListItem.Duration)">ActivateWindow(1105)</oninfo>
+			<pagecontrol>60</pagecontrol>
+			<viewtype label="FileList">list</viewtype>
+			<scrolltime>400</scrolltime>
+			<visible>[String.StartsWith(Container.FolderPath,sources) | String.StartsWith(Container.Folderpath,videodb:) | String.StartsWith(Container.Folderpath,library://) | String.StartsWith(Container.FolderPath,plugin:) | Container.Content(files) | Container.HasFolders | Container.HasFiles] + ![Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(genres) | Container.Content(tags) | Container.Content(years) | Container.Content(directors) | Container.Content(actors) | Container.Content(years)]</visible>
+			<itemlayout width="1520" height="171"><!-- alle außer songs sortierung titel + rating sonst label2 -->
+				<control type="label"><!-- Back -->
+					<left>190</left>
+					<top>100</top>
+					<width>90</width>
+					<height>40</height>
+					<font>IconBackView71</font>
+					<textcolor>TextColorLight</textcolor>
+					<label>ò</label>
+					<visible>ListItem.IsParentFolder</visible>
+				</control>
+				<control type="label"><!-- info -->
+					<description>Label1</description>
+					<left>190</left>
+					<top>30</top>
+					<width>1000</width>
+					<height>60</height>
+					<label>$VAR[global_label]</label>
+					<visible>!ListItem.IsParentFolder</visible>
+				</control>
+				<control type="label">
+					<description>Label3</description>
+					<left>190</left>
+					<top>80</top>
+					<width>600</width>
+					<height>60</height>
+					<font>RegularSmall</font>
+					<label>$INFO[ListItem.Duration,, min.]</label>
+					<visible>!ListItem.IsParentFolder + !String.IsEmpty(ListItem.Duration)</visible>
+				</control>
+				<control type="label">
+					<description>Label2</description>
+					<left>820</left>
+					<top>30</top>
+					<width>600</width>
+					<height>60</height>
+					<align>right</align>
+					<font>RegularSmall</font>
+					<label>$VAR[global_label2]</label>
+					<visible>!ListItem.IsParentFolder</visible>
+				</control>
+				<control type="label">
+					<description>Media Overlay - neu, angefangene usw. focus</description>
+					<left>1450</left>
+					<top>25</top>
+					<width>50</width>
+					<height>60</height>
+					<font>IconOverlayList</font>
+					<label>$VAR[WatchedOverlayFlag]</label>
+					<visible>!ListItem.IsParentFolder + !ListItem.IsFolder</visible>
+				</control>
+				<control type="group"><!-- Artworks -->
+					<left>20</left>
+					<top>20</top>
+					<visible>!ListItem.IsParentFolder</visible>
+					<control type="image">
+						<description>Border</description>
+						<left>-4</left>
+						<top>-4</top>
+						<width>148</width>
+						<height>148</height>
+						<texture border="8" colordiffuse="$VAR[circlesCol]">views/white8.png</texture>
+					</control>
+					<control type="image"><!-- Fallback -->
+						<description>Hintergrund Farbe</description>
+						<width>140</width>
+						<height>140</height>
+						<texture background="true" colordiffuse="$VAR[primaryCol]">White.png</texture>
+					</control>
+					<control type="label">
+						<description>Fallback icon</description>
+						<width>140</width>
+						<height>140</height>
+						<align>center</align>
+						<font>Iconfilelistdefault</font>
+						<selectedcolor>$VAR[SelectedColFO]</selectedcolor>
+						<textcolor>$VAR[circlesCol]</textcolor>
+						<label>$VAR[DefaultIcons]</label>
+					</control>
+					<control type="image">
+						<description>Art</description>
+						<width>140</width>
+						<height>140</height>
+						<texture background="true">$VAR[Art-Poster]</texture>
+						<aspectratio align="center" aligny="center">scale</aspectratio>
+						<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image"><!-- Inaktiv overlay -->
+						<width>140</width>
+						<height>140</height>
+						<texture colordiffuse="$VAR[InaktivImageDiffuse]">White.png</texture>
+					</control>
+					<include content="texture_vintageoverlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
+						<param name="width">140</param>
+						<param name="height">140</param>
+						<param name="texture">views/oldpaperOverlay2.png</param>
+					</include>
+				</control>
+			</itemlayout>
+			<focusedlayout width="1520" height="171">
+				<control type="label"><!-- Back -->
+					<left>190</left>
+					<top>100</top>
+					<width>90</width>
+					<height>40</height>
+					<font>IconBackView71</font>
+					<textcolor>$VAR[primaryCol]</textcolor>
+					<label>ò</label>
+					<visible>ListItem.IsParentFolder</visible>
+				</control>
+				<control type="image"><!-- Background -->
+					<description>Hintergrund streifen links</description>
+					<top>30</top>
+					<width>30</width>
+					<height>120</height>
+					<texture colordiffuse="$VAR[primaryCol]">White.png</texture>
+					<visible>!ListItem.IsParentFolder</visible>
+					<animation effect="fade" delay="400" time="200" start="50" end="100">Focus</animation>
+					<animation effect="fade" time="200" start="100" end="50">UnFocus</animation>
+				</control>
+				<control type="image">
+					<description>Hintergrund</description>
+					<left>80</left>
+					<top>30</top>
+					<width>1440</width>
+					<height>120</height>
+					<texture colordiffuse="ListBackgroundDiffuse">White.png</texture>
+					<visible>!ListItem.IsParentFolder</visible>
+					<animation effect="fade" delay="400" time="200" start="50" end="100">Focus</animation>
+					<animation effect="fade" time="200" start="100" end="50">UnFocus</animation>>
+				</control>
+				<control type="image">
+					<description>Hintergrund diffuse nach scrollen</description>
+					<left>80</left>
+					<top>30</top>
+					<width>1440</width>
+					<height>120</height>
+					<texture colordiffuse="ListBackgroundDiffuse">White.png</texture>
+					<visible>!ListItem.IsParentFolder</visible>
+					<animation effect="fade" delay="800" time="200" start="0" end="100">Focus</animation>
+					<animation effect="fade" time="200" start="100" end="0">UnFocus</animation>
+				</control>
+				<control type="label"><!-- info -->
+					<description>Label1</description>
+					<left>190</left>
+					<top>30</top>
+					<width>1000</width>
+					<height>60</height>
+					<label>$VAR[global_label]</label>
+					<visible>!ListItem.IsParentFolder</visible>
+				</control>
+				<control type="label">
+					<description>Label2</description>
+					<left>820</left>
+					<top>30</top>
+					<width>600</width>
+					<height>60</height>
+					<align>right</align>
+					<font>RegularSmall</font>
+					<label>$VAR[global_label2]</label>
+					<visible>!ListItem.IsParentFolder</visible>
+				</control>
+				<control type="label">
+					<description>Label3</description>
+					<left>190</left>
+					<top>80</top>
+					<width>600</width>
+					<height>60</height>
+					<font>RegularSmall</font>
+					<label>$INFO[ListItem.Duration,, min.]</label>
+					<visible>!ListItem.IsParentFolder + !String.IsEmpty(ListItem.Duration)</visible>
+				</control>
+				<control type="label">
+					<description>Media Overlay - neu, angefangene usw. focus</description>
+					<left>1450</left>
+					<top>25</top>
+					<width>50</width>
+					<height>60</height>
+					<font>IconOverlayList</font>
+					<label>$VAR[WatchedOverlayFlag]</label>
+					<visible>!ListItem.IsParentFolder + !ListItem.IsFolder</visible>
+				</control>
+				<control type="group"><!-- Artworks -->
+					<left>20</left>
+					<top>20</top>
+					<visible>!ListItem.IsParentFolder</visible>
+					<control type="image">
+						<description>Border</description>
+						<left>-4</left>
+						<top>-4</top>
+						<width>148</width>
+						<height>148</height>
+						<texture border="8" colordiffuse="$VAR[circlesCol]">views/white8.png</texture>
+					</control>
+					<control type="image"><!-- Fallback -->
+						<description>Hintergrund Farbe</description>
+						<width>140</width>
+						<height>140</height>
+						<texture background="true" colordiffuse="$VAR[primaryCol]">White.png</texture>
+					</control>
+					<control type="label">
+						<description>Fallback icon</description>
+						<width>140</width>
+						<height>140</height>
+						<align>center</align>
+						<font>Iconfilelistdefault</font>
+						<textcolor>$VAR[circlesCol]</textcolor>
+						<selectedcolor>$VAR[SelectedColFO]</selectedcolor>
+						<label>$VAR[DefaultIcons]</label>
+					</control>
+					<control type="image">
+						<description>Art</description>
+						<width>140</width>
+						<height>140</height>
+						<texture background="true">$VAR[Art-Poster]</texture>
+						<aspectratio align="center" aligny="center">scale</aspectratio>
+						<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image"><!-- Inaktiv overlay -->
+						<width>140</width>
+						<height>140</height>
+						<texture colordiffuse="$VAR[InaktivImageDiffuse]">White.png</texture>
+						<include>Dimmer_Animation</include>
+					</control>
+					<include content="texture_vintageoverlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
+						<param name="width">140</param>
+						<param name="height">140</param>
+						<param name="texture">views/oldpaperOverlay2.png</param>
+					</include>
+				</control>
+			</focusedlayout>
+		</control>
+		<control type="scrollbar" id="60"><!-- Scroller -->
+			<left>1800</left>
+			<top>140</top>
+			<width>6</width>
+			<height>825</height>
+			<onleft>57</onleft>
+			<onright condition="[Container.Content(albums) | Container.Content(artists) | Container.Content(songs) | Container.Content(addons)] + [String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[578])]">SetFocus(62)</onright><!-- SMS bei sortierung titel/album/artist/artist-year -->
+			<onright condition="[Container.Content(albums) | Container.Content(artists) | Container.Content(songs) | Container.Content(addons)] + ![String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[578])]">SetFocus(9900)</onright><!-- back bei nicht sortierung titel usw. -->
+			<onright condition="![Container.Content(albums) | Container.Content(artists) | Container.Content(songs) | Container.Content(addons)]">SetFocus(9900)</onright><!-- back bei nicht album/song/addon/artist -->
+			<visible>Control.IsVisible(57)</visible>
+		</control>
+		<control type="group"><!-- SMS Scroller -->
+			<description>SMS Bar</description>
+			<top>20</top>
+			<visible>Control.IsVisible(57)</visible>
+			<include>SMSScrollbar</include>
+		</control>
+		<control type="group"><!-- Sortletter und SMS Jumpletter -->
+			<description>SMS label + icon</description>
+			<left>1767</left>
+			<top>110</top>
+			<visible>Control.IsVisible(57)</visible>
+			<visible>!ListItem.IsParentFolder + [ControlGroup(62).HasFocus | Container.Scrolling]</visible>
+			<include>SMSLetter_inout_Animation</include>
+			<include>ScrollSMSLetter</include>
+		</control>
+	</control>
+</include>
+</includes>

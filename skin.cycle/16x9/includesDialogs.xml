@@ -1,0 +1,2454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+<!-- Dialog Select -->
+<include name="DialogSelectStandard">
+<control type="group">
+	<left>400</left>
+	<include>Dialog_popup_Animation</include>
+	<animation type="Conditional" condition="Window.IsVisible(SettingsCategory.xml)">
+		<effect type="slide" start="0,0" end="100,0" time="120" />
+	</animation>
+	<control type="image"><!-- Hintergrund -->
+		<description>Hintergrund</description>
+		<left>dialogbar.left</left>
+		<top>dialogbar.top</top>
+		<width>1100</width>
+		<height>645</height>
+		<include>DialogBackground</include>
+	</control>
+	<control type="image"><!-- Buttonmenu -->
+		<description>Hintergrund Buttons height -34</description>
+		<left>bottom.dialogbar.left</left>
+		<top>611</top>
+		<width>1060</width>
+		<height>bottom.dialogbar.height</height>
+		<include>DialogbottomBackground</include>
+	</control>
+	<control type="grouplist" id="9000">
+		<description>Buttonliste fake ohne Icon</description>
+		<left>bottom.dialogicon.left</left>
+		<orientation>horizontal</orientation>
+		<top>619</top>
+		<ondown condition="Control.IsVisible(6)">6</ondown>
+		<ondown condition="Control.IsVisible(3)">3</ondown>
+		<onup condition="Control.IsVisible(6)">6</onup>
+		<onup condition="Control.IsVisible(3)">3</onup>
+		<control type="button" id="5">
+			<description>Mehr</description>
+			<include>DialogFakeIconDimension</include>
+			<visible>Control.IsEnabled(5) + Control.IsVisible(5)</visible>
+		</control>
+		<control type="button" id="7">
+			<description>Abbrechen</description>
+			<include>DialogFakeIconDimension</include>
+			<visible>Control.IsEnabled(7) + Control.IsVisible(7)</visible>
+		</control>
+	</control>
+	<control type="grouplist">
+		<description>Button Icons</description>
+		<left>bottom.dialogicon.left</left>
+		<orientation>horizontal</orientation>
+		<top>619</top>
+		<control type="label">
+			<description>Mehr</description>
+			<include>DialogIconDimension</include>
+			<label>x</label>
+			<visible>Control.IsEnabled(5) + Control.IsVisible(5)</visible>
+		</control>
+		<control type="label">
+			<description>Abbrechen</description>
+			<include>DialogIconDimension</include>
+			<label>ģ</label>
+			<visible>Control.IsEnabled(7) + Control.IsVisible(7)</visible>
+		</control>
+	</control>
+	<control type="label" id="1"><!-- Content -->
+		<description>Titel</description>
+		<left>bottom.dialogbar.left</left>
+		<top>45</top>
+		<width>1000</width>
+		<height>60</height>
+		<font>LightBig</font>
+		<label>-</label>
+	</control>
+	<control type="list" id="3">
+		<description>Auswahlliste</description>
+		<top>110</top>
+		<width>1108</width>
+		<height>480</height>
+		<onleft>9000</onleft>
+		<onright>9000</onright>
+		<onup>9</onup>
+		<ondown>3</ondown>
+		<itemlayout height="80">
+			<control type="label">
+				<width>1108</width>
+				<height>84</height>
+				<textoffsetx>30</textoffsetx>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+			<control type="label">
+				<right>30</right>
+				<width>600</width>
+				<height>84</height>
+				<align>right</align>
+				<label>$INFO[ListItem.Label2]</label>
+			</control>
+		</itemlayout>
+		<focusedlayout height="80">
+			<control type="image">
+				<width>1108</width>
+				<height>75</height>
+				<texture border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texture>
+				<animation effect="fade" start="100" end="50" condition="!Control.HasFocus(3)">Conditional</animation>
+			</control>
+			<control type="label">
+				<width>1108</width>
+				<height>84</height>
+				<textoffsetx>30</textoffsetx>
+				<textcolor>TextColorFO</textcolor>
+				<selectedcolor>$VAR[SelectedColFO]</selectedcolor>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+			<control type="label">
+				<right>30</right>
+				<width>600</width>
+				<height>84</height>
+				<align>right</align>
+				<textcolor>TextColorFO</textcolor>
+				<selectedcolor>$VAR[SelectedColFO]</selectedcolor>
+				<label>$INFO[ListItem.Label2]</label>
+			</control>
+		</focusedlayout>
+	</control>
+	<control type="list" id="6">
+		<description>Auswahlliste bei grafiken mit icon</description>
+		<top>110</top>
+		<width>1108</width>
+		<height>480</height>
+		<onleft>9000</onleft>
+		<onright>9000</onright>
+		<onup>6</onup>
+		<ondown>6</ondown>
+		<itemlayout width="1108" height="80">
+			<control type="label">
+				<left>bottom.dialogbar.left</left>
+				<width>600</width>
+				<height>70</height>
+				<aligny>top</aligny>
+				<textoffsety>20</textoffsety>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+			<control type="label">
+				<left>616</left>
+				<width>390</width>
+				<height>70</height>
+				<aligny>top</aligny>
+				<align>right</align>
+				<textoffsety>20</textoffsety>
+				<label>$INFO[ListItem.Label2]</label>
+			</control>
+			<control type="label">
+				<description>Fallback icon</description>
+				<left>1016</left>
+				<top>12</top>
+				<width>60</width>
+				<height>60</height>
+				<align>center</align>
+				<textcolor>TextColorMedium</textcolor>
+				<font>IconBig</font>
+				<label>$VAR[DefaultIcons]</label>
+			</control>
+			<control type="image">
+				<left>1016</left>
+				<top>12</top>
+				<width>60</width>
+				<height>60</height>
+				<aspectratio align="right">scale</aspectratio>
+				<texture>$INFO[Listitem.Icon]</texture>
+				<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+			</control>
+		</itemlayout>
+		<focusedlayout width="1108" height="80">
+			<control type="image">
+				<width>1108</width>
+				<height>75</height>
+				<texture border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texture>
+				<animation effect="fade" start="100" end="50" condition="!Control.HasFocus(6)">Conditional</animation>
+			</control>
+			<control type="label">
+				<left>bottom.dialogbar.left</left>
+				<width>600</width>
+				<height>70</height>
+				<aligny>top</aligny>
+				<textoffsety>20</textoffsety>
+				<label>$INFO[ListItem.Label]</label>
+				<visible>!Control.HasFocus(6)</visible>
+			</control>
+			<control type="label">
+				<left>616</left>
+				<width>390</width>
+				<height>70</height>
+				<aligny>top</aligny>
+				<align>right</align>
+				<textoffsety>20</textoffsety>
+				<label>$INFO[ListItem.Label2]</label>
+				<visible>!Control.HasFocus(6)</visible>
+			</control>
+			<control type="label">
+				<left>bottom.dialogbar.left</left>
+				<width>600</width>
+				<height>70</height>
+				<aligny>top</aligny>
+				<textoffsety>20</textoffsety>
+				<textcolor>TextColorFO</textcolor>
+				<selectedcolor>$VAR[SelectedColFO]</selectedcolor>
+				<label>$INFO[ListItem.Label]</label>
+				<visible>Control.HasFocus(6)</visible>
+			</control>
+			<control type="label">
+				<left>616</left>
+				<width>390</width>
+				<height>70</height>
+				<aligny>top</aligny>
+				<align>right</align>
+				<textoffsety>20</textoffsety>
+				<textcolor>TextColorFO</textcolor>
+				<selectedcolor>$VAR[SelectedColFO]</selectedcolor>
+				<label>$INFO[ListItem.Label2]</label>
+				<visible>Control.HasFocus(6)</visible>
+			</control>
+			<control type="label">
+				<description>Fallback icon</description>
+				<left>1016</left>
+				<top>12</top>
+				<width>60</width>
+				<height>60</height>
+				<align>center</align>
+				<textcolor>TextColorMedium</textcolor>
+				<font>IconBig</font>
+				<label>$VAR[DefaultIcons]</label>
+				<visible>!Control.HasFocus(6)</visible>
+			</control>
+			<control type="label">
+				<description>Fallback icon</description>
+				<left>1016</left>
+				<top>12</top>
+				<width>60</width>
+				<height>60</height>
+				<align>center</align>
+				<textcolor>TextColorFO</textcolor>
+				<selectedcolor>$VAR[SelectedColFO]</selectedcolor>
+				<font>IconBig</font>
+				<label>$VAR[DefaultIcons]</label>
+				<visible>Control.HasFocus(6)</visible>
+			</control>
+			<control type="image">
+				<left>1016</left>
+				<top>12</top>
+				<width>60</width>
+				<height>60</height>
+				<aspectratio align="right">scale</aspectratio>
+				<texture>$INFO[Listitem.Icon]</texture>
+				<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+			</control>
+		</focusedlayout>
+	</control>
+</control>
+</include>
+
+<include name="DialogSelectRating">
+	<control type="group">
+		<include condition="Skin.HasSetting(EnableVintageOverlay)">global_vintagebackground</include>
+		<include condition="!Skin.HasSetting(EnableVintageOverlay)">global_background</include>
+		<include condition="!Skin.HasSetting(EnableVintageOverlay)">global_fanart</include>
+		<visible>![Window.IsVisible(FullscreenVideo) | Window.IsVisible(Visualisation)]</visible>
+	</control>
+	<control type="image">
+		<description>Vignette zum Abdunkeln der Ecken</description>
+		<left>0</left>
+		<top>120</top>
+		<width>1920</width>
+		<height>895</height>
+		<texture colordiffuse="EBFFFFFF">musicviz/VizMatte.png</texture>
+		<visible>!Skin.HasSetting(Colorswitch) + Window.IsVisible(Visualisation)</visible>
+	</control>
+	<control type="image">
+		<description>Vignette zum Abdunkeln der Ecken Invers</description>
+		<left>0</left>
+		<top>150</top>
+		<width>1920</width>
+		<height>825</height>
+		<texture colordiffuse="CC000000">musicviz/VizMatte.png</texture>
+		<visible>Skin.HasSetting(Colorswitch) + Window.IsVisible(Visualisation)</visible>
+	</control>
+	<control type="group">
+		<include>Open_Close_Visible_Hidden_Zoom_Animation</include>
+		<control type="image"><!-- Bar -->
+			<description>Circles Bar</description>
+			<left>-500</left>
+			<top>615</top>
+			<width>3000</width>
+			<height>118</height>
+			<texture colordiffuse="$VAR[circlesCol]">views/info/bar.png</texture>
+		</control>
+		<control type="list" id="9000"><!-- liste -->
+			<top>615</top>
+			<left>100</left>
+			<width>1800</width>
+			<height>118</height>
+			<onup>noop</onup>
+			<ondown>noop</ondown>
+			<onleft>noop</onleft>
+			<onright>noop</onright>
+			<orientation>horizontal</orientation>
+			<focusposition>1</focusposition>
+			<scrolltime tween="sine" easing="out">200</scrolltime>
+			<itemlayout height="118" width="172">
+				<control type="image">
+					<width>149</width>
+					<height>118</height>
+					<texture colordiffuse="$VAR[circlesColInner]">rings/inner-ring.png</texture>
+				</control>
+				<control type="image">
+					<width>149</width>
+					<height>118</height>
+					<texture colordiffuse="$VAR[circlesCol]">rings/outer-ring.png</texture>
+				</control>
+				<control type="label">
+					<width>149</width>
+					<height>80</height>
+					<align>center</align>
+					<textcolor>$VAR[secondaryCol]</textcolor>
+					<font>Userratingdialog</font>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+			</itemlayout>
+			<focusedlayout height="118" width="172">
+				<control type="image">
+					<width>149</width>
+					<height>118</height>
+					<texture colordiffuse="$VAR[secondaryCol]">rings/inner-ring.png</texture>
+					<visible>Control.HasFocus(9000)</visible>
+				</control>
+				<control type="image">
+					<width>149</width>
+					<height>118</height>
+					<texture colordiffuse="$VAR[circlesColInner]">rings/inner-ring.png</texture>
+				</control>
+				<control type="image">
+					<width>149</width>
+					<height>118</height>
+					<texture colordiffuse="$VAR[circlesCol]">rings/outer-ring.png</texture>
+				</control>
+				<control type="label">
+					<width>149</width>
+					<height>80</height>
+					<align>center</align>
+					<textcolor>$VAR[secondaryCol]</textcolor>
+					<font>Userratingdialog</font>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+			</focusedlayout>
+			<content>
+				<item id="26"><!-- video 1 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3)</visible>
+				</item>
+				<item id="26"><!-- 2 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3)</visible>
+				</item>
+				<item id="27"><!-- 2 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3)</visible>
+				</item>
+				<item id="26"><!-- 3 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2)</visible>
+				</item>
+				<item id="27"><!-- 3 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2)</visible>
+				</item>
+				<item id="27"><!-- 3 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2)</visible>
+				</item>
+				
+				<item id="26"><!-- 4 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3)</visible>
+				</item>
+				<item id="26"><!-- 4 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3)</visible>
+				</item>
+				<item id="26"><!-- 4 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3)</visible>
+				</item>
+				<item id="26"><!-- 4 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3)</visible>
+				</item>
+				
+				<item id="26"><!-- 5 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4)</visible>
+				</item>
+				<item id="26"><!-- 5 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4)</visible>
+				</item>
+				<item id="26"><!-- 5 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4)</visible>
+				</item>
+				<item id="26"><!-- 5 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4)</visible>
+				</item>
+				<item id="26"><!-- 5 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4)</visible>
+				</item>
+	
+				
+				<item id="26"><!-- 6 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5)</visible>
+				</item>
+				<item id="26"><!-- 6 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5)</visible>
+				</item>
+				<item id="26"><!-- 6 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5)</visible>
+				</item>
+				<item id="26"><!-- 6 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5)</visible>
+				</item>
+				<item id="26"><!-- 6 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5)</visible>
+				</item>
+				<item id="26"><!-- 6 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5)</visible>
+				</item>
+				
+				
+				<item id="26"><!-- 7 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6)</visible>
+				</item>
+				<item id="26"><!-- 7 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6)</visible>
+				</item>
+				<item id="26"><!-- 7 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6)</visible>
+				</item>
+				<item id="26"><!-- 7 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6)</visible>
+				</item>
+				<item id="26"><!-- 7 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6)</visible>
+				</item>
+				<item id="26"><!-- 7 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6)</visible>
+				</item>
+				<item id="26"><!-- 7 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6)</visible>
+				</item>
+				
+				
+				<item id="26"><!-- 8 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7)</visible>
+				</item>
+				<item id="26"><!-- 8 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7)</visible>
+				</item>
+				<item id="26"><!-- 8 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7)</visible>
+				</item>
+				<item id="26"><!-- 8 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7)</visible>
+				</item>
+				<item id="26"><!-- 8 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7)</visible>
+				</item>
+				<item id="26"><!-- 8 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7)</visible>
+				</item>
+				<item id="26"><!-- 8 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7)</visible>
+				</item>
+				<item id="26"><!-- 8 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7)</visible>
+				</item>
+				
+				<item id="26"><!-- 9 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 9) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8)</visible>
+				</item>
+				<item id="26"><!-- 9 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 9) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8)</visible>
+				</item>
+				<item id="26"><!-- 9 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 9) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8)</visible>
+				</item>
+				<item id="26"><!-- 9 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 9) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8)</visible>
+				</item>
+				<item id="26"><!-- 9 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 9) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8)</visible>
+				</item>
+				<item id="26"><!-- 9 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 9) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8)</visible>
+				</item>
+				<item id="26"><!-- 9 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 9) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8)</visible>
+				</item>
+				<item id="26"><!-- 9 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 9) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8)</visible>
+				</item>
+				<item id="26"><!-- 9 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 9) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8)</visible>
+				</item>
+				
+				<item id="26"><!-- 10 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 10) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 9)</visible>
+				</item>
+				<item id="26"><!-- 10 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 10) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 9)</visible>
+				</item>
+				<item id="26"><!-- 10 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 10) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 9)</visible>
+				</item>
+				<item id="26"><!-- 10 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 10) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 9)</visible>
+				</item>
+				<item id="26"><!-- 10 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 10) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 9)</visible>
+				</item>
+				<item id="26"><!-- 10 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 10) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 9)</visible>
+				</item>
+				<item id="26"><!-- 10 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 10) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 9)</visible>
+				</item>
+				<item id="26"><!-- 10 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 10) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 9)</visible>
+				</item>
+				<item id="26"><!-- 10 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 10) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 9)</visible>
+				</item>
+				<item id="26"><!-- 10 -->
+					<onclick>noop</onclick>
+					<label>Ñ</label>
+					<visible>String.IsEqual(Container(3).ListItem.Label,Bewertung: 10) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 1) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 2) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 3) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 4) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 5) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 6) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 7) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 8) + !String.IsEqual(Container(3).ListItem.Label,Bewertung: 9)</visible>
+				</item>
+			</content>
+		</control>
+	</control>
+	<control type="group"><!-- default group hidden fuer navigation -->
+		<top>-100</top>
+		<left>2000</left>
+		<animation effect="fade" start="0" end="0" condition="true">Conditional</animation>
+		<control type="group">
+			<control type="label" id="1">
+				<include>HiddenControl</include>
+			</control>
+			<control type="label" id="4"><!-- Jarvis -->
+				<include>HiddenControl</include>
+			</control>
+		</control>
+		<control type="group">
+			<control type="list" id="3"><!-- List -->
+				<width>914</width>
+				<height>413</height>
+				<onleft>3</onleft>
+				<onleft>3</onleft>
+				<onup>select</onup>
+				<onup>Skin.SetString(SelectDialog,Standard)</onup>
+				<onunfocus>Skin.SetString(SelectDialog,Standard)</onunfocus>
+				<ondown>select</ondown>
+				<ondown>Skin.SetString(SelectDialog,Standard)</ondown>
+				<ondown>enter</ondown>
+				<itemgap>0</itemgap>
+				<orientation>horizontal</orientation>
+				<scrolltime>200</scrolltime>
+				<itemlayout height="40">
+					<control type="label">
+						<left>35</left>
+						<width>800</width>
+						<height>41</height>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout height="40">
+					<control type="label">
+						<left>35</left>
+						<width>800</width>
+						<height>41</height>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</focusedlayout>
+			</control>
+			<control type="list" id="6"><!-- List -->
+				<width>914</width>
+				<height>413</height>
+				<onleft>6</onleft>
+				<onleft>6</onleft>
+				<itemgap>0</itemgap>
+				<orientation>horizontal</orientation>
+				<scrolltime>200</scrolltime>
+				<itemlayout height="40">
+					<control type="label">
+						<left>35</left>
+						<width>800</width>
+						<height>41</height>
+						
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout height="40">
+					<control type="label">
+						<left>35</left>
+						<width>800</width>
+						<height>41</height>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</focusedlayout>
+			</control>
+			<control type="button" id="5">
+				<include>HiddenControl</include>
+				<onleft>6</onleft>
+				<onright>6</onright>
+				<onup>6</onup>
+				<ondown>6</ondown>
+				<onleft>SetFocus(9000)</onleft>
+				<onright>SetFocus(9000)</onright>
+				<onup>SetFocus(6)</onup>
+				<ondown>SetFocus(9000)</ondown>
+			</control>
+		</control>
+	</control>
+	<control type="group"><!-- Title -->
+		<include>Open_Close_Visible_Hidden_Fade_Animation</include>
+		<control type="label">
+			<description>Titel</description>
+			<left>460</left>
+			<top>485</top>
+			<width>1000</width>
+			<height>50</height>
+			<font>DialogHeader</font>
+			<align>center</align>
+			<label>Benutzerbewertung</label>
+			<include>VintageDialogTitel_Animation</include>
+		</control>
+		<control type="label">
+			<description>Hilfe text navigation</description>
+			<left>460</left>
+			<top>545</top>
+			<width>1000</width>
+			<height>30</height>
+			<font>RegularSmall</font>
+			<textcolor>TextColorMedium</textcolor>
+			<align>center</align>
+			<label>‹‹ Bewertung wählen ››</label>
+		</control>
+		<control type="label">
+			<description>Titel des zu bewertenden files</description>
+			<left>460</left>
+			<top>800</top>
+			<width>1000</width>
+			<height>30</height>
+			<font>RegularSmall</font>
+			<textcolor>TextColorMedium</textcolor>
+			<align>center</align>
+			<label>$VAR[VideoinfoTitle]</label>
+		</control>
+		<control type="label">
+			<description>Aktuelles rating</description>
+			<left>460</left>
+			<top>860</top>
+			<width>1000</width>
+			<height>30</height>
+			<textcolor>TextColorMedium</textcolor>
+			<align>center</align>
+			<label fallback="0">$INFO[Container(9000).NumItems]</label>
+		</control>
+	</control>
+</include>
+
+<include name="DialogSelectActor">
+	<control type="group">
+		<left>890</left>
+		<top>139</top>
+		<animation type="WindowOpen">
+			<effect type="fade" start="0" end="100" time="450" tween="cubic" easing="inout" />
+			<effect type="slide" start="0,-700" end="0" time="450" tween="cubic" easing="inout" />
+		</animation>
+		<animation type="Visible">
+			<effect type="fade" start="0" end="100" time="450" tween="cubic" easing="inout" />
+			<effect type="slide" start="0,-700" end="0" time="450" tween="cubic" easing="inout" />
+		</animation>
+		<animation type="WindowClose">
+			<effect type="fade" end="0" start="100" time="450" tween="cubic" easing="inout" />
+			<effect type="slide" end="0,-700" start="0" time="450" tween="cubic" easing="inout" />
+		</animation>
+		<animation type="Hidden">
+			<effect type="fade" end="0" start="100" time="450" tween="cubic" easing="inout" />
+			<effect type="slide" end="0,-700" start="0" time="450" tween="cubic" easing="inout" />
+		</animation>
+		<control type="label" id="1">
+			<description>Titel label</description>
+			<include>HiddenControl</include>
+			<label>-</label>
+		</control>
+		<control type="label">
+			<description>Titel label + was, Darsteller oder Regie</description>
+			<left>90</left>
+			<width>850</width>
+			<height>60</height>
+			<font>SubTitleCapsNormal</font>
+			<scroll>true</scroll>
+			<label>$INFO[Control.Getlabel(1)] $INFO[Window(home).Property(Sectecdialogtitle)]</label>
+		</control>
+		<control type="list" id="3">
+			<top>56</top>
+			<width>1060</width>
+			<height>410</height>
+			<onleft>close</onleft>
+			<onleft>SetFocus(50)</onleft>
+			<onright>close</onright>
+			<onright>SetFocus(50)</onright>
+			<onup>3</onup>
+			<ondown>3</ondown>
+			<itemlayout height="80">
+				<control type="label">
+					<left>90</left>
+					<width>850</width>
+					<height>70</height>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+				<control type="label">
+					<right>30</right>
+					<width>850</width>
+					<height>70</height>
+					<align>right</align>
+					<label>$INFO[ListItem.Label2]</label>
+				</control>
+			</itemlayout>
+			<focusedlayout height="80">
+				<control type="image">
+					<left>50</left>
+					<top>10</top>
+					<width>1060</width>
+					<height>60</height>
+					<texture colordiffuse="$VAR[circlesCol]">White.png</texture>
+				</control>
+				<control type="image">
+					<width>82</width>
+					<height>82</height>
+					<texture colordiffuse="$VAR[primaryCol]">rings/sub-inner-ring.png</texture>
+					<visible>Control.HasFocus(3)</visible>
+				</control>
+				<control type="image">
+					<width>82</width>
+					<height>82</height>
+					<texture colordiffuse="$VAR[circlesColInner]">rings/sub-inner-ring.png</texture>
+					<visible>!Control.HasFocus(3)</visible>
+				</control>
+				<control type="label">
+					<width>82</width>
+					<height>82</height>
+					<align>center</align>
+					<textcolor>$VAR[circlesCol]</textcolor>
+					<selectedcolor>$VAR[SelectedColFO]</selectedcolor>
+					<font>IconBig</font>
+					<label>U</label>
+				</control>
+				<control type="image">
+					<width>82</width>
+					<height>82</height>
+					<texture colordiffuse="$VAR[circlesCol]">rings/sub-outer-ring.png</texture>
+				</control>
+				<control type="label">
+					<left>90</left>
+					<width>850</width>
+					<height>70</height>
+					<textcolor>$VAR[primaryCol]</textcolor>
+					<selectedcolor>$VAR[SelectedColFO]</selectedcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+				<control type="label">
+					<right>30</right>
+					<width>850</width>
+					<height>70</height>
+					<align>right</align>
+					<textcolor>$VAR[primaryCol]</textcolor>
+					<selectedcolor>$VAR[SelectedColFO]</selectedcolor>
+					<label>$INFO[ListItem.Label2]</label>
+				</control>
+			</focusedlayout>
+		</control>
+	</control>
+</include>
+
+<include name="DialogSelectSuche">
+	<control type="group">
+		<left>-690</left>
+		<animation type="WindowOpen">
+			<effect type="fade" start="0" end="100" time="280" delay="180" />
+			<effect type="slide" end="690,0" time="300" delay="180" tween="quadratic" easing="out"/>
+		</animation>
+		<control type="group">
+			<control type="group"><!-- Hintergrund -->
+				<description>Hintergrund</description>
+				<control type="image">
+					<width>690</width>
+					<height>1080</height>
+					<texture colordiffuse="$VAR[DialogCol]" background="true">White.png</texture>
+				</control>
+				<control type="image">
+					<left>690</left>
+					<width>8</width>
+					<height>1080</height>
+					<texture colordiffuse="ShadowColor">cycle/shadow-right-8.png</texture>
+				</control>
+			</control>
+			<include>Sideblade_Left_IconBG</include>
+			<control type="group"><!-- Breadcumb -->
+				<left>120</left>
+				<top>20</top>
+				<width>sidebar.breadcumblabel.width</width>
+				<height>1080</height>
+				<control type="label">
+					<description>Breadcumb icon suche</description>
+					<left>-100</left>
+					<include>DialogIconDimension</include>
+					<include>IconColorFO</include>
+					<label>o</label>
+				</control>
+				<control type="grouplist">
+					<top>10</top>
+					<width>sidebar.breadcumblabel.width</width>
+					<height>140</height>
+					<itemgap>10</itemgap>
+					<orientation>vertical</orientation>
+					<control type="label" id="1">
+						<description>Breadcumb label aus Titel</description>
+						<width>sidebar.breadcumblabel.width</width>
+						<height>sidebar.breadcumblabel.height</height>
+						<font>BreadcumbNormal</font>
+						<scroll>false</scroll>
+						<label>-</label>
+					</control>
+				</control>
+				<control type="label">
+					<description>Breadcumb ebene 3</description>
+					<top>995</top>
+					<width>sidebar.breadcumblabel.width</width>
+					<height>sidebar.breadcumblabel.height</height>
+					<font>BreadcumbSmall</font>
+					<scroll>false</scroll>
+					<label>([COLOR=TextColorLight]$INFO[Container(3).NumItems][/COLOR]) Einträge - Seite ([COLOR=TextColorLight]$INFO[Container(3).CurrentPage]/$INFO[Container(3).NumPages][/COLOR])</label>
+				</control>
+			</control>
+			<control type="grouplist" id="9000"><!-- Buttonmenu -->
+				<description>Buttonliste fake ohne Icon</description>
+				<left>100</left>
+				<top>120</top>
+				<width>603</width>
+				<height>975</height>
+				<onup>3</onup>
+				<ondown>3</ondown>
+				<onleft>3</onleft>
+				<onright>Dialog.close(selectdialog)</onright>
+				<onright>skin.reset(SelectDialog)</onright>
+				<onright>SetFocus(50)</onright>
+				<itemgap>5</itemgap>
+				<control type="button" id="19">
+					<description>Abbrechen</description>
+					<width>603</width>
+					<height>75</height>
+					<aligny>top</aligny>
+					<textoffsety>20</textoffsety>
+					<font>LightNormal</font>
+					<onclick>close</onclick>
+					<onclick>skin.reset(SelectDialog)</onclick>
+					<onup>5</onup>
+					<onleft>3</onleft>
+					<onright>Dialog.close(selectdialog)</onright>
+					<onright>skin.reset(SelectDialog)</onright>
+					<onright>SetFocus(50)</onright>
+					<ondown>5</ondown>
+					<texturenofocus>-</texturenofocus>
+					<texturefocus border="0,0,14,0" colordiffuse="$VAR[primaryCol]">buttons/MainSliderightSubButton.png</texturefocus>
+					<label>Abbrechen</label>
+				</control>
+			</control>
+			<control type="grouplist">
+				<description>Button Icons</description>
+				<left>20</left>
+				<top>120</top>
+				<itemgap>10</itemgap>
+				<width>388</width>
+				<height>975</height>
+				<!-- Mehr nicht verfuegbar in Dialog bei Suche -->
+				<control type="label">
+					<description>Abbrechen</description>
+					<include>IconColorFO</include>
+					<include>DialogIconDimension</include>
+					<label>ģ</label>
+					<visible>Control.IsVisible(19) + Control.HasFocus(19)</visible>
+				</control>
+				<control type="label">
+					<description>Abbrechen</description>
+					<include>IconColorNF</include>
+					<include>DialogIconDimension</include>
+					<label>ģ</label>
+					<visible>Control.IsVisible(19) + !Control.HasFocus(19)</visible>
+				</control>
+			</control>
+		</control>
+		<control type="group"><!-- Content -->
+			<top>200</top>
+			<control type="list" id="3">
+				<description>Auswahlliste</description>
+				<left>20</left>
+				<width>684</width>
+				<height>770</height>
+				<onright>Dialog.close(selectdialog)</onright>
+				<onright>skin.reset(SelectDialog)</onright>
+				<onright>SetFocus(50)</onright>
+				<onleft>9000</onleft>
+				<onup>3</onup>
+				<ondown>3</ondown>
+				<scrolltime>200</scrolltime>
+				<itemlayout width="684" height="70">
+					<control type="label">
+						<left>80</left>
+						<width>570</width>
+						<height>75</height>
+						<aligny>top</aligny>
+						<textoffsetx>30</textoffsetx>
+						<textoffsety>15</textoffsety>
+						<font>Pinboard</font>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout width="684" height="70">
+					<control type="image">
+						<left>13</left>
+						<width>670</width>
+						<height>75</height>
+						<texture border="0,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/right-11.png</texture>
+						<visible>Control.HasFocus(3)</visible>
+					</control>
+					<control type="label">
+						<left>80</left>
+						<width>570</width>
+						<height>75</height>
+						<aligny>top</aligny>
+						<textoffsetx>30</textoffsetx>
+						<textoffsety>15</textoffsety>
+						<font>Pinboard</font>
+						<textcolor>TextColorFO</textcolor>
+						<selectedcolor>$VAR[SelectedColFO]</selectedcolor>
+						<label>$INFO[ListItem.Label]</label>
+						<visible>Control.HasFocus(3)</visible>
+					</control>
+					<control type="label">
+						<left>80</left>
+						<width>570</width>
+						<height>75</height>
+						<aligny>top</aligny>
+						<textoffsetx>30</textoffsetx>
+						<textoffsety>15</textoffsety>
+						<font>Pinboard</font>
+						<label>$INFO[ListItem.Label]</label>
+						<visible>!Control.HasFocus(3)</visible>
+					</control>
+				</focusedlayout>
+			</control>
+			<control type="list" id="6"><!-- nicht verwendet -->
+				<description>Auswahlliste bei grafiken mit icon</description>
+				<left>20</left>
+				<width>684</width>
+				<height>770</height>
+				<onleft>9000</onleft>
+				<onright>Dialog.close(selectdialog)</onright>
+				<onright>skin.reset(SelectDialog)</onright>
+				<onright>SetFocus(50)</onright>
+				<onup>6</onup>
+				<ondown>6</ondown>
+				<scrolltime>200</scrolltime>
+				<itemlayout width="684" height="70">
+					<control type="label">
+						<left>80</left>
+						<width>570</width>
+						<height>75</height>
+						<aligny>top</aligny>
+						<textoffsetx>30</textoffsetx>
+						<textoffsety>15</textoffsety>
+						<font>Pinboard</font>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout width="684" height="70">
+					<control type="image">
+						<left>13</left>
+						<width>670</width>
+						<height>75</height>
+						<texture border="0,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/right-11.png</texture>
+						<visible>Control.HasFocus(6)</visible>
+					</control>
+					<control type="label">
+						<left>80</left>
+						<width>570</width>
+						<height>75</height>
+						<aligny>top</aligny>
+						<textoffsetx>30</textoffsetx>
+						<textoffsety>15</textoffsety>
+						<font>Pinboard</font>
+						<textcolor>TextColorFO</textcolor>
+						<selectedcolor>$VAR[SelectedColFO]</selectedcolor>
+						<label>$INFO[ListItem.Label]</label>
+						<visible>Control.HasFocus(6)</visible>
+					</control>
+					<control type="label">
+						<left>80</left>
+						<width>570</width>
+						<height>75</height>
+						<aligny>top</aligny>
+						<textoffsetx>30</textoffsetx>
+						<textoffsety>15</textoffsety>
+						<font>Pinboard</font>
+						<label>$INFO[ListItem.Label]</label>
+						<visible>!Control.HasFocus(6)</visible>
+					</control>
+				</focusedlayout>
+			</control>
+		</control>
+	</control>
+</include>
+
+<!-- LibraryEditor -->
+<variable name="LibraryEditorLabel">
+	<value condition="Container.Content(movies)">Film bearbeiten</value>
+	<value condition="Container.Content(tvshows)">Serie bearbeiten</value>
+	<value condition="Container.Content(seasons)">Staffel bearbeiten</value>
+	<value condition="Container.Content(episodes)">Episode bearbeiten</value>
+</variable>
+
+<variable name="AddonEnable-Disable-Label">
+	<value condition="!String.StartsWith(Control.GetLabel(7),$LOCALIZE[24022]) | !Window.IsActive(addonbrowser)">Ģ</value><!-- check -->
+	<value>ġ</value>
+</variable>
+
+<!-- Dialog Context -->
+<!-- Pinboard labels -->
+<variable name="QuicklinksContextLabelSeries">
+	<value condition="!String.IsEmpty(Skin.String(ShowList1TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList2TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList3TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList4TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList5TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList6TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList7TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList8TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList9TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList10TVShowTitle))">Alle Plätze belegt</value>
+	<value>In Pinboard aufnehmen</value>
+</variable>
+
+<variable name="QuicklinksContextLabelMovies">
+	<value condition="!String.IsEmpty(Skin.String(MovieList1Title)) + !String.IsEmpty(Skin.String(MovieList2Title)) + !String.IsEmpty(Skin.String(MovieList3Title)) + !String.IsEmpty(Skin.String(MovieList4Title)) + !String.IsEmpty(Skin.String(MovieList5Title)) + !String.IsEmpty(Skin.String(MovieList6Title)) + !String.IsEmpty(Skin.String(MovieList7Title)) + !String.IsEmpty(Skin.String(MovieList8Title)) + !String.IsEmpty(Skin.String(MovieList9Title)) + !String.IsEmpty(Skin.String(MovieList10Title))">Alle Plätze belegt</value>
+	<value>In Pinboard aufnehmen</value>
+</variable>
+
+<include name="DialogPlayercontrolsStandard">
+<control type="group">
+	<visible>[Player.HasMedia | System.HasMediadvd] + Window.IsActive(PlayerControls) + !Window.IsActive(FullscreenVideo) + !Window.IsActive(Visualisation)</visible>
+	<description>Layout standard neben sidebar</description>
+	<animation type="WindowOpen">
+		<effect type="slide" end="80,0" time="180" tween="quadratic" easing="out"/>
+	</animation>
+	<animation type="WindowClose">
+		<effect type="slide" end="-80,0" time="180" tween="quadratic" easing="out"/>
+	</animation>
+	<left>-80</left>
+	<control type="group"><!-- Hintergrund -->
+		<description>Hintergrund</description>
+		<control type="image">
+			<width>80</width>
+			<height>1080</height>
+			<texture colordiffuse="$VAR[primaryCol]" background="true">White.png</texture>
+		</control>
+		<control type="image">
+			<left>80</left>
+			<width>8</width>
+			<height>1080</height>
+			<texture colordiffuse="ShadowColor">cycle/shadow-right-8.png</texture>
+		</control>
+	</control>
+	<control type="grouplist" id="600"><!-- Buttonmenu -->
+		<description>Buttonliste fake ohne Icon</description>
+		<left>10</left>
+		<top>155</top>
+		<width>80</width>
+		<height>880</height>
+		<itemgap>10</itemgap>
+		<orientation>vertical</orientation>
+		<onleft>Dialog.Close(114)</onleft>
+		<onright>Dialog.Close(114)</onright>
+		<onup>600</onup>
+		<ondown>600</ondown>
+		<control type="button" id="10">
+			<description>Vollbild</description>
+			<height>sidebar.icon.dimension</height>
+			<width>sidebar.icon.dimension</width>
+			<onclick>Dialog.Close(114)</onclick>
+			<onclick>fullscreen</onclick>
+			<onleft>Close</onleft>
+			<onright>Close</onright>
+			<visible>Player.HasMedia</visible>
+		</control>
+		<control type="button" id="1">
+			<description>Previous</description>
+			<height>sidebar.icon.dimension</height>
+			<width>sidebar.icon.dimension</width>
+			<onclick>playercontrol(previous)</onclick>
+			<onleft>Close</onleft>
+			<onright>Close</onright>
+			<visible>Player.HasMedia</visible>
+		</control>
+		<control type="button" id="2">
+			<description>Rewind</description>
+			<height>sidebar.icon.dimension</height>
+			<width>sidebar.icon.dimension</width>
+			<onclick>playercontrol(rewind)</onclick>
+			<onleft>Close</onleft>
+			<onright>Close</onright>
+			<visible>Player.HasMedia</visible>
+		</control>
+		<control type="togglebutton" id="3">
+			<description>Play/Pause</description>
+			<height>sidebar.icon.dimension</height>
+			<width>sidebar.icon.dimension</width>
+			<label>-</label>
+			<altlabel>-</altlabel>
+			<textcolor>ACDIF_0</textcolor>
+			<focusedcolor>ACDIF_0</focusedcolor>
+			<texturefocus>-</texturefocus>
+			<texturenofocus>-</texturenofocus>
+			<usealttexture>Player.Paused | Player.Forwarding | Player.Rewinding</usealttexture>
+			<alttexturefocus>-</alttexturefocus>
+			<alttexturenofocus>-</alttexturenofocus>
+			<onclick>Dialog.Close(114)</onclick>
+			<onclick>playercontrol(play)</onclick>
+			<onleft>Close</onleft>
+			<onright>Close</onright>
+			<visible>Player.HasMedia</visible>
+		</control>
+		<control type="button" id="4">
+			<description>Stop</description>
+			<height>sidebar.icon.dimension</height>
+			<width>sidebar.icon.dimension</width>
+			<onclick>playercontrol(stop)</onclick>
+			<onleft>Close</onleft>
+			<onright>Close</onright>
+			<visible>Player.HasMedia</visible>
+		</control>
+		<control type="button" id="5">
+			<description>Fast Forward</description>
+			<height>sidebar.icon.dimension</height>
+			<width>sidebar.icon.dimension</width>
+			<onclick>playercontrol(forward)</onclick>
+			<onleft>Close</onleft>
+			<onright>Close</onright>
+			<visible>Player.HasMedia</visible>
+		</control>
+		<control type="button" id="6">
+			<description>Next</description>
+			<height>sidebar.icon.dimension</height>
+			<width>sidebar.icon.dimension</width>
+			<onclick>playercontrol(next)</onclick>
+			<onleft>Close</onleft>
+			<onright>Close</onright>
+			<visible>Player.HasMedia</visible>
+		</control>
+		<control type="button" id="7">
+			<description>Wiederholung an/aus</description>
+			<height>sidebar.icon.dimension</height>
+			<width>sidebar.icon.dimension</width>
+			<label>-</label>
+			<onclick>XBMC.PlayerControl(Repeat)</onclick>
+			<onleft>Close</onleft>
+			<onright>Close</onright>
+			<visible>!System.HasMediadvd</visible>
+		</control>
+		<control type="togglebutton" id="8">
+			<description>Zufall an/aus</description>
+			<height>sidebar.icon.dimension</height>
+			<width>sidebar.icon.dimension</width>
+			<label>-</label>
+			<texturefocus>-</texturefocus>
+			<texturenofocus>-</texturenofocus>
+			<usealttexture>Playlist.IsRandom</usealttexture>
+			<alttexturefocus>-</alttexturefocus>
+			<alttexturenofocus>-</alttexturenofocus>
+			<onclick>XBMC.PlayerControl(Random)</onclick>
+			<onleft>Close</onleft>
+			<onright>Close</onright>
+			<visible>!System.HasMediadvd</visible>
+		</control>
+		<control type="button" id="9">
+			<description>Playlist Menu</description>
+			<height>sidebar.icon.dimension</height>
+			<width>sidebar.icon.dimension</width>
+			<onclick>Dialog.Close(114)</onclick>
+			<onclick condition="Player.HasVideo">activateWindow(videoplaylist)</onclick>
+			<onclick condition="Player.HasAudio">activateWindow(musicplaylist)</onclick>
+			<onleft>Close</onleft>
+			<onright>Close</onright>
+			<visible>Integer.IsGreater(Playlist.Length,1) + !System.HasMediadvd</visible>
+		</control>
+		<control type="button" id="11">
+			<description>Play dvd Menu</description>
+			<height>sidebar.icon.dimension</height>
+			<width>sidebar.icon.dimension</width>
+			<onclick>PlayDVD</onclick>
+			<onclick>Dialog.Close(1140)</onclick>
+			<onleft>Close</onleft>
+			<onright>Close</onright>
+			<visible>System.HasMediadvd</visible>
+		</control>
+		<control type="button" id="12">
+			<description>Eject dvd</description>
+			<height>sidebar.icon.dimension</height>
+			<width>sidebar.icon.dimension</width>
+			<onclick>EjectTray()</onclick>
+			<onclick>Dialog.Close(1140)</onclick>
+			<onleft>Close</onleft>
+			<onright>Close</onright>
+			<visible>System.HasMediadvd</visible>
+		</control>
+	</control>
+	<control type="grouplist">
+		<description>Button Icons</description>
+		<left>10</left>
+		<top>155</top>
+		<width>80</width>
+		<height>880</height>
+		<itemgap>10</itemgap>
+		<orientation>vertical</orientation>
+		<control type="label">
+			<description>Vollbild</description>
+			<label>ť</label>
+			<font>IconPlayerControlButtons</font>
+			<include>SidebarIconDimension</include>
+			<include>IconColorFO</include>
+			<visible>Control.IsVisible(10) + Control.HasFocus(10) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Vollbild</description>
+			<label>ť</label>
+			<font>IconPlayerControlButtons</font>
+			<include>SidebarIconDimension</include>
+			<include>IconColorNF</include>
+			<visible>Control.IsVisible(10) + !Control.HasFocus(10) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Previous</description>
+			<label>Ŭ</label>
+			<font>IconPlayerControlButtons</font>
+			<include>SidebarIconDimension</include>
+			<include>IconColorFO</include>
+			<visible>Control.IsVisible(1) + Control.HasFocus(1) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Previous</description>
+			<label>Ŭ</label>
+			<font>IconPlayerControlButtons</font>
+			<include>SidebarIconDimension</include>
+			<include>IconColorNF</include>
+			<visible>Control.IsVisible(1) + !Control.HasFocus(1) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Rewind</description>
+			<label>ŭ</label>
+			<font>IconPlayerControlButtons</font>
+			<include>SidebarIconDimension</include>
+			<include>IconColorFO</include>
+			<visible>Control.IsVisible(2) + Control.HasFocus(2) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Rewind</description>
+			<label>ŭ</label>
+			<font>IconPlayerControlButtons</font>
+			<include>SidebarIconDimension</include>
+			<include>IconColorNF</include>
+			<visible>Control.IsVisible(2) + !Control.HasFocus(2) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Play Pause</description>
+			<label>$VAR[playercontrol-play]</label>
+			<font>IconPlayerControlButtons</font>
+			<include>SidebarIconDimension</include>
+			<include>IconColorFO</include>
+			<visible>Control.IsVisible(3) + Control.HasFocus(3) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Play Pause</description>
+			<label>$VAR[playercontrol-play]</label>
+			<font>IconPlayerControlButtons</font>
+			<include>SidebarIconDimension</include>
+			<include>IconColorNF</include>
+			<visible>Control.IsVisible(3) + !Control.HasFocus(3) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Prev</description>
+			<label>Ů</label>
+			<font>IconPlayerControlButtons</font>
+			<include>SidebarIconDimension</include>
+			<include>IconColorFO</include>
+			<visible>Control.IsVisible(4) + Control.HasFocus(4) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Prev</description>
+			<label>Ů</label>
+			<font>IconPlayerControlButtons</font>
+			<include>SidebarIconDimension</include>
+			<include>IconColorNF</include>
+			<visible>Control.IsVisible(4) + !Control.HasFocus(4) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Ffwd</description>
+			<label>Ũ</label>
+			<font>IconPlayerControlButtons</font>
+			<include>SidebarIconDimension</include>
+			<include>IconColorFO</include>
+			<visible>Control.IsVisible(5) + Control.HasFocus(5) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Ffwd</description>
+			<label>Ũ</label>
+			<font>IconPlayerControlButtons</font>
+			<include>SidebarIconDimension</include>
+			<include>IconColorNF</include>
+			<visible>Control.IsVisible(5) + !Control.HasFocus(5) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Next</description>
+			<label>ũ</label>
+			<font>IconPlayerControlButtons</font>
+			<include>SidebarIconDimension</include>
+			<include>IconColorFO</include>
+			<visible>Control.IsVisible(6) + Control.HasFocus(6) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Next</description>
+			<label>ũ</label>
+			<font>IconPlayerControlButtons</font>
+			<include>SidebarIconDimension</include>
+			<include>IconColorNF</include>
+			<visible>Control.IsVisible(6) + !Control.HasFocus(6) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Repeat/Random</description>
+			<label>$VAR[OSD-playercontrol-repeat]</label>
+			<font>IconPlayerControlButtons</font>
+			<include>SidebarIconDimension</include>
+			<include>IconColorFO</include>
+			<visible>Control.IsVisible(7) + Control.HasFocus(7) + !System.HasMediadvd</visible>
+		</control>
+		<control type="label">
+			<description>Repeat/Random</description>
+			<label>$VAR[OSD-playercontrol-repeat]</label>
+			<font>IconPlayerControlButtons</font>
+			<include>SidebarIconDimension</include>
+			<include>IconColorNF</include>
+			<visible>Control.IsVisible(7) + !Control.HasFocus(7) + !System.HasMediadvd</visible>
+		</control>
+		<control type="label">
+			<description>Zufall an/aus</description>
+			<label>$VAR[OSD-playercontrol-random]</label>
+			<font>IconPlayerControlButtons</font>
+			<include>SidebarIconDimension</include>
+			<include>IconColorFO</include>
+			<visible>Control.IsVisible(8) + Control.HasFocus(8) + !System.HasMediadvd</visible>
+		</control>
+		<control type="label">
+			<description>Zufall an/aus</description>
+			<label>$VAR[OSD-playercontrol-random]</label>
+			<font>IconPlayerControlButtons</font>
+			<include>SidebarIconDimension</include>
+			<include>IconColorNF</include>
+			<visible>Control.IsVisible(8) + !Control.HasFocus(8) + !System.HasMediadvd</visible>
+		</control>
+		<control type="label">
+			<description>Playlist Menu</description>
+			<label>Ť</label>
+			<font>IconPlayerControlButtons</font>
+			<include>SidebarIconDimension</include>
+			<include>IconColorFO</include>
+			<visible>Control.IsVisible(9) + Control.HasFocus(9) + !System.HasMediadvd</visible>
+		</control>
+		<control type="label">
+			<description>Playlist Menu</description>
+			<label>Ť</label>
+			<font>IconPlayerControlButtons</font>
+			<include>SidebarIconDimension</include>
+			<include>IconColorNF</include>
+			<visible>Control.IsVisible(9) + !Control.HasFocus(9) + !System.HasMediadvd</visible>
+		</control>
+		<control type="label">
+			<description>Play dvd Menu</description>
+			<label>ų</label>
+			<font>IconPlayerControlButtons</font>
+			<include>SidebarIconDimension</include>
+			<include>IconColorNF</include>
+			<visible>!Control.HasFocus(11) + System.HasMediadvd</visible>
+		</control>
+		<control type="label">
+			<description>Play dvd Menu</description>
+			<label>ų</label>
+			<font>IconPlayerControlButtons</font>
+			<include>SidebarIconDimension</include>
+			<include>IconColorFO</include>
+			<visible>Control.HasFocus(11) + System.HasMediadvd</visible>
+		</control>
+		<control type="label">
+			<description>Eject dvd</description>
+			<label>Ŷ</label>
+			<font>IconPlayerControlButtons</font>
+			<include>SidebarIconDimension</include>
+			<include>IconColorNF</include>
+			<visible>!Control.HasFocus(12) + System.HasMediadvd</visible>
+		</control>
+		<control type="label">
+			<description>Eject dvd</description>
+			<label>Ŷ</label>
+			<font>IconPlayerControlButtons</font>
+			<include>SidebarIconDimension</include>
+			<include>IconColorFO</include>
+			<visible>Control.HasFocus(12) + System.HasMediadvd</visible>
+		</control>
+	</control>
+</control>
+</include>
+
+<include name="DialogPlayercontrolsCycleHome">
+<control type="group">
+	<description>Layout Home - unter logo</description>
+	<include>Open_Close_Fade_Animation</include>
+	<visible>[Player.HasMedia | System.HasMediadvd] + Window.IsActive(PlayerControls)</visible>
+	<left>360</left>
+	<top>780</top>
+	<control type="grouplist" id="600"><!-- Buttonmenu -->
+		<description>Buttonliste fake ohne Icon</description>
+		<width>1200</width>
+		<height>100</height>
+		<itemgap>-5</itemgap>
+		<align>center</align>
+		<orientation>horizontal</orientation>
+		<onleft>600</onleft>
+		<onright>600</onright>
+		<onup>Dialog.Close(114)</onup>
+		<onup>SetFocus(9800)</onup>
+		<ondown>Dialog.Close(114)</ondown>
+		<ondown>SetFocus(9800)</ondown>
+		<control type="button" id="9">
+			<description>Playlist Menu</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<onclick>Dialog.Close(114)</onclick>
+			<onclick condition="Player.HasVideo">activateWindow(videoplaylist)</onclick>
+			<onclick condition="Player.HasAudio">activateWindow(musicplaylist)</onclick>
+			<visible>Integer.IsGreater(Playlist.Length,1) + !System.HasMediadvd</visible>
+		</control>
+		<control type="button" id="10">
+			<description>Vollbild Menu</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<onclick>Dialog.Close(114)</onclick>
+			<onclick condition="Player.HasVideo">fullscreen</onclick>
+			<onclick condition="Player.HasAudio">activateWindow(visualisation)</onclick>
+			<visible>Player.HasMedia</visible>
+		</control>
+		<control type="button" id="1">
+			<description>Previous</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<onclick>playercontrol(previous)</onclick>
+			<visible>Player.HasMedia</visible>
+		</control>
+		<control type="button" id="2">
+			<description>Rewind</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<onclick>playercontrol(rewind)</onclick>
+			<visible>Player.HasMedia</visible>
+		</control>
+		<control type="togglebutton" id="3">
+			<description>Play Pause</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<label>-</label>
+			<altlabel>-</altlabel>
+			<texturefocus>-</texturefocus>
+			<texturenofocus>-</texturenofocus>
+			<usealttexture>Player.Paused | Player.Forwarding | Player.Rewinding</usealttexture>
+			<alttexturefocus>-</alttexturefocus>
+			<alttexturenofocus>-</alttexturenofocus>
+			<onclick>playercontrol(play)</onclick>
+			<visible>Player.HasMedia</visible>
+		</control>
+		<control type="button" id="4">
+			<description>Stop</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<onclick>Dialog.Close(114)</onclick>
+			<onclick>playercontrol(stop)</onclick>
+			<visible>Player.HasMedia</visible>
+		</control>
+		<control type="button" id="5">
+			<description>Fast Forward</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<onclick>playercontrol(forward)</onclick>
+			<visible>Player.HasMedia</visible>
+		</control>
+		<control type="button" id="6">
+			<description>Next</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<onclick>playercontrol(next)</onclick>
+			<visible>Player.HasMedia</visible>
+		</control>
+		<control type="button" id="7">
+			<description>Wiederholung an</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<label>-</label>
+			<onclick>XBMC.PlayerControl(Repeat)</onclick>
+			<visible>!System.HasMediadvd</visible>
+		</control>
+		<control type="togglebutton" id="8">
+			<description>Zufall an/aus</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<label>-</label>
+			<texturefocus>-</texturefocus>
+			<texturenofocus>-</texturenofocus>
+			<usealttexture>Playlist.IsRandom</usealttexture>
+			<alttexturefocus>-</alttexturefocus>
+			<alttexturenofocus>-</alttexturenofocus>
+			<onclick>XBMC.PlayerControl(Random)</onclick>
+			<visible>!System.HasMediadvd</visible>
+		</control>
+		<control type="button" id="11">
+			<description>Play dvd Menu</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<onclick>PlayDVD</onclick>
+			<onclick>Dialog.Close(1140)</onclick>
+			<visible>System.HasMediadvd</visible>
+		</control>
+		<control type="button" id="12">
+			<description>Eject dvd</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<onclick>EjectTray()</onclick>
+			<onclick>Dialog.Close(1140)</onclick>
+			<visible>System.HasMediadvd</visible>
+		</control>
+	</control>
+	<control type="grouplist">
+		<description>Button Icons</description>
+		<width>1200</width>
+		<height>110</height>
+		<itemgap>0</itemgap>
+		<align>center</align>
+		<orientation>horizontal</orientation>
+		<control type="label">
+			<description>Playlist Menu</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<align>center</align>
+			<label>Ť</label>
+			<font>IconPlayerControlHomeButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<visible>Control.IsVisible(9) + Control.HasFocus(9) + !System.HasMediadvd</visible>
+		</control>
+		<control type="label">
+			<description>Playlist Menu</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<align>center</align>
+			<label>Ť</label>
+			<font>IconPlayerControlHomeButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<animation type="Conditional" condition="true">
+				<effect type="fade" start="60" end="60" time="0" />
+			</animation>
+			<visible>Control.IsVisible(9) + !Control.HasFocus(9) + !System.HasMediadvd</visible>
+		</control>
+		<control type="label">
+			<description>Vollbild</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<align>center</align>
+			<label>ť</label>
+			<font>IconPlayerControlHomeButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<animation type="Conditional" condition="true">
+				<effect type="fade" start="60" end="60" time="0" />
+			</animation>
+			<visible>Control.IsVisible(10) + !Control.HasFocus(10) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Vollbild</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<align>center</align>
+			<label>ť</label>
+			<font>IconPlayerControlHomeButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<visible>Control.IsVisible(10) + Control.HasFocus(10) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Previous</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<label>Ŭ</label>
+			<align>center</align>
+			<font>IconPlayerControlHomeButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<visible>Control.IsVisible(1) + Control.HasFocus(1) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Previous</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<label>Ŭ</label>
+			<align>center</align>
+			<font>IconPlayerControlHomeButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<animation type="Conditional" condition="true">
+				<effect type="fade" start="60" end="60" time="0" />
+			</animation>
+			<visible>Control.IsVisible(1) + !Control.HasFocus(1) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Rewind</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<label>ŭ</label>
+			<align>center</align>
+			<font>IconPlayerControlHomeButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<visible>Control.IsVisible(2) + Control.HasFocus(2) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Rewind</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<label>ŭ</label>
+			<align>center</align>
+			<font>IconPlayerControlHomeButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<animation type="Conditional" condition="true">
+				<effect type="fade" start="60" end="60" time="0" />
+			</animation>
+			<visible>Control.IsVisible(2) + !Control.HasFocus(2) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Play/pause</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<align>center</align>
+			<label>$VAR[playercontrol-play]</label>
+			<font>IconPlayerControlHomeButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<visible>Control.IsVisible(3) + Control.HasFocus(3) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Play/pause</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<align>center</align>
+			<label>$VAR[playercontrol-play]</label>
+			<font>IconPlayerControlHomeButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<animation type="Conditional" condition="true">
+				<effect type="fade" start="60" end="60" time="0" />
+			</animation>
+			<visible>Control.IsVisible(3) + !Control.HasFocus(3) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Stop</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<align>center</align>
+			<label>Ů</label>
+			<font>IconPlayerControlHomeButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<visible>Control.IsVisible(4) + Control.HasFocus(4) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Stop</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<align>center</align>
+			<label>Ů</label>
+			<font>IconPlayerControlHomeButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<animation type="Conditional" condition="true">
+				<effect type="fade" start="60" end="60" time="0" />
+			</animation>
+			<visible>Control.IsVisible(4) + !Control.HasFocus(4) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Ffwd</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<align>center</align>
+			<label>Ũ</label>
+			<font>IconPlayerControlHomeButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<visible>Control.IsVisible(5) + Control.HasFocus(5) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Ffwd</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<align>center</align>
+			<label>Ũ</label>
+			<font>IconPlayerControlHomeButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<animation type="Conditional" condition="true">
+				<effect type="fade" start="60" end="60" time="0" />
+			</animation>
+			<visible>Control.IsVisible(5) + !Control.HasFocus(5) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Next</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<align>center</align>
+			<label>ũ</label>
+			<font>IconPlayerControlHomeButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<visible>Control.IsVisible(6) + Control.HasFocus(6) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Next</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<align>center</align>
+			<label>ũ</label>
+			<font>IconPlayerControlHomeButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<animation type="Conditional" condition="true">
+				<effect type="fade" start="60" end="60" time="0" />
+			</animation>
+			<visible>Control.IsVisible(6) + !Control.HasFocus(6) + Player.HasMedia</visible>
+		</control>
+		<control type="label">
+			<description>Repeat an/aus</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<align>center</align>
+			<label>$VAR[OSD-playercontrol-repeat]</label>
+			<font>IconPlayerControlHomeButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<visible>Control.IsVisible(7) + Control.HasFocus(7) + !System.HasMediadvd</visible>
+		</control>
+		<control type="label">
+			<description>Repeat an/aus</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<align>center</align>
+			<label>$VAR[OSD-playercontrol-repeat]</label>
+			<font>IconPlayerControlHomeButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<animation type="Conditional" condition="true">
+				<effect type="fade" start="60" end="60" time="0" />
+			</animation>
+			<visible>Control.IsVisible(7) + !Control.HasFocus(7) + !System.HasMediadvd</visible>
+		</control>
+		<control type="label">
+			<description>Zufall an/aus</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<align>center</align>
+			<label>$VAR[OSD-playercontrol-random]</label>
+			<font>IconPlayerControlHomeButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<animation type="Conditional" condition="true">
+				<effect type="fade" start="60" end="60" time="0" />
+			</animation>
+			<visible>Control.IsVisible(8) + !Control.HasFocus(8) + !System.HasMediadvd</visible>
+		</control>
+		<control type="label">
+			<description>Zufall an/aus</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<align>center</align>
+			<label>$VAR[OSD-playercontrol-random]</label>
+			<font>IconPlayerControlHomeButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<visible>Control.IsVisible(8) + Control.HasFocus(8) + !System.HasMediadvd</visible>
+		</control>
+
+		<control type="label">
+			<description>Play dvd Menu</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<align>center</align>
+			<label>ų</label>
+			<font>IconPlayerControlHomeButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<animation type="Conditional" condition="true">
+				<effect type="fade" start="60" end="60" time="0" />
+			</animation>
+			<visible>!Control.HasFocus(11) + System.HasMediadvd</visible>
+		</control>
+		<control type="label">
+			<description>Play dvd Menu</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<align>center</align>
+			<label>ų</label>
+			<font>IconPlayerControlHomeButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<visible>Control.HasFocus(11) + System.HasMediadvd</visible>
+		</control>
+		<control type="label">
+			<description>Eject dvd</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<align>center</align>
+			<label>Ŷ</label>
+			<font>IconPlayerControlHomeButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<animation type="Conditional" condition="true">
+				<effect type="fade" start="60" end="60" time="0" />
+			</animation>
+			<visible>!Control.HasFocus(12) + System.HasMediadvd</visible>
+		</control>
+		<control type="label">
+			<description>Eject dvd</description>
+			<height>dialogbar.icon.dimension</height>
+			<width>dialogbar.icon.dimension</width>
+			<align>center</align>
+			<label>Ŷ</label>
+			<font>IconPlayerControlHomeButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<visible>Control.HasFocus(12) + System.HasMediadvd</visible>
+		</control>
+	</control>
+	<control type="label">
+		<description>Play dvd text unterm osd</description>
+		<left>100</left>
+		<top>180</top>
+		<width>1000</width>
+		<height>40</height>
+		<align>center</align>
+		<label>‹‹ Datenträger abspielen ››</label>
+		<font>RegularSmall</font>
+		<textcolor>TextColorMedium</textcolor>
+		<visible>Control.HasFocus(11)</visible>
+	</control>
+	<control type="label">
+		<description>Eject dvd text unterm osd</description>
+		<left>100</left>
+		<top>180</top>
+		<width>1000</width>
+		<height>40</height>
+		<align>center</align>
+		<label>‹‹ Datenträger auswerfen ››</label>
+		<font>RegularSmall</font>
+		<textcolor>TextColorMedium</textcolor>
+		<visible>Control.HasFocus(12)</visible>
+	</control>
+</control>
+</include>
+
+<!-- Cycle includes Keyboard -->
+<include name="Key">
+	<height>80</height>
+	<align>center</align>
+	<aligny>top</aligny>
+	<textoffsety>18</textoffsety>
+	<font>KeyboardNormal</font>
+	<textcolor>TextColorLight</textcolor>
+	<texturefocus border="20" colordiffuse="$VAR[primaryCol]">dialogs/keyboard/key-nf.png</texturefocus>
+	<texturenofocus border="20">dialogs/keyboard/key-nf.png</texturenofocus>
+</include>
+<include name="KeySmall">
+	<height>80</height>
+	<align>center</align>
+	<aligny>top</aligny>
+	<textoffsety>22</textoffsety>
+	<font>RegularSmall</font>
+	<textcolor>TextColorLight</textcolor>
+	<texturefocus border="20" colordiffuse="$VAR[primaryCol]">dialogs/keyboard/key-nf.png</texturefocus>
+	<texturenofocus border="20">dialogs/keyboard/key-nf.png</texturenofocus>
+</include>
+<include name="SmallKey">
+	<width>90</width>
+	<include>Key</include>
+</include>
+<include name="BigKey">
+	<width>199</width>
+	<include>KeySmall</include>
+</include>
+<include name="SpaceBar">
+	<width>585</width>
+	<include>Key</include>
+</include>
+<include name="BackSpace">
+	<width>334</width>
+	<height>80</height>
+	<texturefocus border="81,20,20,20" colordiffuse="$VAR[primaryCol]">dialogs/keyboard/backspacefocus.png</texturefocus>
+	<texturenofocus border="81,20,20,20">dialogs/keyboard/backspacenofocus.png</texturenofocus>
+</include>
+<include name="ShiftKey">
+	<width>199</width>
+	<height>80</height>
+	<texturefocus colordiffuse="$VAR[primaryCol]">dialogs/keyboard/shiftfocus.png</texturefocus>
+	<texturenofocus>dialogs/keyboard/shiftnofocus.png</texturenofocus>
+</include>
+<include name="CapsKey">
+	<width>199</width>
+	<height>80</height>
+	<texturefocus colordiffuse="$VAR[primaryCol]">dialogs/keyboard/capsfocus.png</texturefocus>
+	<texturenofocus>dialogs/keyboard/capsnofocus.png</texturenofocus>
+</include>
+<include name="MediumKeyLarr">
+	<width>104</width>
+	<height>80</height>
+	<texturefocus colordiffuse="$VAR[primaryCol]">dialogs/keyboard/mediumkeylarrfocus.png</texturefocus>
+	<texturenofocus>dialogs/keyboard/mediumkeylarrnofocus.png</texturenofocus>
+</include>
+<include name="MediumKeyRarr">
+	<width>104</width>
+	<height>80</height>
+	<texturefocus colordiffuse="$VAR[primaryCol]">dialogs/keyboard/mediumkeyrarrfocus.png</texturefocus>
+	<texturenofocus>dialogs/keyboard/mediumkeyrarrnofocus.png</texturenofocus>
+</include>
+
+<!-- contextmenue kringel musikplayliste -->
+<!-- Dialog Context Musicplaylist Editor -->
+<variable name="DialogContextMPL-Icon1001">
+	<value condition="String.Contains(Control.GetLabel(1001),entfernen)">Ģ</value>
+	<value condition="String.Contains(Control.GetLabel(1001),hinzuf)">ġ</value>
+	<value condition="String.Contains(Control.GetLabel(1001),schen)">ģ</value>
+	<value condition="String.Contains(Control.GetLabel(1001),nach oben)">b</value>
+	<value condition="String.Contains(Control.GetLabel(1001),nach unten)">c</value>
+	<value condition="String.Contains(Control.GetLabel(1001),Öffnen)">Ė</value>
+	<value condition="String.Contains(Control.GetLabel(1001),speichern)">Ĥ</value>
+	<value>-</value>
+</variable>
+
+<variable name="DialogContextMPL-Icon1002">
+	<value condition="String.Contains(Control.GetLabel(1002),entfernen)">Ģ</value>
+	<value condition="String.Contains(Control.GetLabel(1002),hinzuf)">ġ</value>
+	<value condition="String.Contains(Control.GetLabel(1002),schen)">ģ</value>
+	<value condition="String.Contains(Control.GetLabel(1002),nach oben)">b</value>
+	<value condition="String.Contains(Control.GetLabel(1002),nach unten)">c</value>
+	<value condition="String.Contains(Control.GetLabel(1002),ffnen)">Ė</value>
+	<value condition="String.Contains(Control.GetLabel(1002),speichern)">Ĥ</value>
+	<value>-</value>
+</variable>
+
+<variable name="DialogContextMPL-Icon1003">
+	<value condition="String.Contains(Control.GetLabel(1003),entfernen)">Ģ</value>
+	<value condition="String.Contains(Control.GetLabel(1003),hinzuf)">ġ</value>
+	<value condition="String.Contains(Control.GetLabel(1003),schen)">ģ</value>
+	<value condition="String.Contains(Control.GetLabel(1003),nach oben)">b</value>
+	<value condition="String.Contains(Control.GetLabel(1003),nach unten)">c</value>
+	<value condition="String.Contains(Control.GetLabel(1003),ffnen)">Ė</value>
+	<value condition="String.Contains(Control.GetLabel(1003),speichern)">Ĥ</value>
+	<value>-</value>
+</variable>
+
+<variable name="DialogContextMPL-Icon1004">
+	<value condition="String.Contains(Control.GetLabel(1004),entfernen)">Ģ</value>
+	<value condition="String.Contains(Control.GetLabel(1004),hinzuf)">ġ</value>
+	<value condition="String.Contains(Control.GetLabel(1004),schen)">ģ</value>
+	<value condition="String.Contains(Control.GetLabel(1004),nach oben)">b</value>
+	<value condition="String.Contains(Control.GetLabel(1004),nach unten)">c</value>
+	<value condition="String.Contains(Control.GetLabel(1004),ffnen)">Ė</value>
+	<value condition="String.Contains(Control.GetLabel(1004),speichern)">Ĥ</value>
+	<value>-</value>
+</variable>
+
+<variable name="DialogContextMPL-Icon1005">
+	<value condition="String.Contains(Control.GetLabel(1005),entfernen)">Ģ</value>
+	<value condition="String.Contains(Control.GetLabel(1005),hinzuf)">ġ</value>
+	<value condition="String.Contains(Control.GetLabel(1005),schen)">ģ</value>
+	<value condition="String.Contains(Control.GetLabel(1005),nach oben)">b</value>
+	<value condition="String.Contains(Control.GetLabel(1005),nach unten)">c</value>
+	<value condition="String.Contains(Control.GetLabel(1005),ffnen)">Ė</value>
+	<value condition="String.Contains(Control.GetLabel(1005),speichern)">Ĥ</value>
+	<value>-</value>
+</variable>
+
+<variable name="DialogContextMPL-Icon1006">
+	<value condition="String.Contains(Control.GetLabel(1006),entfernen)">Ģ</value>
+	<value condition="String.Contains(Control.GetLabel(1006),hinzuf)">ġ</value>
+	<value condition="String.Contains(Control.GetLabel(1006),schen)">ģ</value>
+	<value condition="String.Contains(Control.GetLabel(1006),nach oben)">b</value>
+	<value condition="String.Contains(Control.GetLabel(1006),nach unten)">c</value>
+	<value condition="String.Contains(Control.GetLabel(1006),ffnen)">Ė</value>
+	<value condition="String.Contains(Control.GetLabel(1006),speichern)">Ĥ</value>
+	<value>-</value>
+</variable>
+
+<variable name="DialogContextMPL-Icon1007">
+	<value condition="String.Contains(Control.GetLabel(1007),entfernen)">Ģ</value>
+	<value condition="String.Contains(Control.GetLabel(1007),hinzuf)">ġ</value>
+	<value condition="String.Contains(Control.GetLabel(1007),schen)">ģ</value>
+	<value condition="String.Contains(Control.GetLabel(1007),nach oben)">b</value>
+	<value condition="String.Contains(Control.GetLabel(1007),nach unten)">c</value>
+	<value condition="String.Contains(Control.GetLabel(1007),ffnen)">Ė</value>
+	<value condition="String.Contains(Control.GetLabel(1007),speichern)">Ĥ</value>
+	<value>-</value>
+</variable>
+
+<include name="DialogContextMPL">
+	<control type="group">
+		<left>20</left>
+		<include>Open_Close_Visible_Hidden_Slide_Animation375</include>
+		<control type="grouplist" id="996">
+			<description>Grouplist for context buttons</description>
+			<left>865</left>
+			<top>70</top>
+			<height>1080</height>
+			<width>369</width>
+			<height>900</height>
+			<onright>close</onright>
+			<onleft>close</onleft>
+			<itemgap>32</itemgap>
+			<align>top</align>
+			<control type="button" id="1000">
+				<description>Buttontemplate</description>
+				<font>-</font>
+				<width>154</width>
+				<height>122</height>
+				<aligny>top</aligny>
+				<texturenofocus colordiffuse="$VAR[circlesColInner]">rings/inner-ring.png</texturenofocus>
+				<texturefocus colordiffuse="$VAR[secondaryCol]">rings/inner-ring.png</texturefocus>
+				<animation effect="rotate" center="auto" start="90" end="90" time="0"condition="true">Conditional</animation>
+			</control>
+		</control>
+		<control type="group">
+			<!-- Icons Grouplist -->
+			<control type="group">
+				<left>865</left>
+				<top>70</top>
+				<visible>!String.IsEmpty(Control.GetLabel(1001))</visible>
+				<control type="label">
+					<width>154</width>
+					<height>122</height>
+					<align>center</align>
+					<font>IconMusicPlaylisteditor</font>
+					<textcolor>$VAR[circlesCol]</textcolor>
+					<label>$VAR[DialogContextMPL-Icon1001]</label>
+				</control>
+				<control type="image">
+					<width>154</width>
+					<height>122</height>
+					<texture colordiffuse="$VAR[circlesCol]">rings/outer-ring.png</texture>
+					<animation effect="rotate" center="auto" start="90" end="90" time="0"condition="true">Conditional</animation>
+				</control>
+			</control>
+			<control type="group">
+				<left>865</left>
+				<top>224</top>
+				<visible>!String.IsEmpty(Control.GetLabel(1002))</visible>
+				<control type="label">
+					<width>154</width>
+					<height>122</height>
+					<align>center</align>
+					<font>IconMusicPlaylisteditor</font>
+					<textcolor>$VAR[circlesCol]</textcolor>
+					<label>$VAR[DialogContextMPL-Icon1002]</label>
+				</control>
+				<control type="image">
+					<width>154</width>
+					<height>122</height>
+					<texture colordiffuse="$VAR[circlesCol]">rings/outer-ring.png</texture>
+					<animation effect="rotate" center="auto" start="90" end="90" time="0"condition="true">Conditional</animation>
+				</control>
+			</control>
+			<control type="group">
+				<left>865</left>
+				<top>376</top>
+				<visible>!String.IsEmpty(Control.GetLabel(1003))</visible>
+				<control type="label">
+					<width>154</width>
+					<height>122</height>
+					<align>center</align>
+					<font>IconMusicPlaylisteditor</font>
+					<textcolor>$VAR[circlesCol]</textcolor>
+					<label>$VAR[DialogContextMPL-Icon1003]</label>
+				</control>
+				<control type="image">
+					<width>154</width>
+					<height>122</height>
+					<texture colordiffuse="$VAR[circlesCol]">rings/outer-ring.png</texture>
+					<animation effect="rotate" center="auto" start="90" end="90" time="0"condition="true">Conditional</animation>
+				</control>
+			</control>
+			<control type="group">
+				<left>865</left>
+				<top>530</top>
+				<visible>!String.IsEmpty(Control.GetLabel(1004))</visible>
+				<control type="label">
+					<width>154</width>
+					<height>122</height>
+					<align>center</align>
+					<font>IconMusicPlaylisteditor</font>
+					<textcolor>$VAR[circlesCol]</textcolor>
+					<label>$VAR[DialogContextMPL-Icon1004]</label>
+				</control>
+				<control type="image">
+					<width>154</width>
+					<height>122</height>
+					<texture colordiffuse="$VAR[circlesCol]">rings/outer-ring.png</texture>
+					<animation effect="rotate" center="auto" start="90" end="90" time="0"condition="true">Conditional</animation>
+				</control>
+			</control>
+			<control type="group">
+				<left>865</left>
+				<top>684</top>
+				<visible>!String.IsEmpty(Control.GetLabel(1005))</visible>
+				<control type="label">
+					<width>154</width>
+					<height>122</height>
+					<align>center</align>
+					<font>IconMusicPlaylisteditor</font>
+					<textcolor>$VAR[circlesCol]</textcolor>
+					<label>$VAR[DialogContextMPL-Icon1005]</label>
+				</control>
+				<control type="image">
+					<width>154</width>
+					<height>122</height>
+					<texture colordiffuse="$VAR[circlesCol]">rings/outer-ring.png</texture>
+					<animation effect="rotate" center="auto" start="90" end="90" time="0"condition="true">Conditional</animation>
+				</control>
+			</control>
+			<control type="group">
+				<left>865</left>
+				<top>838</top>
+				<visible>!String.IsEmpty(Control.GetLabel(1006))</visible>
+				<control type="label">
+					<width>154</width>
+					<height>122</height>
+					<align>center</align>
+					<font>IconMusicPlaylisteditor</font>
+					<textcolor>$VAR[circlesCol]</textcolor>
+					<label>$VAR[DialogContextMPL-Icon1006]</label>
+				</control>
+				<control type="image">
+					<width>154</width>
+					<height>122</height>
+					<texture colordiffuse="$VAR[circlesCol]">rings/outer-ring.png</texture>
+					<animation effect="rotate" center="auto" start="90" end="90" time="0"condition="true">Conditional</animation>
+				</control>
+			</control>
+			<control type="group">
+				<left>865</left>
+				<top>992</top>
+				<visible>!String.IsEmpty(Control.GetLabel(1007))</visible>
+				<control type="label">
+					<width>154</width>
+					<height>122</height>
+					<align>center</align>
+					<font>IconMusicPlaylisteditor</font>
+					<textcolor>$VAR[circlesCol]</textcolor>
+					<label>$VAR[DialogContextMPL-Icon1007]</label>
+				</control>
+				<control type="image">
+					<width>154</width>
+					<height>122</height>
+					<texture colordiffuse="$VAR[circlesCol]">rings/outer-ring.png</texture>
+					<animation effect="rotate" center="auto" start="90" end="90" time="0"condition="true">Conditional</animation>
+				</control>
+			</control>
+		</control>
+	</control>
+</include>
+	
+<include name="DialogContextStandard">
+<control type="group">
+	<control type="list" id="1068">
+		<description>Similar list compair Empty condition fuer buttonsichtbarkeit falls kein match</description>
+		<include>Compaircontainer</include>
+		<content target="video">$VAR[ContentSimilar]</content>
+	</control>
+	<visible>![Window.IsVisible(Custom_1120_MainMenuSlide.xml) | Window.IsVisible(Custom_1141_ViewtypeSimilar.xml) | Window.IsVisible(favourites) | Window.IsVisible(shutdownmenu)]</visible>
+	<include>Open_Close_Visible_Hidden_Slide_Animation375</include>
+	<control type="group"><!-- Background -->
+		<description>Hintergrund</description>
+		<left>-43</left>
+		<include>Sideblade_Left_BG</include>
+	</control>
+	<control type="image">
+		<width>20</width>
+		<height>1080</height>
+		<texture colordiffuse="$VAR[secondaryCol]" background="true">White.png</texture>
+	</control>
+	<control type="group"><!-- Breadcumb Stand bei angefangenen wenn resumable -->
+		<description>Stand bei angefangenen wenn resumable vorhanden fuer Film/Episode</description>
+		<include>Open_Close_Visible_Hidden_Fade_Animation</include>
+		<visible>ListItem.IsResumable</visible>
+		<control type="label">
+			<description>Breadcumb icon</description>
+			<left>20</left>
+			<top>50</top>
+			<width>60</width>
+			<height>60</height>
+			<align>center</align>
+			<font>IconBig</font>
+			<textcolor>TextColorLight</textcolor>
+			<label>È</label>
+		</control>
+		<control type="label">
+			<description>Text</description>
+			<left>90</left>
+			<top>70</top>
+			<width>369</width>
+			<height>50</height>
+			<font>RegularSmall</font>
+			<label>Zuletzt gesehen:[CR]$INFO[ListItem.LastPlayed]</label>
+		</control>
+	</control>
+	<control type="grouplist" id="996"><!-- liste -->
+		<description>Grouplist fuer context buttons</description>
+		<left>20</left>
+		<top>150</top>
+		<width>369</width>
+		<height>780</height>
+		<onright>Action(ParentDir)</onright>
+		<onleft>Action(ParentDir)</onleft>
+		<itemgap>5</itemgap>
+		<control type="button" id="1109">
+			<description>Library editor</description>
+			<include>ContextmenueButton</include>
+			<label>$VAR[LibraryEditorLabel]</label>
+			<onclick>SetProperty($INFO[System.CurrentControl],Widgettitel auswählen,home)</onclick><!-- check? -->
+			<onclick>XBMC.RunScript(script.libraryeditor,DBID=$INFO[ListItem.DBID])</onclick>
+			<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + System.HasAddon(script.libraryeditor)</visible>
+		</control>
+		<control type="button" id="1110">
+			<description>Serien Pinboard</description>
+			<include>ContextmenueButton</include>
+			<onclick condition="String.IsEmpty(Skin.String(ShowList1TVShowTitle)) ">Skin.SetString(ShowList1TVShowTitle,$INFO[ListItem.TVShowTitle])</onclick>
+			<onclick condition="String.IsEmpty(Skin.String(ShowList1TVShowTitle))">Skin.SetString(ShowList1ID,$INFO[ListItem.DBID])</onclick>
+			
+			<onclick condition="!String.IsEmpty(Skin.String(ShowList1TVShowTitle)) + String.IsEmpty(Skin.String(ShowList2TVShowTitle))">Skin.SetString(ShowList2TVShowTitle,$INFO[ListItem.TVShowTitle])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(ShowList1TVShowTitle)) + String.IsEmpty(Skin.String(ShowList2TVShowTitle))">Skin.SetString(ShowList2ID,$INFO[ListItem.DBID])</onclick>
+			
+			<onclick condition="!String.IsEmpty(Skin.String(ShowList1TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList2TVShowTitle)) + [String.IsEmpty(Skin.String(ShowList3TVShowTitle))]">Skin.SetString(ShowList3TVShowTitle,$INFO[ListItem.TVShowTitle])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(ShowList1TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList2TVShowTitle)) + [String.IsEmpty(Skin.String(ShowList3TVShowTitle))]">Skin.SetString(ShowList3ID,$INFO[ListItem.DBID])</onclick>
+			
+			<onclick condition="!String.IsEmpty(Skin.String(ShowList1TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList2TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList3TVShowTitle)) + [String.IsEmpty(Skin.String(ShowList4TVShowTitle))]">Skin.SetString(ShowList4TVShowTitle,$INFO[ListItem.TVShowTitle])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(ShowList1TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList2TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList3TVShowTitle)) + [String.IsEmpty(Skin.String(ShowList4TVShowTitle))]">Skin.SetString(ShowList4ID,$INFO[ListItem.DBID])</onclick>
+			
+			<onclick condition="!String.IsEmpty(Skin.String(ShowList1TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList2TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList3TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList4TVShowTitle)) + [String.IsEmpty(Skin.String(ShowList5TVShowTitle))]">Skin.SetString(ShowList5TVShowTitle,$INFO[ListItem.TVShowTitle])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(ShowList1TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList2TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList3TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList4TVShowTitle)) + [String.IsEmpty(Skin.String(ShowList5TVShowTitle))]">Skin.SetString(ShowList5ID,$INFO[ListItem.DBID])</onclick>
+			
+			<onclick condition="!String.IsEmpty(Skin.String(ShowList1TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList2TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList3TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList4TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList5TVShowTitle)) + [String.IsEmpty(Skin.String(ShowList6TVShowTitle))]">Skin.SetString(ShowList6TVShowTitle,$INFO[ListItem.TVShowTitle])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(ShowList1TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList2TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList3TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList4TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList5TVShowTitle)) + [String.IsEmpty(Skin.String(ShowList6TVShowTitle))]">Skin.SetString(ShowList6ID,$INFO[ListItem.DBID])</onclick>
+			
+			<onclick condition="!String.IsEmpty(Skin.String(ShowList1TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList2TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList3TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList4TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList5TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList6TVShowTitle)) + [String.IsEmpty(Skin.String(ShowList7TVShowTitle))]">Skin.SetString(ShowList7TVShowTitle,$INFO[ListItem.TVShowTitle])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(ShowList1TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList2TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList3TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList4TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList5TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList6TVShowTitle)) + [String.IsEmpty(Skin.String(ShowList7TVShowTitle))]">Skin.SetString(ShowList7ID,$INFO[ListItem.DBID])</onclick>
+			
+			<onclick condition="!String.IsEmpty(Skin.String(ShowList1TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList2TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList3TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList4TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList5TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList6TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList7TVShowTitle)) + [String.IsEmpty(Skin.String(ShowList8TVShowTitle))]">Skin.SetString(ShowList8TVShowTitle,$INFO[ListItem.TVShowTitle])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(ShowList1TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList2TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList3TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList4TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList5TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList6TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList7TVShowTitle)) + [String.IsEmpty(Skin.String(ShowList8TVShowTitle))]">Skin.SetString(ShowList8ID,$INFO[ListItem.DBID])</onclick>
+			
+			<onclick condition="!String.IsEmpty(Skin.String(ShowList1TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList2TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList3TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList4TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList5TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList6TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList7TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList8TVShowTitle)) + [String.IsEmpty(Skin.String(ShowList9TVShowTitle))]">Skin.SetString(ShowList9TVShowTitle,$INFO[ListItem.TVShowTitle])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(ShowList1TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList2TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList3TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList4TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList5TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList6TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList7TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList8TVShowTitle)) + [String.IsEmpty(Skin.String(ShowList9TVShowTitle))]">Skin.SetString(ShowList9ID,$INFO[ListItem.DBID])</onclick>
+			
+			<onclick condition="!String.IsEmpty(Skin.String(ShowList1TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList2TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList3TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList4TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList5TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList6TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList7TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList8TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList9TVShowTitle)) + [String.IsEmpty(Skin.String(ShowList10TVShowTitle))]">Skin.SetString(ShowList10TVShowTitle,$INFO[ListItem.TVShowTitle])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(ShowList1TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList2TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList3TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList4TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList5TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList6TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList7TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList8TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList9TVShowTitle)) + [String.IsEmpty(Skin.String(ShowList10TVShowTitle))]">Skin.SetString(ShowList10ID,$INFO[ListItem.DBID])</onclick>
+			
+			<onclick condition="!String.IsEmpty(Skin.String(ShowList1TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList2TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList3TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList4TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList5TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList6TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList7TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList8TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList9TVShowTitle)) + !String.IsEmpty(Skin.String(ShowList10TVShowTitle))">ActivateWindow(1120)</onclick>
+			<label>$VAR[QuicklinksContextLabelSeries]</label>
+			<visible>Container.Content(tvshows)</visible>
+		</control>
+		<control type="button" id="1111">
+			<description>Filme Pinboard</description>
+			<include>ContextmenueButton</include>
+			<onclick condition="String.IsEmpty(Skin.String(MovieList1Title)) ">Skin.SetString(MovieList1Title,$INFO[ListItem.Title])</onclick>
+			<onclick condition="String.IsEmpty(Skin.String(MovieList1Title))">Skin.SetString(MovieList1Path,$INFO[ListItem.Path])</onclick>
+			
+			<onclick condition="!String.IsEmpty(Skin.String(MovieList1Title)) + String.IsEmpty(Skin.String(MovieList2Title))">Skin.SetString(MovieList2Title,$INFO[ListItem.Title])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(MovieList1Title)) + String.IsEmpty(Skin.String(MovieList2Title))">Skin.SetString(MovieList2Path,$INFO[ListItem.Path])</onclick>
+			
+			<onclick condition="!String.IsEmpty(Skin.String(MovieList1Title)) + !String.IsEmpty(Skin.String(MovieList2Title)) + [String.IsEmpty(Skin.String(MovieList3Title))]">Skin.SetString(MovieList3Title,$INFO[ListItem.Title])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(MovieList1Title)) + !String.IsEmpty(Skin.String(MovieList2Title)) + [String.IsEmpty(Skin.String(MovieList3Title))]">Skin.SetString(MovieList3Path,$INFO[ListItem.Path])</onclick>
+			
+			<onclick condition="!String.IsEmpty(Skin.String(MovieList1Title)) + !String.IsEmpty(Skin.String(MovieList2Title)) + !String.IsEmpty(Skin.String(MovieList3Title)) + [String.IsEmpty(Skin.String(MovieList4Title))]">Skin.SetString(MovieList4Title,$INFO[ListItem.Title])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(MovieList1Title)) + !String.IsEmpty(Skin.String(MovieList2Title)) + !String.IsEmpty(Skin.String(MovieList3Title)) + [String.IsEmpty(Skin.String(MovieList4Title))]">Skin.SetString(MovieList4Path,$INFO[ListItem.Path])</onclick>
+			
+			<onclick condition="!String.IsEmpty(Skin.String(MovieList1Title)) + !String.IsEmpty(Skin.String(MovieList2Title)) + !String.IsEmpty(Skin.String(MovieList3Title)) + !String.IsEmpty(Skin.String(MovieList4Title)) + [String.IsEmpty(Skin.String(MovieList5Title))]">Skin.SetString(MovieList5Title,$INFO[ListItem.Title])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(MovieList1Title)) + !String.IsEmpty(Skin.String(MovieList2Title)) + !String.IsEmpty(Skin.String(MovieList3Title)) + !String.IsEmpty(Skin.String(MovieList4Title)) + [String.IsEmpty(Skin.String(MovieList5Title))]">Skin.SetString(MovieList5Path,$INFO[ListItem.Path])</onclick>
+			
+			<onclick condition="!String.IsEmpty(Skin.String(MovieList1Title)) + !String.IsEmpty(Skin.String(MovieList2Title)) + !String.IsEmpty(Skin.String(MovieList3Title)) + !String.IsEmpty(Skin.String(MovieList4Title)) + !String.IsEmpty(Skin.String(MovieList5Title)) + [String.IsEmpty(Skin.String(MovieList6Title))]">Skin.SetString(MovieList6Title,$INFO[ListItem.Title])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(MovieList1Title)) + !String.IsEmpty(Skin.String(MovieList2Title)) + !String.IsEmpty(Skin.String(MovieList3Title)) + !String.IsEmpty(Skin.String(MovieList4Title)) + !String.IsEmpty(Skin.String(MovieList5Title)) + [String.IsEmpty(Skin.String(MovieList6Title))]">Skin.SetString(MovieList6Path,$INFO[ListItem.Path])</onclick>
+			
+			<onclick condition="!String.IsEmpty(Skin.String(MovieList1Title)) + !String.IsEmpty(Skin.String(MovieList2Title)) + !String.IsEmpty(Skin.String(MovieList3Title)) + !String.IsEmpty(Skin.String(MovieList4Title)) + !String.IsEmpty(Skin.String(MovieList5Title)) + !String.IsEmpty(Skin.String(MovieList6Title)) + [String.IsEmpty(Skin.String(MovieList7Title))]">Skin.SetString(MovieList7Title,$INFO[ListItem.Title])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(MovieList1Title)) + !String.IsEmpty(Skin.String(MovieList2Title)) + !String.IsEmpty(Skin.String(MovieList3Title)) + !String.IsEmpty(Skin.String(MovieList4Title)) + !String.IsEmpty(Skin.String(MovieList5Title)) + !String.IsEmpty(Skin.String(MovieList6Title)) + [String.IsEmpty(Skin.String(MovieList7Title))]">Skin.SetString(MovieList7Path,$INFO[ListItem.Path])</onclick>
+			
+			<onclick condition="!String.IsEmpty(Skin.String(MovieList1Title)) + !String.IsEmpty(Skin.String(MovieList2Title)) + !String.IsEmpty(Skin.String(MovieList3Title)) + !String.IsEmpty(Skin.String(MovieList4Title)) + !String.IsEmpty(Skin.String(MovieList5Title)) + !String.IsEmpty(Skin.String(MovieList6Title)) + !String.IsEmpty(Skin.String(MovieList7Title)) + [String.IsEmpty(Skin.String(MovieList8Title))]">Skin.SetString(MovieList8Title,$INFO[ListItem.Title])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(MovieList1Title)) + !String.IsEmpty(Skin.String(MovieList2Title)) + !String.IsEmpty(Skin.String(MovieList3Title)) + !String.IsEmpty(Skin.String(MovieList4Title)) + !String.IsEmpty(Skin.String(MovieList5Title)) + !String.IsEmpty(Skin.String(MovieList6Title)) + !String.IsEmpty(Skin.String(MovieList7Title)) + [String.IsEmpty(Skin.String(MovieList8Title))]">Skin.SetString(MovieList8Path,$INFO[ListItem.Path])</onclick>
+			
+			<onclick condition="!String.IsEmpty(Skin.String(MovieList1Title)) + !String.IsEmpty(Skin.String(MovieList2Title)) + !String.IsEmpty(Skin.String(MovieList3Title)) + !String.IsEmpty(Skin.String(MovieList4Title)) + !String.IsEmpty(Skin.String(MovieList5Title)) + !String.IsEmpty(Skin.String(MovieList6Title)) + !String.IsEmpty(Skin.String(MovieList7Title)) + !String.IsEmpty(Skin.String(MovieList8Title)) + [String.IsEmpty(Skin.String(MovieList9Title))]">Skin.SetString(MovieList9Title,$INFO[ListItem.Title])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(MovieList1Title)) + !String.IsEmpty(Skin.String(MovieList2Title)) + !String.IsEmpty(Skin.String(MovieList3Title)) + !String.IsEmpty(Skin.String(MovieList4Title)) + !String.IsEmpty(Skin.String(MovieList5Title)) + !String.IsEmpty(Skin.String(MovieList6Title)) + !String.IsEmpty(Skin.String(MovieList7Title)) + !String.IsEmpty(Skin.String(MovieList8Title)) + [String.IsEmpty(Skin.String(MovieList9Title))]">Skin.SetString(MovieList9Path,$INFO[ListItem.Path])</onclick>
+			
+			<onclick condition="!String.IsEmpty(Skin.String(MovieList1Title)) + !String.IsEmpty(Skin.String(MovieList2Title)) + !String.IsEmpty(Skin.String(MovieList3Title)) + !String.IsEmpty(Skin.String(MovieList4Title)) + !String.IsEmpty(Skin.String(MovieList5Title)) + !String.IsEmpty(Skin.String(MovieList6Title)) + !String.IsEmpty(Skin.String(MovieList7Title)) + !String.IsEmpty(Skin.String(MovieList8Title)) + !String.IsEmpty(Skin.String(MovieList9Title)) + [String.IsEmpty(Skin.String(MovieList10Title))]">Skin.SetString(MovieList10Title,$INFO[ListItem.Title])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(MovieList1Title)) + !String.IsEmpty(Skin.String(MovieList2Title)) + !String.IsEmpty(Skin.String(MovieList3Title)) + !String.IsEmpty(Skin.String(MovieList4Title)) + !String.IsEmpty(Skin.String(MovieList5Title)) + !String.IsEmpty(Skin.String(MovieList6Title)) + !String.IsEmpty(Skin.String(MovieList7Title)) + !String.IsEmpty(Skin.String(MovieList8Title)) + !String.IsEmpty(Skin.String(MovieList9Title)) + [String.IsEmpty(Skin.String(MovieList10Title))]">Skin.SetString(MovieList10Path,$INFO[ListItem.Path])</onclick>
+			
+			<onclick condition="!String.IsEmpty(Skin.String(MovieList1Title)) + !String.IsEmpty(Skin.String(MovieList2Title)) + !String.IsEmpty(Skin.String(MovieList3Title)) + !String.IsEmpty(Skin.String(MovieList4Title)) + !String.IsEmpty(Skin.String(MovieList5Title)) + !String.IsEmpty(Skin.String(MovieList6Title)) + !String.IsEmpty(Skin.String(MovieList7Title)) + !String.IsEmpty(Skin.String(MovieList8Title)) + !String.IsEmpty(Skin.String(MovieList9Title)) + !String.IsEmpty(Skin.String(MovieList10Title))">ActivateWindow(1120)</onclick>
+			<label>$VAR[QuicklinksContextLabelMovies]</label>
+			<visible>Container.Content(movies)</visible>
+		</control>
+		<control type="button" id="1113">
+			<description>Aehnliche Filme oder Serien</description>
+			<include>ContextmenueButton</include>
+			<onclick>Dialog.Close(all)</onclick>
+			<onclick>ActivateWindow(1141)</onclick>
+			<label>Empfehlungen</label>
+			<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + !String.IsEmpty(Container(1068).ListItem(1).Label)</visible>
+		</control>
+		<control type="button" id="1114">
+			<description>Simpleplaylist addon</description>
+			<include>ContextmenueButton</include>
+			<onclick>RunPlugin(plugin://script.simpleplaylists/?mode=addCurrentUrl)</onclick>
+			<label>Simpleplaylist</label>
+			<visible>System.HasAddon(script.simpleplaylists) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(sets)]</visible>
+		</control>
+		<control type="button" id="1115">
+			<description>Zuletzt gesehen aktualisieren</description>
+			<include>ContextmenueButton</include>
+			<label>Verlauf Aktualisieren</label>
+			<onclick>Dialog.Close(all)</onclick>
+			<onclick>ActivateWindow(1118)</onclick>
+			<visible>Window.IsVisible(videos)</visible>
+		</control>
+		<control type="button" id="1016">
+			<description>Script userrating</description>
+			<include>ContextmenueButton</include>
+			<label>Benutzer-Rating</label>
+			<onclick>Dialog.Close(all)</onclick>
+			<onclick>RunScript(script.user.rating)</onclick>
+			<visible>System.HasAddon(script.user.rating) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(sets)]</visible>
+		</control>
+		<control type="button" id="1000">
+			<description>Buttontemplate</description>
+			<include>ContextmenueButton</include>
+		</control>
+	</control>
+	<control type="label">
+		<description>Icon mehr als eine seite</description>
+		<left>40</left>
+		<top>1000</top>
+		<width>80</width>
+		<height>80</height>
+		<font>IconDimension</font>
+		<textcolor>TextColorLight</textcolor>
+		<label>.</label>
+		<visible>Container(996).HasNext</visible>
+	</control>
+</control>
+</include>
+</includes>

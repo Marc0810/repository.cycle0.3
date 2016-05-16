@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1148">
+<!-- Cycle 0.3 -->
+<!-- ######################### -->
+<!-- farben:
+1 blau
+2 orange
+3 rot
+4 gruen
+5 vintage
+6 lila
+7 grey
+8 blau2
+############################## -->
+<defaultcontrol always="true">9700</defaultcontrol>
+<controls>
+	<control type="group">
+		<left>660</left>
+		<top>180</top>
+		<include>Dialog_popup_Animation</include>
+		<control type="image">
+			<description>Hintergrund</description>
+			<left>-8</left>
+			<top>-8</top>
+			<height>426</height>
+			<width>694</width>
+			<include>DialogBackground</include>
+		</control>
+		<control type="image">
+			<left>-11</left>
+			<top>-11</top>
+			<width>702</width>
+			<height>80</height>
+			<texture border="14,0,14,0" flipy="true" colordiffuse="$VAR[primaryCol]" background="true">cycle/full-11.png</texture>
+		</control>
+		<control type="grouplist">
+			<description>Titel</description>
+			<left>10</left>
+			<width>660</width>
+			<height>60</height>
+			<itemgap>10</itemgap>
+			<align>left</align>
+			<orientation>horizontal</orientation>
+			<control type="label">
+				<description>Icon Titel</description>
+				<width>50</width>
+				<height>50</height>
+				<font>IconBig</font>
+				<textcolor>TextColorFO</textcolor>
+				<label>Ě</label>
+			</control>
+			<control type="label">
+				<description>Titel</description>
+				<width>600</width>
+				<height>50</height>
+				<textcolor>TextColorFO</textcolor>
+				<font>DialogHeader</font>
+				<label>Farben</label>
+			</control>
+		</control>
+		<control type="grouplist" id="9700">
+			<description>Menue</description>
+			<left>-11</left>
+			<top>80</top>
+			<height>356</height>
+			<width>701</width>
+			<focusposition>1</focusposition>
+			<orientation>vertical</orientation>
+			<onleft>Dialog.Close(1148)</onleft>
+			<onright>Dialog.Close(1148)</onright>
+			<ondown>9700</ondown>
+			<onup>9700</onup>
+			<onback>Dialog.Close(1148)</onback>
+			<itemgap>0</itemgap>
+			<control type="button" id="82750">
+				<description>Farbwechsel</description>
+				<include>ColorMenuButtonValues</include>
+				<onclick>SetProperty(ColorRefresh,ein,home)</onclick><!-- property setzen - custom window wird sichtbar und wechselt farbe beim onunload -->
+			<!-- 	<onclick condition="[String.IsEqual(skin.string(ColorChangePosition),1) | String.IsEmpty(skin.string(ColorChangePosition))]">Skin.SetString(ColorChangePosition,2)</onclick>
+				<onclick condition="String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(ColorChangePosition,3)</onclick>
+				<onclick condition="String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(ColorChangePosition,4)</onclick>
+				<onclick condition="String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(ColorChangePosition,5)</onclick>
+				<onclick condition="String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(ColorChangePosition,6)</onclick>
+				<onclick condition="String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(ColorChangePosition,7)</onclick>
+				<onclick condition="String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(ColorChangePosition,8)</onclick>
+				<onclick condition="String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(ColorChangePosition,1)</onclick>
+				<include>ColorchangeClickReset</include>-->
+			<!-- 	<include>ColorchangeClickStandard</include>onclick includes mit Strings zum Farbwechsel 
+				<include>ColorchangeClickOrange</include>
+				<include>ColorchangeClickGruen</include>
+				<include>ColorchangeClickRot</include>
+				<include>ColorchangeClickVintage</include>
+				<include>ColorchangeClickLila</include>
+				<include>ColorchangeClickGrau</include>
+				<include>ColorchangeClickDunklesblau</include>-->
+				<label>Farbwechsel</label>
+			</control>
+			<!-- Fanart button -->
+			<control type="radiobutton" id="82751">
+				<include>ColorMenuButtonValues</include>
+				<onclick>Skin.ToggleSetting(HideBackGroundFanart)</onclick>
+				<selected>Skin.HasSetting(HideBackGroundFanart)</selected>
+				<label>Verstecke Hintergrund-Fanart</label>
+				<visible>!Skin.HasSetting(EnableVintageOverlay)</visible>
+			</control>
+			<control type="label" id="82752">
+				<description>Hinweis</description>
+				<height>220</height>
+				<font>BreadcumbSmall</font><!-- includeueberschreibung hoehe und font -->
+				<include>ColorMenuButtonValues</include>
+				<wrapmultiline>true</wrapmultiline>
+				<label>[CR]Das Vintage Overlay hat keine[CR]weiteren Einstellungen.</label>
+			</control>
+		</control>
+	</control>
+</controls>
+</window>
+

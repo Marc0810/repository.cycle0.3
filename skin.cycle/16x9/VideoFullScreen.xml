@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+<defaultcontrol>-</defaultcontrol>
+<onload>SetProperty(RefreshList3,1,Home)</onload>
+<onunload>SetProperty(RefreshList3,1,Home)</onunload>
+<!-- Cycle 0.3 -->
+<defaultcontrol>-</defaultcontrol>
+<controls>
+</controls>
+</window>

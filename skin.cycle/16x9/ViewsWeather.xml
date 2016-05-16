@@ -1,0 +1,799 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+<!-- Cycle 0.3 -->
+<include name="CurrentLabel">
+	<height>45</height>
+	<width>300</width>
+	<align>right</align>
+	<textcolor>TextColorMedium</textcolor>
+</include>
+<include name="CurrentValue">
+	<top>155</top>
+	<height>45</height>
+	<width>400</width>
+</include>
+
+<include name="WeatherCurrent">
+	<control type="group">
+		<left>400</left>
+		<top>300</top>
+		<include>Open_Close_Visible_Hidden_Zoom_Animation</include>
+		<visible allowhiddenfocus="true">Control.HasFocus(54) + Weather.IsFetched</visible>
+		<control type="image">
+			<description>Wettericon - aktueller Ausblick Icon</description>
+			<left>-100</left>
+			<top>-80</top>
+			<width>460</width>
+			<height>460</height>
+			<texture>resource://resource.images.weathericons.default/$INFO[Window.Property(Current.OutlookIcon)]</texture>
+			<aspectratio align="center" aligny="center">keep</aspectratio>
+		</control>
+		<control type="label">
+			<description>Wettericon - aktueller Ausblick label</description>
+			<left>-100</left>
+			<top>400</top>
+			<width>460</width>
+			<height>60</height>
+			<align>center</align>
+			<font>WeatherSubTitle</font>
+			<label>$INFO[Window.Property(Current.Condition)]</label>
+		</control>
+		<control type="group"><!-- Temperatur tief -->
+			<left>10</left>
+			<top>450</top>
+			<control type="label">
+				<description>Tiefsttemperatur icon</description>
+				<width>40</width>
+				<height>60</height>
+				<font>IconBig</font>
+				<textcolor>blue</textcolor>
+				<label>Ŏ</label>
+			</control>
+			<control type="label">
+				<description>Tiefsttemperatur</description>
+				<left>30</left>
+				<width>80</width>
+				<height>60</height>
+				<align>center</align>
+				<font>RegularSmall</font>
+				<label>$INFO[Window(Weather).Property(Daily.1.LowTemperature)]</label>
+			</control>
+		</control>
+		<control type="group"><!-- Temperatur hoch -->
+			<left>140</left>
+			<top>450</top>
+			<control type="label">
+				<description>Hoechsttemperatur icon</description>
+				<width>40</width>
+				<height>60</height>
+				<font>IconBig</font>
+				<textcolor>red</textcolor>
+				<label>ō</label>
+			</control>
+			<control type="label">
+				<description>Hoechsttemperatur</description>
+				<left>30</left>
+				<width>80</width>
+				<height>60</height>
+				<align>center</align>
+				<font>RegularSmall</font>
+				<label>$INFO[Window(Weather).Property(Daily.1.HighTemperature)]</label>
+			</control>
+		</control>
+		<control type="group"><!-- Temperatur aktuell -->
+			<left>360</left>
+			<top>10</top>
+			<control type="label">
+				<description>Temperatur</description>
+				<width>200</width>
+				<height>180</height>
+				<align>right</align>
+				<aligny>center</aligny>
+				<font>WeatherTemp</font>
+				<label>$INFO[Window.Property(Current.Temperature)]</label>
+			</control>
+			<control type="label">
+				<description>Temperatur Einheit</description>
+				<left>210</left>
+				<width>140</width>
+				<height>180</height>
+				<aligny>top</aligny>
+				<font>WeatherTempunit</font>
+				<label>$INFO[System.TemperatureUnits]</label>
+			</control>
+		</control>
+		<control type="grouplist"><!-- aktueller ausblick Title -->
+			<left>690</left>
+			<width>300</width>
+			<itemgap>10</itemgap>
+			<visible>!String.IsEmpty(Window(Weather).Property(Daily.IsFetched))</visible>
+			<orientation>vertical</orientation>
+			<control type="label">
+				<description>Taupunkt</description>
+				<include>CurrentLabel</include>
+				<label>$LOCALIZE[405]</label>
+				<visible>!String.IsEmpty(Window(Weather).Property(Current.DewPoint))</visible>
+			</control>
+			<control type="label">
+				<description>Luftfeuchtigkeit</description>
+				<include>CurrentLabel</include>
+				<label>$LOCALIZE[406]</label>
+				<visible>!String.IsEmpty(Window(Weather).Property(Current.Humidity))</visible>
+			</control>
+			<control type="label">
+				<description>Windrichtung</description>
+				<include>CurrentLabel</include>
+				<label>$LOCALIZE[404]</label>
+				<visible>!String.IsEmpty(Window(Weather).Property(Current.Wind))</visible>
+			</control>
+			<control type="label">
+				<description>Niederschlag</description>
+				<include>CurrentLabel</include>
+				<label>Niederschlag</label>
+				<visible>!String.IsEmpty(Window(Weather).Property(Current.Precipitation))</visible>
+			</control>
+			<control type="label">
+				<description>Luftdruck</description>
+				<include>CurrentLabel</include>
+				<label>Luftdruck</label>
+				<visible>!String.IsEmpty(Window(Weather).Property(Current.Pressure))</visible>
+			</control>
+			<control type="label">
+				<description>Sonnenaufgang</description>
+				<include>CurrentLabel</include>
+				<label>Sonnenaufgang</label>
+				<visible>!String.IsEmpty(Window(Weather).Property(Today.Sunrise))</visible>
+			</control>
+			<control type="label">
+				<description>Sonnenuntergang</description>
+				<include>CurrentLabel</include>
+				<label>Sonnenuntergang</label>
+				<visible>!String.IsEmpty(Window(Weather).Property(Today.Sunset))</visible>
+			</control>
+		</control>
+		<control type="grouplist"><!-- aktueller ausblick -->
+			<left>1020</left>
+			<width>400</width>
+			<itemgap>10</itemgap>
+			<visible>!String.IsEmpty(Window(Weather).Property(Daily.IsFetched))</visible>
+			<orientation>vertical</orientation>
+			<control type="label">
+				<description>Taupunkt</description>
+				<include>CurrentValue</include>
+				<label>$INFO[Window(Weather).Property(Current.DewPoint)]</label>
+			</control>
+			<control type="label">
+				<description>Luftfeuchtigkeit</description>
+				<include>CurrentValue</include>
+				<label>$INFO[Window(Weather).Property(Current.Humidity)]</label>
+			</control>
+			<control type="label">
+				<description>Windrichtung</description>
+				<include>CurrentValue</include>
+				<label>$INFO[Window(Weather).Property(Current.Wind)]</label>
+			</control>
+			<control type="label">
+				<description>Niederschlag</description>
+				<include>CurrentValue</include>
+				<label>$INFO[Window(Weather).Property(Current.Precipitation)]</label>
+			</control>
+			<control type="label">
+				<description>Luftdruck</description>
+				<include>CurrentValue</include>
+				<label>$INFO[Window(Weather).Property(Current.Pressure)]</label>
+			</control>
+			<control type="label">
+				<description>Sonnenaufgang</description>
+				<include>CurrentValue</include>
+				<label>$INFO[Window(Weather).Property(Today.Sunrise)]</label>
+			</control>
+			<control type="label">
+				<description>Sonnenuntergang</description>
+				<include>CurrentValue</include>
+				<label>$INFO[Window(Weather).Property(Today.Sunset)]</label>
+			</control>
+		</control>
+	</control>
+</include>
+
+<include name="WeatherDaily">
+	<control type="group">
+		<visible allowhiddenfocus="true">Weather.IsFetched</visible>
+		<control type="panel" id="51">
+			<description>Teaglich kurzinfo, tag 0-2</description>
+			<left>100</left>
+			<top>180</top>
+			<width>2426</width>
+			<height>800</height>
+			<onup>SetFocus(815)</onup>
+			<ondown>SetFocus(815)</ondown>
+			<onleft>Action(PreviousMenu)</onleft>
+			<onright>Action(PreviousMenu)</onright>
+			<focusposition>1</focusposition>
+			<viewtype label="535">list</viewtype>
+			<pagecontrol>-</pagecontrol>
+			<scrolltime easing="inout" tween="cubic">1200</scrolltime>
+			<orientation>horizontal</orientation>
+			<include>Open_Close_Visible_Hidden_Zoom_Animation</include>
+			<visible allowhiddenfocus="true">Control.HasFocus(51)</visible>
+			<itemlayout height="800" width="596">
+				<control type="group">
+					<control type="label">
+						<description>Titel Tag - heute, morgen, uebermorgen</description>
+						<width>506</width>
+						<height>60</height>
+						<align>center</align>
+						<font>WeatherTitle</font>
+						<label>$INFO[ListItem.Property(Title)]</label>
+					</control>
+					<control type="label">
+						<description>Datum lang</description>
+						<top>60</top>
+						<width>506</width>
+						<height>40</height>
+						<align>center</align>
+						<font>LightNormal</font>
+						<label>$INFO[ListItem.label]</label>
+					</control>
+					<control type="label">
+						<description>Tag lang</description>
+						<top>100</top>
+						<width>506</width>
+						<height>40</height>
+						<align>center</align>
+						<font>RegularSmall</font>
+						<textcolor>TextColorMedium</textcolor>
+						<label>$INFO[ListItem.label2]</label>
+					</control>
+					<control type="image">
+						<description>Wettericon - aktueller Ausblick Icon</description>
+						<left>50</left>
+						<top>110</top>
+						<width>406</width>
+						<height>460</height>
+						<fadetime>460</fadetime>
+						<texture>$INFO[ListItem.Thumb]</texture>
+						<aspectratio align="center" aligny="center">keep</aspectratio>
+					</control>
+					<control type="label">
+						<description>Aktueller Ausblick label</description>
+						<top>590</top>
+						<width>506</width>
+						<height>60</height>
+						<align>center</align>
+						<font>WeatherSubTitle</font>
+						<label>$INFO[ListItem.Property(DayOutlook)]</label>
+					</control>
+					<control type="group">
+						<left>143</left>
+						<top>640</top>
+						<control type="label">
+							<description>Tiefsttemperatur icon</description>
+							<width>40</width>
+							<height>60</height>
+							<font>IconBig</font>
+							<textcolor>blue</textcolor>
+							<label>Ŏ</label>
+						</control>
+						<control type="label">
+							<description>Tiefsttemperatur</description>
+							<left>30</left>
+							<width>80</width>
+							<height>60</height>
+							<align>center</align>
+							<font>RegularSmall</font>
+							<label>$INFO[ListItem.Property(LowTemp)]</label>
+						</control>
+					</control>
+					<control type="group">
+						<left>253</left>
+						<top>640</top>
+						<control type="label">
+							<description>Hoechsttemperatur icon</description>
+							<width>40</width>
+							<height>60</height>
+							<font>IconBig</font>
+							<textcolor>red</textcolor>
+							<label>ō</label>
+						</control>
+						<control type="label">
+							<description>Hoechsttemperatur</description>
+							<left>30</left>
+							<width>80</width>
+							<height>60</height>
+							<align>center</align>
+							<font>RegularSmall</font>
+							<label>$INFO[ListItem.Property(HighTemp)]</label>
+						</control>
+					</control>
+				</control>
+			</itemlayout>
+			<focusedlayout height="800" width="596">
+				<control type="group">
+					<animation type="Focus">
+						<effect type="fade" time="1200" end="100" start="0" />
+					</animation>
+					<animation type="UnFocus">
+						<effect type="fade" time="820" start="100" end="0" />
+					</animation>
+					<control type="label">
+						<description>Titel Tag - heute, morgen, uebermorgen</description>
+						<width>506</width>
+						<height>60</height>
+						<align>center</align>
+						<font>WeatherTitle</font>
+						<label>$INFO[ListItem.Property(Title)]</label>
+					</control>
+					<control type="label">
+						<description>Datum lang</description>
+						<top>60</top>
+						<width>506</width>
+						<height>40</height>
+						<align>center</align>
+						<font>LightNormal</font>
+						<label>$INFO[ListItem.label]</label>
+					</control>
+					<control type="label">
+						<description>Tag lang</description>
+						<top>100</top>
+						<width>506</width>
+						<height>40</height>
+						<align>center</align>
+						<font>RegularSmall</font>
+						<textcolor>TextColorMedium</textcolor>
+						<label>$INFO[ListItem.label2]</label>
+					</control>
+					<control type="image">
+						<description>Wettericon - aktueller Ausblick Icon</description>
+						<left>50</left>
+						<top>110</top>
+						<width>406</width>
+						<height>460</height>
+						<fadetime>460</fadetime>
+						<texture>$INFO[ListItem.Thumb]</texture>
+						<aspectratio align="center" aligny="center">keep</aspectratio>
+					</control>
+					<control type="label">
+						<description>Aktueller Ausblick label</description>
+						<top>590</top>
+						<width>506</width>
+						<height>60</height>
+						<align>center</align>
+						<font>WeatherSubTitle</font>
+						<label>$INFO[ListItem.Property(DayOutlook)]</label>
+					</control>
+					<control type="group">
+						<left>143</left>
+						<top>640</top>
+						<control type="label">
+							<description>Tiefsttemperatur icon</description>
+							<width>40</width>
+							<height>60</height>
+							<font>IconBig</font>
+							<textcolor>blue</textcolor>
+							<label>Ŏ</label>
+						</control>
+						<control type="label">
+							<description>Tiefsttemperatur</description>
+							<left>30</left>
+							<width>80</width>
+							<height>60</height>
+							<align>center</align>
+							<font>RegularSmall</font>
+							<label>$INFO[ListItem.Property(LowTemp)]</label>
+						</control>
+					</control>
+					<control type="group">
+						<left>253</left>
+						<top>640</top>
+						<control type="label">
+							<description>Hoechsttemperatur icon</description>
+							<width>40</width>
+							<height>60</height>
+							<font>IconBig</font>
+							<textcolor>red</textcolor>
+							<label>ō</label>
+						</control>
+						<control type="label">
+							<description>Hoechsttemperatur</description>
+							<left>30</left>
+							<width>80</width>
+							<height>60</height>
+							<align>center</align>
+							<font>RegularSmall</font>
+							<label>$INFO[ListItem.Property(HighTemp)]</label>
+						</control>
+					</control>
+					<control type="group">
+						<left>198</left>
+						<top>690</top>
+						<control type="label">
+							<description>Luftfeuchtigkeit icon</description>
+							<width>40</width>
+							<height>60</height>
+							<font>IconBig</font>
+							<textcolor>TextColorLight</textcolor>
+							<label>Ō</label>
+						</control>
+						<control type="label">
+							<description>Luftfeuchtigkeit</description>
+							<left>40</left>
+							<width>80</width>
+							<height>60</height>
+							<align>center</align>
+							<font>RegularSmall</font>
+							<label>$INFO[ListItem.Property(Humidity)]</label>
+						</control>
+					</control>
+				</control>
+			</focusedlayout>
+			<content>
+				<item>
+					<label>-</label>
+					<icon>-</icon>
+					<onclick>noop</onclick>
+					<visible>!Weather.IsFetched</visible>
+				</item>
+				<item>
+					<label>heute$INFO[Window.Property(Day0.Title)]</label>
+					<label2></label2>
+					<property name="DayOutlook">$INFO[Window.Property(Day0.Outlook)]</property>
+					<property name="HighTemp">$INFO[Window.Property(Day0.HighTemp)]</property>
+					<property name="LowTemp">$INFO[Window.Property(Day0.LowTemp)]</property>
+					<property name="TempUnit">$INFO[System.TemperatureUnits]</property>
+					<property name="Fanart">$INFO[Window.Property(Day0.FanartCode)]</property>
+					<thumb>resource://resource.images.weathericons.default/$INFO[Window.Property(Day0.OutlookIcon)]</thumb>
+					<property name="Humidity">-</property>
+					<icon>-</icon>
+					<onclick>noop</onclick>
+					<visible>Weather.IsFetched + !String.IsEmpty(Window.Property(Day0.Outlook)) + String.IsEmpty(Window.Property(Daily.IsFetched))</visible>
+				</item>
+				<item>
+					<label>$INFO[Window.Property(Day1.Title)]</label>
+					<label2></label2>
+					<property name="DayOutlook">$INFO[Window.Property(Day1.Outlook)]</property>
+					<property name="HighTemp">$INFO[Window.Property(Day1.HighTemp)]</property>
+					<property name="LowTemp">$INFO[Window.Property(Day1.LowTemp)]</property>
+					<property name="TempUnit">$INFO[System.TemperatureUnits]</property>
+					<property name="Fanart">$INFO[Window.Property(Day1.FanartCode)]</property>
+					<thumb>resource://resource.images.weathericons.default/$INFO[Window.Property(Day1.OutlookIcon)]</thumb>
+					<property name="Humidity">-</property>
+					<icon>-</icon>
+					<onclick>noop</onclick>
+					<visible>Weather.IsFetched + !String.IsEmpty(Window.Property(Day1.Outlook))+ String.IsEmpty(Window.Property(Daily.IsFetched))</visible>
+				</item>
+				<item>
+					<label>$INFO[Window.Property(Day2.Title)]</label>
+					<label2></label2>
+					<property name="DayOutlook">$INFO[Window.Property(Day2.Outlook)]</property>
+					<property name="HighTemp">$INFO[Window.Property(Day2.HighTemp)]</property>
+					<property name="LowTemp">$INFO[Window.Property(Day2.LowTemp)]</property>
+					<property name="TempUnit">$INFO[System.TemperatureUnits]</property>
+					<property name="Fanart">$INFO[Window.Property(Day2.FanartCode)]</property>
+					<thumb>resource://resource.images.weathericons.default/$INFO[Window.Property(Day2.OutlookIcon)]</thumb>
+					<property name="Humidity">-</property>
+					<icon>-</icon>
+					<onclick>noop</onclick>
+					<visible>Weather.IsFetched + !String.IsEmpty(Window.Property(Day2.Outlook))+ String.IsEmpty(Window.Property(Daily.IsFetched))</visible>
+				</item>
+				<item>
+					<label>$INFO[Window.Property(Daily.1.LongDate)]</label>
+					<label2>$INFO[Window.Property(Daily.1.LongDay)]</label2>
+					<property name="Title">Heute</property>
+					<property name="DayOutlook">$INFO[Window.Property(Daily.1.Outlook)]</property>
+					<property name="HighTemp">$INFO[Window.Property(Daily.1.HighTemperature)]</property>
+					<property name="LowTemp">$INFO[Window.Property(Daily.1.LowTemperature)]</property>
+					<property name="Humidity">$INFO[Window.Property(Daily.1.Humidity)]</property>
+					<thumb>resource://resource.images.weathericons.default/$INFO[Window.Property(Daily.1.OutlookIcon)]</thumb>
+					<icon>-</icon>
+					<onclick>noop</onclick>
+					<visible>Weather.IsFetched + !String.IsEmpty(Window.Property(Daily.1.Outlook)) + !String.IsEmpty(Window.Property(Daily.IsFetched))</visible>
+				</item>
+				<item>
+					<label>$INFO[Window.Property(Daily.2.LongDate)]</label>
+					<label2>$INFO[Window.Property(Daily.2.LongDay)]</label2>
+					<property name="Title">Morgen</property>
+					<property name="DayOutlook">$INFO[Window.Property(Daily.2.Outlook)]</property>
+					<property name="HighTemp">$INFO[Window.Property(Daily.2.HighTemperature)]</property>
+					<property name="LowTemp">$INFO[Window.Property(Daily.2.LowTemperature)]</property>
+					<property name="Humidity">$INFO[Window.Property(Daily.2.Humidity)]</property>
+					<thumb>resource://resource.images.weathericons.default/$INFO[Window.Property(Daily.2.OutlookIcon)]</thumb>
+					<icon>-</icon>
+					<onclick>noop</onclick>
+					<visible>Weather.IsFetched + !String.IsEmpty(Window.Property(Daily.2.Outlook)) + !String.IsEmpty(Window.Property(Daily.IsFetched))</visible>
+				</item>
+				<item>
+					<label>$INFO[Window.Property(Daily.3.LongDate)]</label>
+					<label2>$INFO[Window.Property(Daily.3.LongDay)]</label2>
+					<property name="Title">Übermorgen</property>
+					<property name="DayOutlook">$INFO[Window.Property(Daily.3.Outlook)]</property>
+					<property name="HighTemp">$INFO[Window.Property(Daily.3.HighTemperature)]</property>
+					<property name="LowTemp">$INFO[Window.Property(Daily.3.LowTemperature)]</property>
+					<property name="Humidity">$INFO[Window.Property(Daily.3.Humidity)]</property>
+					<thumb>resource://resource.images.weathericons.default/$INFO[Window.Property(Daily.3.OutlookIcon)]</thumb>
+					<icon>-</icon>
+					<onclick>noop</onclick>
+					<visible>Weather.IsFetched + !String.IsEmpty(Window.Property(Daily.3.Outlook)) + !String.IsEmpty(Window.Property(Daily.IsFetched))</visible>
+				</item>
+			</content>
+		</control>
+		<control type="panel" id="815">
+			<description>Teaglich kurzinfo, tag 3-5</description>
+			<left>100</left>
+			<top>180</top>
+			<width>2426</width>
+			<height>800</height>
+			<onup>54</onup>
+			<ondown>54</ondown>
+			<onleft>Action(PreviousMenu)</onleft>
+			<onright>Action(PreviousMenu)</onright>
+			<focusposition>1</focusposition>
+			<viewtype label="535">list</viewtype>
+			<pagecontrol>-</pagecontrol>
+			<include>Open_Close_Visible_Hidden_Zoom_Animation</include>
+			<scrolltime easing="inout" tween="cubic">1200</scrolltime>
+			<orientation>horizontal</orientation>
+			<visible allowhiddenfocus="true">Control.HasFocus(815)</visible>
+			<itemlayout height="800" width="596">
+				<control type="group">
+					<control type="label">
+						<description>Tag lang</description>
+						<width>506</width>
+						<height>60</height>
+						<align>center</align>
+						<font>WeatherTitle</font>
+						<label>$INFO[ListItem.label2]</label>
+					</control>
+					<control type="label">
+						<description>Datum lang</description>
+						<top>60</top>
+						<width>506</width>
+						<height>40</height>
+						<align>center</align>
+						<font>LightNormal</font>
+						<label>$INFO[ListItem.label]</label>
+					</control>
+					<control type="image">
+						<description>Wettericon - aktueller Ausblick Icon</description>
+						<left>50</left>
+						<top>110</top>
+						<width>406</width>
+						<height>460</height>
+						<fadetime>460</fadetime>
+						<texture>$INFO[ListItem.Thumb]</texture>
+						<aspectratio align="center" aligny="center">keep</aspectratio>
+					</control>
+					<control type="label">
+						<description>Aktueller Ausblick label</description>
+						<top>590</top>
+						<width>506</width>
+						<height>60</height>
+						<align>center</align>
+						<font>WeatherSubTitle</font>
+						<label>$INFO[ListItem.Property(DayOutlook)]</label>
+					</control>
+					<control type="group">
+						<left>143</left>
+						<top>640</top>
+						<control type="label">
+							<description>Tiefsttemperatur icon</description>
+							<width>40</width>
+							<height>60</height>
+							<font>IconBig</font>
+							<textcolor>blue</textcolor>
+							<label>Ŏ</label>
+						</control>
+						<control type="label">
+							<description>Tiefsttemperatur</description>
+							<left>30</left>
+							<width>80</width>
+							<height>60</height>
+							<align>center</align>
+							<font>RegularSmall</font>
+							<label>$INFO[ListItem.Property(LowTemp)]</label>
+						</control>
+					</control>
+					<control type="group">
+						<left>253</left>
+						<top>640</top>
+						<control type="label">
+							<description>Hoechsttemperatur icon</description>
+							<width>40</width>
+							<height>60</height>
+							<font>IconBig</font>
+							<textcolor>red</textcolor>
+							<label>ō</label>
+						</control>
+						<control type="label">
+							<description>Hoechsttemperatur</description>
+							<left>30</left>
+							<width>80</width>
+							<height>60</height>
+							<align>center</align>
+							<font>RegularSmall</font>
+							<label>$INFO[ListItem.Property(HighTemp)]</label>
+						</control>
+					</control>
+				</control>
+			</itemlayout>
+			<focusedlayout height="800" width="596">
+				<control type="group">
+					<animation type="Focus">
+						<effect type="fade" time="1200" end="100" start="0" />
+					</animation>
+					<animation type="UnFocus">
+						<effect type="fade" time="820" start="100" end="0" />
+					</animation>
+					<control type="label">
+						<description>Tag lang</description>
+						<width>506</width>
+						<height>60</height>
+						<font>WeatherTitle</font>
+						<align>center</align>
+						<label>$INFO[ListItem.label2]</label>
+					</control>
+					<control type="label">
+						<description>Datum lang</description>
+						<top>60</top>
+						<width>506</width>
+						<height>40</height>
+						<font>LightNormal</font>
+						<align>center</align>
+						<label>$INFO[ListItem.label]</label>
+					</control>
+					<control type="image">
+						<description>Wettericon - aktueller Ausblick Icon</description>
+						<left>50</left>
+						<top>110</top>
+						<width>406</width>
+						<height>460</height>
+						<fadetime>460</fadetime>
+						<texture>$INFO[ListItem.Thumb]</texture>
+						<aspectratio align="center" aligny="center">keep</aspectratio>
+					</control>
+					<control type="label">
+						<description>Aktueller Ausblick label</description>
+						<top>590</top>
+						<width>506</width>
+						<height>60</height>
+						<font>WeatherSubTitle</font>
+						<label>$INFO[ListItem.Property(DayOutlook)]</label>
+						<align>center</align>
+					</control>
+					<control type="group">
+						<left>143</left>
+						<top>640</top>
+						<control type="label">
+							<description>Tiefsttemperatur icon</description>
+							<width>40</width>
+							<height>60</height>
+							<font>IconBig</font>
+							<textcolor>blue</textcolor>
+							<label>Ŏ</label>
+						</control>
+						<control type="label">
+							<description>Tiefsttemperatur</description>
+							<left>30</left>
+							<width>80</width>
+							<height>60</height>
+							<align>center</align>
+							<font>RegularSmall</font>
+							<label>$INFO[ListItem.Property(LowTemp)]</label>
+						</control>
+					</control>
+					<control type="group">
+						<left>253</left>
+						<top>640</top>
+						<control type="label">
+							<description>Hoechsttemperatur icon</description>
+							<width>40</width>
+							<height>60</height>
+							<font>IconBig</font>
+							<textcolor>red</textcolor>
+							<label>ō</label>
+						</control>
+						<control type="label">
+							<description>Hoechsttemperatur</description>
+							<left>30</left>
+							<width>80</width>
+							<height>60</height>
+							<align>center</align>
+							<font>RegularSmall</font>
+							<label>$INFO[ListItem.Property(HighTemp)]</label>
+						</control>
+					</control>
+				</control>
+			</focusedlayout>
+			<content>
+				<item>
+					<label>-</label>
+					<icon>-</icon>
+					<onclick>noop</onclick>
+					<visible>!Weather.IsFetched</visible>
+				</item>
+				<item>
+					<label>$INFO[Window.Property(Day3.Title)]</label>
+					<label2></label2>
+					<property name="DayOutlook">$INFO[Window.Property(Day3.Outlook)]</property>
+					<property name="HighTemp">$INFO[Window.Property(Day3.HighTemp)]</property>
+					<property name="LowTemp">$INFO[Window.Property(Day3.LowTemp)]</property>
+					<property name="TempUnit">$INFO[System.TemperatureUnits]</property>
+					<property name="Fanart">$INFO[Window.Property(Day3.FanartCode)]</property>
+					<thumb>resource://resource.images.weathericons.default/$INFO[Window.Property(Day3.OutlookIcon)]</thumb>
+					<property name="Humidity">-</property>
+					<icon>-</icon>
+					<onclick>noop</onclick>
+					<visible>Weather.IsFetched + !String.IsEmpty(Window.Property(Day3.Outlook))+ String.IsEmpty(Window.Property(Daily.IsFetched))</visible>
+				</item>
+				<item>
+					<label>$INFO[Window.Property(Day4.Title)]</label>
+					<label2></label2>
+					<property name="DayOutlook">$INFO[Window.Property(Day4.Outlook)]</property>
+					<property name="HighTemp">$INFO[Window.Property(Day4.HighTemp)]</property>
+					<property name="LowTemp">$INFO[Window.Property(Day4.LowTemp)]</property>
+					<property name="TempUnit">$INFO[System.TemperatureUnits]</property>
+					<property name="Fanart">$INFO[Window.Property(Day4.FanartCode)]</property>
+					<thumb>resource://resource.images.weathericons.default/$INFO[Window.Property(Day4.OutlookIcon)]</thumb>
+					<property name="Humidity">-</property>
+					<icon>-</icon>
+					<onclick>noop</onclick>
+					<visible>Weather.IsFetched + !String.IsEmpty(Window.Property(Day4.Outlook))+ String.IsEmpty(Window.Property(Daily.IsFetched))</visible>
+				</item>
+				<item>
+					<label>$INFO[Window.Property(Day5.Title)]</label>
+					<label2></label2>
+					<property name="DayOutlook">$INFO[Window.Property(Day5.Outlook)]</property>
+					<property name="HighTemp">$INFO[Window.Property(Day5.HighTemp)]</property>
+					<property name="LowTemp">$INFO[Window.Property(Day5.LowTemp)]</property>
+					<property name="TempUnit">$INFO[System.TemperatureUnits]</property>
+					<property name="Fanart">$INFO[Window.Property(Day5.FanartCode)]</property>
+					<thumb>resource://resource.images.weathericons.default/$INFO[Window.Property(Day5.OutlookIcon)]</thumb>
+					<property name="Humidity">-</property>
+					<icon>-</icon>
+					<onclick>noop</onclick>
+					<visible>Weather.IsFetched + !String.IsEmpty(Window.Property(Day5.Outlook))+ String.IsEmpty(Window.Property(Daily.IsFetched))</visible>
+				</item>
+				<item>
+					<label>$INFO[Window.Property(Daily.4.LongDate)]</label>
+					<label2>$INFO[Window.Property(Daily.4.LongDay)]</label2>
+					<property name="Title"></property>
+					<property name="DayOutlook">$INFO[Window.Property(Daily.4.Outlook)]</property>
+					<property name="HighTemp">$INFO[Window.Property(Daily.4.HighTemperature)]</property>
+					<property name="LowTemp">$INFO[Window.Property(Daily.4.LowTemperature)]</property>
+					<property name="Humidity">$INFO[Window.Property(Daily.4.Humidity)]</property>
+					<thumb>resource://resource.images.weathericons.default/$INFO[Window.Property(Daily.4.OutlookIcon)]</thumb>
+					<icon>-</icon>
+					<onclick>noop</onclick>
+					<visible>Weather.IsFetched + !String.IsEmpty(Window.Property(Daily.4.Outlook)) + !String.IsEmpty(Window.Property(Daily.IsFetched))</visible>
+				</item>
+				<item>
+					<label>$INFO[Window.Property(Daily.5.LongDate)]</label>
+					<label2>$INFO[Window.Property(Daily.5.LongDay)]</label2>
+					<property name="Title"></property>
+					<property name="DayOutlook">$INFO[Window.Property(Daily.5.Outlook)]</property>
+					<property name="HighTemp">$INFO[Window.Property(Daily.5.HighTemperature)]</property>
+					<property name="LowTemp">$INFO[Window.Property(Daily.5.LowTemperature)]</property>
+					<property name="Humidity">$INFO[Window.Property(Daily.5.Humidity)]</property>
+					<thumb>resource://resource.images.weathericons.default/$INFO[Window.Property(Daily.5.OutlookIcon)]</thumb>
+					<icon>-</icon>
+					<onclick>noop</onclick>
+					<visible>Weather.IsFetched + !String.IsEmpty(Window.Property(Daily.5.Outlook)) + !String.IsEmpty(Window.Property(Daily.IsFetched))</visible>
+				</item>
+				<item>
+					<label>$INFO[Window.Property(Daily.6.LongDate)]</label>
+					<label2>$INFO[Window.Property(Daily.6.LongDay)]</label2>
+					<property name="Title"></property>
+					<property name="DayOutlook">$INFO[Window.Property(Daily.6.Outlook)]</property>
+					<property name="HighTemp">$INFO[Window.Property(Daily.6.HighTemperature)]</property>
+					<property name="LowTemp">$INFO[Window.Property(Daily.6.LowTemperature)]</property>
+					<property name="Humidity">$INFO[Window.Property(Daily.6.Humidity)]</property>
+					<thumb>resource://resource.images.weathericons.default/$INFO[Window.Property(Daily.6.OutlookIcon)]</thumb>
+					<icon>-</icon>
+					<onclick>noop</onclick>
+					<visible>Weather.IsFetched + !String.IsEmpty(Window.Property(Daily.6.Outlook)) + !String.IsEmpty(Window.Property(Daily.IsFetched))</visible>
+				</item>
+			</content>
+		</control>
+	</control>
+</include>
+</includes>

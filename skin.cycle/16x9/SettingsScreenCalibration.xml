@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+<!-- Cycle 0.3 -->
+<defaultcontrol>8</defaultcontrol>
+<controls>
+	<control type="group">
+		<description>Hintergrund</description>
+		<visible>!Player.HasVideo</visible>
+		<include condition="Skin.HasSetting(EnableVintageOverlay)">global_vintagebackground</include>
+		<include condition="!Skin.HasSetting(EnableVintageOverlay)">global_background</include>
+	</control>
+	<control type="videowindow" id="20">
+		<description>Videowindow</description>
+		<width>1920</width>
+		<height>1080</height>
+		<visible>Player.HasVideo</visible>
+	</control>
+	<control type="mover" id="8">
+		<description>Top left mover</description>
+		<width>192</width>
+		<height>192</height>
+		<texturefocus colordiffuse="$VAR[primaryCol]">dialogs/calibrate/CalibrateTopLeft.png</texturefocus>
+		<texturenofocus>-</texturenofocus>
+	</control>
+	<control type="mover" id="9">
+		<description>Right bottom mover</description>
+		<left>1050</left>
+		<top>750</top>
+		<width>192</width>
+		<height>192</height>
+		<texturefocus colordiffuse="$VAR[primaryCol]">dialogs/calibrate/CalibrateBottomRight.png</texturefocus>
+		<texturenofocus>-</texturenofocus>
+	</control>
+	<control type="mover" id="10">
+		<description>Subtitle position mover</description>
+		<left>576</left>
+		<top>750</top>
+		<width>768</width>
+		<height>255</height>
+		<texturefocus colordiffuse="$VAR[primaryCol]">dialogs/calibrate/CalibrateSubtitles.png</texturefocus>
+		<texturenofocus>-</texturenofocus>
+	</control>
+	<control type="resize" id="11">
+		<description>Pixel aspect ratio box</description>
+		<top>348</top>
+		<width>384</width>
+		<height>384</height>
+		<texturefocus colordiffuse="$VAR[primaryCol]">dialogs/calibrate/CalibratePixelRatio.png</texturefocus>
+		<texturenofocus>-</texturenofocus>
+	</control>
+	<control type="group">
+		<left>30</left>
+		<top>120</top>
+		<control type="label" id="2">
+			<description>Coordinates label</description>
+			<top>15</top>
+			<width>1860</width>
+			<label>-</label>
+			<align>center</align>
+		</control>
+		<control type="label" id="3">
+			<description>Help information</description>
+			<top>60</top>
+			<width>1860</width>
+			<label>-</label>
+			<align>center</align>
+		</control>
+	</control>
+</controls>
+</window>

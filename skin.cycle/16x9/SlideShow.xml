@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+<!-- Cycle 0.3 -->
+<defaultcontrol>2</defaultcontrol>
+<controls>
+<control type="image">
+	<description>Hintergrund overlay oben</description>
+	<width>1920</width>
+	<height>206</height>
+	<texture border="1" colordiffuse="VideooverlayVignette">dialogs/NowPlayingOverlay.png</texture>
+	<include>Open_Close_Fade_Animation</include>
+	<visible>!Window.IsVisible(visualisation) + [SlideShow.IsPaused | Player.ShowInfo]</visible>
+</control>
+<control type="group"><!-- pause info -->
+	<visible>SlideShow.IsPaused</visible>
+	<control type="grouplist">
+		<left>155</left>
+		<top>30</top>
+		<width>600</width>
+		<height>60</height>
+		<itemgap>10</itemgap>
+		<orientation>horizontal</orientation>
+		<include>OSDDialog_popup_Animation</include>
+		<control type="label">
+			<description>Status icon pause</description>
+			<include>OSDInfoIconDimension</include>
+			<label>ß</label>
+		</control>
+		<control type="label">
+			<description>Status Label</description>
+			<width>150</width>
+			<include>OSDLabelInfoDimension</include>
+			<label>Pause</label>
+		</control>
+	</control>
+	<control type="grouplist">
+		<left>1350</left>
+		<top>30</top>
+		<width>1200</width>
+		<height>60</height>
+		<itemgap>10</itemgap>
+		<orientation>horizontal</orientation>
+		<include>OSDDialog_popup_Animation</include>
+		<control type="label">
+			<description>Icon info</description>
+			<include>OSDInfoIconDimension</include>
+			<label>È</label>
+		</control>
+		<control type="label" id="10">
+			<description>Text Bildname</description>
+			<width>250</width>
+			<include>OSDLabelInfoDimension</include>
+			<label>$INFO[Slideshow.Filename]</label>
+		</control>
+	</control>
+</control>
+<control type="group"><!-- info -->
+	<visible>Player.ShowInfo</visible>
+	<control type="grouplist">
+		<left>155</left>
+		<top>30</top>
+		<width>1200</width>
+		<height>100</height>
+		<itemgap>10</itemgap>
+		<orientation>horizontal</orientation>
+		<control type="label">
+			<description>Titel info</description>
+			<include>OSDInfoIconDimension</include>
+			<label>È</label>
+		</control>
+		<!-- Info Zeile -->
+		<control type="wraplist" id="5001">
+			<left>5</left>
+			<width>1200</width>
+			<height>60</height>
+			<autoscroll time="3000" delay="8000" repeat="5000">Player.ShowInfo</autoscroll>
+			<scrolltime tween="cubic" easing="inout">3400</scrolltime>
+			<orientation>vertical</orientation>
+			<viewtype>list</viewtype>
+			<itemlayout width="1000" height="60">
+				<control type="label">
+					<width>1000</width>
+					<include>OSDLabelInfoDimension</include>
+					<label>$INFO[ListItem.Label]</label>
+					<animation type="Conditional" condition="true">
+						<effect type="fade" start="100" end="0" delay="1600" time="400" />
+					</animation>
+				</control>
+			</itemlayout>
+			<focusedlayout width="1000" height="60">
+				<control type="label">
+					<width>1760</width>
+					<include>OSDLabelInfoDimension</include>
+					<textcolor>$VAR[OSDDialogColor]</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+			</focusedlayout>
+			<content>
+				<item id="1">
+					<label>Bildhöhe: $INFO[Slideshow.Altitude]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.Altitude)</visible>
+				</item>
+				<item id="2">
+					<label>Öffnung: $INFO[Slideshow.Aperture]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.Aperture)</visible>
+				</item>
+				<item id="3">
+					<label>Author: $INFO[Slideshow.Author]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.Author)</visible>
+				</item>
+				<item id="4">
+					<label>Author: $INFO[Slideshow.Byline]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.Byline)</visible>
+				</item>
+				<item id="5">
+					<label>Author: $INFO[Slideshow.BylineTitle]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.BylineTitle)</visible>
+				</item>
+				<item id="6">
+					<label>$INFO[Slideshow.CameraMake]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.CameraMake)</visible>
+				</item>
+				<item id="7">
+					<label>Kameramodel: $INFO[Slideshow.CameraModel]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.CameraModel)</visible>
+				</item>
+				<item id="8">
+					<label>$INFO[Slideshow.Caption]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.Caption)</visible>
+				</item>
+				<item id="9">
+					<label>Beschreibung: $INFO[Slideshow.Category]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.Category)</visible>
+				</item>
+				<item id="10">
+					<label>Kamera CCD´s $INFO[Slideshow.CCDWidth]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.CCDWidth)</visible>
+				</item>
+				<item id="11">
+					<label>$INFO[Slideshow.City]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.City)</visible>
+				</item>
+				<item id="12">
+					<label>Stadt: $INFO[Slideshow.Colour]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.Colour)</visible>
+				</item>
+				<item id="13">
+					<label>Copyright: $INFO[Slideshow.CopyrightNotice]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.CopyrightNotice)</visible>
+				</item>
+				<item id="14">
+					<label>Land: $INFO[Slideshow.Country]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.Country)</visible>
+				</item>
+				<item id="15">
+					<label>Ländercode: $INFO[Slideshow.CountryCode]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.CountryCode)</visible>
+				</item>
+				<item id="16">
+					<label>Credits: $INFO[Slideshow.Credit]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.Credit)</visible>
+				</item>
+				<item id="17">
+					<label>Zoomeinstellung: $INFO[Slideshow.DigitalZoom]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.DigitalZoom)</visible>
+				</item>
+				<item id="18">
+					<label>Kommentar: $INFO[Slideshow.EXIFComment]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.EXIFComment)</visible>
+				</item>
+				<item id="19">
+					<label>Datum: $INFO[Slideshow.EXIFDate]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.EXIFDate)</visible>
+				</item>
+				<item id="20">
+					<label>Beschreibung: $INFO[Slideshow.EXIFDescription]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.EXIFDescription)</visible>
+				</item>
+				<item id="21">
+					<label>EXIF Software: $INFO[Slideshow.EXIFSoftware]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.EXIFSoftware)</visible>
+				</item>
+				<item id="22">
+					<label>EXIF Zeit: $INFO[Slideshow.EXIFTime]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.EXIFTime)</visible>
+				</item>
+				<item id="23">
+					<label>Aufnahme Einstellung: $INFO[Slideshow.Exposure]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.Exposure)</visible>
+				</item>
+				<item id="24">
+					<label>Einstellungsmodus: $INFO[Slideshow.ExposureBias]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.ExposureBias)</visible>
+				</item>
+				<item id="25">
+					<label>Einstellungsmodus: $INFO[Slideshow.ExposureMode]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.ExposureMode)</visible>
+				</item>
+				<item id="26">
+					<label>$INFO[Slideshow.ExposureTime]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.ExposureTime)</visible>
+				</item>
+				<item id="27">
+					<label>Einstellungsdatum: $INFO[Slideshow.Filedate]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.Filedate)</visible>
+				</item>
+				<item id="28">
+					<label>Dateiname: $INFO[Slideshow.Filename]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.Filename)</visible>
+				</item>
+				<item id="29">
+					<label>Dateigröße: $INFO[Slideshow.Filesize]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.Filesize)</visible>
+				</item>
+				<item id="30">
+					<label>Speicherstatus: $INFO[Slideshow.FlashUsed]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.FlashUsed)</visible>
+				</item>
+				<item id="31">
+					<label>Brennweite: $INFO[Slideshow.FocalLength]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.FocalLength)</visible>
+				</item>
+				<item id="32">
+					<label>Fokusentfernung: $INFO[Slideshow.FocusDistance]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.FocusDistance)</visible>
+				</item>
+				<item id="33">
+					<label>Zusammenfassung: $INFO[Slideshow.Headline]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.Headline)</visible>
+				</item>
+				<item id="34">
+					<label>Bildtyp: $INFO[Slideshow.ImageType]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.ImageType)</visible>
+				</item>
+				<item id="35">
+					<label>IPTC Datum: $INFO[Slideshow.IPTCDate]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.IPTCDate)</visible>
+				</item>
+				<item id="36">
+					<label>ISO Belichtungswert $INFO[Slideshow.ISOEquivalence]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.ISOEquivalence)</visible>
+				</item>
+				<item id="37">
+					<label>Schlagworte: $INFO[Slideshow.Keywords]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.Keywords)</visible>
+				</item>
+				<item id="38">
+					<label>Breitengrad: $INFO[Slideshow.Latitude]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.Latitude)</visible>
+				</item>
+				<item id="39">
+					<label>Lichtquelle: $INFO[Slideshow.LightSource]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.LightSource)</visible>
+				</item>
+				<item id="40">
+					<label>Langes Datum: $INFO[Slideshow.LongEXIFDate]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.LongEXIFDate)</visible>
+				</item>
+				<item id="41">
+					<label>Lange Zeit: $INFO[Slideshow.LongEXIFTime]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.LongEXIFTime)</visible>
+				</item>
+				<item id="42">
+					<label>Geographische Länge: $INFO[Slideshow.Longitude]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.Longitude)</visible>
+				</item>
+				<item id="43">
+					<label>Messmethode: $INFO[Slideshow.MeteringMode]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.MeteringMode)</visible>
+				</item>
+				<item id="45">
+					<label>Orientierung: $INFO[Slideshow.Orientation]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.Orientation)</visible>
+				</item>
+				<item id="46">
+					<label>Bildpfad: $INFO[Slideshow.Path]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.Path)</visible>
+				</item>
+				<item id="47">
+					<label>Komprimierung: $INFO[Slideshow.Process]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.Process)</visible>
+				</item>
+				<item id="49">
+					<label>Auflösung: $INFO[Slideshow.Resolution]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.Resolution)</visible>
+				</item>
+				<item id="50">
+					<label>Kommentar: $INFO[Slideshow.SlideComment]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.SlideComment)</visible>
+				</item>
+				<item id="51">
+					<label>Index: $INFO[Slideshow.SlideIndex]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.SlideIndex)</visible>
+				</item>
+				<item id="54">
+					<label>Region: $INFO[Slideshow.State]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.State)</visible>
+				</item>
+				<item id="55">
+					<label>Location: $INFO[Slideshow.Sublocation]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.Sublocation)</visible>
+				</item>
+				<item id="57">
+					<label>Erstellungszeit: $INFO[Slideshow.TimeCreated]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.TimeCreated)</visible>
+				</item>
+				<item id="60">
+					<label>Weißabgleich: $INFO[Slideshow.WhiteBalance]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.WhiteBalance)</visible>
+				</item>
+				<item id="63">
+					<label>Dateidatum: $INFO[Slideshow.Filedate]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.Filedate)</visible>
+				</item>
+				<item id="64">
+					<label>Dateiname: $INFO[Slideshow.Filename]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.Filename)</visible>
+				</item>
+				<item id="65">
+					<label>Dateigröße: $INFO[Slideshow.Filesize]</label>
+					<onclick>noop</onclick>
+					<visible>!String.IsEmpty(Slideshow.Filesize)</visible>
+				</item>
+			</content>
+		</control>
+	</control>
+	<control type="grouplist"><!-- Position -->
+		<description>Status unten info rechts - Position wenn mehr als 1</description>
+		<left>1500</left>
+		<top>30</top>
+		<width>1200</width>
+		<height>100</height>
+		<itemgap>0</itemgap>
+		<orientation>horizontal</orientation>
+		<control type="label">
+			<description>Index icon</description>
+			<include>OSDInfoIconDimension</include>
+			<label>Ĕ</label>
+		</control>
+		<control type="label">
+			<description>Index (positions) Label</description>
+			<width>150</width>
+			<include>OSDLabelInfoDimension</include>
+			<label>$INFO[Slideshow.SlideIndex]</label>
+		</control>
+	</control>
+</control>
+</controls>
+</window>

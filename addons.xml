@@ -1,5 +1,25 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addons> 
+<addons>
+<addon
+  id="skin.Cycle"
+  version="0.3"
+  name="Cycle"
+  provider-name="Marc0810">
+  <requires>
+    <import addon="xbmc.gui" version="5.12.0"/>
+  </requires>
+  <extension
+    point="xbmc.gui.skin"
+    defaultthemename="textures.xbt"
+    debugging="false"
+    effectslowdown="0.75">
+    <res width="1920" height="1080" aspect="16:9" default="true" folder="16x9" />
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="de">Basierend auf dem WIP Skin Cycle mit freundlicher Genehmigung von Vanneska entstanden.</summary>
+    <platform>all</platform>
+  </extension>
+</addon>
 <addon id="resource.uisounds.cycle" version="0.0.2" name="Cycle UI Sounds" provider-name="Marc0810"> 
   <requires>
     <import addon="kodi.resource" version="1.0.0"/>

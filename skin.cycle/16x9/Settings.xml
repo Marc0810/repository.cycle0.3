@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+<!-- Cycle 0.3 -->
+<defaultcontrol always="true">9100</defaultcontrol>
+<menucontrol>9600</menucontrol>
+<controls>
+<control type="button" id="9600">
+	<include>HiddenControl</include>
+	<onup>ActivateWindow(1120)</onup>
+	<ondown>ActivateWindow(1120)</ondown>
+	<onleft>ActivateWindow(1120)</onleft>
+	<onright>ActivateWindow(1120)</onright>
+	<onfocus>ActivateWindow(1120)</onfocus>
+</control>
+<include condition="Skin.HasSetting(EnableVintageOverlay)">global_vintagebackground</include>
+<include condition="!Skin.HasSetting(EnableVintageOverlay)">global_background</include>
+<include>global_topbar</include><!-- topbar -->
+<control type="group"><!-- slide menue -->
+	<visible>!Window.IsVisible(shutdownmenu) + !Window.IsVisible(Custom_1120_MainMenuSlide.xml) + !Window.IsVisible(favourites) + !Window.IsVisible(playercontrols)</visible>
+	<include>Open_Close_Visible_Hidden_Slide_Animation375</include>
+	<include>SettingMenu_BG</include><!-- Hintergrund -->
+	<include>SettingMenu_IconBG</include>
+	<control type="group"><!-- Breadcumb -->
+		<description>Breadcumb</description>
+		<left>120</left>
+		<top>40</top>
+		<width>sidebar.breadcumblabel.width</width>
+		<height>205</height>
+		<control type="label">
+			<description>Breadcumb icon</description>
+			<left>-100</left>
+			<include>SidebarIconDimension</include>
+			<include>IconColorFO</include>
+			<label>ė</label>
+		</control>
+		<control type="label">
+			<description>Breadcumb1 label</description>
+			<width>sidebar.breadcumblabel.width</width>
+			<height>sidebar.breadcumblabel.height</height>
+			<font>BreadcumbNormal</font>
+			<label>$LOCALIZE[5]</label>
+		</control>
+	</control>
+	<control type="grouplist" id="9100"><!-- menue -->
+		<description>Menue</description>
+		<left>100</left>
+		<top>150</top>
+		<include>SettingMenuListDimension</include>
+		<onleft>back</onleft>
+		<onright>noop</onright>
+		<onup>9100</onup>
+		<ondown>9100</ondown>
+		<pagecontrol>-</pagecontrol>
+		<control type="button" id="8101">
+			<description>PlayerSettings button</description>
+			<onclick>ActivateWindow(PlayerSettings)</onclick>
+			<include>SettingMenuButtonValues</include>
+			<label>$LOCALIZE[14201]</label>
+		</control>
+		<control type="button" id="8102">
+			<description>LibrarySettings button</description>
+			<onclick>ActivateWindow(LibrarySettings)</onclick>
+			<include>SettingMenuButtonValues</include>
+			<label>$LOCALIZE[14203]</label>
+		</control>
+		<control type="button" id="8103">
+			<description>ServiceSettings button</description>
+			<onclick>ActivateWindow(ServiceSettings)</onclick>
+			<include>SettingMenuButtonValues</include>
+			<label>$LOCALIZE[14208]</label>
+		</control>
+		<control type="button" id="8104">
+			<description>InterfaceSettings button</description>
+			<onclick>ActivateWindow(InterfaceSettings)</onclick>
+			<include>SettingMenuButtonValues</include>
+			<label>$LOCALIZE[14207]</label>
+		</control>
+		<control type="button" id="8105">
+			<description>SkinSettings button</description>
+			<onclick>ActivateWindow(skinsettings)</onclick>
+			<include>SettingMenuButtonValues</include>
+			<label>$LOCALIZE[20077]</label>
+		</control>
+		<control type="button" id="8106">
+			<description>ProfilSettings button</description>
+			<onclick>ActivateWindow(profiles)</onclick>
+			<include>SettingMenuButtonValues</include>
+			<label>Benutzerprofile</label>
+		</control>
+		<control type="button" id="8107">
+			<description>SystemSettings button</description>
+			<onclick>ActivateWindow(SystemSettings)</onclick>
+			<include>SettingMenuButtonValues</include>
+			<label>$LOCALIZE[14209]</label>
+		</control>
+		<control type="button" id="8108">
+			<description>AddonBrowser button</description>
+			<onclick>ActivateWindow(AddonBrowser)</onclick>
+			<include>SettingMenuButtonValues</include>
+			<label>$LOCALIZE[24001]</label>
+		</control>
+	</control>
+	<control type="grouplist">
+		<description>Menue Icons</description>
+		<left>20</left>
+		<top>150</top>
+		<include>SettingMenuListDimension</include>
+		<control type="label">
+			<description>PlayerSettings Icon</description>
+			<include>SidebarIconDimension</include>
+			<label>W</label>
+			<visible>Control.HasFocus(8101)</visible>
+			<include>IconColorFO</include>
+		</control>
+		<control type="label">
+			<description>PlayerSettings Icon</description>
+			<include>SidebarIconDimension</include>
+			<label>W</label>
+			<visible>!Control.HasFocus(8101)</visible>
+			<include>IconColorNF</include>
+		</control>
+		<control type="label">
+			<description>LibrarySettings Icon</description>
+			<include>SidebarIconDimension</include>
+			<label>Ȃ</label>
+			<visible>Control.HasFocus(8102)</visible>
+			<include>IconColorFO</include>
+		</control>
+		<control type="label">
+			<description>LibrarySettings Icon</description>
+			<include>SidebarIconDimension</include>
+			<label>Ȃ</label>
+			<include>IconColorNF</include>
+			<visible>!Control.HasFocus(8102)</visible>
+		</control>
+		<control type="label">
+			<description>ServiceSettings Icon</description>
+			<include>SidebarIconDimension</include>
+			<label>č</label>
+			<visible>Control.HasFocus(8103)</visible>
+			<include>IconColorFO</include>
+		</control>
+		<control type="label">
+			<description>ServiceSettings Icon</description>
+			<include>SidebarIconDimension</include>
+			<label>č</label>
+			<visible>!Control.HasFocus(8103)</visible>
+			<include>IconColorNF</include>
+		</control>
+		<control type="label">
+			<description>InterfaceSettings Icon</description>
+			<include>SidebarIconDimension</include>
+			<label>Č</label>
+			<visible>Control.HasFocus(8104)</visible>
+			<include>IconColorFO</include>
+		</control>
+		<control type="label">
+			<description>InterfaceSettings Icon</description>
+			<include>SidebarIconDimension</include>
+			<label>Č</label>
+			<include>IconColorNF</include>
+			<visible>!Control.HasFocus(8104)</visible>
+		</control>
+		<control type="label">
+			<description>SkinSettings Icon</description>
+			<include>SidebarIconDimension</include>
+			<label>Ě</label>
+			<visible>Control.HasFocus(8105)</visible>
+			<include>IconColorFO</include>
+		</control>
+		<control type="label">
+			<description>SkinSettings Icon</description>
+			<include>SidebarIconDimension</include>
+			<label>Ě</label>
+			<visible>!Control.HasFocus(8105)</visible>
+			<include>IconColorNF</include>
+		</control>
+		<control type="label">
+			<description>Profiles Settings Icon</description>
+			<include>SidebarIconDimension</include>
+			<label>s</label>
+			<visible>Control.HasFocus(8106)</visible>
+			<include>IconColorFO</include>
+		</control>
+		<control type="label">
+			<description>Profiles Settings Icon</description>
+			<include>SidebarIconDimension</include>
+			<label>s</label>
+			<visible>!Control.HasFocus(8106)</visible>
+			<include>IconColorNF</include>
+		</control>
+		<control type="label">
+			<description>SystemSettings Icon</description>
+			<include>SidebarIconDimension</include>
+			<label>ė</label>
+			<visible>Control.HasFocus(8107)</visible>
+			<include>IconColorFO</include>
+		</control>
+		<control type="label">
+			<description>SystemSettings Icon</description>
+			<include>SidebarIconDimension</include>
+			<label>ė</label>
+			<visible>!Control.HasFocus(8107)</visible>
+			<include>IconColorNF</include>
+		</control>
+		<control type="label">
+			<description>AddonBrowser Icon</description>
+			<include>SidebarIconDimension</include>
+			<label>Ĝ</label>
+			<visible>Control.HasFocus(8108)</visible>
+			<include>IconColorFO</include>
+		</control>
+		<control type="label">
+			<description>AddonBrowser Icon</description>
+			<include>SidebarIconDimension</include>
+			<label>Ĝ</label>
+			<visible>!Control.HasFocus(8108)</visible>
+			<include>IconColorNF</include>
+		</control>
+	</control>
+	<control type="image">
+		<description>Kodi logo</description>
+		<left>110</left>
+		<top>990</top>
+		<width>200</width>
+		<height>77</height>
+		<texture>Logo.png</texture>
+	</control>
+</control>
+</controls>
+</window>
