@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.cycle" name="Skin cycle Repo" version="0.0.3" provider-name="Marc0810"> 
+	<extension point="xbmc.addon.repository" name="Skin cycle Repo"> 
+		<info compressed="false">https://raw.githubusercontent.com/Marc0810/repository.cycle/master/addons.xml</info> 
+		<checksum>https://raw.githubusercontent.com/Marc0810/repository.cycle/master/addons.xml.md5</checksum> 
+		<datadir zip="true">https://raw.githubusercontent.com/Marc0810/repository.cycle/master/</datadir> 
+	</extension> 
+	<extension point="xbmc.addon.metadata"> 
+		<summary>Skin cycle Repo</summary> 
+		<description></description> 
+		<disclaimer></disclaimer> 
+		<platform>all</platform> 
+	</extension> 
+</addon>
