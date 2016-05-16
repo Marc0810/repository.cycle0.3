@@ -74,6 +74,7 @@
 		<summary lang="en">Provides personalised widgets based on your viewing habits.</summary>
 		<description lang="en">By keeping track of what media you play and when, the script enables skins to provide personalised widgets on what media you might want to play now.</description>
 		<disclaimer lang="en">This plugin is not a standalone plugin, your skin must support it.</disclaimer>
+		<source>https://github.com/phil65/service.smartish.widgets</source>
 		<platform>all</platform>
 	</extension>
 </addon>
