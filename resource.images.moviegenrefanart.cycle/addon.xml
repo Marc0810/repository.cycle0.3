@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="resource.images.moviegenrefanart.cycle" name="Cycle Videogenre Artworks" version="0.0.1" provider-name="Marc0810">
-	<extension point="kodi.resource.images" compile="true" type="moviegenreicons" />
+	<extension point="kodi.resource.images" compile="true" type="moviegenrefanart" />
 	<requires>
 		<import addon="kodi.resource" version="1.0.0"/>
 	</requires>

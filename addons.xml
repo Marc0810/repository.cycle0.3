@@ -12,7 +12,7 @@
   </extension>
 </addon>
 <addon id="resource.images.moviegenrefanart.cycle" version="0.0.1" name="Cycle Videogenre Artworks" provider-name="Marc0810"> 
-	<extension point="kodi.resource.images" compile="true" type="moviegenreicons" />
+	<extension point="kodi.resource.images" compile="true" type="moviegenrefanart" />
 	<requires>
 		<import addon="kodi.resource" version="1.0.0"/>
 	</requires>
