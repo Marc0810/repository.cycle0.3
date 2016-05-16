@@ -25,8 +25,8 @@
 	</extension>
 </addon>
 <addon id="script.skin.info.service" name="Skin Info Service" version="1.0.0" provider-name="phil65">
-	<extension point="xbmc.python.library"          library="default.py" />
-	<extension point="xbmc.python.script"           library="default.py">
+	<extension point="xbmc.python.library" library="default.py" />
+	<extension point="xbmc.python.script" library="default.py">
 		<provides>executable</provides>
 	</extension>
 	<requires>
