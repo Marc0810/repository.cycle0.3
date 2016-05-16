@@ -11,5 +11,18 @@
     <platform>all</platform>
   </extension>
 </addon>
+<addon id="resource.images.moviegenrefanart.cycle" version="0.0.1" name="Cycle Videogenre Artworks" provider-name="Marc0810"> 
+	<extension point="kodi.resource.images" compile="true" type="moviegenreicons" />
+	<requires>
+		<import addon="kodi.resource" version="1.0.0"/>
+	</requires>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Genre Artworks</summary>
+		<summary lang="de">Genre Artworks</summary>
+		<description lang="en">Videogenre Artworks for movies and tvshows</description>
+		<description lang="de">Fanarts, Poster und Banner für Film und Serie von ausgewählten möglichst aktuellen Filmen und Serien aus den letzten Jahren.[CR][CR]Skinintegration: Texturepfad - resource://resource.images.moviegenrefanart.cycle/ mit Unterverzeichnissen erweitern.[CR] - moviegenres_banner/[CR] - moviegenres_fanart/[CR] - moviegenres_poster/[CR] - tvgenres_banner/[CR] - tvgenres_fanart/[CR] - tvgenres_poster/</description>
+		<platform>all</platform>
+	</extension>
+</addon>
 </addons> 
 
