@@ -77,23 +77,6 @@
         <email>regss84@gmail.com</email>
     </extension>
 </addon>
-<addon id="service.smartish.widgets" name="Smart(ish) Widgets" provider-name="Unfledged" version="0.0.1">
-	<requires>
-		<import addon="xbmc.addon" version="12.0.0"/>
-		<import addon="xbmc.json" version="6.0.0"/>
-		<import addon="xbmc.python" version="2.1.0"/>
-		<import addon="script.module.simplejson" version="2.0.10"/>
-	</requires>
-	<extension point="xbmc.python.pluginsource" library="default.py" />
-	<extension library="service.py" point="xbmc.service" start="login" />
-	<extension point="xbmc.addon.metadata">
-		<summary lang="en">Provides personalised widgets based on your viewing habits.</summary>
-		<description lang="en">By keeping track of what media you play and when, the script enables skins to provide personalised widgets on what media you might want to play now.</description>
-		<disclaimer lang="en">This plugin is not a standalone plugin, your skin must support it.</disclaimer>
-		<source>https://github.com/phil65/service.smartish.widgets</source>
-		<platform>all</platform>
-	</extension>
-</addon>
 <addon id="script.libraryeditor" name="Library Editor Script" version="0.9.0" provider-name="phil65">
 	<requires>
 		<import addon="xbmc.python" version="2.13.0"/>
