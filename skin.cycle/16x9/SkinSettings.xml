@@ -332,28 +332,35 @@
 			<onclick condition="!System.HasAddon(resource.images.moviegenrefanart.cycle)">InstallAddon(resource.images.moviegenrefanart.cycle)</onclick>
 			<onclick condition="System.HasAddon(resource.images.moviegenrefanart.cycle) + !Skin.HasSetting(EnableGenreArtworks)">Skin.SetBool(EnableGenreArtworks)</onclick>
 			<onclick condition="System.HasAddon(resource.images.moviegenrefanart.cycle) + Skin.HasSetting(EnableGenreArtworks)">Skin.Reset(EnableGenreArtworks)</onclick>
-			<!-- 
-			<onclick condition="!Skin.HasSetting(EnableGenreArtworks)">Skin.SetBool(EnableGenreArtworks)</onclick>
-			<onclick condition="Skin.HasSetting(EnableGenreArtworks)">Skin.Reset(EnableGenreArtworks)</onclick>
-			<onclick>ReloadSkin()</onclick>
-			<onclick condition="!System.HasAddon(resource.images.moviegenrefanart.cycle)">Notification(Fehler,Das benötigte Addon ist nicht installiert!)</onclick>-->
 			<label>Videogenre Artworks verwenden</label>
-			<selected>Skin.HasSetting(EnableGenreArtworks)</selected>
+			<selected>System.HasAddon(resource.images.moviegenrefanart.cycle) + Skin.HasSetting(EnableGenreArtworks)</selected>
 		</control>
 	</control>
 	<control type="grouplist" id="9003"><!-- Extras -->
 		<description>Extra einstellungen</description>
 		<visible>Control.Hasfocus(8103) | ControlGroup(9003).HasFocus</visible>
 		<width>1125</width>
-		<height>780</height>
+		<height>791</height>
 		<itemgap>0</itemgap>
 		<onleft>9000</onleft>
 		<onright>noop</onright>
 		<onup>9003</onup>
 		<ondown>9003</ondown>
-		<control type="label" id="90034">
+		<control type="label" id="90033">
 			<include>SkinSettingSubLabel</include><!-- check -->
 			<label>Unterstützte Addons</label>
+		</control>
+		<control type="radiobutton" id="90034">
+			<description>Skin-Sounds</description>
+			<include>SkinSettingButtonValue</include>
+			<oninfo>SetProperty(TextBox.Title,resource.uisounds.cycle,home)</oninfo>
+			<oninfo>SetProperty(TextBox.SubTitle,Skin-Sounds,home)</oninfo>
+			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</oninfo>
+			<oninfo>ActivateWindow(1198)</oninfo>
+			<onclick condition="System.HasAddon(resource.uisounds.cycle)">Addon.OpenSettings(resource.uisounds.cycle)</onclick>
+			<onclick condition="!System.HasAddon(resource.uisounds.cycle)">InstallAddon(resource.uisounds.cycle)</onclick>
+			<label>Skin-Sounds (Sounddatei für Cycle)</label>
+			<selected>System.HasAddon(resource.uisounds.cycle)</selected>
 		</control>
 		<control type="radiobutton" id="90035">
 			<description>Script.artwork.downloader</description>
@@ -451,9 +458,9 @@
 			<oninfo>SetProperty(TextBox.SubTitle,Wird benötigt für die Anzeige von Movieset-Infos,home)</oninfo>
 			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</oninfo>
 			<oninfo>ActivateWindow(1198)</oninfo>
-			<onclick condition="System.HasAddon(script.skin.info.service)">RunScript(script.skin.info.service)</onclick>
-			<onclick condition="!System.HasAddon(script.skin.info.service)">Notification(Fehler!,Das Addon ist nicht verfügbar.)</onclick>
-			<label>script.skin.info.service - muss manuell installiert werden.</label>
+			<onclick condition="!System.HasAddon(script.skin.info.service)">InstallAddon(script.skin.info.service)</onclick>
+			<onclick condition="System.HasAddon(script.skin.info.service)">Addon.OpenSettings(script.skin.info.service)</onclick>
+			<label>script.skin.info.service (Moviesetinfos)</label>
 			<selected>System.HasAddon(script.skin.info.service)</selected>
 		</control>
 		<control type="radiobutton" id="90044">
@@ -463,19 +470,36 @@
 			<oninfo>SetProperty(TextBox.SubTitle,Widget Episoden Empfehlungen nach deinen Sehgewohnheiten,home)</oninfo>
 			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</oninfo>
 			<oninfo>ActivateWindow(1198)</oninfo>
+			<onclick condition="!System.HasAddon(service.smartish.widgets)">InstallAddon(service.smartish.widgets)</onclick>
 			<onclick condition="!Skin.HasSetting(enable.smartish.widgets)">Skin.SetBool(enable.smartish.widgets)</onclick>
 			<onclick condition="Skin.HasSetting(enable.smartish.widgets)">Skin.Reset(enable.smartish.widgets)</onclick>
-			<onclick condition="!System.HasAddon(service.smartish.widgets)">Notification(Fehler!,Das Addon ist nicht verfügbar.)</onclick>
-			<label>service.smartish.widgets - muss manuell installiert werden.</label>
-			<selected>Skin.HasSetting(enable.smartish.widgets)</selected>
+			<label>service.smartish.widgets (Widgetscript)</label>
+			<selected>System.HasAddon(service.smartish.widgets) + Skin.HasSetting(enable.smartish.widgets)</selected>
 		</control>
-		<control type="button" id="900045">
+		<control type="radiobutton" id="90045">
+			<description>script.libraryeditor</description>
+			<include>SkinSettingButtonValue</include>
+			<oninfo>SetProperty(TextBox.Title,script.libraryeditor,home)</oninfo>
+			<oninfo>SetProperty(TextBox.SubTitle,Datenbankeditor für das Contextmenü,home)</oninfo>
+			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</oninfo>
+			<oninfo>ActivateWindow(1198)</oninfo>
+			<onclick condition="!System.HasAddon(script.libraryeditor)">InstallAddon(script.libraryeditor)</onclick>
+			<onclick condition="System.HasAddon(script.libraryeditor)">Addon.OpenSettings(script.libraryeditor)</onclick>
+			<label>script.libraryeditor (Datenbankeditor)</label>
+			<selected>System.HasAddon(script.libraryeditor)</selected>
+		</control>
+		<control type="label" id="900046">
+			<description>Divider</description>
+			<include>SkinSettingButtonValue</include>
+			<label></label>
+		</control>
+		<control type="button" id="900047">
 			<description>Playlisten aus Skinverzeichnis bearbeiten</description>
 			<include>SkinSettingButtonValue</include>
 			<onclick>ActivateWindow(videos,special://skin/playlists/)</onclick>
 			<label>Klicken um die Playlisten des Skins zu ändern.</label>
 		</control>
-		<control type="button" id="900046">
+		<control type="button" id="900048">
 			<description>Skinreset</description>
 			<textcolor>$VAR[primaryCol]</textcolor><!-- include ueberschreibung Farbe -->
 			<include>SkinSettingButtonValue</include>
@@ -484,19 +508,14 @@
 			<onclick>ActivateWindow(1104)</onclick>
 			<label>Alle Skin-Einstellungen wieder zurücksetzen</label>
 		</control>
-		<control type="label" id="900047">
-			<description>Divider</description>
-			<include>SkinSettingButtonValue</include>
-			<label></label>
-		</control>
-		<control type="radiobutton" id="900048">
+		<control type="radiobutton" id="900049">
 			<description>Skin Debug</description>
 			<include>SkinSettingButtonValue</include>
 			<onclick>Skin.ToggleSetting(DebugInfo)</onclick>
 			<label>Skin debugoverlay anzeigen</label>
 			<selected>Skin.HasSetting(DebugInfo)</selected>
 		</control>
-		<control type="radiobutton" id="900049">
+		<control type="radiobutton" id="900050">
 			<description>Skin Debug</description>
 			<include>SkinSettingButtonValue</include>
 			<onclick>Skin.ToggleSetting(DebugGrid)</onclick>
