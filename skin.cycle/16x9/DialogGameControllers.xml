@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<window>
-<!-- Cycle Dialog 0.3 -->
-<!-- nicht implementiert -->
-<defaultcontrol>3</defaultcontrol>
-<controls>
-	<include>UnfeaturedWindow</include>
-</controls>
-</window>
