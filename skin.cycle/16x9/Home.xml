@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+<!-- Cycle 0.3 -->
+<defaultcontrol always="true">9800</defaultcontrol>
+<onload condition="!Skin.HasSetting(FirstTimeRun)">ActivateWindow(1104)</onload><!-- first start -->
+<onload condition="String.IsEmpty(skin.string(HomeSlideMenueStartItem))">ActivateWindow(1104)</onload><!-- fallback menue leer -->
+<previouswindow>startup</previouswindow>
+<menucontrol>9600</menucontrol>
+<controls>
+<include condition="Skin.HasSetting(EnableVintageOverlay)">global_vintagebackground</include>
+<include condition="!Skin.HasSetting(EnableVintageOverlay)">global_background</include>
+<include>global_topbar</include><!-- topbar -->
+<include>Clock_nowplaying</include>
+<control type="button" id="9800">
+	<description>Default Focusbutton damit uhr auch focus haben kann und nicht nur das menue</description>
+	<include>HiddenControl</include>
+	<onup>9900</onup>
+	<ondown>9900</ondown>
+	<onleft>9900</onleft>
+	<onright>9900</onright>
+	<oninfo>ActivateWindow(1101)</oninfo>
+	<onclick>$VAR[CycleHomeQuicknavClick]</onclick>
+</control>
+<control type="button" id="9600">
+	<description>Hidden - quicknav menue oeffnen</description>
+	<include>HiddenControl</include>
+	<onup>ActivateWindow(1120)</onup>
+	<ondown>ActivateWindow(1120)</ondown>
+	<onleft>ActivateWindow(1120)</onleft>
+	<onright>ActivateWindow(1120)</onright>
+	<onfocus>ActivateWindow(1120)</onfocus>
+</control>
+<control type="group"><!-- links - Datum + Wetter temperatur und ausblick -->
+	<left>80</left>
+	<top>29</top>
+	<include>Open_Close_Visible_Hidden_Fade_Animation</include>
+	<control type="label">
+		<description>Datum</description>
+		<width>1900</width>
+		<height>60</height>
+		<label>$VAR[GlobalDateFormat]</label>
+		<font>BreadcumbTopNormal</font>
+	</control>
+	<control type="grouplist">
+		<description>Wetter</description>
+		<top>55</top>
+		<width>1900</width>
+		<height>70</height>
+		<itemgap>0</itemgap>
+		<align>left</align>
+		<orientation>horizontal</orientation>
+		<control type="image">
+			<description>Wetter Icon</description>
+			<width>70</width>
+			<height>45</height>
+			<texture fallback="">resource://resource.images.weathericons.default/$INFO[Window(Weather).Property(Current.OutlookIcon)]</texture>
+			<aspectratio aligny="bottom" align="left">keep</aspectratio>
+			<visible>!String.IsEmpty(Weather.Plugin) + Weather.IsFetched + !String.IsEqual(Weather.FanartCode,na)</visible>
+		</control>
+		<control type="label">
+			<width>auto</width>
+			<height>45</height>
+			<font>BreadcumbTopSmall</font>
+			<label>[B]$INFO[Window(Weather).Property(Current.Temperature)][/B]$INFO[System.TemperatureUnits]</label>
+			<visible>!String.IsEmpty(Weather.Plugin) + Weather.IsFetched</visible>
+		</control>
+		<control type="label">
+			<width>auto</width>
+			<height>45</height>
+			<font>BreadcumbTopSmall</font>
+			<label>$VAR[CustomEnumeration]$INFO[Window(Weather).Property(Current.Condition)]</label>
+			<visible>!String.IsEmpty(Weather.Plugin) + Weather.IsFetched</visible>
+		</control>
+	</control>
+</control>
+<control type="group"><!-- menue -->
+	<description>Menue</description>
+	<visible>!Window.IsVisible(Custom_1101_homewidgets.xml)</visible>
+	<control type="group">
+		<left>760</left>
+		<top>340</top>
+		<width>400</width>
+		<height>400</height>
+		<include>Open_Close_Visible_Hidden_Zoom_Animation</include>
+		<animation type="Conditional" condition="![Control.HasFocus(9900) | Window.IsVisible(playercontrols)]"><!-- zoom wenn Menue keinen Focus hat -->
+			<effect type="zoom" start="100" end="80" time="120" center="960,540" />
+			<effect type="fade" start="100" end="30" time="120" />
+		</animation>
+		<animation type="Conditional" condition="[Control.HasFocus(9900) | Window.IsVisible(playercontrols)]">
+			<effect type="zoom" time="250" start="80" end="100" center="960,540" />
+			<effect type="fade" time="250" start="30" end="100" />
+		</animation>
+		<include>LogoMenueLayout</include>
+		<control type="label">
+			<description>Linker Button indikator</description>
+			<left>-150</left>
+			<top>170</top>
+			<width>75</width>
+			<height>75</height>
+			<align>center</align>
+			<font>BoldBig</font>
+			<textcolor>$VAR[secondaryCol]</textcolor>
+			<label> ‹‹</label>
+			<visible>Control.HasFocus(9900) + !String.IsEqual(skin.string(HomeSlideMenueStartItemL),Deaktivieren) + !String.IsEmpty(skin.string(HomeSlideMenueStartItemL))</visible>
+		</control>
+		<control type="label">
+			<description>Rechter Button indikator</description>
+			<left>450</left>
+			<top>170</top>
+			<width>75</width>
+			<height>75</height>
+			<align>center</align>
+			<font>BoldBig</font>
+			<textcolor>$VAR[secondaryCol]</textcolor>
+			<label> ››</label>
+			<visible>Control.HasFocus(9900) + !String.IsEqual(skin.string(HomeSlideMenueStartItemR),Deaktivieren) + !String.IsEmpty(skin.string(HomeSlideMenueStartItemR))</visible>
+		</control>
+		<control type="button" id="9900">
+			<description>Start button</description>
+			<width>400</width>
+			<height>400</height>
+			<align>center</align>
+			<font>IconHome</font>
+			<textcolor>$VAR[circlesCol]</textcolor>
+			<focusedcolor>$VAR[circlesCol]</focusedcolor>
+			<onup>9800</onup>
+			<ondown>9800</ondown>
+			<oninfo>ActivateWindow(1101)</oninfo>
+			<onclick>$VAR[CycleHomeQuicknavClick]</onclick>
+			<onleft condition="!String.IsEqual(skin.string(HomeSlideMenueStartItemL),Deaktivieren) + !String.IsEmpty(skin.string(HomeSlideMenueStartItemL))">SetFocus(9902)</onleft>
+			<onright condition="!String.IsEqual(skin.string(HomeSlideMenueStartItemR),Deaktivieren) + !String.IsEmpty(skin.string(HomeSlideMenueStartItemR))">SetFocus(9901)</onright>
+			<onleft condition="String.IsEqual(skin.string(HomeSlideMenueStartItemL),Deaktivieren) | String.IsEmpty(skin.string(HomeSlideMenueStartItemL))">SetFocus(9218)</onleft>
+			<onright condition="String.IsEqual(skin.string(HomeSlideMenueStartItemR),Deaktivieren) | String.IsEmpty(skin.string(HomeSlideMenueStartItemR))">SetFocus(9218)</onright>
+			<label>$VAR[CycleHomeQuicknavTitle]</label>
+		</control>
+		<control type="button" id="9902">
+			<description>Linker button</description>
+			<left>-600</left>
+			<width>400</width>
+			<height>400</height>
+			<align>center</align>
+			<font>IconHomeNF</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<focusedcolor>$VAR[primaryCol]</focusedcolor>
+			<onfocus>$VAR[CycleHomeQuicknavClickL]</onfocus>
+			<label>$VAR[CycleHomeQuicknavTitleL]</label>
+			<visible>!String.IsEqual(skin.string(HomeSlideMenueStartItemL),Deaktivieren)</visible>
+			<animation type="Conditional" condition="Control.HasFocus(9900)">
+				<effect type="fade" start="10" end="10" time="0" />
+			</animation>
+		</control>
+		<control type="button" id="9901">
+			<description>Rechter button</description>
+			<left>600</left>
+			<width>400</width>
+			<height>400</height>
+			<align>center</align>
+			<font>IconHome</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<focusedcolor>$VAR[primaryCol]</focusedcolor>
+			<onfocus>$VAR[CycleHomeQuicknavClickR]</onfocus>
+			<onclick>$VAR[CycleHomeQuicknavClickR]</onclick>
+			<label>$VAR[CycleHomeQuicknavTitleR]</label>
+			<visible>!String.IsEqual(skin.string(HomeSlideMenueStartItemR),Deaktivieren)</visible>
+			<animation type="Conditional" condition="Control.HasFocus(9900)">
+				<effect type="fade" start="10" end="10" time="0" />
+			</animation>
+		</control>
+	</control>
+	<control type="group"><!-- Uhr -->
+		<left>603</left>
+		<top>183</top>
+		<include>Open_Close_Visible_Hidden_Zoom_Animation</include>
+		<include condition="!Skin.HasSetting(EnableVintageOverlay)">CycleClock</include>
+		<include condition="Skin.HasSetting(EnableVintageOverlay)">VintageClock</include>
+		<visible>Control.HasFocus(9800) + !Window.IsVisible(playercontrols)</visible>
+	</control>
+	<control type="group"><!-- Title -->
+		<include>Open_Close_Visible_Hidden_Fade_Animation</include>
+		<visible>Control.HasFocus(9800) + !Player.HasMedia + !Window.IsVisible(playercontrols)</visible>
+		<control type="label">
+			<description>Titel</description>
+			<left>460</left>
+			<top>900</top>
+			<width>1000</width>
+			<height>60</height>
+			<font>CycleLogoBranding</font>
+			<textcolor>TextColorMedium</textcolor>
+			<align>center</align>
+			<label>$VAR[GlobalSkinversion]</label>
+		</control>
+		<control type="label">
+			<description>Subtitle</description>
+			<left>460</left>
+			<top>950</top>
+			<width>1000</width>
+			<height>40</height>
+			<align>center</align>
+			<textcolor>TextColorMedium</textcolor>
+			<label>...</label>
+			<visible>!System.HasMediadvd</visible>
+		</control>
+	</control>
+</control>
+<control type="group"><!-- RSS -->
+	<description>RSS</description>
+	<left>387</left>
+	<top>1027</top>
+	<include>Open_Close_Visible_Hidden_Fade_Animation</include>
+	<visible>system.getbool(lookandfeel.enablerssfeeds) + ![Window.IsVisible(Custom_1120_MainMenuSlide.xml) | Window.IsVisible(favourites) | Window.IsVisible(shutdownmenu) | Window.IsVisible(Custom_1101_homewidgets.xml)]</visible>
+	<control type="label">
+		<width>40</width>
+		<height>40</height>
+		<font>IconBig</font>
+		<textcolor>TextColorMedium</textcolor>
+		<label>t</label>
+	</control>
+	<control type="rss">
+		<description>RSS feed</description>
+		<left>60</left>
+		<height>35</height>
+		<width>1145</width>
+		<align>left</align>
+		<scrollspeed>30</scrollspeed>
+		<font>RegularNormal</font>
+		<textcolor>TextColorMedium</textcolor>
+		<titlecolor>TextColorLight</titlecolor>
+		<headlinecolor>$VAR[primaryCol]</headlinecolor>
+		<urlset>1</urlset>
+	</control>
+</control>
+</controls>
+</window>

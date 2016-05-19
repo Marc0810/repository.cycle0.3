@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+<!-- Cycle 0.3 -->
+<include name="VintageDialogTitel_Animation">
+	<animation type="Conditional" condition="Skin.HasSetting(VintageFont)" reversible="false">
+		<effect type="slide" start="0,-8" end="0,-8" time="0" />
+	</animation>
+</include>
+<include name="VintageFont_Animation-12">
+	<animation type="Conditional" condition="Skin.HasSetting(VintageFont)" reversible="false">
+		<effect type="slide" start="0,-12" end="0,-12" time="0" />
+	</animation>
+</include>
+
+<include name="Dialog_topdown_Animation">
+	<animation type="WindowOpen" reversible="false">
+		<effect type="slide" start="0,0" end="0,150" time="400" tween="cubic" easing="out" />
+		<effect type="fade" start="0" end="100" time="400" />
+	</animation>
+	<animation type="WindowClose" reversible="false">
+		<effect type="fade" start="100" end="0" time="100" />
+	</animation>
+	<animation type="Conditional" condition="Window.IsVisible(fullscreeninfo) | Window.IsVisible(seekbar) | Window.IsVisible(videoosd) | Window.IsVisible(Custom_1151_VideoOverlay.xml) | [Window.IsVisible(visualisation) + Player.ShowInfo]" reversible="true">
+		<effect type="slide" start="0,0" end="0,10" time="400" tween="cubic" easing="out" />
+	</animation>
+</include>
+
+<include name="Dialog_popup_Animation">
+	<animation type="WindowOpen">
+		<effect type="slide" start="-40,0" end="0,0" time="500" easing="inout" tween="cubic"/>
+		<effect type="fade" start="0" end="100" time="400"/>
+	</animation>
+	<animation type="Visible">
+		<effect type="slide" start="-40,0" end="0,0" time="500" easing="inout" tween="cubic"/>
+		<effect type="fade" start="0" end="100" time="400"/>
+	</animation>
+	<animation type="WindowClose">
+		<effect type="slide" start="0,0" end="40,0" time="300" easing="inout" tween="cubic"/>
+		<effect type="fade" start="100" end="0" time="300"/>
+	</animation>
+	<animation type="Hidden">
+		<effect type="slide" start="0,0" end="40,0" time="300" easing="inout" tween="cubic"/>
+		<effect type="fade" start="100" end="0" time="250"/>
+	</animation>
+</include>
+
+<include name="Conditional_Viewinaktiv_Zoom_Animation">
+	<animation type="conditional" reversible="true" condition="Control.HasFocus(9900)">
+		<effect type="fade" start="100" end="30" time="150" tween="cubic" easing="inout" />
+		<effect type="zoom" start="100" end="70" time="150" tween="cubic" easing="inout" center="960,540"/>
+	</animation>
+</include>
+
+<include name="OSDDialog_popup_Animation">
+	<animation type="WindowOpen" reversible="false">
+		<effect type="slide" start="0,85" end="0" time="200" tween="sine" easing="inout" />
+		<effect type="fade" start="0" end="100" time="200" tween="sine" easing="inout" />
+	</animation>
+	<animation type="Visible" reversible="false">
+		<effect type="slide" start="0,85" end="0" time="200" tween="sine" easing="inout" />
+		<effect type="fade" start="0" end="100" time="200" tween="sine" easing="inout" />
+	</animation>
+	<animation type="WindowClose" reversible="false">
+		<effect type="slide" end="0,115" start="0" time="200" tween="sine" easing="inout" />
+		<effect type="fade" end="0" start="100" time="200" tween="sine" easing="inout" />
+	</animation>
+	<animation type="Hidden" reversible="false">
+		<effect type="slide" end="0,115" start="0" time="200" tween="sine" easing="inout" />
+		<effect type="fade" end="0" start="100" time="200" tween="sine" easing="inout" />
+	</animation>
+</include>
+
+<include name="Dimmer_Animation">
+	<animation type="Focus">
+		<effect type="fade" time="250" end="0" start="100" />
+	</animation>
+	<animation type="UnFocus">
+		<effect type="fade" time="250" start="0" end="100" />
+	</animation>
+</include>
+
+<include name="Visible_Hidden_Background_Fade_Animation">
+	<animation effect="fade" time="600">Visible</animation>
+	<animation effect="fade" time="600">Hidden</animation>
+</include>
+
+<!-- Open/Close slide Animation -->
+<include name="Open_Close_Visible_Hidden_Slide_Animation375">
+	<animation type="WindowOpen">
+		<effect type="fade" start="0" end="100" time="280" delay="180" />
+		<effect type="slide" start="-375,0" time="300" delay="180" tween="quadratic" easing="out"/>
+	</animation>
+	<animation type="WindowClose">
+		<effect type="fade" start="100" end="0" time="280" />
+		<effect type="slide" end="-375,0" time="300" tween="quadratic" easing="out"/>
+	</animation>
+	<animation type="Visible">
+		<effect type="fade" start="0" end="100" time="280" delay="180" />
+		<effect type="slide" start="-375,0" time="300" delay="180" tween="quadratic" easing="out"/>
+	</animation>
+	<animation type="Hidden">
+		<effect type="fade" start="100" end="0" time="280" />
+		<effect type="slide" end="-375,0" time="300" tween="quadratic" easing="out"/>
+	</animation>
+</include>
+
+<include name="Open_Close_Visible_Hidden_Zoom_Animation">
+	<animation type="WindowOpen" reversible="false">
+		<effect type="fade" start="0" end="100" delay="200" time="350" tween="cubic" easing="inout" />
+		<effect type="zoom" start="70" end="100" delay="200" time="350" tween="cubic" easing="inout" center="960,540"/>
+	</animation>
+	<animation type="Visible" reversible="false">
+		<effect type="fade" start="0" end="100" delay="200" time="350" tween="cubic" easing="inout" />
+		<effect type="zoom" start="70" end="100" delay="200" time="350" tween="cubic" easing="inout" center="960,540"/>
+	</animation>
+	<animation type="WindowClose" reversible="false">
+		<effect type="fade" delay="0" start="100" end="0" time="250" tween="cubic" easing="inout" />
+		<effect type="zoom" delay="0" start="100" end="70" time="250" tween="cubic" easing="inout" center="960,540"/>
+	</animation>
+	<animation type="Hidden" reversible="false">
+		<effect type="fade" delay="0" start="100" end="0" time="250" tween="cubic" easing="inout" />
+		<effect type="zoom" delay="0" start="100" end="70" time="250" tween="cubic" easing="inout" center="960,540"/>
+	</animation>
+</include>
+
+<include name="Open_Close_Visible_Hidden_Fade_Animation">
+	<animation type="WindowOpen" reversible="false">
+		<effect type="fade" start="0" end="100" time="650" tween="cubic" easing="inout" />
+	</animation>
+	<animation type="WindowClose" reversible="false">
+		<effect type="fade" start="100" end="0" time="250" tween="cubic" easing="inout" />
+	</animation>
+	<animation type="Visible" reversible="false">
+		<effect type="fade" start="0" end="100" time="650" tween="cubic" easing="inout" />
+	</animation>
+	<animation type="Hidden" reversible="false">
+		<effect type="fade" start="100" end="0" time="250" tween="cubic" easing="inout" />
+	</animation>
+</include>
+
+<include name="Open_Close_Fade_Animation">
+	<animation type="WindowOpen">
+		<effect type="fade" start="0" end="100" time="200" />
+	</animation>
+	<animation type="WindowClose">
+		<effect type="fade" start="100" end="0" time="200" />
+	</animation>
+</include>
+
+<include name="Visible_Hidden_Fade_Animation">
+	<animation type="Visible" reversible="false">
+		<effect type="fade" start="0" end="100" delay="100" time="350" tween="cubic" easing="inout" />
+	</animation>
+	<animation type="Hidden" reversible="false">
+		<effect type="fade" start="100" end="0" time="250" tween="cubic" easing="inout" />
+	</animation>
+</include>
+
+<!-- Diffuse Opacity Animationen -->
+<include name="CircleFlagsinnerDiffuse">
+	<animation type="Conditional" condition="true">
+		<effect type="fade" end="50" time="0" />
+	</animation>
+</include>
+
+<include name="Conditional_Inaktiv_Fade_Animation">
+	<animation type="Conditional" condition="![Window.IsActive(contextmenu) |Window.IsActive(virtualkeyboard) | Window.IsActive(networksetup) | Window.IsActive(numericinput) | Window.IsActive(mediasource) | Window.IsActive(smartplaylisteditor) | Window.IsActive(smartplaylistrule) | Window.IsActive(addonsettings) | Window.IsActive(DialogSettings.xml) | Window.IsActive(DialogConfirm.xml)]">
+		<effect type="fade" start="30" end="0" time="300" tween="cubic" easing="inout" />
+	</animation>
+</include>
+
+<include name="Conditional_Left_Slide_Animation395">
+	<animation type="Conditional" condition="!Window.IsVisible(playercontrols) + [ControlGroup(9110).HasFocus | ControlGroup(9300).HasFocus | Window.IsActive(contextmenu) | Window.IsActive(shutdownmenu) | Window.IsVisible(Custom_1141_ViewtypeSimilar.xml)] + !Window.IsVisible(musicplaylisteditor)">
+		<effect type="slide" end="395,0" time="180" delay="180" tween="quadratic" easing="out" reversible="true" />
+	</animation>
+	<animation type="Conditional" condition="[ControlGroup(9110).HasFocus | ControlGroup(9300).HasFocus] + Window.IsActive(DialogSelect.xml) + String.IsEqual(skin.String(SelectDialog),Search)">
+		<effect type="slide" end="250,0" time="180" delay="180" tween="quadratic" easing="out" reversible="true" />
+	</animation>
+	<animation type="Conditional" condition="Window.IsActive(favourites)">
+		<effect type="slide" end="100,0" time="180" delay="180" tween="quadratic" easing="out" reversible="true" />
+	</animation>
+	<animation type="Conditional" condition="Window.IsVisible(playercontrols)">
+		<effect type="slide" end="80,0" time="300" />
+	</animation>
+</include>
+
+<!-- Seasion Circles Animation -->
+<include name="AnimationSeasonFadeIn">
+	<animation effect="fade" delay="300" start="0" end="80" reversible="false" time="600">Hidden</animation>
+</include>
+<include name="AnimationSeasonFadeOut">
+	<animation effect="fade" delay="300" start="100" end="80" reversible="false" time="600">Hidden</animation>
+</include>
+
+<include name="ContainerFilterIndikator">
+	<animation effect="fade" start="100" end="50" time="1800" condition="Container.Filtered" pulse="true" loop="true">Conditional</animation>
+</include>
+
+<include name="SMSLetter_inout_Animation">
+	<animation type="Visible" reversible="false">
+		<effect type="slide" start="0,0" end="0,20" time="400" tween="cubic" easing="out" />
+		<effect type="fade" start="0" end="100" time="400" />
+	</animation>
+	<animation type="Hidden" reversible="false">
+		<effect type="fade" start="100" end="0" time="300" />
+	</animation>
+	<animation type="Conditional" condition="Control.HasFocus(622)">
+		<effect type="slide" end="0,88" time="120" />
+	</animation>
+	<animation type="Conditional" condition="Control.HasFocus(623)">
+		<effect type="slide" end="0,176" time="120" />
+	</animation>
+	<animation type="Conditional" condition="Control.HasFocus(624)">
+		<effect type="slide" end="0,264" time="120" />
+	</animation>
+	<animation type="Conditional" condition="Control.HasFocus(625)">
+		<effect type="slide" end="0,352" time="120" />
+	</animation>
+	<animation type="Conditional" condition="Control.HasFocus(626)">
+		<effect type="slide" end="0,440" time="120" />
+	</animation>
+	<animation type="Conditional" condition="Control.HasFocus(627)">
+		<effect type="slide" end="0,528" time="120" />
+	</animation>
+	<animation type="Conditional" condition="Control.HasFocus(628)">
+		<effect type="slide" end="0,616" time="120" />
+	</animation>
+</include>
+
+</includes>

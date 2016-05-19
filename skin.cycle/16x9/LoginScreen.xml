@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+<!-- Cycle 0.3 -->
+<defaultcontrol always="true">52</defaultcontrol>
+<controls>
+<control type="button" id="10">
+	<include>HiddenControl</include>
+	<onfocus>AlarmClock(Login,SetFocus(52),00:08,silent)</onfocus>
+</control>
+<include condition="Skin.HasSetting(EnableVintageOverlay)">global_vintagebackground</include>
+<include condition="!Skin.HasSetting(EnableVintageOverlay)">global_background</include>
+<control type="wraplist" id="52">
+	<description>Benutzerliste</description>
+	<left>690</left>
+	<top>473</top>
+	<width>820</width>
+	<height>174</height>
+	<onup>510</onup>
+	<ondown>510</ondown>
+	<onleft>510</onleft>
+	<onright>510</onright>
+	<focusposition>0</focusposition>
+	<scrolltime tween="cubic" easing="inout">350</scrolltime>
+	<orientation>vertical</orientation>
+	<itemlayout width="874" height="174">
+		<control type="group">
+			<left>20</left>
+			<top>20</top>
+			<animation type="Focus">
+				<effect type="fade" time="250" end="100" start="70" />
+				<effect type="zoom" time="250" end="100" start="80" center="112,112" />
+			</animation>
+			<animation type="UnFocus">
+				<effect type="fade" time="120" start="100" end="70" />
+				<effect type="zoom" start="100" end="80" time="120" center="112,112" />
+			</animation>
+			<control type="image">
+				<description>Schatten</description>
+				<left>-12</left>
+				<top>-12</top>
+				<width>124</width>
+				<height>124</height>
+				<texture border="8" colordiffuse="ShadowColor">views/shadow8.png</texture>
+			</control>
+			<control type="image">
+				<description>Border</description>
+				<left>-4</left>
+				<top>-4</top>
+				<width>108</width>
+				<height>108</height>
+				<texture border="8" colordiffuse="$VAR[circlesCol]">views/white8.png</texture>
+			</control>
+			<control type="image">
+				<description>Hintergrund</description>
+				<width>100</width>
+				<height>100</height>
+				<texture background="true" colordiffuse="$VAR[primaryCol]">White.png</texture>
+			</control>
+			<control type="label">
+				<description>Fallback</description>
+				<width>100</width>
+				<height>100</height>
+				<align>center</align>
+				<font>Iconbannerdefault</font>
+				<textcolor>$VAR[circlesCol]</textcolor>
+				<label>Z</label>
+			</control>
+			<control type="image">
+				<width>100</width>
+				<height>100</height>
+				<texture background="true">$INFO[ListItem.Icon]</texture>
+				<aspectratio>scale</aspectratio>
+			</control>
+		</control>
+	</itemlayout>
+	<focusedlayout width="874" height="174">
+		<control type="group">
+			<left>20</left>
+			<top>20</top>
+			<animation type="Focus">
+				<effect type="fade" time="250" end="100" start="70" />
+				<effect type="zoom" time="250" end="100" start="80" center="112,112" />
+			</animation>
+			<animation type="UnFocus">
+				<effect type="fade" time="120" start="100" end="70" />
+				<effect type="zoom" start="100" end="80" time="120" center="112,112" />
+			</animation>
+			<control type="image">
+				<description>Schatten</description>
+				<left>-12</left>
+				<top>-12</top>
+				<width>124</width>
+				<height>124</height>
+				<texture border="8" colordiffuse="ShadowColor">views/shadow8.png</texture>
+			</control>
+			<control type="image">
+				<description>Border</description>
+				<left>-4</left>
+				<top>-4</top>
+				<width>108</width>
+				<height>108</height>
+				<texture border="8" colordiffuse="$VAR[circlesCol]">views/white8.png</texture>
+			</control>
+			<control type="image">
+				<description>Hintergrund</description>
+				<width>100</width>
+				<height>100</height>
+				<texture background="true" colordiffuse="$VAR[primaryCol]">White.png</texture>
+			</control>
+			<control type="label">
+				<description>Fallback</description>
+				<width>100</width>
+				<height>100</height>
+				<align>center</align>
+				<font>Iconbannerdefault</font>
+				<textcolor>$VAR[circlesCol]</textcolor>
+				<label>Z</label>
+			</control>
+			<control type="image">
+				<width>100</width>
+				<height>100</height>
+				<texture background="true">$INFO[ListItem.Icon]</texture>
+				<aspectratio>scale</aspectratio>
+			</control>
+			<control type="label">
+				<description>Benutzername</description>
+				<left>130</left>
+				<top>10</top>
+				<width>770</width>
+				<height>30</height>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+			<control type="label">
+				<description>Zuletzt angemeldet</description>
+				<left>130</left>
+				<top>50</top>
+				<width>770</width>
+				<height>30</height>
+				<font>RegularSmall</font>
+				<textcolor>TextColorMedium</textcolor>
+				<label>$INFO[ListItem.Label2]</label>
+			</control>
+		</control>
+	</focusedlayout>
+</control>
+</controls>
+</window>

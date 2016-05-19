@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+<!-- Cycle 0.3 -->
+<defaultcontrol always="true">71</defaultcontrol>
+<menucontrol>9110</menucontrol>
+<views>71</views>
+<controls>
+<control type="list" id="20000"><!-- numitems container -->
+	<description>Hidden focus content</description>
+	<include>Compaircontainer</include>
+	<content>$VAR[content_focus]</content>
+</control>
+<control type="button" id="3">
+	<description>Hiddencorebutton Sort fuer kurzbezeichnung mit sendclick</description>
+	<include>HiddenControl</include>
+</control>
+<include condition="Skin.HasSetting(EnableVintageOverlay)">global_vintagebackground</include>
+<include condition="!Skin.HasSetting(EnableVintageOverlay)">global_background</include>
+<include>global_topbar</include><!-- topbar -->
+<control type="group"><!-- Views -->
+	<include>Viewtype_71_Filelist</include>
+</control>
+<include>Sideblade_Left_NF</include><!-- Sideblade menue indikator -->
+<control type="group"><!-- Sidebar -->
+	<width>420</width>
+	<height>1080</height>
+	<include>Open_Close_Visible_Hidden_Slide_Animation375</include>
+	<visible allowhiddenfocus="true">ControlGroup(9110).HasFocus + ![Window.IsVisible(Custom_1120_MainMenuSlide.xml) | Window.IsVisible(Custom_1141_ViewtypeSimilar.xml) | Window.IsVisible(contextmenu) | Window.IsVisible(shutdownmenu) | Window.IsVisible(favourites) | Window.IsVisible(playercontrols)]</visible>
+	<include>Sideblade_Left_FO</include>
+	<include>Sideblade_Left_BG</include>
+	<include>Sideblade_Left_Breadcumb</include>
+	<control type="grouplist" id="9110"><!-- Menue -->
+		<description>Sidebar Menue</description>
+		<include>Sideblade_Left_Dimension</include>
+		<control type="button" id="33">
+			<description>Verkuerzter Sortbutton mit Text aus Variable</description>
+			<include>Sideblade_ButtonValues</include>
+			<onclick>SendClick(3)</onclick>
+			<label>$VAR[CycleMyNavSidebarSortlabel]</label>
+			<visible>Control.IsEnabled(3)</visible>
+		</control>
+		<control type="togglebutton" id="4">
+			<description>Reihenfolge Auf/Abwaerts</description>
+			<include>Sideblade_ButtonValues</include>
+			<label>Absteigend</label>
+			<altlabel>Aufsteigend</altlabel>
+			<usealttexture>Container.SortDirection(Ascending)</usealttexture>
+		</control>
+		<control type="edit" id="19">
+			<description>Filter button</description>
+			<include>Sideblade_ButtonValues</include>
+			<textcolor>$VAR[SidebladeFocusColor19]</textcolor>
+			<label>$LOCALIZE[587]</label>
+			<visible>Container.CanFilter + !Container.CanFilterAdvanced</visible>
+		</control>
+		<control type="radiobutton" id="20">
+			<description>Advanced Filter button</description>
+			<include>Sideblade_ButtonValues</include>
+			<onclick>Right</onclick>
+			<onclick>Filter</onclick>
+			<label>$LOCALIZE[587]</label>
+			<selected>Container.Filtered</selected>
+			<visible>Container.CanFilterAdvanced</visible>
+		</control>
+	</control>
+	<include>Sideblade_Left_IconBG</include>
+	<control type="grouplist"><!-- Icon grouplist-->
+		<include>Sideblade_Left_IconDimension</include>
+		<control type="label">
+			<description>Verkuerzter Sortbutton mit Text aus Variable</description>
+			<include>SidebarIconDimension</include>
+			<visible>Control.IsVisible(33) + Control.HasFocus(33)</visible>
+			<label>a</label>
+			<include>IconColorNF</include>
+		</control>
+		<control type="label">
+			<description>Verkuerzter Sortbutton mit Text aus Variable</description>
+			<include>SidebarIconDimension</include>
+			<visible>Control.IsVisible(33) + !Control.HasFocus(33)</visible>
+			<label>a</label>
+			<include>IconColorNF</include>
+		</control>
+		<control type="label">
+			<description>Reihenfolge Auf/Abwaerts</description>
+			<include>SidebarIconDimension</include>
+			<include>IconColorFO</include>
+			<label>b</label>
+			<visible>Control.IsVisible(4) + Control.HasFocus(4) + Container.SortDirection(Ascending)</visible>
+		</control>
+		<control type="label">
+			<description>Reihenfolge Auf/Abwaerts</description>
+			<include>SidebarIconDimension</include>
+			<include>IconColorNF</include>
+			<label>b</label>
+			<visible>Control.IsVisible(4) + !Control.HasFocus(4) + Container.SortDirection(Ascending)</visible>
+		</control>
+		<control type="label">
+			<description>Reihenfolge Auf/Abwaerts</description>
+			<include>SidebarIconDimension</include>
+			<include>IconColorFO</include>
+			<label>c</label>
+			<visible>Control.IsVisible(4) + Control.HasFocus(4) + !Container.SortDirection(Ascending)</visible>
+		</control>
+		<control type="label">
+			<description>Reihenfolge Auf/Abwaerts</description>
+			<include>SidebarIconDimension</include>
+			<include>IconColorNF</include>
+			<label>c</label>
+			<visible>Control.IsVisible(4) + !Control.HasFocus(4) + !Container.SortDirection(Ascending)</visible>
+		</control>
+		<control type="label">
+			<description>Filter button</description>
+			<include>SidebarIconDimension</include>
+			<include>IconColorFO</include>
+			<label>ĝ</label>
+			<visible>Control.IsVisible(19) + Control.HasFocus(19) + Container.CanFilter + !Container.CanFilterAdvanced</visible>
+			<include>ContainerFilterIndikator</include>
+		</control>
+		<control type="label">
+			<description>Filter button</description>
+			<include>SidebarIconDimension</include>
+			<include>IconColorNF</include>
+			<label>ĝ</label>
+			<visible>Control.IsVisible(19) + !Control.HasFocus(19) + Container.CanFilter + !Container.CanFilterAdvanced</visible>
+			<include>ContainerFilterIndikator</include>
+		</control>
+		<control type="label">
+			<description>Advanced Filter button</description>
+			<include>SidebarIconDimension</include>
+			<include>IconColorFO</include>
+			<label>ĝ</label>
+			<visible>Control.IsVisible(20) + Control.HasFocus(20) + Container.CanFilterAdvanced</visible>
+			<include>ContainerFilterIndikator</include>
+		</control>
+		<control type="label">
+			<description>Advanced Filter button</description>
+			<include>SidebarIconDimension</include>
+			<include>IconColorNF</include>
+			<label>ĝ</label>
+			<visible>Control.IsVisible(20) + !Control.HasFocus(20) + Container.CanFilterAdvanced</visible>
+			<include>ContainerFilterIndikator</include>
+		</control>
+	</control>
+</control>
+</controls>
+</window>

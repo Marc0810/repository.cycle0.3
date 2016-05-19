@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+<!-- Cycle 0.3 -->
+<defaultcontrol always="true">9000</defaultcontrol>
+<onload>ClearProperty(AniSlideL,movieinformation)</onload><!-- Navigation Rechts Links -->
+<onunload>ClearProperty(AniSlideL,movieinformation)</onunload><!-- Navigation Rechts Links -->
+<controls>
+<include condition="Skin.HasSetting(EnableVintageOverlay)">global_vintagebackground</include>
+<include condition="!Skin.HasSetting(EnableVintageOverlay)">global_background</include>
+<include condition="!Skin.HasSetting(EnableVintageOverlay)">global_fanart</include>
+<include>global_topbar</include><!-- topbar -->
+<control type="group">
+	<animation type="Conditional" reversible="true" condition="String.IsEqual(skin.String(SelectDialog),Rating) + Window.IsVisible(selectdialog)">
+		<effect type="fade" start="100" end="0" time="150" tween="cubic" easing="inout" />
+	</animation>
+	<control type="group"><!-- Hauptseite -->
+		<control type="image"><!-- Bar -->
+			<description>Circles Bar</description>
+			<left>-500</left>
+			<top>594</top>
+			<width>3000</width>
+			<height>152</height>
+			<texture colordiffuse="$VAR[circlesCol]">views/info/bar.png</texture>
+			<visible>!Window.IsVisible(Custom_1198_Textbox.xml)</visible>
+			<include>Open_Close_Visible_Hidden_Zoom_Animation</include>
+		</control>
+		<control type="group"><!-- Hauptseite -->
+			<description>Hauptseite</description>
+			<animation effect="slide" start="0" end="1920" time="300" condition="!String.IsEmpty(Window(movieinformation).Property(AniSlideL))">Conditional</animation>
+			<include>Open_Close_Visible_Hidden_Zoom_Animation</include>
+			<visible>!Window.IsVisible(Custom_1198_Textbox.xml)</visible>
+			<control type="list" id="9000">
+				<left>860</left>
+				<top>594</top>
+				<width>900</width>
+				<height>152</height>
+				<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.Logo,$VAR[Art-logo],home)</onup>
+				<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.Title,$ESCVAR[TextBoxTitle],home)</onup>
+				<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.SubTitle,$ESCVAR[TextBoxSubTitle],home)</onup>
+				<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</onup>
+				<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">ActivateWindow(1198)</onup>
+				<ondown>close</ondown>
+				<onleft>SetProperty(AniSlideL,ON,movieinformation)</onleft><!-- Property und Focus links -->
+				<onleft>9331</onleft>
+				<onright>noop</onright>
+				<orientation>horizontal</orientation>
+				<itemlayout width="222">
+					<control type="image">
+						<width>192</width>
+						<height>152</height>
+						<texture colordiffuse="$VAR[circlesColInner]">rings/inner-ring.png</texture>
+					</control>
+					<include>CircleInfoIcon</include>
+					<control type="image">
+						<width>192</width>
+						<height>152</height>
+						<texture colordiffuse="$VAR[circlesCol]">rings/outer-ring.png</texture>
+					</control>
+				</itemlayout>
+				<focusedlayout width="222">
+					<control type="image">
+						<width>192</width>
+						<height>152</height>
+						<texture colordiffuse="$VAR[secondaryCol]">rings/inner-ring.png</texture>
+						<visible>Control.HasFocus(9000)</visible>
+					</control>
+					<control type="image">
+						<width>192</width>
+						<height>152</height>
+						<texture colordiffuse="$VAR[circlesColInner]">rings/inner-ring.png</texture>
+						<visible>!Control.HasFocus(9000)</visible>
+					</control>
+					<include>CircleInfoIcon</include>
+					<control type="image">
+						<width>192</width>
+						<height>152</height>
+						<texture colordiffuse="$VAR[circlesCol]">rings/outer-ring.png</texture>
+					</control>
+				</focusedlayout>
+				<content>
+					<item id="22">
+						<description>Aktualisieren</description>
+						<label>$LOCALIZE[184]</label>
+						<onclick>SendClick(2001,6)</onclick>
+						<label2>i</label2>
+						<visible>Control.IsVisible(6) + !String.IsEmpty(ListItem.DBTYPE)</visible>
+					</item>
+					<item id="23">
+						<description>Cover holen</description>
+						<label>$LOCALIZE[13405]</label>
+						<onclick>SendClick(2001,10)</onclick>
+						<label2>Â</label2>
+						<visible>Control.IsVisible(10) + !String.IsEmpty(ListItem.DBTYPE)</visible>
+					</item>
+					<item id="24">
+						<description>Fanart holen</description>
+						<label>$LOCALIZE[20413]</label>
+						<onclick>SendClick(2001,12)</onclick>
+						<label2>À</label2>
+						<visible>Control.IsVisible(12) + !String.IsEmpty(ListItem.DBTYPE)</visible>
+					</item>
+					<item id="25">
+						<description>Userrating</description>
+						<label>-</label>
+						<label2>ħ</label2>
+						<onclick>Skin.SetString(SelectDialog,Rating)</onclick>
+						<onclick>SendClick(2001,7)</onclick>
+						<visible>Control.IsVisible(7) + !String.IsEmpty(ListItem.DBTYPE)</visible>
+					</item>
+				</content>
+			</control>
+			<control type="group">
+				<description>Art</description>
+				<left>206</left>
+				<top>229</top>
+				<control type="image">
+					<description>Schatten</description>
+					<left>-13</left>
+					<top>-13</top>
+					<width>598</width>
+					<height>598</height>
+					<texture border="8" colordiffuse="ShadowColor">views/shadow8.png</texture>
+				</control>
+				<control type="image">
+					<description>Border</description>
+					<left>-5</left>
+					<top>-5</top>
+					<width>582</width>
+					<height>582</height>
+					<texture border="8" colordiffuse="$VAR[circlesCol]">views/white8.png</texture>
+				</control>
+				<control type="image"><!-- Fallback -->
+					<description>Hintergrund Farbe</description>
+					<width>572</width>
+					<height>572</height>
+					<texture colordiffuse="$VAR[primaryCol]">White.png</texture>
+				</control>
+				<control type="label">
+					<description>Fallback icon</description>
+					<width>572</width>
+					<height>572</height>
+					<align>center</align>
+					<textcolor>$VAR[circlesCol]</textcolor>
+					<font>IconInfoThumbdefault</font>
+					<label>$VAR[viewtypefallbacks]</label>
+				</control>
+				<control type="image"><!-- Art -->
+					<width>572</width>
+					<height>572</height>
+					<texture background="true">$INFO[ListItem.Icon]</texture>
+					<aspectratio>scale</aspectratio>
+					<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+				</control>
+				<include content="texture_vintageoverlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
+					<param name="width">572</param>
+					<param name="height">572</param>
+					<param name="texture">views/oldpaperOverlay2.png</param>
+				</include>
+				<control type="image">
+					<description>Tracknumber hintergrund</description>
+					<left>492</left>
+					<top>20</top>
+					<width>130</width>
+					<height>130</height>
+					<texture colordiffuse="$VAR[primaryCol]" flipx="true" border="0,0,14,0">cycle/right-11_Number.png</texture>
+					<visible>!String.IsEmpty(ListItem.Tracknumber) + String.Contains(ListItem.DBTYPE,song)</visible>
+				</control>
+				<control type="label">
+					<description>Tracknumber</description>
+					<left>492</left>
+					<top>20</top>
+					<width>130</width>
+					<height>110</height>
+					<align>center</align>
+					<label>$VAR[TrackPrefix]$INFO[ListItem.TrackNumber]</label>
+					<textcolor>TextColorFO</textcolor>
+					<font>EpisodeNumber</font>
+					<visible>!String.IsEmpty(ListItem.Tracknumber) + String.Contains(ListItem.DBTYPE,song)</visible>
+				</control>
+				<control type="group"><!-- rating -->
+					<description>Media Overlay rating</description>
+					<left>222</left>
+					<top>548</top>
+					<visible>!String.IsEmpty(ListItem.DBTYPE)</visible>
+					<control type="image">
+						<width>149</width>
+						<height>41</height>
+						<texture colordiffuse="$VAR[secondaryCol]">flagging/rating_bg.png</texture>
+					</control>
+					<control type="label"><!-- -19 -->
+						<top>dialogbar.top.ratingstars</top>
+						<width>130</width>
+						<height>41</height>
+						<label>$VAR[Star-Ratingback-label]</label>
+						<include>Star-Rating-color-layoutback</include>
+					</control>
+					<control type="label"><!-- -19 -->
+						<top>dialogbar.top.ratingstars</top>
+						<width>130</width>
+						<height>41</height>
+						<label>$VAR[Star-Rating-label]</label>
+						<include>Star-Rating-color-layout</include>
+					</control>
+				</control>
+			</control>
+			<control type="group"><!-- Top Info -->
+				<left>880</left>
+				<top>210</top>
+				<description>Top Info</description>
+				<control type="label">
+					<width>900</width>
+					<height>60</height>
+					<scroll>true</scroll>
+					<scrollspeed>20</scrollspeed>
+					<font>TitleCapsBig</font>
+					<label>$INFO[Listitem.Album][COLOR=$VAR[secondaryCol]]$INFO[ListItem.Year, (,)][/COLOR]</label>
+					<visible>String.Contains(ListItem.DBTYPE,album)</visible>
+				</control>
+				<control type="label">
+					<width>900</width>
+					<height>60</height>
+					<scroll>true</scroll>
+					<scrollspeed>20</scrollspeed>
+					<font>TitleCapsBig</font>
+					<label>$INFO[Listitem.Artist]</label>
+					<visible>String.Contains(ListItem.DBTYPE,artist)</visible>
+				</control>
+				<control type="label">
+					<width>900</width>
+					<height>60</height>
+					<scroll>true</scroll>
+					<scrollspeed>20</scrollspeed>
+					<font>TitleCapsBig</font>
+					<label>$INFO[ListItem.Title][COLOR=$VAR[secondaryCol]]$INFO[ListItem.Year, (,)][/COLOR]</label>
+					<visible>String.Contains(ListItem.DBTYPE,song)</visible>
+				</control>
+				<control type="label">
+					<top>50</top>
+					<width>900</width>
+					<height>60</height>
+					<scroll>true</scroll>
+					<scrollspeed>20</scrollspeed>
+					<label>$INFO[Listitem.Artist]</label>
+					<visible>String.Contains(ListItem.DBTYPE,album) | String.Contains(ListItem.DBTYPE,song)</visible>
+				</control>
+				<control type="textbox" id="9005">
+					<top>116</top>
+					<width>850</width>
+					<height max="182">auto</height>
+					<font>Plot</font>
+					<autoscroll time="5000" delay="8000" repeat="5000">true</autoscroll>
+					<label fallback="Kein Überblick gefunden">$INFO[ListItem.Property(Artist_Description),,[CR]]$INFO[ListItem.Property(Album_Description),,[CR]]$INFO[ListItem.Comment]</label>
+				</control>
+				<control type="label">
+					<top>320</top>
+					<width>900</width>
+					<height>60</height>
+					<font>SubTitleCapsBold</font>
+					<wrapmultiline>true</wrapmultiline>
+					<label fallback="Kein Genre gefunden">$INFO[ListItem.Genre]</label>
+				</control>
+			</control>
+			<control type="group"><!-- Subinfo Album -->
+				<description>Album_Mood</description>
+				<left>880</left>
+				<top>800</top>
+				<visible>String.Contains(ListItem.DBTYPE,album)</visible>
+				<control type="label">
+					<include>info_details_title</include>
+					<label>$LOCALIZE[175]</label>
+				</control>
+				<control type="label">
+					<include>info_details_label</include>
+					<label fallback="nicht verfügbar">$INFO[ListItem.Property(Album_Mood)]</label>
+				</control>
+			</control>
+			<control type="group">
+				<description>Album_Style</description>
+				<left>1360</left>
+				<top>800</top>
+				<visible>String.Contains(ListItem.DBTYPE,album)</visible>
+				<control type="label">
+					<include>info_details_title</include>
+					<label>$LOCALIZE[176]</label>
+				</control>
+				<control type="label">
+					<include>info_details_label</include>
+					<label fallback="nicht verfügbar">$INFO[ListItem.Property(Album_Style)]</label>
+				</control>
+			</control>
+			<control type="group">
+				<description>Album_Style</description>
+				<left>880</left>
+				<top>940</top>
+				<visible>String.Contains(ListItem.DBTYPE,album)</visible>
+				<control type="label">
+					<include>info_details_title</include>
+					<label>Typ</label>
+				</control>
+				<control type="label">
+					<include>info_details_label</include>
+					<label fallback="nicht verfügbar">$INFO[ListItem.Property(Album_Type)]</label>
+				</control>
+			</control>
+			<control type="group">
+				<description>Album_Theme</description>
+				<left>1360</left>
+				<top>940</top>
+				<visible>String.Contains(ListItem.DBTYPE,album)</visible>
+				<control type="label">
+					<include>info_details_title</include>
+					<label>$LOCALIZE[21895]</label>
+				</control>
+				<control type="label">
+					<include>info_details_label</include>
+					<label fallback="nicht verfügbar">$INFO[ListItem.Property(Album_Theme)]</label>
+				</control>
+			</control>
+			<control type="group"><!-- Subinfo Artist -->
+				<description>Artist_Born</description>
+				<left>880</left>
+				<top>800</top>
+				<visible>String.Contains(ListItem.DBTYPE,artist)</visible>
+				<control type="label">
+					<include>info_details_title</include>
+					<label>$LOCALIZE[21893]</label>
+				</control>
+				<control type="label">
+					<include>info_details_label</include>
+					<label fallback="nicht verfügbar">$INFO[ListItem.Property(Artist_Born)]</label>
+				</control>
+			</control>
+			<control type="group">
+				<description>Artist_YearsActive</description>
+				<left>1360</left>
+				<top>800</top>
+				<visible>String.Contains(ListItem.DBTYPE,artist)</visible>
+				<control type="label">
+					<include>info_details_title</include>
+					<label>$LOCALIZE[21898]</label>
+				</control>
+				<control type="label">
+					<include>info_details_label</include>
+					<label fallback="nicht verfügbar">$INFO[ListItem.Property(Artist_YearsActive)]</label>
+				</control>
+			</control>
+			<control type="group">
+				<description>Artist_Style</description>
+				<left>880</left>
+				<top>940</top>
+				<visible>String.Contains(ListItem.DBTYPE,artist)</visible>
+				<control type="label">
+					<include>info_details_title</include>
+					<label>$LOCALIZE[176]</label>
+				</control>
+				<control type="label">
+					<include>info_details_label</include>
+					<label fallback="nicht verfügbar">$INFO[ListItem.Property(Artist_Style)]</label>
+				</control>
+			</control>
+			<control type="group">
+				<description>Artist_Mood</description>
+				<left>1360</left>
+				<top>940</top>
+				<visible>String.Contains(ListItem.DBTYPE,artist)</visible>
+				<control type="label">
+					<include>info_details_title</include>
+					<label>$LOCALIZE[175]</label>
+				</control>
+				<control type="label">
+					<include>info_details_label</include>
+					<label fallback="nicht verfügbar">$INFO[ListItem.Property(Artist_Mood)]</label>
+				</control>
+			</control>
+			<control type="label">
+				<description>Textbox icon</description>
+				<left>1780</left>
+				<top>330</top>
+				<height>50</height>
+				<width>80</width>
+				<align>center</align>
+				<font>IconPlotzoom</font>
+				<textcolor>TextColorLight</textcolor>
+				<label>o</label>
+				<visible>!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden) + Control.HasFocus(9000) + !Control.HasFocus(9001) + String.IsEmpty(Window(movieinformation).Property(AniSlideR))</visible>
+			</control>
+			<control type="group"><!-- song ohne Discnumber -->
+				<left>880</left>
+				<top>800</top>
+				<visible>!Integer.IsGreater(listitem.discnumber,1) + String.Contains(ListItem.DBTYPE,song)</visible>
+				<control type="label">
+					<include>info_details_title</include>
+					<label>$LOCALIZE[558]</label>
+				</control>
+				<control type="label">
+					<include>info_details_label</include>
+					<label fallback="nicht verfügbar">$INFO[ListItem.Album]</label>
+				</control>
+			</control>
+			<control type="group"><!-- song mit Discnumber -->
+				<left>880</left>
+				<top>800</top>
+				<visible>Integer.IsGreater(listitem.discnumber,1) + String.Contains(ListItem.DBTYPE,song)</visible>
+				<control type="label">
+					<include>info_details_title</include>
+					<label>$LOCALIZE[558]</label>
+				</control>
+				<control type="label">
+					<include>info_details_label</include>
+					<label fallback="nicht verfügbar">$INFO[ListItem.Album]$INFO[listitem.discnumber, - $LOCALIZE[427] ]</label>
+				</control>
+			</control>
+		</control>
+	</control>
+	<control type="group"><!-- Linke Seite Fanart Slideshow -->
+		<left>-1920</left>
+		<top>119</top>
+		<visible>Control.HasFocus(9331)</visible>
+		<animation type="WindowOpen" reversible="false">
+			<effect type="fade" start="0" end="100" delay="200" time="350" tween="cubic" easing="inout" />
+			<effect type="zoom" start="70" end="100" delay="200" time="350" tween="cubic" easing="inout" center="960,540"/>
+		</animation>
+		<animation type="WindowClose" reversible="false">
+			<effect type="fade" delay="0" start="100" end="0" time="250" tween="cubic" easing="inout" />
+			<effect type="zoom" delay="0" start="100" end="70" time="250" tween="cubic" easing="inout" center="960,540"/>
+		</animation>
+		<animation effect="slide" start="0" end="1920" time="300" condition="!String.IsEmpty(Window(movieinformation).Property(AniSlideL))">Conditional</animation>
+		<control type="group">
+			<left>220</left>
+			<animation type="Conditional" condition="Window.IsVisible(shutdownmenu)">
+				<effect type="slide" start="0,0" end="230,0" time="120" />
+			</animation>
+			<control type="label">
+				<description>Titel</description>
+				<top>-70</top>
+				<width>auto</width>
+				<height>66</height>
+				<font>BoldCDNormal</font>
+				<label>$INFO[ListItem.Artist]$INFO[ListItem.Title, [COLOR=TextColorLight](,)[/COLOR]]</label>
+				<visible>String.Contains(ListItem.DBTYPE,album) | String.Contains(ListItem.DBTYPE,song)</visible>
+			</control>
+			<control type="label">
+				<description>Titel</description>
+				<top>-70</top>
+				<width>auto</width>
+				<height>66</height>
+				<font>BoldCDNormal</font>
+				<label>$INFO[ListItem.Artist]</label>
+				<visible>String.Contains(ListItem.DBTYPE,artist)</visible>
+			</control>
+			<control type="image"><!-- Art -->
+				<description>Border</description>
+				<left>-5</left>
+				<top>-5</top>
+				<width>1505</width>
+				<height>851</height>
+				<texture border="8" colordiffuse="$VAR[circlesCol]">views/white8.png</texture>
+			</control>
+			<control type="image"><!-- Art -->
+				<description>Hintergrund Farbe</description>
+				<width>1495</width>
+				<height>841</height>
+				<texture colordiffuse="$VAR[primaryCol]">views/white8.png</texture>
+			</control>
+			<control type="label">
+				<description>Fallback icon</description>
+				<width>1495</width>
+				<height>841</height>
+				<align>center</align>
+				<textcolor>$VAR[circlesCol]</textcolor>
+				<font>IconInfoActordefaultFO</font>
+				<label>$VAR[viewtypefallbacks]</label>
+				<visible>!String.IsEmpty(ListItem.Art(fanart))</visible>
+			</control>
+			<control type="label">
+				<description>Fallback</description>
+				<top>600</top>
+				<width>1495</width>
+				<height>251</height>
+				<align>center</align>
+				<font>BoldCDNormal</font>
+				<label>Kein Fanart oder Extrafanart verfügbar!</label>
+				<textcolor>$VAR[circlesCol]</textcolor>
+				<visible>!String.IsEmpty(ListItem.Art(fanart))</visible>
+			</control>
+			<control type="multiimage" id="2222">
+				<description>Multi Art</description>
+				<width>1495</width>
+				<height>841</height>
+				<timeperimage>2500</timeperimage>
+				<randomize>true</randomize>
+				<fadetime>800</fadetime>
+				<imagepath>$INFO[ListItem.Path,,/extrafanart/]</imagepath>
+			</control>
+			<control type="image">
+				<description>Fanart wenn multi leer</description>
+				<width>1495</width>
+				<height>841</height>
+				<texture background="true">$INFO[ListItem.Art(fanart)]</texture>
+				<aspectratio>scale</aspectratio>
+				<visible>!String.IsEmpty(ListItem.Art(fanart)) | !String.IsEmpty(Control.GetLabel(2222))</visible>
+			</control>
+			<control type="wraplist" id="5001">
+				<description>Wrap info unten</description>
+				<left>10</left>
+				<top>850</top>
+				<height>80</height>
+				<width>1760</width>
+				<autoscroll time="3000" delay="8000" repeat="5000">Control.HasFocus(9444)</autoscroll>
+				<scrolltime tween="cubic" easing="inout">3400</scrolltime>
+				<orientation>vertical</orientation>
+				<viewtype>list</viewtype>
+				<itemlayout width="1760" height="80">
+					<control type="label">
+						<width>1760</width>
+						<height>84</height>
+						<font>BoldCDNormal</font>
+						<wrapmultiline>true</wrapmultiline>
+						<scroll>true</scroll>
+						<label>$INFO[ListItem.Label]</label>
+						<animation type="Conditional" condition="true">
+							<effect type="fade" start="100" end="0" delay="1600" time="400" />
+						</animation>
+					</control>
+				</itemlayout>
+				<focusedlayout width="1760" height="80">
+					<control type="label">
+						<width>1760</width>
+						<height>84</height>
+						<font>BoldCDNormal</font>
+						<wrapmultiline>true</wrapmultiline>
+						<scroll>true</scroll>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</focusedlayout>
+				<content>
+					<item id="1">
+						<label>$INFO[ListItem.Album]$VAR[CustomEnumeration]$INFO[ListItem.Year, Album aus dem Jahr ,]</label>
+						<onclick>noop</onclick>
+						<visible>[String.Contains(ListItem.DBTYPE,album) | String.Contains(ListItem.DBTYPE,song)] + !String.IsEmpty(ListItem.Album)</visible>
+					</item>
+					<item id="2">
+						<label>$INFO[ListItem.Genre , Genre ,]</label>
+						<onclick>noop</onclick>
+						<visible>[String.Contains(ListItem.DBTYPE,album) | String.Contains(ListItem.DBTYPE,song)] + !String.IsEmpty(ListItem.Genre)</visible>
+					</item>
+					<item id="3">
+						<label>ss$INFO[ListItem.Artists]$INFO[ListItem.Artist_Genre, InterpretenGenre ,]</label>
+						<onclick>noop</onclick>
+						<visible>String.Contains(ListItem.DBTYPE,artist) + !String.IsEmpty(Artist_Genre)</visible>
+					</item>
+					<item id="4">
+						<label>$INFO[ListItem.Rating,Bewertung ,]</label>
+						<onclick>noop</onclick>
+						<visible>[String.Contains(ListItem.DBTYPE,artist) | String.Contains(ListItem.DBTYPE,album) | String.Contains(ListItem.DBTYPE,song)] + !String.IsEmpty(ListItem.Rating)</visible>
+					</item>
+					<item id="5">
+						<label>$INFO[ListItem.Property(Artist_Born),$LOCALIZE[21893] ,]</label>
+						<onclick>noop</onclick>
+						<visible>String.Contains(ListItem.DBTYPE,artist) + !String.IsEmpty(ListItem.Property(Artist_Born) )</visible>
+					</item>
+					<item id="6">
+						<label>$INFO[ListItem.Property(Artist_Died),$LOCALIZE[21897] ,]</label>
+						<onclick>noop</onclick>
+						<visible>String.Contains(ListItem.DBTYPE,artist) + !String.IsEmpty(ListItem.Property(Artist_Died) )</visible>
+					</item>
+					<item id="7">
+						<label>$INFO[ListItem.Property(Artist_Formed),$LOCALIZE[21894] ,]</label>
+						<onclick>noop</onclick>
+						<visible>String.Contains(ListItem.DBTYPE,artist) + !String.IsEmpty(ListItem.Property(Artist_Formed) )</visible>
+					</item>
+					<item id="8">
+						<label>$INFO[ListItem.Property(Artist_Instrument),$LOCALIZE[21892] ,]</label>
+						<onclick>noop</onclick>
+						<visible>String.Contains(ListItem.DBTYPE,artist) + !String.IsEmpty(ListItem.Property(Artist_Instrument) )</visible>
+					</item>
+					<item id="9">
+						<label>$INFO[ListItem.Property(Artist_YearsActive),$LOCALIZE[21898] ,]</label>
+						<onclick>noop</onclick>
+						<visible>String.Contains(ListItem.DBTYPE,artist) + !String.IsEmpty(ListItem.Property(Artist_YearsActive) )</visible>
+					</item>
+					<item id="10">
+						<label>$INFO[ListItem.Property(Artist_Style),$LOCALIZE[176] ,]</label>
+						<onclick>noop</onclick>
+						<visible>String.Contains(ListItem.DBTYPE,artist) + !String.IsEmpty(ListItem.Property(Artist_Style) )</visible>
+					</item>
+					<item id="11">
+						<label>$INFO[ListItem.Property(Artist_Mood),$LOCALIZE[175] ,]</label>
+						<onclick>noop</onclick>
+						<visible>String.Contains(ListItem.DBTYPE,artist) + !String.IsEmpty(ListItem.Property(Artist_Mood) )</visible>
+					</item>
+					<item id="12">
+						<label>$INFO[ListItem.Property(Album_Type),$LOCALIZE[146] ,]</label>
+						<onclick>noop</onclick>
+						<visible>String.Contains(ListItem.DBTYPE,album) + !String.IsEmpty(ListItem.Property(Album_Type) )</visible>
+					</item>
+					<item id="13">
+						<label>$INFO[ListItem.Property(Album_Mood),$LOCALIZE[175] ,]</label>
+						<onclick>noop</onclick>
+						<visible>String.Contains(ListItem.DBTYPE,album) + !String.IsEmpty(ListItem.Property(Album_Mood))</visible>
+					</item>
+					<item id="14">
+						<label>$INFO[ListItem.Property(Album_Style),$LOCALIZE[176] ,]</label>
+						<onclick>noop</onclick>
+						<visible>String.Contains(ListItem.DBTYPE,album) + !String.IsEmpty(ListItem.Property(Album_Style))</visible>
+					</item>
+					<item id="15">
+						<label>$INFO[ListItem.Property(Album_Theme),$LOCALIZE[21895] ,]</label>
+						<onclick>noop</onclick>
+						<visible>String.Contains(ListItem.DBTYPE,album) + !String.IsEmpty(ListItem.Property(Album_Theme))</visible>
+					</item>
+				</content>
+			</control>
+		</control>
+	</control>
+</control>
+<!-- Fanart left Button -->
+<control type="button" id="9331">
+	<description>Focus links fanart navigationsbutton</description>
+	<visible allowhiddenfocus="true">false</visible>
+	<onclick>9000</onclick>
+	<onclick>ClearProperty(AniSlideL,movieinformation)</onclick>
+	<onright>ClearProperty(AniSlideL,movieinformation)</onright><!-- Property Clear für Animation zurueck zur Hauptseite -->
+	<ondown>close</ondown>
+	<onright>9000</onright>
+</control>
+<control type="button" id="6">
+	<description>Aktualisieren</description>
+	<include>HiddenControl</include>
+</control>
+<control type="button" id="10">
+	<description>Cover holen</description>
+	<include>HiddenControl</include>
+</control>
+<control type="button" id="12">
+	<description>Fanart holen</description>
+	<include>HiddenControl</include>
+</control>
+<control type="button" id="7">
+	<description>Userrating</description>
+	<include>HiddenControl</include>
+</control>
+</controls>
+</window>

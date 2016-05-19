@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+<!-- Cycle 0.3 -->
+<defaultcontrol always="true">3</defaultcontrol>
+<onload>Skin.reset(SelectDialog)</onload>
+<onunload>Skin.reset(SelectDialog)</onunload>
+<coordinates>
+	<system>1</system>
+	<left>0</left>
+	<top>0</top>
+</coordinates>
+<controls>
+<control type="group">
+	<top>985</top>
+	<include>OSDDialog_popup_Animation</include>
+	<visible>!Window.IsVisible(fullscreeninfo) + !Window.IsVisible(sliderdialog)</visible>
+	<control type="image">
+		<description>Background</description>
+		<top>-30</top>
+		<width>1920</width>
+		<height>135</height>
+		<texture background="true" colordiffuse="$VAR[DialogCol]">White.png</texture>
+	</control>
+	<control type="progress"><!-- Progress -->
+		<description>Progress Bar</description>
+		<top>-30</top>
+		<width>1920</width>
+		<height>30</height>
+		<info>Player.Progress</info>
+		<texturebg colordiffuse="$VAR[secondaryCol]">dialogs/progress/bg.png</texturebg>
+		<lefttexture colordiffuse="$VAR[primaryCol]">dialogs/progress/left.png</lefttexture>
+		<midtexture colordiffuse="$VAR[primaryCol]">dialogs/progress/left.png</midtexture>
+		<righttexture colordiffuse="$VAR[primaryCol]">dialogs/progress/right.png</righttexture>
+	</control>
+	<control type="grouplist" id="9000"><!-- mitte -->
+		<left>715</left>
+		<top>5</top>
+		<width>600</width>
+		<height>100</height>
+		<itemgap>0</itemgap>
+		<orientation>horizontal</orientation>
+		<onleft>9000</onleft>
+		<onright>9000</onright>
+		<onup>Close</onup>
+		<ondown>Close</ondown>
+		<control type="button" id="620">
+			<description>Rating</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<onclick>Skin.SetString(SelectDialog,Rating)</onclick>
+			<onclick>SetRating</onclick>
+		</control>
+		<control type="button" id="10">
+			<description>Vizualisierungen</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<onclick>ActivateWindow(122)</onclick>
+			<enable>Visualisation.HasPresets</enable>
+			<visible>Visualisation.HasPresets</visible>
+		</control>
+		<control type="button" id="12">
+			<description>Vizualisierungseinstellungen</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<onclick>Addon.Default.OpenSettings(xbmc.player.musicviz)</onclick>
+			<visible>Visualisation.HasPresets</visible>
+		</control>
+		<control type="button" id="15">
+			<description>Wiederholung an</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<label>-</label>
+			<altlabel>-</altlabel>
+			<texturefocus>-</texturefocus>
+			<texturenofocus>-</texturenofocus>
+			<onclick>XBMC.PlayerControl(Repeat)</onclick>
+		</control>
+		<control type="button" id="16">
+			<description>Zufall an/aus</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<label>-</label>
+			<texturefocus>-</texturefocus>
+			<texturenofocus>-</texturenofocus>
+			<onclick>XBMC.PlayerControl(Random)</onclick>
+		</control>
+		<control type="label" id="131"><!-- divider -->
+			<description>Divider</description>
+			<width>150</width>
+			<height>osdmenue.icon.height</height>
+			<label></label>
+			<visible>Visualisation.HasPresets</visible>
+		</control>
+		<control type="label" id="141"><!-- divider -->
+			<description>Divider</description>
+			<width>200</width>
+			<height>osdmenue.icon.height</height>
+			<label></label>
+			<visible>!Visualisation.HasPresets</visible>
+		</control>
+		<control type="button" id="1">
+			<description>Vorheriges</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<onclick>playercontrol(previous)</onclick>
+		</control>
+		<control type="button" id="2">
+			<description>Ruecklauf</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<onclick>playercontrol(rewind)</onclick>
+			<animation effect="fade" start="100" end="50" time="100" condition="!Player.SeekEnabled">Conditional</animation>
+			<enable>Player.SeekEnabled</enable>
+		</control>
+		<control type="togglebutton" id="3">
+			<description>Play/Pause</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<label>-</label>
+			<altlabel>-</altlabel>
+			<texturefocus>-</texturefocus>
+			<texturenofocus>-</texturenofocus>
+			<alttexturefocus>-</alttexturefocus>
+			<alttexturenofocus>-</alttexturenofocus>
+			<onclick>playercontrol(play)</onclick>
+		</control>
+		<control type="button" id="4">
+			<description>Stop</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<onclick>playercontrol(stop)</onclick>
+		</control>
+		<control type="button" id="5">
+			<description>Forlauf</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<animation effect="fade" start="100" end="50" time="100" condition="!Player.SeekEnabled">Conditional</animation>
+			<onclick>playercontrol(forward)</onclick>
+			<enable>Player.SeekEnabled</enable>
+		</control>
+		<control type="button" id="6">
+			<description>Naechstes</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<onclick>playercontrol(next)</onclick>
+		</control>
+		<control type="label" id="151"><!-- divider -->
+			<description>Divider</description>
+			<width>150</width>
+			<height>osdmenue.icon.height</height>
+			<label></label>
+			<visible>Visualisation.HasPresets</visible>
+		</control>
+		<control type="label" id="161"><!-- divider -->
+			<description>Divider</description>
+			<width>200</width>
+			<height>osdmenue.icon.height</height>
+			<label></label>
+			<visible>!Visualisation.HasPresets</visible>
+		</control>
+		<control type="button" id="14">
+			<description>Playliste oeffnen</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<onclick>Dialog.close(musicosd)</onclick>
+			<onclick>activateWindow(musicplaylist)</onclick>
+			<visible>!String.IsEqual(Playlist.Length(music),1)</visible>
+		</control>
+		<control type="button" id="17">
+			<description>Info an/aus</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<onclick>Skin.ToggleSetting(DisableShowMusicInfo)</onclick>
+		</control>
+		<control type="button" id="20">
+			<description>MCE theme 1/2</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<onclick>Skin.ToggleSetting(EnableMCEMusicViz)</onclick>
+			<visible>!Skin.HasSetting(DisableMusicMCE)</visible>
+		</control>
+		<!-- color theme switch -->
+		<control type="button" id="22">
+			<description>Color theme hell/dunkel</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<onclick>Skin.ToggleSetting(Colorswitch)</onclick>
+		</control>
+		<!-- viz switch -->
+		<control type="button" id="24">
+			<description>Viz an/aus</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<onclick>Skin.ToggleSetting(DisableMusicMCE)</onclick>
+		</control>
+	</control>
+	<control type="grouplist"><!-- mitte icons -->
+		<width>1920</width>
+		<height>120</height>
+		<align>center</align>
+		<aligny>center</aligny>
+		<itemgap>0</itemgap>
+		<orientation>horizontal</orientation>
+		<control type="label">
+			<description>Rating</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<label>ŧ</label>
+			<visible>Control.IsVisible(620) + Control.HasFocus(620)</visible>
+		</control>
+		<control type="label">
+			<description>Rating</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<label>ŧ</label>
+			<visible>Control.IsVisible(620) + !Control.HasFocus(620)</visible>
+		</control>
+		<control type="label">
+			<description>Vizualisierungen</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<label>ŵ</label>
+			<visible>Control.IsVisible(10) + Control.HasFocus(10) + Visualisation.HasPresets</visible>
+		</control>
+		<control type="label">
+			<description>Vizualisierungen</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<label>ŵ</label>
+			<visible>Control.IsVisible(10) + !Control.HasFocus(10) + Visualisation.HasPresets</visible>
+		</control>
+		<control type="label">
+			<description>Vizualisierungseinstellungen</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<label>Ŵ</label>
+			<visible>Control.IsVisible(12) + Control.HasFocus(12) + Visualisation.HasPresets</visible>
+		</control>
+		<control type="label">
+			<description>Vizualisierungseinstellungen</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<label>Ŵ</label>
+			<visible>Control.IsVisible(12) + !Control.HasFocus(12) + Visualisation.HasPresets</visible>
+		</control>
+		<control type="label">
+			<description>Repeat/Random</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<label>$VAR[OSD-playercontrol-repeat]</label>
+			<visible>Control.IsVisible(15) + Control.HasFocus(15)</visible>
+		</control>
+		<control type="label">
+			<description>Repeat/Random</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<label>$VAR[OSD-playercontrol-repeat]</label>
+			<visible>Control.IsVisible(15) + !Control.HasFocus(15)</visible>
+		</control>
+		<control type="label">
+			<description>Zufall an/aus</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<label>$VAR[OSD-playercontrol-random]</label>
+			<visible>Control.IsVisible(16) + !Control.HasFocus(16)</visible>
+		</control>
+		<control type="label">
+			<description>Zufall an/aus</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<label>$VAR[OSD-playercontrol-random]</label>
+			<visible>Control.IsVisible(16) + Control.HasFocus(16)</visible>
+		</control>
+		<control type="label"><!-- divider -->
+			<description>Divider</description>
+			<width>150</width>
+			<height>osdmenue.icon.height</height>
+			<label></label>
+			<visible>Visualisation.HasPresets</visible>
+		</control>
+		<control type="label"><!-- divider -->
+			<description>Divider</description>
+			<width>200</width>
+			<height>osdmenue.icon.height</height>
+			<label></label>
+			<visible>!Visualisation.HasPresets</visible>
+		</control>
+		<control type="label">
+			<description>Prev</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<label>Ŭ</label>
+			<visible>Control.IsVisible(1) + Control.HasFocus(1)</visible>
+		</control>
+		<control type="label">
+			<description>Prev</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<label>Ŭ</label>
+			<visible>Control.IsVisible(1) + !Control.HasFocus(1)</visible>
+		</control>
+		<control type="label">
+			<description>Rewind</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<label>ŭ</label>
+			<visible>Control.IsVisible(2) + Control.HasFocus(2)</visible>
+		</control>
+		<control type="label">
+			<description>Rewind</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<label>ŭ</label>
+			<visible>Control.IsVisible(2) + !Control.HasFocus(2)</visible>
+		</control>
+		<control type="label">
+			<description>Play/pause</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<label>$VAR[playercontrol-play]</label>
+			<visible>Control.IsVisible(3) + Control.HasFocus(3)</visible>
+		</control>
+		<control type="label">
+			<description>Play/pause</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<label>$VAR[playercontrol-play]</label>
+			<visible>Control.IsVisible(3) + !Control.HasFocus(3)</visible>
+		</control>
+		<control type="label">
+			<description>Stop</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<label>Ů</label>
+			<visible>Control.IsVisible(4) + Control.HasFocus(4)</visible>
+		</control>
+		<control type="label">
+			<description>Stop</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<label>Ů</label>
+			<visible>Control.IsVisible(4) + !Control.HasFocus(4)</visible>
+		</control>
+		<control type="label">
+			<description>Ffwd</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<label>Ũ</label>
+			<visible>Control.IsVisible(5) + Control.HasFocus(5)</visible>
+		</control>
+		<control type="label">
+			<description>Ffwd</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<label>Ũ</label>
+			<visible>Control.IsVisible(5) + !Control.HasFocus(5)</visible>
+		</control>
+		<control type="label">
+			<description>Next</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<label>ũ</label>
+			<visible>Control.IsVisible(6) + Control.HasFocus(6)</visible>
+		</control>
+		<control type="label">
+			<description>Next</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<label>ũ</label>
+			<visible>Control.IsVisible(6) + !Control.HasFocus(6)</visible>
+		</control>
+		<control type="label"><!-- divider -->
+			<description>Divider</description>
+			<width>150</width>
+			<height>osdmenue.icon.height</height>
+			<label></label>
+			<visible>Visualisation.HasPresets</visible>
+		</control>
+		<control type="label"><!-- divider -->
+			<description>Divider</description>
+			<width>200</width>
+			<height>osdmenue.icon.height</height>
+			<label></label>
+			<visible>!Visualisation.HasPresets</visible>
+		</control>
+		<control type="label">
+			<description>Playliste</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<label>Ť</label>
+			<visible>Control.IsVisible(14) + Control.HasFocus(14)</visible>
+		</control>
+		<control type="label">
+			<description>Playliste</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<label>Ť</label>
+			<visible>Control.IsVisible(14) + !Control.HasFocus(14)</visible>
+		</control>
+		<control type="label">
+			<description>Info an/aus</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<label>ţ</label>
+			<visible>Control.IsVisible(17) + Control.HasFocus(17)</visible>
+		</control>
+		<control type="label">
+			<description>Info an/aus</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<label>ţ</label>
+			<visible>Control.IsVisible(17) + !Control.HasFocus(17)</visible>
+		</control>
+		<control type="label">
+			<description>MCE theme 1/2</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<label>š</label>
+			<visible>Control.IsVisible(20) + Control.HasFocus(20) + !Skin.HasSetting(DisableMusicMCE)</visible>
+		</control>
+		<control type="label">
+			<description>MCE theme 1/2</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<label>š</label>
+			<visible>Control.IsVisible(20) + !Control.HasFocus(20) + !Skin.HasSetting(DisableMusicMCE)</visible>
+		</control>
+		<control type="label">
+			<description>Color theme hell/dunkel</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<label>Š</label>
+			<visible>Control.IsVisible(22) + Control.HasFocus(22)</visible>
+		</control>
+		<control type="label">
+			<description>Color theme hell/dunkel</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<label>Š</label>
+			<visible>Control.IsVisible(22) + !Control.HasFocus(22)</visible>
+		</control>
+		<control type="label">
+			<description>Viz oder thema</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<label>Ţ</label>
+			<visible>Control.IsVisible(24) + Control.HasFocus(24)</visible>
+		</control>
+		<control type="label">
+			<description>Viz oder thema</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<font>IconOSDButtons</font>
+			<textcolor>TextColorLight</textcolor>
+			<label>Ţ</label>
+			<visible>Control.IsVisible(24) + !Control.HasFocus(24)</visible>
+		</control>
+	</control>
+</control>
+</controls>
+</window>

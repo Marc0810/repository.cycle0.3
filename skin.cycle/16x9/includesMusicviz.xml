@@ -1,0 +1,1503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+<!-- Cycle 0.3 -->
+<!-- ######################### -->
+<!-- MusicVizbackground 
+############################## -->
+<include name="MusicVizbackground">
+	<control type="group"><!-- visualisation -->
+		<visible>Skin.HasSetting(DisableMusicMCE)</visible>
+		<control type="visualisation">
+			<width>1920</width>
+			<height>1080</height>
+			<visible>Player.HasAudio</visible>
+		</control>
+		<control type="image">
+			<description>Vignette zum Abdunkeln der Ecken</description>
+			<width>1920</width>
+			<height>1080</height>
+			<texture colordiffuse="$VAR[ColorswitchInv]">special://skin/backgrounds/MusicVizMatte.png</texture>
+			<include>Open_Close_Visible_Hidden_Fade_Animation</include>
+			<animation type="Conditional" condition="true">
+				<effect type="fade" start="0" end="60" time="180" />
+			</animation>
+		</control>
+	</control>
+	<control type="group">
+		<visible>!Skin.HasSetting(DisableMusicMCE)</visible>
+		<control type="wraplist" id="6112">
+			<include>Compaircontainer</include>
+			<content target="music">special://skin/playlists/defaults/Musik_Slideshow.xsp</content>
+			<autoscroll time="13000" delay="1000" repeat="15000">true</autoscroll>
+		</control>
+		<control type="image">
+			<description>Hintergrund</description>
+			<width>1920</width>
+			<height>1080</height>
+			<texture colordiffuse="$VAR[Colorswitch]">White.png</texture>
+			<include>Visible_Hidden_Background_Fade_Animation</include>
+		</control>
+		<control type="image">
+			<description>Hintergrund invers</description>
+			<width>1920</width>
+			<height>1080</height>
+			<texture colordiffuse="FF000000">White.png</texture>
+			<visible>Skin.HasSetting(Colorswitch)</visible>
+			<include>Visible_Hidden_Background_Fade_Animation</include>
+		</control>
+		<control type="group"><!-- mce visualisierung -->
+			<animation type="Conditional" condition="!Integer.IsGreater(System.Time(ss),20)">
+				<effect type="slide" end="0,-240" time="1980" />
+			</animation>
+			<animation type="Conditional" condition="Integer.IsGreater(System.Time(ss),41)">
+				<effect type="slide" end="0,0" time="1980" />
+			</animation>
+			<control type="group"><!-- Line 1 -->
+				<control type="group">
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="100" time="1350" tween="cubic" easing="inout" />
+						<effect type="zoom" start="130" end="100" delay="100" time="1350" tween="cubic" easing="inout" center="240,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor1]">White.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture colordiffuse="52338d67">musicviz/MCEViz1.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF338D67">White.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF338D67">musicviz/MCEcolortable.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<left>240</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="100" time="1650" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="100" time="1650" tween="cubic" easing="inout" center="480,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<fadetime>300</fadetime>
+						<aspecratio>scale</aspecratio>
+						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem.Art(thumb)]</texture>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+					</control>
+				</control>
+				<control type="group">
+					<left>480</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="200" time="1150" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="200" time="1150" tween="cubic" easing="inout" center="720,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor3]">White.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture colordiffuse="1Af1f1f1">musicviz/MCEViz3.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF2472A4">White.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF2472A4">musicviz/MCEcolortable.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<left>720</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="0" time="950" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="0" time="950" tween="cubic" easing="inout" center="960,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<fadetime>350</fadetime>
+						<aspecratio>scale</aspecratio>
+						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(1).Art(thumb)]</texture>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+					</control>
+				</control>
+				<control type="group">
+					<left>960</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="0" time="1750" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="0" time="1750" tween="cubic" easing="inout" center="1200,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<fadetime>320</fadetime>
+						<aspecratio>scale</aspecratio>
+						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(2).Art(thumb)]</texture>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+					</control>
+				</control>
+				<control type="group">
+					<left>1200</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="100" time="1150" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="100" time="1150" tween="cubic" easing="inout" center="1200,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor4]">White.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture colordiffuse="29F1F1F1">musicviz/MCEViz4.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBEA30C">White.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBEA30C">musicviz/MCEcolortable.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<left>1440</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="100" time="1050" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="100" time="1050" tween="cubic" easing="inout" center="1440,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor2]">White.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture colordiffuse="39F1F1F1">musicviz/MCEViz2.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBFB49F">White.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBFB49F">musicviz/MCEcolortable.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<left>1680</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="300" time="950" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="300" time="950" tween="cubic" easing="inout" center="1440,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<fadetime>310</fadetime>
+						<aspecratio>scale</aspecratio>
+						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(3).Art(thumb)]</texture>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+					</control>
+				</control>
+			</control>
+			<control type="group"><!-- Line 2 -->
+				<top>240</top>
+				<control type="group">
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="100" time="1250" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="100" time="1250" tween="cubic" easing="inout" center="240,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<fadetime>340</fadetime>
+						<aspecratio>scale</aspecratio>
+						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(4).Art(thumb)]</texture>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+					</control>
+				</control>
+				<control type="group">
+					<left>240</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="100" time="1650" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="100" time="1650" tween="cubic" easing="inout" center="480,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor3]">White.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture flipx="true" colordiffuse="38F1F1F1">musicviz/MCEViz5.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF2472A4">White.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF2472A4">musicviz/MCEcolortable.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<left>480</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="400" time="1650" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="400" time="1650" tween="cubic" easing="inout" center="720,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<fadetime>300</fadetime>
+						<aspecratio>scale</aspecratio>
+						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem.Art(thumb)]</texture>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+					</control>
+				</control>
+				<control type="group">
+					<left>720</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="200" time="1250" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="200" time="1250" tween="cubic" easing="inout" center="960,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor3]">White.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture colordiffuse="29F1F1F1">musicviz/MCEViz7.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBEA30C">White.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBEA30C">musicviz/MCEcolortable.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<left>960</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="300" time="1550" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="300" time="1550" tween="cubic" easing="inout" center="1200,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor5]">White.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture flipy="true" colordiffuse="39F1F1F1">musicviz/MCEViz2.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF7377AB">White.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF7377AB">musicviz/MCEcolortable.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<left>1200</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="300" time="1950" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="300" time="1950" tween="cubic" easing="inout" center="1200,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<fadetime>300</fadetime>
+						<aspecratio>scale</aspecratio>
+						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem.Art(thumb)]</texture>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+					</control>
+				</control>
+				<control type="group">
+					<left>1440</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="100" time="1150" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="100" time="1150" tween="cubic" easing="inout" center="1440,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor2]">White.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture colordiffuse="39F1F1F1">musicviz/MCEViz1.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFCF3F2E">White.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFCF3F2E">musicviz/MCEcolortable.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<left>1680</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="600" time="1250" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="600" time="1250" tween="cubic" easing="inout" center="1440,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor6]">White.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture colordiffuse="0Ff1f1f1">musicviz/MCEViz1.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBEA30C">White.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBEA30C">musicviz/MCEcolortable.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+				</control>
+			</control>
+			<control type="group"><!-- Line 3 -->
+				<top>480</top>
+				<control type="group">
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="100" time="850" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="100" time="850" tween="cubic" easing="inout" center="240,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<fadetime>350</fadetime>
+						<aspecratio>scale</aspecratio>
+						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(5).Art(thumb)]</texture>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+					</control>
+				</control>
+				<control type="group">
+					<left>240</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="100" time="1050" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="100" time="1050" tween="cubic" easing="inout" center="480,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<fadetime>300</fadetime>
+						<aspecratio>scale</aspecratio>
+						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(6).Art(thumb)]</texture>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+					</control>
+				</control>
+				<control type="group">
+					<left>480</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="100" time="1450" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="100" time="1450" tween="cubic" easing="inout" center="720,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor3]">White.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture colordiffuse="33F1F1F1">musicviz/MCEViz2.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBFB49F">White.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBFB49F">musicviz/MCEcolortable.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<left>720</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="200" time="1850" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="200" time="1850" tween="cubic" easing="inout" center="960,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor2]">White.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture colordiffuse="39F1F1F1">musicviz/MCEViz1.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFCF3F2E">White.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFCF3F2E">musicviz/MCEcolortable.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<left>960</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="600" time="1250" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="600" time="1250" tween="cubic" easing="inout" center="1200,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<fadetime>300</fadetime>
+						<aspecratio>scale</aspecratio>
+						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(7).Art(thumb)]</texture>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+					</control>
+				</control>
+				<control type="group">
+					<left>1200</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="300" time="1950" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="300" time="1950" tween="cubic" easing="inout" center="1200,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor3]">White.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture colordiffuse="33F1F1F1">musicviz/MCEViz7.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF338D67">White.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF338D67">musicviz/MCEcolortable.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<left>1440</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="800" time="1450" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="800" time="1450" tween="cubic" easing="inout" center="1440,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor7]">White.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture colordiffuse="33F1F1F1">musicviz/MCEViz3.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF7377AB">White.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF7377AB">musicviz/MCEcolortable.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<left>1680</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="100" time="1950" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="100" time="1950" tween="cubic" easing="inout" center="1440,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<fadetime>390</fadetime>
+						<aspecratio>scale</aspecratio>
+						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(8).Art(thumb)]</texture>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+					</control>
+				</control>
+			</control>
+			<control type="group"><!-- Line 4 -->
+				<top>720</top>
+				<control type="group">
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="100" time="950" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="100" time="950" tween="cubic" easing="inout" center="240,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor3]">White.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture colordiffuse="33F1F1F1">musicviz/MCEViz3.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFCF3F2E">White.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFCF3F2E">musicviz/MCEcolortable.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<left>240</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="0" time="2150" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="0" time="2150" tween="cubic" easing="inout" center="480,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor6]">White.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture flipx="true" colordiffuse="39F1F1F1">musicviz/MCEViz1.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBEA30C">White.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBEA30C">musicviz/MCEcolortable.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<left>480</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="400" time="1250" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="400" time="1250" tween="cubic" easing="inout" center="720,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<fadetime>310</fadetime>
+						<aspecratio>scale</aspecratio>
+						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(9).Art(thumb)]</texture>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+					</control>
+				</control>
+				<control type="group">
+					<left>720</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="200" time="1250" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="200" time="1250" tween="cubic" easing="inout" center="960,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor3]">White.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture colordiffuse="33F1F1F1">musicviz/MCEViz6.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF2472A4">White.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF2472A4">musicviz/MCEcolortable.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<left>960</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="300" time="1050" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="300" time="1050" tween="cubic" easing="inout" center="1200,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<fadetime>300</fadetime>
+						<aspecratio>scale</aspecratio>
+						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(10).Art(thumb)]</texture>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+					</control>
+				</control>
+				<control type="group">
+					<left>1200</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="300" time="1050" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="300" time="1050" tween="cubic" easing="inout" center="1200,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<fadetime>240</fadetime>
+						<aspecratio>scale</aspecratio>
+						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(11).Art(thumb)]</texture>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+					</control>
+				</control>
+				<control type="group">
+					<left>1440</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="100" time="2150" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="100" time="2150" tween="cubic" easing="inout" center="1440,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor5]">White.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture flipx="true" colordiffuse="30F1F1F1">musicviz/MCEViz3.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF338D67">White.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF338D67">musicviz/MCEcolortable.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<left>1680</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="100" time="1050" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="100" time="1050" tween="cubic" easing="inout" center="1440,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor6]">White.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture colordiffuse="44F1F1F1">musicviz/MCEViz4.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBFB49F">White.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBFB49F">musicviz/MCEcolortable.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+				</control>
+			</control>
+			<control type="group"><!-- Line 5 -->
+				<top>960</top>
+				<control type="group">
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="500" time="650" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="500" time="650" tween="cubic" easing="inout" center="240,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor7]">White.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture flipx="true" colordiffuse="24F1F1F1">musicviz/MCEViz7.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF7377AB">White.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF7377AB">musicviz/MCEcolortable.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<left>240</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="100" time="1650" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="100" time="1650" tween="cubic" easing="inout" center="480,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<fadetime>360</fadetime>
+						<aspecratio>scale</aspecratio>
+						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(12).Art(thumb)]</texture>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+					</control>
+				</control>
+				<control type="group">
+					<left>480</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="400" time="1250" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="400" time="1250" tween="cubic" easing="inout" center="720,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor6]">White.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture flipx="true" colordiffuse="39F1F1F1">musicviz/MCEViz4.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF338D67">White.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF338D67">musicviz/MCEcolortable.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<left>720</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="200" time="1250" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="200" time="1250" tween="cubic" easing="inout" center="960,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<fadetime>300</fadetime>
+						<aspecratio>scale</aspecratio>
+						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(13).Art(thumb)]</texture>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+					</control>
+				</control>
+				<control type="group">
+					<left>960</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="300" time="1550" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="300" time="1550" tween="cubic" easing="inout" center="1200,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor3]">White.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture colordiffuse="33F1F1F1">musicviz/MCEViz3.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBEA30C">White.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBEA30C">musicviz/MCEcolortable.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<left>1200</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="300" time="1950" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="300" time="1950" tween="cubic" easing="inout" center="1200,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<fadetime>260</fadetime>
+						<aspecratio>scale</aspecratio>
+						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(14).Art(thumb)]</texture>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+					</control>
+				</control>
+				<control type="group">
+					<left>1440</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="100" time="1150" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="100" time="1150" tween="cubic" easing="inout" center="1440,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor7]">White.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture flipx="true" colordiffuse="56F1F1F1">musicviz/MCEViz5.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFCF3F2E">White.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFCF3F2E">musicviz/MCEcolortable.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<left>1680</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="600" time="1250" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="600" time="1250" tween="cubic" easing="inout" center="1440,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<fadetime>300</fadetime>
+						<aspecratio>scale</aspecratio>
+						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(15).Art(thumb)]</texture>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+					</control>
+				</control>
+			</control>
+			<control type="group"><!-- Line 6 -->
+				<top>1200</top>
+				<control type="group">
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="100" time="2250" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="100" time="2250" tween="cubic" easing="inout" center="240,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<fadetime>280</fadetime>
+						<aspecratio>scale</aspecratio>
+						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(16).Art(thumb)]</texture>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+					</control>
+				</control>
+				<control type="group">
+					<left>240</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="100" time="2650" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="100" time="2650" tween="cubic" easing="inout" center="480,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor6]">White.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture flipx="true" colordiffuse="58F1F1F1">musicviz/MCEViz6.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBFB49F">White.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBFB49F">musicviz/MCEcolortable.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<left>480</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="400" time="2050" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="400" time="2050" tween="cubic" easing="inout" center="720,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<fadetime>300</fadetime>
+						<aspecratio>scale</aspecratio>
+						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(17).Art(thumb)]</texture>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+					</control>
+				</control>
+				<control type="group">
+					<left>720</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="200" time="1850" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="200" time="1850" tween="cubic" easing="inout" center="960,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor2]">White.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture flipx="true" colordiffuse="49f1f1f1">musicviz/MCEViz2.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF2472A4">White.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF2472A4">musicviz/MCEcolortable.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<left>960</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="300" time="1950" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="300" time="1950" tween="cubic" easing="inout" center="1200,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<fadetime>260</fadetime>
+						<aspecratio>scale</aspecratio>
+						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(18).Art(thumb)]</texture>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+					</control>
+				</control>
+				<control type="group">
+					<left>1200</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="300" time="2350" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="300" time="2350" tween="cubic" easing="inout" center="1200,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor3]">White.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture colordiffuse="33F1F1F1">musicviz/MCEViz1.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF338D67">White.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF338D67">musicviz/MCEcolortable.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<left>1440</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="900" time="1150" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="900" time="1150" tween="cubic" easing="inout" center="1440,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<fadetime>300</fadetime>
+						<aspecratio>scale</aspecratio>
+						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(19).Art(thumb)]</texture>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+					</control>
+				</control>
+				<control type="group">
+					<left>1680</left>
+					<width>240</width>
+					<height>240</height>
+					<animation type="WindowOpen" reversible="false">
+						<effect type="fade" start="0" end="100" delay="600" time="1650" tween="cubic" easing="inout" />
+						<effect type="zoom" start="180" end="100" delay="600" time="1650" tween="cubic" easing="inout" center="1440,240"/>
+					</animation>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor2]">White.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture flipx="true" colordiffuse="33F1F1F1">musicviz/MCEViz7.png</texture>
+						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF7377AB">White.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+					<control type="image">
+						<width>240</width>
+						<height>240</height>
+						<aspecratio>scale</aspecratio>
+						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF7377AB">musicviz/MCEcolortable.png</texture>
+						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
+					</control>
+				</control>
+			</control>
+		</control>
+		<control type="image"><!-- overlay -->
+			<description>Vignette zum Abdunkeln der Ecken</description>
+			<width>1920</width>
+			<height>1080</height>
+			<include>Visible_Hidden_Background_Fade_Animation</include>
+			<texture colordiffuse="$VAR[ColorswitchInv]">special://skin/backgrounds/MusicVizMatte.png</texture>
+			<animation type="Conditional" condition="true">
+				<effect type="fade" start="0" end="60" time="180" />
+			</animation>
+		</control>
+	</control>
+</include>
+</includes>

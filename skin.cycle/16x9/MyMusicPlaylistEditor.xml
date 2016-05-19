@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Cycle 0.3 -->
+<window>
+<defaultcontrol allways="true">9001</defaultcontrol>
+<onunload>ClearProperty(DialogContextSelect,503)</onunload>
+<onload>SetProperty(DialogContextSelect,ContextMPL,503)</onload>
+<menucontrol>9110</menucontrol>
+<controls>
+<control type="button" id="9110">
+	<description>Hiddenfocus fuer Quicknav menue</description>
+	<include>HiddenControl</include>
+	<onup>50</onup>
+	<ondown>50</ondown>
+	<onleft>50</onleft>
+	<onright>50</onright>
+	<onfocus>ActivateWindow(1120)</onfocus>
+</control>
+<include condition="Skin.HasSetting(EnableVintageOverlay)">global_vintagebackground</include>
+<include condition="!Skin.HasSetting(EnableVintageOverlay)">global_background</include>
+<control type="group">
+<animation type="Conditional" condition="Window.IsVisible(Custom_1120_MainMenuSlide.xml)">
+	<effect type="slide" end="395,0" time="180" delay="180" tween="quadratic" easing="out" reversible="true" />
+</animation>
+<control type="image"><!-- Hintergrund -->
+	<description>Hintergrund links content</description>
+	<left>100</left>
+	<top>140</top>
+	<width>700</width>
+	<height>980</height>
+	<texture colordiffuse="whiteDark">White.png</texture>
+	<animation effect="slide" start="-820,0" end="0,0" time="500" tween="quadratic" easing="out">WindowOpen</animation>
+	<animation effect="slide" end="-820,0" start="0,0" time="500" tween="quadratic" easing="out">WindowClose</animation>
+</control>
+<control type="image">
+	<description>Hintergrund links icons</description>
+	<left>100</left>
+	<top>140</top>
+	<width>90</width>
+	<height>980</height>
+	<texture colordiffuse="$VAR[secondaryCol]">White.png</texture>
+	<animation effect="slide" start="-820,0" end="0,0" time="500" tween="quadratic" easing="out">WindowOpen</animation>
+	<animation effect="slide" end="-820,0" start="0,0" time="500" tween="quadratic" easing="out">WindowClose</animation>
+</control>
+<control type="image">
+	<description>Hintergrund rechts content</description>
+	<left>1120</left>
+	<top>140</top>
+	<width>700</width>
+	<height>980</height>
+	<texture colordiffuse="whiteDark">White.png</texture>
+	<animation effect="slide" start="820,0" end="0,0" time="500" tween="quadratic" easing="out">WindowOpen</animation>
+	<animation effect="slide" end="820,0" start="0,0" time="500" tween="quadratic" easing="out">WindowClose</animation>
+</control>
+<control type="image">
+	<description>Hintergrund rechts icons</description>
+	<left>1120</left>
+	<top>140</top>
+	<width>90</width>
+	<height>980</height>
+	<texture colordiffuse="$VAR[secondaryCol]">White.png</texture>
+	<animation effect="slide" start="820,0" end="0,0" time="500" tween="quadratic" easing="out">WindowOpen</animation>
+	<animation effect="slide" end="820,0" start="0,0" time="500" tween="quadratic" easing="out">WindowClose</animation>
+</control>
+<include>global_topbar</include><!-- topbar -->
+<control type="group"><!-- menue -->
+	<description>Menue</description>
+	<top>10</top>
+	<left>20</left>
+	<animation effect="slide" start="-820,0" end="0,0" time="300" tween="quadratic" easing="out">WindowOpen</animation>
+	<animation effect="fade" end="0" start="100" time="300" tween="quadratic" easing="out">WindowClose</animation>
+	<control type="image">
+		<description>Bar</description>
+		<left>863</left>
+		<top>-10</top>
+		<width>148</width>
+		<height>1080</height>
+		<texture colordiffuse="$VAR[circlesCol]">views/barV.png</texture>
+	</control>
+	<control type="list" id="9001">
+		<description>Menue</description>
+		<left>865</left>
+		<top>160</top>
+		<width>320</width>
+		<height>600</height>
+		<onup>9001</onup>
+		<ondown>9001</ondown>
+		<onleft>50</onleft>
+		<onright>100</onright>
+		<animation type="Conditional" condition="Window.IsActive(contextmenu)">
+			<effect type="slide" start="0,0" end="0,1220" time="300" tween="cubic" easing="inout" />
+		</animation>
+		<orientation>vertical</orientation>
+		<itemlayout width="222" height="154">
+			<control type="image">
+				<width>154</width>
+				<height>122</height>
+				<texture colordiffuse="$VAR[circlesColInner]">rings/inner-ring.png</texture>
+			</control>
+			<control type="image">
+				<width>154</width>
+				<height>122</height>
+				<texture colordiffuse="$VAR[circlesCol]">rings/outer-ring.png</texture>
+				<animation effect="rotate" center="auto" start="90" end="90" time="0"condition="true">Conditional</animation>
+			</control>
+			<control type="label">
+				<width>154</width>
+				<height>122</height>
+				<align>center</align>
+				<font>IconMusicPlaylisteditor</font>
+				<textcolor>$VAR[circlesCol]</textcolor>
+				<label>$INFO[ListItem.Label2]</label>
+			</control>
+		</itemlayout>
+		<focusedlayout width="222" height="154">
+			<control type="image">
+				<width>154</width>
+				<height>122</height>
+				<texture colordiffuse="$VAR[secondaryCol]">rings/inner-ring.png</texture>
+				<visible>Control.HasFocus(9001)</visible>
+			</control>
+			<control type="image">
+				<width>154</width>
+				<height>122</height>
+				<texture colordiffuse="$VAR[circlesColInner]">rings/inner-ring.png</texture>
+				<visible>!Control.HasFocus(9001)</visible>
+			</control>
+			<control type="image">
+				<width>154</width>
+				<height>122</height>
+				<texture colordiffuse="$VAR[circlesCol]">rings/outer-ring.png</texture>
+				<animation effect="rotate" center="auto" start="90" end="90" time="0"condition="true">Conditional</animation>
+			</control>
+			<control type="label">
+				<width>154</width>
+				<height>122</height>
+				<align>center</align>
+				<font>IconMusicPlaylisteditor</font>
+				<textcolor>$VAR[circlesCol]</textcolor>
+				<label>$INFO[ListItem.Label2]</label>
+			</control>
+		</focusedlayout>
+		<content>
+			<item id="21">
+				<description>Open Button</description>
+				<label>Öffne Wiedergabeliste</label>
+				<label2>Ė</label2>
+				<onclick>SendClick(6)</onclick>
+				<onclick>SetFocus(9001)</onclick>
+				<visible>Control.IsEnabled(6)</visible>
+			</item>
+			<item id="22">
+				<description>Save Button</description>
+				<label>Wiedergabeliste speichern</label>
+				<onclick>SendClick(7)</onclick>
+				<label2>Ĥ</label2>
+				<visible>Control.IsEnabled(7)</visible>
+			</item>
+			<item id="23">
+				<description>Clear button</description>
+				<label>Wiedergabeliste schließen</label>
+				<onclick>SendClick(8)</onclick>
+				<label2>Ģ</label2>
+				<visible>Control.IsEnabled(8)</visible>
+			</item>
+		</content>
+	</control>
+</control>
+<control type="group">
+	<control type="group"><!-- linke liste -->
+		<left>100</left>
+		<top>140</top>
+		<animation effect="slide" start="-820,0" end="0,0" time="500" tween="quadratic" easing="out">WindowOpen</animation>
+		<animation effect="slide" end="-820,0" start="0,0" time="500" tween="quadratic" easing="out">WindowClose</animation>
+		<control type="label">
+			<description>Titel</description>
+			<left>100</left>
+			<top>20</top>
+			<width>410</width>
+			<height>30</height>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<scroll>true</scroll>
+			<label>System-Musikdateien</label>
+		</control>
+		<control type="label">
+			<description>Icon ordner</description>
+			<left>15</left>
+			<include>SidebarIconDimension</include>
+			<include>IconColorFO</include>
+			<label>Ė</label>
+		</control>
+		<control type="label">
+			<description>Subtitel ordner</description>
+			<left>100</left>
+			<top>80</top>
+			<width>410</width>
+			<height>30</height>
+			<font>RegularSmall</font>
+			<scroll>true</scroll>
+			<label>$INFO[Container.FolderName]</label>
+			<visible>!String.IsEmpty(Container.FolderName)</visible>
+		</control>
+		<control type="label">
+			<description>Page Count Label</description>
+			<left>20</left>
+			<top>48r</top>
+			<width>600</width>
+			<height>20</height>
+			<scroll>false</scroll>
+			<font>RegularSmall</font>
+			<textcolor>TextColorFO</textcolor>
+			<label>$INFO[Container(50).CurrentPage]/$INFO[Container(50).NumPages]</label>
+		</control>
+		<control type="list" id="50">
+			<left>30</left>
+			<top>150</top>
+			<width>700</width>
+			<height>550</height>
+			<onleft>PreviousMenu</onleft>
+			<onright>9001</onright>
+			<onup>50</onup>
+			<ondown>50</ondown>
+			<viewtype label="">list</viewtype>
+			<pagecontrol>-</pagecontrol>
+			<scrolltime>200</scrolltime>
+			<itemlayout height="60" width="700">
+				<control type="label">
+					<width>70</width>
+					<height>60</height>
+					<aligny>top</aligny>
+					<textoffsety>12</textoffsety>
+					<textcolor>TextColorFO</textcolor>
+					<label>$VAR[TrackPrefix]$INFO[ListItem.Tracknumber]</label>
+					<visible>!String.IsEmpty(ListItem.Tracknumber) + !String.IsEmpty(ListItem.FileExtension)</visible>
+				</control>
+				<control type="label">
+					<left>80</left>
+					<width>580</width>
+					<height>60</height>
+					<aligny>top</aligny>
+					<textoffsety>12</textoffsety>
+					<label>$INFO[ListItem.Title]</label>
+					<visible>!String.IsEmpty(ListItem.FileExtension)</visible>
+				</control>
+				<control type="label">
+					<left>80</left>
+					<width>580</width>
+					<height>60</height>
+					<aligny>top</aligny>
+					<textoffsety>12</textoffsety>
+					<label>$INFO[ListItem.Label]</label>
+					<visible>String.IsEmpty(ListItem.FileExtension)</visible>
+				</control>
+			</itemlayout>
+			<focusedlayout height="60" width="700">
+				<control type="image">
+					<left>60</left>
+					<width>620</width>
+					<height>60</height>
+					<texture border="0,0,14,0" colordiffuse="$VAR[secondaryCol]">cycle/right-11.png</texture>
+					<visible>Control.HasFocus(50)</visible>
+				</control>
+				<control type="label">
+					<width>70</width>
+					<height>60</height>
+					<aligny>top</aligny>
+					<textoffsety>12</textoffsety>
+					<textcolor>TextColorFO</textcolor>
+					<label>$VAR[TrackPrefix]$INFO[ListItem.Tracknumber]</label>
+					<visible>!String.IsEmpty(ListItem.Tracknumber) + !String.IsEmpty(ListItem.FileExtension)</visible>
+				</control>
+				<control type="label">
+					<left>80</left>
+					<width>580</width>
+					<height>60</height>
+					<aligny>top</aligny>
+					<textoffsety>12</textoffsety>
+					<textcolor>TextColorFO</textcolor>
+					<label>$INFO[ListItem.Title]</label>
+					<visible>!String.IsEmpty(ListItem.FileExtension) + Control.HasFocus(50)</visible>
+				</control>
+				<control type="label">
+					<left>80</left>
+					<width>580</width>
+					<height>60</height>
+					<aligny>top</aligny>
+					<textoffsety>12</textoffsety>
+					<textcolor>TextColorFO</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+					<visible>String.IsEmpty(ListItem.FileExtension) + Control.HasFocus(50)</visible>
+				</control>
+				<control type="label">
+					<left>80</left>
+					<width>580</width>
+					<height>60</height>
+					<aligny>top</aligny>
+					<textoffsety>12</textoffsety>
+					<label>$INFO[ListItem.Title]</label>
+					<visible>!String.IsEmpty(ListItem.FileExtension) + !Control.HasFocus(50)</visible>
+				</control>
+				<control type="label">
+					<left>80</left>
+					<width>580</width>
+					<height>60</height>
+					<aligny>top</aligny>
+					<textoffsety>12</textoffsety>
+					<label>$INFO[ListItem.Label]</label>
+					<visible>String.IsEmpty(ListItem.FileExtension) + !Control.HasFocus(50)</visible>
+				</control>
+			</focusedlayout>
+		</control>
+		<control type="group"><!-- Info linke seite -->
+			<left>40</left>
+			<top>727</top>
+			<visible>Control.HasFocus(50) + !String.IsEmpty(ListItem.FileExtension)</visible>
+			<control type="label">
+				<description>Icon info</description>
+				<left>-10</left>
+				<top>50</top>
+				<width>50</width>
+				<height>50</height>
+				<font>IconNormal</font>
+				<textcolor>TextColorFO</textcolor>
+				<label>È</label>
+			</control>
+			<control type="group">
+				<left>70</left>
+				<top>50</top>
+				<control type="label">
+					<description>Artist</description>
+					<width>580</width>
+					<height>50</height>
+					<font>CondensedNormal</font>
+					<textcolor>TextColorMedium</textcolor>
+					<label>$INFO[Container(50).ListItem.Artist]</label>
+				</control>
+				<control type="label">
+					<description>Dauer</description>
+					<top>50</top>
+					<width>580</width>
+					<height>50</height>
+					<font>CondensedNormal</font>
+					<textcolor>TextColorMedium</textcolor>
+					<label>$INFO[Container(50).ListItem.Duration,, $LOCALIZE[12391]]</label>
+				</control>
+				<control type="label">
+					<description>Genre</description>
+					<top>100</top>
+					<width>580</width>
+					<height>50</height>
+					<font>CondensedNormal</font>
+					<textcolor>TextColorMedium</textcolor>
+					<label fallback="Kein Genre gefunden">$INFO[Container(50).ListItem.Genre]</label>
+					<visible>!String.IsEmpty(Container(50).ListItem.Genre)</visible>
+				</control>
+				<control type="label">
+					<description>Genre fallback</description>
+					<top>100</top>
+					<width>580</width>
+					<height>50</height>
+					<font>CondensedNormal</font>
+					<textcolor>TextColorMedium</textcolor>
+					<label fallback="Kein Genre gefunden">Kein Genre gefunden</label>
+					<visible>String.IsEmpty(Container(50).ListItem.Genre)</visible>
+				</control>
+			</control>
+		</control>
+	</control>
+	<control type="group"><!-- rechte Liste -->
+		<animation effect="slide" start="820,0" end="0,0" time="500" tween="quadratic" easing="out">WindowOpen</animation>
+		<animation effect="slide" end="820,0" start="0,0" time="500" tween="quadratic" easing="out">WindowClose</animation>
+		<left>1120</left>
+		<control type="label">
+			<description>Titel</description>
+			<left>100</left>
+			<top>20</top>
+			<width>410</width>
+			<height>30</height>
+			<textcolor>$VAR[primaryCol]</textcolor>
+			<scroll>true</scroll>
+			<label>Aktuelle Wiedergabeliste</label>
+		</control>
+		<control type="label">
+			<description>Icon ordner</description>
+			<left>15</left>
+			<include>SidebarIconDimension</include>
+			<include>IconColorFO</include>
+			<label>&lt;</label>
+		</control>
+		<control type="label">
+			<description>Page Count Label</description>
+			<left>20</left>
+			<top>48r</top>
+			<width>600</width>
+			<height>20</height>
+			<scroll>false</scroll>
+			<font>RegularSmall</font>
+			<textcolor>TextColorFO</textcolor>
+			<label>$INFO[Container(100).CurrentPage]/$INFO[Container(100).NumPages]</label>
+		</control>
+		<control type="list" id="100">
+			<left>30</left>
+			<top>200</top>
+			<width>700</width>
+			<height>550</height>
+			<onleft>9001</onleft>
+			<onright>PreviousMenu</onright>
+			<onup>100</onup>
+			<ondown>100</ondown>
+			<viewtype label="">list</viewtype>
+			<pagecontrol>0</pagecontrol>
+			<scrolltime>200</scrolltime>
+			<itemlayout height="60" width="700">
+				<control type="label">
+					<width>70</width>
+					<height>60</height>
+					<aligny>top</aligny>
+					<textoffsety>12</textoffsety>
+					<textcolor>TextColorFO</textcolor>
+					<label>$VAR[TrackPrefix]$INFO[ListItem.Tracknumber]</label>
+					<visible>!String.IsEmpty(ListItem.Tracknumber) + !String.IsEmpty(ListItem.FileExtension)</visible>
+				</control>
+				<control type="label">
+					<left>80</left>
+					<width>580</width>
+					<height>60</height>
+					<aligny>top</aligny>
+					<textoffsety>12</textoffsety>
+					<label>$INFO[ListItem.Title]</label>
+					<visible>!String.IsEmpty(ListItem.FileExtension)</visible>
+				</control>
+				<control type="label">
+					<left>80</left>
+					<width>580</width>
+					<height>60</height>
+					<aligny>top</aligny>
+					<textoffsety>12</textoffsety>
+					<label>$INFO[ListItem.Label]</label>
+					<visible>String.IsEmpty(ListItem.FileExtension)</visible>
+				</control>
+			</itemlayout>
+			<focusedlayout height="60" width="700">
+				<control type="image">
+					<left>60</left>
+					<width>620</width>
+					<height>60</height>
+					<texture border="0,0,14,0" colordiffuse="$VAR[secondaryCol]">cycle/right-11.png</texture>
+					<visible>Control.HasFocus(100)</visible>
+				</control>
+				<control type="label">
+					<width>70</width>
+					<height>60</height>
+					<aligny>top</aligny>
+					<textoffsety>12</textoffsety>
+					<textcolor>TextColorFO</textcolor>
+					<label>$VAR[TrackPrefix]$INFO[ListItem.Tracknumber]</label>
+					<visible>!String.IsEmpty(ListItem.Tracknumber) + !String.IsEmpty(ListItem.FileExtension)</visible>
+				</control>
+				<control type="label">
+					<left>80</left>
+					<width>580</width>
+					<height>60</height>
+					<aligny>top</aligny>
+					<textoffsety>12</textoffsety>
+					<textcolor>TextColorFO</textcolor>
+					<label>$INFO[ListItem.Title]</label>
+					<visible>!String.IsEmpty(ListItem.FileExtension) + Control.HasFocus(100)</visible>
+				</control>
+				<control type="label">
+					<left>80</left>
+					<width>580</width>
+					<height>60</height>
+					<aligny>top</aligny>
+					<textoffsety>12</textoffsety>
+					<textcolor>TextColorFO</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+					<visible>String.IsEmpty(ListItem.FileExtension) + Control.HasFocus(100)</visible>
+				</control>
+				<control type="label">
+					<left>80</left>
+					<width>580</width>
+					<height>60</height>
+					<aligny>top</aligny>
+					<textoffsety>12</textoffsety>
+					<label>$INFO[ListItem.Title]</label>
+					<visible>!String.IsEmpty(ListItem.FileExtension) + !Control.HasFocus(100)</visible>
+				</control>
+				<control type="label">
+					<left>80</left>
+					<width>580</width>
+					<height>60</height>
+					<aligny>top</aligny>
+					<textoffsety>12</textoffsety>
+					<label>$INFO[ListItem.Label]</label>
+					<visible>String.IsEmpty(ListItem.FileExtension) + !Control.HasFocus(100)</visible>
+				</control>
+			</focusedlayout>
+		</control>
+		<control type="group"><!-- Info rechte seite -->
+			<left>30</left>
+			<top>867</top>
+			<visible>Control.HasFocus(100) + !String.IsEmpty(ListItem.FileExtension)</visible>
+			<control type="label">
+				<description>Icon info</description>
+				<left>-10</left>
+				<top>50</top>
+				<width>50</width>
+				<height>50</height>
+				<font>IconNormal</font>
+				<textcolor>TextColorFO</textcolor>
+				<label>È</label>
+			</control>
+			<control type="group">
+				<left>70</left>
+				<top>50</top>
+				<control type="label">
+					<description>Artist</description>
+					<width>580</width>
+					<height>50</height>
+					<font>CondensedNormal</font>
+					<textcolor>TextColorMedium</textcolor>
+					<label>$INFO[Container(100).ListItem.Artist]</label>
+				</control>
+				<control type="label">
+					<description>Dauer</description>
+					<top>50</top>
+					<width>580</width>
+					<height>50</height>
+					<font>CondensedNormal</font>
+					<textcolor>TextColorMedium</textcolor>
+					<label>$INFO[Container(100).ListItem.Duration,, $LOCALIZE[12391]]</label>
+				</control>
+				<control type="label">
+					<description>Genre</description>
+					<top>100</top>
+					<width>580</width>
+					<height>50</height>
+					<font>CondensedNormal</font>
+					<textcolor>TextColorMedium</textcolor>
+					<label fallback="Kein Genre gefunden">$INFO[Container(50).ListItem.Genre]</label>
+					<visible>!String.IsEmpty(Container(100).ListItem.Genre)</visible>
+				</control>
+				<control type="label">
+					<description>Fallback Genre</description>
+					<top>100</top>
+					<width>580</width>
+					<height>50</height>
+					<font>CondensedNormal</font>
+					<textcolor>TextColorMedium</textcolor>
+					<label fallback="Kein Genre gefunden">Kein Genre gefunden</label>
+					<visible>String.IsEmpty(Container(100).ListItem.Genre)</visible>
+				</control>
+			</control>
+		</control>
+	</control>
+	<control type="group"><!-- Artwork -->
+		<visible>[Control.HasFocus(50) + !String.IsEmpty(Container(50).ListItem.Icon] | [Control.HasFocus(100) + !String.IsEmpty(Container(100).ListItem.Icon]</visible>
+		<animation type="WindowOpen">
+			<effect type="fade" start="0" end="100" delay="600" time="200" />
+		</animation>
+		<animation type="WindowClose">
+			<effect type="fade" start="100" end="0" time="200" />
+		</animation>
+		<animation type="Conditional" condition="Window.IsActive(contextmenu)">
+			<effect type="slide" start="0,0" end="0,520" time="300" tween="cubic" easing="inout" />
+		</animation>
+		<control type="group">
+			<left>835</left>
+			<top>802</top>
+			<visible>!ListItem.IsParentFolder</visible>
+			<control type="image">
+				<description>Schatten</description>
+				<left>-12</left>
+				<top>-12</top>
+				<width>274</width>
+				<height>274</height>
+				<texture border="8" colordiffuse="ShadowColor">views/shadow8.png</texture>
+			</control>
+			<control type="image">
+				<description>Border</description>
+				<left>-4</left>
+				<top>-4</top>
+				<width>258</width>
+				<height>258</height>
+				<texture border="8" colordiffuse="$VAR[circlesCol]">views/white8.png</texture>
+			</control>
+			<control type="image"><!-- Fallback -->
+				<description>Hintergrund Farbe</description>
+				<width>250</width>
+				<height>250</height>
+				<texture colordiffuse="$VAR[primaryCol]">White.png</texture>
+			</control>
+			<control type="label">
+				<description>Fallback icon</description>
+				<width>250</width>
+				<height>250</height>
+				<align>center</align>
+				<textcolor>$VAR[circlesCol]</textcolor>
+				<font>Iconmusicplaylistdefault</font>
+				<label>$VAR[viewtypefallbacks]</label>
+			</control>
+			<control type="image">
+				<description>Art Focus links</description>
+				<width>250</width>
+				<height>250</height>
+				<texture background="true">$INFO[Container(50).ListItem.Icon]</texture>
+				<visible>Control.HasFocus(50) + !String.StartsWith(ListItem.Icon,Default)</visible>
+			</control>
+			<control type="image">
+				<description>Art Focus rechts</description>
+				<width>250</width>
+				<height>250</height>
+				<texture background="true">$INFO[Container(100).ListItem.Icon]</texture>
+				<visible>Control.HasFocus(100) + !String.StartsWith(ListItem.Icon,Default)</visible>
+			</control>
+			<include content="texture_vintageoverlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
+				<param name="width">250</param>
+				<param name="height">250</param>
+				<param name="texture">views/oldpaperOverlay2.png</param>
+			</include>
+		</control>
+	</control>
+</control>
+</control>
+<control type="button" id="6">
+	<description>Open Button</description>
+	<include>HiddenControl</include>
+</control>
+<control type="button" id="7">
+	<description>Save Button</description>
+	<include>HiddenControl</include>
+</control>
+<control type="button" id="8">
+	<description>Clear button</description>
+	<include>HiddenControl</include>
+</control>
+</controls>
+</window>

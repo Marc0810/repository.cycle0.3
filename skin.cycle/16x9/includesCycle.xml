@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+<!-- Backgrounds -->
+<include name="global_background">
+	<control type="image">
+		<description>Hintergrund texture</description>
+		<width>1920</width>
+		<height>1080</height>
+		<texture>special://skin/backgrounds/background.jpg</texture>
+	</control>
+	<control type="image">
+		<description>Hintergrund diffuse</description>
+		<width>1920</width>
+		<height>1080</height>
+		<texture colordiffuse="$VAR[BackdropCol]">White.png</texture>
+	</control>
+	<control type="image">
+		<description>Wolken</description>
+		<top>390</top>
+		<width>3240</width>
+		<height>790</height>
+		<aspectratio>-</aspectratio>
+		<texture colordiffuse="$VAR[BackgroundCloudsDiffuse]">special://skin/backgrounds/clouds/cloud_PNG1.png</texture>
+		<animation type="Conditional" condition="true">
+		<effect type="fade" start="80" end="100" time="0" />
+		</animation>
+		<visible>[String.IsEmpty(Control.GetLabel(2345)) | String.IsEqual(Control.GetLabel(2345),leer)]</visible>
+		<animation effect="slide" start="100,0" end="-1400,0" time="70000" tween="sine" easing="inout" condition="true" pulse="true">conditional</animation>
+	</control>
+</include>
+
+<variable name="value_global_fanart">
+	<value condition="Window.IsVisible(script-lazytv-main.xml)">$INFO[Container(655).ListItem.Property(Fanart_Image)]</value>
+	<value condition="Window.Isvisible(videos) + Window.IsActive(Custom_1101_homewidgets.xml)">$INFO[Container(400).ListItem.Art(fanart)]</value>
+	<value condition="Window.IsActive(Custom_1103_categoryinfo.xml) + [Control.HasFocus(9000) | Control.HasFocus(400)]">$INFO[Container(400).ListItem.Art(fanart)]</value>
+	<value condition="Window.IsActive(Custom_1106_categoryinfolist.xml) + [Control.HasFocus(9000) | Control.HasFocus(400)]">$INFO[Container(400).ListItem.Art(fanart)]</value>
+	<value condition="Window.IsActive(script-ExtendedInfo Script-YoutubeList.xml)">$INFO[Window(movieinformation).Property(ExtrainfoFanart)]</value>
+	<value condition="Skin.HasSetting(EnableGenreArtworks) + Container.Content(genres) + !String.StartsWith(Container.FolderPath,videodb://tvshows/)">$INFO[ListItem.Label,resource://resource.images.moviegenrefanart.cycle/moviegenres_fanart/,.jpg]</value>
+	<value condition="Skin.HasSetting(EnableGenreArtworks) + Container.Content(genres)">$INFO[ListItem.Label,resource://resource.images.moviegenrefanart.cycle/tvgenres_fanart/,.jpg]</value>
+	<value condition="[Container.Content(Albums) | Container.Content(Songs)] + !String.IsEmpty(Container.Art(artist.fanart))">$INFO[Container.Art(artist.fanart)]</value><!-- musicfanart -->
+	<value condition="Container.Content(Artists) + !String.IsEmpty(ListItem.Property(Fanart_Image))">$INFO[ListItem.Property(Fanart_Image)]</value>
+	<value condition="!String.IsEmpty(Container.Art(fanart))">$INFO[Container.Art(fanart)]</value>
+	<value condition="!String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
+</variable>
+
+<include name="global_fanart">
+	<control type="image" id="2345">
+		<description>Hiddencontrol fanart leer</description>
+		<texture fallback="leer">$VAR[value_global_fanart]</texture>
+		<include>HiddenControl</include>
+		<visible>!Skin.HasSetting(HideBackGroundFanart)</visible>
+	</control>
+	<control type="image">
+		<description>Hintergrund fanart</description>
+		<width>1920</width>
+		<height>1080</height>
+		<fadetime>300</fadetime>
+		<texture colordiffuse="$VAR[BackgroundFanartDiffuse]">$VAR[value_global_fanart]</texture>
+		<include>Visible_Hidden_Background_Fade_Animation</include>
+		<visible>!Skin.HasSetting(HideBackGroundFanart)</visible>
+	</control>
+</include>
+	
+<!-- ######################### -->
+<!-- CycleClock
+############################## -->
+<variable name="CycleclockSZ">
+	<value condition="[String.IsEqual(System.Time(hh),12) | String.IsEqual(System.Time(hh),00)] + [String.IsEqual(System.Time(mm),00) | String.IsEqual(System.Time(mm),01) | String.IsEqual(System.Time(mm),02) | String.IsEqual(System.Time(mm),03) | String.IsEqual(System.Time(mm),04) | String.IsEqual(System.Time(mm),05) | String.IsEqual(System.Time(mm),06) | String.IsEqual(System.Time(mm),07) | String.IsEqual(System.Time(mm),08) | String.IsEqual(System.Time(mm),09) | String.IsEqual(System.Time(mm),10) | String.IsEqual(System.Time(mm),11) | String.IsEqual(System.Time(mm),12)]">clock/cycle/clockSZ00.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),12) | String.IsEqual(System.Time(hh),00)] + [String.IsEqual(System.Time(mm),13) | String.IsEqual(System.Time(mm),14) | String.IsEqual(System.Time(mm),15) | String.IsEqual(System.Time(mm),16) | String.IsEqual(System.Time(mm),17) | String.IsEqual(System.Time(mm),18) | String.IsEqual(System.Time(mm),19) | String.IsEqual(System.Time(mm),20) | String.IsEqual(System.Time(mm),21) | String.IsEqual(System.Time(mm),22) | String.IsEqual(System.Time(mm),23) | String.IsEqual(System.Time(mm),24)]">clock/cycle/clockSZ01.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),12) | String.IsEqual(System.Time(hh),00)] + [String.IsEqual(System.Time(mm),25) | String.IsEqual(System.Time(mm),26) | String.IsEqual(System.Time(mm),27) | String.IsEqual(System.Time(mm),28) | String.IsEqual(System.Time(mm),29) | String.IsEqual(System.Time(mm),30) | String.IsEqual(System.Time(mm),31) | String.IsEqual(System.Time(mm),32) | String.IsEqual(System.Time(mm),33) | String.IsEqual(System.Time(mm),34) | String.IsEqual(System.Time(mm),35) | String.IsEqual(System.Time(mm),36)]">clock/cycle/clockSZ02.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),12) | String.IsEqual(System.Time(hh),00)] + [String.IsEqual(System.Time(mm),37) | String.IsEqual(System.Time(mm),38) | String.IsEqual(System.Time(mm),39) | String.IsEqual(System.Time(mm),40) | String.IsEqual(System.Time(mm),41) | String.IsEqual(System.Time(mm),42) | String.IsEqual(System.Time(mm),43) | String.IsEqual(System.Time(mm),44) | String.IsEqual(System.Time(mm),45) | String.IsEqual(System.Time(mm),46) | String.IsEqual(System.Time(mm),47) | String.IsEqual(System.Time(mm),48)]">clock/cycle/clockSZ03.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),12) | String.IsEqual(System.Time(hh),00)] + [String.IsEqual(System.Time(mm),49) | String.IsEqual(System.Time(mm),50) | String.IsEqual(System.Time(mm),51) | String.IsEqual(System.Time(mm),52) | String.IsEqual(System.Time(mm),53) | String.IsEqual(System.Time(mm),54) | String.IsEqual(System.Time(mm),55) | String.IsEqual(System.Time(mm),56) | String.IsEqual(System.Time(mm),57) | String.IsEqual(System.Time(mm),58) | String.IsEqual(System.Time(mm),59) | String.IsEqual(System.Time(mm),60)]">clock/cycle/clockSZ04.png</value>
+	
+	<value condition="[String.IsEqual(System.Time(hh),01) | String.IsEqual(System.Time(hh),13)] + [String.IsEqual(System.Time(mm),00) | String.IsEqual(System.Time(mm),01) | String.IsEqual(System.Time(mm),02) | String.IsEqual(System.Time(mm),03) | String.IsEqual(System.Time(mm),04) | String.IsEqual(System.Time(mm),05) | String.IsEqual(System.Time(mm),06) | String.IsEqual(System.Time(mm),07) | String.IsEqual(System.Time(mm),08) | String.IsEqual(System.Time(mm),09) | String.IsEqual(System.Time(mm),10) | String.IsEqual(System.Time(mm),11) | String.IsEqual(System.Time(mm),12)]">clock/cycle/clockSZ05.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),01) | String.IsEqual(System.Time(hh),13)] + [String.IsEqual(System.Time(mm),13) | String.IsEqual(System.Time(mm),14) | String.IsEqual(System.Time(mm),15) | String.IsEqual(System.Time(mm),16) | String.IsEqual(System.Time(mm),17) | String.IsEqual(System.Time(mm),18) | String.IsEqual(System.Time(mm),19) | String.IsEqual(System.Time(mm),20) | String.IsEqual(System.Time(mm),21) | String.IsEqual(System.Time(mm),22) | String.IsEqual(System.Time(mm),23) | String.IsEqual(System.Time(mm),24)]">clock/cycle/clockSZ06.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),01) | String.IsEqual(System.Time(hh),13)] + [String.IsEqual(System.Time(hh),23) + String.IsEqual(System.Time(mm),25) | String.IsEqual(System.Time(mm),26) | String.IsEqual(System.Time(mm),27) | String.IsEqual(System.Time(mm),28) | String.IsEqual(System.Time(mm),29) | String.IsEqual(System.Time(mm),30) | String.IsEqual(System.Time(mm),31) | String.IsEqual(System.Time(mm),32) | String.IsEqual(System.Time(mm),33) | String.IsEqual(System.Time(mm),34) | String.IsEqual(System.Time(mm),35) | String.IsEqual(System.Time(mm),36)]">clock/cycle/clockSZ07.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),01) | String.IsEqual(System.Time(hh),13)] + [String.IsEqual(System.Time(mm),37) | String.IsEqual(System.Time(mm),38) | String.IsEqual(System.Time(mm),39) | String.IsEqual(System.Time(mm),40) | String.IsEqual(System.Time(mm),41) | String.IsEqual(System.Time(mm),42) | String.IsEqual(System.Time(mm),43) | String.IsEqual(System.Time(mm),44) | String.IsEqual(System.Time(mm),45) | String.IsEqual(System.Time(mm),46) | String.IsEqual(System.Time(mm),47) | String.IsEqual(System.Time(mm),48)]">clock/cycle/clockSZ08.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),01) | String.IsEqual(System.Time(hh),13)] + [String.IsEqual(System.Time(mm),49) | String.IsEqual(System.Time(mm),50) | String.IsEqual(System.Time(mm),51) | String.IsEqual(System.Time(mm),52) | String.IsEqual(System.Time(mm),53) | String.IsEqual(System.Time(mm),54) | String.IsEqual(System.Time(mm),55) | String.IsEqual(System.Time(mm),56) | String.IsEqual(System.Time(mm),57) | String.IsEqual(System.Time(mm),58) | String.IsEqual(System.Time(mm),59) | String.IsEqual(System.Time(mm),60)]">clock/cycle/clockSZ09.png</value>
+	
+	<value condition="[String.IsEqual(System.Time(hh),02) | String.IsEqual(System.Time(hh),14)] + [String.IsEqual(System.Time(mm),00) | String.IsEqual(System.Time(mm),01) | String.IsEqual(System.Time(mm),02) | String.IsEqual(System.Time(mm),03) | String.IsEqual(System.Time(mm),04) | String.IsEqual(System.Time(mm),05) | String.IsEqual(System.Time(mm),06) | String.IsEqual(System.Time(mm),07) | String.IsEqual(System.Time(mm),08) | String.IsEqual(System.Time(mm),09) | String.IsEqual(System.Time(mm),10) | String.IsEqual(System.Time(mm),11) | String.IsEqual(System.Time(mm),12)]">clock/cycle/clockSZ10.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),02) | String.IsEqual(System.Time(hh),14)] + [String.IsEqual(System.Time(mm),13) | String.IsEqual(System.Time(mm),14) | String.IsEqual(System.Time(mm),15) | String.IsEqual(System.Time(mm),16) | String.IsEqual(System.Time(mm),17) | String.IsEqual(System.Time(mm),18) | String.IsEqual(System.Time(mm),19) | String.IsEqual(System.Time(mm),20) | String.IsEqual(System.Time(mm),21) | String.IsEqual(System.Time(mm),22) | String.IsEqual(System.Time(mm),23) | String.IsEqual(System.Time(mm),24)]">clock/cycle/clockSZ11.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),02) | String.IsEqual(System.Time(hh),14)] + [String.IsEqual(System.Time(mm),25) | String.IsEqual(System.Time(mm),26) | String.IsEqual(System.Time(mm),27) | String.IsEqual(System.Time(mm),28) | String.IsEqual(System.Time(mm),29) | String.IsEqual(System.Time(mm),30) | String.IsEqual(System.Time(mm),31) | String.IsEqual(System.Time(mm),32) | String.IsEqual(System.Time(mm),33) | String.IsEqual(System.Time(mm),34) | String.IsEqual(System.Time(mm),35) | String.IsEqual(System.Time(mm),36)]">clock/cycle/clockSZ12.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),02) | String.IsEqual(System.Time(hh),14)] + [String.IsEqual(System.Time(mm),37) | String.IsEqual(System.Time(mm),38) | String.IsEqual(System.Time(mm),39) | String.IsEqual(System.Time(mm),40) | String.IsEqual(System.Time(mm),41) | String.IsEqual(System.Time(mm),42) | String.IsEqual(System.Time(mm),43) | String.IsEqual(System.Time(mm),44) | String.IsEqual(System.Time(mm),45) | String.IsEqual(System.Time(mm),46) | String.IsEqual(System.Time(mm),47) | String.IsEqual(System.Time(mm),48)]">clock/cycle/clockSZ13.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),02) | String.IsEqual(System.Time(hh),14)] + [String.IsEqual(System.Time(mm),49) | String.IsEqual(System.Time(mm),50) | String.IsEqual(System.Time(mm),51) | String.IsEqual(System.Time(mm),52) | String.IsEqual(System.Time(mm),53) | String.IsEqual(System.Time(mm),54) | String.IsEqual(System.Time(mm),55) | String.IsEqual(System.Time(mm),56) | String.IsEqual(System.Time(mm),57) | String.IsEqual(System.Time(mm),58) | String.IsEqual(System.Time(mm),59) | String.IsEqual(System.Time(mm),60)]">clock/cycle/clockSZ14.png</value>
+	
+	<value condition="[String.IsEqual(System.Time(hh),03) | String.IsEqual(System.Time(hh),15)] + [String.IsEqual(System.Time(mm),00) | String.IsEqual(System.Time(mm),01) | String.IsEqual(System.Time(mm),02) | String.IsEqual(System.Time(mm),03) | String.IsEqual(System.Time(mm),04) | String.IsEqual(System.Time(mm),05) | String.IsEqual(System.Time(mm),06) | String.IsEqual(System.Time(mm),07) | String.IsEqual(System.Time(mm),08) | String.IsEqual(System.Time(mm),09) | String.IsEqual(System.Time(mm),10) | String.IsEqual(System.Time(mm),11) | String.IsEqual(System.Time(mm),12)]">clock/cycle/clockSZ15.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),03) | String.IsEqual(System.Time(hh),15)] + [String.IsEqual(System.Time(mm),13) | String.IsEqual(System.Time(mm),14) | String.IsEqual(System.Time(mm),15) | String.IsEqual(System.Time(mm),16) | String.IsEqual(System.Time(mm),17) | String.IsEqual(System.Time(mm),18) | String.IsEqual(System.Time(mm),19) | String.IsEqual(System.Time(mm),20) | String.IsEqual(System.Time(mm),21) | String.IsEqual(System.Time(mm),22) | String.IsEqual(System.Time(mm),23) | String.IsEqual(System.Time(mm),24)]">clock/cycle/clockSZ16.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),03) | String.IsEqual(System.Time(hh),15)] + [String.IsEqual(System.Time(mm),25) | String.IsEqual(System.Time(mm),26) | String.IsEqual(System.Time(mm),27) | String.IsEqual(System.Time(mm),28) | String.IsEqual(System.Time(mm),29) | String.IsEqual(System.Time(mm),30) | String.IsEqual(System.Time(mm),31) | String.IsEqual(System.Time(mm),32) | String.IsEqual(System.Time(mm),33) | String.IsEqual(System.Time(mm),34) | String.IsEqual(System.Time(mm),35) | String.IsEqual(System.Time(mm),36)]">clock/cycle/clockSZ17.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),03) | String.IsEqual(System.Time(hh),15)] + [String.IsEqual(System.Time(mm),37) | String.IsEqual(System.Time(mm),38) | String.IsEqual(System.Time(mm),39) | String.IsEqual(System.Time(mm),40) | String.IsEqual(System.Time(mm),41) | String.IsEqual(System.Time(mm),42) | String.IsEqual(System.Time(mm),43) | String.IsEqual(System.Time(mm),44) | String.IsEqual(System.Time(mm),45) | String.IsEqual(System.Time(mm),46) | String.IsEqual(System.Time(mm),47) | String.IsEqual(System.Time(mm),48)]">clock/cycle/clockSZ18.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),03) | String.IsEqual(System.Time(hh),15)] + [String.IsEqual(System.Time(mm),49) | String.IsEqual(System.Time(mm),50) | String.IsEqual(System.Time(mm),51) | String.IsEqual(System.Time(mm),52) | String.IsEqual(System.Time(mm),53) | String.IsEqual(System.Time(mm),54) | String.IsEqual(System.Time(mm),55) | String.IsEqual(System.Time(mm),56) | String.IsEqual(System.Time(mm),57) | String.IsEqual(System.Time(mm),58) | String.IsEqual(System.Time(mm),59) | String.IsEqual(System.Time(mm),60)]">clock/cycle/clockSZ19.png</value>
+	
+	<value condition="[String.IsEqual(System.Time(hh),04) | String.IsEqual(System.Time(hh),16)] + [String.IsEqual(System.Time(mm),00) | String.IsEqual(System.Time(mm),01) | String.IsEqual(System.Time(mm),02) | String.IsEqual(System.Time(mm),03) | String.IsEqual(System.Time(mm),04) | String.IsEqual(System.Time(mm),05) | String.IsEqual(System.Time(mm),06) | String.IsEqual(System.Time(mm),07) | String.IsEqual(System.Time(mm),08) | String.IsEqual(System.Time(mm),09) | String.IsEqual(System.Time(mm),10) | String.IsEqual(System.Time(mm),11) | String.IsEqual(System.Time(mm),12)]">clock/cycle/clockSZ20.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),04) | String.IsEqual(System.Time(hh),16)] + [String.IsEqual(System.Time(mm),13) | String.IsEqual(System.Time(mm),14) | String.IsEqual(System.Time(mm),15) | String.IsEqual(System.Time(mm),16) | String.IsEqual(System.Time(mm),17) | String.IsEqual(System.Time(mm),18) | String.IsEqual(System.Time(mm),19) | String.IsEqual(System.Time(mm),20) | String.IsEqual(System.Time(mm),21) | String.IsEqual(System.Time(mm),22) | String.IsEqual(System.Time(mm),23) | String.IsEqual(System.Time(mm),24)]">clock/cycle/clockSZ21.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),04) | String.IsEqual(System.Time(hh),16)] + [String.IsEqual(System.Time(mm),25) | String.IsEqual(System.Time(mm),26) | String.IsEqual(System.Time(mm),27) | String.IsEqual(System.Time(mm),28) | String.IsEqual(System.Time(mm),29) | String.IsEqual(System.Time(mm),30) | String.IsEqual(System.Time(mm),31) | String.IsEqual(System.Time(mm),32) | String.IsEqual(System.Time(mm),33) | String.IsEqual(System.Time(mm),34) | String.IsEqual(System.Time(mm),35) | String.IsEqual(System.Time(mm),36)]">clock/cycle/clockSZ22.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),04) | String.IsEqual(System.Time(hh),16)] + [String.IsEqual(System.Time(mm),37) | String.IsEqual(System.Time(mm),38) | String.IsEqual(System.Time(mm),39) | String.IsEqual(System.Time(mm),40) | String.IsEqual(System.Time(mm),41) | String.IsEqual(System.Time(mm),42) | String.IsEqual(System.Time(mm),43) | String.IsEqual(System.Time(mm),44) | String.IsEqual(System.Time(mm),45) | String.IsEqual(System.Time(mm),46) | String.IsEqual(System.Time(mm),47) | String.IsEqual(System.Time(mm),48)]">clock/cycle/clockSZ23.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),04) | String.IsEqual(System.Time(hh),16)] + [String.IsEqual(System.Time(mm),49) | String.IsEqual(System.Time(mm),50) | String.IsEqual(System.Time(mm),51) | String.IsEqual(System.Time(mm),52) | String.IsEqual(System.Time(mm),53) | String.IsEqual(System.Time(mm),54) | String.IsEqual(System.Time(mm),55) | String.IsEqual(System.Time(mm),56) | String.IsEqual(System.Time(mm),57) | String.IsEqual(System.Time(mm),58) | String.IsEqual(System.Time(mm),59) | String.IsEqual(System.Time(mm),60)]">clock/cycle/clockSZ24.png</value>
+	
+	<value condition="[String.IsEqual(System.Time(hh),05) | String.IsEqual(System.Time(hh),17)] + [String.IsEqual(System.Time(mm),00) | String.IsEqual(System.Time(mm),01) | String.IsEqual(System.Time(mm),02) | String.IsEqual(System.Time(mm),03) | String.IsEqual(System.Time(mm),04) | String.IsEqual(System.Time(mm),05) | String.IsEqual(System.Time(mm),06) | String.IsEqual(System.Time(mm),07) | String.IsEqual(System.Time(mm),08) | String.IsEqual(System.Time(mm),09) | String.IsEqual(System.Time(mm),10) | String.IsEqual(System.Time(mm),11) | String.IsEqual(System.Time(mm),12)]">clock/cycle/clockSZ25.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),05) | String.IsEqual(System.Time(hh),17)] + [String.IsEqual(System.Time(mm),13) | String.IsEqual(System.Time(mm),14) | String.IsEqual(System.Time(mm),15) | String.IsEqual(System.Time(mm),16) | String.IsEqual(System.Time(mm),17) | String.IsEqual(System.Time(mm),18) | String.IsEqual(System.Time(mm),19) | String.IsEqual(System.Time(mm),20) | String.IsEqual(System.Time(mm),21) | String.IsEqual(System.Time(mm),22) | String.IsEqual(System.Time(mm),23) | String.IsEqual(System.Time(mm),24)]">clock/cycle/clockSZ26.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),05) | String.IsEqual(System.Time(hh),17)] + [String.IsEqual(System.Time(mm),25) | String.IsEqual(System.Time(mm),26) | String.IsEqual(System.Time(mm),27) | String.IsEqual(System.Time(mm),28) | String.IsEqual(System.Time(mm),29) | String.IsEqual(System.Time(mm),30) | String.IsEqual(System.Time(mm),31) | String.IsEqual(System.Time(mm),32) | String.IsEqual(System.Time(mm),33) | String.IsEqual(System.Time(mm),34) | String.IsEqual(System.Time(mm),35) | String.IsEqual(System.Time(mm),36)]">clock/cycle/clockSZ27.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),05) | String.IsEqual(System.Time(hh),17)] + [String.IsEqual(System.Time(mm),37) | String.IsEqual(System.Time(mm),38) | String.IsEqual(System.Time(mm),39) | String.IsEqual(System.Time(mm),40) | String.IsEqual(System.Time(mm),41) | String.IsEqual(System.Time(mm),42) | String.IsEqual(System.Time(mm),43) | String.IsEqual(System.Time(mm),44) | String.IsEqual(System.Time(mm),45) | String.IsEqual(System.Time(mm),46) | String.IsEqual(System.Time(mm),47) | String.IsEqual(System.Time(mm),48)]">clock/cycle/clockSZ28.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),05) | String.IsEqual(System.Time(hh),17)] + [String.IsEqual(System.Time(mm),49) | String.IsEqual(System.Time(mm),50) | String.IsEqual(System.Time(mm),51) | String.IsEqual(System.Time(mm),52) | String.IsEqual(System.Time(mm),53) | String.IsEqual(System.Time(mm),54) | String.IsEqual(System.Time(mm),55) | String.IsEqual(System.Time(mm),56) | String.IsEqual(System.Time(mm),57) | String.IsEqual(System.Time(mm),58) | String.IsEqual(System.Time(mm),59) | String.IsEqual(System.Time(mm),60)]">clock/cycle/clockSZ29.png</value>
+	
+	<value condition="[String.IsEqual(System.Time(hh),06) | String.IsEqual(System.Time(hh),18)] + [String.IsEqual(System.Time(mm),00) | String.IsEqual(System.Time(mm),01) | String.IsEqual(System.Time(mm),02) | String.IsEqual(System.Time(mm),03) | String.IsEqual(System.Time(mm),04) | String.IsEqual(System.Time(mm),05) | String.IsEqual(System.Time(mm),06) | String.IsEqual(System.Time(mm),07) | String.IsEqual(System.Time(mm),08) | String.IsEqual(System.Time(mm),09) | String.IsEqual(System.Time(mm),10) | String.IsEqual(System.Time(mm),11) | String.IsEqual(System.Time(mm),12)]">clock/cycle/clockSZ30.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),06) | String.IsEqual(System.Time(hh),18)] + [String.IsEqual(System.Time(mm),13) | String.IsEqual(System.Time(mm),14) | String.IsEqual(System.Time(mm),15) | String.IsEqual(System.Time(mm),16) | String.IsEqual(System.Time(mm),17) | String.IsEqual(System.Time(mm),18) | String.IsEqual(System.Time(mm),19) | String.IsEqual(System.Time(mm),20) | String.IsEqual(System.Time(mm),21) | String.IsEqual(System.Time(mm),22) | String.IsEqual(System.Time(mm),23) | String.IsEqual(System.Time(mm),24)]">clock/cycle/clockSZ31.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),06) | String.IsEqual(System.Time(hh),18)] + [String.IsEqual(System.Time(mm),25) | String.IsEqual(System.Time(mm),26) | String.IsEqual(System.Time(mm),27) | String.IsEqual(System.Time(mm),28) | String.IsEqual(System.Time(mm),29) | String.IsEqual(System.Time(mm),30) | String.IsEqual(System.Time(mm),31) | String.IsEqual(System.Time(mm),32) | String.IsEqual(System.Time(mm),33) | String.IsEqual(System.Time(mm),34) | String.IsEqual(System.Time(mm),35) | String.IsEqual(System.Time(mm),36)]">clock/cycle/clockSZ32.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),06) | String.IsEqual(System.Time(hh),18)] + [String.IsEqual(System.Time(mm),37) | String.IsEqual(System.Time(mm),38) | String.IsEqual(System.Time(mm),39) | String.IsEqual(System.Time(mm),40) | String.IsEqual(System.Time(mm),41) | String.IsEqual(System.Time(mm),42) | String.IsEqual(System.Time(mm),43) | String.IsEqual(System.Time(mm),44) | String.IsEqual(System.Time(mm),45) | String.IsEqual(System.Time(mm),46) | String.IsEqual(System.Time(mm),47) | String.IsEqual(System.Time(mm),48)]">clock/cycle/clockSZ33.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),06) | String.IsEqual(System.Time(hh),18)] + [String.IsEqual(System.Time(mm),49) | String.IsEqual(System.Time(mm),50) | String.IsEqual(System.Time(mm),51) | String.IsEqual(System.Time(mm),52) | String.IsEqual(System.Time(mm),53) | String.IsEqual(System.Time(mm),54) | String.IsEqual(System.Time(mm),55) | String.IsEqual(System.Time(mm),56) | String.IsEqual(System.Time(mm),57) | String.IsEqual(System.Time(mm),58) | String.IsEqual(System.Time(mm),59) | String.IsEqual(System.Time(mm),60)]">clock/cycle/clockSZ34.png</value>
+	
+	<!-- 17 -->
+	<value condition="[String.IsEqual(System.Time(hh),07) | String.IsEqual(System.Time(hh),19)] + [String.IsEqual(System.Time(mm),00) | String.IsEqual(System.Time(mm),01) | String.IsEqual(System.Time(mm),02) | String.IsEqual(System.Time(mm),03) | String.IsEqual(System.Time(mm),04) | String.IsEqual(System.Time(mm),05) | String.IsEqual(System.Time(mm),06) | String.IsEqual(System.Time(mm),07) | String.IsEqual(System.Time(mm),08) | String.IsEqual(System.Time(mm),09) | String.IsEqual(System.Time(mm),10) | String.IsEqual(System.Time(mm),11) | String.IsEqual(System.Time(mm),12)]">clock/cycle/clockSZ35.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),07) | String.IsEqual(System.Time(hh),19)] + [String.IsEqual(System.Time(mm),13) | String.IsEqual(System.Time(mm),14) | String.IsEqual(System.Time(mm),15) | String.IsEqual(System.Time(mm),16) | String.IsEqual(System.Time(mm),17) | String.IsEqual(System.Time(mm),18) | String.IsEqual(System.Time(mm),19) | String.IsEqual(System.Time(mm),20) | String.IsEqual(System.Time(mm),21) | String.IsEqual(System.Time(mm),22) | String.IsEqual(System.Time(mm),23) | String.IsEqual(System.Time(mm),24)]">clock/cycle/clockSZ36.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),07) | String.IsEqual(System.Time(hh),19)] + [String.IsEqual(System.Time(mm),25) | String.IsEqual(System.Time(mm),26) | String.IsEqual(System.Time(mm),27) | String.IsEqual(System.Time(mm),28) | String.IsEqual(System.Time(mm),29) | String.IsEqual(System.Time(mm),30) | String.IsEqual(System.Time(mm),31) | String.IsEqual(System.Time(mm),32) | String.IsEqual(System.Time(mm),33) | String.IsEqual(System.Time(mm),34) | String.IsEqual(System.Time(mm),35) | String.IsEqual(System.Time(mm),36)]">clock/cycle/clockSZ37.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),07) | String.IsEqual(System.Time(hh),19)] + [String.IsEqual(System.Time(mm),37) | String.IsEqual(System.Time(mm),38) | String.IsEqual(System.Time(mm),39) | String.IsEqual(System.Time(mm),40) | String.IsEqual(System.Time(mm),41) | String.IsEqual(System.Time(mm),42) | String.IsEqual(System.Time(mm),43) | String.IsEqual(System.Time(mm),44) | String.IsEqual(System.Time(mm),45) | String.IsEqual(System.Time(mm),46) | String.IsEqual(System.Time(mm),47) | String.IsEqual(System.Time(mm),48)]">clock/cycle/clockSZ38.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),07) | String.IsEqual(System.Time(hh),19)] + [String.IsEqual(System.Time(mm),49) | String.IsEqual(System.Time(mm),50) | String.IsEqual(System.Time(mm),51) | String.IsEqual(System.Time(mm),52) | String.IsEqual(System.Time(mm),53) | String.IsEqual(System.Time(mm),54) | String.IsEqual(System.Time(mm),55) | String.IsEqual(System.Time(mm),56) | String.IsEqual(System.Time(mm),57) | String.IsEqual(System.Time(mm),58) | String.IsEqual(System.Time(mm),59) | String.IsEqual(System.Time(mm),60)]">clock/cycle/clockSZ39.png</value>
+	
+	<value condition="[String.IsEqual(System.Time(hh),08) | String.IsEqual(System.Time(hh),20)] + [String.IsEqual(System.Time(mm),00) | String.IsEqual(System.Time(mm),01) | String.IsEqual(System.Time(mm),02) | String.IsEqual(System.Time(mm),03) | String.IsEqual(System.Time(mm),04) | String.IsEqual(System.Time(mm),05) | String.IsEqual(System.Time(mm),06) | String.IsEqual(System.Time(mm),07) | String.IsEqual(System.Time(mm),08) | String.IsEqual(System.Time(mm),09) | String.IsEqual(System.Time(mm),10) | String.IsEqual(System.Time(mm),11) | String.IsEqual(System.Time(mm),12)]">clock/cycle/clockSZ40.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),08) | String.IsEqual(System.Time(hh),20)] + [String.IsEqual(System.Time(mm),13) | String.IsEqual(System.Time(mm),14) | String.IsEqual(System.Time(mm),15) | String.IsEqual(System.Time(mm),16) | String.IsEqual(System.Time(mm),17) | String.IsEqual(System.Time(mm),18) | String.IsEqual(System.Time(mm),19) | String.IsEqual(System.Time(mm),20) | String.IsEqual(System.Time(mm),21) | String.IsEqual(System.Time(mm),22) | String.IsEqual(System.Time(mm),23) | String.IsEqual(System.Time(mm),24)]">clock/cycle/clockSZ41.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),08) | String.IsEqual(System.Time(hh),20)] + [String.IsEqual(System.Time(mm),25) | String.IsEqual(System.Time(mm),26) | String.IsEqual(System.Time(mm),27) | String.IsEqual(System.Time(mm),28) | String.IsEqual(System.Time(mm),29) | String.IsEqual(System.Time(mm),30) | String.IsEqual(System.Time(mm),31) | String.IsEqual(System.Time(mm),32) | String.IsEqual(System.Time(mm),33) | String.IsEqual(System.Time(mm),34) | String.IsEqual(System.Time(mm),35) | String.IsEqual(System.Time(mm),36)]">clock/cycle/clockSZ42.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),08) | String.IsEqual(System.Time(hh),20)] + [String.IsEqual(System.Time(mm),37) | String.IsEqual(System.Time(mm),38) | String.IsEqual(System.Time(mm),39) | String.IsEqual(System.Time(mm),40) | String.IsEqual(System.Time(mm),41) | String.IsEqual(System.Time(mm),42) | String.IsEqual(System.Time(mm),43) | String.IsEqual(System.Time(mm),44) | String.IsEqual(System.Time(mm),45) | String.IsEqual(System.Time(mm),46) | String.IsEqual(System.Time(mm),47) | String.IsEqual(System.Time(mm),48)]">clock/cycle/clockSZ43.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),08) | String.IsEqual(System.Time(hh),20)] + [String.IsEqual(System.Time(mm),49) | String.IsEqual(System.Time(mm),50) | String.IsEqual(System.Time(mm),51) | String.IsEqual(System.Time(mm),52) | String.IsEqual(System.Time(mm),53) | String.IsEqual(System.Time(mm),54) | String.IsEqual(System.Time(mm),55) | String.IsEqual(System.Time(mm),56) | String.IsEqual(System.Time(mm),57) | String.IsEqual(System.Time(mm),58) | String.IsEqual(System.Time(mm),59) | String.IsEqual(System.Time(mm),60)]">clock/cycle/clockSZ44.png</value>
+	
+	<value condition="[String.IsEqual(System.Time(hh),09) | String.IsEqual(System.Time(hh),21)] + [String.IsEqual(System.Time(mm),00) | String.IsEqual(System.Time(mm),01) | String.IsEqual(System.Time(mm),02) | String.IsEqual(System.Time(mm),03) | String.IsEqual(System.Time(mm),04) | String.IsEqual(System.Time(mm),05) | String.IsEqual(System.Time(mm),06) | String.IsEqual(System.Time(mm),07) | String.IsEqual(System.Time(mm),08) | String.IsEqual(System.Time(mm),09) | String.IsEqual(System.Time(mm),10) | String.IsEqual(System.Time(mm),11) | String.IsEqual(System.Time(mm),12)]">clock/cycle/clockSZ45.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),09) | String.IsEqual(System.Time(hh),21)] + [String.IsEqual(System.Time(mm),13) | String.IsEqual(System.Time(mm),14) | String.IsEqual(System.Time(mm),15) | String.IsEqual(System.Time(mm),16) | String.IsEqual(System.Time(mm),17) | String.IsEqual(System.Time(mm),18) | String.IsEqual(System.Time(mm),19) | String.IsEqual(System.Time(mm),20) | String.IsEqual(System.Time(mm),21) | String.IsEqual(System.Time(mm),22) | String.IsEqual(System.Time(mm),23) | String.IsEqual(System.Time(mm),24)]">clock/cycle/clockSZ46.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),09) | String.IsEqual(System.Time(hh),21)] + [String.IsEqual(System.Time(mm),25) | String.IsEqual(System.Time(mm),26) | String.IsEqual(System.Time(mm),27) | String.IsEqual(System.Time(mm),28) | String.IsEqual(System.Time(mm),29) | String.IsEqual(System.Time(mm),30) | String.IsEqual(System.Time(mm),31) | String.IsEqual(System.Time(mm),32) | String.IsEqual(System.Time(mm),33) | String.IsEqual(System.Time(mm),34) | String.IsEqual(System.Time(mm),35) | String.IsEqual(System.Time(mm),36)]">clock/cycle/clockSZ47.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),09) | String.IsEqual(System.Time(hh),21)] + [String.IsEqual(System.Time(mm),37) | String.IsEqual(System.Time(mm),38) | String.IsEqual(System.Time(mm),39) | String.IsEqual(System.Time(mm),40) | String.IsEqual(System.Time(mm),41) | String.IsEqual(System.Time(mm),42) | String.IsEqual(System.Time(mm),43) | String.IsEqual(System.Time(mm),44) | String.IsEqual(System.Time(mm),45) | String.IsEqual(System.Time(mm),46) | String.IsEqual(System.Time(mm),47) | String.IsEqual(System.Time(mm),48)]">clock/cycle/clockSZ48.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),09) | String.IsEqual(System.Time(hh),21)] + [String.IsEqual(System.Time(mm),49) | String.IsEqual(System.Time(mm),50) | String.IsEqual(System.Time(mm),51) | String.IsEqual(System.Time(mm),52) | String.IsEqual(System.Time(mm),53) | String.IsEqual(System.Time(mm),54) | String.IsEqual(System.Time(mm),55) | String.IsEqual(System.Time(mm),56) | String.IsEqual(System.Time(mm),57) | String.IsEqual(System.Time(mm),58) | String.IsEqual(System.Time(mm),59) | String.IsEqual(System.Time(mm),60)]">clock/cycle/clockSZ49.png</value>
+	
+	<value condition="[String.IsEqual(System.Time(hh),10) | String.IsEqual(System.Time(hh),22)] + [String.IsEqual(System.Time(mm),00) | String.IsEqual(System.Time(mm),01) | String.IsEqual(System.Time(mm),02) | String.IsEqual(System.Time(mm),03) | String.IsEqual(System.Time(mm),04) | String.IsEqual(System.Time(mm),05) | String.IsEqual(System.Time(mm),06) | String.IsEqual(System.Time(mm),07) | String.IsEqual(System.Time(mm),08) | String.IsEqual(System.Time(mm),09) | String.IsEqual(System.Time(mm),10) | String.IsEqual(System.Time(mm),11) | String.IsEqual(System.Time(mm),12)]">clock/cycle/clockSZ50.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),10) | String.IsEqual(System.Time(hh),22)] + [String.IsEqual(System.Time(mm),13) | String.IsEqual(System.Time(mm),14) | String.IsEqual(System.Time(mm),15) | String.IsEqual(System.Time(mm),16) | String.IsEqual(System.Time(mm),17) | String.IsEqual(System.Time(mm),18) | String.IsEqual(System.Time(mm),19) | String.IsEqual(System.Time(mm),20) | String.IsEqual(System.Time(mm),21) | String.IsEqual(System.Time(mm),22) | String.IsEqual(System.Time(mm),23) | String.IsEqual(System.Time(mm),24)]">clock/cycle/clockSZ51.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),10) | String.IsEqual(System.Time(hh),22)] + [String.IsEqual(System.Time(mm),25) | String.IsEqual(System.Time(mm),26) | String.IsEqual(System.Time(mm),27) | String.IsEqual(System.Time(mm),28) | String.IsEqual(System.Time(mm),29) | String.IsEqual(System.Time(mm),30) | String.IsEqual(System.Time(mm),31) | String.IsEqual(System.Time(mm),32) | String.IsEqual(System.Time(mm),33) | String.IsEqual(System.Time(mm),34) | String.IsEqual(System.Time(mm),35) | String.IsEqual(System.Time(mm),36)]">clock/cycle/clockSZ52.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),10) | String.IsEqual(System.Time(hh),22)] + [String.IsEqual(System.Time(mm),37) | String.IsEqual(System.Time(mm),38) | String.IsEqual(System.Time(mm),39) | String.IsEqual(System.Time(mm),40) | String.IsEqual(System.Time(mm),41) | String.IsEqual(System.Time(mm),42) | String.IsEqual(System.Time(mm),43) | String.IsEqual(System.Time(mm),44) | String.IsEqual(System.Time(mm),45) | String.IsEqual(System.Time(mm),46) | String.IsEqual(System.Time(mm),47) | String.IsEqual(System.Time(mm),48)]">clock/cycle/clockSZ53.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),10) | String.IsEqual(System.Time(hh),22)] + [String.IsEqual(System.Time(mm),49) | String.IsEqual(System.Time(mm),50) | String.IsEqual(System.Time(mm),51) | String.IsEqual(System.Time(mm),52) | String.IsEqual(System.Time(mm),53) | String.IsEqual(System.Time(mm),54) | String.IsEqual(System.Time(mm),55) | String.IsEqual(System.Time(mm),56) | String.IsEqual(System.Time(mm),57) | String.IsEqual(System.Time(mm),58) | String.IsEqual(System.Time(mm),59) | String.IsEqual(System.Time(mm),60)]">clock/cycle/clockSZ54.png</value>
+	
+	<value condition="[String.IsEqual(System.Time(hh),11) | String.IsEqual(System.Time(hh),23)] + [String.IsEqual(System.Time(mm),00) | String.IsEqual(System.Time(mm),01) | String.IsEqual(System.Time(mm),02) | String.IsEqual(System.Time(mm),03) | String.IsEqual(System.Time(mm),04) | String.IsEqual(System.Time(mm),05) | String.IsEqual(System.Time(mm),06) | String.IsEqual(System.Time(mm),07) | String.IsEqual(System.Time(mm),08) | String.IsEqual(System.Time(mm),09) | String.IsEqual(System.Time(mm),10) | String.IsEqual(System.Time(mm),11) | String.IsEqual(System.Time(mm),12)]">clock/cycle/clockSZ55.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),11) | String.IsEqual(System.Time(hh),23)] + [String.IsEqual(System.Time(mm),13) | String.IsEqual(System.Time(mm),14) | String.IsEqual(System.Time(mm),15) | String.IsEqual(System.Time(mm),16) | String.IsEqual(System.Time(mm),17) | String.IsEqual(System.Time(mm),18) | String.IsEqual(System.Time(mm),19) | String.IsEqual(System.Time(mm),20) | String.IsEqual(System.Time(mm),21) | String.IsEqual(System.Time(mm),22) | String.IsEqual(System.Time(mm),23) | String.IsEqual(System.Time(mm),24)]">clock/cycle/clockSZ56.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),11) | String.IsEqual(System.Time(hh),23)] + [String.IsEqual(System.Time(mm),25) | String.IsEqual(System.Time(mm),26) | String.IsEqual(System.Time(mm),27) | String.IsEqual(System.Time(mm),28) | String.IsEqual(System.Time(mm),29) | String.IsEqual(System.Time(mm),30) | String.IsEqual(System.Time(mm),31) | String.IsEqual(System.Time(mm),32) | String.IsEqual(System.Time(mm),33) | String.IsEqual(System.Time(mm),34) | String.IsEqual(System.Time(mm),35) | String.IsEqual(System.Time(mm),36)]">clock/cycle/clockSZ57.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),11) | String.IsEqual(System.Time(hh),23)] + [String.IsEqual(System.Time(mm),37) | String.IsEqual(System.Time(mm),38) | String.IsEqual(System.Time(mm),39) | String.IsEqual(System.Time(mm),40) | String.IsEqual(System.Time(mm),41) | String.IsEqual(System.Time(mm),42) | String.IsEqual(System.Time(mm),43) | String.IsEqual(System.Time(mm),44) | String.IsEqual(System.Time(mm),45) | String.IsEqual(System.Time(mm),46) | String.IsEqual(System.Time(mm),47) | String.IsEqual(System.Time(mm),48)]">clock/cycle/clockSZ58.png</value>
+	<value condition="[String.IsEqual(System.Time(hh),11) | String.IsEqual(System.Time(hh),23)] + [String.IsEqual(System.Time(mm),49) | String.IsEqual(System.Time(mm),50) | String.IsEqual(System.Time(mm),51) | String.IsEqual(System.Time(mm),52) | String.IsEqual(System.Time(mm),53) | String.IsEqual(System.Time(mm),54) | String.IsEqual(System.Time(mm),55) | String.IsEqual(System.Time(mm),56) | String.IsEqual(System.Time(mm),57) | String.IsEqual(System.Time(mm),58) | String.IsEqual(System.Time(mm),59) | String.IsEqual(System.Time(mm),60)]">clock/cycle/clockSZ59.png</value>
+</variable>
+
+<variable name="CycleclockMZ">
+	<value condition="String.IsEqual(System.Time(mm),01)">clock/cycle/clockMZ01.png</value>
+	<value condition="String.IsEqual(System.Time(mm),02)">clock/cycle/clockMZ02.png</value>
+	<value condition="String.IsEqual(System.Time(mm),03)">clock/cycle/clockMZ03.png</value>
+	<value condition="String.IsEqual(System.Time(mm),04)">clock/cycle/clockMZ04.png</value>
+	<value condition="String.IsEqual(System.Time(mm),05)">clock/cycle/clockMZ05.png</value>
+	<value condition="String.IsEqual(System.Time(mm),06)">clock/cycle/clockMZ06.png</value>
+	<value condition="String.IsEqual(System.Time(mm),07)">clock/cycle/clockMZ07.png</value>
+	<value condition="String.IsEqual(System.Time(mm),08)">clock/cycle/clockMZ08.png</value>
+	<value condition="String.IsEqual(System.Time(mm),09)">clock/cycle/clockMZ09.png</value>
+	<value condition="String.IsEqual(System.Time(mm),10)">clock/cycle/clockMZ10.png</value>
+	<value condition="String.IsEqual(System.Time(mm),11)">clock/cycle/clockMZ11.png</value>
+	<value condition="String.IsEqual(System.Time(mm),12)">clock/cycle/clockMZ12.png</value>
+	<value condition="String.IsEqual(System.Time(mm),13)">clock/cycle/clockMZ13.png</value>
+	<value condition="String.IsEqual(System.Time(mm),14)">clock/cycle/clockMZ14.png</value>
+	<value condition="String.IsEqual(System.Time(mm),15)">clock/cycle/clockMZ15.png</value>
+	<value condition="String.IsEqual(System.Time(mm),16)">clock/cycle/clockMZ16.png</value>
+	<value condition="String.IsEqual(System.Time(mm),17)">clock/cycle/clockMZ17.png</value>
+	<value condition="String.IsEqual(System.Time(mm),18)">clock/cycle/clockMZ18.png</value>
+	<value condition="String.IsEqual(System.Time(mm),19)">clock/cycle/clockMZ19.png</value>
+	<value condition="String.IsEqual(System.Time(mm),20)">clock/cycle/clockMZ20.png</value>
+	<value condition="String.IsEqual(System.Time(mm),21)">clock/cycle/clockMZ21.png</value>
+	<value condition="String.IsEqual(System.Time(mm),22)">clock/cycle/clockMZ22.png</value>
+	<value condition="String.IsEqual(System.Time(mm),23)">clock/cycle/clockMZ23.png</value>
+	<value condition="String.IsEqual(System.Time(mm),24)">clock/cycle/clockMZ24.png</value>
+	<value condition="String.IsEqual(System.Time(mm),25)">clock/cycle/clockMZ25.png</value>
+	<value condition="String.IsEqual(System.Time(mm),26)">clock/cycle/clockMZ26.png</value>
+	<value condition="String.IsEqual(System.Time(mm),27)">clock/cycle/clockMZ27.png</value>
+	<value condition="String.IsEqual(System.Time(mm),28)">clock/cycle/clockMZ28.png</value>
+	<value condition="String.IsEqual(System.Time(mm),29)">clock/cycle/clockMZ29.png</value>
+	<value condition="String.IsEqual(System.Time(mm),30)">clock/cycle/clockMZ30.png</value>
+	<value condition="String.IsEqual(System.Time(mm),31)">clock/cycle/clockMZ31.png</value>
+	<value condition="String.IsEqual(System.Time(mm),32)">clock/cycle/clockMZ32.png</value>
+	<value condition="String.IsEqual(System.Time(mm),33)">clock/cycle/clockMZ33.png</value>
+	<value condition="String.IsEqual(System.Time(mm),34)">clock/cycle/clockMZ34.png</value>
+	<value condition="String.IsEqual(System.Time(mm),35)">clock/cycle/clockMZ35.png</value>
+	<value condition="String.IsEqual(System.Time(mm),36)">clock/cycle/clockMZ36.png</value>
+	<value condition="String.IsEqual(System.Time(mm),37)">clock/cycle/clockMZ37.png</value>
+	<value condition="String.IsEqual(System.Time(mm),38)">clock/cycle/clockMZ38.png</value>
+	<value condition="String.IsEqual(System.Time(mm),39)">clock/cycle/clockMZ39.png</value>
+	<value condition="String.IsEqual(System.Time(mm),40)">clock/cycle/clockMZ40.png</value>
+	<value condition="String.IsEqual(System.Time(mm),41)">clock/cycle/clockMZ41.png</value>
+	<value condition="String.IsEqual(System.Time(mm),42)">clock/cycle/clockMZ42.png</value>
+	<value condition="String.IsEqual(System.Time(mm),43)">clock/cycle/clockMZ43.png</value>
+	<value condition="String.IsEqual(System.Time(mm),44)">clock/cycle/clockMZ44.png</value>
+	<value condition="String.IsEqual(System.Time(mm),45)">clock/cycle/clockMZ45.png</value>
+	<value condition="String.IsEqual(System.Time(mm),46)">clock/cycle/clockMZ46.png</value>
+	<value condition="String.IsEqual(System.Time(mm),47)">clock/cycle/clockMZ47.png</value>
+	<value condition="String.IsEqual(System.Time(mm),48)">clock/cycle/clockMZ48.png</value>
+	<value condition="String.IsEqual(System.Time(mm),49)">clock/cycle/clockMZ49.png</value>
+	<value condition="String.IsEqual(System.Time(mm),50)">clock/cycle/clockMZ50.png</value>
+	<value condition="String.IsEqual(System.Time(mm),51)">clock/cycle/clockMZ51.png</value>
+	<value condition="String.IsEqual(System.Time(mm),52)">clock/cycle/clockMZ52.png</value>
+	<value condition="String.IsEqual(System.Time(mm),53)">clock/cycle/clockMZ53.png</value>
+	<value condition="String.IsEqual(System.Time(mm),54)">clock/cycle/clockMZ54.png</value>
+	<value condition="String.IsEqual(System.Time(mm),55)">clock/cycle/clockMZ55.png</value>
+	<value condition="String.IsEqual(System.Time(mm),56)">clock/cycle/clockMZ56.png</value>
+	<value condition="String.IsEqual(System.Time(mm),57)">clock/cycle/clockMZ57.png</value>
+	<value condition="String.IsEqual(System.Time(mm),58)">clock/cycle/clockMZ58.png</value>
+	<value condition="String.IsEqual(System.Time(mm),59)">clock/cycle/clockMZ59.png</value>
+	<value condition="String.IsEqual(System.Time(mm),00)">clock/cycle/clockMZ60.png</value>
+</variable>
+
+<variable name="CycleclockSCZ">
+	<value condition="String.IsEqual(System.Time(ss),01)">clock/cycle/clockSCZ01.png</value>
+	<value condition="String.IsEqual(System.Time(ss),02)">clock/cycle/clockSCZ02.png</value>
+	<value condition="String.IsEqual(System.Time(ss),03)">clock/cycle/clockSCZ03.png</value>
+	<value condition="String.IsEqual(System.Time(ss),04)">clock/cycle/clockSCZ04.png</value>
+	<value condition="String.IsEqual(System.Time(ss),05)">clock/cycle/clockSCZ05.png</value>
+	<value condition="String.IsEqual(System.Time(ss),06)">clock/cycle/clockSCZ06.png</value>
+	<value condition="String.IsEqual(System.Time(ss),07)">clock/cycle/clockSCZ07.png</value>
+	<value condition="String.IsEqual(System.Time(ss),08)">clock/cycle/clockSCZ08.png</value>
+	<value condition="String.IsEqual(System.Time(ss),09)">clock/cycle/clockSCZ09.png</value>
+	<value condition="String.IsEqual(System.Time(ss),10)">clock/cycle/clockSCZ10.png</value>
+	<value condition="String.IsEqual(System.Time(ss),11)">clock/cycle/clockSCZ11.png</value>
+	<value condition="String.IsEqual(System.Time(ss),12)">clock/cycle/clockSCZ12.png</value>
+	<value condition="String.IsEqual(System.Time(ss),13)">clock/cycle/clockSCZ13.png</value>
+	<value condition="String.IsEqual(System.Time(ss),14)">clock/cycle/clockSCZ14.png</value>
+	<value condition="String.IsEqual(System.Time(ss),15)">clock/cycle/clockSCZ15.png</value>
+	<value condition="String.IsEqual(System.Time(ss),16)">clock/cycle/clockSCZ16.png</value>
+	<value condition="String.IsEqual(System.Time(ss),17)">clock/cycle/clockSCZ17.png</value>
+	<value condition="String.IsEqual(System.Time(ss),18)">clock/cycle/clockSCZ18.png</value>
+	<value condition="String.IsEqual(System.Time(ss),19)">clock/cycle/clockSCZ19.png</value>
+	<value condition="String.IsEqual(System.Time(ss),20)">clock/cycle/clockSCZ20.png</value>
+	<value condition="String.IsEqual(System.Time(ss),21)">clock/cycle/clockSCZ21.png</value>
+	<value condition="String.IsEqual(System.Time(ss),22)">clock/cycle/clockSCZ22.png</value>
+	<value condition="String.IsEqual(System.Time(ss),23)">clock/cycle/clockSCZ23.png</value>
+	<value condition="String.IsEqual(System.Time(ss),24)">clock/cycle/clockSCZ24.png</value>
+	<value condition="String.IsEqual(System.Time(ss),25)">clock/cycle/clockSCZ25.png</value>
+	<value condition="String.IsEqual(System.Time(ss),26)">clock/cycle/clockSCZ26.png</value>
+	<value condition="String.IsEqual(System.Time(ss),27)">clock/cycle/clockSCZ27.png</value>
+	<value condition="String.IsEqual(System.Time(ss),28)">clock/cycle/clockSCZ28.png</value>
+	<value condition="String.IsEqual(System.Time(ss),29)">clock/cycle/clockSCZ29.png</value>
+	<value condition="String.IsEqual(System.Time(ss),30)">clock/cycle/clockSCZ30.png</value>
+	<value condition="String.IsEqual(System.Time(ss),31)">clock/cycle/clockSCZ31.png</value>
+	<value condition="String.IsEqual(System.Time(ss),32)">clock/cycle/clockSCZ32.png</value>
+	<value condition="String.IsEqual(System.Time(ss),33)">clock/cycle/clockSCZ33.png</value>
+	<value condition="String.IsEqual(System.Time(ss),34)">clock/cycle/clockSCZ34.png</value>
+	<value condition="String.IsEqual(System.Time(ss),35)">clock/cycle/clockSCZ35.png</value>
+	<value condition="String.IsEqual(System.Time(ss),36)">clock/cycle/clockSCZ36.png</value>
+	<value condition="String.IsEqual(System.Time(ss),37)">clock/cycle/clockSCZ37.png</value>
+	<value condition="String.IsEqual(System.Time(ss),38)">clock/cycle/clockSCZ38.png</value>
+	<value condition="String.IsEqual(System.Time(ss),39)">clock/cycle/clockSCZ39.png</value>
+	<value condition="String.IsEqual(System.Time(ss),40)">clock/cycle/clockSCZ40.png</value>
+	<value condition="String.IsEqual(System.Time(ss),41)">clock/cycle/clockSCZ41.png</value>
+	<value condition="String.IsEqual(System.Time(ss),42)">clock/cycle/clockSCZ42.png</value>
+	<value condition="String.IsEqual(System.Time(ss),43)">clock/cycle/clockSCZ43.png</value>
+	<value condition="String.IsEqual(System.Time(ss),44)">clock/cycle/clockSCZ44.png</value>
+	<value condition="String.IsEqual(System.Time(ss),45)">clock/cycle/clockSCZ45.png</value>
+	<value condition="String.IsEqual(System.Time(ss),46)">clock/cycle/clockSCZ46.png</value>
+	<value condition="String.IsEqual(System.Time(ss),47)">clock/cycle/clockSCZ47.png</value>
+	<value condition="String.IsEqual(System.Time(ss),48)">clock/cycle/clockSCZ48.png</value>
+	<value condition="String.IsEqual(System.Time(ss),49)">clock/cycle/clockSCZ49.png</value>
+	<value condition="String.IsEqual(System.Time(ss),50)">clock/cycle/clockSCZ50.png</value>
+	<value condition="String.IsEqual(System.Time(ss),51)">clock/cycle/clockSCZ51.png</value>
+	<value condition="String.IsEqual(System.Time(ss),52)">clock/cycle/clockSCZ52.png</value>
+	<value condition="String.IsEqual(System.Time(ss),53)">clock/cycle/clockSCZ53.png</value>
+	<value condition="String.IsEqual(System.Time(ss),54)">clock/cycle/clockSCZ54.png</value>
+	<value condition="String.IsEqual(System.Time(ss),55)">clock/cycle/clockSCZ55.png</value>
+	<value condition="String.IsEqual(System.Time(ss),56)">clock/cycle/clockSCZ56.png</value>
+	<value condition="String.IsEqual(System.Time(ss),57)">clock/cycle/clockSCZ57.png</value>
+	<value condition="String.IsEqual(System.Time(ss),58)">clock/cycle/clockSCZ58.png</value>
+	<value condition="String.IsEqual(System.Time(ss),59)">clock/cycle/clockSCZ59.png</value>
+	<value condition="String.IsEqual(System.Time(ss),00)">clock/cycle/clockSCZ60.png</value>
+</variable>
+	
+<include name="CycleClock">
+	<control type="image">
+		<description>Ziffernblatt</description>
+		<width>714</width>
+		<height>714</height>
+		<texture colordiffuse="$VAR[primaryCol]">clock/cycle/clockB.png</texture>
+		<animation type="Conditional" condition="true">
+			<effect type="fade" start="0" end="13" time="0" />
+		</animation>
+	</control>
+	<control type="image">
+		<left>17</left>
+		<top>345.5</top>
+		<width>680</width>
+		<height>22</height>
+		<texture>clock/cycle/schrauben.png</texture>
+	</control>
+	<control type="image">
+		<description>Stundenzeiger</description>
+		<width>714</width>
+		<height>714</height>
+		<texture>$VAR[CycleclockSZ]</texture>
+	</control>
+	<control type="image">
+		<description>Minutenzeiger</description>
+		<width>714</width>
+		<height>714</height>
+		<texture>$VAR[CycleclockMZ]</texture>
+	</control>
+	<control type="image">
+		<description>Sekundenzeiger</description>
+		<width>714</width>
+		<height>714</height>
+		<texture colordiffuse="$VAR[primaryCol]">$VAR[CycleclockSCZ]</texture>
+	</control>
+</include>
+</includes>

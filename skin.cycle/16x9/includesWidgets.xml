@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+<!-- Cycle 0.3 -->
+<!-- ######################### -->
+<!-- Custom Wiget window home/videos
+############################## -->
+<include name="WidgetViewImage">
+	<left>12</left>
+	<top>12</top>
+	<width>348</width>
+	<height>200</height>
+	<aspectratio>scale</aspectratio>
+</include>
+
+<include name="AnimationWidgetViewImageFO">
+	<animation type="Focus">
+		<effect type="zoom" time="250" end="105" start="100" center="175,210" />
+	</animation>
+	<animation type="UnFocus">
+		<effect type="zoom" start="105" end="100" time="120" center="175,210" />
+	</animation>
+</include>
+	
+<!-- Art fallback -->
+<variable name="ValueWidgetView_FallbackIcon">
+	<value condition="!String.IsEmpty(ListItem.TVShowTitle)">D</value><!-- Episode/Serie -->
+	<value>E</value>
+</variable>
+
+<!-- Widgets Cycle labels -->
+<variable name="ValueWidgetView_Label">
+	<value condition="String.IsEmpty(ListItem.TVShowTitle) + String.IsEmpty(ListItem.Title)">[B]$INFO[ListItem.Title][COLOR=TextColorLight]$INFO[ListItem.Year, (,)][/COLOR][/B]</value><!-- Filme -->
+	<value condition="!String.IsEmpty(ListItem.TVShowTitle) + String.IsEmpty(ListItem.Duration)">[B]$INFO[ListItem.TVShowTitle][/B][COLOR=TextColorLight]$INFO[ListItem.Year, (,)][/COLOR]</value><!-- Serie -->
+	<value condition="!String.IsEmpty(ListItem.TVShowTitle) + !String.IsEmpty(ListItem.Duration)">[B]$INFO[ListItem.TVShowTitle][/B]</value><!-- Episode -->
+	<value>[B]$INFO[ListItem.label][/B]</value>
+</variable>
+
+<variable name="ValueWidgetView_Label2">
+	<value condition="String.IsEmpty(ListItem.TVShowTitle)">$INFO[ListItem.Duration,, $LOCALIZE[12391]]</value><!-- Filme -->
+	<value condition="!String.IsEmpty(ListItem.TVShowTitle) + String.IsEmpty(ListItem.Duration) + !Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0)">$INFO[ListItem.Property(NumEpisodes),, Episoden]</value><!-- Serie -->
+	<value condition="!String.IsEmpty(ListItem.TVShowTitle) + String.IsEmpty(ListItem.Duration) + Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0)">$INFO[ListItem.Property(UnWatchedEpisodes),, neue Episoden]</value><!-- Serie -->
+	<value condition="!String.IsEmpty(ListItem.TVShowTitle) + !String.IsEmpty(ListItem.Duration)">$VAR[SeasonPrefix-long,, ]$VAR[EpisodePrefix-long,,[CR]]$INFO[ListItem.Title]</value><!-- Episode -->
+</variable>
+
+<variable name="ValueWidgetViewContent">
+	<value condition="Window.IsVisible(home)">$INFO[Skin.String(MainslotWidgetContent)]</value>
+	<value condition="Window.IsVisible(videos)">$INFO[Skin.String(VideoslotWidgetContent)]</value>
+</variable>
+
+<variable name="ValueWidgetViewTitle">
+	<value condition="Window.IsVisible(home)">$INFO[Skin.string(MainslotWidgetTitle)]</value>
+	<value condition="Window.IsVisible(videos)">$INFO[Skin.String(VideoslotWidgetTitle)]</value>
+</variable>
+
+</includes>

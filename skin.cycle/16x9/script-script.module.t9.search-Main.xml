@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+<defaultcontrol always="true">9090</defaultcontrol>
+<controls>
+	<control type="group">
+		<include>Dialog_popup_Animation</include>
+		<posx>20</posx>
+		<posy>0</posy>
+		<control type="image"><!-- Hintergrund -->
+			<description>Hintergrund</description>
+			<left>dialogbar.left</left>
+			<top>dialogbar.top</top>
+			<width>1223</width>
+			<height>680</height>
+			<include>DialogBackground</include>
+		</control>
+		<control type="label"><!-- Content -->
+			<description>Titel</description>
+			<left>bottom.dialogbar.left</left>
+			<top>35</top>
+			<width>1000</width>
+			<height>60</height>
+			<font>DialogHeader</font>
+			<visible>String.IsEmpty(Window(home).Property(CustomKeyboardLabel))</visible>
+			<include>VintageDialogTitel_Animation</include>
+			<label>Suchbegriff</label>
+		</control>
+		<control type="panel" id="9090">
+			<left>bottom.dialogbar.left</left>
+			<top>150</top>
+			<width>660</width>
+			<height>320</height>
+			<onleft>Action(Close)</onleft>
+			<onright condition="IntegerGreaterThan(Container(9091).NumItems,0)">Control.SetFocus(9091,0)</onright>
+			<onback>noop</onback>
+			<orientation>vertical</orientation>
+			<scrolltime tween="quadratic" easing="out">200</scrolltime>
+			<itemlayout width="220" height="80">
+				<control type="image">
+					<width>220</width>
+					<height>80</height>
+					<texture border="20">dialogs/keyboard/key-nf.png</texture>
+				</control>
+				<control type="label">
+					<width>220</width>
+					<height>80</height>
+					<align>center</align>
+					<aligny>top</aligny>
+					<textoffsety>22</textoffsety>
+					<font>RegularSmall</font>
+					<textcolor>TextColorLight</textcolor>
+					<label>$INFO[ListItem.Label] $INFO[ListItem.Label2]</label>
+				</control>
+			</itemlayout>
+			<focusedlayout width="220" height="80">
+				<control type="image">
+					<width>220</width>
+					<height>80</height>
+					<texture border="20" colordiffuse="$VAR[primaryCol]">dialogs/keyboard/key-nf.png</texture>
+				</control>
+				<control type="label">
+					<width>220</width>
+					<height>80</height>
+					<align>center</align>
+					<aligny>top</aligny>
+					<textoffsety>22</textoffsety>
+					<font>RegularSmall</font>
+					<textcolor>TextColorLight</textcolor>
+					<label>$INFO[ListItem.Label] $INFO[ListItem.Label2]</label>
+				</control>
+			</focusedlayout>
+		</control>
+		<control type="list" id="9091">
+			<left>690</left>
+			<top>150</top>
+			<width>520</width>
+			<height>320</height>
+			<onleft>9090</onleft>
+			<onright>Action(Close)</onright>
+			<onup>9091</onup>
+			<ondown>9091</ondown>
+			<onback>noop</onback>
+			<orientation>vertical</orientation>
+			<scrolltime tween="quadratic" easing="out">200</scrolltime>
+			<itemlayout width="520" height="80">
+				<control type="image">
+					<width>520</width>
+					<height>80</height>
+					<texture border="20">dialogs/keyboard/key-nf.png</texture>
+				</control>
+				<control type="label">
+					<width>520</width>
+					<height>80</height>
+					<align>center</align>
+					<font>RegularSmall</font>
+					<textcolor>TextColorLight</textcolor>
+					<label>$INFO[ListItem.Label] $INFO[ListItem.Label2]</label>
+				</control>
+			</itemlayout>
+			<focusedlayout width="520" height="80">
+				<control type="image">
+					<width>520</width>
+					<height>80</height>
+					<texture border="20">dialogs/keyboard/key-nf.png</texture>
+					<visible>!Control.HasFocus(9091)</visible>
+				</control>
+				<control type="image">
+					<width>520</width>
+					<height>80</height>
+					<texture border="20" colordiffuse="$VAR[primaryCol]">dialogs/keyboard/key-nf.png</texture>
+					<visible>Control.HasFocus(9091)</visible>
+				</control>
+				<control type="label">
+					<width>520</width>
+					<height>80</height>
+					<align>center</align>
+					<font>RegularSmall</font>
+					<textcolor>TextColorLight</textcolor>
+					<label>$INFO[ListItem.Label] $INFO[ListItem.Label2]</label>
+				</control>
+			</focusedlayout>
+		</control>
+		<control type="image" id="312">
+			<description>Texteingabefeld hintergrund</description>
+			<top>560</top>
+			<width>1231</width>
+			<height>70</height>
+			<textcolor>TextColorFO</textcolor>
+			<texture border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texture>
+		</control>
+		<control type="label" id="600">
+			<top>560</top>
+			<width>1231</width>
+			<height>70</height>
+			<align>center</align>
+			<textoffsetx>30</textoffsetx>
+			<textcolor>TextColorFO</textcolor>
+			<scroll>true</scroll>
+		</control>
+	</control>
+</controls>
+</window>

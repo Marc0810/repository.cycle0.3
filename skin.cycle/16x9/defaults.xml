@@ -1,0 +1,271 @@
+<includes>
+<!-- Cycle defaults -->
+<default type="image">
+	<left>0</left>
+	<top>0</top>
+	<texture>-</texture>
+	<colorkey>0</colorkey>
+</default>
+
+<default type="group">
+	<left>0</left>
+	<top>0</top>
+</default>
+
+<default type="label">
+	<left>0</left>
+	<top>0</top>
+	<label>-</label>
+	<font>RegularNormal</font>
+	<textcolor>TextColorHeavy</textcolor>
+	<disabledcolor>TextColorLight</disabledcolor>
+	<focusedcolor>TextColorFO</focusedcolor>
+	<selectedcolor>$VAR[SelectedCol]</selectedcolor>
+	<align>left</align>
+	<aligny>center</aligny>
+</default>
+
+<default type="fadelabel">
+	<left>0</left>
+	<top>0</top>
+	<font>RegularNormal</font>
+	<textcolor>TextColorHeavy</textcolor>
+	<disabledcolor>TextColorLight</disabledcolor>
+	<focusedcolor>TextColorFO</focusedcolor>
+	<selectedcolor>$VAR[SelectedCol]</selectedcolor>
+	<align>left</align>
+	<aligny>center</aligny>
+</default>
+
+<!-- height 65 align top offsety 15 -->
+<!-- height 70 align top offsety 15 -->
+<!-- height 75 align top offsety 20 -->
+
+<default type="button">
+	<left>0</left>
+	<top>0</top>
+	<texturefocus>-</texturefocus>
+	<texturenofocus>-</texturenofocus>
+	<font>RegularNormal</font>
+	<textcolor>TextColorHeavy</textcolor>
+	<disabledcolor>TextColorLight</disabledcolor>
+	<focusedcolor>TextColorFO</focusedcolor>
+	<selectedcolor>$VAR[secondaryCol]</selectedcolor>
+	<invalidcolor>$VAR[secondaryCol]</invalidcolor>
+	<textoffsetx>30</textoffsetx>
+	<align>left</align>
+	<aligny>center</aligny>
+	<pulseonselect>false</pulseonselect>
+</default>
+	
+<default type="radiobutton">
+	<left>0</left>
+	<top>0</top>
+	<textureradioonfocus>buttons/radio/RadioButton_fo.png</textureradioonfocus>
+	<textureradioonnofocus colordiffuse="TextColorMedium">buttons/radio/RadioButton_fo.png</textureradioonnofocus>
+	<textureradioofffocus>buttons/radio/RadioButton_nf.png</textureradioofffocus>
+	<textureradiooffnofocus colordiffuse="TextColorMedium">buttons/radio/RadioButton_nf.png</textureradiooffnofocus>
+	<textureradioondisabled colordiffuse="TextColorMedium">buttons/radio/RadioButton_fo.png</textureradioondisabled>
+	<textureradiooffdisabled colordiffuse="TextColorMedium">buttons/radio/RadioButton_nf.png</textureradiooffdisabled>
+	<texturefocus>-</texturefocus>
+	<texturenofocus>-</texturenofocus>
+	<radiowidth>60</radiowidth>
+	<radioheight>60</radioheight>
+	<font>RegularNormal</font>
+	<textcolor>TextColorHeavy</textcolor>
+	<disabledcolor>TextColorLight</disabledcolor>
+	<focusedcolor>TextColorFO</focusedcolor>
+	<selectedcolor>$VAR[secondaryCol]</selectedcolor>
+	<textoffsetx>30</textoffsetx>
+	<aligny>center</aligny>
+	<align>left</align>
+	<pulseonselect>false</pulseonselect>
+</default>
+
+<default type="togglebutton">
+	<left>0</left>
+	<top>0</top>
+	<alttexturefocus>buttons/radio/RadioButton_fo.png</alttexturefocus>
+	<alttexturenofocus colordiffuse="TextColorMedium">buttons/radio/RadioButton_fo.png</alttexturenofocus>
+	<texturefocus>buttons/radio/RadioButton_nf.png</texturefocus>
+	<texturenofocus colordiffuse="TextColorMedium">buttons/radio/RadioButton_nf.png</texturenofocus>
+	<font>RegularNormal</font>
+	<textcolor>TextColorHeavy</textcolor>
+	<disabledcolor>TextColorLight</disabledcolor>
+	<focusedcolor>TextColorFO</focusedcolor>
+	<selectedcolor>$VAR[secondaryCol]</selectedcolor>
+	<textoffsetx>30</textoffsetx>
+	<label>-</label>
+	<pulseonselect>false</pulseonselect>
+	<align>left</align>
+	<aligny>center</aligny>
+</default>
+
+<default type="textbox">
+	<left>0</left>
+	<top>0</top>
+	<width>615</width>
+	<height>322</height>
+	<align>left</align>
+	<font>RegularNormal</font>
+	<textcolor>TextColorHeavy</textcolor>
+	<disabledcolor>TextColorHeavy</disabledcolor>
+	<focusedcolor>TextColorHeavy</focusedcolor>
+	<selectedcolor>$VAR[secondaryCol]</selectedcolor>
+</default>
+
+<default type="progress">
+	<left>0</left>
+	<top>0</top>
+	<info>Player.Progress</info>
+	<reveal>true</reveal>
+	<texturebg colordiffuse="$VAR[primaryCol]">dialogs/progress/bg.png</texturebg>
+	<lefttexture colordiffuse="$VAR[primaryCol]">dialogs/progress/left.png</lefttexture>
+	<midtexture colordiffuse="$VAR[primaryCol]">dialogs/progress/left.png</midtexture>
+	<righttexture colordiffuse="$VAR[secondaryCol]">dialogs/progress/right.png</righttexture>
+	<overlaytexture>-</overlaytexture>
+</default>
+
+<default type="spincontrol">
+	<left>0</left>
+	<top>0</top>
+	<reverse>yes</reverse>
+	<font>RegularNormal</font>
+	<textcolor>TextColorHeavy</textcolor>
+	<disabledcolor>TextColorLight</disabledcolor>
+	<focusedcolor>TextColorFO</focusedcolor>
+	<selectedcolor>$VAR[secondaryCol]</selectedcolor>
+	<textoffsetx>30</textoffsetx>
+	<align>left</align>
+	<aligny>center</aligny>
+	<texturefocus>-</texturefocus>
+	<texturenofocus>-</texturenofocus>
+	<spinwidth>32</spinwidth>
+	<spinheight>70</spinheight>
+	<texturenofocus>-</texturenofocus>
+	<textureupdisabled colordiffuse="TextColorMedium">buttons/spin/spinbuttonUpNF.png</textureupdisabled>
+	<texturedowndisabled colordiffuse="TextColorMedium">buttons/spin/spinbuttonDownNF.png</texturedowndisabled>
+	<textureup colordiffuse="TextColorMedium">buttons/spin/spinbuttonUpNF.png</textureup>
+	<texturedown colordiffuse="TextColorMedium">buttons/spin/spinbuttonDownNF.png</texturedown>
+	<textureupfocus>buttons/spin/spinbuttonUpFO.png</textureupfocus>
+	<texturedownfocus>buttons/spin/spinbuttonDownFO.png</texturedownfocus>
+	<pulseonselect>false</pulseonselect>
+</default>
+
+<default type="spincontrolex">
+	<left>0</left>
+	<top>0</top>
+	<reverse>yes</reverse>
+	<font>RegularNormal</font>
+	<textcolor>TextColorHeavy</textcolor>
+	<disabledcolor>TextColorLight</disabledcolor>
+	<focusedcolor>TextColorFO</focusedcolor>
+	<selectedcolor>$VAR[secondaryCol]</selectedcolor>
+	<textoffsetx>30</textoffsetx>
+	<align>left</align>
+	<aligny>center</aligny>
+	<texturefocus>-</texturefocus>
+	<texturenofocus>-</texturenofocus>
+	<spinwidth>32</spinwidth>
+	<spinheight>70</spinheight>
+	<texturenofocus>-</texturenofocus>
+	<textureupdisabled colordiffuse="TextColorMedium">buttons/spin/spinbuttonUpNF.png</textureupdisabled>
+	<texturedowndisabled colordiffuse="TextColorMedium">buttons/spin/spinbuttonDownNF.png</texturedowndisabled>
+	<textureup colordiffuse="TextColorMedium">buttons/spin/spinbuttonUpNF.png</textureup>
+	<texturedown colordiffuse="TextColorMedium">buttons/spin/spinbuttonDownNF.png</texturedown>
+	<textureupfocus>buttons/spin/spinbuttonUpFO.png</textureupfocus>
+	<texturedownfocus>buttons/spin/spinbuttonDownFO.png</texturedownfocus>
+	<pulseonselect>false</pulseonselect>
+</default>
+
+<default type="slider">
+	<left>0</left>
+	<top>0</top>
+	<texturefocus>-</texturefocus>
+	<texturenofocus>-</texturenofocus>
+	<texturesliderbar colordiffuse="TextColorMedium">buttons/slider/slider_bg.png</texturesliderbar>
+	<textureslidernib colordiffuse="$VAR[secondaryCol]">buttons/slider/SliderNibNF1.png</textureslidernib>
+	<textureslidernibfocus colordiffuse="$VAR[primaryCol]">buttons/slider/SliderNibFO1.png</textureslidernibfocus>
+	<textoffsetx>30</textoffsetx>
+	<controloffsetx>75</controloffsetx>
+	<font>RegularNormal</font>
+	<textcolor>TextColorHeavy</textcolor>
+	<disabledcolor>TextColorLight</disabledcolor>
+	<focusedcolor>TextColorFO</focusedcolor>
+	<selectedcolor>$VAR[secondaryCol]</selectedcolor>
+	<align>left</align>
+	<aligny>center</aligny>
+	<pulseonselect>false</pulseonselect>
+</default>
+
+<!-- ??? -->
+<default type="sliderex">
+	<left>0</left>
+	<top>0</top>
+	<textoffsetx>30</textoffsetx>
+	<sliderwidth>150</sliderwidth>
+	<sliderheight>20</sliderheight>
+	<font>RegularNormal</font>
+	<texturefocus>-</texturefocus>
+	<texturenofocus>-</texturenofocus>
+	<texturesliderbar colordiffuse="TextColorMedium">buttons/slider/slider_bg.png</texturesliderbar>
+	<textureslidernib colordiffuse="$VAR[primaryCol]">buttons/slider/SliderNibNF1.png</textureslidernib>
+	<textureslidernibfocus colordiffuse="whiteDark">buttons/slider/SliderNibFO1.png</textureslidernibfocus>
+	<textcolor>TextColorHeavy</textcolor>
+	<focusedcolor>TextColorFO</focusedcolor>
+	<selectedcolor>$VAR[secondaryCol]</selectedcolor>
+	<align>left</align>
+	<aligny>center</aligny>
+	<pulseonselect>false</pulseonselect>
+</default>
+
+<default type="mover">
+	<left>0</left>
+	<top>0</top>
+	<left>90</left>
+	<top>288</top>
+	<texturefocus>-</texturefocus>
+	<texturenofocus>-</texturenofocus>
+</default>
+
+<default type="resize">
+	<left>0</left>
+	<top>0</top>
+	<width>384</width>
+	<height>384</height>
+	<texturefocus>-</texturefocus>
+	<texturenofocus>-</texturenofocus>
+</default>
+
+<default type="edit">
+	<left>0</left>
+	<top>0</top>
+	<width>450</width>
+	<height>63</height>
+	<texturenofocus>-</texturenofocus>
+	<texturefocus border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texturefocus>
+	<textcolor>TextColorLight</textcolor>
+	<disabledcolor>TextColorLight</disabledcolor>
+	<invalidcolor>$VAR[secondaryCol]</invalidcolor>
+	<selectedcolor>$VAR[secondaryCol]</selectedcolor>
+	<focusedcolor>TextColorFO</focusedcolor>
+	<textoffsetx>30</textoffsetx>
+	<font>RegularNormal</font>
+	<align>left</align>
+	<aligny>center</aligny>
+	<pulseonselect>false</pulseonselect>
+</default>
+
+<default type="scrollbar">
+	<left>0</left>
+	<top>0</top>
+	<texturesliderbarfocus colordiffuse="$VAR[primaryCol]" border="1">White.png</texturesliderbarfocus>
+	<texturesliderbackground colordiffuse="TextColorLight" border="2,0,2,0">Buttons/scrollbarback.png</texturesliderbackground>
+	<texturesliderbar colordiffuse="TextColorLight" border="1">White.png</texturesliderbar>
+	<textureslidernib>-</textureslidernib>
+	<textureslidernibfocus>-</textureslidernibfocus>
+	<showonepage>false</showonepage>
+	<orientation>vertical</orientation>
+</default>
+
+</includes>

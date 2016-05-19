@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1104">
+<!-- Cycle 0.3 -->
+<defaultcontrol always="true">11041</defaultcontrol>
+<!-- Defaults setzen -->
+<onload condition="String.IsEmpty(skin.string(HomeSlideMenueStartItemL))">skin.setstring(HomeSlideMenueStartItemL,Filme)</onload>
+<onload condition="String.IsEmpty(skin.string(HomeSlideMenueStartItemR))">skin.setstring(HomeSlideMenueStartItemR,Einstellungen)</onload>
+<onload condition="String.IsEmpty(skin.string(HomeSlideMenueStartItem))">skin.setstring(HomeSlideMenueStartItem,Serien)</onload>
+<onload condition="String.IsEmpty(skin.string(CycleMyNavVideoMovieQuicklinkContent))">skin.setstring(CycleMyNavVideoMovieQuicklinkContent,videodb://recentlyaddedmovies/)</onload>
+<onload condition="String.IsEmpty(skin.string(CycleMyNavVideoMovieQuicklinkContent))">skin.setstring(CycleMyNavVideoMovieQuicklinkTitle,Neu hinzugefügte Filme)</onload>
+<onload condition="String.IsEmpty(skin.string(CycleMyNavVideoTVQuicklinkContent))">skin.setstring(CycleMyNavVideoTVQuicklinkContent,special://skin/playlists/TV_zuletzt gesehen.xsp)</onload>
+<onload condition="String.IsEmpty(skin.string(CycleMyNavVideoTVQuicklinkContent))">skin.setstring(CycleMyNavVideoTVQuicklinkTitle,Laufende Serien)</onload>
+<onload condition="String.IsEmpty(skin.string(FilmDokuContent))">skin.setstring(FilmDokuContent,special://skin/playlists/Doku_Filme.xsp)</onload>
+<onload condition="String.IsEmpty(skin.string(TVDokuContent))">skin.setstring(TVDokuContent,special://skin/playlists/Doku_Serien.xsp)</onload>
+<onload condition="String.IsEmpty(skin.string(MainslotWidgetTitle))">skin.setstring(MainslotWidgetTitle,Begonnene Serien)</onload>
+<onload condition="String.IsEmpty(skin.string(MainslotWidgetTitle))">skin.setstring(MainslotWidgetContent,plugin://service.library.data.provider?type=recommendedepisodes&amp;reload=$INFO[Window(Home).Property(recommendedepisodes)])</onload>
+<onload condition="String.IsEmpty(skin.string(VideoslotWidgetTitle))">skin.setstring(VideoslotWidgetTitle,Begonnene Serien)</onload>
+<onload condition="String.IsEmpty(skin.string(VideoslotWidgetTitle))">skin.setstring(VideoslotWidgetContent,plugin://service.library.data.provider?type=recommendedepisodes&amp;reload=$INFO[Window(Home).Property(recommendedepisodes)])</onload>
+<!-- View Defaults setzen -->
+<onload condition="String.IsEmpty(skin.string(FilmViewtype))">skin.setstring(FilmViewtype,Poster)</onload>
+<onload condition="String.IsEmpty(skin.string(TVViewtype))">skin.setstring(TVViewtype,Landscape)</onload>
+<onload condition="String.IsEmpty(skin.string(SetViewtype))">skin.setstring(SetViewtype,Poster)</onload>
+<onload condition="String.IsEmpty(skin.string(GenreViewtype))">skin.setstring(GenreViewtype,Poster)</onload>
+<onload condition="String.IsEmpty(skin.string(YearsViewtype))">skin.setstring(YearsViewtype,Liste)</onload>
+<onload condition="String.IsEmpty(skin.string(TagsViewtype))">skin.setstring(TagsViewtype,Liste)</onload>
+<onload condition="String.IsEmpty(skin.string(ActorViewtype))">skin.setstring(ActorViewtype,Poster)</onload>
+<onload condition="String.IsEmpty(skin.string(PLS_MovieViewtype))">skin.setstring(PLS_MovieViewtype,Banner)</onload>
+<onload condition="String.IsEmpty(skin.string(PLS_TVViewtype))">skin.setstring(PLS_TVViewtype,Poster)</onload>
+<onload condition="String.IsEmpty(skin.string(PLS_EPViewtype))">skin.setstring(PLS_EPViewtype,Liste)</onload>
+<controls>
+<control type="button" id="11041">
+	<description>Defaultfocus</description>
+	<width>1920</width><!-- include ueberschreibung groeße fuer click wenn focus floeten geht -->
+	<height>1080</height>
+	<include>HiddenControl</include>
+	<onclick>Skin.ToggleSetting(FirstTimeRun)</onclick>
+	<onclick>Dialog.close(1104)</onclick>
+	<onclick>ActivateWindow(startup)</onclick>
+	<onleft>noop</onleft>
+	<onright>noop</onright>
+	<onup>noop</onup>
+	<ondown>noop</ondown>
+</control>
+<include condition="Skin.HasSetting(EnableVintageOverlay)">global_vintagebackground</include>
+<include condition="!Skin.HasSetting(EnableVintageOverlay)">global_background</include>
+<control type="group">
+	<include>Open_Close_Visible_Hidden_Zoom_Animation</include>
+	<control type="image">
+		<description>Bar</description>
+		<left>-500</left>
+		<top>200</top>
+		<width>2920</width>
+		<height>152</height>
+		<texture colordiffuse="$VAR[circlesCol]">views/info/bar.png</texture>
+	</control>
+	<control type="group"><!-- text -->
+		<left>382</left>
+		<top>85</top>
+		<width>1025</width>
+		<height>740</height>
+		<control type="label">
+			<description>Titel</description>
+			<width>1155</width>
+			<height>60</height>
+			<align>center</align>
+			<label>$VAR[GlobalSkinversion]</label>
+			<font>BreadcumbNormal</font>
+		</control>
+		<control type="label">
+			<description>Sub Titel</description>
+			<width>1155</width>
+			<height>60</height>
+			<top>48</top>
+			<align>center</align>
+			<label>Ein Skin für Kodi!</label>
+			<font>RegularSmall</font>
+		</control>
+		<control type="textbox">
+			<description>Beschreibung</description>
+			<top>240</top>
+			<width>1155</width>
+			<height max="632">auto</height>
+			<include>GlobalSkinDescription</include>
+		</control>
+		<control type="label">
+			<description>Klick text</description>
+			<top>900</top>
+			<width>1155</width>
+			<height>60</height>
+			<align>center</align>
+			<label>Clicken oder eine Navigationstaste drücken.</label>
+			<font>RegularSmall</font>
+		</control>
+	</control>
+</control>
+</controls>
+</window>
+

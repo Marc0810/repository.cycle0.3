@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<smartplaylist type="tvshows">
+    <name>Serie Genre Family</name>
+    <match>one</match>
+    <rule field="genre" operator="contains">
+        <value>Family</value>
+    </rule>
+    <rule field="genre" operator="contains">
+        <value>Familien</value>
+    </rule>
+    <rule field="genre" operator="contains">
+        <value>Kinder</value>
+    </rule>
+    <rule field="genre" operator="contains">
+        <value>Kids</value>
+    </rule>
+	<order>random</order>
+</smartplaylist>
