@@ -203,7 +203,6 @@
 	<value condition="String.IsEqual(Container.FolderPath,special://skin/playlists/Episode_Zufaellige.xsp)">$LOCALIZE[590]</value>
 	<value condition="String.IsEqual(Container.FolderPath,special://skin/playlists/TV_Beliebteste.xsp)">Meist gesehen</value>
 	<value condition="String.IsEqual(Container.FolderPath,special://skin/playlists/TV_zuletzt gesehen.xsp)">Zuletzt abgespielt</value>
-	<value condition="String.StartsWith(Container.FolderPath,plugin://service.smartish.widgets)">Smartish Widget Episoden</value>
 	<value condition="String.IsEqual(Container.FolderPath,special://skin/playlists/)">Skin-Playlisten</value>
 	<value condition="String.StartsWith(Container.FolderPath,plugin://service.library.data.provider/?type=randommovies)">$LOCALIZE[590]</value>
 	<value condition="String.StartsWith(Container.FolderPath,plugin://service.library.data.provider/?type=recentmovies)">$LOCALIZE[20386]</value>
@@ -374,7 +373,7 @@
 		<top>30</top>
 		<include>Conditional_Left_Slide_Animation395</include>
 		<include>Open_Close_Visible_Hidden_Fade_Animation</include>
-		<visible>![Window.IsVisible(home) | Window.IsVisible(movieinformation) | Window.IsVisible(Custom_1102_setinfo.xml) | Window.IsVisible(Custom_1105_fileinfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(pictureinfo) | Window.IsVisible(addoninformation) | Control.HasFocus(9000) | Control.HasFocus(501) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(settings) | Window.IsVisible(skinsettings) | Window.IsVisible(DialogSettings.xml) | Window.IsVisible(playercontrols) | Window.IsActive(Custom_1198_Textbox.xml)] | Control.HasFocus(400)</visible>
+		<visible>![Window.IsVisible(home) | Window.IsVisible(movieinformation) | Window.IsVisible(Custom_1102_setinfo.xml) | Window.IsVisible(Custom_1105_fileinfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(pictureinfo) | Window.IsVisible(addoninformation) | Control.HasFocus(9000) | Control.HasFocus(501) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(settings) | Window.IsVisible(skinsettings) | Window.IsVisible(DialogSettings.xml) | Window.IsVisible(playercontrols) | Window.IsActive(Custom_1149_Textbox.xml)] | Control.HasFocus(400)</visible>
 		<control type="grouplist">
 			<width>805</width>
 			<height>100</height>
@@ -531,7 +530,7 @@
 				<align>center</align>
 				<font>BreadcumbTopNormal</font>
 				<label>$VAR[global_topbar_value_numitems]</label>
-				<visible>![String.IsEmpty(Control.GetLabel(9114)) | Window.IsActive(Custom_1101_homewidgets.xml) | Window.IsActive(Custom_1102_setinfo.xml) | Window.IsActive(Custom_1106_categoryinfolist.xml) | Window.IsActive(Custom_1103_categoryinfo.xml) | Window.IsVisible(movieinformation) | Window.IsVisible(Custom_1102_setinfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(pictureinfo) | Window.IsVisible(addoninformation) | Window.IsActive(Custom_1101_homewidgets.xml) | Window.IsActive(Custom_1102_setinfo.xml) | Window.IsActive(Custom_1103_categoryinfo.xml) | Window.IsActive(Custom_1198_Textbox.xml) | Control.HasFocus(9000)]</visible>
+				<visible>![String.IsEmpty(Control.GetLabel(9114)) | Window.IsActive(Custom_1101_homewidgets.xml) | Window.IsActive(Custom_1102_setinfo.xml) | Window.IsActive(Custom_1106_categoryinfolist.xml) | Window.IsActive(Custom_1103_categoryinfo.xml) | Window.IsVisible(movieinformation) | Window.IsVisible(Custom_1102_setinfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(pictureinfo) | Window.IsVisible(addoninformation) | Window.IsActive(Custom_1101_homewidgets.xml) | Window.IsActive(Custom_1102_setinfo.xml) | Window.IsActive(Custom_1103_categoryinfo.xml) | Window.IsActive(Custom_1149_Textbox.xml) | Control.HasFocus(9000)]</visible>
 			</control>
 			<control type="label">
 				<description>Zeit bei wetter</description>
@@ -629,7 +628,7 @@
 				<align>center</align>
 				<font>BreadcumbTopSmall</font>
 				<label>$VAR[global_topbar_value_numitems2]</label>
-				<visible>![String.IsEmpty(Control.GetLabel(9114)) | Window.IsActive(Custom_1101_homewidgets.xml) | Window.IsActive(Custom_1102_setinfo.xml) | Window.IsActive(Custom_1106_categoryinfolist.xml) | Window.IsActive(Custom_1103_categoryinfo.xml) | Window.IsVisible(movieinformation) | Window.IsVisible(Custom_1102_setinfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(pictureinfo) | Window.IsVisible(addoninformation) | Window.IsActive(Custom_1101_homewidgets.xml) | Window.IsActive(Custom_1102_setinfo.xml) | Window.IsActive(Custom_1103_categoryinfo.xml) | Window.IsActive(Custom_1198_Textbox.xml) | Control.HasFocus(9000)]</visible>
+				<visible>![String.IsEmpty(Control.GetLabel(9114)) | Window.IsActive(Custom_1101_homewidgets.xml) | Window.IsActive(Custom_1102_setinfo.xml) | Window.IsActive(Custom_1106_categoryinfolist.xml) | Window.IsActive(Custom_1103_categoryinfo.xml) | Window.IsVisible(movieinformation) | Window.IsVisible(Custom_1102_setinfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(pictureinfo) | Window.IsVisible(addoninformation) | Window.IsActive(Custom_1101_homewidgets.xml) | Window.IsActive(Custom_1102_setinfo.xml) | Window.IsActive(Custom_1103_categoryinfo.xml) | Window.IsActive(Custom_1149_Textbox.xml) | Control.HasFocus(9000)]</visible>
 			</control>
 			<control type="label">
 				<description>Zeit bei wetter</description>

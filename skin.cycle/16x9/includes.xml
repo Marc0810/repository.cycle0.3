@@ -144,6 +144,7 @@
 	<value condition="String.IsEqual(ListItem.Icon,DefaultAddonsRecentlyUpdated.png)">ǅ</value>
 	<value condition="String.IsEqual(ListItem.Icon,DefaultAddonsUpdates.png)">Ǆ</value>
 	<value condition="String.IsEqual(ListItem.Icon,DefaultAddonsRepo.png)">Ǖ</value><!-- krypton neue icons -->
+	<value condition="String.IsEqual(ListItem.Icon,DefaultMusicRoles.png)">ñ</value>
 	
 	<value condition="String.IsEqual(ListItem.Icon,DefaultVideoPlaylists.png)">&gt;</value><!-- video -->
 	<value condition="String.IsEqual(ListItem.Icon,DefaultPlaylist.png)">&gt;</value>

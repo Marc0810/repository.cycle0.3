@@ -1000,7 +1000,7 @@ SortByNone	576	Play count
 </variable>
 
 <variable name="NPPlaylist">
-	<value condition="!Window.IsVisible(1199)">playlistvideo://</value>
+	<value condition="!Window.IsVisible(1198)">playlistvideo://</value>
 </variable>
 
 <!-- OSD Anzeige last.Played ohne Uhrzeit Schnick Schnack -->
@@ -1756,16 +1756,16 @@ SortByNone	576	Play count
 				<effect type="fade" delay="2000" start="0" end="100" time="5000" tween="cubic" easing="in" />
 			</animation>
 			<animation effect="fade" time="150" reversible="false">WindowClose</animation>
-			<animation type="Visible" reversible="false" condition="!Window.IsActive(Custom_1198_Textbox.xml)">
+			<animation type="Visible" reversible="false" condition="!Window.IsActive(Custom_1149_Textbox.xml)">
 				<effect type="fade" delay="2000" start="0" end="100" time="5000" loop="true" tween="cubic" easing="in" />
 			</animation>
-			<animation type="Visible" reversible="true" condition="Window.IsActive(Custom_1198_Textbox.xml)">
+			<animation type="Visible" reversible="true" condition="Window.IsActive(Custom_1149_Textbox.xml)">
 				<effect type="fade" delay="5000" start="0" end="100" time="5000" loop="true" tween="cubic" easing="in" />
 			</animation>
 			<animation type="Hidden" reversible="false">
 				<effect type="fade" start="100" end="0" time="150" tween="cubic" easing="inout" />
 			</animation>
-			<visible>!Window.IsVisible(Custom_1198_Textbox.xml) + [Control.HasFocus(9000) | Control.HasFocus(50) | Control.HasFocus(501)]</visible>
+			<visible>!Window.IsVisible(Custom_1149_Textbox.xml) + [Control.HasFocus(9000) | Control.HasFocus(50) | Control.HasFocus(501)]</visible>
 		</control>
 		<control type="image">
 			<description>Castlist, menue und contents hintergrund unten</description>
@@ -1778,16 +1778,16 @@ SortByNone	576	Play count
 				<effect type="fade" delay="2000" start="0" end="100" time="5000" tween="cubic" easing="in" />
 			</animation>
 			<animation effect="fade" time="150" reversible="false">WindowClose</animation>
-			<animation type="Visible" reversible="false" condition="!Window.IsActive(Custom_1198_Textbox.xml)">
+			<animation type="Visible" reversible="false" condition="!Window.IsActive(Custom_1149_Textbox.xml)">
 				<effect type="fade" delay="2000" start="0" end="100" time="5000" loop="true" tween="cubic" easing="in" />
 			</animation>
-			<animation type="Visible" reversible="true" condition="Window.IsActive(Custom_1198_Textbox.xml)">
+			<animation type="Visible" reversible="true" condition="Window.IsActive(Custom_1149_Textbox.xml)">
 				<effect type="fade" delay="5000" start="0" end="100" time="5000" loop="true" tween="cubic" easing="in" />
 			</animation>
 			<animation type="Hidden" reversible="false">
 				<effect type="fade" start="100" end="0" time="150" tween="cubic" easing="inout" />
 			</animation>
-			<visible>!Window.IsVisible(Custom_1198_Textbox.xml) + [Control.HasFocus(9000) | Control.HasFocus(50) | Control.HasFocus(501)]</visible>
+			<visible>!Window.IsVisible(Custom_1149_Textbox.xml) + [Control.HasFocus(9000) | Control.HasFocus(50) | Control.HasFocus(501)]</visible>
 		</control>
 	</control>
 </include>

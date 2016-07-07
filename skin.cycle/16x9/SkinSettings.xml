@@ -16,7 +16,7 @@
 <include condition="!Skin.HasSetting(EnableVintageOverlay)">global_background</include>
 <include>global_topbar</include><!-- topbar -->
 <control type="group"><!-- slide menue -->
-	<visible>!Window.IsVisible(shutdownmenu) + !Window.IsVisible(Custom_1198_Textbox.xml) + !Window.IsVisible(Custom_1120_MainMenuSlide.xml) + !Window.IsVisible(favourites) + !Window.IsVisible(AddonSettings) + !Window.IsVisible(selectdialog) + !Window.IsVisible(playercontrols)</visible>
+	<visible>!Window.IsVisible(shutdownmenu) + !Window.IsVisible(Custom_1149_Textbox.xml) + !Window.IsVisible(Custom_1120_MainMenuSlide.xml) + !Window.IsVisible(favourites) + !Window.IsVisible(AddonSettings) + !Window.IsVisible(selectdialog) + !Window.IsVisible(playercontrols)</visible>
 	<include>Open_Close_Visible_Hidden_Slide_Animation375</include>
 	<include>SettingMenu_BG</include><!-- Hintergrund -->
 	<include>SettingMenu_IconBG</include>
@@ -132,7 +132,7 @@
 	<left>570</left>
 	<top>150</top>
 	<include>Open_Close_Visible_Hidden_Fade_Animation</include>
-	<visible>!Window.IsVisible(shutdownmenu) + !Window.IsVisible(Custom_1198_Textbox.xml) + !Window.IsVisible(Custom_1120_MainMenuSlide.xml) + !Window.IsVisible(favourites) + !Window.IsVisible(AddonSettings) + !Window.IsVisible(selectdialog) + !Window.IsVisible(playercontrols)</visible>
+	<visible>!Window.IsVisible(shutdownmenu) + !Window.IsVisible(Custom_1149_Textbox.xml) + !Window.IsVisible(Custom_1120_MainMenuSlide.xml) + !Window.IsVisible(favourites) + !Window.IsVisible(AddonSettings) + !Window.IsVisible(selectdialog) + !Window.IsVisible(playercontrols)</visible>
 	<control type="image">
 		<description>Hintergrund</description>
 		<left>10</left>
@@ -157,7 +157,6 @@
 		<control type="button" id="90012">
 			<description>Home mitte/klick Aktion</description>
 			<include>SkinSettingButtonValue</include>
-			<!-- check -->
 			<onclick>skin.Reset(HomeSlideMenueStartItem)</onclick>
 			<onclick>skin.SetString(HomeSlideMenueStartItem,Filme)</onclick>
 			<onclick condition="String.IsEqual(skin.string(HomeSlideMenueStartItem),Filme)">skin.setstring(HomeSlideMenueStartItem,Favoriten)</onclick>
@@ -357,7 +356,7 @@
 			<oninfo>SetProperty(TextBox.Title,resource.uisounds.cycle,home)</oninfo>
 			<oninfo>SetProperty(TextBox.SubTitle,Skin-Sounds,home)</oninfo>
 			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</oninfo>
-			<oninfo>ActivateWindow(1198)</oninfo>
+			<oninfo>ActivateWindow(1149)</oninfo>
 			<onclick condition="System.HasAddon(resource.uisounds.cycle)">Addon.OpenSettings(resource.uisounds.cycle)</onclick>
 			<onclick condition="!System.HasAddon(resource.uisounds.cycle)">InstallAddon(resource.uisounds.cycle)</onclick>
 			<label>Cycle UI-sound Addon (Klangschema für Cycle)</label>
@@ -369,7 +368,7 @@
 			<oninfo>SetProperty(TextBox.Title,script.artwork.downloader,home)</oninfo>
 			<oninfo>SetProperty(TextBox.SubTitle,Der Skin benötigt Logos/Staffelposter und Landscapes in den Ansichten,home)</oninfo>
 			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</oninfo>
-			<oninfo>ActivateWindow(1198)</oninfo>
+			<oninfo>ActivateWindow(1149)</oninfo>
 			<onclick condition="System.HasAddon(script.artwork.downloader)">Addon.OpenSettings(script.artwork.downloader)</onclick>
 			<onclick condition="!System.HasAddon(script.artwork.downloader)">InstallAddon(script.artwork.downloader)</onclick>
 			<label>script.artwork.downloader (Artworks herunterladen)</label>
@@ -381,7 +380,7 @@
 			<oninfo>SetProperty(TextBox.Title,script.lazytv,home)</oninfo>
 			<oninfo>SetProperty(TextBox.SubTitle,Unterstützung für die Ansichten (Userinterface) Standard und Poster,home)</oninfo>
 			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</oninfo>
-			<oninfo>ActivateWindow(1198)</oninfo>
+			<oninfo>ActivateWindow(1149)</oninfo>
 			<onclick condition="System.HasAddon(script.lazytv)">Addon.OpenSettings(script.lazytv)</onclick>
 			<onclick condition="!System.HasAddon(script.lazytv)">InstallAddon(script.lazytv)</onclick>
 			<label>script.lazytv (Serienwidget)</label>
@@ -393,24 +392,11 @@
 			<oninfo>SetProperty(TextBox.Title,Widgets script,home)</oninfo>
 			<oninfo>SetProperty(TextBox.SubTitle,Verschiedene Widgets,home)</oninfo>
 			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</oninfo>
-			<oninfo>ActivateWindow(1198)</oninfo>
+			<oninfo>ActivateWindow(1149)</oninfo>
 			<onclick condition="System.HasAddon(service.library.data.provider)">Addon.OpenSettings(service.library.data.provider)</onclick>
 			<onclick condition="!System.HasAddon(service.library.data.provider)">InstallAddon(service.library.data.provider)</onclick>
 			<label>service.library.data.provider (Widgetscript)</label>
 			<selected>System.HasAddon(service.library.data.provider)</selected>
-		</control>
-		<control type="radiobutton" id="90038">
-			<description>service.smartish.widgets</description>
-			<include>SkinSettingButtonValue</include>
-			<oninfo>SetProperty(TextBox.Title,service.smartish.widgets,home)</oninfo>
-			<oninfo>SetProperty(TextBox.SubTitle,Widget - Episoden Empfehlungen nach deinen Sehgewohnheiten,home)</oninfo>
-			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</oninfo>
-			<oninfo>ActivateWindow(1198)</oninfo>
-			<onclick condition="!System.HasAddon(service.smartish.widgets)">InstallAddon(service.smartish.widgets)</onclick>
-			<onclick condition="!Skin.HasSetting(enable.smartish.widgets)">Skin.SetBool(enable.smartish.widgets)</onclick>
-			<onclick condition="Skin.HasSetting(enable.smartish.widgets)">Skin.Reset(enable.smartish.widgets)</onclick>
-			<label>service.smartish.widgets (Widgetscript)</label>
-			<selected>System.HasAddon(service.smartish.widgets) + Skin.HasSetting(enable.smartish.widgets)</selected>
 		</control>
 		<control type="label" id="900040">
 			<description>Divider</description>
@@ -423,7 +409,7 @@
 			<oninfo>SetProperty(TextBox.Title,script.user.rating,home)</oninfo>
 			<oninfo>SetProperty(TextBox.SubTitle,Nutzerwertung für Videos,home)</oninfo>
 			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</oninfo>
-			<oninfo>ActivateWindow(1198)</oninfo>
+			<oninfo>ActivateWindow(1149)</oninfo>
 			<onclick condition="System.HasAddon(script.user.rating)">Addon.OpenSettings(script.user.rating)</onclick>
 			<onclick condition="!System.HasAddon(script.user.rating)">InstallAddon(script.user.rating)</onclick>
 			<label>script.user.rating 1.0.3 (Bewertung über das Contextmenü)</label>
@@ -435,7 +421,7 @@
 			<oninfo>SetProperty(TextBox.Title,script.extendedinfo,home)</oninfo>
 			<oninfo>SetProperty(TextBox.SubTitle,Cycle nutzt dieses script nur für die Trailersuche,home)</oninfo>
 			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</oninfo>
-			<oninfo>ActivateWindow(1198)</oninfo>
+			<oninfo>ActivateWindow(1149)</oninfo>
 			<onclick condition="System.HasAddon(script.extendedinfo)">Addon.OpenSettings(script.extendedinfo)</onclick>
 			<onclick condition="!System.HasAddon(script.extendedinfo)">InstallAddon(script.extendedinfo)</onclick>
 			<label>script.extendedinfo (Trailersuche)</label>
@@ -447,7 +433,7 @@
 			<oninfo>SetProperty(TextBox.Title,weather.openweathermap.extended,home)</oninfo>
 			<oninfo>SetProperty(TextBox.SubTitle,Wettervorhersage von openweathermap.org,home)</oninfo>
 			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</oninfo>
-			<oninfo>ActivateWindow(1198)</oninfo>
+			<oninfo>ActivateWindow(1149)</oninfo>
 			<onclick condition="System.HasAddon(weather.openweathermap.extended)">ActivateWindow(MyWeatherSettings)</onclick>
 			<onclick condition="!System.HasAddon(weather.openweathermap.extended)">InstallAddon(weather.openweathermap.extended)</onclick>
 			<label>weather.openweathermap.extended (Wetterinformationen)</label>
@@ -459,7 +445,7 @@
 			<oninfo>SetProperty(TextBox.Title,script.tv.show.next.aired,home)</oninfo>
 			<oninfo>SetProperty(TextBox.SubTitle,Cycle nutzt dieses script nur für die Serienstatus Anzeige in der Info,home)</oninfo>
 			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</oninfo>
-			<oninfo>ActivateWindow(1198)</oninfo>
+			<oninfo>ActivateWindow(1149)</oninfo>
 			<onclick condition="System.HasAddon(script.tv.show.next.aired)">Addon.OpenSettings(script.tv.show.next.aired)</onclick>
 			<onclick condition="!System.HasAddon(script.tv.show.next.aired)">InstallAddon(script.tv.show.next.aired)</onclick>
 			<label>script.tv.show.next.aired (Serienstatus für Videoinfodialog)</label>
@@ -471,7 +457,7 @@
 			<oninfo>SetProperty(TextBox.Title,script.skin.info.service,home)</oninfo>
 			<oninfo>SetProperty(TextBox.SubTitle,Wird benötigt für die Anzeige von Movieset-Infos,home)</oninfo>
 			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</oninfo>
-			<oninfo>ActivateWindow(1198)</oninfo>
+			<oninfo>ActivateWindow(1149)</oninfo>
 			<onclick condition="!System.HasAddon(script.skin.info.service)">InstallAddon(script.skin.info.service)</onclick>
 			<onclick condition="System.HasAddon(script.skin.info.service)">Addon.OpenSettings(script.skin.info.service)</onclick>
 			<label>script.skin.info.service (Moviesetinfos)</label>
@@ -483,7 +469,7 @@
 			<oninfo>SetProperty(TextBox.Title,script.libraryeditor,home)</oninfo>
 			<oninfo>SetProperty(TextBox.SubTitle,Datenbankeditor für das Contextmenü,home)</oninfo>
 			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</oninfo>
-			<oninfo>ActivateWindow(1198)</oninfo>
+			<oninfo>ActivateWindow(1149)</oninfo>
 			<onclick condition="!System.HasAddon(script.libraryeditor)">InstallAddon(script.libraryeditor)</onclick>
 			<onclick condition="System.HasAddon(script.libraryeditor)">Addon.OpenSettings(script.libraryeditor)</onclick>
 			<label>script.libraryeditor (Datenbankeditor)</label>

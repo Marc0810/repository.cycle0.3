@@ -196,6 +196,7 @@
 	<align>left</align>
 	<aligny>center</aligny>
 	<pulseonselect>false</pulseonselect>
+	<orientation>horizontal</orientation>
 </default>
 
 <!-- ??? -->

@@ -27,7 +27,7 @@
 <control type="group">
 	<top>30</top>
 	<visible>!String.StartsWith(ListItem.Path,plugin://plugin.video) + !String.IsEmpty(ListItem.Plot)</visible>
-	<visible>!Window.IsVisible(script-ExtendedInfo Script-YoutubeList.xml) + !Window.IsVisible(Custom_1198_Textbox.xml)</visible>
+	<visible>!Window.IsVisible(script-ExtendedInfo Script-YoutubeList.xml) + !Window.IsVisible(Custom_1149_Textbox.xml)</visible>
 	<animation type="Conditional" reversible="true" condition="String.IsEqual(skin.String(SelectDialog),Rating) + Window.IsVisible(selectdialog)">
 		<effect type="fade" start="100" end="0" time="150" tween="cubic" easing="inout" />
 	</animation>
@@ -40,7 +40,7 @@
 		<height>152</height>
 		<texture colordiffuse="$VAR[circlesCol]">views/info/bar.png</texture>
 		<animation effect="slide" start="0,0" end="0,119" time="300" condition="!String.IsEmpty(Window(movieinformation).Property(AniSlideR))">Conditional</animation>
-		<visible>!Window.IsVisible(Custom_1198_Textbox.xml)</visible>
+		<visible>!Window.IsVisible(Custom_1149_Textbox.xml)</visible>
 		<animation type="WindowOpen" reversible="false">
 			<effect type="fade" start="0" end="100" delay="200" time="350" tween="cubic" easing="inout" />
 			<effect type="zoom" start="70" end="100" delay="200" time="350" tween="cubic" easing="inout" center="960,540"/>
@@ -80,7 +80,7 @@
 			<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.Title,$ESCVAR[TextBoxTitle],home)</onup>
 			<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.SubTitle,$ESCVAR[TextBoxSubTitle],home)</onup>
 			<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</onup>
-			<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">ActivateWindow(1198)</onup>
+			<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">ActivateWindow(1149)</onup>
 			<ondown>close</ondown>
 			<onleft>SetProperty(AniSlideL,ON,movieinformation)</onleft><!-- Property und Focus links -->
 			<onleft>9331</onleft>
@@ -1563,7 +1563,7 @@
 				<width>80</width>
 				<height>80</height>
 				<font>IconBig</font>
-				<label>-</label>
+				<label>*</label>
 				<textcolor>TextColorMedium</textcolor>
 				<visible>Container(501).HasPrevious + [!Container(501).OnPrevious + !Container(501).OnNext]</visible>
 			</control>

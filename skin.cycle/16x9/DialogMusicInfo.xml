@@ -21,14 +21,14 @@
 			<width>3000</width>
 			<height>152</height>
 			<texture colordiffuse="$VAR[circlesCol]">views/info/bar.png</texture>
-			<visible>!Window.IsVisible(Custom_1198_Textbox.xml)</visible>
+			<visible>!Window.IsVisible(Custom_1149_Textbox.xml)</visible>
 			<include>Open_Close_Visible_Hidden_Zoom_Animation</include>
 		</control>
 		<control type="group"><!-- Hauptseite -->
 			<description>Hauptseite</description>
 			<animation effect="slide" start="0" end="1920" time="300" condition="!String.IsEmpty(Window(movieinformation).Property(AniSlideL))">Conditional</animation>
 			<include>Open_Close_Visible_Hidden_Zoom_Animation</include>
-			<visible>!Window.IsVisible(Custom_1198_Textbox.xml)</visible>
+			<visible>!Window.IsVisible(Custom_1149_Textbox.xml)</visible>
 			<control type="list" id="9000">
 				<left>860</left>
 				<top>594</top>
@@ -38,7 +38,7 @@
 				<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.Title,$ESCVAR[TextBoxTitle],home)</onup>
 				<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.SubTitle,$ESCVAR[TextBoxSubTitle],home)</onup>
 				<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</onup>
-				<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">ActivateWindow(1198)</onup>
+				<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">ActivateWindow(1149)</onup>
 				<ondown>close</ondown>
 				<onleft>SetProperty(AniSlideL,ON,movieinformation)</onleft><!-- Property und Focus links -->
 				<onleft>9331</onleft>

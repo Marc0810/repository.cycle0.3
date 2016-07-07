@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window type="dialog" id="1101">
 <!-- Cycle 0.3 -->
-<!-- https://github.com/phil65/service.smartish.widgets check -->
 <menucontrol>9700</menucontrol>
 <defaultcontrol always="true">400</defaultcontrol>
 <onload>Action(PageUp)</onload><!-- back zum anfang -->
@@ -250,7 +249,7 @@
 		<description>Hintergrund Dialog</description>
 		<left>-8</left>
 		<top>-8</top>
-		<height>580</height>
+		<height>520</height>
 		<width>695</width>
 		<include>DialogBackground</include>
 	</control>
@@ -410,16 +409,6 @@
 				<onclick>Skin.SetString($INFO[Window(1101).Property(SlotclickWidgettitle)])</onclick>
 				<onclick>Skin.SetFile($INFO[Window(1101).Property(SlotclickWidget)],.xsp,special://skin/playlists/)</onclick>
 			</item>
-			<item id="8">
-				<description>Smartish Widget Episode</description>
-				<label>Smartish Widget Episode</label>
-				<label2>A</label2>
-				<onclick condition="Window.IsVisible(home)">Skin.reset(HomePlayliste)</onclick>
-				<onclick condition="Window.IsVisible(videos)">Skin.reset(VideoPlayliste)</onclick>
-				<onclick>Skin.SetString($INFO[Window(1101).Property(SlotclickWidget)],plugin://service.smartish.widgets?type=episodes&amp;reload=$INFO[Window.Property(smartish.episodes)])</onclick>
-				<onclick>Skin.SetString($INFO[Window(1101).Property(SlotclickWidgettitle)],Smartish Episoden)</onclick>
-				<visible>Skin.HasSetting(enable.smartish.widgets)</visible>
-			</item>
 		</content>
 	</control>
 	<control type="panel" id="9701">
@@ -553,20 +542,6 @@
 				<label2></label2>
 				<onclick>noop</onclick>
 				<visible>[Window.IsVisible(home) + !String.IsEqual(Skin.String(HomePlayliste),Film)] | [Window.IsVisible(videos) + !String.IsEqual(skin.string(VideoPlayliste),Film)]</visible>
-			</item>
-			<item id="8">
-				<description>Smartish Widget Episode</description>
-				<label>-</label>
-				<label2>Ĥ</label2>
-				<onclick>noop</onclick>
-				<visible>Skin.HasSetting(enable.smartish.widgets) + [Window.IsVisible(home) + String.StartsWith(Skin.String(MainslotWidgetContent),plugin://service.smartish.widgets)] | [Window.IsVisible(videos) + String.StartsWith(skin.string(VideoslotWidgetContent),plugin://service.smartish.widgets)]</visible>
-			</item>
-			<item id="8">
-				<description>Smartish Widget Episode</description>
-				<label>-</label>
-				<label2></label2>
-				<onclick>noop</onclick>
-				<visible>Skin.HasSetting(enable.smartish.widgets) + [Window.IsVisible(home) + !String.StartsWith(Skin.String(MainslotWidgetContent),plugin://service.smartish.widgets)] | [Window.IsVisible(videos) + !String.StartsWith(skin.string(VideoslotWidgetContent),plugin://service.smartish.widgets)]</visible>
 			</item>
 		</content>
 	</control>

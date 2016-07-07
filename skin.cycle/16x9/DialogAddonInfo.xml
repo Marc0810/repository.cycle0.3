@@ -7,7 +7,7 @@
 <include condition="!Skin.HasSetting(EnableVintageOverlay)">global_background</include>
 <control type="group">
 	<include>Open_Close_Visible_Hidden_Zoom_Animation</include>
-	<visible>!Window.IsVisible(AddonSettings) + !Window.IsActive(TextViewer) + !Window.IsVisible(Custom_1198_Textbox.xml)</visible>
+	<visible>!Window.IsVisible(AddonSettings) + !Window.IsActive(TextViewer) + !Window.IsVisible(Custom_1149_Textbox.xml)</visible>
 	<control type="image">
 		<description>Circle Bar</description>
 		<left>-500</left>
@@ -25,7 +25,7 @@
 		<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.Title,$ESCVAR[TextBoxTitle],home)</onup>
 		<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.SubTitle,$ESCVAR[TextBoxSubTitle],home)</onup>
 		<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</onup>
-		<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">ActivateWindow(1198)</onup>
+		<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">ActivateWindow(1149)</onup>
 		<ondown>Dialog.close(all,true)</ondown>
 		<onleft>noop</onleft>
 		<onright>noop</onright>

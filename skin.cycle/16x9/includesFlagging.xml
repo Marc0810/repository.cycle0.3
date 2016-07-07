@@ -278,7 +278,7 @@
 	############################## -->
 	<!-- lastplayed content -->
 	<variable name="videocontent_history_episode">
-		<value condition="!Window.IsVisible(1199)">special://skin/playlists/Episode_Zuletzt_gesehene.xsp</value>
+		<value condition="!Window.IsVisible(1198)">special://skin/playlists/Episode_Zuletzt_gesehene.xsp</value>
 	</variable>
 	
 	<variable name="viewglobal_video_lastwatchedflags">

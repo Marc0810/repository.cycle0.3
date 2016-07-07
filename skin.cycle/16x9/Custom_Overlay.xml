@@ -14,7 +14,7 @@
 		<visible>Skin.HasSetting(DebugGrid)</visible>
 	</control>
 	<control type="group"><!-- Debug Info -->
-		<visible>!Skin.HasSetting(DebugInfo)</visible>
+		<visible>Skin.HasSetting(DebugInfo)</visible>
 		<control type="grouplist">
 			<left>10</left>
 			<top>0</top>

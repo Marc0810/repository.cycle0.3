@@ -96,8 +96,8 @@
 		<width>6</width>
 		<height>432</height>
 		<showonepage>true</showonepage>
-		<onright>Dialog.close(1198)</onright>
-		<onleft>Dialog.close(1198)</onleft>
+		<onright>Dialog.close(1149)</onright>
+		<onleft>Dialog.close(1149)</onleft>
 		<onup>61</onup>
 		<ondown>61</ondown>
 		<visible>true</visible>

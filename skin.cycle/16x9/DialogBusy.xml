@@ -20,33 +20,15 @@
 		<textcolor>$VAR[OSDDialogColor]</textcolor>
 		<label>Arbeitet...</label>
 	</control>
-	<control type="group"><!-- progress -->
-		<description>Progress</description>
-		<left>670</left>
-		<top>15</top>
-		<control type="image">
-			<description>Laden Kreis mit Animation</description>
-			<width>80</width>
-			<height>80</height>
-			<texture colordiffuse="$VAR[primaryCol]">dialogs/search/progress.png</texture>
-			<animation effect="rotate" center="40,40" start="360" end="0" time="1500" loop="true" condition="true">Conditional</animation>
-		</control>
-		<control type="label">
-			<description>Text Prozentstatus hidden Progress Control</description>
-			<width>80</width>
-			<height>80</height>
-			<align>center</align>
-			<font>BoldCDProgress</font>
-			<textcolor>$VAR[OSDDialogColor]</textcolor>
-			<label>$INFO[Control.GetLabel(10),,%]</label>
-		</control>
-	</control>
+	<include content="DialogDefaultProgresskringel">
+		<param name="id">10</param>
+	</include>
 	<control type="progress" id="10">
 		<include>HiddenControl</include>
 	</control>
 </control>
-<control type="group"><!-- Slideshow Layout check -->
-	<left>900</left>
+<control type="group"><!-- Slideshow Layout -->
+	<left>800</left>
 	<top>970</top>
 	<visible>Window.IsVisible(Custom_1150_Screensaver.xml)</visible>
 	<animation type="Visible" reversible="false">
@@ -55,29 +37,15 @@
 	<animation type="Hidden" reversible="false">
 		<effect type="fade" time="100" start="100" end="0" tween="cubic" easing="out" />
 	</animation>
-	<control type="group"><!-- progress -->
-		<description>Progress</description>
-		<left>-80</left>
-		<top>15</top>
-		<control type="image">
-			<description>Laden Kreis mit Animation</description>
-			<width>70</width>
-			<height>70</height>
-			<texture colordiffuse="$VAR[primaryCol]">dialogs/search/progress.png</texture>
-			<animation effect="rotate" center="35,35" start="360" end="0" time="1500" loop="true" condition="true">Conditional</animation>
-		</control>
-		<control type="label">
-			<description>Prozentanzeige aus Hidden Progress ID32</description>
-			<width>70</width>
-			<height>70</height>
-			<align>center</align>
-			<font>BoldCDProgress</font>
-			<textcolor>$VAR[OSDDialogColor]</textcolor>
-			<label>$INFO[Control.GetLabel(32),,%]</label>
-		</control>
+	<control type="group">
+		<left>-660</left>
+		<include content="DialogDefaultProgresskringel">
+			<param name="id">32</param>
+		</include>
 	</control>
 	<control type="label">
 		<description>Busy Label</description>
+		<left>100</left>
 		<top>22</top>
 		<width>665</width>
 		<height>27</height>

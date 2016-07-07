@@ -55,25 +55,25 @@
 			<description>PlayerSettings button</description>
 			<onclick>ActivateWindow(PlayerSettings)</onclick>
 			<include>SettingMenuButtonValues</include>
-			<label>$LOCALIZE[14201]</label>
+			<label>Player</label>
 		</control>
 		<control type="button" id="8102">
 			<description>LibrarySettings button</description>
 			<onclick>ActivateWindow(LibrarySettings)</onclick>
 			<include>SettingMenuButtonValues</include>
-			<label>$LOCALIZE[14203]</label>
+			<label>Bibliothek</label>
 		</control>
 		<control type="button" id="8103">
 			<description>ServiceSettings button</description>
 			<onclick>ActivateWindow(ServiceSettings)</onclick>
 			<include>SettingMenuButtonValues</include>
-			<label>$LOCALIZE[14208]</label>
+			<label>Dienste</label>
 		</control>
 		<control type="button" id="8104">
 			<description>InterfaceSettings button</description>
 			<onclick>ActivateWindow(InterfaceSettings)</onclick>
 			<include>SettingMenuButtonValues</include>
-			<label>$LOCALIZE[14207]</label>
+			<label>Oberfläche</label>
 		</control>
 		<control type="button" id="8105">
 			<description>SkinSettings button</description>
@@ -91,7 +91,7 @@
 			<description>SystemSettings button</description>
 			<onclick>ActivateWindow(SystemSettings)</onclick>
 			<include>SettingMenuButtonValues</include>
-			<label>$LOCALIZE[14209]</label>
+			<label>System</label>
 		</control>
 		<control type="button" id="8108">
 			<description>AddonBrowser button</description>

@@ -2451,4 +2451,48 @@
 	</control>
 </control>
 </include>
+
+<variable name="HistoryProgress">
+	<value condition="!Control.HasFocus(141) + !Control.HasFocus(142)">33</value>
+	<value condition="Control.HasFocus(141)">66</value>
+	<value condition="Control.HasFocus(142)">99</value>
+</variable>
+<!-- progresskringel defaultgroesse -->
+<include name="DialogDefaultProgresskringel">
+	<param name="id"/>
+	<definition>
+		<control type="image">
+			<left>660</left>
+			<width>100</width>
+			<height>100</height>
+			<texture colordiffuse="TextColorLight">progress/loading-back.png</texture>
+			<animation effect="fade" end="50" time="0" condition="true">Conditional</animation>
+		</control>
+		<control type="group">
+			<left>660</left>
+			<animation effect="fade" time="200">VisibleChange</animation>
+			<control type="image">
+				<width>100</width>
+				<height>100</height>
+				<texture colordiffuse="$VAR[primaryCol]">progress/p$INFO[Control.GetLabel($PARAM[id])].png</texture>
+			</control>
+			<control type="image">
+				<width>100</width>
+				<height>100</height>
+				<texture colordiffuse="$VAR[secondaryCol]">progress/loading.png</texture>
+				<animation effect="rotate" center="auto" start="360" end="0" time="1500" loop="true" condition="true">Conditional</animation>
+			</control>
+			<control type="label">
+				<description>Prozentanzeige aus Hidden Progress ID$PARAM[id]</description>
+				<width>100</width>
+				<height>100</height>
+				<align>center</align>
+				<font>BoldCDProgress</font>
+				<textcolor>$VAR[OSDDialogColor]</textcolor>
+				<label>$INFO[Control.GetLabel($PARAM[id]),,%]</label>
+			</control>
+		</control>
+	</definition>
+</include>
+
 </includes>

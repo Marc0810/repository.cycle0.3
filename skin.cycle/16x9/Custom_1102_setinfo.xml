@@ -14,7 +14,7 @@
 <include>global_topbar</include>
 <control type="group"><!-- Hauptseite -->
 	<include>Open_Close_Visible_Hidden_Zoom_Animation</include>
-	<visible>!Window.IsVisible(Custom_1198_Textbox.xml)</visible>
+	<visible>!Window.IsVisible(Custom_1149_Textbox.xml)</visible>
 	<control type="image"><!-- Bar -->
 		<description>Circles Bar</description>
 		<left>-500</left>
@@ -36,7 +36,7 @@
 			<onright>Dialog.close(1102)</onright><!-- back -->
 			<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.Title,$ESCVAR[TextBoxTitle],home)</onup><!-- check -->
 			<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</onup>
-			<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">ActivateWindow(1198)</onup>
+			<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">ActivateWindow(1149)</onup>
 			<ondown>Dialog.close(1102)</ondown><!-- back -->
 			<oninfo>Dialog.close(1102)</oninfo><!-- back -->
 			<orientation>horizontal</orientation>
@@ -355,7 +355,7 @@
 	</control>
 </control>
 <control type="group"><!-- plotzoom logo fade aus container -->
-	<visible>Window.IsVisible(Custom_1198_Textbox.xml)</visible><!-- check -->
+	<visible>Window.IsVisible(Custom_1149_Textbox.xml)</visible><!-- check -->
 	<include>Open_Close_Visible_Hidden_Fade_Animation</include>
 	<control type="fadelabel" id="55178">
 		<description>Hidden logo slideshow pfade</description>

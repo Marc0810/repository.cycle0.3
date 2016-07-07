@@ -535,7 +535,7 @@
 				<width>80</width>
 				<height>80</height>
 				<font>IconBig</font>
-				<label>-</label>
+				<label>*</label>
 				<textcolor>TextColorMedium</textcolor>
 				<visible>Container(500).HasPrevious + [!Container(500).OnPrevious + !Container(500).OnNext]</visible>
 			</control>

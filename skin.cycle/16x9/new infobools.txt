@@ -43,8 +43,53 @@ String.Contains(ListItem.DBTYPE,episode)
 
 				
 
+http://forum.kodi.tv/showthread.php?tid=178294&page=88&highlight=oninfo
+Great stuff - and lets also give credit to Jayz2K, for coming up with the wonderful method of assigning a unique ID to each item.
+
+ There's one other situation I know of where widgets can start to disappear - when the window is closed whilst Kodi is loading the widget. Kodi won't try to load it again until the URI changes. If you want to start getting ready for the next repo version of the script, and I'm sure this method itself will evolve when you skilled skinners start playing with it, I'm using the following in my templates to work around this particular problem...
+
+ New template:-
 
 
+
+Code:
+
+
+
+    <other include="widgetReloadTrick">
+         <propertyGroup>mainmenuWidgets</propertyGroup>
+         <controls>
+             <onunload condition="Container(800$SKINSHORTCUTS[id]).IsUpdating | !IntegerGreaterThan(Container(800$SKINSHORTCUTS[id]).NumItems,0)">SetProperty(refresh800$SKINSHORTCUTS[id],$INFO[system.time(hh:mm:ss)])</onunload>
+         </controls>
+     </other>
+
+ The propertyGroup is one of the new features, and just allows me to only define the <property /> elements once for multiple templates. In that propertyGroup there are the following...
+
+
+
+Code:
+
+
+
+        <property name="id" tag="mainmenuid" />
+
+         <!-- Python snippets -->
+         <property name="autoreload">autoreloadStringAnd %( id ) if path in 'plugin' and path in '?' else autoreloadStringQuestion %( id ) if path in 'plugin' else ''</property>
+         <property name="autoreloadStringAnd">&amp;igConq=$INFO[Window.Property(refresh800%s)]</property>
+         <property name="autoreloadStringQuestion">?igConq=$INFO[Window.Property(refresh800%s)]</property>
+And then in the content for my lists...
+
+
+
+Code:
+
+
+
+<content target="$SKINSHORTCUTS[target]">$SKINSHORTCUTS[path]$PYTHON[$SKINSHORTCUTS[autoreload]]</content>
+
+ Which all comes together as... if the widget is loading, or hasn't any items, when the window is closed it's specific refresh property is updated on the home window. The widgetPath property - if the widget is a plugin - has that refresh property added to it, with a little Python snippet used so that a '?' or a '&' is used correctly to add it to the URI, so will reload when the home screen is next accessed.
+
+ Though maybe have a break before looking into this Wink
 
 
 
