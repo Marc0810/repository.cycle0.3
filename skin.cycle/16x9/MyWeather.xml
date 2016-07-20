@@ -12,7 +12,7 @@
 		<onright>Action(PreviousMenu)</onright>
 	</control>
 	<control type="spincontrolex" id="3">
-		<description>Change location button</description>
+		<description>Change location</description>
 		<include>HiddenControl</include>
 		<label>-</label>
 	</control>
@@ -81,7 +81,7 @@
 			<height>75</height>
 			<align>center</align>
 			<font>BoldBig</font>
-			<textcolor>$VAR[secondaryCol]</textcolor>
+			<textcolor>$VAR[SecondaryCol]</textcolor>
 			<label> ‹‹</label>
 			<visible>Control.HasFocus(9900) + Control.IsVisible(9902)</visible>
 		</control>
@@ -93,7 +93,7 @@
 			<height>75</height>
 			<align>center</align>
 			<font>BoldBig</font>
-			<textcolor>$VAR[secondaryCol]</textcolor>
+			<textcolor>$VAR[SecondaryCol]</textcolor>
 			<label> ››</label>
 			<visible>Control.HasFocus(9900) + Control.IsVisible(9901)</visible>
 		</control>
@@ -103,14 +103,14 @@
 			<height>400</height>
 			<align>center</align>
 			<font>IconHome</font>
-			<textcolor>$VAR[circlesCol]</textcolor>
-			<focusedcolor>$VAR[circlesCol]</focusedcolor>
+			<textcolor>$VAR[CirclesCol]</textcolor>
+			<focusedcolor>$VAR[CirclesCol]</focusedcolor>
 			<onleft condition="Control.IsVisible(9902)">SetFocus(9902)</onleft>
 			<onright condition="Control.IsVisible(9901)">SetFocus(9901)</onright>
 			<onup>54</onup>
 			<ondown>54</ondown>
 			<include>CycleMyWeatherQuicknavClick</include>
-			<label>$VAR[CycleMyWeatherQuicknavTitle]</label>
+			<label>$VAR[CycleMyWeatherQuicknavIcon]</label>
 		</control>
 		<control type="button" id="9902">
 			<description>Linker Button menue</description>
@@ -119,9 +119,9 @@
 			<height>400</height>
 			<align>center</align>
 			<font>IconHomeNF</font>
-			<textcolor>$VAR[primaryCol]</textcolor>
-			<focusedcolor>$VAR[primaryCol]</focusedcolor>
-			<label>$VAR[CycleMyWeatherQuicknavTitleL]</label>
+			<textcolor>$VAR[PrimaryCol]</textcolor>
+			<focusedcolor>$VAR[PrimaryCol]</focusedcolor>
+			<label>$VAR[CycleMyWeatherQuicknavIconL]</label>
 			<include>CycleMyWeatherQuicknavClickL</include>
 			<animation type="Conditional" condition="Control.HasFocus(9900)">
 				<effect type="fade" start="10" end="10" time="0" />
@@ -134,9 +134,9 @@
 			<height>400</height>
 			<align>center</align>
 			<font>IconHome</font>
-			<textcolor>$VAR[primaryCol]</textcolor>
-			<focusedcolor>$VAR[primaryCol]</focusedcolor>
-			<label>$VAR[CycleMyWeatherQuicknavTitleR]</label>
+			<textcolor>$VAR[PrimaryCol]</textcolor>
+			<focusedcolor>$VAR[PrimaryCol]</focusedcolor>
+			<label>$VAR[CycleMyWeatherQuicknavIconR]</label>
 			<include>CycleMyWeatherQuicknavClickR</include>
 			<animation type="Conditional" condition="Control.HasFocus(9900)">
 				<effect type="fade" start="10" end="10" time="0" />
@@ -171,24 +171,44 @@
 		<control type="label">
 			<description>Subinfo aktualisierungszeit</description>
 			<left>460</left>
-			<top>920</top>
+			<top>930</top>
 			<width>1000</width>
-			<height>60</height>
+			<height>50</height>
 			<align>center</align>
 			<font>RegularSmall</font>
 			<textcolor>TextColorMedium</textcolor>
 			<label>$INFO[Window(Weather).Property(Updated),Update: ,]</label>
 		</control>
-		<control type="label">
+		<control type="grouplist">
 			<description>Subinfo kurzausblick und temperatur</description>
 			<left>460</left>
-			<top>990</top>
+			<top>970</top>
 			<width>1000</width>
-			<height>60</height><!-- check -->
+			<height>50</height>
 			<align>center</align>
-			<font>RegularSmall</font>
-			<textcolor>TextColorMedium</textcolor>
-			<label>$INFO[Window(Weather).Property(Current.Condition)]$VAR[CustomEnumeration]$INFO[Window(Weather).Property(Current.Temperature)]$INFO[System.TemperatureUnits]</label>
+			<orientation>horizontal</orientation>
+			<control type="label">
+				<description>Condition</description>
+				<width>auto</width>
+				<height>50</height>
+				<font>RegularSmall</font>
+				<label>$INFO[Window(Weather).Property(Current.Condition)]</label>
+			</control>
+			<control type="label">
+				<description>Enum</description>
+				<width>auto</width>
+				<height>50</height>
+				<font>EnumRegularSmall</font>
+				<label>$VAR[CustomEnumeration]</label>
+				<visible>!String.IsEmpty(Window(Home).Property(TVShows.Count))</visible>
+			</control>
+			<control type="label">
+				<description>Temperature label</description>
+				<width>auto</width>
+				<height>50</height>
+				<font>RegularSmall</font>
+				<label>$INFO[Window(Weather).Property(Current.Temperature)]$INFO[System.TemperatureUnits]</label>
+			</control>
 		</control>
 	</control>
 </controls>

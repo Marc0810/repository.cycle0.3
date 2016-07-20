@@ -18,23 +18,38 @@
 	<include>SettingMenu_BG</include><!-- Hintergrund -->
 	<include>SettingMenu_IconBG</include>
 	<control type="group"><!-- Breadcumb -->
+		<description>Breadcumb</description>
 		<left>120</left>
 		<top>40</top>
-		<width>300</width>
-		<height>205</height>
+		<width>sidebar.breadcumblabel.width</width>
+		<height>1080</height>
+		<!-- Icon -->
 		<control type="label">
 			<description>Breadcumb icon</description>
 			<left>-100</left>
 			<include>SidebarIconDimension</include>
 			<include>IconColorFO</include>
-			<label>Ê</label>
+			<label>$VAR[global_topbar_icon]</label>
 		</control>
-		<control type="label">
-			<description>Label</description>
-			<width>auto</width>
-			<height>55</height>
-			<font>BreadcumbNormal</font>
-			<label>$LOCALIZE[14111]</label>
+		<control type="grouplist">
+			<width>sidebar.breadcumblabel.width</width>
+			<height>100</height>
+			<itemgap>0</itemgap>
+			<control type="label">
+				<description>Breadcumb1 label default titel</description>
+				<width>sidebar.breadcumblabel.width</width>
+				<height>sidebar.breadcumblabel.height</height>
+				<font>BreadcumbNormal</font>
+				<label>$LOCALIZE[14111]</label>
+			</control>
+			<control type="label" id="200">
+				<description>Subtitel - Optionen</description>
+				<description>Breadcumb2 label</description>
+				<width>sidebar.breadcumblabel.width</width>
+				<height>sidebar.breadcumblabel.height</height>
+				<font>BreadcumbSmall</font>
+				<label>Optionen</label>
+			</control>
 		</control>
 	</control>
 	<control type="grouplist" id="9000">
@@ -47,14 +62,14 @@
 		<ondown>9000</ondown>
 		<onback>570</onback>
 		<itemgap>5</itemgap>
-		<control type="label" id="200">
+		<!--<control type="label" id="200">
 			<description>Subtitel - Optionen</description>
 			<width>330</width>
 			<height>65</height>
 			<textoffsetx>20</textoffsetx>
 			<textcolor>TextColorLight</textcolor>
 			<label>Optionen</label>
-		</control>
+		</control>-->
 		<control type="togglebutton" id="4">
 			<description>Reihenfolge Auf/Abwaerts</description>
 			<include>Sideblade_ButtonValues</include>
@@ -71,35 +86,35 @@
 			<label></label>
 		</control>
 		<control type="button" id="21">
-			<description>Level button</description>
+			<description>Level</description>
 			<include>Sideblade_ButtonValues</include>
 			<label>-</label>
 		</control>
 		<control type="radiobutton" id="222">
 			<description>Nur aktuelles level anzeigen</description>
 			<include>Sideblade_ButtonValues</include>
-			<label>$VAR[CycleSidebarLevellabel]</label>
+			<label>$VAR[EventLogSidebarLevellabel]</label>
 			<onclick>SendClick(22)</onclick>
 			<visible>Control.IsEnabled(22)</visible>
 		</control>
 		<control type="button" id="20">
-			<description>Clear button</description>
+			<description>Clear</description>
 			<include>Sideblade_ButtonValues</include>
 			<label>$LOCALIZE[192]</label>
 		</control>
 	</control>
-	<control type="grouplist"><!-- Icon grouplist-->
+	<control type="grouplist"><!-- Icon grouplist -->
 		<left>20</left>
 		<top>155</top>
 		<itemgap>10</itemgap>
 		<width>388</width>
 		<height>975</height>
-		<control type="label">
+	<!--	<control type="label">
 			<description>Subtitel - Optionen</description>
 			<width>330</width>
 			<height>65</height>
 			<label>-</label>
-		</control>
+		</control>-->
 		<control type="label">
 			<description>Reihenfolge Auf/Abwaerts</description>
 			<include>SidebarIconDimension</include>
@@ -135,14 +150,14 @@
 			<label></label>
 		</control>
 		<control type="label">
-			<description>Level button</description>
+			<description>Level</description>
 			<include>SidebarIconDimension</include>
 			<include>IconColorFO</include>
 			<label>ĩ</label>
 			<visible>Control.IsVisible(21) + Control.HasFocus(21)</visible>
 		</control>
 		<control type="label">
-			<description>Level button</description>
+			<description>Level</description>
 			<include>SidebarIconDimension</include>
 			<include>IconColorNF</include>
 			<label>ĩ</label>
@@ -163,14 +178,14 @@
 			<visible>Control.IsVisible(222) + !Control.HasFocus(222)</visible>
 		</control>
 		<control type="label">
-			<description>Clear button</description>
+			<description>Clear</description>
 			<include>SidebarIconDimension</include>
 			<include>IconColorFO</include>
 			<label>Ģ</label>
 			<visible>Control.IsVisible(20) + Control.HasFocus(20)</visible>
 		</control>
 		<control type="label">
-			<description>Clear button</description>
+			<description>Clear</description>
 			<include>SidebarIconDimension</include>
 			<include>IconColorNF</include>
 			<label>Ģ</label>
@@ -182,17 +197,17 @@
 		<top>990</top>
 		<width>200</width>
 		<height>77</height>
-		<texture>Logo.png</texture>
+		<texture>logo.png</texture>
 	</control>
 </control>
-<control type="group"><!-- locktexte Group -->
+<control type="group"><!-- log texte Group -->
 	<left>600</left>
 	<top>150</top>
 	<include>Open_Close_Visible_Hidden_Fade_Animation</include>
 	<control type="image">
 		<width>1125</width>
 		<height>820</height>
-		<texture colordiffuse="ListBackgroundDiffuse">White.png</texture>
+		<texture colordiffuse="ListBackgroundDiffuse">white.png</texture>
 	</control>
 	<control type="list" id="570">
 		<width>1125</width>
@@ -211,7 +226,7 @@
 				<top>16</top>
 				<width>92</width>
 				<height>92</height>
-				<texture border="8" colordiffuse="$VAR[circlesCol]">views/white8.png</texture>
+				<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
 			</control>
 			<control type="image"><!-- Fallback -->
 				<description>Hintergrund Farbe</description>
@@ -219,7 +234,7 @@
 				<top>18</top>
 				<width>88</width>
 				<height>88</height>
-				<texture background="true" colordiffuse="$VAR[primaryCol]">White.png</texture>
+				<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
 			</control>
 			<control type="label">
 				<description>Fallback icon</description>
@@ -229,7 +244,7 @@
 				<height>88</height>
 				<align>center</align>
 				<font>Iconkaitoast</font>
-				<textcolor>$VAR[circlesCol]</textcolor>
+				<textcolor>$VAR[CirclesCol]</textcolor>
 				<label>É</label>
 				<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
 			</control>
@@ -270,10 +285,10 @@
 			</control>
 		</itemlayout>
 		<focusedlayout height="122" width="1125">
-			<control type="image"><!-- Background -->
+			<control type="image"><!-- Hintergrund -->
 				<width>1125</width>
 				<height>122</height>
-				<texture background="true" colordiffuse="ListBackgroundDiffuse">White.png</texture>
+				<texture background="true" colordiffuse="ListBackgroundDiffuse">white.png</texture>
 			</control>
 			<control type="image">
 				<description>Border</description>
@@ -281,7 +296,7 @@
 				<top>16</top>
 				<width>92</width>
 				<height>92</height>
-				<texture border="8" colordiffuse="$VAR[circlesCol]">views/white8.png</texture>
+				<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
 			</control>
 			<control type="image"><!-- Fallback -->
 				<description>Hintergrund Farbe</description>
@@ -289,7 +304,7 @@
 				<top>18</top>
 				<width>88</width>
 				<height>88</height>
-				<texture background="true" colordiffuse="$VAR[primaryCol]">White.png</texture>
+				<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
 			</control>
 			<control type="image">
 				<description>Art</description>
@@ -332,8 +347,6 @@
 		<height>810</height>
 		<onleft>570</onleft>
 		<onright>570</onright>
-		<showonepage>false</showonepage>
-		<orientation>vertical</orientation>
 		<visible>Control.IsVisible(570)</visible>
 	</control>
 </control>

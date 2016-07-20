@@ -5,8 +5,9 @@
 <onunload>ClearProperty(RefreshList3,Home)</onunload>
 <defaultcontrol always="true">140</defaultcontrol>
 <coordinates>
-	<left>1090</left>
-	<top>-134</top>
+	<system>1</system>
+	<origin x="0" y="0">!Window.IsVisible(home)</origin>
+	<origin x="0" y="10">Window.IsVisible(home)</origin>
 </coordinates>
 <controls>
 <control type="list" id="6002"><!-- Hidden lastwatched contents -->
@@ -168,88 +169,29 @@
 	<onfocus>ReloadSkin()</onfocus>
 </control>
 <control type="group"><!-- layoutanzeige -->
-	<visible>!Window.IsActive(extendedprogressdialog) + !Window.IsVisible(Custom_1150_Screensaver.xml) + !Window.IsVisible(startup) + !Window.IsActive(busydialog)</visible>
 	<include>Dialog_topdown_Animation</include>
-	<animation type="Conditional" condition="Window.IsVisible(volumebar) | Window.IsVisible(DialogNotification.xml) | Window.IsVisible(busydialog)">
-		<effect type="fade" start="100" end="0" time="0" />
+	<left>1090</left>
+		<top>-137</top>
+	<animation type="Conditional" condition="[Window.IsVisible(volumebar) + !Player.Muted] | Window.IsVisible(startup) | Window.IsVisible(Notification) | Window.IsActive(extendedprogressdialog) | Window.IsActive(busydialog) | Window.IsActive(DialogConfirm.xml) | Window.IsVisible(seekbar) | Window.IsVisible(Custom_1197_ColorTimeRefresh.xml)" reversible="true">
+		<effect type="fade" start="100" end="0" time="120" tween="cubic" easing="out" />
 	</animation>
 	<control type="label" id="10">
 		<label>$VAR[HistoryProgress]</label>
 		<include>HiddenControl</include>
 	</control>
 	<control type="label" id="1">
-		<description>Titel</description>
-		<top>22</top>
-		<width>665</width>
-		<height>27</height>
-		<align>right</align>
-		<font>BoldSmall</font>
-		<textcolor>TextColorMedium</textcolor>
-		<label>zuletzt gesehen</label>
+		<include>HiddenControl</include>
+		<label>Zuletzt gesehen</label>
 	</control>
-	<control type="textbox">
-		<description>Subtitel</description>
-		<top>52</top>
-		<width>665</width>
-		<height>30</height>
-		<align>right</align>
-		<font>RegularSmall</font>
-		<textcolor>TextColorMedium</textcolor>
-		<label>bitte warten...</label>
+	<control type="textbox" id="2">
+		<include>HiddenControl</include>
+		<label>...bitte warten</label>
 	</control>
-	<control type="group"><!-- progress -->
-		<left>660</left>
-		<control type="image">
-			<width>100</width>
-			<height>100</height>
-			<texture colordiffuse="TextColorLight">progress/loading-back.png</texture>
-			<animation effect="fade" end="50" time="0" condition="true">Conditional</animation>
-		</control>
-		<control type="group">
-			<animation effect="fade" time="200">VisibleChange</animation>
-			<control type="image">
-				<width>100</width>
-				<height>100</height>
-				<texture colordiffuse="$VAR[primaryCol]">progress/p$INFO[Control.GetLabel(10)].png</texture>
-			</control>
-			<control type="image">
-				<width>100</width>
-				<height>100</height>
-				<texture colordiffuse="$VAR[secondaryCol]">progress/loading.png</texture>
-				<animation effect="rotate" center="auto" start="360" end="0" time="1500" loop="true" condition="true">Conditional</animation>
-			</control>
-			<control type="label">
-				<description>Prozentanzeige 30%</description>
-				<width>100</width>
-				<height>100</height>
-				<align>center</align>
-				<font>BoldCDProgress</font>
-				<textcolor>TextColorMedium</textcolor>
-				<label>30%</label>
-				<visible>!Control.HasFocus(141) + !Control.HasFocus(142)</visible>
-			</control>
-			<control type="label">
-				<description>Prozentanzeige 60%</description>
-				<width>100</width>
-				<height>100</height>
-				<align>center</align>
-				<font>BoldCDProgress</font>
-				<textcolor>TextColorMedium</textcolor>
-				<label>60%</label>
-				<visible>Control.HasFocus(141)</visible>
-			</control>
-			<control type="label">
-				<description>Prozentanzeige 90%</description>
-				<width>100</width>
-				<height>100</height>
-				<align>center</align>
-				<font>BoldCDProgress</font>
-				<textcolor>TextColorMedium</textcolor>
-				<label>90%</label>
-				<visible>Control.HasFocus(142)</visible>
-			</control>
-		</control>
-	</control>
+	<include content="DialogDefaultProgresskringel"><!-- progress -->
+		<param name="id">10</param>
+		<param name="label1id">1</param>
+		<param name="label2id">2</param>
+	</include>
 </control>
 </controls>
 </window>

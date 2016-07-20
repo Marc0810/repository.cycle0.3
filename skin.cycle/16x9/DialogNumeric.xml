@@ -57,13 +57,13 @@
 			<description>Bestaetigen</description>
 			<include>DialogIconDimension</include>
 			<label>Ĥ</label>
-			<visible>Control.IsEnabled(300) + Control.IsVisible(300)</visible>
+			<visible>Control.IsVisible(300)</visible>
 		</control>
 		<control type="label">
 			<description>Abbrechen</description>
 			<include>DialogIconDimension</include>
 			<label>ģ</label>
-			<visible>Control.IsEnabled(301) + Control.IsVisible(301)</visible>
+			<visible>Control.IsVisible(301)</visible>
 		</control>
 	</control>
 	<control type="label" id="1"><!-- content -->
@@ -189,7 +189,7 @@
 			<onright>21</onright>
 			<onup>15</onup>
 			<ondown>9000</ondown>
-			<texturefocus colordiffuse="$VAR[primaryCol]">dialogs/keyboard/keysmallbacknofocus.png</texturefocus>
+			<texturefocus colordiffuse="$VAR[PrimaryCol]">dialogs/keyboard/keysmallbacknofocus.png</texturefocus>
 			<texturenofocus>dialogs/keyboard/keysmallbacknofocus.png</texturenofocus>
 			<include>SmallKey</include>
 		</control>
@@ -200,7 +200,7 @@
 			<onright>17</onright>
 			<onup>16</onup>
 			<ondown>9000</ondown>
-			<texturefocus colordiffuse="$VAR[primaryCol]">dialogs/keyboard/keysmalldonenofocus.png</texturefocus>
+			<texturefocus colordiffuse="$VAR[PrimaryCol]">dialogs/keyboard/keysmalldonenofocus.png</texturefocus>
 			<texturenofocus>dialogs/keyboard/keysmalldonenofocus.png</texturenofocus>
 			<include>SmallKey</include>
 		</control>
@@ -210,7 +210,7 @@
 		<top>317</top>
 		<height>70</height>
 		<width>600</width>
-		<texture border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texture>
+		<texture border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texture>
 	</control>
 	<control type="label" id="4">
 		<description>Texteingabefeld</description>

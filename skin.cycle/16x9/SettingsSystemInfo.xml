@@ -35,13 +35,12 @@
 			<left>-100</left>
 			<include>SidebarIconDimension</include>
 			<include>IconColorFO</include>
-			<label>È</label>
+			<label>$VAR[global_topbar_icon]</label>
 		</control>
 		<control type="grouplist">
 			<width>sidebar.breadcumblabel.width</width>
 			<height>100</height>
 			<itemgap>0</itemgap>
-			<orientation>vertical</orientation>
 			<control type="label">
 				<description>Breadcumb1 label</description>
 				<width>sidebar.breadcumblabel.width</width>
@@ -53,7 +52,6 @@
 				<description>Breadcumb2 label</description>
 				<width>sidebar.breadcumblabel.width</width>
 				<height>sidebar.breadcumblabel.height</height>
-				<scroll>false</scroll>
 				<font>RegularSmall</font>
 				<label>$VAR[Sideblade_breadcrumbs2]</label>
 			</control>
@@ -84,7 +82,7 @@
 			<label>$LOCALIZE[13279]</label>
 		</control>
 		<control type="button" id="97">
-			<description>Datenbanken</description>
+			<description>grafik</description>
 			<include>SettingMenuButtonValues</include>
 			<label>$LOCALIZE[13280]</label>
 		</control>
@@ -93,10 +91,10 @@
 			<include>SettingMenuButtonValues</include>
 			<label>$LOCALIZE[13281]</label>
 		</control>
-		<control type="button" id="99">
-			<description>PVR</description>
+		<control type="button" id="299">
+			<description>Datenbank</description>
 			<include>SettingMenuButtonValues</include>
-			<label>$LOCALIZE[19191]</label>
+			<label>Datenbank</label>
 		</control>
 		<control type="button" id="100">
 			<description>Skin</description>
@@ -245,9 +243,9 @@
 			<info>System.CPUUsage</info>
 			<reveal>true</reveal>
 			<texturebg colordiffuse="TextColorLight">dialogs/progress/bg.png</texturebg>
-			<lefttexture colordiffuse="$VAR[primaryCol]">dialogs/progress/left.png</lefttexture>
-			<midtexture colordiffuse="$VAR[secondaryCol]">dialogs/progress/left.png</midtexture>
-			<righttexture colordiffuse="$VAR[secondaryCol]">dialogs/progress/right.png</righttexture>
+			<lefttexture colordiffuse="$VAR[PrimaryCol]">dialogs/progress/left.png</lefttexture>
+			<midtexture colordiffuse="$VAR[SecondaryCol]">dialogs/progress/left.png</midtexture>
+			<righttexture colordiffuse="$VAR[SecondaryCol]">dialogs/progress/right.png</righttexture>
 			<overlaytexture>-</overlaytexture>
 		</control>
 		<control type="label">
@@ -268,9 +266,9 @@
 			<info>system.memory(used)</info>
 			<reveal>true</reveal>
 			<texturebg colordiffuse="TextColorLight">dialogs/progress/bg.png</texturebg>
-			<lefttexture colordiffuse="$VAR[primaryCol]">dialogs/progress/left.png</lefttexture>
-			<midtexture colordiffuse="$VAR[secondaryCol]">dialogs/progress/left.png</midtexture>
-			<righttexture colordiffuse="$VAR[secondaryCol]">dialogs/progress/right.png</righttexture>
+			<lefttexture colordiffuse="$VAR[PrimaryCol]">dialogs/progress/left.png</lefttexture>
+			<midtexture colordiffuse="$VAR[SecondaryCol]">dialogs/progress/left.png</midtexture>
+			<righttexture colordiffuse="$VAR[SecondaryCol]">dialogs/progress/right.png</righttexture>
 			<overlaytexture>-</overlaytexture>
 		</control>
 	</control>
@@ -287,13 +285,13 @@
 			<top>-30</top>
 			<width>1103</width>
 			<height>730</height>
-			<texture colordiffuse="ListBackgroundDiffuse">White.png</texture>
+			<texture colordiffuse="ListBackgroundDiffuse">white.png</texture>
 		</control>
 		<control type="grouplist">
 			<width>1025</width>
 			<height>700</height>
 			<itemgap>10</itemgap>
-			<visible>!Control.HasFocus(100)</visible>
+			<visible>!Control.HasFocus(100) + !Control.HasFocus(299)</visible>
 			<control type="label" id="2">
 				<description>Label 2</description>
 				<width>1025</width>
@@ -381,6 +379,277 @@
 				<height max="572">auto</height>
 				<include>GlobalSkinDescription</include>
 			</control>
+		</control>
+		<control type="group">
+			<width>1025</width>
+			<height>700</height>
+			<visible>Control.HasFocus(299)</visible>
+			<control type="label">
+				<description>Titel</description>
+				<width>1025</width>
+				<height>60</height>
+				<label>Datenbankübersicht</label>
+				<font>BreadcumbNormal</font>
+			</control>
+			<control type="grouplist">
+				<left>-30</left>
+				<width>1103</width>
+				<top>80</top>
+				<height>420</height>
+				<itemgap>0</itemgap>
+				<align>left</align>
+				<control type="image">
+					<description>Hintergrund</description>
+					<width>1103</width>
+					<height>60</height>
+					<texture colordiffuse="TextColorLight">white.png</texture>
+					<animation effect="fade" start="30" end="30" time="0" condition="true">Conditional</animation>
+				</control>
+				<control type="image">
+					<description>Hintergrund</description>
+					<width>1025</width>
+					<height>60</height>
+					<texture>-</texture>
+				</control>
+				<control type="image">
+					<width>1103</width>
+					<height>60</height>
+					<texture colordiffuse="TextColorLight">white.png</texture>
+					<animation effect="fade" start="30" end="30" time="0" condition="true">Conditional</animation>
+				</control>
+				<control type="image">
+					<description>Hintergrund</description>
+					<width>1025</width>
+					<height>60</height>
+					<texture>-</texture>
+				</control>
+				<control type="image">
+					<width>1103</width>
+					<height>60</height>
+					<texture colordiffuse="TextColorLight">white.png</texture>
+					<animation effect="fade" start="30" end="30" time="0" condition="true">Conditional</animation>
+				</control>
+				<control type="image">
+					<description>Hintergrund</description>
+					<width>1025</width>
+					<height>60</height>
+					<texture>-</texture>
+				</control>
+				<control type="image">
+					<width>1103</width>
+					<height>60</height>
+					<texture colordiffuse="TextColorLight">white.png</texture>
+					<animation effect="fade" start="30" end="30" time="0" condition="true">Conditional</animation>
+				</control>
+			</control>
+			<control type="grouplist">
+				<top>80</top>
+				<width>1025</width>
+				<height>360</height>
+				<itemgap>0</itemgap>
+				<align>right</align>
+				<orientation>horizontal</orientation>
+				<control type="label">
+					<description>Neue</description>
+					<width>250</width>
+					<height>60</height>
+					<font>BoldNormal</font>
+					<label>Neue</label>
+				</control>
+				<control type="label">
+					<description>Gesehen</description>
+					<width>250</width>
+					<height>60</height>
+					<font>BoldNormal</font>
+					<label>Gesehen</label>
+				</control>
+				<control type="label">
+					<description>Gesamt</description>
+					<width>250</width>
+					<height>60</height>
+					<font>BoldNormal</font>
+					<label>Gesamt</label>
+				</control>
+			</control>
+			<control type="grouplist">
+				<top>140</top>
+				<width>1025</width>
+				<height>360</height>
+				<itemgap>0</itemgap>
+				<align>left</align>
+				<control type="label">
+					<description>Serien</description>
+					<width>250</width>
+					<height>60</height>
+					<label>Serien</label>
+				</control>
+				<control type="label">
+					<description>Episoden</description>
+					<width>250</width>
+					<height>60</height>
+					<label>Episoden</label>
+				</control>
+				<control type="label">
+					<description>Filme</description>
+					<width>250</width>
+					<height>60</height>
+					<label>Filme</label>
+				</control>
+				<control type="label">
+					<description>Musikalbum</description>
+					<width>250</width>
+					<height>60</height>
+					<label>Musik Alben</label>
+				</control>
+				<control type="label">
+					<description>Musikalbum</description>
+					<width>250</width>
+					<height>60</height>
+					<label>Musik Songs</label>
+				</control>
+				<control type="label">
+					<description>Musikalbum</description>
+					<width>250</width>
+					<height>60</height>
+					<label>Interpreten</label>
+				</control>
+			</control>
+			<control type="grouplist">
+				<description>Neue</description>
+				<left>275</left>
+				<top>140</top>
+				<width>250</width>
+				<height>360</height>
+				<itemgap>0</itemgap>
+				<align>left</align>
+				<control type="label">
+					<description>Serien</description>
+					<width>250</width>
+					<height>60</height>
+					<label>$INFO[Window(Home).Property(TVShows.UnWatched)]</label>
+				</control>
+				<control type="label">
+					<description>Episoden</description>
+					<width>250</width>
+					<height>60</height>
+					<label>$INFO[Window(Home).Property(Episodes.UnWatched)]</label>
+				</control>
+				<control type="label">
+					<description>Filme</description>
+					<width>250</width>
+					<height>60</height>
+					<label>$INFO[Window(Home).Property(Movies.UnWatched)]</label>
+				</control>
+				<control type="label">
+					<description>musik alben</description>
+					<width>250</width>
+					<height>60</height>
+					<label>-</label>
+				</control>
+				<control type="label">
+					<description>musik songs</description>
+					<width>250</width>
+					<height>60</height>
+					<label>-</label>
+				</control>
+				<control type="label">
+					<description>musik interpreten</description>
+					<width>250</width>
+					<height>60</height>
+					<label>-</label>
+				</control>
+			</control>
+			<control type="grouplist">
+				<description>gesehen</description>
+				<left>525</left>
+				<top>140</top>
+				<width>250</width>
+				<height>360</height>
+				<itemgap>0</itemgap>
+				<align>left</align>
+				<control type="label">
+					<description>Serien</description>
+					<width>250</width>
+					<height>60</height>
+					<label>$INFO[Window(Home).Property(TVShows.Watched)]</label>
+				</control>
+				<control type="label">
+					<description>Episoden</description>
+					<width>250</width>
+					<height>60</height>
+					<label>$INFO[Window(Home).Property(Episodes.Watched)]</label>
+				</control>
+				<control type="label">
+					<description>Filme</description>
+					<width>250</width>
+					<height>60</height>
+					<label>$INFO[Window(Home).Property(Movies.Watched)]</label>
+				</control>
+				<control type="label">
+					<description>musik alben</description>
+					<width>250</width>
+					<height>60</height>
+					<label>-</label>
+				</control>
+				<control type="label">
+					<description>musik songs</description>
+					<width>250</width>
+					<height>60</height>
+					<label>-</label>
+				</control>
+				<control type="label">
+					<description>musik interpreten</description>
+					<width>250</width>
+					<height>60</height>
+					<label>-</label>
+				</control>
+			</control>
+			<control type="grouplist">
+				<description>alle</description>
+				<left>775</left>
+				<top>140</top>
+				<width>250</width>
+				<height>360</height>
+				<itemgap>0</itemgap>
+				<align>left</align>
+				<control type="label">
+					<description>Serien</description>
+					<width>250</width>
+					<height>60</height>
+					<label>$INFO[Window(Home).Property(TVShows.Count)]</label>
+				</control>
+				<control type="label">
+					<description>Episoden</description>
+					<width>250</width>
+					<height>60</height>
+					<label>$INFO[Window(Home).Property(Episodes.Count)]</label>
+				</control>
+				<control type="label">
+					<description>Filme</description>
+					<width>250</width>
+					<height>60</height>
+					<label>$INFO[Window(Home).Property(Movies.Count)]</label>
+				</control>
+				<control type="label">
+					<description>musik alben</description>
+					<width>250</width>
+					<height>60</height>
+					<label>$INFO[Window(Home).Property(Music.AlbumsCount)]</label>
+				</control>
+				<control type="label">
+					<description>musik songs</description>
+					<width>250</width>
+					<height>60</height>
+					<label>$INFO[Window(Home).Property(Music.SongsCount)]</label>
+				</control>
+				<control type="label">
+					<description>musik interpreten</description>
+					<width>250</width>
+					<height>60</height>
+					<label>$INFO[Window(Home).Property(Music.ArtistsCount)]</label>
+				</control>
+			</control>
+			
 		</control>
 		<control type="label">
 			<description>XBMC BUILD Version Title</description>

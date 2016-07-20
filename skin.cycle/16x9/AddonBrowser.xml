@@ -8,7 +8,7 @@
 	<control type="list" id="20000"><!-- numitems container -->
 		<description>Hidden focus content</description>
 		<include>Compaircontainer</include>
-		<content>$VAR[content_focus]</content><!-- check kryptonpfade -->
+		<content>$VAR[content_focus]</content>
 	</control>
 	<control type="button" id="3">
 		<description>Hiddencorebutton Sort fuer kurzbezeichnung mit sendclick</description>
@@ -35,8 +35,8 @@
 			<control type="button" id="33">
 				<description>Verkuerzter Sortbutton mit Text aus Variable</description>
 				<include>Sideblade_ButtonValues</include>
-				<label>$VAR[CycleMyNavSidebarSortlabel]</label>
-				<onclick>SendClick(3)</onclick>
+				<label>$VAR[Sideblade_Sortlabel]</label>
+				<onclick>Container.NextSortMethod</onclick>
 				<visible>Control.IsEnabled(3)</visible>
 			</control>
 			<control type="togglebutton" id="4">
@@ -85,8 +85,9 @@
 			</control>
 		</control>
 		<include>Sideblade_Left_IconBG</include>
-		<control type="grouplist"><!-- Icon grouplist-->
+		<control type="grouplist"><!-- Icon grouplist -->
 			<include>Sideblade_Left_IconDimension</include>
+			<visible>ControlGroup(9110).HasFocus</visible>
 			<control type="label">
 				<description>Verkuerzter Sortbutton mit Text aus Variable</description>
 				<include>SidebarIconDimension</include>

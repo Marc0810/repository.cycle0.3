@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 <onload condition="System.HasAddon(script.tv.show.next.aired)">RunScript(script.tv.show.next.aired,backend=True)</onload>
+<onload>ClearProperty(Trailerpreview,home)</onload>
 <!-- C<onload condition="System.HasAddon(script.tv.show.next.aired)">RunScript(script.tv.show.next.aired,tvshowtitle=$INFO[ListItem.TvShowTitle])</onload>
 ycle 0.3 -->
 <!--   \t+<aligny>center</aligny>(\r?\n)?     -->
@@ -23,9 +24,6 @@ ycle 0.3 -->
 	<include condition="!Skin.HasSetting(EnableVintageOverlay)">global_background</include>
 	<include condition="!Skin.HasSetting(EnableVintageOverlay)">global_fanart</include>
 	<control type="group"><!-- Views -->
-		<animation type="Conditional" condition="Window.IsVisible(Custom_1148_colors.xml)" reversible="true">
-			<effect type="fade" start="100" end="0" time="280" tween="cubic" easing="out" />
-		</animation>
 		<include>Viewtype_50_CommonRootView</include>
 		<include>Viewtype_51_Banner</include>
 		<include>Viewtype_52_Poster</include>
@@ -41,316 +39,316 @@ ycle 0.3 -->
 		<width>420</width>
 		<height>1080</height>
 		<include>Open_Close_Visible_Hidden_Slide_Animation375</include>
-		<visible allowhiddenfocus="true">[ControlGroup(9110).HasFocus | ControlGroup(9300).HasFocus] + ![Window.IsVisible(Custom_1120_MainMenuSlide.xml) | Window.IsVisible(Custom_1141_ViewtypeSimilar.xml) | Window.IsVisible(contextmenu) | Window.IsVisible(shutdownmenu) | Window.IsVisible(favourites) | Window.IsVisible(playercontrols)]</visible>
+		<visible allowhiddenfocus="true">[ControlGroup(9110).HasFocus | ControlGroup(9310).HasFocus] + ![Window.IsVisible(Custom_1120_MainMenuSlide.xml) | Window.IsVisible(Custom_1141_ViewtypeSimilar.xml) | Window.IsVisible(contextmenu) | Window.IsVisible(shutdownmenu) | Window.IsVisible(favourites) | Window.IsVisible(playercontrols)]</visible>
 		<include>Sideblade_Left_FO</include>
 		<include>Sideblade_Left_BG</include>
 		<include>Sideblade_Left_Breadcumb</include>
-		<control type="group">
-			<description>Sidebar Menue</description>
-			<control type="grouplist" id="9110"><!-- Menue -->
-				<include>Sideblade_Left_Dimension</include>
-				<animation type="Conditional" condition="ControlGroup(9310).HasFocus">
-					<effect type="fade" start="0" end="100" time="0" />
-					<effect type="slide" tween="quadratic" easing="out" start="0,0" end="-375,0" time="300"/>
-				</animation>
-				<control type="button" id="9112">
-					<description>Ansichten wechseln Submenue</description>
-					<include>Sideblade_ButtonValues</include>
-					<onclick>SetProperty(ViewtypeSelection,ON,25)</onclick>
-					<onclick>SetFocus(9310)</onclick>
-					<label>Ansicht</label>
-					<visible>!String.StartsWith(Container.Folderpath,plugin://plugin.video) + !String.StartsWith(Container.FolderPath,special://skin/playlists/Doku_) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(genres) | Container.Content(years) | Container.Content(actors) | Container.Content(sets) | Container.Content(tags) | Container.Content(episodes)]</visible>
-				</control>
-				<control type="button" id="33">
-					<description>Verkuerzter Sortbutton mit Text aus Variable</description>
-					<include>Sideblade_ButtonValues</include>
-					<onclick>SendClick(3)</onclick>
-					<label>$VAR[SidebladeSortLabel]</label>
-					<visible>Control.IsEnabled(3)</visible>
-				</control>
-				<control type="togglebutton" id="4">
-					<description>Reihenfolge Auf/Abwaerts</description>
-					<include>Sideblade_ButtonValues</include>
-					<onfocus>Skin.Reset(SelectDialog)</onfocus>
-					<usealttexture>Container.SortDirection(Ascending)</usealttexture>
-					<label>Absteigend</label>
-					<altlabel>Aufsteigend</altlabel>
-					<visible>Control.IsEnabled(4)</visible>
-				</control>
-				<control type="radiobutton" id="14">
-					<description>Gesehene aus/ein button</description>
-					<include>Sideblade_ButtonValues</include>
-					<label>$VAR[SidebladeHidewatchedLabel]</label>
-					<visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons)</visible>
-				</control>
-				<control type="button" id="8">
-					<description>Suchen button</description>
-					<include>Sideblade_ButtonValues</include>
-					<onfocus>Skin.SetString(SelectDialog,Search)</onfocus>
-					<onclick>Skin.SetString(SelectDialog,Search)</onclick>
-					<label>$LOCALIZE[137]</label>
-				</control>
-				<control type="edit" id="19">
-					<description>Filter button</description>
-					<include>Sideblade_ButtonValues</include>
-					<textcolor>$VAR[SidebladeFocusColor19]</textcolor>
-					<onfocus>Skin.Reset(SelectDialog)</onfocus>
-					<label>$LOCALIZE[587]</label>
-					<visible>Container.CanFilter + !Container.CanFilterAdvanced</visible>
-				</control>
-				<control type="radiobutton" id="98">
-					<description>Erweiterter Filter button</description>
-					<include>Sideblade_ButtonValues</include>
-					<onclick>Right</onclick>
-					<onclick>Filter</onclick>
-					<label>$LOCALIZE[587]</label>
-					<selected>Container.Filtered</selected>
-					<visible>Container.CanFilterAdvanced</visible>
-				</control>
-				<control type="togglebutton" id="20">
-					<description>Datenbank update button</description>
-					<include>Sideblade_ButtonValues</include>
-					<onclick>Skin.SetString(LastvideoDBupdate,$INFO[Window(home).Property(GlobalDate)])</onclick>
-					<onclick>SetFocus(50)</onclick>
-					<alttexturenofocus border="100,0,0,0">-</alttexturenofocus><!-- radiobuttonversatz zum ausblenden der texture -->
-					<texturenofocus border="100,0,0,0">-</texturenofocus>
-					<label>31392</label>
-					<altlabel>31393</altlabel>
-					<visible>!Container.Content(files)</visible>
-				</control>
-				<control type="button" id="45">
-					<description>Datenbank bereinigen button</description>
-					<include>Sideblade_ButtonValues</include>
-					<label>DB aufräumen</label>
-					<onclick>SetFocus(50)</onclick>
-					<onclick>CleanLibrary(video,true)</onclick>
-					<visible>String.StartsWith(Container.FolderPath,videodb://)</visible>
-				</control>
-				<control type="button" id="123">
-					<description>Playliste Filme</description>
-					<include>Sideblade_ButtonValues</include>
-					<label>Playliste Filme</label>
-					<onclick>Skin.SetFile(CycleMyNavVideoMovieQuicklinkContent,.xsp,special://skin/playlists/)</onclick>
-					<onclick>Skin.SetString(CycleMyNavVideoMovieQuicklinkTitle)</onclick>
-					<visible>!String.StartsWith(Container.Folderpath,plugin://plugin.video) + Container.Content(movies) + !String.IsEqual(Container.Viewmode,Doku Poster)</visible>
-				</control>
-				<control type="button" id="124">
-					<description>Playliste Serie</description>
-					<include>Sideblade_ButtonValues</include>
-					<label>Playliste Serie</label>
-					<onclick>Skin.SetFile(CycleMyNavVideoTVQuicklinkContent,.xsp,special://skin/playlists/)</onclick>
-					<onclick>Skin.SetString(CycleMyNavVideoTVQuicklinkTitle)</onclick>
-					<visible>!String.StartsWith(Container.Folderpath,plugin://plugin.video) + Container.Content(tvshows) + !String.IsEqual(Container.Viewmode,Doku Poster)</visible>
-				</control>
-				<control type="button" id="125">
-					<description>Dokuplayliste Filme</description>
-					<include>Sideblade_ButtonValues</include>
-					<label>Dokuliste Filme</label>
-					<onclick>Skin.SetFile(FilmDokuContent,.xsp,special://skin/playlists/)</onclick>
-					<visible>String.IsEqual(Container.Viewmode,Doku Poster)</visible>
-				</control>
-				<control type="button" id="126">
-					<description>Dokuplayliste Serie</description>
-					<include>Sideblade_ButtonValues</include>
-					<label>Dokuliste Serie</label>
-					<onclick>Skin.SetFile(TVDokuContent,.xsp,special://skin/playlists/)</onclick>
-					<visible>String.IsEqual(Container.Viewmode,Doku Poster)</visible>
-				</control>
+		<description>Sidebar Menue</description>
+		<control type="grouplist" id="9110"><!-- Menue -->
+			<include>Sideblade_Left_Dimension</include>
+			<animation type="Conditional" condition="ControlGroup(9310).HasFocus">
+				<effect type="fade" start="0" end="100" time="280" />
+				<effect type="slide" tween="quadratic" easing="out" start="0,0" end="-375,0" time="300"/>
+			</animation>
+			<control type="button" id="9112">
+				<description>Ansichten wechseln Submenue</description>
+				<include>Sideblade_ButtonValues</include>
+				<onclick>SetProperty(ViewtypeSelection,ON,25)</onclick>
+				<onclick>SetFocus(9310)</onclick>
+				<label>Ansicht</label>
+				<visible>!String.StartsWith(Container.Folderpath,plugin://plugin.video) + !String.StartsWith(Container.FolderPath,special://skin/playlists/Doku_) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(genres) | Container.Content(years) | Container.Content(actors) | Container.Content(sets) | Container.Content(tags) | [Container.Content(episodes) + String.StartsWith(Container.Folderpath,special://skin/playlists)]]</visible>
 			</control>
-			<control type="group" id="9300"><!-- Viewauswahl -->
-				<description>Sidebar View auswahl</description>
-				<animation type="Conditional" condition="ControlGroup(9310).HasFocus">
-					<effect type="fade" start="0" end="100" time="280" />
-					<effect type="slide" tween="quadratic" easing="out" end="475,0" time="300"/>
-				</animation>
-				<left>-375</left>
-				<top>150</top>
+			<control type="button" id="33">
+				<description>Verkuerzter Sortbutton mit Text aus Variable</description>
+				<include>Sideblade_ButtonValues</include>
+				<onclick>Container.NextSortMethod</onclick>
+				<label>$VAR[Sideblade_Sortlabel]</label>
+				<visible>Control.IsEnabled(3)</visible>
+			</control>
+			<control type="togglebutton" id="4">
+				<description>Reihenfolge Auf/Abwaerts</description>
+				<include>Sideblade_ButtonValues</include>
+				<onfocus>Skin.Reset(SelectDialog)</onfocus>
+				<usealttexture>Container.SortDirection(Ascending)</usealttexture>
+				<label>Absteigend</label>
+				<altlabel>Aufsteigend</altlabel>
+				<visible>Control.IsEnabled(4)</visible>
+			</control>
+			<control type="radiobutton" id="14">
+				<description>Gesehene aus/ein</description>
+				<include>Sideblade_ButtonValues</include>
+				<label>$VAR[Sideblade_Watchedlabel]</label>
+				<visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons)</visible>
+			</control>
+			<control type="button" id="8">
+				<description>Suchen</description>
+				<include>Sideblade_ButtonValues</include>
+				<onfocus>Skin.SetString(SelectDialog,Search)</onfocus>
+				<onunfocus>Skin.Reset(SelectDialog)</onunfocus>
+				<label>$LOCALIZE[137]</label>
+			</control>
+			<control type="edit" id="19">
+				<description>Filter</description>
+				<include>Sideblade_ButtonValues</include>
+				<textcolor>$VAR[Sideblade_FocusColor19]</textcolor>
+				<onfocus>Skin.Reset(SelectDialog)</onfocus>
+				<label>$LOCALIZE[587]</label>
+				<visible>Container.CanFilter + !Container.CanFilterAdvanced</visible>
+			</control>
+			<control type="radiobutton" id="98">
+				<description>Erweiterter Filter</description>
+				<include>Sideblade_ButtonValues</include>
+				<onclick>Right</onclick>
+				<onclick>Filter</onclick>
+				<label>$LOCALIZE[587]</label>
+				<selected>Container.Filtered</selected>
+				<visible>Container.CanFilterAdvanced</visible>
+			</control>
+			<control type="togglebutton" id="20">
+				<description>Datenbank update</description>
+				<include>Sideblade_ButtonValues</include>
+				<onclick condition="Player.HasVideo">fullscreen</onclick>
+				<onclick>Skin.SetString(LastvideoDBupdate,$VAR[GlobalDateFormat])</onclick>
+				<onclick>SetFocus(50)</onclick>
+				<alttexturenofocus border="100,0,0,0">-</alttexturenofocus><!-- radiobuttonversatz zum ausblenden der texture -->
+				<texturenofocus border="100,0,0,0">-</texturenofocus>
+				<label>31392</label>
+				<altlabel>31393</altlabel>
+				<visible>!Container.Content(files)</visible>
+				<usealttexture>library.isscanningvideo</usealttexture>
+			</control>
+			<control type="button" id="45">
+				<description>Datenbank bereinigen</description>
+				<include>Sideblade_ButtonValues</include>
+				<label>DB aufräumen</label>
+				<onclick>SetFocus(50)</onclick>
+				<onclick>CleanLibrary(video,true)</onclick>
+				<visible>!Container.Content(files)</visible>
+			</control>
+			<control type="button" id="123">
+				<description>Playliste Filme</description>
+				<include>Sideblade_ButtonValues</include>
+				<label>Playliste Filme</label>
+				<onclick>Skin.SetFile(CycleMyNavVideoMovieQuicklinkContent,.xsp,special://skin/playlists/)</onclick>
+				<onclick>Skin.SetString(CycleMyNavVideoMovieQuicklinkTitle)</onclick>
+				<visible>!String.StartsWith(Container.Folderpath,plugin://plugin.video) + Container.Content(movies) + !String.IsEqual(Container.Viewmode,Doku Poster)</visible>
+			</control>
+			<control type="button" id="124">
+				<description>Playliste Serie</description>
+				<include>Sideblade_ButtonValues</include>
+				<label>Playliste Serie</label>
+				<onclick>Skin.SetFile(CycleMyNavVideoTVQuicklinkContent,.xsp,special://skin/playlists/)</onclick>
+				<onclick>Skin.SetString(CycleMyNavVideoTVQuicklinkTitle)</onclick>
+				<visible>!String.StartsWith(Container.Folderpath,plugin://plugin.video) + Container.Content(tvshows) + !String.IsEqual(Container.Viewmode,Doku Poster)</visible>
+			</control>
+			<control type="button" id="125">
+				<description>Dokuplayliste Filme</description>
+				<include>Sideblade_ButtonValues</include>
+				<label>Dokuliste Filme</label>
+				<onclick>Skin.SetFile(FilmDokuContent,.xsp,special://skin/playlists/)</onclick>
+				<visible>String.IsEqual(Container.Viewmode,Doku Poster)</visible>
+			</control>
+			<control type="button" id="126">
+				<description>Dokuplayliste Serie</description>
+				<include>Sideblade_ButtonValues</include>
+				<label>Dokuliste Serie</label>
+				<onclick>Skin.SetFile(TVDokuContent,.xsp,special://skin/playlists/)</onclick>
+				<visible>String.IsEqual(Container.Viewmode,Doku Poster)</visible>
+			</control>
+		</control>
+		<control type="group"><!-- Viewauswahl -->
+			<description>Sidebar View auswahl</description>
+			<animation type="Conditional" condition="ControlGroup(9310).HasFocus">
+				<effect type="fade" start="0" end="100" time="280" />
+				<effect type="slide" tween="quadratic" easing="out" end="475,0" time="300"/>
+			</animation>
+			<left>-375</left>
+			<top>150</top>
+			<width>375</width>
+			<height>1080</height>
+			<control type="grouplist" id="9310">
 				<width>375</width>
-				<height>1080</height>
-				<control type="grouplist" id="9310">
-					<width>375</width>
-					<height>975</height>
-					<itemgap>0</itemgap>
-					<pagecontrol>-</pagecontrol>
-					<orientation>vertical</orientation>
-					<onup>9310</onup>
-					<ondown>9310</ondown>
-					<onleft>ClearProperty(Viewtypeselection,25)</onleft>
-					<onleft>ReloadSkin()</onleft>
-					<onleft>SetFocus(50)</onleft>
-					<onright>ClearProperty(Viewtypeselection,25)</onright>
-					<onright>ReloadSkin()</onright>
-					<onright>SetFocus(50)</onright>
-					<control type="button" id="9311">
-						<description>Film Ansicht</description>
-						<include>Sideblade_ButtonValues</include>
-						<onfocus>SetProperty(Viewtypeselection,On,25)</onfocus>
-						<onclick>skin.setstring(FilmViewtype,Liste)</onclick>
-						<onclick>Container.SetViewMode(50)</onclick>
-						<onclick condition="Control.IsVisible(50)">skin.setstring(FilmViewtype,Banner)</onclick>
-						<onclick condition="Control.IsVisible(50)">Container.SetViewMode(51)</onclick>
-						<onclick condition="Control.IsVisible(51)">skin.setstring(FilmViewtype,Poster)</onclick>
-						<onclick condition="Control.IsVisible(51)">Container.SetViewMode(52)</onclick>
-						<onclick condition="Control.IsVisible(52)">skin.setstring(FilmViewtype,Landscape)</onclick>
-						<onclick condition="Control.IsVisible(52)">Container.SetViewMode(53)</onclick>
-						<onclick condition="Control.IsVisible(53)">skin.setstring(FilmViewtype,Liste)</onclick>
-						<onclick condition="Control.IsVisible(53)">Container.SetViewMode(50)</onclick>
-						<label>$INFO[skin.string(FilmViewtype)]Film</label>
-						<visible>Container.Content(movies) + !String.StartsWith(Container.Folderpath,special://skin/playlists)</visible>
-					</control>
-					<control type="button" id="9312">
-						<description>Serien Ansicht</description>
-						<include>Sideblade_ButtonValues</include>
-						<onfocus>SetProperty(Viewtypeselection,On,25)</onfocus>
-						<onclick>skin.setstring(TVViewtype,Liste)</onclick>
-						<onclick>Container.SetViewMode(50)</onclick>
-						<onclick condition="Control.IsVisible(50)">skin.setstring(TVViewtype,Banner)</onclick>
-						<onclick condition="Control.IsVisible(50)">Container.SetViewMode(51)</onclick>
-						<onclick condition="Control.IsVisible(51)">skin.setstring(TVViewtype,Poster)</onclick>
-						<onclick condition="Control.IsVisible(51)">Container.SetViewMode(52)</onclick>
-						<onclick condition="Control.IsVisible(52)">skin.setstring(TVViewtype,Landscape)</onclick>
-						<onclick condition="Control.IsVisible(52)">Container.SetViewMode(53)</onclick>
-						<onclick condition="Control.IsVisible(53)">skin.setstring(TVViewtype,Liste)</onclick>
-						<onclick condition="Control.IsVisible(53)">Container.SetViewMode(50)</onclick>
-						<label>Serie</label>
-						<visible>Container.Content(tvshows) + !String.StartsWith(Container.Folderpath,special://skin/playlists)</visible>
-					</control>
-					<control type="button" id="9313">
-						<description>Set Ansicht</description>
-						<include>Sideblade_ButtonValues</include>
-						<onfocus>SetProperty(Viewtypeselection,On,25)</onfocus>
-						<onclick>skin.setstring(SetViewtype,Liste)</onclick>
-						<onclick>Container.SetViewMode(50)</onclick>
-						<onclick condition="Control.IsVisible(50)">skin.setstring(SetViewtype,Banner)</onclick>
-						<onclick condition="Control.IsVisible(50)">Container.SetViewMode(51)</onclick>
-						<onclick condition="Control.IsVisible(51)">skin.setstring(SetViewtype,Poster)</onclick>
-						<onclick condition="Control.IsVisible(51)">Container.SetViewMode(52)</onclick>
-						<onclick condition="Control.IsVisible(52)">skin.setstring(SetViewtype,Landscape)</onclick>
-						<onclick condition="Control.IsVisible(52)">Container.SetViewMode(53)</onclick>
-						<onclick condition="Control.IsVisible(53)">skin.setstring(SetViewtype,Liste)</onclick>
-						<onclick condition="Control.IsVisible(53)">Container.SetViewMode(50)</onclick>
-						<label>Sets</label>
-						<visible>Container.Content(sets)</visible>
-					</control>
-					<control type="button" id="9314">
-						<description>Genres Ansicht</description>
-						<include>Sideblade_ButtonValues</include>
-						<onfocus>SetProperty(Viewtypeselection,On,25)</onfocus>
-						<onclick>skin.setstring(GenreViewtype,Liste)</onclick>
-						<onclick>Container.SetViewMode(50)</onclick>
-						<onclick condition="Control.IsVisible(50)">skin.setstring(GenreViewtype,Banner)</onclick>
-						<onclick condition="Control.IsVisible(50)">Container.SetViewMode(51)</onclick>
-						<onclick condition="Control.IsVisible(51)">skin.setstring(GenreViewtype,Poster)</onclick>
-						<onclick condition="Control.IsVisible(51)">Container.SetViewMode(52)</onclick>
-						<onclick condition="Control.IsVisible(52)">skin.setstring(GenreViewtype,Landscape)</onclick>
-						<onclick condition="Control.IsVisible(52)">Container.SetViewMode(53)</onclick>
-						<onclick condition="Control.IsVisible(53)">skin.setstring(GenreViewtype,Liste)</onclick>
-						<onclick condition="Control.IsVisible(53)">Container.SetViewMode(50)</onclick>
-						<label>Genres</label>
-						<visible>Container.Content(genres)</visible>
-					</control>
-					<control type="button" id="9315">
-						<description>Jahre Ansicht</description>
-						<include>Sideblade_ButtonValues</include>
-						<onfocus>SetProperty(Viewtypeselection,On,25)</onfocus>
-						<onclick>skin.setstring(YearsViewtype,Liste)</onclick>
-						<onclick>Container.SetViewMode(50)</onclick>
-						<onclick condition="Control.IsVisible(50)">skin.setstring(YearsViewtype,Banner)</onclick>
-						<onclick condition="Control.IsVisible(50)">Container.SetViewMode(51)</onclick>
-						<onclick condition="Control.IsVisible(51)">skin.setstring(YearsViewtype,Poster)</onclick>
-						<onclick condition="Control.IsVisible(51)">Container.SetViewMode(52)</onclick>
-						<onclick condition="Control.IsVisible(52)">skin.setstring(YearsViewtype,Landscape)</onclick>
-						<onclick condition="Control.IsVisible(52)">Container.SetViewMode(53)</onclick>
-						<onclick condition="Control.IsVisible(53)">skin.setstring(YearsViewtype,Liste)</onclick>
-						<onclick condition="Control.IsVisible(53)">Container.SetViewMode(50)</onclick>
-						<label>Jahre</label>
-						<visible>Container.Content(years)</visible>
-					</control>
-					<control type="button" id="9316">
-						<description>Tags Ansicht</description>
-						<include>Sideblade_ButtonValues</include>
-						<onfocus>SetProperty(Viewtypeselection,On,25)</onfocus>
-						<onclick>skin.setstring(TagsViewtype,Liste)</onclick>
-						<onclick>Container.SetViewMode(50)</onclick>
-						<onclick condition="Control.IsVisible(50)">skin.setstring(TagsViewtype,Banner)</onclick>
-						<onclick condition="Control.IsVisible(50)">Container.SetViewMode(51)</onclick>
-						<onclick condition="Control.IsVisible(51)">skin.setstring(TagsViewtype,Poster)</onclick>
-						<onclick condition="Control.IsVisible(51)">Container.SetViewMode(52)</onclick>
-						<onclick condition="Control.IsVisible(52)">skin.setstring(TagsViewtype,Landscape)</onclick>
-						<onclick condition="Control.IsVisible(52)">Container.SetViewMode(53)</onclick>
-						<onclick condition="Control.IsVisible(53)">skin.setstring(TagsViewtype,Liste)</onclick>
-						<onclick condition="Control.IsVisible(53)">Container.SetViewMode(50)</onclick>
-						<label>Tags</label>
-						<visible>Container.Content(tags)</visible>
-					</control>
-					<control type="button" id="9317">
-						<description>Darsteller Ansicht</description>
-						<include>Sideblade_ButtonValues</include>
-						<onfocus>SetProperty(Viewtypeselection,On,25)</onfocus>
-						<onclick>skin.setstring(ActorViewtype,Liste)</onclick>
-						<onclick>Container.SetViewMode(50)</onclick>
-						<onclick condition="Control.IsVisible(50)">skin.setstring(ActorViewtype,Poster)</onclick>
-						<onclick condition="Control.IsVisible(50)">Container.SetViewMode(52)</onclick>
-						<onclick condition="Control.IsVisible(52)">skin.setstring(ActorViewtype,Liste)</onclick>
-						<onclick condition="Control.IsVisible(52)">Container.SetViewMode(50)</onclick>
-						<label>Darsteller</label>
-						<visible>Container.Content(actors)</visible>
-					</control>
-					<control type="button" id="9318">
-						<description>Serienplaylisten Ansicht</description>
-						<include>Sideblade_ButtonValues</include>
-						<onfocus>SetProperty(Viewtypeselection,On,25)</onfocus>
-						<onclick>skin.setstring(PLS_TVViewtype,Liste)</onclick>
-						<onclick>Container.SetViewMode(50)</onclick>
-						<onclick condition="Control.IsVisible(50)">skin.setstring(PLS_TVViewtype,Banner)</onclick>
-						<onclick condition="Control.IsVisible(50)">Container.SetViewMode(51)</onclick>
-						<onclick condition="Control.IsVisible(51)">skin.setstring(PLS_TVViewtype,Poster)</onclick>
-						<onclick condition="Control.IsVisible(51)">Container.SetViewMode(52)</onclick>
-						<onclick condition="Control.IsVisible(52)">skin.setstring(PLS_TVViewtype,Landscape)</onclick>
-						<onclick condition="Control.IsVisible(52)">Container.SetViewMode(53)</onclick>
-						<onclick condition="Control.IsVisible(53)">skin.setstring(PLS_TVViewtype,Liste)</onclick>
-						<onclick condition="Control.IsVisible(53)">Container.SetViewMode(50)</onclick>
-						<label>Serienfilter</label>
-						<visible>Container.Content(tvshows) + String.StartsWith(Container.Folderpath,special://skin/playlists)</visible>
-					</control>
-					<control type="button" id="9319">
-						<description>Filmplaylisten Ansicht</description>
-						<include>Sideblade_ButtonValues</include>
-						<onfocus>SetProperty(Viewtypeselection,On,25)</onfocus>
-						<onclick>skin.setstring(PLS_MovieViewtype,Liste)</onclick>
-						<onclick>Container.SetViewMode(50)</onclick>
-						<onclick condition="Control.IsVisible(50)">skin.setstring(PLS_MovieViewtype,Banner)</onclick>
-						<onclick condition="Control.IsVisible(50)">Container.SetViewMode(51)</onclick>
-						<onclick condition="Control.IsVisible(51)">skin.setstring(PLS_MovieViewtype,Poster)</onclick>
-						<onclick condition="Control.IsVisible(51)">Container.SetViewMode(52)</onclick>
-						<onclick condition="Control.IsVisible(52)">skin.setstring(PLS_MovieViewtype,Landscape)</onclick>
-						<onclick condition="Control.IsVisible(52)">Container.SetViewMode(53)</onclick>
-						<onclick condition="Control.IsVisible(53)">skin.setstring(PLS_MovieViewtype,Liste)</onclick>
-						<onclick condition="Control.IsVisible(53)">Container.SetViewMode(50)</onclick>
-						<label>Filmefilter</label>
-						<visible>Container.Content(movies) + String.StartsWith(Container.Folderpath,special://skin/playlists)</visible>
-					</control>
-					<control type="button" id="9320">
-						<description>Episodenplaylisten Ansicht</description>
-						<include>Sideblade_ButtonValues</include>
-						<onfocus>SetProperty(Viewtypeselection,On,25)</onfocus>
-						<onclick>skin.setstring(PLS_EPViewtype,Liste)</onclick>
-						<onclick>Container.SetViewMode(50)</onclick>
-						<onclick condition="Control.IsVisible(50)">skin.setstring(PLS_EPViewtype,Episode)</onclick>
-						<onclick condition="Control.IsVisible(50)">Container.SetViewMode(55)</onclick>
-						<onclick condition="Control.IsVisible(55)">skin.setstring(PLS_EPViewtype,Liste)</onclick>
-						<onclick condition="Control.IsVisible(55)">Container.SetViewMode(50)</onclick>
-						<label>Episodenfilter</label>
-						<visible>Container.Content(episodes)</visible>
-					</control>
+				<height>975</height>
+				<itemgap>0</itemgap>
+				<pagecontrol>-</pagecontrol>
+				<onup>9310</onup>
+				<ondown>9310</ondown>
+				<onleft>ClearProperty(Viewtypeselection,25)</onleft>
+				<onleft>ReloadSkin()</onleft>
+				<onleft>SetFocus(50)</onleft>
+				<onright>ClearProperty(Viewtypeselection,25)</onright>
+				<onright>ReloadSkin()</onright>
+				<onright>SetFocus(50)</onright>
+				<control type="button" id="9311">
+					<description>Film Ansicht</description>
+					<include>Sideblade_ButtonValues</include>
+					<onfocus>SetProperty(Viewtypeselection,On,25)</onfocus>
+					<onclick>skin.setstring(FilmViewtype,Liste)</onclick>
+					<onclick>Container.SetViewMode(50)</onclick>
+					<onclick condition="Control.IsVisible(50)">skin.setstring(FilmViewtype,Banner)</onclick>
+					<onclick condition="Control.IsVisible(50)">Container.SetViewMode(51)</onclick>
+					<onclick condition="Control.IsVisible(51)">skin.setstring(FilmViewtype,Poster)</onclick>
+					<onclick condition="Control.IsVisible(51)">Container.SetViewMode(52)</onclick>
+					<onclick condition="Control.IsVisible(52)">skin.setstring(FilmViewtype,Landscape)</onclick>
+					<onclick condition="Control.IsVisible(52)">Container.SetViewMode(53)</onclick>
+					<onclick condition="Control.IsVisible(53)">skin.setstring(FilmViewtype,Liste)</onclick>
+					<onclick condition="Control.IsVisible(53)">Container.SetViewMode(50)</onclick>
+					<label>$INFO[skin.string(FilmViewtype)]</label>
+					<visible>Container.Content(movies) + !String.StartsWith(Container.Folderpath,special://skin/playlists)</visible>
+				</control>
+				<control type="button" id="9312">
+					<description>Serien Ansicht</description>
+					<include>Sideblade_ButtonValues</include>
+					<onfocus>SetProperty(Viewtypeselection,On,25)</onfocus>
+					<onclick>skin.setstring(TVViewtype,Liste)</onclick>
+					<onclick>Container.SetViewMode(50)</onclick>
+					<onclick condition="Control.IsVisible(50)">skin.setstring(TVViewtype,Banner)</onclick>
+					<onclick condition="Control.IsVisible(50)">Container.SetViewMode(51)</onclick>
+					<onclick condition="Control.IsVisible(51)">skin.setstring(TVViewtype,Poster)</onclick>
+					<onclick condition="Control.IsVisible(51)">Container.SetViewMode(52)</onclick>
+					<onclick condition="Control.IsVisible(52)">skin.setstring(TVViewtype,Landscape)</onclick>
+					<onclick condition="Control.IsVisible(52)">Container.SetViewMode(53)</onclick>
+					<onclick condition="Control.IsVisible(53)">skin.setstring(TVViewtype,Liste)</onclick>
+					<onclick condition="Control.IsVisible(53)">Container.SetViewMode(50)</onclick>
+					<label>$INFO[skin.string(TVViewtype)]</label>
+					<visible>Container.Content(tvshows) + !String.StartsWith(Container.Folderpath,special://skin/playlists)</visible>
+				</control>
+				<control type="button" id="9313">
+					<description>Set Ansicht</description>
+					<include>Sideblade_ButtonValues</include>
+					<onfocus>SetProperty(Viewtypeselection,On,25)</onfocus>
+					<onclick>skin.setstring(SetViewtype,Liste)</onclick>
+					<onclick>Container.SetViewMode(50)</onclick>
+					<onclick condition="Control.IsVisible(50)">skin.setstring(SetViewtype,Banner)</onclick>
+					<onclick condition="Control.IsVisible(50)">Container.SetViewMode(51)</onclick>
+					<onclick condition="Control.IsVisible(51)">skin.setstring(SetViewtype,Poster)</onclick>
+					<onclick condition="Control.IsVisible(51)">Container.SetViewMode(52)</onclick>
+					<onclick condition="Control.IsVisible(52)">skin.setstring(SetViewtype,Landscape)</onclick>
+					<onclick condition="Control.IsVisible(52)">Container.SetViewMode(53)</onclick>
+					<onclick condition="Control.IsVisible(53)">skin.setstring(SetViewtype,Liste)</onclick>
+					<onclick condition="Control.IsVisible(53)">Container.SetViewMode(50)</onclick>
+					<label>$INFO[skin.string(SetViewtype)]</label>
+					<visible>Container.Content(sets)</visible>
+				</control>
+				<control type="button" id="9314">
+					<description>Genres Ansicht</description>
+					<include>Sideblade_ButtonValues</include>
+					<onfocus>SetProperty(Viewtypeselection,On,25)</onfocus>
+					<onclick>skin.setstring(GenreViewtype,Liste)</onclick>
+					<onclick>Container.SetViewMode(50)</onclick>
+					<onclick condition="Control.IsVisible(50)">skin.setstring(GenreViewtype,Banner)</onclick>
+					<onclick condition="Control.IsVisible(50)">Container.SetViewMode(51)</onclick>
+					<onclick condition="Control.IsVisible(51)">skin.setstring(GenreViewtype,Poster)</onclick>
+					<onclick condition="Control.IsVisible(51)">Container.SetViewMode(52)</onclick>
+					<onclick condition="Control.IsVisible(52)">skin.setstring(GenreViewtype,Landscape)</onclick>
+					<onclick condition="Control.IsVisible(52)">Container.SetViewMode(53)</onclick>
+					<onclick condition="Control.IsVisible(53)">skin.setstring(GenreViewtype,Liste)</onclick>
+					<onclick condition="Control.IsVisible(53)">Container.SetViewMode(50)</onclick>
+					<label>$INFO[skin.string(GenreViewtype)]</label>
+					<visible>Container.Content(genres)</visible>
+				</control>
+				<control type="button" id="9315">
+					<description>Jahre Ansicht</description>
+					<include>Sideblade_ButtonValues</include>
+					<onfocus>SetProperty(Viewtypeselection,On,25)</onfocus>
+					<onclick>skin.setstring(YearsViewtype,Liste)</onclick>
+					<onclick>Container.SetViewMode(50)</onclick>
+					<onclick condition="Control.IsVisible(50)">skin.setstring(YearsViewtype,Banner)</onclick>
+					<onclick condition="Control.IsVisible(50)">Container.SetViewMode(51)</onclick>
+					<onclick condition="Control.IsVisible(51)">skin.setstring(YearsViewtype,Poster)</onclick>
+					<onclick condition="Control.IsVisible(51)">Container.SetViewMode(52)</onclick>
+					<onclick condition="Control.IsVisible(52)">skin.setstring(YearsViewtype,Landscape)</onclick>
+					<onclick condition="Control.IsVisible(52)">Container.SetViewMode(53)</onclick>
+					<onclick condition="Control.IsVisible(53)">skin.setstring(YearsViewtype,Liste)</onclick>
+					<onclick condition="Control.IsVisible(53)">Container.SetViewMode(50)</onclick>
+					<label>$INFO[skin.string(YearsViewtype)]</label>
+					<visible>Container.Content(years)</visible>
+				</control>
+				<control type="button" id="9316">
+					<description>Tags Ansicht</description>
+					<include>Sideblade_ButtonValues</include>
+					<onfocus>SetProperty(Viewtypeselection,On,25)</onfocus>
+					<onclick>skin.setstring(TagsViewtype,Liste)</onclick>
+					<onclick>Container.SetViewMode(50)</onclick>
+					<onclick condition="Control.IsVisible(50)">skin.setstring(TagsViewtype,Banner)</onclick>
+					<onclick condition="Control.IsVisible(50)">Container.SetViewMode(51)</onclick>
+					<onclick condition="Control.IsVisible(51)">skin.setstring(TagsViewtype,Poster)</onclick>
+					<onclick condition="Control.IsVisible(51)">Container.SetViewMode(52)</onclick>
+					<onclick condition="Control.IsVisible(52)">skin.setstring(TagsViewtype,Landscape)</onclick>
+					<onclick condition="Control.IsVisible(52)">Container.SetViewMode(53)</onclick>
+					<onclick condition="Control.IsVisible(53)">skin.setstring(TagsViewtype,Liste)</onclick>
+					<onclick condition="Control.IsVisible(53)">Container.SetViewMode(50)</onclick>
+					<label>$INFO[skin.string(TagsViewtype)]</label>
+					<visible>Container.Content(tags)</visible>
+				</control>
+				<control type="button" id="9317">
+					<description>Darsteller Ansicht</description>
+					<include>Sideblade_ButtonValues</include>
+					<onfocus>SetProperty(Viewtypeselection,On,25)</onfocus>
+					<onclick>skin.setstring(ActorViewtype,Liste)</onclick>
+					<onclick>Container.SetViewMode(50)</onclick>
+					<onclick condition="Control.IsVisible(50)">skin.setstring(ActorViewtype,Poster)</onclick>
+					<onclick condition="Control.IsVisible(50)">Container.SetViewMode(52)</onclick>
+					<onclick condition="Control.IsVisible(52)">skin.setstring(ActorViewtype,Liste)</onclick>
+					<onclick condition="Control.IsVisible(52)">Container.SetViewMode(50)</onclick>
+					<label>$INFO[skin.string(ActorViewtype)]</label>
+					<visible>Container.Content(actors)</visible>
+				</control>
+				<control type="button" id="9318">
+					<description>Serienplaylisten Ansicht</description>
+					<include>Sideblade_ButtonValues</include>
+					<onfocus>SetProperty(Viewtypeselection,On,25)</onfocus>
+					<onclick>skin.setstring(PLS_TVViewtype,Liste)</onclick>
+					<onclick>Container.SetViewMode(50)</onclick>
+					<onclick condition="Control.IsVisible(50)">skin.setstring(PLS_TVViewtype,Banner)</onclick>
+					<onclick condition="Control.IsVisible(50)">Container.SetViewMode(51)</onclick>
+					<onclick condition="Control.IsVisible(51)">skin.setstring(PLS_TVViewtype,Poster)</onclick>
+					<onclick condition="Control.IsVisible(51)">Container.SetViewMode(52)</onclick>
+					<onclick condition="Control.IsVisible(52)">skin.setstring(PLS_TVViewtype,Landscape)</onclick>
+					<onclick condition="Control.IsVisible(52)">Container.SetViewMode(53)</onclick>
+					<onclick condition="Control.IsVisible(53)">skin.setstring(PLS_TVViewtype,Liste)</onclick>
+					<onclick condition="Control.IsVisible(53)">Container.SetViewMode(50)</onclick>
+					<label>$INFO[skin.string(PLS_TVViewtype)]</label>
+					<visible>Container.Content(tvshows) + String.StartsWith(Container.Folderpath,special://skin/playlists)</visible>
+				</control>
+				<control type="button" id="9319">
+					<description>Filmplaylisten Ansicht</description>
+					<include>Sideblade_ButtonValues</include>
+					<onfocus>SetProperty(Viewtypeselection,On,25)</onfocus>
+					<onclick>skin.setstring(PLS_FilmViewtype,Liste)</onclick>
+					<onclick>Container.SetViewMode(50)</onclick>
+					<onclick condition="Control.IsVisible(50)">skin.setstring(PLS_FilmViewtype,Banner)</onclick>
+					<onclick condition="Control.IsVisible(50)">Container.SetViewMode(51)</onclick>
+					<onclick condition="Control.IsVisible(51)">skin.setstring(PLS_FilmViewtype,Poster)</onclick>
+					<onclick condition="Control.IsVisible(51)">Container.SetViewMode(52)</onclick>
+					<onclick condition="Control.IsVisible(52)">skin.setstring(PLS_FilmViewtype,Landscape)</onclick>
+					<onclick condition="Control.IsVisible(52)">Container.SetViewMode(53)</onclick>
+					<onclick condition="Control.IsVisible(53)">skin.setstring(PLS_FilmViewtype,Liste)</onclick>
+					<onclick condition="Control.IsVisible(53)">Container.SetViewMode(50)</onclick>
+					<label>$INFO[skin.string(PLS_FilmViewtype)]</label>
+					<visible>Container.Content(movies) + String.StartsWith(Container.Folderpath,special://skin/playlists)</visible>
+				</control>
+				<control type="button" id="9320">
+					<description>Episodenplaylisten Ansicht</description>
+					<include>Sideblade_ButtonValues</include>
+					<onfocus>SetProperty(Viewtypeselection,On,25)</onfocus>
+					<onclick>skin.setstring(PLS_EPViewtype,Liste)</onclick>
+					<onclick>Container.SetViewMode(50)</onclick>
+					<onclick condition="Control.IsVisible(50)">skin.setstring(PLS_EPViewtype,Episode)</onclick>
+					<onclick condition="Control.IsVisible(50)">Container.SetViewMode(55)</onclick>
+					<onclick condition="Control.IsVisible(55)">skin.setstring(PLS_EPViewtype,Liste)</onclick>
+					<onclick condition="Control.IsVisible(55)">Container.SetViewMode(50)</onclick>
+					<label>$INFO[skin.string(PLS_EPViewtype)]</label>
+					<visible>Container.Content(episodes) + String.StartsWith(Container.Folderpath,special://skin/playlists)</visible>
 				</control>
 			</control>
 		</control>
 		<include>Sideblade_Left_IconBG</include>
-		<control type="grouplist"><!-- Icon grouplist-->
+		<control type="grouplist"><!-- Icon grouplist -->
 			<include>Sideblade_Left_IconDimension</include>
+			<visible>ControlGroup(9110).HasFocus</visible>
 			<animation type="Conditional" condition="ControlGroup(9310).HasFocus">
-				<effect type="fade" start="0" end="100" time="0" />
+				<effect type="fade" start="100" end="0" time="280" />
 				<effect type="slide" tween="quadratic" easing="out" start="0,0" end="-120,0" time="300"/>
 			</animation>
 			<control type="label">
@@ -410,7 +408,7 @@ ycle 0.3 -->
 				<visible>Control.IsVisible(4) + !Control.HasFocus(4) + !Container.SortDirection(Ascending)</visible>
 			</control>
 			<control type="label">
-				<description>Gesehene aus/ein button</description>
+				<description>Gesehene aus/ein</description>
 				<include>SidebarIconDimension</include>
 				<include>IconColorFO</include>
 				<label>Ğ</label>
@@ -418,7 +416,7 @@ ycle 0.3 -->
 				<visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons)</visible>
 			</control>
 			<control type="label">
-				<description>Gesehene aus/ein button</description>
+				<description>Gesehene aus/ein</description>
 				<include>SidebarIconDimension</include>
 				<include>IconColorNF</include>
 				<label>Ğ</label>
@@ -426,7 +424,7 @@ ycle 0.3 -->
 				<visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons)</visible>
 			</control>
 			<control type="label">
-				<description>Gesehene aus/ein button</description>
+				<description>Gesehene aus/ein</description>
 				<include>SidebarIconDimension</include>
 				<include>IconColorFO</include>
 				<label>ğ</label>
@@ -434,7 +432,7 @@ ycle 0.3 -->
 				<visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons)</visible>
 			</control>
 			<control type="label">
-				<description>Gesehene aus/ein button</description>
+				<description>Gesehene aus/ein</description>
 				<include>SidebarIconDimension</include>
 				<include>IconColorNF</include>
 				<label>ğ</label>
@@ -442,21 +440,21 @@ ycle 0.3 -->
 				<visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons)</visible>
 			</control>
 			<control type="label">
-				<description>Suchen button</description>
+				<description>Suchen</description>
 				<include>SidebarIconDimension</include>
 				<include>IconColorFO</include>
 				<label>o</label>
-				<visible>Control.IsVisible(8) + Control.HasFocus(8)</visible>
+				<visible>Control.HasFocus(8)</visible>
 			</control>
 			<control type="label">
-				<description>Suchen button</description>
+				<description>Suchen</description>
 				<include>SidebarIconDimension</include>
 				<include>IconColorNF</include>
 				<label>o</label>
-				<visible>Control.IsVisible(8) + !Control.HasFocus(8)</visible>
+				<visible>!Control.HasFocus(8)</visible>
 			</control>
 			<control type="label">
-				<description>Filter button</description>
+				<description>Filter</description>
 				<include>SidebarIconDimension</include>
 				<include>IconColorFO</include>
 				<label>ĝ</label>
@@ -464,7 +462,7 @@ ycle 0.3 -->
 				<include>ContainerFilterIndikator</include>
 			</control>
 			<control type="label">
-				<description>Filter button</description>
+				<description>Filter</description>
 				<include>SidebarIconDimension</include>
 				<include>IconColorNF</include>
 				<label>ĝ</label>
@@ -472,7 +470,7 @@ ycle 0.3 -->
 				<include>ContainerFilterIndikator</include>
 			</control>
 			<control type="label">
-				<description>Erweiterter Filter button</description>
+				<description>Erweiterter Filter</description>
 				<include>SidebarIconDimension</include>
 				<include>IconColorFO</include>
 				<label>ĝ</label>
@@ -480,7 +478,7 @@ ycle 0.3 -->
 				<include>ContainerFilterIndikator</include>
 			</control>
 			<control type="label">
-				<description>Erweiterter Filter button</description>
+				<description>Erweiterter Filter</description>
 				<include>SidebarIconDimension</include>
 				<include>IconColorNF</include>
 				<label>ĝ</label>
@@ -488,7 +486,7 @@ ycle 0.3 -->
 				<include>ContainerFilterIndikator</include>
 			</control>
 			<control type="label">
-				<description>Datenbank update button</description>
+				<description>Datenbank update</description>
 				<include>SidebarIconDimension</include>
 				<include>IconColorFO</include>
 				<label>i</label>
@@ -496,7 +494,7 @@ ycle 0.3 -->
 				<animation effect="fade" start="100" end="50" time="1800" condition="Library.IsScanningVideo" pulse="true" loop="true">Conditional</animation>
 			</control>
 			<control type="label">
-				<description>Datenbank update button</description>
+				<description>Datenbank update</description>
 				<include>SidebarIconDimension</include>
 				<include>IconColorNF</include>
 				<label>i</label>
@@ -504,14 +502,14 @@ ycle 0.3 -->
 				<animation effect="fade" start="100" end="50" time="1800" condition="Library.IsScanningVideo" pulse="true" loop="true">Conditional</animation>
 			</control>
 			<control type="label">
-				<description>Datenbank bereinigen button</description>
+				<description>Datenbank bereinigen</description>
 				<include>SidebarIconDimension</include>
 				<include>IconColorFO</include>
 				<label>m</label>
 				<visible>Control.IsVisible(45) + Control.HasFocus(45)</visible>
 			</control>
 			<control type="label">
-				<description>Datenbank bereinigen button</description>
+				<description>Datenbank bereinigen</description>
 				<include>SidebarIconDimension</include>
 				<include>IconColorNF</include>
 				<label>m</label>
@@ -522,28 +520,28 @@ ycle 0.3 -->
 				<include>SidebarIconDimension</include>
 				<include>IconColorFO</include>
 				<label>&gt;</label>
-				<visible>Control.HasFocus(123) + Container.Content(movies) + !String.IsEqual(Container.Viewmode,Doku Poster)</visible>
+				<visible>Control.HasFocus(123) + !String.StartsWith(Container.Folderpath,plugin://plugin.video) + Container.Content(movies) + !String.IsEqual(Container.Viewmode,Doku Poster)</visible>
 			</control>
 			<control type="label">
 				<description>Playliste Filme</description>
 				<include>SidebarIconDimension</include>
 				<include>IconColorNF</include>
 				<label>&gt;</label>
-				<visible>!Control.HasFocus(123) + Container.Content(movies) + !String.IsEqual(Container.Viewmode,Doku Poster)</visible>
+				<visible>!Control.HasFocus(123) + !String.StartsWith(Container.Folderpath,plugin://plugin.video) + Container.Content(movies) + !String.IsEqual(Container.Viewmode,Doku Poster)</visible>
 			</control>
 			<control type="label">
 				<description>Playliste serie</description>
 				<include>SidebarIconDimension</include>
 				<include>IconColorFO</include>
 				<label>&gt;</label>
-				<visible>Control.HasFocus(124) + Container.Content(tvshows) + !String.IsEqual(Container.Viewmode,Doku Poster)</visible>
+				<visible>Control.HasFocus(124) + !String.StartsWith(Container.Folderpath,plugin://plugin.video) + Container.Content(tvshows) + !String.IsEqual(Container.Viewmode,Doku Poster)</visible>
 			</control>
 			<control type="label">
 				<description>Playliste serie</description>
 				<include>SidebarIconDimension</include>
 				<include>IconColorNF</include>
 				<label>&gt;</label>
-				<visible>!Control.HasFocus(124) + Container.Content(tvshows) + !String.IsEqual(Container.Viewmode,Doku Poster)</visible>
+				<visible>!Control.HasFocus(124) + !String.StartsWith(Container.Folderpath,plugin://plugin.video) + Container.Content(tvshows) + !String.IsEqual(Container.Viewmode,Doku Poster)</visible>
 			</control>
 			<control type="label">
 				<description>Doku playliste film</description>
@@ -574,158 +572,19 @@ ycle 0.3 -->
 				<visible>!Control.HasFocus(126) + String.IsEqual(Container.Viewmode,Doku Poster)</visible>
 			</control>
 		</control>
-		<control type="grouplist"><!-- Icon viewtype grouplist-->
-			<left>-100</left>
-			<top>150</top>
-			<itemgap>5</itemgap>
-			<left>20</left>
-			<top>155</top>
-			<itemgap>10</itemgap>
-			<width>388</width>
-			<height>975</height>
+		<control type="grouplist"><!-- Icon viewtype grouplist -->
+			<left>-100</left><!-- include ueberschreibung -->
+			<visible>ControlGroup(9310).HasFocus</visible>
+			<include>Sideblade_Left_IconDimension</include>
 			<animation type="Conditional" condition="ControlGroup(9310).HasFocus">
-				<effect type="fade" start="0" end="100" time="0" />
+				<effect type="fade" start="0" end="100" time="280" />
 				<effect type="slide" tween="quadratic" easing="out" start="0,0" end="120,0" time="300"/>
 			</animation>
 			<control type="label">
-				<description>Film Ansicht</description>
+				<description>Ansicht</description>
 				<include>SidebarIconDimension</include>
 				<include>IconColorFO</include>
 				<label>Ĳ</label>
-				<visible>Control.IsVisible(9311) + Control.HasFocus(9311)</visible>
-			</control>
-			<control type="label">
-				<description>Film Ansicht</description>
-				<include>SidebarIconDimension</include>
-				<include>IconColorNF</include>
-				<label>Ĳ</label>
-				<visible>Control.IsVisible(9311) + !Control.HasFocus(9311)</visible>
-			</control>
-			<control type="label">
-				<description>Serien Ansicht</description>
-				<include>SidebarIconDimension</include>
-				<include>IconColorFO</include>
-				<label>Ĳ</label>
-				<visible>Control.IsVisible(9312) + Control.HasFocus(9312)</visible>
-			</control>
-			<control type="label">
-				<description>Serien Ansicht</description>
-				<include>SidebarIconDimension</include>
-				<include>IconColorNF</include>
-				<label>Ĳ</label>
-				<visible>Control.IsVisible(9312) + !Control.HasFocus(9312)</visible>
-			</control>
-			<control type="label">
-				<description>Set Ansicht</description>
-				<include>SidebarIconDimension</include>
-				<include>IconColorFO</include>
-				<label>Ĳ</label>
-				<visible>Control.IsVisible(9313) + Control.HasFocus(9313)</visible>
-			</control>
-			<control type="label">
-				<description>Set Ansicht</description>
-				<include>SidebarIconDimension</include>
-				<include>IconColorNF</include>
-				<label>Ĳ</label>
-				<visible>Control.IsVisible(9313) + !Control.HasFocus(9313)</visible>
-			</control>
-			<control type="label">
-				<description>Genre Ansicht</description>
-				<include>SidebarIconDimension</include>
-				<include>IconColorFO</include>
-				<label>Ĳ</label>
-				<visible>Control.IsVisible(9314) + Control.HasFocus(9314)</visible>
-			</control>
-			<control type="label">
-				<description>Genre Ansicht</description>
-				<include>SidebarIconDimension</include>
-				<include>IconColorNF</include>
-				<label>Ĳ</label>
-				<visible>Control.IsVisible(9314) + !Control.HasFocus(9314)</visible>
-			</control>
-			<control type="label">
-				<description>Jahre Ansicht</description>
-				<include>SidebarIconDimension</include>
-				<include>IconColorFO</include>
-				<label>Ĳ</label>
-				<visible>Control.IsVisible(9315) + Control.HasFocus(9315)</visible>
-			</control>
-			<control type="label">
-				<description>Jahre Ansicht</description>
-				<include>SidebarIconDimension</include>
-				<include>IconColorNF</include>
-				<label>Ĳ</label>
-				<visible>Control.IsVisible(9315) + !Control.HasFocus(9315)</visible>
-			</control>
-			<control type="label">
-				<description>Tags Ansicht</description>
-				<include>SidebarIconDimension</include>
-				<include>IconColorFO</include>
-				<label>Ĳ</label>
-				<visible>Control.IsVisible(9316) + Control.HasFocus(9316)</visible>
-			</control>
-			<control type="label">
-				<description>Tags Ansicht</description>
-				<include>SidebarIconDimension</include>
-				<include>IconColorNF</include>
-				<label>Ĳ</label>
-				<visible>Control.IsVisible(9316) + !Control.HasFocus(9316)</visible>
-			</control>
-			<control type="label">
-				<description>Darsteller Ansicht</description>
-				<include>SidebarIconDimension</include>
-				<include>IconColorFO</include>
-				<label>Ĳ</label>
-				<visible>Control.IsVisible(9317) + Control.HasFocus(9317)</visible>
-			</control>
-			<control type="label">
-				<description>Darsteller Ansicht</description>
-				<include>SidebarIconDimension</include>
-				<include>IconColorNF</include>
-				<label>Ĳ</label>
-				<visible>Control.IsVisible(9317) + !Control.HasFocus(9317)</visible>
-			</control>
-			<control type="label">
-				<description>Serienplayliste Ansicht</description>
-				<include>SidebarIconDimension</include>
-				<include>IconColorFO</include>
-				<label>Ĳ</label>
-				<visible>Control.IsVisible(9318) + Control.HasFocus(9318)</visible>
-			</control>
-			<control type="label">
-				<description>Serienplaylisten Ansicht</description>
-				<include>SidebarIconDimension</include>
-				<label>Ĳ</label>
-				<include>IconColorNF</include>
-				<visible>Control.IsVisible(9318) + !Control.HasFocus(9318)</visible>
-			</control>
-			<control type="label">
-				<description>Filmeplaylisten Ansicht</description>
-				<include>SidebarIconDimension</include>
-				<include>IconColorFO</include>
-				<label>Ĳ</label>
-				<visible>Control.IsVisible(9319) + Control.HasFocus(9319)</visible>
-			</control>
-			<control type="label">
-				<description>Filmeplaylisten Ansicht</description>
-				<include>SidebarIconDimension</include>
-				<include>IconColorNF</include>
-				<label>Ĳ</label>
-				<visible>Control.IsVisible(9319) + !Control.HasFocus(9319)</visible>
-			</control>
-			<control type="label">
-				<description>Episodenplaylisten Ansicht</description>
-				<include>SidebarIconDimension</include>
-				<include>IconColorFO</include>
-				<label>Ĳ</label>
-				<visible>Control.IsVisible(9320) + Control.HasFocus(9320)</visible>
-			</control>
-			<control type="label">
-				<description>Episodenplaylisten Ansicht</description>
-				<include>SidebarIconDimension</include>
-				<include>IconColorNF</include>
-				<label>Ĳ</label>
-				<visible>Control.IsVisible(9320) + !Control.HasFocus(9320)</visible>
 			</control>
 		</control>
 	</control>
@@ -734,7 +593,7 @@ ycle 0.3 -->
 		<top>340</top>
 		<width>400</width>
 		<height>400</height>
-		<visible allowhiddenfocus="true">Control.HasFocus(9900) + !Window.IsVisible(Custom_1101_homewidgets.xml)</visible>
+		<visible allowhiddenfocus="true">Control.HasFocus(9900) + !Window.IsVisible(Custom_1101_Widgets.xml)</visible>
 		<include>Open_Close_Visible_Hidden_Zoom_Animation</include>
 		<include>LogoMenueLayout</include>
 		<control type="label">
@@ -745,19 +604,19 @@ ycle 0.3 -->
 			<height>75</height>
 			<align>center</align>
 			<font>BoldBig</font>
-			<textcolor>$VAR[secondaryCol]</textcolor>
+			<textcolor>$VAR[SecondaryCol]</textcolor>
 			<label> ‹‹</label>
 			<visible>Control.HasFocus(9900) + Control.IsVisible(9902)</visible>
 		</control>
 		<control type="label">
 			<description>Rechter Button indikator</description>
 			<left>450</left>
-			<top>250</top>
+			<top>170</top>
 			<width>75</width>
 			<height>75</height>
 			<align>center</align>
 			<font>BoldBig</font>
-			<textcolor>$VAR[secondaryCol]</textcolor>
+			<textcolor>$VAR[SecondaryCol]</textcolor>
 			<label> ››</label>
 			<visible>Control.HasFocus(9900) + Control.IsVisible(9901)</visible>
 		</control>
@@ -767,15 +626,15 @@ ycle 0.3 -->
 			<height>400</height>
 			<align>center</align>
 			<font>IconHome</font>
-			<textcolor>$VAR[circlesCol]</textcolor>
-			<focusedcolor>$VAR[circlesCol]</focusedcolor>
+			<textcolor>$VAR[CirclesCol]</textcolor>
+			<focusedcolor>$VAR[CirclesCol]</focusedcolor>
 			<onleft condition="Control.IsVisible(9902)">SetFocus(9902)</onleft>
 			<onright condition="Control.IsVisible(9901)">SetFocus(9901)</onright>
 			<onup>SetFocus(50)</onup>
 			<ondown>SetFocus(50)</ondown>
 			<oninfo>ActivateWindow(1101)</oninfo>
 			<include>CycleMyNavVideoQuicknavClick</include>
-			<label>$VAR[CycleMyNavVideoQuicknavTitle]</label>
+			<label>$VAR[CycleMyNavVideoQuicknavIcon]</label>
 		</control>
 		<control type="button" id="9902">
 			<description>Linker Button zurueck root film/serie</description>
@@ -784,10 +643,10 @@ ycle 0.3 -->
 			<height>400</height>
 			<align>center</align>
 			<font>IconHomeNF</font>
-			<textcolor>$VAR[primaryCol]</textcolor>
-			<focusedcolor>$VAR[primaryCol]</focusedcolor>
+			<textcolor>$VAR[PrimaryCol]</textcolor>
+			<focusedcolor>$VAR[PrimaryCol]</focusedcolor>
 			<include>CycleMyNavVideoQuicknavClickL</include>
-			<label>$VAR[CycleMyNavVideoQuicknavTitleL]</label>
+			<label>$VAR[CycleMyNavVideoQuicknavIconL]</label>
 			<visible>String.StartsWith(Container.Folderpath,library://video/tvshows) | String.StartsWith(Container.Folderpath,library://video/movies) | String.StartsWith(Container.Folderpath,videodb://) | String.StartsWith(Container.Folderpath,special://skin/playlists)</visible>
 			<animation type="Conditional" condition="Control.HasFocus(9900)">
 				<effect type="fade" start="10" end="10" time="0" />
@@ -800,10 +659,10 @@ ycle 0.3 -->
 			<height>400</height>
 			<align>center</align>
 			<font>IconHome</font>
-			<textcolor>$VAR[primaryCol]</textcolor>
-			<focusedcolor>$VAR[primaryCol]</focusedcolor>
+			<textcolor>$VAR[PrimaryCol]</textcolor>
+			<focusedcolor>$VAR[PrimaryCol]</focusedcolor>
 			<include>CycleMyNavVideoQuicknavClickR</include>
-			<label>$VAR[CycleMyNavVideoQuicknavTitleR]</label>
+			<label>$VAR[CycleMyNavVideoQuicknavIconR]</label>
 			<visible>String.StartsWith(Container.Folderpath,library://video/tvshows) | String.StartsWith(Container.Folderpath,library://video/movies) | String.StartsWith(Container.Folderpath,videodb://) | String.StartsWith(Container.Folderpath,special://skin/playlists)</visible>
 			<animation type="Conditional" condition="Control.HasFocus(9900)">
 				<effect type="fade" start="10" end="10" time="0" />
@@ -812,7 +671,7 @@ ycle 0.3 -->
 	</control>
 	<control type="group"><!-- logo text -->
 		<include>Open_Close_Visible_Hidden_Fade_Animation</include>
-		<visible>Control.HasFocus(9900) + !Window.IsVisible(Custom_1101_homewidgets.xml) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(tags) | Container.Content(sets) | Container.Content(genres) | Container.Content(years) | Container.Content(actors) | Container.Content(studios) | Container.Content(sets) | Container.Content(tags) | Container.Content(directors)]</visible>
+		<visible>Control.HasFocus(9900) + !Window.IsVisible(Custom_1101_Widgets.xml) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(tags) | Container.Content(sets) | Container.Content(genres) | Container.Content(years) | Container.Content(actors) | Container.Content(studios) | Container.Content(sets) | Container.Content(tags) | Container.Content(directors)]</visible>
 		<control type="label">
 			<description>Titel skin label</description>
 			<left>460</left>
@@ -824,47 +683,87 @@ ycle 0.3 -->
 			<align>center</align>
 			<label>$VAR[GlobalSkinversion]</label>
 		</control>
-		<control type="label">
-			<description>Subtitel Serien DB statistik label</description>
+		<control type="grouplist">
+			<description>Subtitel Serien DB statistik</description>
 			<left>460</left>
 			<top>870</top>
 			<width>1000</width>
 			<height>60</height>
 			<align>center</align>
-			<font>BreadcumbNormal</font>
-			<textcolor>TextColorMedium</textcolor>
-			<label>Serien$VAR[CustomEnumeration]$INFO[Window(Home).Property(TVShows.Count),, Titel]$VAR[CustomEnumeration]$INFO[Window(Home).Property(Episodes.Count),, Episoden]</label>
+			<orientation>horizontal</orientation>
 			<visible>String.StartsWith(Container.Folderpath,videodb://tvshows) | String.StartsWith(Container.FolderPath,special://skin/playlists/TV_)| String.StartsWith(Container.FolderPath,special://skin/playlists/Episode_)</visible>
+			<control type="label">
+				<description>Subtitel</description>
+				<width>auto</width>
+				<height>60</height>
+				<font>BreadcumbNormal</font>
+				<label>Serien</label>
+			</control>
+			<control type="label">
+				<description>Enum</description>
+				<width>auto</width>
+				<height>60</height>
+				<font>EnumBoldBreadcumb</font>
+				<label>$VAR[CustomEnumeration]</label>
+				<visible>!String.IsEmpty(Window(Home).Property(TVShows.Count))</visible>
+			</control>
+			<control type="label">
+				<description>statistik label</description>
+				<width>auto</width>
+				<height>60</height>
+				<font>BreadcumbNormal</font>
+				<label>$INFO[Window(Home).Property(TVShows.Count),, Titel - ]$INFO[Window(Home).Property(Episodes.Count),, Episoden]</label>
+			</control>
 		</control>
-		<control type="label">
-			<description>Subtitel Filme DB statistik label</description>
+		<control type="grouplist">
+			<description>Subtitel Filme DB statistik</description>
 			<left>460</left>
 			<top>870</top>
 			<width>1000</width>
 			<height>60</height>
+			<orientation>horizontal</orientation>
 			<align>center</align>
-			<font>BoldNormal</font>
-			<textcolor>TextColorMedium</textcolor>
-			<label>Filme$VAR[CustomEnumeration]$INFO[Window(Home).Property(Movies.Count),, Titel]</label>
 			<visible>String.StartsWith(Container.Folderpath,videodb://movies) | String.StartsWith(Container.FolderPath,special://skin/playlists/Film_)</visible>
+			<control type="label">
+				<description>Subtitel</description>
+				<width>auto</width>
+				<height>60</height>
+				<font>BreadcumbNormal</font>
+				<label>Filme</label>
+			</control>
+			<control type="label">
+				<description>Enum</description>
+				<width>auto</width>
+				<height>60</height>
+				<font>EnumBoldBreadcumb</font>
+				<label>$VAR[CustomEnumeration]</label>
+				<visible>!String.IsEmpty(Window(Home).Property(Movies.Count))</visible>
+			</control>
+			<control type="label">
+				<description>statistik label</description>
+				<width>auto</width>
+				<height>60</height>
+				<font>BreadcumbNormal</font>
+				<label>$INFO[Window(Home).Property(Movies.Count),, Titel]</label>
+			</control>
 		</control>
 		<control type="label">
 			<description>Subinfo aktualisierungszeit</description>
 			<left>460</left>
-			<top>920</top>
+			<top>930</top>
 			<width>1000</width>
-			<height>60</height>
+			<height>50</height>
 			<align>center</align>
 			<font>RegularSmall</font>
 			<textcolor>TextColorMedium</textcolor>
-			<label>$VAR[CycleMyNavSidebarSortlabel,Sortierung: ,] | $VAR[CycleMyNavSidebarWatchedlabel,,/]$VAR[CycleMyNavSidebarDirectionlabel]</label>
+			<label>$VAR[Sideblade_Sortlabel,Sortierung: ,] | $VAR[Sideblade_Watchedlabel,,/]$INFO[Control.GetLabel(4)]</label>
 		</control>
 		<control type="label">
 			<description>Subinfo sortierung, gesehene an/aus</description>
 			<left>460</left>
-			<top>990</top>
+			<top>970</top>
 			<width>1000</width>
-			<height>60</height><!-- check -->
+			<height>50</height>
 			<align>center</align>
 			<font>RegularSmall</font>
 			<textcolor>TextColorMedium</textcolor>
@@ -872,16 +771,6 @@ ycle 0.3 -->
 			<visible>[Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(movies)]</visible>
 		</control>
 	</control>
-	<!-- 
-	<control type="label">
-		<left>400</left>
-		<top>143</top>
-		<height>63</height>
-		<width>1200</width>
-		<align>center</align>
-		<label>aaa  $INFO[skin.string(ColorChangePosition)]</label>
-	</control>
-	-->
-
+	<include>Trailerwindow502</include>
 </controls>
 </window>

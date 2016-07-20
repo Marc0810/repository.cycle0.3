@@ -2,46 +2,43 @@
 <window>
 <!-- Cycle 0.3 -->
 <coordinates>
-	<left>0</left>
-	<top>0</top>
+	<system>1</system>
+	<origin x="0" y="0">!Window.IsVisible(home)</origin>
+	<origin x="0" y="10">Window.IsVisible(home)</origin>
 </coordinates>
-<zorder>234</zorder><!-- zorder erhoehung für slideshow layout -->
+<zorder>439</zorder><!-- zorder erhoehung für slideshow layout -->
 <controls>
 	<control type="progress" id="32">
 		<left>3000</left>
 		<description>progress control</description>
 		<height>15</height>
 	</control>
+	<control type="label" id="30">
+		<description>Titel</description>
+		<include>HiddenControl</include>
+		<label></label>
+	</control>
+	<control type="textbox" id="31">
+		<description>Text</description>
+		<label></label>
+		<include>HiddenControl</include>
+	</control>
 	<control type="group">
 		<left>1090</left>
-		<top>-134</top>
-		<visible>!Window.IsVisible(Custom_1150_Screensaver.xml) + !Window.IsVisible(startup) + !Window.IsVisible(DialogNotification.xml) + !Window.IsActive(busydialog) + !Window.IsVisible(Custom_1118_Histroyloader.xml) + !Window.IsVisible(volumebar) + !System.HasModalDialog</visible>
+		<top>-137</top>
+		<animation type="Conditional" condition="[Window.IsVisible(volumebar) + !Player.Muted] | Window.IsVisible(Custom_1150_Screensaver.xml) | Window.IsVisible(startup) | Window.IsVisible(Notification) | Window.IsActive(DialogConfirm.xml) | Window.IsActive(busydialog) | Window.IsVisible(seekbar) | Window.IsVisible(Custom_1118_Histroyloader.xml)" reversible="true">
+			<effect type="fade" start="100" end="0" time="120" tween="cubic" easing="out" />
+		</animation>
 		<include>Dialog_topdown_Animation</include>
-		<control type="label" id="30">
-			<description>Titel</description>
-			<top>22</top>
-			<width>665</width>
-			<height>27</height>
-			<align>right</align>
-			<font>BoldSmall</font>
-			<textcolor>$VAR[OSDDialogColor]</textcolor>
-		</control>
-		<control type="label" id="31">
-			<description>Text</description>
-			<top>52</top>
-			<width>665</width>
-			<height>30</height>
-			<align>right</align>
-			<font>RegularSmall</font>
-			<textcolor>$VAR[OSDDialogColor]</textcolor>
-		</control>
 		<include content="DialogDefaultProgresskringel">
 			<param name="id">32</param>
+			<param name="label1id">30</param>
+			<param name="label2id">31</param>
 		</include>
 	</control>
 	<control type="group">
 		<left>800</left>
-		<top>970</top>
+		<top>960</top>
 		<visible>Window.IsVisible(Custom_1150_Screensaver.xml)</visible>
 		<animation type="Visible" reversible="false">
 			<effect type="fade" delay="1000" time="600" start="0" end="100" tween="cubic" easing="out" />
@@ -50,30 +47,12 @@
 			<effect type="fade" time="100" start="100" end="0" tween="cubic" easing="out" />
 		</animation>
 		<control type="group">
-			<left>-660</left>
+			<left>-300</left>
 			<include content="DialogDefaultProgresskringel">
 				<param name="id">32</param>
+				<param name="label1id">30</param>
+				<param name="label2id">31</param>
 			</include>
-		</control>
-		<control type="label">
-			<description>Titel</description>
-			<left>100</left>
-			<top>22</top>
-			<width>665</width>
-			<height>27</height>
-			<font>BoldSmall</font>
-			<textcolor>$VAR[OSDDialogColor]</textcolor>
-			<label>$INFO[Control.GetLabel(30)]</label>
-		</control>
-		<control type="textbox">
-			<description>Text</description>
-			<left>100</left>
-			<top>52</top>
-			<width>665</width>
-			<height>40</height><!-- check texthoehe OK? -->
-			<font>RegularSmall</font>
-			<textcolor>$VAR[OSDDialogColor]</textcolor>
-			<label>$INFO[Control.GetLabel(31)]</label>
 		</control>
 	</control>
 </controls>

@@ -6,21 +6,13 @@
 <onload>Skin.reset(SelectDialog)</onload>
 <onunload>Skin.reset(SelectDialog)</onunload>
 <controls>
-	<control type="image" id="2888"><!-- String.IsEqual logo empty -->
-		<left>-100</left>
-		<top>-100</top>
-		<width>1</width>
-		<height>1</height>
-		<texture fallback="empty">$INFO[Player.Art(tvshow.clearlogo)]</texture>
-		<animation type="Conditional" condition="true">
-			<effect type="slide" start="0" end="0" time="0" />
-		</animation>
-	</control>
+<control type="group">
+	<visible>!Window.IsVisible(shutdownmenu)</visible>
 	<control type="image">
 		<description>Background overlay</description>
 		<width>1920</width>
 		<height>206</height>
-		<texture border="1" colordiffuse="VideooverlayVignette">dialogs/NowPlayingOverlay.png</texture>
+		<texture border="1" colordiffuse="VideooverlayVignette">dialogs/nowplayingoverlay.png</texture>
 		<include>Open_Close_Fade_Animation</include>
 		<visible>!Window.IsVisible(seekbar) + !Window.IsVisible(videobookmarks) + !Window.IsVisible(DialogSettings.xml)</visible>
 		<visible>String.IsEmpty(Window(videoosd).Property(LogoSetings))</visible>
@@ -31,12 +23,12 @@
 		<visible>!Window.IsVisible(seekbar) + !Window.IsVisible(videobookmarks) + !Window.IsVisible(DialogSettings.xml)</visible>
 		<visible>String.IsEmpty(Window(videoosd).Property(LogoSetings))</visible>
 		<include>OSDDialog_popup_Animation</include>
-		<include>VideoPlayerOSDtopinfo</include>
+		<include>VideoPlayerOSD.left.top.info</include>
 	</control>
 	<control type="group"><!-- end time info oben rechts -->
 		<include>OSDDialog_popup_Animation</include>
 		<visible>String.IsEmpty(Window(videoosd).Property(LogoSetings))</visible>
-		<visible>!Window.IsVisible(seekbar) + !Window.IsVisible(videobookmarks) + !Window.IsVisible(DialogSettings.xml)</visible>
+		<visible>!Window.IsVisible(seekbar) + !Window.IsVisible(videobookmarks) + !Window.IsVisible(DialogSettings.xml) + !Window.IsVisible(notification)</visible>
 		<animation type="Conditional" condition="Window.IsVisible(volumebar)">
 			<effect type="slide" start="0,0" end="-100,0" time="300" />
 		</animation>
@@ -75,29 +67,28 @@
 			<top>-30</top>
 			<width>1920</width>
 			<height>135</height>
-			<texture colordiffuse="$VAR[DialogCol]">White.png</texture>
+			<texture colordiffuse="$VAR[DialogCol]">white.png</texture>
 		</control>
 		<control type="progress"><!-- Progress -->
 			<description>Progress Bar</description>
 			<top>-30</top>
 			<width>1920</width>
 			<height>30</height>
-			<info>Player.Progress</info>
-			<texturebg colordiffuse="$VAR[secondaryCol]">dialogs/progress/bg.png</texturebg>
-			<lefttexture colordiffuse="$VAR[primaryCol]">dialogs/progress/left.png</lefttexture>
-			<midtexture colordiffuse="$VAR[primaryCol]">dialogs/progress/left.png</midtexture>
-			<righttexture colordiffuse="$VAR[primaryCol]">dialogs/progress/right.png</righttexture>
+			<texturebg colordiffuse="$VAR[SecondaryCol]">dialogs/progress/bg.png</texturebg>
+			<lefttexture colordiffuse="$VAR[PrimaryCol]">dialogs/progress/left.png</lefttexture>
+			<midtexture colordiffuse="$VAR[PrimaryCol]">dialogs/progress/left.png</midtexture>
+			<righttexture colordiffuse="$VAR[PrimaryCol]">dialogs/progress/right.png</righttexture>
 		</control>
 		<control type="slider" id="21">
-			<top>-30</top>
+			<top>-60</top>
 			<width>1920</width>
-			<height>30</height>
+			<height>90</height>
 			<onup>Close</onup>
 			<ondown>9001</ondown>
 			<info>Player.Progress</info>
 			<texturesliderbar colordiffuse="ACDIF_0">dialogs/progress/bg.png</texturesliderbar>
 			<textureslidernib colordiffuse="red">-</textureslidernib>
-			<textureslidernibfocus colordiffuse="red">dialogs/progress/left.png</textureslidernibfocus>
+			<textureslidernibfocus colordiffuse="$VAR[PrimaryCol]">dialogs/progress/slider.png</textureslidernibfocus>
 			<action>seek</action>
 		</control>
 		<control type="grouplist" id="9001"><!-- mitte -->
@@ -110,10 +101,9 @@
 			<onright>9001</onright>
 			<onup>21</onup>
 			<onup>ClearProperty(LogoSetings,videoosd)</onup>
-			
 			<ondown>ClearProperty(LogoSetings,videoosd)</ondown>
 			<ondown>Close</ondown>
-			<defaultcontrol>3</defaultcontrol><!-- check -->
+			<defaultcontrol>3</defaultcontrol>
 			<control type="button" id="10">
 				<description>Logo</description>
 				<width>osdmenue.icon.width</width>
@@ -161,7 +151,7 @@
 				<onclick condition="String.IsEqual(skin.string(FSLogo),2)">skin.setstring(FSLogo,3)</onclick>
 				<onclick condition="String.IsEqual(skin.string(FSLogo),1)">skin.setstring(FSLogo,2)</onclick>
 				<onclick condition="String.IsEqual(skin.string(FSLogo),0)">skin.setstring(FSLogo,1)</onclick>
-				<visible>!String.IsEqual(Control.GetLabel(2888),empty)</visible>
+				<visible>!String.IsEmpty(Player.Art(tvshow.clearlogo))</visible>
 			</control>
 			<control type="button" id="11">
 				<description>Videoeinstellungen</description>
@@ -281,7 +271,7 @@
 				<width>osdmenue.icon.width</width>
 				<height>osdmenue.icon.height</height>
 				<font>IconOSDButtons</font>
-				<textcolor>$VAR[primaryCol]</textcolor>
+				<textcolor>$VAR[PrimaryCol]</textcolor>
 				<label>Ŧ</label>
 				<visible>Control.IsVisible(10) + Control.HasFocus(10)</visible>
 			</control>
@@ -291,6 +281,7 @@
 				<height>osdmenue.icon.height</height>
 				<font>IconOSDButtons</font>
 				<textcolor>TextColorLight</textcolor>
+				<include>OSDIconsNF</include>
 				<label>Ŧ</label>
 				<visible>Control.IsVisible(10) + !Control.HasFocus(10)</visible>
 			</control>
@@ -299,7 +290,7 @@
 				<width>osdmenue.icon.width</width>
 				<height>osdmenue.icon.height</height>
 				<font>IconOSDButtons</font>
-				<textcolor>$VAR[primaryCol]</textcolor>
+				<textcolor>$VAR[PrimaryCol]</textcolor>
 				<label>Ų</label>
 				<visible>Control.IsVisible(11) + Control.HasFocus(11)</visible>
 			</control>
@@ -309,6 +300,7 @@
 				<height>osdmenue.icon.height</height>
 				<font>IconOSDButtons</font>
 				<textcolor>TextColorLight</textcolor>
+				<include>OSDIconsNF</include>
 				<label>Ų</label>
 				<visible>Control.IsVisible(11) + !Control.HasFocus(11)</visible>
 			</control>
@@ -317,7 +309,7 @@
 				<width>osdmenue.icon.width</width>
 				<height>osdmenue.icon.height</height>
 				<font>IconOSDButtons</font>
-				<textcolor>$VAR[primaryCol]</textcolor>
+				<textcolor>$VAR[PrimaryCol]</textcolor>
 				<label>ů</label>
 				<visible>Control.IsVisible(12) + Control.HasFocus(12)</visible>
 			</control>
@@ -327,6 +319,7 @@
 				<height>osdmenue.icon.height</height>
 				<font>IconOSDButtons</font>
 				<textcolor>TextColorLight</textcolor>
+				<include>OSDIconsNF</include>
 				<label>ů</label>
 				<visible>Control.IsVisible(12) + !Control.HasFocus(12)</visible>
 			</control>
@@ -341,7 +334,7 @@
 				<width>osdmenue.icon.width</width>
 				<height>osdmenue.icon.height</height>
 				<font>IconOSDButtons</font>
-				<textcolor>$VAR[primaryCol]</textcolor>
+				<textcolor>$VAR[PrimaryCol]</textcolor>
 				<label>Ŭ</label>
 				<visible>Control.IsVisible(1) + Control.HasFocus(1)</visible>
 			</control>
@@ -351,6 +344,7 @@
 				<height>osdmenue.icon.height</height>
 				<font>IconOSDButtons</font>
 				<textcolor>TextColorLight</textcolor>
+				<include>OSDIconsNF</include>
 				<label>Ŭ</label>
 				<visible>Control.IsVisible(1) + !Control.HasFocus(1)</visible>
 			</control>
@@ -359,7 +353,7 @@
 				<width>osdmenue.icon.width</width>
 				<height>osdmenue.icon.height</height>
 				<font>IconOSDButtons</font>
-				<textcolor>$VAR[primaryCol]</textcolor>
+				<textcolor>$VAR[PrimaryCol]</textcolor>
 				<label>ŭ</label>
 				<visible>Control.IsVisible(2) + Control.HasFocus(2)</visible>
 			</control>
@@ -369,6 +363,7 @@
 				<height>osdmenue.icon.height</height>
 				<font>IconOSDButtons</font>
 				<textcolor>TextColorLight</textcolor>
+				<include>OSDIconsNF</include>
 				<label>ŭ</label>
 				<visible>Control.IsVisible(2) + !Control.HasFocus(2)</visible>
 			</control>
@@ -377,7 +372,7 @@
 				<width>osdmenue.icon.width</width>
 				<height>osdmenue.icon.height</height>
 				<font>IconOSDButtons</font>
-				<textcolor>$VAR[primaryCol]</textcolor>
+				<textcolor>$VAR[PrimaryCol]</textcolor>
 				<label>$VAR[playercontrol-play]</label>
 				<visible>Control.IsVisible(3) + Control.HasFocus(3)</visible>
 			</control>
@@ -387,6 +382,7 @@
 				<height>osdmenue.icon.height</height>
 				<font>IconOSDButtons</font>
 				<textcolor>TextColorLight</textcolor>
+				<include>OSDIconsNF</include>
 				<label>$VAR[playercontrol-play]</label>
 				<visible>Control.IsVisible(3) + !Control.HasFocus(3)</visible>
 			</control>
@@ -395,7 +391,7 @@
 				<width>osdmenue.icon.width</width>
 				<height>osdmenue.icon.height</height>
 				<font>IconOSDButtons</font>
-				<textcolor>$VAR[primaryCol]</textcolor>
+				<textcolor>$VAR[PrimaryCol]</textcolor>
 				<label>Ů</label>
 				<visible>Control.IsVisible(4) + Control.HasFocus(4)</visible>
 			</control>
@@ -405,6 +401,7 @@
 				<height>osdmenue.icon.height</height>
 				<font>IconOSDButtons</font>
 				<textcolor>TextColorLight</textcolor>
+				<include>OSDIconsNF</include>
 				<label>Ů</label>
 				<visible>Control.IsVisible(4) + !Control.HasFocus(4)</visible>
 			</control>
@@ -413,7 +410,7 @@
 				<width>osdmenue.icon.width</width>
 				<height>osdmenue.icon.height</height>
 				<font>IconOSDButtons</font>
-				<textcolor>$VAR[primaryCol]</textcolor>
+				<textcolor>$VAR[PrimaryCol]</textcolor>
 				<label>Ũ</label>
 				<visible>Control.IsVisible(5) + Control.HasFocus(5)</visible>
 			</control>
@@ -423,6 +420,7 @@
 				<height>osdmenue.icon.height</height>
 				<font>IconOSDButtons</font>
 				<textcolor>TextColorLight</textcolor>
+				<include>OSDIconsNF</include>
 				<label>Ũ</label>
 				<visible>Control.IsVisible(5) + !Control.HasFocus(5)</visible>
 			</control>
@@ -431,7 +429,7 @@
 				<width>osdmenue.icon.width</width>
 				<height>osdmenue.icon.height</height>
 				<font>IconOSDButtons</font>
-				<textcolor>$VAR[primaryCol]</textcolor>
+				<textcolor>$VAR[PrimaryCol]</textcolor>
 				<label>ũ</label>
 				<visible>Control.IsVisible(6) + Control.HasFocus(6)</visible>
 			</control>
@@ -441,6 +439,7 @@
 				<height>osdmenue.icon.height</height>
 				<font>IconOSDButtons</font>
 				<textcolor>TextColorLight</textcolor>
+				<include>OSDIconsNF</include>
 				<label>ũ</label>
 				<visible>Control.IsVisible(6) + !Control.HasFocus(6)</visible>
 			</control>
@@ -455,7 +454,7 @@
 				<width>osdmenue.icon.width</width>
 				<height>osdmenue.icon.height</height>
 				<font>IconOSDButtons</font>
-				<textcolor>$VAR[primaryCol]</textcolor>
+				<textcolor>$VAR[PrimaryCol]</textcolor>
 				<label>ű</label>
 				<visible>Control.IsVisible(13) + Control.HasFocus(13)</visible>
 			</control>
@@ -465,6 +464,7 @@
 				<height>osdmenue.icon.height</height>
 				<font>IconOSDButtons</font>
 				<textcolor>TextColorLight</textcolor>
+				<include>OSDIconsNF</include>
 				<label>ű</label>
 				<visible>Control.IsVisible(13) + !Control.HasFocus(13)</visible>
 			</control>
@@ -473,7 +473,7 @@
 				<width>osdmenue.icon.width</width>
 				<height>osdmenue.icon.height</height>
 				<font>IconOSDButtons</font>
-				<textcolor>$VAR[primaryCol]</textcolor>
+				<textcolor>$VAR[PrimaryCol]</textcolor>
 				<label>Ť</label>
 				<visible>Control.IsVisible(14) + Control.HasFocus(14)</visible>
 			</control>
@@ -483,6 +483,7 @@
 				<height>osdmenue.icon.height</height>
 				<font>IconOSDButtons</font>
 				<textcolor>TextColorLight</textcolor>
+				<include>OSDIconsNF</include>
 				<label>Ť</label>
 				<visible>Control.IsVisible(14) + !Control.HasFocus(14)</visible>
 			</control>
@@ -491,7 +492,7 @@
 				<width>osdmenue.icon.width</width>
 				<height>osdmenue.icon.height</height>
 				<font>IconOSDButtons</font>
-				<textcolor>$VAR[primaryCol]</textcolor>
+				<textcolor>$VAR[PrimaryCol]</textcolor>
 				<label>ų</label>
 				<visible>Control.IsVisible(15) + Control.HasFocus(15)</visible>
 				<animation type="Conditional" condition="!System.HasMediadvd">
@@ -504,6 +505,7 @@
 				<height>osdmenue.icon.height</height>
 				<font>IconOSDButtons</font>
 				<textcolor>TextColorLight</textcolor>
+				<include>OSDIconsNF</include>
 				<label>ų</label>
 				<visible>Control.IsVisible(15) + !Control.HasFocus(15)</visible>
 				<animation type="Conditional" condition="!System.HasMediadvd">
@@ -515,7 +517,7 @@
 				<width>osdmenue.icon.width</width>
 				<height>osdmenue.icon.height</height>
 				<font>IconOSDButtons</font>
-				<textcolor>$VAR[primaryCol]</textcolor>
+				<textcolor>$VAR[PrimaryCol]</textcolor>
 				<label>Ű</label>
 				<visible>Control.IsVisible(17) + Control.HasFocus(17)</visible>
 			</control>
@@ -525,10 +527,12 @@
 				<height>osdmenue.icon.height</height>
 				<font>IconOSDButtons</font>
 				<textcolor>TextColorLight</textcolor>
+				<include>OSDIconsNF</include>
 				<label>Ű</label>
 				<visible>Control.IsVisible(17) + !Control.HasFocus(17)</visible>
 			</control>
 		</control>
 	</control>
+</control>
 </controls>
 </window>

@@ -7,20 +7,35 @@
 <include name="MusicVizbackground">
 	<control type="group"><!-- visualisation -->
 		<visible>Skin.HasSetting(DisableMusicMCE)</visible>
+		<control type="image">
+			<description>Vignette zum Abdunkeln der Ecken</description>
+			<width>1920</width>
+			<height>1080</height>
+			<texture colordiffuse="$VAR[Colorswitch]">White.png</texture>
+			<include>Open_Close_Visible_Hidden_Fade_Animation</include>
+		</control>
 		<control type="visualisation">
 			<width>1920</width>
 			<height>1080</height>
 			<visible>Player.HasAudio</visible>
 		</control>
 		<control type="image">
+			<width>1920</width>
+			<height>1080</height>
+			<texture background="true">$INFO[MusicPlayer.Property(Fanart_Image)]</texture>
+			<aspectratio>scale</aspectratio>
+			<fadetime>300</fadetime>
+			<include>Visible_Hidden_Background_Fade_Animation</include>
+			<visible>Player.HasAudio</visible>
+			<animation effect="fade" start="100" end="20" time="0" condition="![String.IsEqual(Visualisation.Name,waveform) | String.IsEqual(Visualisation.Name,spectrum) | String.IsEmpty(Visualisation.Name)]">Conditional</animation>
+		</control>
+		<control type="image">
 			<description>Vignette zum Abdunkeln der Ecken</description>
 			<width>1920</width>
 			<height>1080</height>
-			<texture colordiffuse="$VAR[ColorswitchInv]">special://skin/backgrounds/MusicVizMatte.png</texture>
+			<texture colordiffuse="$VAR[Colorswitch]">special://skin/backgrounds/musicvizmatte.png</texture>
 			<include>Open_Close_Visible_Hidden_Fade_Animation</include>
-			<animation type="Conditional" condition="true">
-				<effect type="fade" start="0" end="60" time="180" />
-			</animation>
+			<animation effect="fade" start="100" end="20" time="0" condition="true">Conditional</animation>
 		</control>
 	</control>
 	<control type="group">
@@ -31,19 +46,22 @@
 			<autoscroll time="13000" delay="1000" repeat="15000">true</autoscroll>
 		</control>
 		<control type="image">
+			<width>1920</width>
+			<height>1080</height>
+			<texture background="true">$INFO[MusicPlayer.Property(Fanart_Image)]</texture>
+			<aspectratio>scale</aspectratio>
+			<fadetime>300</fadetime>
+			<visible>Player.HasAudio</visible>
+		</control>
+		<control type="image">
 			<description>Hintergrund</description>
 			<width>1920</width>
 			<height>1080</height>
-			<texture colordiffuse="$VAR[Colorswitch]">White.png</texture>
+			<texture colordiffuse="$VAR[Colorswitch]">white.png</texture>
 			<include>Visible_Hidden_Background_Fade_Animation</include>
-		</control>
-		<control type="image">
-			<description>Hintergrund invers</description>
-			<width>1920</width>
-			<height>1080</height>
-			<texture colordiffuse="FF000000">White.png</texture>
-			<visible>Skin.HasSetting(Colorswitch)</visible>
-			<include>Visible_Hidden_Background_Fade_Animation</include>
+			<animation type="WindowOpen" reversible="false">
+				<effect type="fade" start="0" end="100" time="850" tween="cubic" easing="inout" />
+			</animation>
 		</control>
 		<control type="group"><!-- mce visualisierung -->
 			<animation type="Conditional" condition="!Integer.IsGreater(System.Time(ss),20)">
@@ -64,28 +82,28 @@
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor1]">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="$VAR[MusicVizColor1]">white.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture colordiffuse="52338d67">musicviz/MCEViz1.png</texture>
+						<texture colordiffuse="52338d67">musicviz/mceviz1.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF338D67">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FF338D67">white.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF338D67">musicviz/MCEcolortable.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FF338D67">musicviz/mcecolortable.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 				</control>
@@ -102,12 +120,12 @@
 						<height>240</height>
 						<fadetime>300</fadetime>
 						<aspecratio>scale</aspecratio>
-						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem.Art(thumb)]</texture>
+						<texture fallback="musicviz/defaultvizalbum.png" diffuse="musicviz/mceframematte.png">$INFO[Container(6112).ListItem.Art(thumb)]</texture>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
-						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+						<texture colordiffuse="black">musicviz/mceframe.png</texture>
 					</control>
 				</control>
 				<control type="group">
@@ -122,28 +140,28 @@
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor3]">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="$VAR[MusicVizColor3]">white.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture colordiffuse="1Af1f1f1">musicviz/MCEViz3.png</texture>
+						<texture colordiffuse="1Af1f1f1">musicviz/mceviz3.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF2472A4">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FF2472A4">white.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF2472A4">musicviz/MCEcolortable.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FF2472A4">musicviz/mcecolortable.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 				</control>
@@ -160,12 +178,12 @@
 						<height>240</height>
 						<fadetime>350</fadetime>
 						<aspecratio>scale</aspecratio>
-						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(1).Art(thumb)]</texture>
+						<texture fallback="musicviz/defaultvizalbum.png" diffuse="musicviz/mceframematte.png">$INFO[Container(6112).ListItem(1).Art(thumb)]</texture>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
-						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+						<texture colordiffuse="black">musicviz/mceframe.png</texture>
 					</control>
 				</control>
 				<control type="group">
@@ -181,12 +199,12 @@
 						<height>240</height>
 						<fadetime>320</fadetime>
 						<aspecratio>scale</aspecratio>
-						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(2).Art(thumb)]</texture>
+						<texture fallback="musicviz/defaultvizalbum.png" diffuse="musicviz/mceframematte.png">$INFO[Container(6112).ListItem(2).Art(thumb)]</texture>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
-						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+						<texture colordiffuse="black">musicviz/mceframe.png</texture>
 					</control>
 				</control>
 				<control type="group">
@@ -201,28 +219,28 @@
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor4]">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="$VAR[MusicVizColor4]">white.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture colordiffuse="29F1F1F1">musicviz/MCEViz4.png</texture>
+						<texture colordiffuse="29F1F1F1">musicviz/mceviz4.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBEA30C">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FFBEA30C">white.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBEA30C">musicviz/MCEcolortable.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FFBEA30C">musicviz/mcecolortable.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 				</control>
@@ -238,28 +256,28 @@
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor2]">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="$VAR[MusicVizColor2]">white.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture colordiffuse="39F1F1F1">musicviz/MCEViz2.png</texture>
+						<texture colordiffuse="39F1F1F1">musicviz/mceviz2.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBFB49F">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FFBFB49F">white.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBFB49F">musicviz/MCEcolortable.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FFBFB49F">musicviz/mcecolortable.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 				</control>
@@ -276,12 +294,12 @@
 						<height>240</height>
 						<fadetime>310</fadetime>
 						<aspecratio>scale</aspecratio>
-						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(3).Art(thumb)]</texture>
+						<texture fallback="musicviz/defaultvizalbum.png" diffuse="musicviz/mceframematte.png">$INFO[Container(6112).ListItem(3).Art(thumb)]</texture>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
-						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+						<texture colordiffuse="black">musicviz/mceframe.png</texture>
 					</control>
 				</control>
 			</control>
@@ -299,12 +317,12 @@
 						<height>240</height>
 						<fadetime>340</fadetime>
 						<aspecratio>scale</aspecratio>
-						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(4).Art(thumb)]</texture>
+						<texture fallback="musicviz/defaultvizalbum.png" diffuse="musicviz/mceframematte.png">$INFO[Container(6112).ListItem(4).Art(thumb)]</texture>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
-						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+						<texture colordiffuse="black">musicviz/mceframe.png</texture>
 					</control>
 				</control>
 				<control type="group">
@@ -319,28 +337,28 @@
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor3]">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="$VAR[MusicVizColor3]">white.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture flipx="true" colordiffuse="38F1F1F1">musicviz/MCEViz5.png</texture>
+						<texture flipx="true" colordiffuse="38F1F1F1">musicviz/mceviz5.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF2472A4">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FF2472A4">white.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF2472A4">musicviz/MCEcolortable.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FF2472A4">musicviz/mcecolortable.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 				</control>
@@ -357,12 +375,12 @@
 						<height>240</height>
 						<fadetime>300</fadetime>
 						<aspecratio>scale</aspecratio>
-						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem.Art(thumb)]</texture>
+						<texture fallback="musicviz/defaultvizalbum.png" diffuse="musicviz/mceframematte.png">$INFO[Container(6112).ListItem.Art(thumb)]</texture>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
-						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+						<texture colordiffuse="black">musicviz/mceframe.png</texture>
 					</control>
 				</control>
 				<control type="group">
@@ -377,28 +395,28 @@
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor3]">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="$VAR[MusicVizColor3]">white.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture colordiffuse="29F1F1F1">musicviz/MCEViz7.png</texture>
+						<texture colordiffuse="29F1F1F1">musicviz/mceviz7.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBEA30C">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FFBEA30C">white.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBEA30C">musicviz/MCEcolortable.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FFBEA30C">musicviz/mcecolortable.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 				</control>
@@ -414,28 +432,28 @@
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor5]">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="$VAR[MusicVizColor5]">white.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture flipy="true" colordiffuse="39F1F1F1">musicviz/MCEViz2.png</texture>
+						<texture flipy="true" colordiffuse="39F1F1F1">musicviz/mceviz2.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF7377AB">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FF7377AB">white.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF7377AB">musicviz/MCEcolortable.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FF7377AB">musicviz/mcecolortable.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 				</control>
@@ -452,12 +470,12 @@
 						<height>240</height>
 						<fadetime>300</fadetime>
 						<aspecratio>scale</aspecratio>
-						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem.Art(thumb)]</texture>
+						<texture fallback="musicviz/defaultvizalbum.png" diffuse="musicviz/mceframematte.png">$INFO[Container(6112).ListItem.Art(thumb)]</texture>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
-						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+						<texture colordiffuse="black">musicviz/mceframe.png</texture>
 					</control>
 				</control>
 				<control type="group">
@@ -472,28 +490,28 @@
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor2]">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="$VAR[MusicVizColor2]">white.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture colordiffuse="39F1F1F1">musicviz/MCEViz1.png</texture>
+						<texture colordiffuse="39F1F1F1">musicviz/mceviz1.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFCF3F2E">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FFCF3F2E">white.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFCF3F2E">musicviz/MCEcolortable.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FFCF3F2E">musicviz/mcecolortable.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 				</control>
@@ -509,28 +527,28 @@
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor6]">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="$VAR[MusicVizColor6]">white.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture colordiffuse="0Ff1f1f1">musicviz/MCEViz1.png</texture>
+						<texture colordiffuse="0Ff1f1f1">musicviz/mceviz1.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBEA30C">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FFBEA30C">white.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBEA30C">musicviz/MCEcolortable.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FFBEA30C">musicviz/mcecolortable.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 				</control>
@@ -549,12 +567,12 @@
 						<height>240</height>
 						<fadetime>350</fadetime>
 						<aspecratio>scale</aspecratio>
-						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(5).Art(thumb)]</texture>
+						<texture fallback="musicviz/defaultvizalbum.png" diffuse="musicviz/mceframematte.png">$INFO[Container(6112).ListItem(5).Art(thumb)]</texture>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
-						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+						<texture colordiffuse="black">musicviz/mceframe.png</texture>
 					</control>
 				</control>
 				<control type="group">
@@ -570,12 +588,12 @@
 						<height>240</height>
 						<fadetime>300</fadetime>
 						<aspecratio>scale</aspecratio>
-						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(6).Art(thumb)]</texture>
+						<texture fallback="musicviz/defaultvizalbum.png" diffuse="musicviz/mceframematte.png">$INFO[Container(6112).ListItem(6).Art(thumb)]</texture>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
-						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+						<texture colordiffuse="black">musicviz/mceframe.png</texture>
 					</control>
 				</control>
 				<control type="group">
@@ -590,28 +608,28 @@
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor3]">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="$VAR[MusicVizColor3]">white.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture colordiffuse="33F1F1F1">musicviz/MCEViz2.png</texture>
+						<texture colordiffuse="33F1F1F1">musicviz/mceviz2.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBFB49F">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FFBFB49F">white.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBFB49F">musicviz/MCEcolortable.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FFBFB49F">musicviz/mcecolortable.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 				</control>
@@ -627,28 +645,28 @@
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor2]">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="$VAR[MusicVizColor2]">white.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture colordiffuse="39F1F1F1">musicviz/MCEViz1.png</texture>
+						<texture colordiffuse="39F1F1F1">musicviz/mceviz1.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFCF3F2E">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FFCF3F2E">white.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFCF3F2E">musicviz/MCEcolortable.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FFCF3F2E">musicviz/mcecolortable.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 				</control>
@@ -665,12 +683,12 @@
 						<height>240</height>
 						<fadetime>300</fadetime>
 						<aspecratio>scale</aspecratio>
-						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(7).Art(thumb)]</texture>
+						<texture fallback="musicviz/defaultvizalbum.png" diffuse="musicviz/mceframematte.png">$INFO[Container(6112).ListItem(7).Art(thumb)]</texture>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
-						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+						<texture colordiffuse="black">musicviz/mceframe.png</texture>
 					</control>
 				</control>
 				<control type="group">
@@ -685,28 +703,28 @@
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor3]">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="$VAR[MusicVizColor3]">white.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture colordiffuse="33F1F1F1">musicviz/MCEViz7.png</texture>
+						<texture colordiffuse="33F1F1F1">musicviz/mceviz7.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF338D67">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FF338D67">white.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF338D67">musicviz/MCEcolortable.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FF338D67">musicviz/mcecolortable.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 				</control>
@@ -722,28 +740,28 @@
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor7]">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="$VAR[MusicVizColor7]">white.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture colordiffuse="33F1F1F1">musicviz/MCEViz3.png</texture>
+						<texture colordiffuse="33F1F1F1">musicviz/mceviz3.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF7377AB">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FF7377AB">white.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF7377AB">musicviz/MCEcolortable.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FF7377AB">musicviz/mcecolortable.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 				</control>
@@ -760,12 +778,12 @@
 						<height>240</height>
 						<fadetime>390</fadetime>
 						<aspecratio>scale</aspecratio>
-						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(8).Art(thumb)]</texture>
+						<texture fallback="musicviz/defaultvizalbum.png" diffuse="musicviz/mceframematte.png">$INFO[Container(6112).ListItem(8).Art(thumb)]</texture>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
-						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+						<texture colordiffuse="black">musicviz/mceframe.png</texture>
 					</control>
 				</control>
 			</control>
@@ -782,28 +800,28 @@
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor3]">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="$VAR[MusicVizColor3]">white.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture colordiffuse="33F1F1F1">musicviz/MCEViz3.png</texture>
+						<texture colordiffuse="33F1F1F1">musicviz/mceviz3.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFCF3F2E">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FFCF3F2E">white.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFCF3F2E">musicviz/MCEcolortable.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FFCF3F2E">musicviz/mcecolortable.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 				</control>
@@ -819,28 +837,28 @@
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor6]">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="$VAR[MusicVizColor6]">white.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture flipx="true" colordiffuse="39F1F1F1">musicviz/MCEViz1.png</texture>
+						<texture flipx="true" colordiffuse="39F1F1F1">musicviz/mceviz1.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBEA30C">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FFBEA30C">white.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBEA30C">musicviz/MCEcolortable.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FFBEA30C">musicviz/mcecolortable.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 				</control>
@@ -857,12 +875,12 @@
 						<height>240</height>
 						<fadetime>310</fadetime>
 						<aspecratio>scale</aspecratio>
-						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(9).Art(thumb)]</texture>
+						<texture fallback="musicviz/defaultvizalbum.png" diffuse="musicviz/mceframematte.png">$INFO[Container(6112).ListItem(9).Art(thumb)]</texture>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
-						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+						<texture colordiffuse="black">musicviz/mceframe.png</texture>
 					</control>
 				</control>
 				<control type="group">
@@ -877,28 +895,28 @@
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor3]">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="$VAR[MusicVizColor3]">white.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture colordiffuse="33F1F1F1">musicviz/MCEViz6.png</texture>
+						<texture colordiffuse="33F1F1F1">musicviz/mceviz6.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF2472A4">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FF2472A4">white.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF2472A4">musicviz/MCEcolortable.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FF2472A4">musicviz/mcecolortable.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 				</control>
@@ -915,12 +933,12 @@
 						<height>240</height>
 						<fadetime>300</fadetime>
 						<aspecratio>scale</aspecratio>
-						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(10).Art(thumb)]</texture>
+						<texture fallback="musicviz/defaultvizalbum.png" diffuse="musicviz/mceframematte.png">$INFO[Container(6112).ListItem(10).Art(thumb)]</texture>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
-						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+						<texture colordiffuse="black">musicviz/mceframe.png</texture>
 					</control>
 				</control>
 				<control type="group">
@@ -936,12 +954,12 @@
 						<height>240</height>
 						<fadetime>240</fadetime>
 						<aspecratio>scale</aspecratio>
-						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(11).Art(thumb)]</texture>
+						<texture fallback="musicviz/defaultvizalbum.png" diffuse="musicviz/mceframematte.png">$INFO[Container(6112).ListItem(11).Art(thumb)]</texture>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
-						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+						<texture colordiffuse="black">musicviz/mceframe.png</texture>
 					</control>
 				</control>
 				<control type="group">
@@ -956,28 +974,28 @@
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor5]">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="$VAR[MusicVizColor5]">white.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture flipx="true" colordiffuse="30F1F1F1">musicviz/MCEViz3.png</texture>
+						<texture flipx="true" colordiffuse="30F1F1F1">musicviz/mceviz3.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF338D67">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FF338D67">white.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF338D67">musicviz/MCEcolortable.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FF338D67">musicviz/mcecolortable.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 				</control>
@@ -993,28 +1011,28 @@
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor6]">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="$VAR[MusicVizColor6]">white.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture colordiffuse="44F1F1F1">musicviz/MCEViz4.png</texture>
+						<texture colordiffuse="44F1F1F1">musicviz/mceviz4.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBFB49F">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FFBFB49F">white.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBFB49F">musicviz/MCEcolortable.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FFBFB49F">musicviz/mcecolortable.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 				</control>
@@ -1032,28 +1050,28 @@
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor7]">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="$VAR[MusicVizColor7]">white.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture flipx="true" colordiffuse="24F1F1F1">musicviz/MCEViz7.png</texture>
+						<texture flipx="true" colordiffuse="24F1F1F1">musicviz/mceviz7.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF7377AB">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FF7377AB">white.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF7377AB">musicviz/MCEcolortable.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FF7377AB">musicviz/mcecolortable.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 				</control>
@@ -1070,12 +1088,12 @@
 						<height>240</height>
 						<fadetime>360</fadetime>
 						<aspecratio>scale</aspecratio>
-						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(12).Art(thumb)]</texture>
+						<texture fallback="musicviz/defaultvizalbum.png" diffuse="musicviz/mceframematte.png">$INFO[Container(6112).ListItem(12).Art(thumb)]</texture>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
-						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+						<texture colordiffuse="black">musicviz/mceframe.png</texture>
 					</control>
 				</control>
 				<control type="group">
@@ -1090,28 +1108,28 @@
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor6]">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="$VAR[MusicVizColor6]">white.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture flipx="true" colordiffuse="39F1F1F1">musicviz/MCEViz4.png</texture>
+						<texture flipx="true" colordiffuse="39F1F1F1">musicviz/mceviz4.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF338D67">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FF338D67">white.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF338D67">musicviz/MCEcolortable.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FF338D67">musicviz/mcecolortable.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 				</control>
@@ -1128,12 +1146,12 @@
 						<height>240</height>
 						<fadetime>300</fadetime>
 						<aspecratio>scale</aspecratio>
-						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(13).Art(thumb)]</texture>
+						<texture fallback="musicviz/defaultvizalbum.png" diffuse="musicviz/mceframematte.png">$INFO[Container(6112).ListItem(13).Art(thumb)]</texture>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
-						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+						<texture colordiffuse="black">musicviz/mceframe.png</texture>
 					</control>
 				</control>
 				<control type="group">
@@ -1148,28 +1166,28 @@
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor3]">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="$VAR[MusicVizColor3]">white.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture colordiffuse="33F1F1F1">musicviz/MCEViz3.png</texture>
+						<texture colordiffuse="33F1F1F1">musicviz/mceviz3.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBEA30C">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FFBEA30C">white.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBEA30C">musicviz/MCEcolortable.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FFBEA30C">musicviz/mcecolortable.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 				</control>
@@ -1186,12 +1204,12 @@
 						<height>240</height>
 						<fadetime>260</fadetime>
 						<aspecratio>scale</aspecratio>
-						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(14).Art(thumb)]</texture>
+						<texture fallback="musicviz/defaultvizalbum.png" diffuse="musicviz/mceframematte.png">$INFO[Container(6112).ListItem(14).Art(thumb)]</texture>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
-						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+						<texture colordiffuse="black">musicviz/mceframe.png</texture>
 					</control>
 				</control>
 				<control type="group">
@@ -1206,28 +1224,28 @@
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor7]">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="$VAR[MusicVizColor7]">white.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture flipx="true" colordiffuse="56F1F1F1">musicviz/MCEViz5.png</texture>
+						<texture flipx="true" colordiffuse="56F1F1F1">musicviz/mceviz5.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFCF3F2E">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FFCF3F2E">white.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFCF3F2E">musicviz/MCEcolortable.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FFCF3F2E">musicviz/mcecolortable.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 				</control>
@@ -1244,12 +1262,12 @@
 						<height>240</height>
 						<fadetime>300</fadetime>
 						<aspecratio>scale</aspecratio>
-						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(15).Art(thumb)]</texture>
+						<texture fallback="musicviz/defaultvizalbum.png" diffuse="musicviz/mceframematte.png">$INFO[Container(6112).ListItem(15).Art(thumb)]</texture>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
-						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+						<texture colordiffuse="black">musicviz/mceframe.png</texture>
 					</control>
 				</control>
 			</control>
@@ -1267,12 +1285,12 @@
 						<height>240</height>
 						<fadetime>280</fadetime>
 						<aspecratio>scale</aspecratio>
-						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(16).Art(thumb)]</texture>
+						<texture fallback="musicviz/defaultvizalbum.png" diffuse="musicviz/mceframematte.png">$INFO[Container(6112).ListItem(16).Art(thumb)]</texture>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
-						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+						<texture colordiffuse="black">musicviz/mceframe.png</texture>
 					</control>
 				</control>
 				<control type="group">
@@ -1287,28 +1305,28 @@
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor6]">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="$VAR[MusicVizColor6]">white.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture flipx="true" colordiffuse="58F1F1F1">musicviz/MCEViz6.png</texture>
+						<texture flipx="true" colordiffuse="58F1F1F1">musicviz/mceviz6.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBFB49F">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FFBFB49F">white.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FFBFB49F">musicviz/MCEcolortable.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FFBFB49F">musicviz/mcecolortable.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 				</control>
@@ -1325,12 +1343,12 @@
 						<height>240</height>
 						<fadetime>300</fadetime>
 						<aspecratio>scale</aspecratio>
-						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(17).Art(thumb)]</texture>
+						<texture fallback="musicviz/defaultvizalbum.png" diffuse="musicviz/mceframematte.png">$INFO[Container(6112).ListItem(17).Art(thumb)]</texture>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
-						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+						<texture colordiffuse="black">musicviz/mceframe.png</texture>
 					</control>
 				</control>
 				<control type="group">
@@ -1345,28 +1363,28 @@
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor2]">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="$VAR[MusicVizColor2]">white.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture flipx="true" colordiffuse="49f1f1f1">musicviz/MCEViz2.png</texture>
+						<texture flipx="true" colordiffuse="49f1f1f1">musicviz/mceviz2.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF2472A4">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FF2472A4">white.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF2472A4">musicviz/MCEcolortable.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FF2472A4">musicviz/mcecolortable.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 				</control>
@@ -1383,12 +1401,12 @@
 						<height>240</height>
 						<fadetime>260</fadetime>
 						<aspecratio>scale</aspecratio>
-						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(18).Art(thumb)]</texture>
+						<texture fallback="musicviz/defaultvizalbum.png" diffuse="musicviz/mceframematte.png">$INFO[Container(6112).ListItem(18).Art(thumb)]</texture>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
-						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+						<texture colordiffuse="black">musicviz/mceframe.png</texture>
 					</control>
 				</control>
 				<control type="group">
@@ -1403,28 +1421,28 @@
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor3]">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="$VAR[MusicVizColor3]">white.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture colordiffuse="33F1F1F1">musicviz/MCEViz1.png</texture>
+						<texture colordiffuse="33F1F1F1">musicviz/mceviz1.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF338D67">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FF338D67">white.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF338D67">musicviz/MCEcolortable.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FF338D67">musicviz/mcecolortable.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 				</control>
@@ -1441,12 +1459,12 @@
 						<height>240</height>
 						<fadetime>300</fadetime>
 						<aspecratio>scale</aspecratio>
-						<texture fallback="musicviz/defaultVizalbum.png" diffuse="musicviz/MCEFrameMatte.png">$INFO[Container(6112).ListItem(19).Art(thumb)]</texture>
+						<texture fallback="musicviz/defaultvizalbum.png" diffuse="musicviz/mceframematte.png">$INFO[Container(6112).ListItem(19).Art(thumb)]</texture>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
-						<texture colordiffuse="black">musicviz/MCEFrame.png</texture>
+						<texture colordiffuse="black">musicviz/mceframe.png</texture>
 					</control>
 				</control>
 				<control type="group">
@@ -1461,28 +1479,28 @@
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="$VAR[MusicVizColor2]">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="$VAR[MusicVizColor2]">white.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture flipx="true" colordiffuse="33F1F1F1">musicviz/MCEViz7.png</texture>
+						<texture flipx="true" colordiffuse="33F1F1F1">musicviz/mceviz7.png</texture>
 						<visible>Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF7377AB">White.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FF7377AB">white.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 					<control type="image">
 						<width>240</width>
 						<height>240</height>
 						<aspecratio>scale</aspecratio>
-						<texture diffuse="musicviz/MCEFrameMatte.png" colordiffuse="FF7377AB">musicviz/MCEcolortable.png</texture>
+						<texture diffuse="musicviz/mceframematte.png" colordiffuse="FF7377AB">musicviz/mcecolortable.png</texture>
 						<visible>!Skin.HasSetting(EnableMCEMusicViz)</visible>
 					</control>
 				</control>
@@ -1493,7 +1511,7 @@
 			<width>1920</width>
 			<height>1080</height>
 			<include>Visible_Hidden_Background_Fade_Animation</include>
-			<texture colordiffuse="$VAR[ColorswitchInv]">special://skin/backgrounds/MusicVizMatte.png</texture>
+			<texture colordiffuse="$VAR[ColorswitchInv]">special://skin/backgrounds/musicvizmatte.png</texture>
 			<animation type="Conditional" condition="true">
 				<effect type="fade" start="0" end="60" time="180" />
 			</animation>

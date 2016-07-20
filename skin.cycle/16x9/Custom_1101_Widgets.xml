@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1101">
+<!-- Cycle 0.3 -->
+<menucontrol>9700</menucontrol>
+<defaultcontrol always="true">400</defaultcontrol>
+<onload>Action(PageUp)</onload><!-- back zum anfang -->
+<onload>Action(PageUp)</onload><!-- back zum anfang -->
+<onload>Action(PageUp)</onload><!-- back zum anfang -->
+<onload condition="Window.IsVisible(home)">SetProperty(SlotclickWidget,MainslotWidgetContent,1101)</onload><!-- Widgets -->
+<onload condition="Window.IsVisible(home)">SetProperty(SlotclickWidgettitle,MainslotWidgetTitle,1101)</onload><!-- Widgets -->
+<onload condition="Window.IsVisible(home) + String.IsEmpty(Skin.string(MainslotWidgetTitle))">SetFocus(9700)</onload><!-- Widgetselection empty zur Auwahl -->
+<onload condition="Window.IsVisible(videos)">SetProperty(SlotclickWidget,VideoslotWidgetContent,1101)</onload><!-- Widgets -->
+<onload condition="Window.IsVisible(videos)">SetProperty(SlotclickWidgettitle,VideoslotWidgetTitle,1101)</onload><!-- Widgets -->
+<onload condition="Window.IsVisible(videos) + String.IsEmpty(Skin.string(VideoslotWidgetTitle))">SetFocus(9700)</onload><!-- Widgetselection empty zur Auwahl -->
+<controls>
+<include condition="Skin.HasSetting(EnableVintageOverlay)">global_vintagebackground</include>
+<include condition="!Skin.HasSetting(EnableVintageOverlay)">global_background</include>
+<include condition="!Skin.HasSetting(EnableVintageOverlay)">global_fanart</include>
+<include>global_topbar</include>
+<control type="group"><!-- Widgets list -->
+	<visible>![Control.HasFocus(9700) | ControlGroup(9701).HasFocus]</visible>
+	<include>Open_Close_Visible_Hidden_Zoom_Animation</include>
+	<include>Conditional_Left_Slide_Animation395</include>
+	<control type="grouplist">
+		<description>Titel</description>
+		<left>315</left>
+		<top>300</top>
+		<width>1290</width>
+		<height>60</height>
+		<itemgap>10</itemgap>
+		<orientation>horizontal</orientation>
+		<control type="label">
+			<description>Widget Icon</description>
+			<width>50</width>
+			<height>60</height>
+			<font>IconBig</font>
+			<textcolor>TextColorLight</textcolor>
+			<label>V</label>
+		</control>
+		<control type="label">
+			<description>Widget Titel aus string</description>
+			<width>1000</width>
+			<height>50</height>
+			<textcolor>TextColorMedium</textcolor>
+			<label>$VAR[ValueWidgetViewTitle]</label>
+		</control>
+	</control>
+	<control type="label">
+		<description>Icon mehr als eine seite</description>
+		<left>180</left>
+		<top>485</top>
+		<width>100</width>
+		<height>100</height>
+		<align>center</align>
+		<font>IconBackViewList</font>
+		<textcolor>TextColorLight</textcolor>
+		<label>.</label>
+		<visible>Container(400).HasNext</visible>
+	</control>
+	<control type="panel" id="400">
+		<description>Widget panel - Film, Serie, Episode</description>
+		<left>315</left>
+		<top>395</top>
+		<width>1290</width>
+		<height>380</height>
+		<scrolltime tween="circle" easing="out">600</scrolltime>
+		<focusposition>1</focusposition>
+		<onleft>Dialog.close(1101)</onleft>
+		<onright>Dialog.close(1101)</onright>
+		<onup>400</onup>
+		<ondown>400</ondown>
+		<visible allowhiddenfocus="true">!Control.HasFocus(9700)</visible>
+		<itemlayout height="380" width="430">
+			<control type="image">
+				<description>Schatten</description>
+				<width>372</width>
+				<height>224</height>
+				<texture border="8" colordiffuse="ShadowColor">views/shadow8.png</texture>
+			</control>
+			<control type="image">
+				<description>Border</description>
+				<left>8</left>
+				<top>8</top>
+				<width>356</width>
+				<height>208</height>
+				<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
+			</control>
+			<control type="image"><!-- Fallback -->
+				<description>Hintergrund Farbe</description>
+				<left>12</left>
+				<top>12</top>
+				<width>348</width>
+				<height>200</height>
+				<texture colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+			</control>
+			<control type="label">
+				<description>Fallback icon</description>
+				<left>12</left>
+				<top>12</top>
+				<width>348</width>
+				<height>185</height>
+				<align>center</align>
+				<font>Iconyoutubedefault</font>
+				<textcolor>$VAR[CirclesCol]</textcolor>
+				<label>$VAR[ValueWidgetView_FallbackIcon]</label>
+			</control>
+			<control type="image">
+				<description>Art</description>
+				<left>12</left>
+				<top>12</top>
+				<width>348</width>
+				<height>200</height>
+				<texture>$VAR[Art-Widget-Fanart]</texture>
+			</control>
+			<control type="image"><!-- Inaktiv overlay -->
+				<left>12</left>
+				<top>12</top>
+				<width>348</width>
+				<height>200</height>
+				<texture colordiffuse="$VAR[InaktivImageDiffuse]">white.png</texture>
+			</control>
+			<include condition="Skin.HasSetting(EnableVintageOverlay)">WidgetView_vintageoverlay</include>
+			<control type="group"><!-- Info -->
+				<top>238</top>
+				<width>400</width>
+				<control type="label">
+					<width>370</width>
+					<height>30</height>
+					<font>RegularSmall</font>
+					<label>$VAR[ValueWidgetView_Label]</label>
+				</control>
+				<control type="textbox">
+					<top>33</top>
+					<width>370</width>
+					<height>86</height>
+					<autoscroll>false</autoscroll>
+					<font>RegularSmall</font>
+					<textcolor>TextColorMedium</textcolor>
+					<label>$VAR[ValueWidgetView_Label2]</label>
+				</control>
+			</control>
+		</itemlayout>
+		<focusedlayout height="380" width="430">
+			<control type="group">
+				<animation type="Focus">
+					<effect type="zoom" time="250" end="105" start="100" center="175,210" />
+				</animation>
+				<animation type="UnFocus">
+					<effect type="zoom" start="105" end="100" time="120" center="175,210" />
+				</animation>
+				<control type="image">
+					<description>Schatten</description>
+					<width>372</width>
+					<height>224</height>
+					<texture border="8" colordiffuse="ShadowColor">views/shadow8.png</texture>
+				</control>
+				<control type="image">
+					<description>Border</description>
+					<left>8</left>
+					<top>8</top>
+					<width>356</width>
+					<height>208</height>
+					<texture border="4" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
+				</control>
+				<control type="image"><!-- Fallback -->
+					<description>Hintergrund Farbe</description>
+					<left>12</left>
+					<top>12</top>
+					<width>348</width>
+					<height>200</height>
+					<texture colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+				</control>
+				<control type="label">
+					<description>Fallback icon</description>
+					<left>12</left>
+					<top>12</top>
+					<width>348</width>
+					<height>185</height>
+					<align>center</align>
+					<font>Iconyoutubedefault</font>
+					<textcolor>$VAR[CirclesCol]</textcolor>
+					<label>$VAR[ValueWidgetView_FallbackIcon]</label>
+				</control>
+				<control type="image">
+					<description>Art</description>
+					<left>12</left>
+					<top>12</top>
+					<width>348</width>
+					<height>200</height>
+					<texture>$VAR[Art-Widget-Fanart]</texture>
+				</control>
+				<control type="image"><!-- Inaktiv overlay -->
+					<left>12</left>
+					<top>12</top>
+					<width>348</width>
+					<height>200</height>
+					<texture colordiffuse="$VAR[InaktivImageDiffuse]">white.png</texture>
+					<include>Dimmer_Animation</include>
+				</control>
+				<include condition="Skin.HasSetting(EnableVintageOverlay)">WidgetView_vintageoverlay</include>
+			</control>
+			<control type="group"><!-- Info -->
+				<top>238</top>
+				<width>400</width>
+				<control type="label">
+					<width>370</width>
+					<height>30</height>
+					<font>RegularSmall</font>
+					<scroll>true</scroll>
+					<scrollspeed>20</scrollspeed>
+					<label>$VAR[ValueWidgetView_Label]</label>
+				</control>
+				<control type="textbox">
+					<top>33</top>
+					<width>370</width>
+					<height>86</height>
+					<autoscroll>false</autoscroll>
+					<font>RegularSmall</font>
+					<textcolor>TextColorMedium</textcolor>
+					<label>$VAR[ValueWidgetView_Label2]</label>
+				</control>
+			</control>
+			<control type="group"><!-- Rating -->
+				<left>103</left>
+				<top>189</top>
+				<animation type="Focus">
+					<effect type="fade" time="250" end="100" start="0" />
+					<effect type="zoom" time="250" end="100" start="80" center="152,212" />
+				</animation>
+				<animation type="UnFocus">
+					<effect type="fade" time="120" start="100" end="0" />
+					<effect type="zoom" start="100" end="80" time="120" center="152,212" />
+				</animation>
+				<control type="image">
+					<width>149</width>
+					<height>41</height>
+					<texture colordiffuse="$VAR[SecondaryCol]">flagging/rating_bg.png</texture>
+				</control>
+				<control type="label"><!-- -19 -->
+					<top>ratingstars.top</top>
+					<width>130</width>
+					<height>41</height>
+					<label>$VAR[Star-Ratingback-label]</label>
+					<include>Star-Rating-color-layoutback</include>
+				</control>
+				<control type="label">
+					<top>ratingstars.top</top>
+					<width>130</width>
+					<height>41</height>
+					<label>$VAR[Star-Rating-label]</label>
+					<include>Star-Rating-color-layout</include>
+				</control>
+			</control>
+		</focusedlayout>
+			<content target="video">$VAR[ValueWidgetViewContent]</content>
+			<onclick>Dialog.close(1101)</onclick>
+			<onclick condition="!String.IsEmpty(ListItem.TVShowtitle) + String.IsEmpty(ListItem.Duration)">AlarmClock(Delayclick,ActivateWindow(10025,&quot;videodb://tvshows/titles/$INFO[ListItem.DBID]/&quot;),0:01,true)</onclick>
+			<onclick condition="!String.IsEmpty(ListItem.TVShowtitle) + !String.IsEmpty(ListItem.Duration)">AlarmClock(Delayclick,PlayMedia($INFO[ListItem.FilenameAndPath]),0:01,true)</onclick>
+			<onclick condition="String.IsEmpty(ListItem.TVShowtitle) + !String.IsEmpty(ListItem.Duration)">AlarmClock(Delayclick,PlayMedia($INFO[ListItem.Path]),0:01,true)</onclick>
+	</control>
+</control>
+<include>widget.selection</include>
+</controls>
+</window>
+

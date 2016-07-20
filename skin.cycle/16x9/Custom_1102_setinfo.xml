@@ -14,14 +14,14 @@
 <include>global_topbar</include>
 <control type="group"><!-- Hauptseite -->
 	<include>Open_Close_Visible_Hidden_Zoom_Animation</include>
-	<visible>!Window.IsVisible(Custom_1149_Textbox.xml)</visible>
+	<visible>!Window.IsVisible(Custom_1121_Textbox.xml)</visible>
 	<control type="image"><!-- Bar -->
 		<description>Circles Bar</description>
 		<left>-500</left>
 		<top>624</top>
 		<width>3000</width>
 		<height>152</height>
-		<texture colordiffuse="$VAR[circlesCol]">views/info/bar.png</texture>
+		<texture colordiffuse="$VAR[CirclesCol]">views/info/bar.png</texture>
 	</control>
 	<control type="group"><!-- info -->
 		<description>Hauptseite</description>
@@ -34,44 +34,44 @@
 			<height>152</height>
 			<onleft>Dialog.close(1102)</onleft><!-- back -->
 			<onright>Dialog.close(1102)</onright><!-- back -->
-			<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.Title,$ESCVAR[TextBoxTitle],home)</onup><!-- check -->
+			<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.Title,$ESCVAR[TextBoxTitle],home)</onup>
 			<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</onup>
-			<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">ActivateWindow(1149)</onup>
+			<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">ActivateWindow(1121)</onup>
 			<ondown>Dialog.close(1102)</ondown><!-- back -->
-			<oninfo>Dialog.close(1102)</oninfo><!-- back -->
+			<oninfo>Dialog.close(1102)</oninfo><!-- geht nicht back -->
 			<orientation>horizontal</orientation>
 			<focusposition>1</focusposition>
 			<scrolltime tween="sine" easing="out">200</scrolltime>
-			<itemlayout height="152" width="222">
+			<itemlayout width="222" height="152">
 				<control type="image">
 					<width>192</width>
 					<height>152</height>
-					<texture colordiffuse="$VAR[circlesColInner]">rings/inner-ring.png</texture>
+					<texture colordiffuse="$VAR[CirclesColInner]">rings/inner-ring.png</texture>
 				</control>
 				<control type="image">
 					<width>192</width>
 					<height>152</height>
-					<texture colordiffuse="$VAR[circlesCol]">rings/outer-ring.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">rings/outer-ring.png</texture>
 				</control>
 				<include>CircleInfoIcon</include>
 			</itemlayout>
-			<focusedlayout height="152" width="222">
+			<focusedlayout width="222" height="152">
 				<control type="image">
 					<width>192</width>
 					<height>152</height>
-					<texture colordiffuse="$VAR[secondaryCol]">rings/inner-ring.png</texture>
+					<texture colordiffuse="$VAR[SecondaryCol]">rings/inner-ring.png</texture>
 					<visible>Control.HasFocus(9000)</visible>
 				</control>
 				<control type="image">
 					<width>192</width>
 					<height>152</height>
-					<texture colordiffuse="$VAR[circlesColInner]">rings/inner-ring.png</texture>
+					<texture colordiffuse="$VAR[CirclesColInner]">rings/inner-ring.png</texture>
 					<visible>!Control.HasFocus(9000)</visible>
 				</control>
 				<control type="image">
 					<width>192</width>
 					<height>152</height>
-					<texture colordiffuse="$VAR[circlesCol]">rings/outer-ring.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">rings/outer-ring.png</texture>
 				</control>
 				<include>CircleInfoIcon</include>
 			</focusedlayout>
@@ -103,13 +103,13 @@
 				<top>-5</top>
 				<width>582</width>
 				<height>851</height>
-				<texture border="8" colordiffuse="$VAR[circlesCol]">views/white8.png</texture>
+				<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
 			</control>
 			<control type="image"><!-- fallback -->
 				<description>Hintergrund Farbe</description>
 				<width>572</width>
 				<height>841</height>
-				<texture colordiffuse="$VAR[primaryCol]" background="true">White.png</texture>
+				<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
 			</control>
 			<control type="label">
 				<description>Fallback icon</description>
@@ -117,7 +117,7 @@
 				<height>641</height>
 				<align>center</align>
 				<font>IconInfoposterdefault</font>
-				<textcolor>$VAR[circlesCol]</textcolor>
+				<textcolor>$VAR[CirclesCol]</textcolor>
 				<label>$VAR[viewtypefallbacks]</label>
 			</control>
 			<control type="image"><!-- einzelnes cover fallback falls content leer -->
@@ -144,7 +144,7 @@
 				<pauseatend>0</pauseatend>
 				<scrollout>true</scrollout>
 				<scrollspeed>60</scrollspeed>
-				<colordiffuse>00FFFFFF</colordiffuse>
+				<textcolor>ACDIF_0</textcolor>
 				<label>$INFO[Container(400).ListItem.Icon]</label>
 				<label>$INFO[Container(400).ListItem(1).Icon]</label>
 				<label>$INFO[Container(400).ListItem(2).Icon]</label>
@@ -160,7 +160,7 @@
 			<include content="texture_vintageoverlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
 				<param name="width">572</param>
 				<param name="height">841</param>
-				<param name="texture">views/oldpaperOverlay2.png</param>
+				<param name="texture">views/oldpaperoverlay2.png</param>
 			</include>
 		</control>
 		<control type="group">
@@ -170,32 +170,32 @@
 			<control type="image">
 				<width>70</width>
 				<height>125</height>
-				<texture colordiffuse="$VAR[circlesCol]">circles/Posterinfoleft.png</texture>
+				<texture colordiffuse="$VAR[CirclesCol]">circles/posterinfoleft.png</texture>
 			</control>
 			<control type="group">
-				<description>Circle 1 Dauer</description>
+				<description>Circle 1 dauer</description>
 				<left>70</left>
 				<control type="image">
 					<width>175</width>
 					<height>125</height>
-					<texture>circles/CircleDurationin.png</texture>
+					<texture colordiffuse="TextColorLight">circles/circleinbg.png</texture>
 					<include>CircleFlagsinnerDiffuse</include>
 				</control>
 				<control type="image">
 					<width>50</width>
 					<height>125</height>
-					<texture colordiffuse="$VAR[circlesCol]">circles/Circledivider50.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">circles/circledivider50.png</texture>
 				</control>
 				<control type="image">
 					<width>175</width>
 					<height>125</height>
-					<texture colordiffuse="$VAR[circlesCol]">circles/CircleDurationout.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">circles/circledurationout.png</texture>
 				</control>
 				<control type="image">
 					<left>125</left>
 					<width>50</width>
 					<height>125</height>
-					<texture colordiffuse="$VAR[circlesCol]">circles/Circledivider50.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">circles/circledivider50.png</texture>
 				</control>
 				<control type="label">
 					<top>5</top>
@@ -203,7 +203,7 @@
 					<height>125</height>
 					<align>center</align>
 					<font>VideoinfoCircle</font>
-					<textcolor>$VAR[circlesCol]</textcolor>
+					<textcolor>$VAR[CirclesCol]</textcolor>
 					<label fallback="NA">$INFO[Window(home).Property(Set.Movies.Runtime)]</label>
 				</control>
 			</control>
@@ -211,28 +211,32 @@
 				<description>Circle 2 rating</description>
 				<left>245</left>
 				<control type="image">
-					<left>-5</left>
-					<top>-5</top>
-					<width>180</width>
-					<height>130</height>
-					<texture>circles/CircleRatingin.png</texture>
+					<width>175</width>
+					<height>125</height>
+					<texture colordiffuse="TextColorLight">circles/circleinbg.png</texture>
+					<include>CircleFlagsinnerDiffuse</include>
+				</control>
+				<control type="image">
+					<width>175</width>
+					<height>125</height>
+					<texture colordiffuse="TextColorLight">circles/circleratingin.png</texture>
 					<include>CircleFlagsinnerDiffuse</include>
 				</control>
 				<control type="image">
 					<width>50</width>
 					<height>125</height>
-					<texture colordiffuse="$VAR[circlesCol]">circles/Circledivider50.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">circles/circledivider50.png</texture>
 				</control>
 				<control type="image">
 					<width>175</width>
 					<height>125</height>
-					<texture colordiffuse="$VAR[circlesCol]">circles/CircleRatingout.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">circles/circleratingout.png</texture>
 				</control>
 				<control type="image">
 					<left>125</left>
 					<width>50</width>
 					<height>125</height>
-					<texture colordiffuse="$VAR[circlesCol]">circles/Circledivider50.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">circles/circledivider50.png</texture>
 				</control>
 				<control type="label">
 					<top>5</top>
@@ -240,7 +244,7 @@
 					<height>125</height>
 					<align>center</align>
 					<font>VideoinfoCircle</font>
-					<textcolor>$VAR[circlesCol]</textcolor>
+					<textcolor>$VAR[CirclesCol]</textcolor>
 					<label fallback="NA">$VAR[FlagLabel-Rating]</label>
 				</control>
 			</control>
@@ -250,24 +254,30 @@
 				<control type="image">
 					<width>175</width>
 					<height>125</height>
-					<texture>circles/CircleEpisodeIn.png</texture>
+					<texture colordiffuse="TextColorLight">circles/circleinbg.png</texture>
+					<include>CircleFlagsinnerDiffuse</include>
+				</control>
+				<control type="image">
+					<width>175</width>
+					<height>125</height>
+					<texture colordiffuse="TextColorLight">circles/circleepisodein.png</texture>
 					<include>CircleFlagsinnerDiffuse</include>
 				</control>
 				<control type="image">
 					<width>50</width>
 					<height>125</height>
-					<texture colordiffuse="$VAR[circlesCol]">circles/Circledivider50.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">circles/circledivider50.png</texture>
 				</control>
 				<control type="image">
 					<width>175</width>
 					<height>125</height>
-					<texture colordiffuse="$VAR[circlesCol]">circles/CircleEpisodeOut.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">circles/circleepisodeout.png</texture>
 				</control>
 				<control type="image">
 					<left>125</left>
 					<width>50</width>
 					<height>125</height>
-					<texture colordiffuse="$VAR[circlesCol]">circles/Circledivider50.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">circles/circledivider50.png</texture>
 				</control>
 				<control type="label">
 					<top>5</top>
@@ -275,7 +285,7 @@
 					<height>125</height>
 					<align>center</align>
 					<font>VideoinfoCircle</font>
-					<textcolor>$VAR[circlesCol]</textcolor>
+					<textcolor>$VAR[CirclesCol]</textcolor>
 					<label>$INFO[Container(400).NumItems]</label>
 				</control>
 			</control>
@@ -283,7 +293,7 @@
 				<left>561</left>
 				<width>70</width>
 				<height>125</height>
-				<texture colordiffuse="$VAR[circlesCol]">circles/Posterinforight.png</texture>
+				<texture colordiffuse="$VAR[CirclesCol]">circles/posterinforight.png</texture>
 			</control>
 		</control>
 		<control type="group">
@@ -301,8 +311,8 @@
 			<control type="textbox" id="9005">
 				<top>96</top>
 				<width>850</width>
-				<height max="228">auto</height>
-				<autoscroll time="5000" delay="8000" repeat="5000">false</autoscroll>
+				<height max="222">auto</height>
+				<autoscroll>false</autoscroll>
 				<font>Plot</font>
 				<label fallback="Kein Überblick gefunden">$INFO[Window(home).Property(Set.Movies.Plot)]</label>
 			</control>
@@ -323,7 +333,7 @@
 				<label>$LOCALIZE[20417]</label>
 			</control>
 			<control type="label">
-				<include>info_details_label</include>s
+				<include>info_details_label</include>
 				<label fallback="nicht verfügbar">$INFO[Window(home).Property(Set.Movies.Writer)]</label>
 			</control>
 		</control>
@@ -355,7 +365,7 @@
 	</control>
 </control>
 <control type="group"><!-- plotzoom logo fade aus container -->
-	<visible>Window.IsVisible(Custom_1149_Textbox.xml)</visible><!-- check -->
+	<visible>Window.IsVisible(Custom_1121_Textbox.xml)</visible>
 	<include>Open_Close_Visible_Hidden_Fade_Animation</include>
 	<control type="fadelabel" id="55178">
 		<description>Hidden logo slideshow pfade</description>
@@ -365,7 +375,7 @@
 		<pauseatend>0</pauseatend>
 		<scrollout>true</scrollout>
 		<scrollspeed>60</scrollspeed>
-		<colordiffuse>00FFFFFF</colordiffuse>
+		<textcolor>ACDIF_0</textcolor>
 		<label>$INFO[Container(400).ListItem.Art(clearlogo)]</label>
 		<label>$INFO[Container(400).ListItem(1).Art(clearlogo)]</label>
 		<label>$INFO[Container(400).ListItem(2).Art(clearlogo)]</label>
@@ -380,7 +390,7 @@
 	</control>
 	<control type="image">
 		<description>Art logo</description>
-		<include>Textzoom_Art_Logo</include>
+		<include>TextBoxArtLogo</include>
 		<texture background="true">$INFO[Control.GetLabel(55178)]</texture>
 	</control>
 </control>

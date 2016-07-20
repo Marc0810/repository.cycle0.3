@@ -12,25 +12,25 @@
 		<description>Pointer Image</description>
 		<width>30</width>
 		<height>30</height>
-		<texture colordiffuse="InversColor">pointer/PointerNF.png</texture>
+		<texture colordiffuse="InversColor">pointer/pointernf.png</texture>
 	</control>
 	<control type="image" id="2">
 		<description>Pointer Focus Image</description>
 		<width>30</width>
 		<height>30</height>
-		<texture colordiffuse="InversColor">pointer/PointerFO.png</texture>
+		<texture colordiffuse="InversColor">pointer/pointerfo.png</texture>
 	</control>
 	<control type="image" id="3">
 		<description>Pointer Drag Image</description>
 		<width>30</width>
 		<height>30</height>
-		<texture colordiffuse="InversColor">pointer/PointerDrag.png</texture>
+		<texture colordiffuse="InversColor">pointer/pointerdrag.png</texture>
 	</control>
 	<control type="image" id="4">
 		<description>Pointer Click Image</description>
 		<width>30</width>
 		<height>30</height>
-		<texture colordiffuse="InversColor">pointer/PointerClick.png</texture>
+		<texture colordiffuse="InversColor">pointer/pointerclick.png</texture>
 	</control>
 </controls>
 </window>

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 <!-- Cycle 0.3 -->
-<onload>Skin.reset(SelectDialog)</onload>
 <defaultcontrol>1000</defaultcontrol>
-<onunload>ClearProperty(DialogContextSelect,503)</onunload><!-- check musiccontext immer leeren beim schließen OK? -->
 <controls>
-<include condition="!String.IsEmpty(Window(503).Property(DialogContextSelect))">DialogContextMPL</include>
-<include condition="String.IsEmpty(Window(503).Property(DialogContextSelect))">DialogContextStandard</include>
+	<include condition="!String.IsEmpty(Window(home).Property(DialogContextSelect))">DialogContextMPL</include>
+	<include condition="String.IsEmpty(Window(home).Property(DialogContextSelect))">DialogContextStandard</include>
 </controls>
 </window>

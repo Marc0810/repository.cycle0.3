@@ -26,7 +26,7 @@
 			<width>700</width>
 			<wrapmultiline>false</wrapmultiline>
 			<include>info_details_label</include>
-			<label fallback="nicht verfügbar">$INFO[Container(655).ListItem.Season,Staffel , ]$VAR[CustomEnumeration]$INFO[Container(655).ListItem.Episode,Episode ,]</label>
+			<label fallback="nicht verfügbar">$INFO[Container(655).ListItem.Season,Staffel , ] $INFO[Container(655).ListItem.Episode,Episode ,]</label>
 		</control>
 		<control type="label">
 			<top>130</top>
@@ -53,13 +53,13 @@
 				<top>320</top>
 				<width>700</width>
 				<include>info_details_label</include>
-				<label>[COLOR=$VAR[primaryCol]]In dieser Episode[/COLOR]</label>
+				<label>[COLOR=$VAR[PrimaryCol]]In dieser Episode[/COLOR]</label>
 				<visible>Skin.HasSetting(EnableVintageOverlay)</visible>
 			</control>
 			<control type="textbox">
 				<top>380</top>
 				<width>700</width>
-				<height max="228">auto</height>
+				<height max="222">auto</height>
 				<font>Plot</font>
 				<autoscroll time="5000" delay="8000" repeat="5000">true</autoscroll>
 				<label fallback="Kein Überblick gefunden">$INFO[Container(655).ListItem.Plot]</label>
@@ -70,7 +70,7 @@
 				<wrapmultiline>false</wrapmultiline>
 				<textcolor>TextColorMedium</textcolor>
 				<include>info_details_label</include>
-				<label>$VAR[CustomEnumeration]Verfügbar</label>
+				<label>Verfügbar</label>
 			</control>
 			<control type="label">
 				<top>702</top>
@@ -78,7 +78,7 @@
 				<wrapmultiline>false</wrapmultiline>
 				<textcolor>TextColorMedium</textcolor>
 				<include>info_details_label</include>
-				<label>$VAR[CustomEnumeration]Gesehen</label>
+				<label>Gesehen</label>
 			</control>
 			<control type="label">
 				<top>752</top>
@@ -86,13 +86,13 @@
 				<wrapmultiline>false</wrapmultiline>
 				<textcolor>TextColorMedium</textcolor>
 				<include>info_details_label</include>
-				<label>$VAR[CustomEnumeration]Übergangen</label>
+				<label>Übergangen</label>
 			</control>
 			<control type="label">
 				<left>280</left>
 				<top>652</top>
 				<wrapmultiline>false</wrapmultiline>
-				<textcolor>$VAR[primaryCol]</textcolor>
+				<textcolor>$VAR[PrimaryCol]</textcolor>
 				<include>info_details_label</include>
 				<label fallback="nicht verfügbar">$INFO[Container(655).ListItem.Property(numondeck)]</label>
 			</control>
@@ -100,7 +100,7 @@
 				<left>280</left>
 				<top>702</top>
 				<wrapmultiline>false</wrapmultiline>
-				<textcolor>$VAR[primaryCol]</textcolor>
+				<textcolor>$VAR[PrimaryCol]</textcolor>
 				<include>info_details_label</include>
 				<label fallback="nicht verfügbar">$INFO[Container(655).ListItem.Property(numwatched)]</label>
 			</control>
@@ -108,7 +108,7 @@
 				<left>280</left>
 				<top>752</top>
 				<wrapmultiline>false</wrapmultiline>
-				<textcolor>$VAR[primaryCol]</textcolor>
+				<textcolor>$VAR[PrimaryCol]</textcolor>
 				<include>info_details_label</include>
 				<label fallback="nicht verfügbar">$INFO[Container(655).ListItem.Property(numskipped)]</label>
 			</control>
@@ -127,8 +127,6 @@
 		<ondown>655</ondown>
 		<pagecontrol>60</pagecontrol>
 		<viewtype label="Big Panel">Big Panel</viewtype>
-		<include>Visible_Hidden_Fade_Animation</include>
-		<orientation>vertical</orientation>
 		<itemlayout width="180" height="280">
 			<control type="group">
 				<left>33</left>
@@ -147,20 +145,20 @@
 					<top>-4</top>
 					<width>158</width>
 					<height>228</height>
-					<texture border="8" colordiffuse="$VAR[circlesCol]">views/white8.png</texture>
+					<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
 				</control>
 				<control type="image"><!-- Fallback -->
 					<description>Hintergrund Farbe</description>
 					<width>150</width>
 					<height>220</height>
-					<texture colordiffuse="$VAR[primaryCol]">White.png</texture>
+					<texture colordiffuse="$VAR[PrimaryCol]">white.png</texture>
 				</control>
 				<control type="label">
 					<description>Fallback icon</description>
 					<width>150</width>
 					<height>220</height>
 					<align>center</align>
-					<textcolor>$VAR[circlesCol]</textcolor>
+					<textcolor>$VAR[CirclesCol]</textcolor>
 					<font>IconEpisodedefault</font>
 					<label>D</label>
 				</control>
@@ -173,7 +171,7 @@
 				<control type="image"><!-- Inaktiv overlay -->
 					<width>150</width>
 					<height>220</height>
-					<texture colordiffuse="$VAR[InaktivImageDiffuse]">White.png</texture>
+					<texture colordiffuse="$VAR[InaktivImageDiffuse]">white.png</texture>
 				</control>
 			</control>
 		</itemlayout>
@@ -197,13 +195,13 @@
 					<top>-4</top>
 					<width>158</width>
 					<height>228</height>
-					<texture border="8" colordiffuse="$VAR[circlesCol]">views/white8.png</texture>
+					<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
 				</control>
 				<control type="image"><!-- Fallback -->
 					<description>Hintergrund Farbe</description>
 					<width>150</width>
 					<height>220</height>
-					<texture colordiffuse="$VAR[primaryCol]">White.png</texture>
+					<texture colordiffuse="$VAR[PrimaryCol]">white.png</texture>
 				</control>
 				<control type="label">
 					<description>Fallback icon</description>
@@ -211,7 +209,7 @@
 					<height>220</height>
 					<align>center</align>
 					<font>IconEpisodedefault</font>
-					<textcolor>$VAR[circlesCol]</textcolor>
+					<textcolor>$VAR[CirclesCol]</textcolor>
 					<label>D</label>
 				</control>
 				<control type="image"><!-- Art -->
@@ -223,7 +221,7 @@
 				<control type="image"><!-- Inaktiv overlay -->
 					<width>150</width>
 					<height>220</height>
-					<texture colordiffuse="$VAR[InaktivImageDiffuse]">White.png</texture>
+					<texture colordiffuse="$VAR[InaktivImageDiffuse]">white.png</texture>
 					<include>Dimmer_Animation</include>
 				</control>
 			</control>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<!-- ######################### -->
-	<!--flags
+	<!-- flags
 	############################## -->
 	<include name="FlagLabel_layout">
 		<height>70</height>
@@ -16,14 +16,14 @@
 		<value condition="String.Contains(listitem.mpaa,12)">12</value>
 		<value condition="String.Contains(listitem.mpaa,6)">6</value>
 		<value condition="String.Contains(listitem.mpaa,NR) | String.Contains(ListItem.Mpaa,Germany:o.Al.) | String.Contains(ListItem.Mpaa,0) | String.Contains(ListItem.Mpaa,o.A.)">NR</value>
-		<value condition="String.Contains(listitem.mpaa,TV-Y)">0</value>
+		<value condition="String.Contains(listitem.mpaa,TV-Y) | String.Contains(listitem.mpaa,TV-G)">0</value>
 		<value condition="String.Contains(listitem.mpaa,TV-PG)">12</value>
 		<value condition="String.Contains(listitem.mpaa,TV-14)">16</value>
 		<value condition="String.Contains(listitem.mpaa,TV-MA) | String.Contains(listitem.mpaa,TV-18) | String.Contains(listitem.mpaa,18)">18</value>
 		<value condition="String.Contains(listitem.mpaa,TV-Y7) | String.Contains(listitem.mpaa,6)">6</value>
 		<value condition="String.Contains(listitem.mpaa,NR) | String.Contains(listitem.mpaa,Rated NR) | String.Contains(listitem.mpaa,USA:NR)|String.Contains(listitem.mpaa,not rated)">NR</value>
-		<value condition="[String.Contains(listitem.mpaa,PG) | String.Contains(listitem.mpaa,Rated PG) | String.Contains(listitem.mpaa,USA:PG)] + !String.Contains(listitem.mpaa,PG-13)">6</value>
 		<value condition="String.Contains(listitem.mpaa,PG-13) | String.Contains(listitem.mpaa,Rated PG-13) | String.Contains(listitem.mpaa,USA:PG-13)">12</value>
+		<value condition="String.Contains(listitem.mpaa,PG) | String.Contains(listitem.mpaa,Rated PG) | String.Contains(listitem.mpaa,USA:PG)">6</value>
 		<value condition="String.Contains(listitem.mpaa,R) | String.Contains(listitem.mpaa,Rated R) | String.Contains(listitem.mpaa,USA:R)">16</value>
 		<value condition="String.Contains(listitem.mpaa,NC-17) | String.Contains(listitem.mpaa,Rated NC-17) | String.Contains(listitem.mpaa,USA:NC-17)">18</value>
 		<value condition="String.Contains(listitem.mpaa,G) | String.Contains(listitem.mpaa,Rated G) | String.Contains(listitem.mpaa,USA:G)">0</value>
@@ -35,14 +35,14 @@
 		<value condition="String.Contains(Container(400).listitem.mpaa,12)">12</value>
 		<value condition="String.Contains(Container(400).listitem.mpaa,6)">6</value>
 		<value condition="String.Contains(Container(400).listitem.mpaa,NR) | String.Contains(Container(400).listitem.Mpaa,Germany:o.Al.) | String.Contains(Container(400).listitem.Mpaa,0) | String.Contains(Container(400).listitem.Mpaa,o.A.)">NR</value>
-		<value condition="String.Contains(Container(400).listitem.mpaa,TV-Y)">0</value>
+		<value condition="String.Contains(Container(400).listitem.mpaa,TV-Y) | String.Contains(Container(400).listitem.mpaa,TV-G)">0</value>
 		<value condition="String.Contains(Container(400).listitem.mpaa,TV-PG)">12</value>
 		<value condition="String.Contains(Container(400).listitem.mpaa,TV-14)">16</value>
 		<value condition="String.Contains(Container(400).listitem.mpaa,TV-MA) | String.Contains(Container(400).listitem.mpaa,TV-18) | String.Contains(Container(400).listitem.mpaa,18)">18</value>
 		<value condition="String.Contains(Container(400).listitem.mpaa,TV-Y7) | String.Contains(Container(400).listitem.mpaa,6)">6</value>
 		<value condition="String.Contains(Container(400).listitem.mpaa,NR) | String.Contains(Container(400).listitem.mpaa,Rated NR) | String.Contains(Container(400).listitem.mpaa,USA:NR)|String.Contains(Container(400).listitem.mpaa,not rated)">NR</value>
-		<value condition="[String.Contains(Container(400).listitem.mpaa,PG) | String.Contains(Container(400).listitem.mpaa,Rated PG) | String.Contains(Container(400).listitem.mpaa,USA:PG)] + !String.Contains(Container(400).listitem.mpaa,PG-13)">6</value>
 		<value condition="String.Contains(Container(400).listitem.mpaa,PG-13) | String.Contains(Container(400).listitem.mpaa,Rated PG-13) | String.Contains(Container(400).listitem.mpaa,USA:PG-13)">12</value>
+		<value condition="String.Contains(Container(400).listitem.mpaa,PG) | String.Contains(Container(400).listitem.mpaa,Rated PG) | String.Contains(Container(400).listitem.mpaa,USA:PG)">6</value>
 		<value condition="String.Contains(Container(400).listitem.mpaa,R) | String.Contains(Container(400).listitem.mpaa,Rated R) | String.Contains(Container(400).listitem.mpaa,USA:R)">16</value>
 		<value condition="String.Contains(Container(400).listitem.mpaa,NC-17) | String.Contains(Container(400).listitem.mpaa,Rated NC-17) | String.Contains(Container(400).listitem.mpaa,USA:NC-17)">18</value>
 		<value condition="String.Contains(Container(400).listitem.mpaa,G) | String.Contains(Container(400).listitem.mpaa,Rated G) | String.Contains(Container(400).listitem.mpaa,USA:G)">0</value>
@@ -54,14 +54,14 @@
 		<value condition="String.Contains(VideoPlayer.mpaa,12)">12</value>
 		<value condition="String.Contains(VideoPlayer.mpaa,6)">6</value>
 		<value condition="String.Contains(VideoPlayer.mpaa,NR) | String.Contains(VideoPlayer.Mpaa,Germany:o.Al.) | String.Contains(VideoPlayer.Mpaa,0) | String.Contains(VideoPlayer.Mpaa,o.A.)">NR</value>
-		<value condition="String.Contains(VideoPlayer.mpaa,TV-Y)">0</value>
+		<value condition="String.Contains(VideoPlayer.mpaa,TV-Y) | String.Contains(VideoPlayer.mpaa,TV-G)">0</value>
 		<value condition="String.Contains(VideoPlayer.mpaa,TV-PG)">12</value>
 		<value condition="String.Contains(VideoPlayer.mpaa,TV-14)">16</value>
 		<value condition="String.Contains(VideoPlayer.mpaa,TV-MA) | String.Contains(VideoPlayer.mpaa,TV-18) | String.Contains(VideoPlayer.mpaa,18)">18</value>
 		<value condition="String.Contains(VideoPlayer.mpaa,TV-Y7) | String.Contains(VideoPlayer.mpaa,6)">6</value>
 		<value condition="String.Contains(VideoPlayer.mpaa,NR) | String.Contains(VideoPlayer.mpaa,Rated NR) | String.Contains(VideoPlayer.mpaa,USA:NR)|String.Contains(VideoPlayer.mpaa,not rated)">NR</value>
-		<value condition="[String.Contains(VideoPlayer.mpaa,PG) | String.Contains(VideoPlayer.mpaa,Rated PG) | String.Contains(VideoPlayer.mpaa,USA:PG)] + !String.Contains(VideoPlayer.mpaa,PG-13)">6</value>
 		<value condition="String.Contains(VideoPlayer.mpaa,PG-13) | String.Contains(VideoPlayer.mpaa,Rated PG-13) | String.Contains(VideoPlayer.mpaa,USA:PG-13)">12</value>
+		<value condition="String.Contains(VideoPlayer.mpaa,PG) | String.Contains(VideoPlayer.mpaa,Rated PG) | String.Contains(VideoPlayer.mpaa,USA:PG)">6</value>
 		<value condition="String.Contains(VideoPlayer.mpaa,R) | String.Contains(VideoPlayer.mpaa,Rated R) | String.Contains(VideoPlayer.mpaa,USA:R)">16</value>
 		<value condition="String.Contains(VideoPlayer.mpaa,NC-17) | String.Contains(VideoPlayer.mpaa,Rated NC-17) | String.Contains(VideoPlayer.mpaa,USA:NC-17)">18</value>
 		<value condition="String.Contains(VideoPlayer.mpaa,G) | String.Contains(VideoPlayer.mpaa,Rated G) | String.Contains(VideoPlayer.mpaa,USA:G)">0</value>
@@ -73,15 +73,15 @@
 	<!-- star rating icons -->
 	<variable name="Star-Ratingback-label">
 		<value condition="!String.IsEmpty(ListItem.UserRating)">ý</value>
-		<value condition="String.IsEmpty(ListItem.UserRating)">Ò</value>
+		<value>Ò</value>
 	</variable>
 	<variable name="Widget-Ratingback-label">
 		<value condition="!String.IsEmpty(Container(400).ListItem.UserRating)">ý</value>
-		<value condition="String.IsEmpty(Container(400).ListItem.UserRating)">Ò</value>
+		<value>Ò</value>
 	</variable>
 	<variable name="Player-Star-Ratingback-label">
 		<value condition="!String.IsEmpty(MusicPlayer.UserRating)">ý</value>
-		<value condition="String.IsEmpty(MusicPlayer.UserRating)">Ò</value>
+		<value>Ò</value>
 	</variable>
 	<variable name="Star-Rating-label">
 		<value condition="!String.IsEmpty(ListItem.UserRating) + String.Contains(ListItem.UserRating,10)">ó</value>
@@ -154,36 +154,36 @@
 	
 	<!-- Rating labels -->
 	<variable name="FlagLabel-Rating"><!-- Rating -->
-		<value condition="String.IsEmpty(ListItem.Rating)">0.0</value>
+		<value condition="!String.IsEmpty(ListItem.Rating) + !Integer.IsGreaterOrEqual(ListItem.Rating,10)">$INFO[ListItem.Rating]</value>
 		<value condition="Integer.IsGreaterOrEqual(ListItem.Rating,10)">10</value>
-		<value condition="!Integer.IsGreaterOrEqual(ListItem.Rating,10)">$INFO[ListItem.Rating]</value>
+		<value>0.0</value>
 	</variable>
 	<variable name="FlagLabel-UserRating">
 		<value condition="String.IsEmpty(ListItem.UserRating)">0</value>
 		<value>$INFO[ListItem.UserRating]</value>
 	</variable>
 	<variable name="FlagLabel-Wigdet-Rating">
-		<value condition="String.IsEmpty(Container(400).ListItem.Rating)">0.0</value>
+		<value condition="!String.IsEmpty(Container(400).ListItem.Rating) + !Integer.IsGreaterOrEqual(Container(400).ListItem.Rating,10)">$INFO[ListItem.Rating]</value>
 		<value condition="Integer.IsGreaterOrEqual(Container(400).ListItem.Rating,10)">10</value>
-		<value condition="!Integer.IsGreaterOrEqual(Container(400).ListItem.Rating,10)">$INFO[Container(400).ListItem.Rating]</value>
+		<value>0.0</value>
 	</variable>
 	<variable name="FlagLabel-Wigdet-UserRating">
-		<value condition="String.IsEmpty(Container(400).ListItem.UserRating)">0.0</value>
-		<value>$INFO[Container(400).ListItem.UserRating]</value>
+		<value condition="!String.IsEmpty(Container(400).ListItem.UserRating)">$INFO[Container(400).ListItem.UserRating]</value>
+		<value>0.0</value>
 	</variable>
 	<variable name="FlagLabel-Player-Rating">
-		<value condition="String.IsEmpty(VideoPlayer.Rating)">0.0</value>
+		<value condition="!String.IsEmpty(VideoPlayer.Rating) + !Integer.IsGreaterOrEqual(VideoPlayer.Rating,10)">$INFO[VideoPlayer.Rating]</value>
 		<value condition="Integer.IsGreaterOrEqual(VideoPlayer.Rating,10)">10</value>
-		<value condition="!Integer.IsGreaterOrEqual(VideoPlayer.Rating,10)">$INFO[VideoPlayer.Rating]</value>
+		<value>0.0</value>
 	</variable>
 	<variable name="FlagLabel-Player-UserRating">
-		<value condition="String.IsEmpty(VideoPlayer.Userrating)">0.0</value>
-		<value>$INFO[VideoPlayer.Userrating]</value>
+		<value condition="!String.IsEmpty(VideoPlayer.Userrating)">$INFO[VideoPlayer.Userrating]</value>
+		<value>0.0</value>
 	</variable>
 	<include name="Star-Rating-color-layoutback">
 		<align>center</align>
-		<textcolor>$VAR[primaryCol]</textcolor>
-		<selectedcolor>$VAR[primaryCol]</selectedcolor><!-- default ueberschreibung -->
+		<textcolor>$VAR[PrimaryCol]</textcolor>
+		<selectedcolor>$VAR[PrimaryCol]</selectedcolor><!-- default ueberschreibung -->
 		<font>Rating</font>
 	</include>
 	<include name="Star-Rating-color-layout">
@@ -207,7 +207,7 @@
 				<control type="label">
 					<description>Resolution icon</description>
 					<font>IconBig</font>
-					<textcolor>$VAR[primaryCol]</textcolor>
+					<textcolor>$VAR[PrimaryCol]</textcolor>
 					<include>FlagLabel_layout</include>
 					<label>E</label>
 				</control>
@@ -219,7 +219,7 @@
 				<control type="label">
 					<description>Video codec icon</description>
 					<font>IconBig</font>
-					<textcolor>$VAR[primaryCol]</textcolor>
+					<textcolor>$VAR[PrimaryCol]</textcolor>
 					<include>FlagLabel_layout</include>
 					<label>é</label>
 				</control>
@@ -231,7 +231,7 @@
 				<control type="label">
 					<description>Aspect ratio icon</description>
 					<font>IconBig</font>
-					<textcolor>$VAR[primaryCol]</textcolor>
+					<textcolor>$VAR[PrimaryCol]</textcolor>
 					<include>FlagLabel_layout</include>
 					<label>ê</label>
 				</control>
@@ -241,15 +241,16 @@
 					<label fallback="NA">$INFO[ListItem.VideoAspect]</label>
 				</control>
 				<control type="label">
-					<description>Divider</description>
+					<description>Enum</description>
 					<width>auto</width>
+					<font>EnumBoldBreadcumb</font><!-- include ueberschreibung font -->
 					<include>FlagLabel_layout</include>
 					<label>$VAR[CustomEnumeration]</label>
 				</control>
 				<control type="label">
 					<description>Audio codec icon</description>
 					<font>IconBig</font>
-					<textcolor>$VAR[primaryCol]</textcolor>
+					<textcolor>$VAR[PrimaryCol]</textcolor>
 					<include>FlagLabel_layout</include>
 					<label>ì</label>
 				</control>
@@ -261,7 +262,7 @@
 				<control type="label">
 					<description>Audio channels icon</description>
 					<font>IconBig</font>
-					<textcolor>$VAR[primaryCol]</textcolor>
+					<textcolor>$VAR[PrimaryCol]</textcolor>
 					<include>FlagLabel_layout</include>
 					<label>ë</label>
 				</control>
@@ -281,51 +282,51 @@
 		<value condition="!Window.IsVisible(1198)">special://skin/playlists/Episode_Zuletzt_gesehene.xsp</value>
 	</variable>
 	
-	<variable name="viewglobal_video_lastwatchedflags">
-		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode0TvShow))">flagging/lastwatched80_last.png</value>
-		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode1TvShow))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode2TvShow))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode3TvShow))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode4TvShow))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode5TvShow))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode6TvShow))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode7TvShow))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode8TvShow))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode9TvShow))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode10TvShow))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode11TvShow))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode12TvShow))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode13TvShow))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode14TvShow))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode15TvShow))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode16TvShow))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode17TvShow))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode18TvShow))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode19TvShow))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode20TvShow))">flagging/lastwatched80.png</value>
+	<variable name="LastwatchedShows">
+		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode0TvShow))">Ŗ</value>
+		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode1TvShow))">ŕ</value>
+		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode2TvShow))">ŕ</value>
+		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode3TvShow))">ŕ</value>
+		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode4TvShow))">ŕ</value>
+		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode5TvShow))">ŕ</value>
+		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode6TvShow))">ŕ</value>
+		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode7TvShow))">ŕ</value>
+		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode8TvShow))">ŕ</value>
+		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode9TvShow))">ŕ</value>
+		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode10TvShow))">ŕ</value>
+		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode11TvShow))">ŕ</value>
+		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode12TvShow))">ŕ</value>
+		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode13TvShow))">ŕ</value>
+		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode14TvShow))">ŕ</value>
+		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode15TvShow))">ŕ</value>
+		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode16TvShow))">ŕ</value>
+		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode17TvShow))">ŕ</value>
+		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode18TvShow))">ŕ</value>
+		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode19TvShow))">ŕ</value>
+		<value condition="Container.Content(tvshows) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode20TvShow))">ŕ</value>
 		
-		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode0TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode0Season))">flagging/lastwatched80_last.png</value>
-		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode1TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode1Season))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode2TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode2Season))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode3TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode3Season))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode4TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode4Season))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode5TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode5Season))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode6TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode6Season))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode7TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode7Season))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode8TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode8Season))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode9TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode9Season))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode10TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode10Season))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode11TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode11Season))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode12TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode12Season))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode13TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode13Season))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode14TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode14Season))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode15TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode15Season))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode16TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode16Season))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode17TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode17Season))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode18TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode18Season))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode19TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode19Season))">flagging/lastwatched80.png</value>
-		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode20TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode20Season))">flagging/lastwatched80.png</value>
-		<value>noop</value><!--Ablauf Filme? andere VAR mit aufnehemen? -->
+		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode0TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode0Season))">Ŗ</value>
+		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode1TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode1Season))">ŕ</value>
+		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode2TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode2Season))">ŕ</value>
+		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode3TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode3Season))">ŕ</value>
+		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode4TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode4Season))">ŕ</value>
+		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode5TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode5Season))">ŕ</value>
+		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode6TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode6Season))">ŕ</value>
+		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode7TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode7Season))">ŕ</value>
+		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode8TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode8Season))">ŕ</value>
+		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode9TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode9Season))">ŕ</value>
+		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode10TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode10Season))">ŕ</value>
+		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode11TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode11Season))">ŕ</value>
+		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode12TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode12Season))">ŕ</value>
+		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode13TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode13Season))">ŕ</value>
+		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode14TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode14Season))">ŕ</value>
+		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode15TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode15Season))">ŕ</value>
+		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode16TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode16Season))">ŕ</value>
+		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode17TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode17Season))">ŕ</value>
+		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode18TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode18Season))">ŕ</value>
+		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode19TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode19Season))">ŕ</value>
+		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode20TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode20Season))">ŕ</value>
+		<value></value>
 	</variable>
 	
 	<variable name="viewglobal_video_lastwatchedflags25">
@@ -374,7 +375,7 @@
 		<value condition="Container.Content(seasons) + String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode20TvShow)) + String.IsEqual(ListItem.Season,Skin.String(LastwatchedEpisode20Season))">flagging/lastwatched25.png</value>
 		<value>noop</value>
 	</variable>
-
+	
 	<variable name="viewglobal_video_value_lastshowSeason">
 		<value condition="String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode0TvShow))">Staffel $INFO[skin.string(LastwatchedEpisode0Season)]</value>
 		<value condition="String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode1TvShow))">Staffel $INFO[skin.string(LastwatchedEpisode1Season)]</value>
@@ -435,18 +436,24 @@
 		<value>-</value>
 	</variable>
 
+	<include name="Lastwatched-layout">
+		<width>60</width>
+		<height>60</height>
+		<align>center</align>
+		<textcolor>$VAR[LastwatchedCol]</textcolor>
+		<shadowcolor>TextColorLight</shadowcolor>
+		<selectedcolor>$VAR[LastwatchedCol]</selectedcolor><!-- default ueberschreibung -->
+		<font>IconOverlayBig</font>
+	</include>
 	
 	<!-- ######################### -->
 	<!-- Overlays flags
 	############################## -->
-	<variable name="WatchedOverlayFlag"><!-- check neu mit dbtype? -->
+	<variable name="WatchedOverlayFlag">
 		<value condition="ListItem.IsCollection">å</value>
-		<value condition="!ListItem.IsFolder + String.IsEqual(ListItem.Overlay,OverlayWatched.png)">è</value>
-		<value condition="!ListItem.IsFolder + String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)">æ</value>
-		
 		<!-- zuletzt hinzugefuegt 1-10 episode und Filme -->
 		<value condition="String.Contains(ListItem.DBTYPE,movie) + String.IsEmpty(ListItem.PlayCount) + [String.IsEqual(Window(Home).Property(LatestMovie.1.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.2.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.3.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.4.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.5.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.6.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.7.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.8.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.9.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.10.Title),ListItem.Label)]">ç</value>
-		<value condition="Container.Content(episodes) + String.IsEmpty(ListItem.PlayCount) + [String.IsEqual(Window(Home).Property(LatestEpisode.1.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.2.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.3.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.4.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.5.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.6.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.7.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.8.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.9.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.10.EpisodeTitle),ListItem.Title)]">ç</value>
+		<value condition="String.Contains(ListItem.DBTYPE,episode) + String.IsEmpty(ListItem.PlayCount) + [String.IsEqual(Window(Home).Property(LatestEpisode.1.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.2.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.3.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.4.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.5.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.6.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.7.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.8.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.9.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.10.EpisodeTitle),ListItem.Title)]">ç</value>
 		
 		<value condition="[String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,tvshow)] + String.IsEqual(ListItem.Property(TotalEpisodes),ListItem.Property(WatchedEpisodes))">è</value>
 		<value condition="[String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,tvshow)] + !Integer.IsGreater(ListItem.Property(WatchedEpisodes),0)">æ</value>
@@ -460,60 +467,31 @@
 		<value condition="String.Contains(ListItem.DBTYPE,episode) + !Integer.IsGreater(ListItem.PlayCount,0)">æ</value>
 		<value condition="String.Contains(ListItem.DBTYPE,episode) + Integer.IsGreater(ListItem.PlayCount,0)">è</value>
 		
-		<value condition="Window.IsVisible(Videos) + !ListItem.IsFolder + !ListItem.IsResumable">æ</value>
-		<value condition="Window.IsVisible(Videos) + !ListItem.IsFolder + ListItem.IsResumable">è</value>
+		<value condition="String.IsEqual(ListItem.Overlay,OverlayWatched.png)">è</value>
+		<value condition="String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)">æ</value>
 		<value></value>
 	</variable>
-	
-	<variable name="WatchedOverlayFlagalt">
-		<value condition="ListItem.IsCollection">å</value>
-		<value condition="!ListItem.IsFolder + String.IsEqual(ListItem.Overlay,OverlayWatched.png)">è</value>
-		<value condition="!ListItem.IsFolder + String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)">æ</value>
-		
+
+	<variable name="WatchedOverlayWidgetinfo">
+		<value condition="Container(400).ListItem.IsCollection">å</value>
 		<!-- zuletzt hinzugefuegt 1-10 episode und Filme -->
-		<value condition="Container.Content(movies) + String.IsEmpty(ListItem.PlayCount) + [String.IsEqual(Window(Home).Property(LatestMovie.1.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.2.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.3.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.4.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.5.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.6.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.7.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.8.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.9.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.10.Title),ListItem.Label)]">ç</value>
-		<value condition="Container.Content(episodes) + String.IsEmpty(ListItem.PlayCount) + [String.IsEqual(Window(Home).Property(LatestEpisode.1.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.2.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.3.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.4.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.5.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.6.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.7.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.8.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.9.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.10.EpisodeTitle),ListItem.Title)]">ç</value>
+		<value condition="String.Contains(Container(400).ListItem.DBTYPE,movie) + String.IsEmpty(Container(400).ListItem.PlayCount) + [String.IsEqual(Window(Home).Property(LatestMovie.1.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.2.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.3.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.4.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.5.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.6.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.7.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.8.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.9.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.10.Title),ListItem.Label)]">ç</value>
+		<value condition="String.Contains(Container(400).ListItem.DBTYPE,episode) + String.IsEmpty(Container(400).ListItem.PlayCount) + [String.IsEqual(Window(Home).Property(LatestEpisode.1.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.2.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.3.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.4.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.5.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.6.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.7.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.8.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.9.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.10.EpisodeTitle),ListItem.Title)]">ç</value>
 		
-		<value condition="[Container.Content(Seasons) | Container.Content(tvshows)] + String.IsEqual(ListItem.Property(TotalEpisodes),ListItem.Property(WatchedEpisodes))">è</value>
-		<value condition="[Container.Content(Seasons) | Container.Content(tvshows)] + !Integer.IsGreater(ListItem.Property(WatchedEpisodes),0)">æ</value>
-		<value condition="[Container.Content(Seasons) | Container.Content(tvshows)] + !String.IsEqual(ListItem.Property(TotalEpisodes),ListItem.Property(UnWatchedEpisodes))">ä</value>
+		<value condition="[String.Contains(Container(400).ListItem.DBTYPE,season) | String.Contains(Container(400).ListItem.DBTYPE,tvshow)] + String.IsEqual(Container(400).ListItem.Property(TotalEpisodes),Container(400).ListItem.Property(WatchedEpisodes))">è</value>
+		<value condition="[String.Contains(Container(400).ListItem.DBTYPE,season) | String.Contains(Container(400).ListItem.DBTYPE,tvshow)] + !Integer.IsGreater(Container(400).ListItem.Property(WatchedEpisodes),0)">æ</value>
+		<value condition="[String.Contains(Container(400).ListItem.DBTYPE,season) | String.Contains(Container(400).ListItem.DBTYPE,tvshow)] + !String.IsEqual(Container(400).ListItem.Property(TotalEpisodes),Container(400).ListItem.Property(UnWatchedEpisodes))">ä</value>
 		
-		<value condition="Container.Content(movies) + ListItem.IsResumable">ä</value>
-		<value condition="Container.Content(movies) + String.IsEqual(ListItem.Overlay,OverlayWatched.png)">è</value>
-		<value condition="Container.Content(movies) + !Integer.IsGreater(ListItem.PlayCount,0)">æ</value>
+		<value condition="String.Contains(Container(400).ListItem.DBTYPE,movie) + Container(400).ListItem.IsResumable">ä</value>
+		<value condition="String.Contains(Container(400).ListItem.DBTYPE,movie) + String.IsEqual(Container(400).ListItem.Overlay,OverlayWatched.png)">è</value>
+		<value condition="String.Contains(Container(400).ListItem.DBTYPE,movie) + !Integer.IsGreater(Container(400).ListItem.PlayCount,0)">æ</value>
 		
-		<value condition="Container.Content(episodes) + ListItem.IsResumable">ä</value>
-		<value condition="Container.Content(episodes) + !Integer.IsGreater(ListItem.PlayCount,0)">æ</value>
-		<value condition="Container.Content(episodes) + Integer.IsGreater(ListItem.PlayCount,0)">è</value>
+		<value condition="String.Contains(ListItem.DBTYPE,episode) + Container(400).ListItem.IsResumable">ä</value>
+		<value condition="String.Contains(ListItem.DBTYPE,episode) + !Integer.IsGreater(Container(400).ListItem.PlayCount,0)">æ</value>
+		<value condition="String.Contains(ListItem.DBTYPE,episode) + Integer.IsGreater(Container(400).ListItem.PlayCount,0)">è</value>
 		
-		<value condition="Window.IsVisible(Videos) + !ListItem.IsFolder + !ListItem.IsResumable">æ</value>
-		<value condition="Window.IsVisible(Videos) + !ListItem.IsFolder + ListItem.IsResumable">è</value>
-		<value></value>
-	</variable>
-	
-	<variable name="WatchedOverlayWidgetinfo"><!-- check neu mit dbtype? -->
-		<!-- film -->
-		<value condition="String.IsEmpty(Container(400).ListItem.Tvshowtitle) + String.Contains(Container(400).ListItem.Path,videodb://movies/sets)">å</value>
-		<value condition="String.IsEmpty(Container(400).ListItem.Tvshowtitle) + Container(400).ListItem.IsResumable">ä</value>
-		<value condition="String.IsEmpty(Container(400).ListItem.Tvshowtitle) + String.IsEqual(Container(400).ListItem.Overlay,OverlayWatched.png)">è</value>
-		<value condition="String.IsEmpty(Container(400).ListItem.Tvshowtitle) + !Integer.IsGreater(Container(400).ListItem.PlayCount,0)">æ</value>
-		<value condition="String.IsEmpty(Container(400).ListItem.Tvshowtitle) + String.IsEmpty(Container(400).ListItem.PlayCount) + [String.IsEqual(Window(Home).Property(LatestMovie.1.Title),Container(400).ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.2.Title),Container(400).ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.3.Title),Container(400).ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.4.Title),Container(400).ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.5.Title),Container(400).ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.6.Title),Container(400).ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.7.Title),Container(400).ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.8.Title),Container(400).ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.9.Title),Container(400).ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.10.Title),Container(400).ListItem.Label)]">ç</value>
-		
-		<!-- episoden -->
-		<value condition="!String.IsEmpty(Container(400).ListItem.Tvshowtitle) + !String.IsEmpty(Container(400).ListItem.Duration) + String.IsEmpty(Container(400).ListItem.PlayCount) + [String.IsEqual(Window(Home).Property(LatestEpisode.1.EpisodeTitle),Container(400).ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.2.EpisodeTitle),Container(400).ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.3.EpisodeTitle),Container(400).ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.4.EpisodeTitle),Container(400).ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.5.EpisodeTitle),Container(400).ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.6.EpisodeTitle),Container(400).ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.7.EpisodeTitle),Container(400).ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.8.EpisodeTitle),Container(400).ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.9.EpisodeTitle),Container(400).ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.10.EpisodeTitle),Container(400).ListItem.Title)]">ç</value>
-		<value condition="!String.IsEmpty(Container(400).ListItem.Tvshowtitle) + !String.IsEmpty(Container(400).ListItem.Duration) + Container(400).ListItem.IsResumable">ä</value>
-		<value condition="!String.IsEmpty(Container(400).ListItem.Tvshowtitle) + !String.IsEmpty(Container(400).ListItem.Duration) + String.IsEqual(Container(400).ListItem.Overlay,OverlayWatched.png)">è</value>
-		<value condition="!String.IsEmpty(Container(400).ListItem.Tvshowtitle) + !String.IsEmpty(Container(400).ListItem.Duration) + !Integer.IsGreater(Container(400).ListItem.PlayCount,0)">æ</value>
-		
-		<!-- serien -->
-		<value condition="!String.IsEmpty(Container(400).ListItem.Tvshowtitle) + String.IsEmpty(Container(400).ListItem.Duration) + String.IsEqual(Container(400).ListItem.Property(TotalEpisodes),Container(400).ListItem.Property(WatchedEpisodes))">è</value>
-		<value condition="!String.IsEmpty(Container(400).ListItem.Tvshowtitle) + String.IsEmpty(Container(400).ListItem.Duration) + !Integer.IsGreater(Container(400).ListItem.Property(WatchedEpisodes),0)">æ</value>
-		<value condition="!String.IsEmpty(Container(400).ListItem.Tvshowtitle) + String.IsEmpty(Container(400).ListItem.Duration) + !String.IsEqual(Container(400).ListItem.Property(TotalEpisodes),Container(400).ListItem.Property(UnWatchedEpisodes))">ä</value>
-		
-		<value condition="String.IsEqual(Container(400).ListItem.Overlay,OverlayWatched.png)">è</value><!-- fallbacks -->
+		<value condition="String.IsEqual(Container(400).ListItem.Overlay,OverlayWatched.png)">è</value>
 		<value condition="String.IsEqual(Container(400).ListItem.Overlay,OverlayUnwatched.png)">æ</value>
-		<value condition="!Container(400).ListItem.IsResumable">æ</value>
-		<value condition="Container(400).ListItem.IsResumable">è</value>
 	</variable>
 
 	<include name="WatchedOverlay-color-layout">

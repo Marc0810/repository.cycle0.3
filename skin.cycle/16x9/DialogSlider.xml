@@ -23,7 +23,7 @@
 		<description>Hintergrund Titel</description>
 		<width>497</width>
 		<height>60</height>
-		<texture border="14,0,14,0" flipy="true" colordiffuse="$VAR[primaryCol]" background="true">cycle/full-11.png</texture>
+		<texture border="14,0,14,0" flipy="true" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texture>
 	</control>
 	<control type="label" id="10"><!-- content -->
 		<description>Titel</description>
@@ -40,8 +40,8 @@
 		<width>360</width>
 		<height>37</height>
 		<texturesliderbar colordiffuse="TextColorMedium">buttons/slider/slider_bg.png</texturesliderbar>
-		<textureslidernib colordiffuse="$VAR[secondaryCol]">buttons/slider/SliderNibNF1.png</textureslidernib>
-		<textureslidernibfocus colordiffuse="$VAR[primaryCol]">buttons/slider/SliderNibFO1.png</textureslidernibfocus>
+		<textureslidernib colordiffuse="$VAR[SecondaryCol]">buttons/slider/slidernibnf1.png</textureslidernib>
+		<textureslidernibfocus colordiffuse="$VAR[PrimaryCol]">buttons/slider/slidernibfo1.png</textureslidernibfocus>
 		<onup>close</onup>
 		<ondown>close</ondown>
 		<onleft>11</onleft>

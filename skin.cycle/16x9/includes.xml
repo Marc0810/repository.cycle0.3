@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Cycle 0.3 -->
+<!-- Cycle 0.3 http://digitalmofo.com/wp-content/plugins/rss-poster/cache/80382_12-Progress-Bar-by-Bojan-Janjanin.jpg -->
 <includes>
 <include file="defaults.xml" />
-<include file="includesWidgets.xml" />
 <include file="includesAnimation.xml" />
-<include condition="System.HasAddon(script.extendedinfo)" file="includesYoutube.xml" /><!-- log check ohne addon -->
 <include file="includesBreadcumbs.xml" />
 <include file="includesDateVars.xml" />
 <include file="includesArtworks.xml" />
@@ -16,23 +14,14 @@
 <include file="includesMusicviz.xml" />
 <include condition="Skin.HasSetting(EnableVintageOverlay)" file="includesVintage.xml" /><!-- vintage -->
 <include condition="!Skin.HasSetting(EnableVintageOverlay)" file="includesCycle.xml" /><!-- cycle -->
-<include file="Viewtype_50_CommonRootView.xml" />
-<include file="Viewtype_51_Banner.xml" />
-<include file="Viewtype_52_Poster.xml" />
-<include file="Viewtype_53_Landscape.xml" />
-<include file="Viewtype_54_Season.xml" />
-<include file="Viewtype_55_Episode.xml" />
-<include file="Viewtype_56_Dokus.xml" />
-<include file="Viewtype_57_Filelist.xml" />
+<include file="Viewtypes_VideoViews.xml" />
 <include file="Viewtype_71_Filelist.xml" />
 <include file="ViewsWeather.xml" />
 
 <!-- ######################### -->
 <!-- Globale Positionen und groessen
 ############################## -->
-
 <!-- ##### Dialoge mit buttonbars ##### -->
-<constant name="dialogbar.top.ratingstars">-19</constant>
 <constant name="dialogbar.left">3</constant>
 <constant name="dialogbar.top">-18</constant>
 <constant name="dialogbar.icon.dimension">80</constant><!-- buttongroesse -->
@@ -43,12 +32,53 @@
 <!-- ##### icons groessen ##### -->
 <constant name="sidebar.icon.dimension">65</constant><!-- buttongroesse -->
 <constant name="sidebar.label.height">65</constant><!-- buttongroesse -->
-<constant name="sidebar.breadcumblabel.width">320</constant><!-- breadcumbreite -->
-<constant name="sidebar.breadcumblabel.height">50</constant><!-- breadcumhoehe -->
 <constant name="osd.icon.width">60</constant><!-- buttongroesse -->
 <constant name="osd.icon.height">60</constant><!-- buttongroesse -->
 <constant name="osdmenue.icon.width">100</constant><!-- osd menue buttongroesse -->
 <constant name="osdmenue.icon.height">110</constant><!-- osd menue buttongroesse -->
+
+<!-- ##### views rating ##### -->
+<constant name="ratingstars.top">-19</constant>
+
+<!-- ##### breadcumblabel ##### -->
+<constant name="sidebar.breadcumblabel.width">310</constant><!-- breadcumbreite -->
+<constant name="sidebar.breadcumblabel.height">50</constant><!-- breadcumhoehe -->
+
+<!-- ##### buttons mit align top und offsety fuer texture ##### -->
+<constant name="button.top.offsety60">14</constant>
+<constant name="button.top.offsety65">16</constant>
+<constant name="button.top.offsety70">20</constant> 
+<constant name="button.top.offsety75">22</constant>
+
+<constant name="button.top.height60">60</constant>
+<constant name="button.top.height65">65</constant><!-- = sidebar.label.height -->
+<constant name="button.top.height70">70</constant>
+<constant name="button.top.height75">75</constant>
+
+
+<include name="Item.top.height60">
+	<height>button.top.height60</height>
+	<aligny>top</aligny>
+	<textoffsety>button.top.offsety60</textoffsety>
+</include>
+
+<include name="Item.top.height65">
+	<height>button.top.height65</height>
+	<aligny>top</aligny>
+	<textoffsety>button.top.offsety65</textoffsety>
+</include>
+
+<include name="Item.top.height70">
+	<height>button.top.height70</height>
+	<aligny>top</aligny>
+	<textoffsety>button.top.offsety70</textoffsety>
+</include>
+
+<include name="Item.top.height75">
+	<height>button.top.height75</height>
+	<aligny>top</aligny>
+	<textoffsety>button.top.offsety75</textoffsety>
+</include>
 
 <!-- ######################### -->
 <!-- Global dialoge Includes fuer alle dialoge mit Iconleiste unten
@@ -56,8 +86,8 @@
 <include name="DialogFakeIconDimension">
 	<width>dialogbar.icon.dimension</width>
 	<height>dialogbar.icon.dimension</height>
-	<texturenofocus border="8" colordiffuse="$VAR[secondaryCol]">views/white8.png</texturenofocus>
-	<texturefocus border="8" colordiffuse="$VAR[primaryCol]">views/white8.png</texturefocus>
+	<texturenofocus border="8" colordiffuse="$VAR[SecondaryCol]">views/white8.png</texturenofocus>
+	<texturefocus border="8" colordiffuse="$VAR[PrimaryCol]">views/white8.png</texturefocus>
 	<label>-</label>
 	<textcolor>ACDIF_0</textcolor>
 	<focusedcolor>ACDIF_0</focusedcolor>
@@ -70,19 +100,19 @@
 	<height>dialogbar.icon.dimension</height>
 	<align>center</align>
 	<font>IconDialogDimension</font>
-	<textcolor>$VAR[circlesCol]</textcolor>
+	<textcolor>$VAR[CirclesCol]</textcolor>
 </include>
 
 <include name="DialogBackground">
 	<bordertexture border="20" colordiffuse="ShadowColor">views/shadow8.png</bordertexture>
 	<bordersize>8</bordersize>
-	<texture border="20" colordiffuse="$VAR[DialogCol]" background="true">views/white8.png</texture>
+	<texture background="true" border="20" colordiffuse="$VAR[DialogCol]">views/white8.png</texture>
 </include>
 
 <include name="DialogbottomBackground">
 	<bordertexture border="8" colordiffuse="ShadowColor">views/shadow8.png</bordertexture>
 	<bordersize>8</bordersize>
-	<texture colordiffuse="$VAR[secondaryCol]" border="20" background="true">views/white8.png</texture>
+	<texture background="true" border="20" colordiffuse="$VAR[SecondaryCol]">views/white8.png</texture>
 </include>
 
 <!-- ######################### -->
@@ -101,7 +131,7 @@
 		<height>142</height>
 		<align>center</align>
 		<font>IconCircle</font>
-		<textcolor>$VAR[circlesCol]</textcolor>
+		<textcolor>$VAR[CirclesCol]</textcolor>
 		<label>$INFO[ListItem.Label2]</label>
 	</control>
 </include>
@@ -130,22 +160,23 @@
 </include>
 
 <variable name="DefaultIcons">
+	<value condition="ListItem.IsParentFolder">ò</value><!-- back -->
 	<value condition="String.EndsWith(ListItem.Label,xsp)">&gt;</value><!-- video -->
-	<value condition="String.IsEqual(ListItem.Label,Game add-ons)">ǌ</value><!-- krypton label - check icon kommt nicht -->
+	<value condition="String.IsEqual(ListItem.Label,$LOCALIZE[35049])">ǌ</value><!-- label - icon kommt nicht -->
 	<value condition="String.IsEqual(ListItem.Icon,DefaultAddonGame.png)">ǌ</value><!-- krypton neue icons -->
 	<value condition="String.IsEqual(ListItem.Icon,DefaultGameAddons.png)">ǌ</value>
-	<value condition="String.IsEqual(ListItem.Label,Peripheral libraries)">ǋ</value><!-- krypton label - check icon kommt nicht -->
+	<value condition="String.IsEqual(ListItem.Label,$LOCALIZE[35010])">ǋ</value><!-- label - icon kommt nicht -->
 	<value condition="String.IsEqual(ListItem.Icon,DefaultAddonPeripheral.png)">ǋ</value>
 	<value condition="String.IsEqual(ListItem.Icon,DefaultAddonsZip.png)">ǉ</value>
-	<value condition="String.IsEqual(ListItem.label,Videoplayer InputStream)">ǈ</value><!-- krypton label - check icon kommt nicht -->
+	<value condition="String.IsEqual(ListItem.label,$LOCALIZE[24048])">ǈ</value><!-- label - icon kommt nicht -->
 	<value condition="String.IsEqual(ListItem.Icon,DefaultAddonInputstream.png)">ǈ</value>
 	<value condition="String.IsEqual(ListItem.Icon,DefaultAddonsSearch.png)">Ǉ</value>
-	<value condition="String.IsEqual(ListItem.Icon,DefaultAddonsInstalled.png)">ǆ</value>
+	
 	<value condition="String.IsEqual(ListItem.Icon,DefaultAddonsRecentlyUpdated.png)">ǅ</value>
 	<value condition="String.IsEqual(ListItem.Icon,DefaultAddonsUpdates.png)">Ǆ</value>
 	<value condition="String.IsEqual(ListItem.Icon,DefaultAddonsRepo.png)">Ǖ</value><!-- krypton neue icons -->
 	<value condition="String.IsEqual(ListItem.Icon,DefaultMusicRoles.png)">ñ</value>
-	
+	<value condition="String.IsEqual(ListItem.Icon,DefaultAddonsInstalled.png)">ǆ</value>
 	<value condition="String.IsEqual(ListItem.Icon,DefaultVideoPlaylists.png)">&gt;</value><!-- video -->
 	<value condition="String.IsEqual(ListItem.Icon,DefaultPlaylist.png)">&gt;</value>
 	<value condition="String.IsEqual(ListItem.Icon,DefaultInProgressShows.png)">A</value>
@@ -238,26 +269,21 @@
 	<value condition="String.IsEqual(ListItem.Icon,DefaultMusicVideos.png)">ǿ</value>
 	<value condition="String.IsEqual(ListItem.Icon,DefaultMusicYears.png)">ȁ</value>
 	
-	<value condition="Window.IsVisible(musiclibrary) + Container.Content(genres)">Ǿ</value>
-	<value condition="Window.IsVisible(musiclibrary) + Container.Content(artists)">ǵ</value>
-	<value condition="Window.IsVisible(musiclibrary) + Container.Content(albums)">Ǵ</value>
-	<value condition="Window.IsVisible(musiclibrary) + Container.Content(songs)">Ƕ</value>
+	<value condition="Window.IsVisible(music) + Container.Content(genres)">Ǿ</value>
+	<value condition="Window.IsVisible(music) + Container.Content(artists)">ǵ</value>
+	<value condition="Window.IsVisible(music) + Container.Content(albums)">Ǵ</value>
+	<value condition="Window.IsVisible(music) + Container.Content(songs)">Ƕ</value>
 	<value condition="Container.Content(artists)">ǲ</value>
 	<value condition="Container.Content(addons)">Ĝ</value>
 	<value condition="Window.IsVisible(programs)">ĕ</value>
-	<value condition="!Window.IsVisible(musiclibrary) + Container.Content(files) | Container.HasFolders">Ĕ</value><!-- audio Dateien -->
-	<value condition="Window.IsVisible(musiclibrary) + Container.Content(files) | Container.HasFolders">Ē</value><!-- audio Dateien -->
+	<value condition="!Window.IsVisible(music) + Container.Content(files) | Container.HasFolders">Ĕ</value><!-- audio Dateien -->
+	<value condition="Window.IsVisible(music) + Container.Content(files) | Container.HasFolders">Ē</value><!-- audio Dateien -->
 	<value>Ĕ</value><!-- Dateien -->
-</variable>
-
-<variable name="KaitoastDefaultIcons">
-	<value condition="String.IsEqual(Control.GetLabel(400),DefaultIconError.png)">É</value>
-	<value condition="String.IsEqual(Control.GetLabel(400),DefaultIconInfo.png)">Ê</value>
-	<value condition="String.IsEqual(Control.GetLabel(400),DefaultIconWarning.png)">Ë</value>
 </variable>
 
 <expression name="VisVideoOverlays">!ListItem.IsParentFolder + [String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,tvshow) | String.Contains(ListItem.DBTYPE,episode) | String.Contains(ListItem.DBTYPE,movie) | String.Contains(ListItem.DBTYPE,video) | String.Contains(ListItem.DBTYPE,set)]</expression>
 
-<expression name="GenreExtraArtworks">Skin.HasSetting(EnableGenreArtworks) + Container.Content(genres)</expression>
+<expression name="GenreExtraArtworks">System.HasAddon(resource.images.moviegenrefanart.cycle) + Container.Content(genres)</expression>
+<expression name="SMSScrollerFO">!ListItem.IsParentFolder + [ControlGroup(62).HasFocus | Container.Scrolling]</expression>
 
 </includes>

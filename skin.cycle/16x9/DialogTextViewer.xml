@@ -53,20 +53,19 @@
 			<ondown>61</ondown>
 			<onup>61</onup>
 			<showonepage>true</showonepage>
-			<orientation>vertical</orientation>
 		</control>
 	</control>
 </control>
 <control type="group"><!-- textbox mit großem text -->
 	<include>Open_Close_Visible_Hidden_Zoom_Animation</include>
-	<visible>Window.IsVisible(addoninformation)</visible><!-- check - ohne immer sichtbar beim skinwechsel? -->
+	<visible>Window.IsVisible(addoninformation)</visible>
 	<control type="image">
 		<description>Bar</description>
 		<left>-500</left>
 		<top>200</top>
 		<width>2920</width>
 		<height>152</height>
-		<texture colordiffuse="$VAR[circlesCol]">views/info/bar.png</texture>
+		<texture colordiffuse="$VAR[CirclesCol]">views/info/bar.png</texture>
 	</control>
 	<control type="label">
 		<description>Titel</description>
@@ -96,8 +95,8 @@
 		<width>6</width>
 		<height>432</height>
 		<showonepage>true</showonepage>
-		<onright>Dialog.close(1149)</onright>
-		<onleft>Dialog.close(1149)</onleft>
+		<onright>Dialog.close(1121)</onright>
+		<onleft>Dialog.close(1121)</onleft>
 		<onup>61</onup>
 		<ondown>61</ondown>
 		<visible>true</visible>

@@ -2,12 +2,10 @@
 <window>
 <!-- Cycle 0.3 -->
 <defaultcontrol always="true">9000</defaultcontrol>
-<onload>ClearProperty(ExtrainfoFanart,movieinformation)</onload>
 <onload>ClearProperty(VideoDBtitel,home)</onload>
 <onload>ClearProperty(VideoDBTrailer,home)</onload>
 <onload>ClearProperty(VideoDBPath,home)</onload>
 <onload>ClearProperty(VideoDBID,home)</onload>
-<onload condition="Window.IsVisible(script-ExtendedInfo Script-YoutubeList.xml)">Dialog.close(2003)</onload> <!--close bei youtubevideos -->
 <onload>Skin.SetString(SelectDialog,Standard)</onload><!-- Dialogselect standard Vorauswahl -->
 <onload>ClearProperty(AniSlideL,movieinformation)</onload><!-- Navigation Rechts Links -->
 <onload>ClearProperty(AniSlideR,movieinformation)</onload><!-- Navigation Rechts Links -->
@@ -26,8 +24,8 @@
 <include>global_topbar</include>
 <control type="group">
 	<top>30</top>
-	<visible>!String.StartsWith(ListItem.Path,plugin://plugin.video) + !String.IsEmpty(ListItem.Plot)</visible>
-	<visible>!Window.IsVisible(script-ExtendedInfo Script-YoutubeList.xml) + !Window.IsVisible(Custom_1149_Textbox.xml)</visible>
+	<visible>!String.StartsWith(ListItem.Path,plugin:) + !String.IsEmpty(ListItem.DBType)</visible>
+	<visible>!Window.IsVisible(Custom_1121_Textbox.xml)</visible>
 	<animation type="Conditional" reversible="true" condition="String.IsEqual(skin.String(SelectDialog),Rating) + Window.IsVisible(selectdialog)">
 		<effect type="fade" start="100" end="0" time="150" tween="cubic" easing="inout" />
 	</animation>
@@ -38,9 +36,9 @@
 		<top>594</top>
 		<width>3000</width>
 		<height>152</height>
-		<texture colordiffuse="$VAR[circlesCol]">views/info/bar.png</texture>
+		<texture colordiffuse="$VAR[CirclesCol]">views/info/bar.png</texture>
 		<animation effect="slide" start="0,0" end="0,119" time="300" condition="!String.IsEmpty(Window(movieinformation).Property(AniSlideR))">Conditional</animation>
-		<visible>!Window.IsVisible(Custom_1149_Textbox.xml)</visible>
+		<visible>!Window.IsVisible(Custom_1121_Textbox.xml)</visible>
 		<animation type="WindowOpen" reversible="false">
 			<effect type="fade" start="0" end="100" delay="200" time="350" tween="cubic" easing="inout" />
 			<effect type="zoom" start="70" end="100" delay="200" time="350" tween="cubic" easing="inout" center="960,540"/>
@@ -79,14 +77,18 @@
 			<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.Logo,$VAR[Art-logo],home)</onup>
 			<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.Title,$ESCVAR[TextBoxTitle],home)</onup>
 			<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.SubTitle,$ESCVAR[TextBoxSubTitle],home)</onup>
+			<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.SubTitle2,$ESCVAR[TextBoxSubTitle2],home)</onup>
 			<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</onup>
-			<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">ActivateWindow(1149)</onup>
+			<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">ActivateWindow(1121)</onup>
 			<ondown>close</ondown>
 			<onleft>SetProperty(AniSlideL,ON,movieinformation)</onleft><!-- Property und Focus links -->
 			<onleft>9331</onleft>
 			<onright>SetProperty(AniSlideR,ON,movieinformation)</onright><!-- Property und Focus rechts -->
-			<onright>9001</onright>
+			<onright condition="!String.IsEmpty(Container(50).ListItem.label)">9001</onright>
 			<onright>Skin.SetString(SelectDialog,Temp)</onright><!-- String fuer Select Dialog Anzeige -->
+			<onright condition="String.IsEmpty(Container(50).ListItem.label) + !String.IsEmpty(ListItem.Genre)">SetProperty(SimilarMovies,ON,movieinformation)</onright><!-- similar wenn actor leer -->
+			<onright condition="String.IsEmpty(Container(50).ListItem.label) + !String.IsEmpty(ListItem.Genre)">SetFocus(501)</onright><!-- similar wenn actor leer -->
+			<onright condition="String.IsEmpty(Container(50).ListItem.label) + String.IsEmpty(ListItem.Genre)">9001</onright><!-- similar wenn actor leer -->
 			<orientation>horizontal</orientation>
 			<focusposition>1</focusposition>
 			<scrolltime tween="sine" easing="out">200</scrolltime>
@@ -94,12 +96,12 @@
 				<control type="image">
 					<width>192</width>
 					<height>152</height>
-					<texture colordiffuse="$VAR[circlesColInner]">rings/inner-ring.png</texture>
+					<texture colordiffuse="$VAR[CirclesColInner]">rings/inner-ring.png</texture>
 				</control>
 				<control type="image">
 					<width>192</width>
 					<height>152</height>
-					<texture colordiffuse="$VAR[circlesCol]">rings/outer-ring.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">rings/outer-ring.png</texture>
 				</control>
 				<include>CircleInfoIcon</include>
 			</itemlayout>
@@ -107,19 +109,19 @@
 				<control type="image">
 					<width>192</width>
 					<height>152</height>
-					<texture colordiffuse="$VAR[secondaryCol]">rings/inner-ring.png</texture>
+					<texture colordiffuse="$VAR[SecondaryCol]">rings/inner-ring.png</texture>
 					<visible>Control.HasFocus(9000)</visible>
 				</control>
 				<control type="image">
 					<width>192</width>
 					<height>152</height>
-					<texture colordiffuse="$VAR[circlesColInner]">rings/inner-ring.png</texture>
+					<texture colordiffuse="$VAR[CirclesColInner]">rings/inner-ring.png</texture>
 					<visible>!Control.HasFocus(9000)</visible>
 				</control>
 				<control type="image">
 					<width>192</width>
 					<height>152</height>
-					<texture colordiffuse="$VAR[circlesCol]">rings/outer-ring.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">rings/outer-ring.png</texture>
 				</control>
 				<include>CircleInfoIcon</include>
 			</focusedlayout>
@@ -130,25 +132,14 @@
 					<onclick>Dialog.close(all)</onclick>
 					<onclick>SendClick(2003,8)</onclick>
 				</item>
-				<item id="22">
-					<label>$LOCALIZE[20410]</label>
-					<label2>Ď</label2>
-					<onclick>SetProperty(ExtrainfoFanart,$INFO[ListItem.Art(fanart)],movieinformation)</onclick>
-					<onclick>SetProperty(VideoDBtitel,$INFO[ListItem.Label],home)</onclick>
-					<onclick condition="String.Contains(ListItem.DBTYPE,movie) + !String.IsEmpty(ListItem.Trailer)">SetProperty(VideoDBTrailer,$INFO[ListItem.Trailer],home)</onclick>
-					<onclick condition="String.Contains(ListItem.DBTYPE,movie) + !String.IsEmpty(ListItem.Trailer)">SetProperty(VideoDBPath,$INFO[ListItem.FileNameAndPath],home)</onclick>
-					<onclick condition="String.Contains(ListItem.DBTYPE,movie)">RunScript(script.extendedinfo,info=youtubebrowser,id=$INFO[ListItem.Title] Trailer)</onclick>
-					<onclick condition="[String.Contains(ListItem.DBTYPE,tvshow) | String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,episode)]">SetProperty(VideoDBID,$INFO[ListItem.DBID],home)</onclick>
-					<onclick condition="[String.Contains(ListItem.DBTYPE,tvshow) | String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,episode)]">RunScript(script.extendedinfo,info=youtubebrowser,id=$INFO[Listitem.TVshowTitle] Trailer)</onclick>
-					<onclick>Dialog.close(2003)</onclick>
-					<visible>System.HasAddon(script.extendedinfo) + [String.Contains(ListItem.DBTYPE,movie) | String.Contains(ListItem.DBTYPE,tvshow) | String.Contains(ListItem.DBTYPE,season) | String.Contains(ListItem.DBTYPE,episode)] + !Player.HasVideo</visible>
-				</item>
 				<item id="23">
 					<label>$LOCALIZE[20410]</label>
 					<label2>Ď</label2>
 					<onclick>Dialog.close(all)</onclick>
-					<onclick>PlayMedia($INFO[ListItem.Trailer])</onclick>
-					<visible>!System.HasAddon(script.extendedinfo) + String.Contains(ListItem.DBTYPE,movie) + !Player.HasVideo + !String.IsEmpty(ListItem.Trailer)</visible>
+					<onclick>SetFocus(502)</onclick>
+					<onclick>SetProperty(Trailerpreview,$INFO[ListItem.Trailer],home)</onclick>
+					<onclick>PlayMedia($INFO[ListItem.Trailer],1)</onclick>
+					<visible>String.Contains(ListItem.DBTYPE,movie) + !String.IsEmpty(ListItem.Trailer)</visible>
 				</item>
 				<item id="24">
 					<onclick>Skin.SetString(SelectDialog,Standard)</onclick>
@@ -186,20 +177,20 @@
 				<top>-5</top>
 				<width>582</width>
 				<height>851</height>
-				<texture border="8" colordiffuse="$VAR[circlesCol]">views/white8.png</texture>
+				<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
 			</control>
 			<control type="image"><!-- Fallback -->
 				<description>Hintergrund Farbe</description>
 				<width>572</width>
 				<height>841</height>
-				<texture colordiffuse="$VAR[primaryCol]" background="true">White.png</texture>
+				<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
 			</control>
 			<control type="label">
 				<description>Fallback icon</description>
 				<width>572</width>
 				<height>641</height>
 				<align>center</align>
-				<textcolor>$VAR[circlesCol]</textcolor>
+				<textcolor>$VAR[CirclesCol]</textcolor>
 				<font>IconInfoposterdefault</font>
 				<label>$VAR[viewtypefallbacks]</label>
 			</control>
@@ -213,7 +204,7 @@
 			<include content="texture_vintageoverlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
 				<param name="width">572</param>
 				<param name="height">841</param>
-				<param name="texture">views/oldpaperOverlay2.png</param>
+				<param name="texture">views/oldpaperoverlay2.png</param>
 			</include>
 			<control type="image">
 				<description>Hintergrund Episodennummer</description>
@@ -221,7 +212,7 @@
 				<top>20</top>
 				<width>130</width>
 				<height>130</height>
-				<texture colordiffuse="$VAR[primaryCol]" border="0,0,14,0" flipx="true">cycle/right-11_Number.png</texture>
+				<texture colordiffuse="$VAR[PrimaryCol]" border="0,0,14,0" flipx="true">cycle/right-11_number.png</texture>
 				<visible>String.Contains(ListItem.DBTYPE,episode)</visible>
 			</control>
 			<control type="label">
@@ -241,7 +232,7 @@
 				<top>310</top>
 				<width>50</width>
 				<height>60</height>
-				<texture border="0,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/right-11.png</texture>
+				<texture border="0,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texture>
 				<visible>!String.IsEmpty(Window(Home).Property(NextAired.StatusID))</visible>
 			</control>
 			<control type="label">
@@ -262,7 +253,7 @@
 					<top>-12</top>
 					<width>96</width>
 					<height>96</height>
-					<texture flipx="true" colordiffuse="$VAR[primaryCol]">flagging/watched_bg.png</texture>
+					<texture flipx="true" colordiffuse="$VAR[PrimaryCol]">flagging/watched_bg.png</texture>
 				</control>
 				<control type="label">
 					<left>-8</left>
@@ -284,7 +275,7 @@
 					<top>-12</top>
 					<width>96</width>
 					<height>96</height>
-					<texture colordiffuse="$VAR[primaryCol]">flagging/watched_bg.png</texture>
+					<texture colordiffuse="$VAR[PrimaryCol]">flagging/watched_bg.png</texture>
 				</control>
 				<control type="label">
 					<left>35</left>
@@ -313,17 +304,17 @@
 				<control type="image">
 					<width>149</width>
 					<height>41</height>
-					<texture colordiffuse="$VAR[secondaryCol]">flagging/rating_bg.png</texture>
+					<texture colordiffuse="$VAR[SecondaryCol]">flagging/rating_bg.png</texture>
 				</control>
 				<control type="label"><!-- -19 -->
-					<top>dialogbar.top.ratingstars</top>
+					<top>ratingstars.top</top>
 					<width>130</width>
 					<height>41</height>
 					<label>$VAR[Star-Ratingback-label]</label>
 					<include>Star-Rating-color-layoutback</include>
 				</control>
 				<control type="label"><!-- -19 -->
-					<top>dialogbar.top.ratingstars</top>
+					<top>ratingstars.top</top>
 					<width>130</width>
 					<height>41</height>
 					<label>$VAR[Star-Rating-label]</label>
@@ -338,7 +329,7 @@
 			<control type="image">
 				<width>70</width>
 				<height>125</height>
-				<texture colordiffuse="$VAR[circlesCol]">circles/Posterinfoleft.png</texture>
+				<texture colordiffuse="$VAR[CirclesCol]">circles/posterinfoleft.png</texture>
 			</control>
 			<control type="group">
 				<description>Circle 1 Episodenanzahl bei Serien</description>
@@ -347,24 +338,30 @@
 				<control type="image">
 					<width>175</width>
 					<height>125</height>
-					<texture>circles/CircleEpisodein.png</texture>
-					<include>CircleFlagsinnerDiffuse</include>
-				</control>
-				<control type="image">
-					<width>50</width>
-					<height>125</height>
-					<texture colordiffuse="$VAR[circlesCol]">circles/Circledivider50.png</texture>
+					<texture colordiffuse="TextColorLight">circles/circleinbg.png</texture>
+					<include>CircleFlagsinnerDiffuse</include><!-- -->
 				</control>
 				<control type="image">
 					<width>175</width>
 					<height>125</height>
-					<texture colordiffuse="$VAR[circlesCol]">circles/CircleEpisodeout.png</texture>
+					<texture colordiffuse="TextColorLight">circles/circleepisodein.png</texture>
+					<include>CircleFlagsinnerDiffuse</include><!-- -->
+				</control>
+				<control type="image">
+					<width>50</width>
+					<height>125</height>
+					<texture colordiffuse="$VAR[CirclesCol]">circles/circledivider50.png</texture>
+				</control>
+				<control type="image">
+					<width>175</width>
+					<height>125</height>
+					<texture colordiffuse="$VAR[CirclesCol]">circles/circleepisodeout.png</texture>
 				</control>
 				<control type="image">
 					<left>125</left>
 					<width>30</width>
 					<height>125</height>
-					<texture colordiffuse="$VAR[circlesCol]">circles/Circledivider50.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">circles/circledivider50.png</texture>
 				</control>
 				<control type="label">
 					<top>5</top>
@@ -373,7 +370,7 @@
 					<align>center</align>
 					<label>$INFO[ListItem.Property(NumEpisodes)]</label>
 					<font>VideoinfoCircle</font>
-					<textcolor>$VAR[circlesCol]</textcolor>
+					<textcolor>$VAR[CirclesCol]</textcolor>
 				</control>
 			</control>
 			<control type="image">
@@ -381,7 +378,7 @@
 				<left>40</left>
 				<width>180</width>
 				<height>125</height>
-				<texture colordiffuse="$VAR[circlesCol]">circles/Circledivider50.png</texture>
+				<texture colordiffuse="$VAR[CirclesCol]">circles/circledivider50.png</texture>
 				<visible>String.IsEmpty(ListItem.DBTYPE)</visible>
 			</control>
 			<control type="group">
@@ -391,24 +388,24 @@
 				<control type="image">
 					<width>175</width>
 					<height>125</height>
-					<texture>circles/CircleDurationin.png</texture>
+					<texture colordiffuse="TextColorLight">circles/circleinbg.png</texture>
 					<include>CircleFlagsinnerDiffuse</include>
 				</control>
 				<control type="image">
 					<width>50</width>
 					<height>125</height>
-					<texture colordiffuse="$VAR[circlesCol]">circles/Circledivider50.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">circles/circledivider50.png</texture>
 				</control>
 				<control type="image">
 					<width>175</width>
 					<height>125</height>
-					<texture colordiffuse="$VAR[circlesCol]">circles/CircleDurationout.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">circles/circledurationout.png</texture>
 				</control>
 				<control type="image">
 					<left>125</left>
 					<width>30</width>
 					<height>125</height>
-					<texture colordiffuse="$VAR[circlesCol]">circles/Circledivider50.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">circles/circledivider50.png</texture>
 				</control>
 				<control type="label">
 					<top>5</top>
@@ -417,7 +414,7 @@
 					<align>center</align>
 					<label fallback="NA">$INFO[ListItem.Duration]</label>
 					<font>VideoinfoCircle</font>
-					<textcolor>$VAR[circlesCol]</textcolor>
+					<textcolor>$VAR[CirclesCol]</textcolor>
 				</control>
 			</control>
 			<control type="group">
@@ -425,28 +422,32 @@
 				<left>170</left>
 				<visible>!String.IsEmpty(ListItem.DBTYPE)</visible>
 				<control type="image">
-					<left>-5</left>
-					<top>-5</top>
-					<width>180</width>
-					<height>130</height>
-					<texture>circles/CircleRatingin.png</texture>
+					<width>175</width>
+					<height>125</height>
+					<texture colordiffuse="TextColorLight">circles/circleinbg.png</texture>
+					<include>CircleFlagsinnerDiffuse</include>
+				</control>
+				<control type="image">
+					<width>175</width>
+					<height>125</height>
+					<texture colordiffuse="TextColorLight">circles/circleratingin.png</texture>
 					<include>CircleFlagsinnerDiffuse</include>
 				</control>
 				<control type="image">
 					<width>50</width>
 					<height>125</height>
-					<texture colordiffuse="$VAR[circlesCol]">circles/Circledivider50.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">circles/circledivider50.png</texture>
 				</control>
 				<control type="image">
 					<width>175</width>
 					<height>125</height>
-					<texture colordiffuse="$VAR[circlesCol]">circles/CircleRatingout.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">circles/circleratingout.png</texture>
 				</control>
 				<control type="image">
 					<left>125</left>
 					<width>30</width>
 					<height>125</height>
-					<texture colordiffuse="$VAR[circlesCol]">circles/Circledivider50.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">circles/circledivider50.png</texture>
 				</control>
 				<control type="label">
 					<top>5</top>
@@ -455,15 +456,15 @@
 					<align>center</align>
 					<label fallback="NA">$VAR[FlagLabel-Rating]</label>
 					<font>VideoinfoCircle</font>
-					<textcolor>$VAR[circlesCol]</textcolor>
+					<textcolor>$VAR[CirclesCol]</textcolor>
 				</control>
 			</control>
 			<control type="image">
-				<description>Fallback - Circle 2</description>
+				<description>Fallback - leere Info Circle 2</description>
 				<left>170</left>
 				<width>180</width>
 				<height>125</height>
-				<texture colordiffuse="$VAR[circlesCol]">circles/Circledivider50.png</texture>
+				<texture colordiffuse="$VAR[CirclesCol]">circles/circledivider50.png</texture>
 				<visible>String.IsEmpty(ListItem.DBTYPE)</visible>
 			</control>
 			<control type="group">
@@ -473,24 +474,30 @@
 				<control type="image">
 					<width>175</width>
 					<height>125</height>
-					<texture>circles/CircleUserRatingin.png</texture>
+					<texture colordiffuse="TextColorLight">circles/circleinbg.png</texture>
+					<include>CircleFlagsinnerDiffuse</include>
+				</control>
+				<control type="image">
+					<width>175</width>
+					<height>125</height>
+					<texture colordiffuse="TextColorLight">circles/circleuserratingin.png</texture>
 					<include>CircleFlagsinnerDiffuse</include>
 				</control>
 				<control type="image">
 					<width>50</width>
 					<height>125</height>
-					<texture colordiffuse="$VAR[circlesCol]">circles/Circledivider50.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">circles/circledivider50.png</texture>
 				</control>
 				<control type="image">
 					<width>175</width>
 					<height>125</height>
-					<texture colordiffuse="$VAR[circlesCol]">circles/CircleUserRatingout.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">circles/circleuserratingout.png</texture>
 				</control>
 				<control type="image">
 					<left>125</left>
 					<width>30</width>
 					<height>125</height>
-					<texture colordiffuse="$VAR[circlesCol]">circles/Circledivider50.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">circles/circledivider50.png</texture>
 				</control>
 				<control type="label">
 					<top>5</top>
@@ -499,15 +506,15 @@
 					<align>center</align>
 					<label fallback="NA">$VAR[FlagLabel-UserRating]</label>
 					<font>VideoinfoCircle</font>
-					<textcolor>$VAR[circlesCol]</textcolor>
+					<textcolor>$VAR[CirclesCol]</textcolor>
 				</control>
 			</control>
 			<control type="image">
-				<description>Fallback - Circle 3</description>
+				<description>Fallback - leere Info Circle 3</description>
 				<left>300</left>
 				<width>180</width>
 				<height>125</height>
-				<texture colordiffuse="$VAR[circlesCol]">circles/Circledivider50.png</texture>
+				<texture colordiffuse="$VAR[CirclesCol]">circles/circledivider50.png</texture>
 				<visible>String.IsEmpty(ListItem.DBTYPE)</visible>
 			</control>
 			<control type="group">
@@ -517,24 +524,24 @@
 				<control type="image">
 					<width>175</width>
 					<height>125</height>
-					<texture>circles/CircleMPAAin.png</texture>
+					<texture colordiffuse="TextColorLight">circles/circlempaain.png</texture>
 					<include>CircleFlagsinnerDiffuse</include>
 				</control>
 				<control type="image">
 					<width>50</width>
 					<height>125</height>
-					<texture colordiffuse="$VAR[circlesCol]">circles/Circledivider50.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">circles/circledivider50.png</texture>
 				</control>
 				<control type="image">
 					<width>175</width>
 					<height>125</height>
-					<texture colordiffuse="$VAR[circlesCol]">circles/CircleMPAAout.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">circles/circlempaaout.png</texture>
 				</control>
 				<control type="image">
 					<left>125</left>
 					<width>30</width>
 					<height>125</height>
-					<texture colordiffuse="$VAR[circlesCol]">circles/Circledivider50.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">circles/circledivider50.png</texture>
 				</control>
 				<control type="label">
 					<top>5</top>
@@ -543,22 +550,22 @@
 					<align>center</align>
 					<label>$VAR[FlagLabel-MPAA]</label>
 					<font>VideoinfoCircle</font>
-					<textcolor>$VAR[circlesCol]</textcolor>
+					<textcolor>$VAR[CirclesCol]</textcolor>
 				</control>
 			</control>
 			<control type="image">
-				<description>Fallback - Circle 4</description>
+				<description>Fallback - leere Info Circle 4</description>
 				<left>430</left>
 				<width>140</width>
 				<height>125</height>
-				<texture colordiffuse="$VAR[circlesCol]">circles/Circledivider50.png</texture>
+				<texture colordiffuse="$VAR[CirclesCol]">circles/circledivider50.png</texture>
 				<visible>String.IsEmpty(ListItem.DBTYPE)</visible>
 			</control>
 			<control type="image">
 				<left>561</left>
 				<width>70</width>
 				<height>125</height>
-				<texture colordiffuse="$VAR[circlesCol]">circles/Posterinforight.png</texture>
+				<texture colordiffuse="$VAR[CirclesCol]">circles/posterinforight.png</texture>
 			</control>
 		</control>
 		<control type="group"><!-- Info -->
@@ -577,10 +584,9 @@
 				<description>Beschreibung</description>
 				<top>96</top>
 				<width>850</width>
-				<height max="228">auto</height>
+				<height max="222">auto</height>
 				<font>Plot</font>
-				<scroll>false</scroll>
-				<autoscroll time="5000" delay="8000" repeat="5000">false</autoscroll>
+				<autoscroll>false</autoscroll>
 				<label fallback="Kein Überblick gefunden">$INFO[ListItem.Tagline,[B],[/B][CR]]$INFO[ListItem.Plot]</label>
 			</control>
 			<control type="grouplist">
@@ -685,7 +691,7 @@
 			</control>
 		</control>
 		<control type="group">
-			<description>Zuletzt gesehene Episode statt regie</description>
+			<description>Zuletzt gesehene serie statt regie</description>
 			<left>1360</left>
 			<top>830</top>
 			<visible>String.Contains(ListItem.DBTYPE,tvshow)</visible>
@@ -752,7 +758,7 @@
 				<visible>String.Contains(ListItem.DBTYPE,movie)</visible>
 			</control>
 			<control type="label">
-				<description>Titelinfo Film und Episode</description>
+				<description>Titelinfo Serie und Episode</description>
 				<top>-70</top>
 				<width>880</width>
 				<height>66</height>
@@ -766,20 +772,20 @@
 				<top>-5</top>
 				<width>1505</width>
 				<height>851</height>
-				<texture border="8" colordiffuse="$VAR[circlesCol]">views/white8.png</texture>
+				<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
 			</control>
 			<control type="image">
 				<description>Hintergrund Farbe</description>
 				<width>1495</width>
 				<height>841</height>
-				<texture colordiffuse="$VAR[primaryCol]">views/white8.png</texture>
+				<texture colordiffuse="$VAR[PrimaryCol]">views/white8.png</texture>
 			</control>
 			<control type="label">
 				<description>Fallback icon</description>
 				<width>1495</width>
 				<height>841</height>
 				<align>center</align>
-				<textcolor>$VAR[circlesCol]</textcolor>
+				<textcolor>$VAR[CirclesCol]</textcolor>
 				<font>IconInfoActordefaultFO</font>
 				<label>$VAR[viewtypefallbacks]</label>
 				<visible>!String.IsEmpty(ListItem.Art(fanart))</visible>
@@ -875,7 +881,6 @@
 				<height>80</height>
 				<autoscroll time="4500" delay="6000" repeat="6000">Control.HasFocus(9331)</autoscroll>
 				<scrolltime tween="cubic" easing="inout">1500</scrolltime>
-				<orientation>vertical</orientation>
 				<viewtype>list</viewtype>
 				<itemlayout width="1760" height="80">
 					<control type="label">
@@ -973,7 +978,7 @@
 			</control>
 		</control>
 	</control>
-	<control type="group"><!-- Rechte Seite - Darsteller, aehnliche Filme, Library Editor -->
+	<control type="group"><!-- Rechte Seite - Darsteller, aehnliche Filme -->
 		<description>Rechte Seite - Darsteller, aehnliche Filme, Library Editor</description>
 		<left>1920</left>
 		<top>119</top>
@@ -1005,12 +1010,12 @@
 				<control type="image">
 					<width>192</width>
 					<height>152</height>
-					<texture colordiffuse="$VAR[circlesColInner]">rings/inner-ring.png</texture>
+					<texture colordiffuse="$VAR[CirclesColInner]">rings/inner-ring.png</texture>
 				</control>
 				<control type="image">
 					<width>192</width>
 					<height>152</height>
-					<texture colordiffuse="$VAR[circlesCol]">rings/outer-ring.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">rings/outer-ring.png</texture>
 				</control>
 				<include>CircleInfoIcon</include>
 			</itemlayout>
@@ -1018,20 +1023,20 @@
 				<control type="image">
 					<width>192</width>
 					<height>152</height>
-					<texture colordiffuse="$VAR[secondaryCol]">rings/inner-ring.png</texture>
+					<texture colordiffuse="$VAR[SecondaryCol]">rings/inner-ring.png</texture>
 					<visible>Control.HasFocus(9001)</visible>
 				</control>
 				<control type="image">
 					<width>192</width>
 					<height>152</height>
-					<texture colordiffuse="$VAR[circlesColInner]">rings/inner-ring.png</texture>
+					<texture colordiffuse="$VAR[CirclesColInner]">rings/inner-ring.png</texture>
 					<visible>!Control.HasFocus(9001)</visible>
 				</control>
 				<include>CircleInfoIcon</include>
 				<control type="image">
 					<width>192</width>
 					<height>152</height>
-					<texture colordiffuse="$VAR[circlesCol]">rings/outer-ring.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">rings/outer-ring.png</texture>
 				</control>
 			</focusedlayout>
 			<content>
@@ -1057,7 +1062,7 @@
 					<label2>h</label2>
 					<onclick>SetProperty(SimilarMovies,ON,movieinformation)</onclick>
 					<onclick>SetFocus(501)</onclick>
-					<visible>!String.IsEmpty(Container(9004).ListItem.Label)</visible>
+					<visible>!String.IsEmpty(Container(9004).ListItem.Label) + !String.IsEmpty(Container(50).ListItem.label)</visible>
 				</item>
 				<item id="36">
 					<description>Filme des Regisseurs</description>
@@ -1066,7 +1071,7 @@
 					<onclick>Skin.SetString(SelectDialog,Actor)</onclick>
 					<onclick>SetProperty(Sectecdialogtitle,Regie: $INFO[ListItem.Director],Home)</onclick>
 					<onclick>SendClick(2003,13)</onclick>
-					<visible>Control.IsEnabled(13) + !String.IsEmpty(ListItem.Director)</visible>
+					<visible>Control.IsEnabled(13) + ![String.IsEmpty(ListItem.Director) | String.Contains(ListItem.Director,/)]</visible><!-- chech schraegstriche -->
 				</item>
 			</content>
 		</control>
@@ -1087,20 +1092,20 @@
 				<top>-5</top>
 				<width>582</width>
 				<height>851</height>
-				<texture border="8" colordiffuse="$VAR[circlesCol]">views/white8.png</texture>
+				<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
 			</control>
 			<control type="image"><!-- Artwork -->
 				<description>Hintergrund Farbe</description>
 				<width>572</width>
 				<height>841</height>
-				<texture colordiffuse="$VAR[primaryCol]" background="true">White.png</texture>
+				<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
 			</control>
 			<control type="label">
 				<description>Fallback icon</description>
 				<width>572</width>
 				<height>841</height>
 				<align>center</align>
-				<textcolor>$VAR[circlesCol]</textcolor>
+				<textcolor>$VAR[CirclesCol]</textcolor>
 				<font>IconInfoActordefaultFO</font>
 				<label>U</label>
 			</control>
@@ -1108,14 +1113,14 @@
 				<description>Art</description>
 				<width>572</width>
 				<height>841</height>
-				<texture diffuse="White.png">$INFO[Container(50).ListItem.Icon]</texture>
+				<texture diffuse="white.png">$INFO[Container(50).ListItem.Icon]</texture>
 				<aspectratio>scale</aspectratio>
 				<visible>!String.StartsWith(Container(50).ListItem.Icon,Default)</visible>
 			</control>
 			<include content="texture_vintageoverlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
 				<param name="width">572</param>
 				<param name="height">841</param>
-				<param name="texture">views/oldpaperOverlay2.png</param>
+				<param name="texture">views/oldpaperoverlay2.png</param>
 			</include>
 			<control type="image">
 				<description>Titel background</description>
@@ -1123,19 +1128,18 @@
 				<top>763</top>
 				<width>472</width>
 				<height>112</height>
-				<texture colordiffuse="$VAR[secondaryCol]">cycle/categorieBG.png</texture>
+				<texture colordiffuse="$VAR[SecondaryCol]">cycle/categoriebg.png</texture>
 			</control>
 			<control type="label">
 				<description>Titel</description>
 				<left>70</left>
-				<top>760</top>
+				<top>763</top>
 				<width>412</width>
 				<height>85</height>
 				<align>center</align>
 				<scroll>true</scroll>
 				<textcolor>TextColorFO</textcolor>
 				<wrapmultiline>true</wrapmultiline>
-				<autoscroll>true</autoscroll>
 				<font>TitleCategory</font>
 				<label>$INFO[Container(50).ListItem.Label][CR]$INFO[Container(50).ListItem.Label2,(,)]</label>
 			</control>
@@ -1172,13 +1176,32 @@
 					<label>Darsteller aus der Serie [B]$INFO[ListItem.TVShowTitle][/B]</label>
 					<visible>String.Contains(ListItem.DBTYPE,episode) | String.Contains(ListItem.DBTYPE,tvshow) | String.Contains(ListItem.DBTYPE,season)</visible>
 				</control>
-				<control type="label">
+				<control type="grouplist">
 					<description>SubTitel bei episode</description>
 					<top>65</top>
 					<width>850</width>
 					<height>30</height>
-					<label>$VAR[EpisodePrefix-long]$VAR[CustomEnumeration]$INFO[ListItem.Title][COLOR=$VAR[secondaryCol]]$INFO[ListItem.Year, (,)][/COLOR]</label>
+					<orientation>horizontal</orientation>
 					<visible>String.Contains(ListItem.DBTYPE,episode)</visible>
+					<control type="label">
+						<description>SubTitel episodennummer bei episode</description>
+						<width>auto</width>
+						<height>30</height>
+						<label>$VAR[EpisodePrefix-long]</label>
+					</control>
+					<control type="label">
+						<description>Enum</description>
+						<width>auto</width>
+						<height>30</height>
+						<font>EnumRegularNormal</font>
+						<label>$VAR[CustomEnumeration]</label>
+					</control>
+					<control type="label">
+						<description>SubTitel bei episode</description>
+						<width>auto</width>
+						<height>30</height>
+						<label>$INFO[ListItem.Title][COLOR=$VAR[SecondaryCol]]$INFO[ListItem.Year, (,)][/COLOR]</label>
+					</control>
 				</control>
 			</control>
 			<control type="list" id="50"><!-- Liste -->
@@ -1190,9 +1213,9 @@
 				<ondown>ClearProperty(Sectecdialogtitle,Home)</ondown>
 				<ondown>9001</ondown>
 				<onup>noop</onup>
-				<onfocus condition="String.IsEmpty(Window(movieinformation).Property(SimilarMovies))">SetProperty(Sectecdialogtitle,Darsteller,Home)</onfocus><!-- Focus und string fuer Select Dialog Darsteller -->
 				<onfocus>Skin.SetString(SelectDialog,Actor)</onfocus>
-				<visible>!Window.IsActive(DialogSelect.xml)</visible>
+				<onfocus>SetProperty(Sectecdialogtitle,Darsteller,Home)</onfocus>
+				<visible>!Window.IsActive(selectdialog)</visible>
 				<visible>String.IsEmpty(Window(movieinformation).Property(SimilarMovies))</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="fade" start="0" end="100" delay="100" time="350" tween="cubic" easing="inout" />
@@ -1212,20 +1235,20 @@
 							<top>-4</top>
 							<width>158</width>
 							<height>228</height>
-							<texture border="8" colordiffuse="$VAR[circlesCol]">views/white8.png</texture>
+							<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
 						</control>
 						<control type="image"><!-- Fallback -->
 							<description>Hintergrund Farbe</description>
 							<width>150</width>
 							<height>220</height>
-							<texture colordiffuse="$VAR[primaryCol]">White.png</texture>
+							<texture colordiffuse="$VAR[PrimaryCol]">white.png</texture>
 						</control>
 						<control type="label">
 							<description>Fallback icon</description>
 							<width>150</width>
 							<height>220</height>
 							<align>center</align>
-							<textcolor>$VAR[circlesCol]</textcolor>
+							<textcolor>$VAR[CirclesCol]</textcolor>
 							<font>IconInfoActordefault</font>
 							<label>U</label>
 						</control>
@@ -1240,12 +1263,12 @@
 						<control type="image"><!-- Inaktiv overlay -->
 							<width>150</width>
 							<height>220</height>
-							<texture colordiffuse="$VAR[InaktivImageDiffuse]">White.png</texture>
+							<texture colordiffuse="$VAR[InaktivImageDiffuse]">white.png</texture>
 						</control>
 						<include content="texture_vintageoverlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
 							<param name="width">150</param>
 							<param name="height">220</param>
-							<param name="texture">views/oldpaperOverlay2.png</param>
+							<param name="texture">views/oldpaperoverlay2.png</param>
 						</include>
 					</control>
 				</itemlayout>
@@ -1271,7 +1294,7 @@
 							<top>-4</top>
 							<width>158</width>
 							<height>228</height>
-							<texture border="8" colordiffuse="$VAR[circlesCol]">views/white8.png</texture>
+							<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
 							<animation effect="fade" time="200" start="50" end="100">Focus</animation>
 							<animation effect="fade" time="200" start="100" end="50">UnFocus</animation>
 						</control>
@@ -1279,14 +1302,14 @@
 							<description>Hintergrund Farbe</description>
 							<width>150</width>
 							<height>220</height>
-							<texture colordiffuse="$VAR[primaryCol]">White.png</texture>
+							<texture colordiffuse="$VAR[PrimaryCol]">white.png</texture>
 						</control>
 						<control type="label">
 							<description>Fallback icon</description>
 							<width>150</width>
 							<height>220</height>
 							<align>center</align>
-							<textcolor>$VAR[circlesCol]</textcolor>
+							<textcolor>$VAR[CirclesCol]</textcolor>
 							<font>IconInfoActordefault</font>
 							<label>U</label>
 						</control>
@@ -1294,24 +1317,24 @@
 							<description>Art</description>
 							<width>150</width>
 							<height>220</height>
-							<texture diffuse="White.png" background="true">$INFO[ListItem.Icon]</texture>
+							<texture background="true">$INFO[ListItem.Icon]</texture>
 							<aspectratio aligny="bottom">scale</aspectratio>
 							<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
 						</control>
 						<control type="image"><!-- Inaktiv overlay -->
 							<width>150</width>
 							<height>220</height>
-							<texture colordiffuse="$VAR[InaktivImageDiffuse]">White.png</texture>
+							<texture colordiffuse="$VAR[InaktivImageDiffuse]">white.png</texture>
 							<include>Dimmer_Animation</include>
 						</control>
 						<include content="texture_vintageoverlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
 							<param name="width">150</param>
 							<param name="height">220</param>
-							<param name="texture">views/oldpaperOverlay2.png</param>
+							<param name="texture">views/oldpaperoverlay2.png</param>
 						</include>
 					</control>
 				</focusedlayout>
-				<onclick>SetProperty(Sectecdialogtitle,Darsteller: $INFO[Container(50).ListItem.Label],Home)</onclick>
+				
 			</control>
 		</control>
 		<control type="group"><!-- Poster Similar -->
@@ -1331,20 +1354,20 @@
 				<top>-5</top>
 				<width>582</width>
 				<height>851</height>
-				<texture border="8" colordiffuse="$VAR[circlesCol]">views/white8.png</texture>
+				<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
 			</control>
 			<control type="image"><!-- Artwork -->
 				<description>Hintergrund Farbe</description>
 				<width>572</width>
 				<height>841</height>
-				<texture colordiffuse="$VAR[primaryCol]" background="true">White.png</texture>
+				<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
 			</control>
 			<control type="label">
 				<description>Fallback icon Serie</description>
 				<width>572</width>
 				<height>641</height>
 				<align>center</align>
-				<textcolor>$VAR[circlesCol]</textcolor>
+				<textcolor>$VAR[CirclesCol]</textcolor>
 				<font>IconInfoposterdefault</font>
 				<label>D</label>
 				<visible>!String.IsEmpty(Container(501).ListItem.Tvshowtitle)</visible>
@@ -1354,7 +1377,7 @@
 				<width>572</width>
 				<height>641</height>
 				<align>center</align>
-				<textcolor>$VAR[circlesCol]</textcolor>
+				<textcolor>$VAR[CirclesCol]</textcolor>
 				<font>IconInfoposterdefault</font>
 				<label>E</label>
 				<visible>String.IsEmpty(Container(501).ListItem.Tvshowtitle)</visible>
@@ -1371,25 +1394,20 @@
 			<include content="texture_vintageoverlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
 				<param name="width">572</param>
 				<param name="height">841</param>
-				<param name="texture">views/oldpaperOverlay2.png</param>
+				<param name="texture">views/oldpaperoverlay2.png</param>
 			</include>
 		</control>
 		<control type="group"><!-- Aehnliche Filme und Serien -->
 			<left>880</left>
-			<visible allowhiddenfocus="true">Control.HasFocus(501)</visible>
+			<visible allowhiddenfocus="true">Control.HasFocus(501) | String.IsEmpty(Container(50).ListItem.label)</visible>
 			<include>Open_Close_Visible_Hidden_Fade_Animation</include>
-			<control type="group"><!-- Titel -->
-				<control type="label">
-					<description>Titel</description>
-					<width>850</width>
-					<height>60</height>
-					<textcolor>TextColorMedium</textcolor>
-					<font>SubTitleCapsNormal</font>
-					<label>Empfehlungen aus der Kategorie [B]$VAR[SimilarLabel][/B]</label>
-				</control>
-				<animation type="Visible" reversible="false">
-					<effect type="fade" delay="1900" start="0" end="100" time="800" tween="bounce" easing="out" />
-				</animation>
+			<control type="label"><!-- Titel -->
+				<description>Titel</description>
+				<width>850</width>
+				<height>60</height>
+				<textcolor>TextColorMedium</textcolor>
+				<font>SubTitleCapsNormal</font>
+				<label>Empfehlungen aus der Kategorie [B]$VAR[SimilarLabel][/B]</label>
 			</control>
 			<control type="fixedlist" id="501"><!-- Liste -->
 				<description>Empfehlungen Liste</description>
@@ -1402,11 +1420,10 @@
 				<ondown>501</ondown>
 				<ondown>Control.Move(9004,1)</ondown>
 				<onleft>SetFocus(9001)</onleft>
-				<onleft>ClearProperty(SimilarMovies,movieinformation)</onleft>
+				<onleft condition="!String.IsEmpty(Container(50).ListItem.label)">ClearProperty(SimilarMovies,movieinformation)</onleft>
 				<onright>SetFocus(9001)</onright>
-				<onright>ClearProperty(SimilarMovies,movieinformation)</onright>
-				<visible allowhiddenfocus="true">Control.HasFocus(501)</visible>
-				<orientation>vertical</orientation>
+				<onright condition="!String.IsEmpty(Container(50).ListItem.label)">ClearProperty(SimilarMovies,movieinformation)</onright>
+				<visible allowhiddenfocus="true">Control.HasFocus(501) | String.IsEmpty(Container(50).ListItem.label)</visible>
 				<viewtype>list</viewtype>
 				<itemlayout width="500" height="60">
 					<control type="label">
@@ -1422,18 +1439,18 @@
 						<top>10</top>
 						<width>1060</width>
 						<height>60</height>
-						<texture colordiffuse="$VAR[circlesCol]">White.png</texture>
+						<texture colordiffuse="$VAR[CirclesCol]">white.png</texture>
 					</control>
 					<control type="image">
 						<width>82</width>
 						<height>82</height>
-						<texture colordiffuse="$VAR[primaryCol]">rings/sub-inner-ring.png</texture>
+						<texture colordiffuse="$VAR[PrimaryCol]">rings/sub-inner-ring.png</texture>
 						<visible>Control.HasFocus(501)</visible>
 					</control>
 					<control type="image">
 						<width>82</width>
 						<height>82</height>
-						<texture colordiffuse="$VAR[circlesColInner]">rings/sub-inner-ring.png</texture>
+						<texture colordiffuse="$VAR[CirclesColInner]">rings/sub-inner-ring.png</texture>
 						<visible>!Control.HasFocus(501)</visible>
 					</control>
 					<control type="label">
@@ -1441,20 +1458,20 @@
 						<width>82</width>
 						<height>82</height>
 						<align>center</align>
-						<textcolor>$VAR[circlesCol]</textcolor>
+						<textcolor>$VAR[CirclesCol]</textcolor>
 						<font>IconBig</font>
 						<label>$VAR[IconVideoinfoSimilar]</label>
 					</control>
 					<control type="image">
 						<width>82</width>
 						<height>82</height>
-						<texture colordiffuse="$VAR[circlesCol]">rings/sub-outer-ring.png</texture>
+						<texture colordiffuse="$VAR[CirclesCol]">rings/sub-outer-ring.png</texture>
 					</control>
 					<control type="label">
 						<left>90</left>
 						<width>670</width>
 						<height>80</height>
-						<textcolor>$VAR[primaryCol]</textcolor>
+						<textcolor>$VAR[PrimaryCol]</textcolor>
 						<label>$INFO[ListItem.Label]$INFO[ListItem.Year, (,)]</label>
 					</control>
 				</focusedlayout>
@@ -1570,12 +1587,11 @@
 		</control>
 	</control>
 </control>
-<control type="group"><!-- bei video addons ohne plot nichts -->
-	<top>30</top>
-	<visible>String.StartsWith(ListItem.Path,plugin://plugin.video) + String.IsEmpty(ListItem.Plot)</visible>
+<control type="group"><!-- bei video addons ohne DBType nichts -->
+	<visible>String.StartsWith(ListItem.Path,plugin:) + String.IsEmpty(ListItem.DBType)</visible>
 	<include>UnfeaturedWindow</include>
 </control>
-<!-- links Slideshow focus-->
+<!-- links Slideshow focus -->
 <control type="button" id="9331">
 	<visible allowhiddenfocus="true">false</visible>
 	<onclick>9000</onclick>

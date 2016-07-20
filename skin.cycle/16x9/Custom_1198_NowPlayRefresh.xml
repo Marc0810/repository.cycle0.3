@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window type="dialog" id="1198">
 <!-- Cycle 0.3 -->
-<onload>SetProperty(GlobalYear,$INFO[System.Date(yyyy)],home)</onload><!-- datumsproperty last watched -->
 <onload>ClearProperty(RefreshList3,Home)</onload>
-<visible>!Window.IsVisible(startup)</visible>
+<visible>!String.IsEmpty(Window(home).Property(RefreshList3))</visible>
 <description>Property fuer playlist refresh</description>
 <animation effect="fade" start="100" end="0" time="0" delay="5">WindowClose</animation>
 <controls></controls>

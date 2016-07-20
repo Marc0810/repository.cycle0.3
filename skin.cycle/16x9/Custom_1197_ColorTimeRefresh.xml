@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window type="dialog" id="1197">
-<visible>String.IsEqual(System.Time(mm),01) | String.IsEqual(System.Time(mm),31)</visible>
 <onunload>SetProperty(ColorRefresh,ein,home)</onunload>
-<onload>SetProperty(GlobalDate,$INFO[System.Date(DDD)] $INFO[System.Date(dd)].$INFO[System.Date(mm)].$INFO[System.Date(yyyy)],home)</onload><!-- datumsproperty last watched -->
+<visible>[Integer.IsLess(System.Time(ss),5) + String.IsEqual(System.Time(mm),01)] | [Integer.IsLess(System.Time(ss),5) + String.IsEqual(System.Time(mm),31)]</visible>
 <!-- Cycle 0.3 -->
 <controls>
 <control type="group">
@@ -10,7 +9,7 @@
 	<left>1070</left>
 	<top>-134</top>
 	<visible>Integer.IsLess(System.Time(ss),5)</visible>
-	<visible>!Window.IsVisible(startup) + !Window.IsVisible(infodialog) + !Window.IsActive(extendedprogressdialog) + !Window.IsVisible(progressdialog) + !Window.IsVisible(Custom_1118_Histroyloader.xml) + !Window.IsVisible(busydialog)</visible>
+	<visible>!Window.IsVisible(startup) + !Window.IsVisible(Notification) + !Window.IsActive(extendedprogressdialog) + !Window.IsVisible(progressdialog) + !Window.IsVisible(Custom_1118_Histroyloader.xml) + !Window.IsVisible(busydialog)</visible>
 	<animation type="Conditional" condition="Window.IsVisible(volumebar)">
 		<effect type="fade" start="100" end="0" time="0" />
 	</animation>
@@ -40,16 +39,20 @@
 		<label>Hinweis</label>
 	</control>
 	<control type="label">
-		<description>text</description>
+		<description>Text</description>
 		<top>52</top>
 		<width>665</width>
 		<height>30</height>
 		<align>right</align>
 		<font>RegularSmall</font>
 		<textcolor>$VAR[OSDDialogColor]</textcolor>
-		<label>Farbwechsel in einer Minute!</label>
+		<label>Farbe wird gewechselt!</label>
 	</control>
 </control>
 </controls>
 </window>
+
+
+
+
 

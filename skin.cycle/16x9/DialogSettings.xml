@@ -32,9 +32,9 @@
 		<left>bottom.dialogicon.left</left>
 		<top>779</top>
 		<onleft>9000</onleft>
-		<onright>9000</onright>
+		<onright>9001</onright>
 		<onup>5</onup>
-		<ondown>20</ondown>
+		<ondown>5</ondown>
 		<orientation>horizontal</orientation>
 		<control type="button" id="28">
 			<description>Bestaetigen</description>
@@ -52,6 +52,24 @@
 			<visible>Control.IsEnabled(30)</visible>
 		</control>
 	</control>
+	<control type="grouplist" id="9001">
+		<description>Buttonliste2 fake ohne Icon</description>
+		<left>804</left>
+		<top>779</top>
+		<width>280</width>
+		<onleft>9000</onleft>
+		<onright>9000</onright>
+		<onup>5</onup>
+		<ondown>5</ondown>
+		<orientation>horizontal</orientation>
+		<align>right</align>
+		<control type="button" id="429">
+			<description>Codecinfo</description>
+			<include>DialogFakeIconDimension</include>
+			<onclick>Dialog.close(all)</onclick>
+			<onclick>ActivateWindow(1149)</onclick>
+		</control>
+	</control>
 	<control type="grouplist">
 		<description>Button Icons</description>
 		<left>bottom.dialogicon.left</left>
@@ -61,19 +79,32 @@
 			<description>Bestaetigen</description>
 			<include>DialogIconDimension</include>
 			<label>Ĥ</label>
-			<visible>Control.IsEnabled(28) + Control.IsVisible(28)</visible>
+			<visible>Control.IsVisible(28)</visible>
 		</control>
 		<control type="label">
 			<description>Abbrechen</description>
 			<include>DialogIconDimension</include>
 			<label>ģ</label>
-			<visible>Control.IsEnabled(29) + Control.IsVisible(29)</visible>
+			<visible>Control.IsVisible(29)</visible>
 		</control>
 		<control type="label">
 			<description>Scrappereinstellungen</description>
 			<include>DialogIconDimension</include>
 			<label>Ġ</label>
-			<visible>Control.IsEnabled(30) + Control.IsVisible(30)</visible>
+			<visible>Control.IsVisible(30)</visible>
+		</control>
+	</control>
+	<control type="grouplist">
+		<description>Button Icons2</description>
+		<left>804</left>
+		<top>779</top>
+		<width>280</width>
+		<orientation>horizontal</orientation>
+		<align>right</align>
+		<control type="label">
+			<description>Codecinfo</description>
+			<include>DialogIconDimension</include>
+			<label>Ê</label>
 		</control>
 	</control>
 	<control type="label" id="2"><!-- Content -->
@@ -87,7 +118,7 @@
 		<include>VintageDialogTitel_Animation</include>
 	</control>
 	<control type="grouplist" id="5">
-		<description>Content Scannoptionen Liste</description>
+		<description>Content Liste</description>
 		<top>110</top>
 		<width>1108</width>
 		<height>630</height>
@@ -95,63 +126,51 @@
 		<onup>21</onup>
 		<ondown>9000</ondown>
 		<onleft>9000</onleft>
-		<onright>noop</onright>
+		<onright>9000</onright>
 	</control>
 	<control type="button" id="7"><!-- Defaultbuttons fuer Scannoptionenliste ID 5 -->
 		<description>Default Button</description>
 		<width>1108</width>
-		<height>70</height>
 		<textwidth>950</textwidth>
-		<aligny>top</aligny>
-		<textoffsety>15</textoffsety>
-		<texturefocus border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texturefocus>
+		<include>Item.top.height70</include>
+		<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturefocus>
 	</control>
 	<control type="radiobutton" id="8">
 		<description>Default RadioButton</description>
 		<width>1108</width>
-		<height>70</height>
 		<textwidth>950</textwidth>
-		<aligny>top</aligny>
-		<textoffsety>15</textoffsety>
+		<include>Item.top.height70</include>
 		<radioposx>1010</radioposx>
 		<radioposy>10</radioposy>
-		<texturefocus border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texturefocus>
+		<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturefocus>
 	</control>
 	<control type="spincontrolex" id="9">
 		<description>Default spincontrolex</description>
 		<width>1108</width>
-		<height>70</height>
 		<textwidth>950</textwidth>
-		<aligny>top</aligny>
-		<textoffsety>15</textoffsety>
-		<texturefocus border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texturefocus>
+		<include>Item.top.height70</include>
+		<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturefocus>
 		<texturenofocus>-</texturenofocus>
 		<reverse>yes</reverse>
 	</control>
 	<control type="edit" id="12">
 		<description>Default Edit</description>
 		<width>1108</width>
-		<height>70</height>
-		<aligny>top</aligny>
-		<textoffsety>15</textoffsety>
-		<texturenofocus border="14,0,14,0" colordiffuse="$VAR[primaryCol]">-</texturenofocus>
-		<texturefocus border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texturefocus>
+		<include>Item.top.height70</include>
+		<texturenofocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">-</texturenofocus>
+		<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturefocus>
 	</control>
 	<control type="sliderex" id="13">
 		<description>Default Slider</description>
 		<width>1108</width>
-		<height>70</height>
-		<aligny>top</aligny>
-		<textoffsety>15</textoffsety>
-		<texturefocus border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texturefocus>
+		<include>Item.top.height70</include>
+		<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturefocus>
 	</control>
 	<control type="label" id="14">
 		<description>Default Label</description>
 		<width>1108</width>
-		<height>70</height>
 		<textoffsetx>30</textoffsetx>
-		<aligny>top</aligny>
-		<textoffsety>15</textoffsety>
+		<include>Item.top.height70</include>
 		<font>LightNormal</font>
 	</control>
 </control>

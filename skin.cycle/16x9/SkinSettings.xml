@@ -3,6 +3,9 @@
 <!-- Cycle 0.3 -->
 <defaultcontrol always="true">9000</defaultcontrol>
 <menucontrol>9600</menucontrol>
+<onload condition="!String.IsEmpty(Window(home).Property(Reloader))">SetFocus(9002)</onload>
+<onload condition="!String.IsEmpty(Window(home).Property(Reloader))">ClearProperty(Reloader,home)</onload>
+<!-- <onunload>ClearProperty(Reloader,home)</onunload> -->
 <controls>
 <control type="button" id="9600">
 	<include>HiddenControl</include>
@@ -16,7 +19,7 @@
 <include condition="!Skin.HasSetting(EnableVintageOverlay)">global_background</include>
 <include>global_topbar</include><!-- topbar -->
 <control type="group"><!-- slide menue -->
-	<visible>!Window.IsVisible(shutdownmenu) + !Window.IsVisible(Custom_1149_Textbox.xml) + !Window.IsVisible(Custom_1120_MainMenuSlide.xml) + !Window.IsVisible(favourites) + !Window.IsVisible(AddonSettings) + !Window.IsVisible(selectdialog) + !Window.IsVisible(playercontrols)</visible>
+	<visible>!Window.IsVisible(shutdownmenu) + !Window.IsVisible(Custom_1121_Textbox.xml) + !Window.IsVisible(Custom_1120_MainMenuSlide.xml) + !Window.IsVisible(favourites) + !Window.IsVisible(AddonSettings) + !Window.IsVisible(selectdialog) + !Window.IsVisible(playercontrols)</visible>
 	<include>Open_Close_Visible_Hidden_Slide_Animation375</include>
 	<include>SettingMenu_BG</include><!-- Hintergrund -->
 	<include>SettingMenu_IconBG</include>
@@ -31,18 +34,16 @@
 			<left>-100</left>
 			<include>SidebarIconDimension</include>
 			<include>IconColorFO</include>
-			<label>Ě</label>
+			<label>$VAR[global_topbar_icon]</label>
 		</control>
 		<control type="grouplist">
 			<width>sidebar.breadcumblabel.width</width>
 			<height>100</height>
 			<itemgap>0</itemgap>
-			<orientation>vertical</orientation>
 			<control type="label">
 				<description>Breadcumb1 label</description>
 				<width>sidebar.breadcumblabel.width</width>
 				<height>sidebar.breadcumblabel.height</height>
-				<scroll>false</scroll>
 				<font>BreadcumbNormal</font>
 				<label>$LOCALIZE[20077]</label>
 			</control>
@@ -50,7 +51,6 @@
 				<description>Breadcumb2 label</description>
 				<width>sidebar.breadcumblabel.width</width>
 				<height>sidebar.breadcumblabel.height</height>
-				<scroll>false</scroll>
 				<font>BreadcumbSmall</font>
 				<label>Ändern</label>
 			</control>
@@ -90,41 +90,50 @@
 	</control>
 	<control type="group"><!-- logo -->
 		<left>130</left>
-		<top>910</top>
+		<top>870</top>
 		<description>Skin Logo</description>
 		<control type="image">
-			<width>150</width>
-			<height>150</height>
-			<texture colordiffuse="ShadowColor">logo/logoBorderFO.png</texture>
-		</control>
-		<control type="image">
-			<width>150</width>
-			<height>150</height>
-			<texture colordiffuse="$VAR[circlesCol]">logo/logoW.png</texture>
-		</control>
-		<control type="image">
-			<width>150</width>
-			<height>150</height>
-			<texture colordiffuse="$VAR[primaryCol]">logo/logoD.png</texture>
-		</control>
-		<control type="image">
-			<width>150</width>
-			<height>150</height>
-			<texture colordiffuse="$VAR[secondaryCol]">logo/logoL1.png</texture>
-		</control>
-		<control type="image">
-			<width>150</width>
-			<height>150</height>
-			<texture colordiffuse="$VAR[secondaryCol]">logo/logoL2.png</texture>
+			<left>-11</left>
+			<top>6</top>
+			<width>195</width>
+			<height>195</height>
+			<texture colordiffuse="ShadowColor">logo/logo_border.png</texture>
 		</control>
 		<control type="label">
-			<description>Logo Label</description>
-			<width>150</width>
-			<height>150</height>
-			<align>center</align>
-			<font>CycleLogoBrandingSmall</font>
-			<textcolor>$VAR[circlesCol]</textcolor>
-			<label>Cycle</label>
+			<width>200</width>
+			<height>200</height>
+			<font>IconLogoSmall</font>
+			<textcolor>$VAR[PrimaryCol]</textcolor>
+			<label>ķ</label>
+		</control>
+		<control type="label">
+			<width>200</width>
+			<height>200</height>
+			<font>IconLogoSmall</font>
+			<textcolor>$VAR[SecondaryLogoCol]</textcolor>
+			<label>ĸ</label>
+		</control>
+		<control type="label">
+			<width>200</width>
+			<height>200</height>
+			<font>IconLogoSmall</font>
+			<textcolor>$VAR[SecondaryLogoCol]</textcolor>
+			<label>Ĺ</label>
+		</control>
+		<control type="label">
+			<width>200</width>
+			<height>200</height>
+			<font>IconLogoSmall</font>
+			<textcolor>$VAR[CirclesCol]</textcolor>
+			<label>ĺ</label>
+		</control>
+		<control type="label">
+			<description>StartupLogo label</description>
+			<width>200</width>
+			<height>200</height>
+			<font>IconLogoSmall</font>
+			<label>Ļ</label>
+			<textcolor>TextColorFO</textcolor>
 		</control>
 	</control>
 </control>
@@ -132,13 +141,13 @@
 	<left>570</left>
 	<top>150</top>
 	<include>Open_Close_Visible_Hidden_Fade_Animation</include>
-	<visible>!Window.IsVisible(shutdownmenu) + !Window.IsVisible(Custom_1149_Textbox.xml) + !Window.IsVisible(Custom_1120_MainMenuSlide.xml) + !Window.IsVisible(favourites) + !Window.IsVisible(AddonSettings) + !Window.IsVisible(selectdialog) + !Window.IsVisible(playercontrols)</visible>
+	<visible>!Window.IsVisible(shutdownmenu) + !Window.IsVisible(Custom_1121_Textbox.xml) + !Window.IsVisible(Custom_1120_MainMenuSlide.xml) + !Window.IsVisible(favourites) + !Window.IsVisible(AddonSettings) + !Window.IsVisible(selectdialog) + !Window.IsVisible(playercontrols)</visible>
 	<control type="image">
 		<description>Hintergrund</description>
 		<left>10</left>
 		<width>1103</width>
 		<height>860</height>
-		<texture colordiffuse="ListBackgroundDiffuse">White.png</texture>
+		<texture colordiffuse="ListBackgroundDiffuse">white.png</texture>
 	</control>
 	<control type="grouplist" id="9001"><!-- Allgemein -->
 		<description>Allgemeine einstellungen</description>
@@ -266,7 +275,7 @@
 	</control>
 	<control type="grouplist" id="9002"><!-- Design -->
 		<description>Designoptionen</description>
-		<visible>Control.Hasfocus(8102) | ControlGroup(9002).HasFocus</visible>
+		<visible allowhiddenfocus="true">Control.Hasfocus(8102) | ControlGroup(9002).HasFocus</visible>
 		<width>1125</width>
 		<height>806</height>
 		<itemgap>0</itemgap>
@@ -278,24 +287,29 @@
 			<include>SkinSettingSubLabel</include>
 			<label>Designoptionen</label>
 		</control>
-		<control type="radiobutton" id="90021">
-			<description>VintageFont Animation fuer poskorrektur</description>
+		<control type="button" id="90021">
+			<description>Home mitte/klick Aktion</description>
 			<include>SkinSettingButtonValue</include>
-			<onclick>Skin.ToggleSetting(VintageFont)</onclick>
-			<onclick>ReloadSkin()</onclick>
-			<label>Vintage Font ausgewählt</label>
-			<selected>Skin.HasSetting(VintageFont)</selected>
+			<onclick>skin.setstring(Fontselection,Default)</onclick>
+			<onclick>SetProperty(Reloader,True,Home)</onclick>
+			<onclick condition="String.IsEqual(skin.string(Fontselection),Default)">skin.SetString(Fontselection,Vintage)</onclick>
+			<onclick condition="String.IsEqual(skin.string(Fontselection),Vintage)">skin.setstring(Fontselection,Default)</onclick>
+			<onunfocus condition="!String.IsEmpty(Window(home).Property(Reloader))">ReloadSkin()</onunfocus>
+			<label>Schriftkorrekturen (erfordert ein Neuladen des Skins)</label>
+			<label2>$INFO[skin.string(Fontselection)]</label2>
 		</control>
 		<control type="radiobutton" id="90022">
 			<description>Vintage Overlay</description>
 			<include>SkinSettingButtonValue</include>
+			<onclick>SetProperty(Reloader,True,Home)</onclick>
 			<onclick>Skin.ToggleSetting(EnableVintageOverlay)</onclick>
-			<onclick>ReloadSkin()</onclick>
-			<onclick>ActivateWindow(startup)</onclick>
-			<label>Vintage Overlay aktivieren</label>
+			<onclick>Skin.SetString(ColorChangePosition,1)</onclick>
+			<onclick>SetProperty(ColorRefresh,ein,home)</onclick>
+			<onunfocus condition="!String.IsEmpty(Window(home).Property(Reloader))">ReloadSkin()</onunfocus>
+			<label>Vintage Overlay (erfordert ein Neuladen des Skins)</label>
 			<selected>Skin.HasSetting(EnableVintageOverlay)</selected>
 		</control>
-		<control type="button" id="90023">
+		<control type="button" id="90024">
 			<description>Trennzeichen</description>
 			<include>SkinSettingButtonValue</include>
 			<onclick>skin.Reset(CustomEnumeration)</onclick>
@@ -312,34 +326,65 @@
 			<onclick condition="String.IsEqual(skin.string(CustomEnumeration),10)">skin.setstring(CustomEnumeration,11)</onclick>
 			<onclick condition="String.IsEqual(skin.string(CustomEnumeration),11)">skin.setstring(CustomEnumeration,12)</onclick>
 			<onclick condition="String.IsEqual(skin.string(CustomEnumeration),12)">skin.setstring(CustomEnumeration,13)</onclick>
-			<onclick condition="String.IsEqual(skin.string(CustomEnumeration),13)">skin.setstring(CustomEnumeration,1)</onclick>
-			<label>Trennzeichen (ﾈ ﾉ ﾊ ﾋ ﾌ ﾍ ﾎ ﾏ ﾐ ﾑ ﾒ ﾓ ﾔ)</label>
-			<label2>$VAR[CustomEnumeration]</label2>
+			<onclick condition="String.IsEqual(skin.string(CustomEnumeration),13)">skin.setstring(CustomEnumeration,14)</onclick>
+			<onclick condition="String.IsEqual(skin.string(CustomEnumeration),14)">skin.setstring(CustomEnumeration,15)</onclick>
+			<onclick condition="String.IsEqual(skin.string(CustomEnumeration),15)">skin.setstring(CustomEnumeration,16)</onclick>
+			<onclick condition="String.IsEqual(skin.string(CustomEnumeration),16)">skin.setstring(CustomEnumeration,17)</onclick>
+			<onclick condition="String.IsEqual(skin.string(CustomEnumeration),17)">skin.setstring(CustomEnumeration,1)</onclick>
+			<label>Trennzeichen</label>
 		</control>
-		<control type="label" id="90024">
+		<control type="radiobutton" id="90023">
+			<description>Fanart Overlay</description>
+			<include>SkinSettingButtonValue</include>
+			<onclick>Skin.ToggleSetting(HideBackGroundFanart)</onclick>
+			<selected>Skin.HasSetting(HideBackGroundFanart)</selected>
+			<label>Verstecke Hintergrund-Fanart</label>
+			<visible>!Skin.HasSetting(EnableVintageOverlay)</visible>
+		</control>
+		<control type="label" id="90025">
 			<description>Divider</description>
 			<include>SkinSettingButtonValue</include>
 			<label></label>
 		</control>
-		<control type="label" id="90025">
+		<control type="label" id="90026">
 			<include>SkinSettingSubLabel</include>
 			<label>Genre Artworks (Banner, Fanart und Poster)</label>
 		</control>
-		<control type="radiobutton" id="90026">
+		<control type="radiobutton" id="90027">
 			<description>Videogenre Artworks</description>
 			<include>SkinSettingButtonValue</include>
 			<onclick condition="!System.HasAddon(resource.images.moviegenrefanart.cycle)">InstallAddon(resource.images.moviegenrefanart.cycle)</onclick>
-			<onclick condition="System.HasAddon(resource.images.moviegenrefanart.cycle) + !Skin.HasSetting(EnableGenreArtworks)">Skin.SetBool(EnableGenreArtworks)</onclick>
-			<onclick condition="System.HasAddon(resource.images.moviegenrefanart.cycle) + Skin.HasSetting(EnableGenreArtworks)">Skin.Reset(EnableGenreArtworks)</onclick>
+			<onclick condition="System.HasAddon(resource.images.moviegenrefanart.cycle)">Notification(Hinweis,Das Addon hat keine Einstellungen,3,DefaultIconInfo.png)</onclick>
 			<label>Videogenre Artworks verwenden</label>
-			<selected>System.HasAddon(resource.images.moviegenrefanart.cycle) + Skin.HasSetting(EnableGenreArtworks)</selected>
+			<selected>System.HasAddon(resource.images.moviegenrefanart.cycle)</selected>
 		</control>
+	</control>
+	<control type="label">
+		<description>Trennzeichen label 2 andere schrift</description>
+		<top>220</top>
+		<width>1085</width>
+		<include>Item.top.height65</include>
+		<align>right</align>
+		<font>EnumRegularNormal</font>
+		<label>$VAR[CustomEnumeration]</label>
+		<visible>!Control.Hasfocus(90024) + [Control.Hasfocus(8102) | ControlGroup(9002).HasFocus]</visible>
+	</control>
+	<control type="label">
+		<description>Trennzeichen label 2 andere schrift</description>
+		<top>220</top>
+		<width>1085</width>
+		<include>Item.top.height65</include>
+		<align>right</align>
+		<font>EnumRegularNormal</font>
+		<textcolor>TextColorFO</textcolor>
+		<label>$VAR[CustomEnumeration]</label>
+		<visible>Control.Hasfocus(90024) + [Control.Hasfocus(8102) | ControlGroup(9002).HasFocus]</visible>
 	</control>
 	<control type="grouplist" id="9003"><!-- Extras -->
 		<description>Extra einstellungen</description>
 		<visible>Control.Hasfocus(8103) | ControlGroup(9003).HasFocus</visible>
 		<width>1125</width>
-		<height>791</height>
+		<height>792</height>
 		<itemgap>0</itemgap>
 		<onleft>9000</onleft>
 		<onright>noop</onright>
@@ -347,7 +392,7 @@
 		<ondown>9003</ondown>
 		<movement>5</movement>
 		<control type="label" id="90033">
-			<include>SkinSettingSubLabel</include><!-- check -->
+			<include>SkinSettingSubLabel</include>
 			<label>Addons Installieren/Konfigurieren</label>
 		</control>
 		<control type="radiobutton" id="90034">
@@ -356,8 +401,8 @@
 			<oninfo>SetProperty(TextBox.Title,resource.uisounds.cycle,home)</oninfo>
 			<oninfo>SetProperty(TextBox.SubTitle,Skin-Sounds,home)</oninfo>
 			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</oninfo>
-			<oninfo>ActivateWindow(1149)</oninfo>
-			<onclick condition="System.HasAddon(resource.uisounds.cycle)">Addon.OpenSettings(resource.uisounds.cycle)</onclick>
+			<oninfo>ActivateWindow(1121)</oninfo>
+			<onclick condition="System.HasAddon(resource.uisounds.cycle)">Notification(Hinweis,Das Addon hat keine Einstellungen,3,DefaultIconInfo.png)</onclick>
 			<onclick condition="!System.HasAddon(resource.uisounds.cycle)">InstallAddon(resource.uisounds.cycle)</onclick>
 			<label>Cycle UI-sound Addon (Klangschema für Cycle)</label>
 			<selected>System.HasAddon(resource.uisounds.cycle)</selected>
@@ -368,7 +413,7 @@
 			<oninfo>SetProperty(TextBox.Title,script.artwork.downloader,home)</oninfo>
 			<oninfo>SetProperty(TextBox.SubTitle,Der Skin benötigt Logos/Staffelposter und Landscapes in den Ansichten,home)</oninfo>
 			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</oninfo>
-			<oninfo>ActivateWindow(1149)</oninfo>
+			<oninfo>ActivateWindow(1121)</oninfo>
 			<onclick condition="System.HasAddon(script.artwork.downloader)">Addon.OpenSettings(script.artwork.downloader)</onclick>
 			<onclick condition="!System.HasAddon(script.artwork.downloader)">InstallAddon(script.artwork.downloader)</onclick>
 			<label>script.artwork.downloader (Artworks herunterladen)</label>
@@ -380,19 +425,20 @@
 			<oninfo>SetProperty(TextBox.Title,script.lazytv,home)</oninfo>
 			<oninfo>SetProperty(TextBox.SubTitle,Unterstützung für die Ansichten (Userinterface) Standard und Poster,home)</oninfo>
 			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</oninfo>
-			<oninfo>ActivateWindow(1149)</oninfo>
+			<oninfo>ActivateWindow(1121)</oninfo>
 			<onclick condition="System.HasAddon(script.lazytv)">Addon.OpenSettings(script.lazytv)</onclick>
 			<onclick condition="!System.HasAddon(script.lazytv)">InstallAddon(script.lazytv)</onclick>
 			<label>script.lazytv (Serienwidget)</label>
 			<selected>System.HasAddon(script.lazytv)</selected>
 		</control>
-		<control type="radiobutton" id="90037">
+		<control type="radiobutton" id="9037">
 			<description>Service.library.data.provider</description>
 			<include>SkinSettingButtonValue</include>
+			<!-- loop error.. schmiert immer ab, und nur das eine..
 			<oninfo>SetProperty(TextBox.Title,Widgets script,home)</oninfo>
 			<oninfo>SetProperty(TextBox.SubTitle,Verschiedene Widgets,home)</oninfo>
 			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</oninfo>
-			<oninfo>ActivateWindow(1149)</oninfo>
+			<oninfo>ActivateWindow(1121)</oninfo>-->
 			<onclick condition="System.HasAddon(service.library.data.provider)">Addon.OpenSettings(service.library.data.provider)</onclick>
 			<onclick condition="!System.HasAddon(service.library.data.provider)">InstallAddon(service.library.data.provider)</onclick>
 			<label>service.library.data.provider (Widgetscript)</label>
@@ -409,23 +455,11 @@
 			<oninfo>SetProperty(TextBox.Title,script.user.rating,home)</oninfo>
 			<oninfo>SetProperty(TextBox.SubTitle,Nutzerwertung für Videos,home)</oninfo>
 			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</oninfo>
-			<oninfo>ActivateWindow(1149)</oninfo>
+			<oninfo>ActivateWindow(1121)</oninfo>
 			<onclick condition="System.HasAddon(script.user.rating)">Addon.OpenSettings(script.user.rating)</onclick>
 			<onclick condition="!System.HasAddon(script.user.rating)">InstallAddon(script.user.rating)</onclick>
 			<label>script.user.rating 1.0.3 (Bewertung über das Contextmenü)</label>
 			<selected>System.HasAddon(script.user.rating)</selected>
-		</control>
-		<control type="radiobutton" id="90042">
-			<description>Script.extendedinfo</description>
-			<include>SkinSettingButtonValue</include>
-			<oninfo>SetProperty(TextBox.Title,script.extendedinfo,home)</oninfo>
-			<oninfo>SetProperty(TextBox.SubTitle,Cycle nutzt dieses script nur für die Trailersuche,home)</oninfo>
-			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</oninfo>
-			<oninfo>ActivateWindow(1149)</oninfo>
-			<onclick condition="System.HasAddon(script.extendedinfo)">Addon.OpenSettings(script.extendedinfo)</onclick>
-			<onclick condition="!System.HasAddon(script.extendedinfo)">InstallAddon(script.extendedinfo)</onclick>
-			<label>script.extendedinfo (Trailersuche)</label>
-			<selected>System.HasAddon(script.extendedinfo)</selected>
 		</control>
 		<control type="radiobutton" id="90043">
 			<description>weather.openweathermap.extended</description>
@@ -433,7 +467,7 @@
 			<oninfo>SetProperty(TextBox.Title,weather.openweathermap.extended,home)</oninfo>
 			<oninfo>SetProperty(TextBox.SubTitle,Wettervorhersage von openweathermap.org,home)</oninfo>
 			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</oninfo>
-			<oninfo>ActivateWindow(1149)</oninfo>
+			<oninfo>ActivateWindow(1121)</oninfo>
 			<onclick condition="System.HasAddon(weather.openweathermap.extended)">ActivateWindow(MyWeatherSettings)</onclick>
 			<onclick condition="!System.HasAddon(weather.openweathermap.extended)">InstallAddon(weather.openweathermap.extended)</onclick>
 			<label>weather.openweathermap.extended (Wetterinformationen)</label>
@@ -445,7 +479,7 @@
 			<oninfo>SetProperty(TextBox.Title,script.tv.show.next.aired,home)</oninfo>
 			<oninfo>SetProperty(TextBox.SubTitle,Cycle nutzt dieses script nur für die Serienstatus Anzeige in der Info,home)</oninfo>
 			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</oninfo>
-			<oninfo>ActivateWindow(1149)</oninfo>
+			<oninfo>ActivateWindow(1121)</oninfo>
 			<onclick condition="System.HasAddon(script.tv.show.next.aired)">Addon.OpenSettings(script.tv.show.next.aired)</onclick>
 			<onclick condition="!System.HasAddon(script.tv.show.next.aired)">InstallAddon(script.tv.show.next.aired)</onclick>
 			<label>script.tv.show.next.aired (Serienstatus für Videoinfodialog)</label>
@@ -457,9 +491,9 @@
 			<oninfo>SetProperty(TextBox.Title,script.skin.info.service,home)</oninfo>
 			<oninfo>SetProperty(TextBox.SubTitle,Wird benötigt für die Anzeige von Movieset-Infos,home)</oninfo>
 			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</oninfo>
-			<oninfo>ActivateWindow(1149)</oninfo>
+			<oninfo>ActivateWindow(1121)</oninfo>
 			<onclick condition="!System.HasAddon(script.skin.info.service)">InstallAddon(script.skin.info.service)</onclick>
-			<onclick condition="System.HasAddon(script.skin.info.service)">Addon.OpenSettings(script.skin.info.service)</onclick>
+			<onclick condition="System.HasAddon(script.skin.info.service)">Notification(Hinweis,Das Addon hat keine Einstellungen,3,DefaultIconInfo.png)</onclick>
 			<label>script.skin.info.service (Moviesetinfos)</label>
 			<selected>System.HasAddon(script.skin.info.service)</selected>
 		</control>
@@ -469,9 +503,9 @@
 			<oninfo>SetProperty(TextBox.Title,script.libraryeditor,home)</oninfo>
 			<oninfo>SetProperty(TextBox.SubTitle,Datenbankeditor für das Contextmenü,home)</oninfo>
 			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</oninfo>
-			<oninfo>ActivateWindow(1149)</oninfo>
+			<oninfo>ActivateWindow(1121)</oninfo>
 			<onclick condition="!System.HasAddon(script.libraryeditor)">InstallAddon(script.libraryeditor)</onclick>
-			<onclick condition="System.HasAddon(script.libraryeditor)">Addon.OpenSettings(script.libraryeditor)</onclick>
+			<onclick condition="System.HasAddon(script.libraryeditor)">Notification(Hinweis,Das Addon hat keine Einstellungen,3,DefaultIconInfo.png)</onclick>
 			<label>script.libraryeditor (Datenbankeditor)</label>
 			<selected>System.HasAddon(script.libraryeditor)</selected>
 		</control>
@@ -486,28 +520,23 @@
 			<label>Skindebug</label>
 		</control>
 		<control type="button" id="900049">
-			<description>Playlisten aus Skinverzeichnis bearbeiten</description>
-			<include>SkinSettingButtonValue</include>
-			<onclick>ActivateWindow(videos,special://skin/playlists/)</onclick>
-			<label>Klicken um die Playlisten des Skins zu ändern.</label>
-		</control>
-		<control type="button" id="900050">
 			<description>Skinreset</description>
-			<textcolor>$VAR[primaryCol]</textcolor><!-- include ueberschreibung Farbe -->
+			<textcolor>$VAR[PrimaryCol]</textcolor><!-- include ueberschreibung Farbe -->
 			<include>SkinSettingButtonValue</include>
 			<onclick>Skin.ResetSettings</onclick>
+			<onclick>Skin.SetString(ColorChangePosition,1)</onclick>
 			<onclick>ReloadSkin()</onclick>
-			<onclick>ActivateWindow(1104)</onclick>
+			<onclick>ActivateWindow(1195)</onclick>
 			<label>Alle Skin-Einstellungen wieder zurücksetzen</label>
 		</control>
-		<control type="radiobutton" id="900051">
+		<control type="radiobutton" id="900050">
 			<description>Skin Debug</description>
 			<include>SkinSettingButtonValue</include>
 			<onclick>Skin.ToggleSetting(DebugInfo)</onclick>
 			<label>Skin debugoverlay anzeigen</label>
 			<selected>Skin.HasSetting(DebugInfo)</selected>
 		</control>
-		<control type="radiobutton" id="900052">
+		<control type="radiobutton" id="900051">
 			<description>Skin Debug</description>
 			<include>SkinSettingButtonValue</include>
 			<onclick>Skin.ToggleSetting(DebugGrid)</onclick>

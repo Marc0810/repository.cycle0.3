@@ -19,7 +19,7 @@
 		<description>Top left mover</description>
 		<width>192</width>
 		<height>192</height>
-		<texturefocus colordiffuse="$VAR[primaryCol]">dialogs/calibrate/CalibrateTopLeft.png</texturefocus>
+		<texturefocus colordiffuse="$VAR[PrimaryCol]">dialogs/calibrate/calibratetopleft.png</texturefocus>
 		<texturenofocus>-</texturenofocus>
 	</control>
 	<control type="mover" id="9">
@@ -28,7 +28,7 @@
 		<top>750</top>
 		<width>192</width>
 		<height>192</height>
-		<texturefocus colordiffuse="$VAR[primaryCol]">dialogs/calibrate/CalibrateBottomRight.png</texturefocus>
+		<texturefocus colordiffuse="$VAR[PrimaryCol]">dialogs/calibrate/calibratebottomright.png</texturefocus>
 		<texturenofocus>-</texturenofocus>
 	</control>
 	<control type="mover" id="10">
@@ -37,15 +37,12 @@
 		<top>750</top>
 		<width>768</width>
 		<height>255</height>
-		<texturefocus colordiffuse="$VAR[primaryCol]">dialogs/calibrate/CalibrateSubtitles.png</texturefocus>
+		<texturefocus colordiffuse="$VAR[PrimaryCol]">dialogs/calibrate/calibratesubtitles.png</texturefocus>
 		<texturenofocus>-</texturenofocus>
 	</control>
 	<control type="resize" id="11">
 		<description>Pixel aspect ratio box</description>
-		<top>348</top>
-		<width>384</width>
-		<height>384</height>
-		<texturefocus colordiffuse="$VAR[primaryCol]">dialogs/calibrate/CalibratePixelRatio.png</texturefocus>
+		<texturefocus colordiffuse="$VAR[PrimaryCol]">dialogs/calibrate/calibratepixelratio.png</texturefocus>
 		<texturenofocus>-</texturenofocus>
 	</control>
 	<control type="group">

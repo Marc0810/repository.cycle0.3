@@ -41,12 +41,10 @@
 				<width>sidebar.breadcumblabel.width</width>
 				<height>100</height>
 				<itemgap>0</itemgap>
-				<orientation>vertical</orientation>
 				<control type="label">
 					<description>Breadcumb1 label default titel</description>
 					<width>sidebar.breadcumblabel.width</width>
 					<height>sidebar.breadcumblabel.height</height>
-					<scroll>false</scroll>
 					<font>BreadcumbNormal</font>
 					<label>$LOCALIZE[5]</label>
 				</control>
@@ -54,7 +52,6 @@
 					<description>Breadcumb2 label</description>
 					<width>sidebar.breadcumblabel.width</width>
 					<height>sidebar.breadcumblabel.height</height>
-					<scroll>false</scroll>
 					<font>BreadcumbSmall</font>
 					<label>-</label>
 				</control>
@@ -86,7 +83,7 @@
 			<ondown>3</ondown>
 			<itemgap>5</itemgap>
 			<control type="button" id="20">
-				<description>Levelchange button</description>
+				<description>Levelchange</description>
 				<onleft>3</onleft>
 				<onright>3</onright>
 				<onup>3</onup>
@@ -95,7 +92,7 @@
 				<onclick>SettingsLevelChange</onclick>
 			</control>
 			<control type="button" id="2002">
-				<description>Icon uebersucht ansehen button</description>
+				<description>Icon uebersucht ansehen</description>
 				<onleft>3</onleft>
 				<onright>3</onright>
 				<onup>20</onup>
@@ -130,7 +127,7 @@
 			<top>990</top>
 			<width>200</width>
 			<height>77</height>
-			<texture>Logo.png</texture>
+			<texture>logo.png</texture>
 		</control>
 	</control>
 	<control type="group"><!-- content -->
@@ -143,7 +140,7 @@
 			<top>-30</top>
 			<width>1103</width>
 			<height>835</height>
-			<texture colordiffuse="ListBackgroundDiffuse">White.png</texture>
+			<texture colordiffuse="ListBackgroundDiffuse">white.png</texture>
 		</control>
 		<control type="image">
 			<description>Hintergrund doppelt bei iconhelp</description>
@@ -151,13 +148,8 @@
 			<top>-30</top>
 			<width>1103</width>
 			<height>835</height>
-			<texture colordiffuse="ListBackgroundDiffuse">White.png</texture>
-			<animation type="Visible">
-				<effect type="fade" start="0" end="100" delay="500" time="1500"/>
-			</animation>
-			<animation type="Hidden">
-				<effect type="fade" start="100" end="0" time="250"/>
-			</animation>
+			<texture colordiffuse="ListBackgroundDiffuse">white.png</texture>
+			<include>Visible_Hidden_Background_Fade_Animation</include>
 			<visible>Control.HasFocus(2002)</visible>
 		</control>
 		<control type="group"><!-- settings -->
@@ -180,67 +172,58 @@
 				<height>810</height>
 				<onleft>5</onleft>
 				<onright>5</onright>
-				<showonepage>false</showonepage>
-				<orientation>vertical</orientation>
 			</control>
 			<control type="button" id="7">
 				<description>Default Button</description>
-				<height>70</height>
-				<invalidcolor>$VAR[SelectedCol]</invalidcolor>
-				<aligny>top</aligny>
-				<textoffsety>15</textoffsety>
+				<width>1108</width>
+				<include>Item.top.height70</include>
 				<textoffsetx>25</textoffsetx>
-				<texturefocus border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texturefocus>
-				<texturenofocus>-</texturenofocus>
+				<invalidcolor>$VAR[SelectedCol]</invalidcolor>
+				<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturefocus>
 			</control>
 			<control type="label" id="14">
 				<description>Default label</description>
-				<height>70</height>
-				<aligny>top</aligny>
-				<textoffsety>15</textoffsety>
+				<width>1108</width>
+				<font>BoldNormal</font>
+				<include>Item.top.height70</include>
 				<textoffsetx>25</textoffsetx>
 			</control>
 			<control type="radiobutton" id="8">
 				<description>Default RadioButton</description>
-				<height>70</height>
 				<width>1108</width>
-				<textwidth>970</textwidth>
-				<aligny>top</aligny>
-				<textoffsety>15</textoffsety>
+				<textwidth>900</textwidth>
+				<include>Item.top.height70</include>
 				<textoffsetx>25</textoffsetx>
-				<radioposx>1035</radioposx>
+				<radioposx>1042</radioposx>
 				<radioposy>10</radioposy>
-				<texturefocus border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texturefocus>
+				<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturefocus>
 			</control>
 			<control type="spincontrolex" id="9">
 				<description>Content Picker</description>
 				<width>1108</width>
-				<height>70</height>
-				<aligny>top</aligny>
-				<textoffsety>15</textoffsety>
+				<include>Item.top.height70</include>
+				<textwidth>880</textwidth>
 				<textoffsetx>25</textoffsetx>
-				<texturefocus border="14,0,14,0" flipx="true" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texturefocus>
+				<texturefocus border="14,0,14,0" flipx="true" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturefocus>
 				<texturenofocus>-</texturenofocus>
 				<reverse>yes</reverse>
 			</control>
 			<control type="sliderex" id="13">
 				<description>Default Slider</description>
-				<height>70</height>
 				<width>1108</width>
-				<aligny>top</aligny>
-				<textoffsety>15</textoffsety>
+				<include>Item.top.height70</include>
 				<textoffsetx>25</textoffsetx>
-				<texturefocus border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texturefocus>
+				<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturefocus>
 			</control>
 			<control type="textbox" id="6">
 				<description>Description area</description>
 				<left>25</left>
 				<top>820</top>
 				<width>1104</width>
-				<height max="84">auto</height>
+				<height max="83">auto</height>
 				<font>Plot</font>
 				<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
-				<visible>!String.IsEqual(control.GetLabel(6),$LOCALIZE[36107]) + !ControlGroup(200).HasFocus</visible><!-- check -->
+				<visible>!String.IsEqual(control.GetLabel(6),$LOCALIZE[36107])</visible>
 			</control>
 			<control type="textbox">
 				<description>Description area Schriftauswahl abweichender Text</description>
@@ -251,7 +234,7 @@
 				<font>Plot</font>
 				<label>$LOCALIZE[31391]</label>
 				<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
-				<visible>String.IsEqual(control.GetLabel(6),$LOCALIZE[36107]) + !ControlGroup(200).HasFocus</visible>
+				<visible>String.IsEqual(control.GetLabel(6),$LOCALIZE[36107])</visible>
 			</control>
 		</control>
 		<control type="group"><!-- iconhelp -->
@@ -260,8 +243,6 @@
 				<description>Titel</description>
 				<width>1125</width>
 				<height>70</height>
-				<aligny>top</aligny>
-				<textoffsety>15</textoffsety>
 				<textoffsetx>25</textoffsetx>
 				<font>BoldNormal</font>
 				<label>Hinweis</label>
@@ -269,13 +250,13 @@
 			<control type="textbox">
 				<description>Beschreibung</description>
 				<left>25</left>
-				<top>80</top>
+				<top>85</top>
 				<width>1125</width>
 				<height max="84">auto</height>
 				<font>Plot</font>
 				<label>Für jede Schrift in Cycle sind drei verschiedenen Iconssets verfügbar. Eine Übersicht des momentan gewählten Sets sieht man hier.</label>
 			</control>
-			<control type="grouplist"><!-- check -->
+			<control type="grouplist">
 				<description>Icon area</description>
 				<left>25</left>
 				<top>200</top>
@@ -1474,6 +1455,44 @@
 					<font>IconBig</font>
 					<label>Ĕ</label>
 				</control>
+			</control>
+		</control>
+		<control type="group"><!-- hinweis schriftauswahl im skin -->
+			<description>Default layout</description>
+			<left>470</left>
+			<top>-134</top>
+			<visible>ControlGroup(5).HasFocus + String.Contains(System.CurrentControl,$LOCALIZE[13303])</visible>
+			<include>Dialog_topdown_Animation</include>
+			<control type="label">
+				<description>icon default</description>
+				<left>675</left>
+				<top>-5</top>
+				<width>105</width>
+				<height>105</height>
+				<align>center</align>
+				<font>Iconkaitoast</font>
+				<textcolor>$VAR[OSDDialogColor]</textcolor>
+				<label>Ê</label>
+			</control>
+			<control type="label">
+				<description>Titel</description>
+				<top>22</top>
+				<width>665</width>
+				<height>27</height>
+				<align>right</align>
+				<font>BoldSmall</font>
+				<textcolor>$VAR[OSDDialogColor]</textcolor>
+				<label>Hinweis</label>
+			</control>
+			<control type="label">
+				<description>Subtitel</description>
+				<top>52</top>
+				<width>665</width>
+				<height>30</height>
+				<align>right</align>
+				<font>RegularSmall</font>
+				<textcolor>$VAR[OSDDialogColor]</textcolor>
+				<label>In Skinsettings bitte Text-Positionen anpassen</label>
 			</control>
 		</control>
 	</control>

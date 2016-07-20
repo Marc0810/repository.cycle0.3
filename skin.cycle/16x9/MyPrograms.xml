@@ -35,8 +35,8 @@
 		<control type="button" id="33">
 			<description>Verkuerzter Sortbutton mit Text aus Variable</description>
 			<include>Sideblade_ButtonValues</include>
-			<onclick>SendClick(3)</onclick>
-			<label>$VAR[CycleMyNavSidebarSortlabel]</label>
+			<onclick>Container.NextSortMethod</onclick>
+			<label>$VAR[Sideblade_Sortlabel]</label>
 			<visible>Control.IsEnabled(3)</visible>
 		</control>
 		<control type="togglebutton" id="4">
@@ -47,14 +47,14 @@
 			<usealttexture>Container.SortDirection(Ascending)</usealttexture>
 		</control>
 		<control type="edit" id="19">
-			<description>Filter button</description>
+			<description>Filter</description>
 			<include>Sideblade_ButtonValues</include>
-			<textcolor>$VAR[SidebladeFocusColor19]</textcolor>
+			<textcolor>$VAR[Sideblade_FocusColor19]</textcolor>
 			<label>$LOCALIZE[587]</label>
 			<visible>Container.CanFilter + !Container.CanFilterAdvanced</visible>
 		</control>
 		<control type="radiobutton" id="20">
-			<description>Advanced Filter button</description>
+			<description>Advanced Filter</description>
 			<include>Sideblade_ButtonValues</include>
 			<onclick>Right</onclick>
 			<onclick>Filter</onclick>
@@ -64,8 +64,9 @@
 		</control>
 	</control>
 	<include>Sideblade_Left_IconBG</include>
-	<control type="grouplist"><!-- Icon grouplist-->
+	<control type="grouplist"><!-- Icon grouplist -->
 		<include>Sideblade_Left_IconDimension</include>
+		<visible>ControlGroup(9110).HasFocus</visible>
 		<control type="label">
 			<description>Verkuerzter Sortbutton mit Text aus Variable</description>
 			<include>SidebarIconDimension</include>
@@ -109,7 +110,7 @@
 			<visible>Control.IsVisible(4) + !Control.HasFocus(4) + !Container.SortDirection(Ascending)</visible>
 		</control>
 		<control type="label">
-			<description>Filter button</description>
+			<description>Filter</description>
 			<include>SidebarIconDimension</include>
 			<include>IconColorFO</include>
 			<label>ĝ</label>
@@ -117,7 +118,7 @@
 			<include>ContainerFilterIndikator</include>
 		</control>
 		<control type="label">
-			<description>Filter button</description>
+			<description>Filter</description>
 			<include>SidebarIconDimension</include>
 			<include>IconColorNF</include>
 			<label>ĝ</label>
@@ -125,7 +126,7 @@
 			<include>ContainerFilterIndikator</include>
 		</control>
 		<control type="label">
-			<description>Advanced Filter button</description>
+			<description>Advanced Filter</description>
 			<include>SidebarIconDimension</include>
 			<include>IconColorFO</include>
 			<label>ĝ</label>
@@ -133,7 +134,7 @@
 			<include>ContainerFilterIndikator</include>
 		</control>
 		<control type="label">
-			<description>Advanced Filter button</description>
+			<description>Advanced Filter</description>
 			<include>SidebarIconDimension</include>
 			<include>IconColorNF</include>
 			<label>ĝ</label>

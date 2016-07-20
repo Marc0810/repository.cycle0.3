@@ -36,34 +36,7 @@
 		<onleft>9001</onleft>
 		<onright>9001</onright>
 		<orientation>horizontal</orientation>
-		<control type="button" id="13">
-			<description>Einfuegen</description>
-			<include>DialogFakeIconDimension</include>
-			<visible>Control.IsEnabled(13)</visible>
-		</control>
-		<control type="button" id="14">
-			<description>Entfernen</description>
-			<include>DialogFakeIconDimension</include>
-			<visible>Control.IsEnabled(14)</visible>
-		</control>
-		<control type="button" id="15">
-			<description>Odner erstellen</description>
-			<include>DialogFakeIconDimension</include>
-			<visible>Control.IsEnabled(15)</visible>
-		</control>
-	</control>
-	<control type="grouplist" id="9001">
-		<description>Buttonliste2 fake ohne Icon</description>
-		<left>921</left>
-		<top>989</top>
-		<width>160</width>
-		<onup>23</onup>
-		<ondown>15</ondown>
-		<onleft>9000</onleft>
-		<onright>9000</onright>
-		<align>right</align>
-		<orientation>horizontal</orientation>
-		<itemgap>0</itemgap>
+		<defaultcontrol always="true">20</defaultcontrol>
 		<control type="button" id="20">
 			<description>Bestaetigen</description>
 			<include>DialogFakeIconDimension</include>
@@ -75,49 +48,78 @@
 			<visible>Control.IsEnabled(21)</visible>
 		</control>
 	</control>
+	<control type="grouplist" id="9001">
+		<description>Buttonliste2 fake ohne Icon</description>
+		<left>841</left>
+		<top>989</top>
+		<width>240</width>
+		<onup>23</onup>
+		<ondown>15</ondown>
+		<onleft>9000</onleft>
+		<onright>9000</onright>
+		<align>right</align>
+		<orientation>horizontal</orientation>
+		<defaultcontrol always="true">15</defaultcontrol>
+		<itemgap>0</itemgap>
+		<control type="button" id="15">
+			<description>Odner erstellen</description>
+			<include>DialogFakeIconDimension</include>
+			<visible>Control.IsEnabled(15)</visible>
+		</control>
+		<control type="button" id="13">
+			<description>Einfuegen</description>
+			<include>DialogFakeIconDimension</include>
+			<visible>Control.IsEnabled(13)</visible>
+		</control>
+		<control type="button" id="14">
+			<description>Entfernen</description>
+			<include>DialogFakeIconDimension</include>
+			<visible>Control.IsEnabled(14)</visible>
+		</control>
+	</control>
 	<control type="grouplist">
 		<description>Button Icons</description>
 		<left>bottom.dialogicon.left</left>
 		<top>989</top>
 		<orientation>horizontal</orientation>
 		<control type="label">
-			<description>Einfuegen</description>
-			<include>DialogIconDimension</include>
-			<label>ġ</label>
-			<visible>Control.IsVisible(13) + Control.IsVisible(13)</visible>
-		</control>
-		<control type="label">
-			<description>Entfernen</description>
-			<include>DialogIconDimension</include>
-			<label>Ģ</label>
-			<visible>Control.IsVisible(14) + Control.IsVisible(14)</visible>
-		</control>
-		<control type="label">
-			<description>Odner erstellen</description>
-			<include>DialogIconDimension</include>
-			<label>Ė</label>
-			<visible>Control.IsVisible(15) + Control.IsVisible(15)</visible>
-		</control>
-	</control>
-	<control type="grouplist">
-		<description>Button Icons2</description>
-		<left>921</left>
-		<top>989</top>
-		<width>160</width>
-		<align>right</align>
-		<orientation>horizontal</orientation>
-		<itemgap>0</itemgap>
-		<control type="label">
 			<description>Bestaetigen</description>
 			<include>DialogIconDimension</include>
 			<label>Ĥ</label>
-			<visible>Control.IsVisible(20) + Control.IsVisible(20)</visible>
+			<visible>Control.IsVisible(20)</visible>
 		</control>
 		<control type="label">
 			<description>Abbrechen</description>
 			<include>DialogIconDimension</include>
 			<label>ģ</label>
-			<visible>Control.IsVisible(21) + Control.IsVisible(21)</visible>
+			<visible>Control.IsVisible(21)</visible>
+		</control>
+	</control>
+	<control type="grouplist">
+		<description>Button Icons2</description>
+		<left>841</left>
+		<top>989</top>
+		<width>240</width>
+		<align>right</align>
+		<orientation>horizontal</orientation>
+		<itemgap>0</itemgap>
+		<control type="label">
+			<description>Odner erstellen</description>
+			<include>DialogIconDimension</include>
+			<label>Ė</label>
+			<visible>Control.IsVisible(15)</visible>
+		</control>
+		<control type="label">
+			<description>Einfuegen</description>
+			<include>DialogIconDimension</include>
+			<label>ġ</label>
+			<visible>Control.IsVisible(13)</visible>
+		</control>
+		<control type="label">
+			<description>Entfernen</description>
+			<include>DialogIconDimension</include>
+			<label>Ģ</label>
+			<visible>Control.IsVisible(14)</visible>
 		</control>
 	</control>
 	<control type="label" id="2"><!-- Content -->
@@ -144,48 +146,34 @@
 		<description>Hintergrund Name Eingabefeld</description>
 		<top>160</top>
 		<width>1110</width>
-		<height>75</height>
 		<textwidth>1080</textwidth>
-		<aligny>top</aligny>
-		<textoffsety>20</textoffsety>
+		<include>Item.top.height75</include>
 		<onup>9000</onup>
 		<onleft>9000</onleft>
 		<onright>9001</onright>
-		<ondown>22</ondown>
+		<ondown>10</ondown>
 		<hinttext>Namen für Playliste angeben</hinttext>
 		<label>-</label>
 	</control>
 	<control type="label">
-		<description>Typ label</description>
-		<left>bottom.dialogbar.left</left>
-		<top>250</top>
-		<width>570</width>
-		<height>60</height>
-		<textoffsety>25</textoffsety>
-		<font>LightNormal</font>
-		<textcolor>TextColorLight</textcolor>
-		<label>$LOCALIZE[21434]</label>
-	</control>
-	<control type="spincontrolex" id="22">
 		<description>Set Playlist type</description>
+		<left>bottom.dialogbar.left</left>
 		<top>300</top>
 		<width>1108</width>
-		<height>70</height>
-		<aligny>top</aligny>
-		<textoffsety>20</textoffsety>
+		<include>Item.top.height70</include>
 		<label>$LOCALIZE[467]</label>
 		<onright>noop</onright>
 		<onleft>noop</onleft>
 		<onup>12</onup>
 		<ondown>10</ondown>
-		<texturefocus border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texturefocus>
+		<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturefocus>
 	</control>
 	<control type="list" id="10"><!-- Regelnliste -->
 		<description>Rules List Control</description>
 		<top>370</top>
 		<width>1108</width>
 		<height>205</height>
-		<onup>22</onup>
+		<onup>12</onup>
 		<onleft>9000</onleft>
 		<onright>9001</onright>
 		<ondown>16</ondown>
@@ -193,34 +181,28 @@
 			<control type="label">
 				<left>bottom.dialogbar.left</left>
 				<width>825</width>
-				<height>60</height>
-				<aligny>top</aligny>
-				<textoffsety>12</textoffsety>
+				<include>Item.top.height60</include>
 				<label>$INFO[ListItem.Label]</label>
 			</control>
 		</itemlayout>
 		<focusedlayout width="1108" height="68">
 			<control type="image">
 				<width>1108</width>
-				<height>60</height>
-				<texture flipx="true" border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texture>
+				<height>button.top.height60</height>
+				<texture flipx="true" border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texture>
 				<visible>Control.HasFocus(10)</visible>
 			</control>
 			<control type="label">
 				<left>bottom.dialogbar.left</left>
 				<width>795</width>
-				<height>60</height>
-				<aligny>top</aligny>
-				<textoffsety>12</textoffsety>
+				<include>Item.top.height60</include>
 				<label>$INFO[ListItem.Label]</label>
 				<visible>!Control.HasFocus(10)</visible>
 			</control>
 			<control type="label">
 				<left>bottom.dialogbar.left</left>
 				<width>795</width>
-				<height>60</height>
-				<aligny>top</aligny>
-				<textoffsety>12</textoffsety>
+				<include>Item.top.height60</include>
 				<textcolor>TextColorFO</textcolor>
 				<selectedcolor>$VAR[SelectedColFO]</selectedcolor>
 				<label>$INFO[ListItem.Label]</label>
@@ -242,45 +224,42 @@
 		<control type="spincontrolex" id="16">
 			<top>40</top>
 			<width>1108</width>
-			<height>70</height>
-			<textoffsety>15</textoffsety>
+			<include>Item.top.height70</include>
 			<onright>16</onright>
 			<onleft>16</onleft>
 			<onup>10</onup>
 			<ondown>17</ondown>
-			<texturefocus border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texturefocus>
+			<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturefocus>
 			<label>$LOCALIZE[21424]</label>
 		</control>
 		<control type="spincontrolex" id="17">
 			<top>100</top>
 			<width>1108</width>
-			<height>70</height>
-			<textoffsety>15</textoffsety>
+			<include>Item.top.height70</include>
 			<onright>17</onright>
 			<onleft>17</onleft>
 			<onup>16</onup>
 			<ondown>18</ondown>
-			<texturefocus border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texturefocus>
+			<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturefocus>
 			<label>$LOCALIZE[21427]</label>
 		</control>
 		<control type="spincontrolex" id="18">
 			<top>170</top>
 			<width>1108</width>
-			<height>70</height>
-			<textoffsety>15</textoffsety>
+			<include>Item.top.height70</include>
 			<onright>19</onright>
 			<onleft>19</onleft>
 			<onup>17</onup>
 			<ondown>19</ondown>
 			<label>$LOCALIZE[21429]</label>
-			<texturefocus border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texturefocus>
+			<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturefocus>
 		</control>
 		<control type="image">
 			<description>Hintergrund togglebutton Sotierung</description>
-			<top>240</top>
+			<top>235</top>
 			<width>1108</width>
 			<height>70</height>
-			<texture border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texture>
+			<texture border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texture>
 			<animation type="Conditional" condition="!Control.HasFocus(19)">
 				<effect type="fade" start="100" end="0" time="180" />
 			</animation>
@@ -288,49 +267,54 @@
 		<control type="label">
 			<description>Sortierreihenfolge unfocus Label</description>
 			<left>bottom.dialogbar.left</left>
-			<top>250</top>
+			<top>235</top>
 			<width>570</width>
-			<height>70</height>
-			<aligny>top</aligny>
-			<textoffsety>10</textoffsety>
+			<include>Item.top.height70</include>
 			<label>$INFO[Control.GetLabel(19)]</label>
 			<visible>!Control.HasFocus(19)</visible>
+		</control>
+		<control type="label">
+			<description>Sortierreihenfolge focus Label</description>
+			<left>bottom.dialogbar.left</left>
+			<top>235</top>
+			<width>570</width>
+			<include>Item.top.height70</include>
+			<textcolor>TextColorFO</textcolor>
+			<label>$INFO[Control.GetLabel(19)]</label>
+			<visible>Control.HasFocus(19)</visible>
 		</control>
 		<control type="togglebutton" id="19">
 			<description>Sortierreihenfolge Label</description>
 			<left>1010</left>
-			<top>250</top>
+			<top>240</top>
 			<width>67</width>
-			<height>70</height>
-			<aligny>top</aligny>
-			<textoffsety>10</textoffsety>
+			<height>67</height>
+			<include>Item.top.height70</include>
 			<textcolor>-</textcolor>
-			<textoffsetx>-980</textoffsetx>
+			<textoffsetx>1010</textoffsetx>
 			<onright>noop</onright>
 			<onleft>noop</onleft>
 			<onup>18</onup>
 			<ondown>23</ondown>
 			<label>$LOCALIZE[21431]</label>
-			<altlabel>21430</altlabel>
+			<altlabel>$LOCALIZE[21430]</altlabel>
 		</control>
 		<control type="spincontrolex" id="23">
 			<description>Gruppieren nach Label</description>
-			<top>320</top>
+			<top>305</top>
 			<width>1108</width>
-			<height>70</height>
-			<textoffsety>15</textoffsety>
+			<include>Item.top.height70</include>
 			<onright>23</onright>
 			<onleft>23</onleft>
 			<onup>19</onup>
 			<ondown>24</ondown>
 			<label>$LOCALIZE[21458]</label>
-			<texturefocus border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texturefocus>
+			<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturefocus>
 		</control>
 		<control type="radiobutton" id="24">
-			<top>390</top>
+			<top>370</top>
 			<width>1108</width>
-			<height>70</height>
-			<textoffsety>15</textoffsety>
+			<include>Item.top.height70</include>
 			<radioposx>1010</radioposx>
 			<radioposy>0</radioposy>
 			<radiowidth>67</radiowidth>
@@ -339,7 +323,7 @@
 			<onleft>24</onleft>
 			<onup>23</onup>
 			<ondown>9001</ondown>
-			<texturefocus border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texturefocus>
+			<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturefocus>
 			<label>$LOCALIZE[21459]</label>
 		</control>
 	</control>

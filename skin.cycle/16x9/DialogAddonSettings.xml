@@ -37,17 +37,17 @@
 		<ondown>9</ondown>
 		<orientation>horizontal</orientation>
 		<control type="button" id="10">
-			<description>OK button</description>
+			<description>OK</description>
 			<include>DialogFakeIconDimension</include>
 			<visible>Control.IsEnabled(10)</visible>
 		</control>
 		<control type="button" id="11">
-			<description>Abbrechen button</description>
+			<description>Abbrechen</description>
 			<include>DialogFakeIconDimension</include>
 			<visible>Control.IsEnabled(11)</visible>
 		</control>
 		<control type="button" id="12">
-			<description>Defaults button</description>
+			<description>Defaults</description>
 			<include>DialogFakeIconDimension</include>
 			<visible>Control.IsEnabled(12)</visible>
 		</control>
@@ -61,19 +61,19 @@
 			<description>Bestaetigen</description>
 			<include>DialogIconDimension</include>
 			<label>Ĥ</label>
-			<visible>Control.IsEnabled(10) + Control.IsVisible(10)</visible>
+			<visible>Control.IsVisible(10)</visible>
 		</control>
 		<control type="label">
-			<description>Abbrechen button</description>
+			<description>Abbrechen</description>
 			<include>DialogIconDimension</include>
 			<label>ģ</label>
-			<visible>Control.IsEnabled(11) + Control.IsVisible(11)</visible>
+			<visible>Control.IsVisible(11)</visible>
 		</control>
 		<control type="label">
-			<description>Defaults button</description>
+			<description>Defaults</description>
 			<include>DialogIconDimension</include>
 			<label>ė</label>
-			<visible>Control.IsEnabled(12) + Control.IsVisible(12)</visible>
+			<visible>Control.IsVisible(12)</visible>
 		</control>
 	</control>
 	<control type="label" id="20"><!-- Content -->
@@ -100,7 +100,6 @@
 		<width>527</width>
 		<height>490</height>
 		<itemgap>0</itemgap>
-		<orientation>vertical</orientation>
 		<onleft>9000</onleft>
 		<onright>2</onright>
 		<onup>9</onup>
@@ -109,10 +108,8 @@
 	<control type="button" id="13">
 		<description>Default menue Button</description>
 		<width>527</width>
-		<height>70</height>
-		<aligny>top</aligny>
-		<textoffsety>15</textoffsety>
-		<texturefocus border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/right-11.png</texturefocus>
+		<include>Item.top.height70</include>
+		<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texturefocus>
 	</control>
 	<control type="grouplist" id="2">
 		<description>Button liste</description>
@@ -123,10 +120,10 @@
 		<itemgap>0</itemgap>
 		<pagecontrol>30</pagecontrol>
 		<onup>2</onup>
-		<ondown>2</ondown>
+		<ondown>9000</ondown>
 		<onleft condition="Control.IsVisible(30)">30</onleft>
 		<onleft condition="!Control.IsVisible(30)">9</onleft>
-		<onright>9000</onright><!-- check bei liste mit einem und spins -->
+		<onright>9000</onright>
 	</control>
 	<control type="scrollbar" id="30">
 		<left>580</left>
@@ -135,45 +132,35 @@
 		<height>460</height>
 		<onleft>9</onleft>
 		<onright>2</onright>
-		<showonepage>false</showonepage>
-		<orientation>vertical</orientation>
 	</control>
 	<control type="button" id="3">
 		<description>Default Button</description>
 		<width>1108</width>
-		<height>70</height>
-		<aligny>top</aligny>
-		<textoffsety>15</textoffsety>
-		<texturefocus border="0,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/right-11.png</texturefocus>
+		<include>Item.top.height70</include>
+		<texturefocus border="0,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texturefocus>
 	</control>
 	<control type="radiobutton" id="4">
 		<description>Default RadioButton</description>
 		<width>1108</width>
-		<height>70</height>
 		<textwidth>970</textwidth>
-		<aligny>top</aligny>
-		<textoffsety>15</textoffsety>
+		<include>Item.top.height70</include>
 		<radioposx>1010</radioposx>
 		<radioposy>10</radioposy>
-		<texturefocus border="0,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/right-11.png</texturefocus>
+		<texturefocus border="0,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texturefocus>
 	</control>
 	<control type="spincontrolex" id="5">
 		<description>Default spincontrolex</description>
 		<width>1108</width>
-		<height>70</height>
 		<textwidth>500</textwidth>
-		<aligny>top</aligny>
-		<textoffsety>15</textoffsety>
+		<include>Item.top.height70</include>
 		<label>-</label>
-		<texturefocus border="0,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/right-11.png</texturefocus>
+		<texturefocus border="0,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texturefocus>
 	</control>
 	<control type="label" id="7">
 		<description>Default label</description>
 		<left>bottom.dialogbar.left</left>
-		<width>1078</width>
-		<height>70</height>
-		<aligny>top</aligny>
-		<textoffsety>15</textoffsety>
+		<width>1108</width>
+		<include>Item.top.height70</include>
 		<font>LightNormal</font>
 		<textcolor>TextColorMedium</textcolor>
 		<label>-</label>
@@ -184,11 +171,9 @@
 	<control type="sliderex" id="8">
 		<description>Default Slider</description>
 		<width>1108</width>
-		<height>70</height>
 		<textwidth>800</textwidth>
-		<aligny>top</aligny>
-		<textoffsety>15</textoffsety>
-		<texturefocus border="0,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/right-11.png</texturefocus>
+		<include>Item.top.height70</include>
+		<texturefocus border="0,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texturefocus>
 	</control>
 </control>
 </controls>

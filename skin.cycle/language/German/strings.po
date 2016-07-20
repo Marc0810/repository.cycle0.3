@@ -22,7 +22,7 @@ msgstr "Skin-Standard"
 
 msgctxt "#31391"
 msgid "Choose the fonts displayed in the user interface. The font sets are configured by your skin."
-msgstr "Auswahl der Schriftarten und Iconsets für die Benutzeroberfläche. Jede Schriftart kann mit einem der "Iconsets" kombiniert werden. Unter dem Punkt Fortgeschritten findet man eine Übersicht der ausgewählten Icons."
+msgstr "Schriftarten mit Iconsets für die Oberfläche. Jede Schrift kann mit jedem "Set" kombiniert werden."
 
 msgctxt "#31392"
 msgid "Update library"

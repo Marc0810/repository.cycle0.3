@@ -2,8 +2,9 @@
 <window>
 <!-- Cycle 0.3 -->
 <defaultcontrol always="true">9800</defaultcontrol>
-<onload condition="!Skin.HasSetting(FirstTimeRun)">ActivateWindow(1104)</onload><!-- first start -->
-<onload condition="String.IsEmpty(skin.string(HomeSlideMenueStartItem))">ActivateWindow(1104)</onload><!-- fallback menue leer -->
+<onload condition="!Skin.HasSetting(FirstTimeRun)">ActivateWindow(1195)</onload><!-- first start -->
+<onload condition="!Skin.HasSetting(FirstTimeRun)">Skin.SetString(ColorChangePosition,1)</onload><!-- first start -->
+<onload condition="String.IsEmpty(skin.string(HomeSlideMenueStartItem))">skin.setstring(HomeSlideMenueStartItem,Einstellungen)</onload><!-- fallback falls menue leer -->
 <previouswindow>startup</previouswindow>
 <menucontrol>9600</menucontrol>
 <controls>
@@ -43,7 +44,7 @@
 	</control>
 	<control type="grouplist">
 		<description>Wetter</description>
-		<top>55</top>
+		<top>50</top>
 		<width>1900</width>
 		<height>70</height>
 		<itemgap>0</itemgap>
@@ -65,28 +66,36 @@
 			<visible>!String.IsEmpty(Weather.Plugin) + Weather.IsFetched</visible>
 		</control>
 		<control type="label">
+			<description>Enum</description>
+			<width>auto</width>
+			<height>45</height>
+			<font>EnumRegularSmall</font>
+			<label> $VAR[CustomEnumeration] </label>
+			<visible>!String.IsEmpty(Weather.Plugin) + Weather.IsFetched</visible>
+		</control>
+		<control type="label">
 			<width>auto</width>
 			<height>45</height>
 			<font>BreadcumbTopSmall</font>
-			<label>$VAR[CustomEnumeration]$INFO[Window(Weather).Property(Current.Condition)]</label>
+			<label>$INFO[Window(Weather).Property(Current.Condition)]</label>
 			<visible>!String.IsEmpty(Weather.Plugin) + Weather.IsFetched</visible>
 		</control>
 	</control>
 </control>
 <control type="group"><!-- menue -->
 	<description>Menue</description>
-	<visible>!Window.IsVisible(Custom_1101_homewidgets.xml)</visible>
+	<visible>!Window.IsVisible(Custom_1101_Widgets.xml)</visible>
 	<control type="group">
 		<left>760</left>
 		<top>340</top>
 		<width>400</width>
 		<height>400</height>
 		<include>Open_Close_Visible_Hidden_Zoom_Animation</include>
-		<animation type="Conditional" condition="![Control.HasFocus(9900) | Window.IsVisible(playercontrols)]"><!-- zoom wenn Menue keinen Focus hat -->
+	 	<animation type="Conditional" reversible="false" condition="![Control.HasFocus(9900) | Window.IsVisible(playercontrols)]"><!-- zoom wenn Menue keinen Focus hat -->
 			<effect type="zoom" start="100" end="80" time="120" center="960,540" />
 			<effect type="fade" start="100" end="30" time="120" />
 		</animation>
-		<animation type="Conditional" condition="[Control.HasFocus(9900) | Window.IsVisible(playercontrols)]">
+		<animation type="Conditional" reversible="false" condition="[Control.HasFocus(9900) | Window.IsVisible(playercontrols)]">
 			<effect type="zoom" time="250" start="80" end="100" center="960,540" />
 			<effect type="fade" time="250" start="30" end="100" />
 		</animation>
@@ -99,7 +108,7 @@
 			<height>75</height>
 			<align>center</align>
 			<font>BoldBig</font>
-			<textcolor>$VAR[secondaryCol]</textcolor>
+			<textcolor>$VAR[SecondaryCol]</textcolor>
 			<label> ‹‹</label>
 			<visible>Control.HasFocus(9900) + !String.IsEqual(skin.string(HomeSlideMenueStartItemL),Deaktivieren) + !String.IsEmpty(skin.string(HomeSlideMenueStartItemL))</visible>
 		</control>
@@ -111,18 +120,18 @@
 			<height>75</height>
 			<align>center</align>
 			<font>BoldBig</font>
-			<textcolor>$VAR[secondaryCol]</textcolor>
+			<textcolor>$VAR[SecondaryCol]</textcolor>
 			<label> ››</label>
 			<visible>Control.HasFocus(9900) + !String.IsEqual(skin.string(HomeSlideMenueStartItemR),Deaktivieren) + !String.IsEmpty(skin.string(HomeSlideMenueStartItemR))</visible>
 		</control>
 		<control type="button" id="9900">
-			<description>Start button</description>
+			<description>Start</description>
 			<width>400</width>
 			<height>400</height>
 			<align>center</align>
 			<font>IconHome</font>
-			<textcolor>$VAR[circlesCol]</textcolor>
-			<focusedcolor>$VAR[circlesCol]</focusedcolor>
+			<textcolor>$VAR[CirclesCol]</textcolor>
+			<focusedcolor>$VAR[CirclesCol]</focusedcolor>
 			<onup>9800</onup>
 			<ondown>9800</ondown>
 			<oninfo>ActivateWindow(1101)</oninfo>
@@ -131,36 +140,36 @@
 			<onright condition="!String.IsEqual(skin.string(HomeSlideMenueStartItemR),Deaktivieren) + !String.IsEmpty(skin.string(HomeSlideMenueStartItemR))">SetFocus(9901)</onright>
 			<onleft condition="String.IsEqual(skin.string(HomeSlideMenueStartItemL),Deaktivieren) | String.IsEmpty(skin.string(HomeSlideMenueStartItemL))">SetFocus(9218)</onleft>
 			<onright condition="String.IsEqual(skin.string(HomeSlideMenueStartItemR),Deaktivieren) | String.IsEmpty(skin.string(HomeSlideMenueStartItemR))">SetFocus(9218)</onright>
-			<label>$VAR[CycleHomeQuicknavTitle]</label>
+			<label>$VAR[CycleHomeQuicknavIcon]</label>
 		</control>
 		<control type="button" id="9902">
-			<description>Linker button</description>
+			<description>Linker</description>
 			<left>-600</left>
 			<width>400</width>
 			<height>400</height>
 			<align>center</align>
 			<font>IconHomeNF</font>
-			<textcolor>$VAR[primaryCol]</textcolor>
-			<focusedcolor>$VAR[primaryCol]</focusedcolor>
+			<textcolor>$VAR[PrimaryCol]</textcolor>
+			<focusedcolor>$VAR[PrimaryCol]</focusedcolor>
 			<onfocus>$VAR[CycleHomeQuicknavClickL]</onfocus>
-			<label>$VAR[CycleHomeQuicknavTitleL]</label>
+			<label>$VAR[CycleHomeQuicknavIconL]</label>
 			<visible>!String.IsEqual(skin.string(HomeSlideMenueStartItemL),Deaktivieren)</visible>
 			<animation type="Conditional" condition="Control.HasFocus(9900)">
 				<effect type="fade" start="10" end="10" time="0" />
 			</animation>
 		</control>
 		<control type="button" id="9901">
-			<description>Rechter button</description>
+			<description>Rechter</description>
 			<left>600</left>
 			<width>400</width>
 			<height>400</height>
 			<align>center</align>
 			<font>IconHome</font>
-			<textcolor>$VAR[primaryCol]</textcolor>
-			<focusedcolor>$VAR[primaryCol]</focusedcolor>
+			<textcolor>$VAR[PrimaryCol]</textcolor>
+			<focusedcolor>$VAR[PrimaryCol]</focusedcolor>
 			<onfocus>$VAR[CycleHomeQuicknavClickR]</onfocus>
 			<onclick>$VAR[CycleHomeQuicknavClickR]</onclick>
-			<label>$VAR[CycleHomeQuicknavTitleR]</label>
+			<label>$VAR[CycleHomeQuicknavIconR]</label>
 			<visible>!String.IsEqual(skin.string(HomeSlideMenueStartItemR),Deaktivieren)</visible>
 			<animation type="Conditional" condition="Control.HasFocus(9900)">
 				<effect type="fade" start="10" end="10" time="0" />
@@ -171,8 +180,7 @@
 		<left>603</left>
 		<top>183</top>
 		<include>Open_Close_Visible_Hidden_Zoom_Animation</include>
-		<include condition="!Skin.HasSetting(EnableVintageOverlay)">CycleClock</include>
-		<include condition="Skin.HasSetting(EnableVintageOverlay)">VintageClock</include>
+		<include>CycleClock</include>
 		<visible>Control.HasFocus(9800) + !Window.IsVisible(playercontrols)</visible>
 	</control>
 	<control type="group"><!-- Title -->
@@ -207,7 +215,7 @@
 	<left>387</left>
 	<top>1027</top>
 	<include>Open_Close_Visible_Hidden_Fade_Animation</include>
-	<visible>system.getbool(lookandfeel.enablerssfeeds) + ![Window.IsVisible(Custom_1120_MainMenuSlide.xml) | Window.IsVisible(favourites) | Window.IsVisible(shutdownmenu) | Window.IsVisible(Custom_1101_homewidgets.xml)]</visible>
+	<visible>system.getbool(lookandfeel.enablerssfeeds) + ![Window.IsVisible(Custom_1120_MainMenuSlide.xml) | Window.IsVisible(favourites) | Window.IsVisible(shutdownmenu) | Window.IsVisible(Custom_1101_Widgets.xml)]</visible>
 	<control type="label">
 		<width>40</width>
 		<height>40</height>
@@ -225,9 +233,13 @@
 		<font>RegularNormal</font>
 		<textcolor>TextColorMedium</textcolor>
 		<titlecolor>TextColorLight</titlecolor>
-		<headlinecolor>$VAR[primaryCol]</headlinecolor>
+		<headlinecolor>$VAR[PrimaryCol]</headlinecolor>
 		<urlset>1</urlset>
 	</control>
 </control>
+
+
+
+
 </controls>
 </window>

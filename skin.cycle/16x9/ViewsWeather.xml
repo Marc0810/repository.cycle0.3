@@ -107,7 +107,6 @@
 			<width>300</width>
 			<itemgap>10</itemgap>
 			<visible>!String.IsEmpty(Window(Weather).Property(Daily.IsFetched))</visible>
-			<orientation>vertical</orientation>
 			<control type="label">
 				<description>Taupunkt</description>
 				<include>CurrentLabel</include>
@@ -156,11 +155,10 @@
 			<width>400</width>
 			<itemgap>10</itemgap>
 			<visible>!String.IsEmpty(Window(Weather).Property(Daily.IsFetched))</visible>
-			<orientation>vertical</orientation>
 			<control type="label">
 				<description>Taupunkt</description>
 				<include>CurrentValue</include>
-				<label>$INFO[Window(Weather).Property(Current.DewPoint)]</label>
+				<label>$INFO[Window(Weather).Property(Current.DewPoint)]$INFO[System.TemperatureUnits]</label>
 			</control>
 			<control type="label">
 				<description>Luftfeuchtigkeit</description>

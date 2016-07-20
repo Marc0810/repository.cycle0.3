@@ -5,26 +5,17 @@
 <controls>
 <control type="group">
 	<include>Open_Close_Visible_Hidden_Slide_Animation375</include>
-	<visible>!Window.IsVisible(shutdownmenu) + !Window.IsVisible(Custom_1120_MainMenuSlide.xml)</visible>
+	<visible>!Window.IsVisible(shutdownmenu) + !Window.IsVisible(Custom_1120_MainMenuSlide.xml) + !Window.IsVisible(contextmenu)</visible>
 	<control type="group"><!-- Hintergrund -->
 		<description>Hintergrund</description>
-		<control type="image">
-			<width>375</width>
-			<height>1080</height>
-			<texture colordiffuse="$VAR[DialogCol]" background="true">White.png</texture>
-		</control>
-		<control type="image">
-			<left>375</left>
-			<width>8</width>
-			<height>1080</height>
-			<texture colordiffuse="ShadowColor">cycle/shadow-right-8.png</texture>
-		</control>
-		<control type="image">
-			<description>Trennelement Hintergrund</description>
-			<width>20</width>
-			<height>1080</height>
-			<texture colordiffuse="$VAR[secondaryCol]" background="true">White.png</texture>
-		</control>
+		<left>-43</left>
+		<include>Sideblade_Left_BG</include>
+	</control>
+	<control type="image">
+		<description>Trennelement Hintergrund</description>
+		<width>20</width>
+		<height>1080</height>
+		<texture background="true" colordiffuse="$VAR[SecondaryCol]">white.png</texture>
 	</control>
 	<control type="group"><!-- art -->
 		<left>50</left>
@@ -43,20 +34,20 @@
 			<top>-4</top>
 			<width>258</width>
 			<height>375</height>
-			<texture border="8" colordiffuse="$VAR[circlesCol]">views/white8.png</texture>
+			<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
 		</control>
 		<control type="image">
 			<description>Hintergrund</description>
 			<width>250</width>
 			<height>367</height>
-			<texture background="true" colordiffuse="$VAR[primaryCol]">White.png</texture>
+			<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
 		</control>
 		<control type="label">
 			<description>Fallback icon</description>
 			<width>250</width>
 			<height>367</height>
 			<align>center</align>
-			<textcolor>$VAR[circlesCol]</textcolor>
+			<textcolor>$VAR[CirclesCol]</textcolor>
 			<font>IconPosterviewdefault</font>
 			<label>$VAR[viewtypefallbacks]</label>
 		</control>
@@ -64,13 +55,13 @@
 			<description>Art</description>
 			<width>250</width>
 			<height>367</height>
-			<texture background="true">$INFO[Container(400).ListItem.Art(poster)]</texture>
+			<texture background="true">$VAR[Art-Info-Widget-Poster]</texture>
 			<fadetime>300</fadetime>
 		</control>
 		<include content="texture_vintageoverlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
 			<param name="width">250</param>
 			<param name="height">367</param>
-			<param name="texture">views/oldpaperOverlay2.png</param>
+			<param name="texture">views/oldpaperoverlay2.png</param>
 		</include>
 		<control type="group">
 			<description>Media Overlay - neu, angefangene usw.</description>
@@ -79,7 +70,7 @@
 			<control type="image">
 				<width>59</width>
 				<height>59</height>
-				<texture colordiffuse="$VAR[primaryCol]">flagging/watched_bg.png</texture>
+				<texture colordiffuse="$VAR[PrimaryCol]">flagging/watched_bg.png</texture>
 			</control>
 			<control type="label">
 				<left>27</left>
@@ -95,9 +86,9 @@
 	<control type="textbox">
 		<description>Titel</description>
 		<left>40</left>
-		<top>495</top>
+		<top>485</top>
 		<width>309</width>
-		<height>70</height>
+		<height>80</height>
 		<font>RegularSmall</font>
 		<label>$VAR[SimilarLabel,Kategorie: ,]</label>
 	</control>
@@ -118,7 +109,7 @@
 				<height>70</height>
 				<aligny>top</aligny>
 				<textoffsetx>20</textoffsetx>
-				<textoffsety>22</textoffsety>
+				<textoffsety>22</textoffsety><!-- abweichung kleinere schrift -->
 				<font>RegularSmall</font>
 				<label>$INFO[ListItem.Label]</label>
 			</control>
@@ -127,7 +118,7 @@
 			<control type="image">
 				<width>368</width>
 				<height>70</height>
-				<texture border="0,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/right-11.png</texture>
+				<texture border="0,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texture>
 				<visible>Control.HasFocus(400)</visible>
 			</control>
 			<control type="label">
@@ -135,7 +126,7 @@
 				<height>70</height>
 				<aligny>top</aligny>
 				<textoffsetx>20</textoffsetx>
-				<textoffsety>22</textoffsety>
+				<textoffsety>22</textoffsety><!-- abweichung kleinere schrift -->
 				<font>RegularSmall</font>
 				<textcolor>TextColorFO</textcolor>
 				<label>$INFO[ListItem.Label]</label>
@@ -146,7 +137,7 @@
 				<height>70</height>
 				<aligny>top</aligny>
 				<textoffsetx>20</textoffsetx>
-				<textoffsety>22</textoffsety>
+				<textoffsety>22</textoffsety><!-- abweichung kleinere schrift -->
 				<font>RegularSmall</font>
 				<label>$INFO[ListItem.Label]</label>
 				<visible>!Control.HasFocus(400)</visible>

@@ -56,12 +56,12 @@
 			<description>Bestaetigen</description>
 			<include>DialogIconDimension</include>
 			<label>Ĥ</label>
-			<visible>Control.IsEnabled(18) + Control.IsVisible(18)</visible>
+			<visible>Control.IsVisible(18)</visible>
 		</control>
 		<control type="label">
 			<include>DialogIconDimension</include>
 			<label>ģ</label>
-			<visible>Control.IsEnabled(19) + Control.IsVisible(19)</visible>
+			<visible>Control.IsVisible(19)</visible>
 		</control>
 	</control>
 	<control type="label" id="20"><!-- Content -->
@@ -89,20 +89,20 @@
 			<description>Rule Field</description>
 			<top>160</top>
 			<width>1108</width>
-			<height>70</height>
+			<include>Item.top.height70</include>
 			<font>-</font>
 			<onright>15</onright>
 			<onleft>15</onleft>
 			<onup>9000</onup>
 			<ondown>16</ondown>
-			<texturefocus border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texturefocus>
+			<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturefocus>
 		</control>
 		<control type="label">
 			<description>Rule Field label focus</description>
 			<left>bottom.dialogbar.left</left>
-			<top>165</top>
+			<top>160</top>
 			<width>950</width>
-			<height>70</height>
+			<include>Item.top.height70</include>
 			<textcolor>TextColorFO</textcolor>
 			<label>$INFO[Control.GetLabel(15)]</label>
 			<visible>Control.HasFocus(15)</visible>
@@ -110,9 +110,9 @@
 		<control type="label">
 			<description>Rule Field label unfocus</description>
 			<left>bottom.dialogbar.left</left>
-			<top>165</top>
+			<top>160</top>
 			<width>950</width>
-			<height>70</height>
+			<include>Item.top.height70</include>
 			<label>$INFO[Control.GetLabel(15)]</label>
 			<visible>!Control.HasFocus(15)</visible>
 		</control>
@@ -120,20 +120,20 @@
 			<description>Rule operator</description>
 			<top>230</top>
 			<width>1108</width>
-			<height>70</height>
+			<include>Item.top.height70</include>
 			<font>-</font>
 			<onright>16</onright>
 			<onleft>16</onleft>
 			<onup>15</onup>
 			<ondown>17</ondown>
-			<texturefocus border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texturefocus>
+			<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturefocus>
 		</control>
 		<control type="label">
 			<description>Rule operator label focus</description>
 			<left>bottom.dialogbar.left</left>
-			<top>235</top>
+			<top>230</top>
 			<width>450</width>
-			<height>70</height>
+			<include>Item.top.height70</include>
 			<textcolor>TextColorFO</textcolor>
 			<label>$INFO[Control.GetLabel(16)]</label>
 			<visible>Control.HasFocus(16)</visible>
@@ -141,9 +141,9 @@
 		<control type="label">
 			<description>Rule Field label unfocus</description>
 			<left>bottom.dialogbar.left</left>
-			<top>235</top>
+			<top>230</top>
 			<width>450</width>
-			<height>70</height>
+			<include>Item.top.height70</include>
 			<label>$INFO[Control.GetLabel(16)]</label>
 			<visible>!Control.HasFocus(16)</visible>
 		</control>
@@ -152,9 +152,7 @@
 		<description>Value Button</description>
 		<top>300</top>
 		<width>1108</width>
-		<height>70</height>
-		<aligny>top</aligny>
-		<textoffsety>15</textoffsety>
+		<include>Item.top.height70</include>
 		<onup>9001</onup>
 		<onleft>20</onleft>
 		<onright>20</onright>
@@ -168,9 +166,6 @@
 		<top>315</top>
 		<width>50</width>
 		<height>50</height>
-		<align>center</align>
-		<texturefocus>-</texturefocus>
-		<texturenofocus>-</texturenofocus>
 		<label>-</label>
 		<onup>9001</onup>
 		<onleft>17</onleft>

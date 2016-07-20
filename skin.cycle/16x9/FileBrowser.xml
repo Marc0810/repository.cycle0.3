@@ -71,13 +71,14 @@
 			<description>Grafik drehen</description>
 			<left>568</left>
 			<width>200</width>
-			<height>80</height>
-			<label>-</label>
 			<radioposx>0</radioposx>
-			<radiowidth>60</radiowidth>
+			<texturenofocus>-</texturenofocus>
+			<texturefocus>-</texturefocus>
+			<!--<radiowidth>60</radiowidth>
 			<radioheight>60</radioheight>
-			<texturenofocus border="8,8,80,8" colordiffuse="$VAR[secondaryCol]">-</texturenofocus>
-			<texturefocus border="8,8,80,8" colordiffuse="$VAR[primaryCol]">-</texturefocus>
+			<height>80</height> check
+			<label>-</label>
+			-->
 			<visible>Control.IsEnabled(416)</visible>
 		</control>
 	</control>
@@ -90,13 +91,13 @@
 			<description>Bestaetigen</description>
 			<include>DialogIconDimension</include>
 			<label>Ĥ</label>
-			<visible>Control.IsEnabled(413) + Control.IsVisible(413)</visible>
+			<visible> Control.IsVisible(413)</visible>
 		</control>
 		<control type="label">
 			<description>Abbrechen</description>
 			<include>DialogIconDimension</include>
 			<label>ģ</label>
-			<visible>Control.IsEnabled(414) + Control.IsVisible(414)</visible>
+			<visible>Control.IsVisible(414)</visible>
 		</control>
 	</control>
 	<control type="grouplist">
@@ -110,19 +111,19 @@
 			<description>Ordner erstellen</description>
 			<include>DialogIconDimension</include>
 			<label>Ė</label>
-			<visible>Control.IsEnabled(415) + Control.IsVisible(415)</visible>
+			<visible>Control.IsVisible(415)</visible>
 		</control>
 		<control type="image">
 			<description>Grafik drehen</description>
 			<include>DialogIconDimension</include>
 			<label>i</label>
-			<visible>Control.IsEnabled(416) + Control.IsVisible(416)</visible>
+			<visible>Control.IsVisible(416)</visible>
 		</control>
 	</control>
 	<control type="group"><!-- Grafikvorschau links -->
 		<description>Browser icon</description>
 		<left>-480</left>
-		<visible>String.Contains(Control.GetLabel(411),Nach Bild suchen) | String.Contains(Control.GetLabel(411),wählen)</visible>
+		<visible>Control.IsVisible(451)</visible>
 		<control type="image">
 			<description>Hintergrund</description>
 			<top>-18</top>
@@ -136,7 +137,7 @@
 			<top>35</top>
 			<width>410</width>
 			<height>500</height>
-			<texture border="5" background="true">dialogs/Backinner-dark.png</texture>
+			<texture background="true" border="5">dialogs/Backinner-dark.png</texture>
 		</control>
 		<control type="label">
 			<description>Fallback icon</description>
@@ -145,9 +146,9 @@
 			<width>410</width>
 			<height>500</height>
 			<align>center</align>
-			<textcolor>$VAR[circlesCol]</textcolor>
+			<textcolor>$VAR[CirclesCol]</textcolor>
 			<font>IconInfoThumbdefault</font>
-			<label>Ĕ</label>
+			<label>$VAR[DefaultIcons]</label><!-- check -->
 			<visible>String.StartsWith(ListItem.Icon,Default)</visible>
 		</control>
 		<control type="image" id="444">
@@ -158,7 +159,7 @@
 			<height>500</height>
 			<bordersize>10</bordersize>
 			<aspectratio aligny="center" align="center">keep</aspectratio>
-			<texture background="true" aligny="center" align="center">$INFO[ListItem.Icon]</texture>
+			<texture background="true">$INFO[ListItem.Icon]</texture>
 			<visible>!String.IsEqual(Control.GetLabel(416),*) + !String.StartsWith(ListItem.Icon,Default)</visible>
 		</control>
 		<control type="image">
@@ -186,7 +187,7 @@
 			<visible>ControlGroup(9000).HasFocus</visible>
 		</control>
 	</control>
-	<control type="label" id="411"><!-- content -->
+	<control type="label" id="411">
 		<description>Titel</description>
 		<left>bottom.dialogbar.left</left>
 		<top>35</top>
@@ -217,7 +218,13 @@
 		<onup>450</onup>
 		<ondown>450</ondown>
 		<scrolltime>200</scrolltime>
-		<itemlayout width="872" height="75">
+		<itemlayout width="872" height="button.top.height75">
+			<control type="label">
+				<left>bottom.dialogbar.left</left>
+				<width>740</width>
+				<include>Item.top.height75</include>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
 			<control type="label">
 				<description>Icon</description>
 				<left>780</left>
@@ -229,20 +236,27 @@
 				<font>IconBig</font>
 				<label>$VAR[DefaultIcons]</label>
 			</control>
+		</itemlayout>
+		<focusedlayout width="872" height="button.top.height75">
+			<control type="image">
+				<width>872</width>
+				<height>button.top.height75</height>
+				<texture border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texture>
+			</control>
 			<control type="label">
 				<left>bottom.dialogbar.left</left>
 				<width>740</width>
-				<height>75</height>
-				<align>top</align>
-				<textoffsety>20</textoffsety>
+				<include>Item.top.height75</include>
+				<textcolor>TextColorFO</textcolor>
 				<label>$INFO[ListItem.Label]</label>
+				<visible>Control.HasFocus(450)</visible>
 			</control>
-		</itemlayout>
-		<focusedlayout width="872" height="75">
-			<control type="image">
-				<width>872</width>
-				<height>75</height>
-				<texture border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texture>
+			<control type="label">
+				<left>bottom.dialogbar.left</left>
+				<width>740</width>
+				<include>Item.top.height75</include>
+				<label>$INFO[ListItem.Label]</label>
+				<visible>!Control.HasFocus(450)</visible>
 			</control>
 			<control type="label">
 				<description>Icon focus</description>
@@ -268,25 +282,6 @@
 				<label>$VAR[DefaultIcons]</label>
 				<visible>!Control.HasFocus(450)</visible>
 			</control>
-			<control type="label">
-				<left>bottom.dialogbar.left</left>
-				<width>740</width>
-				<height>75</height>
-				<align>top</align>
-				<textoffsety>20</textoffsety>
-				<textcolor>TextColorFO</textcolor>
-				<label>$INFO[ListItem.Label]</label>
-				<visible>Control.HasFocus(450)</visible>
-			</control>
-			<control type="label">
-				<left>bottom.dialogbar.left</left>
-				<width>740</width>
-				<height>75</height>
-				<align>top</align>
-				<textoffsety>20</textoffsety>
-				<label>$INFO[ListItem.Label]</label>
-				<visible>!Control.HasFocus(450)</visible>
-			</control>
 		</focusedlayout>
 	</control>
 	<control type="panel" id="451">
@@ -300,7 +295,13 @@
 		<onup>451</onup>
 		<ondown>451</ondown>
 		<scrolltime>200</scrolltime>
-		<itemlayout width="870" height="75">
+		<itemlayout width="870" height="button.top.height75">
+			<control type="label">
+				<left>bottom.dialogbar.left</left>
+				<width>700</width>
+				<include>Item.top.height75</include>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
 			<control type="label">
 				<description>Icon</description>
 				<left>750</left>
@@ -320,20 +321,27 @@
 				<texture background="true">$INFO[ListItem.Icon]</texture>
 				<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
 			</control>
-			<control type="label">
-				<left>bottom.dialogbar.left</left>
-				<width>740</width>
-				<height>75</height>
-				<align>top</align>
-				<textoffsety>20</textoffsety>
-				<label>$INFO[ListItem.Label]</label>
-			</control>
 		</itemlayout>
-		<focusedlayout width="870" height="75">
+		<focusedlayout width="870" height="button.top.height75">
 			<control type="image">
 				<width>856</width>
-				<height>75</height>
-				<texture border="0,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/right-11.png</texture>
+				<height>button.top.height75</height>
+				<texture border="0,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texture>
+			</control>
+			<control type="label">
+				<left>bottom.dialogbar.left</left>
+				<width>700</width>
+				<include>Item.top.height75</include>
+				<textcolor>TextColorFO</textcolor>
+				<label>$INFO[ListItem.Label]</label>
+				<visible>Control.HasFocus(451)</visible>
+			</control>
+			<control type="label">
+				<left>bottom.dialogbar.left</left>
+				<width>700</width>
+				<include>Item.top.height75</include>
+				<label>$INFO[ListItem.Label]</label>
+				<visible>!Control.HasFocus(451)</visible>
 			</control>
 			<control type="label">
 				<description>Icon focus</description>
@@ -366,25 +374,6 @@
 				<height>55</height>
 				<texture>$INFO[ListItem.Icon]</texture>
 				<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
-			</control>
-			<control type="label">
-				<left>bottom.dialogbar.left</left>
-				<width>740</width>
-				<height>75</height>
-				<align>top</align>
-				<textoffsety>20</textoffsety>
-				<textcolor>TextColorFO</textcolor>
-				<label>$INFO[ListItem.Label]</label>
-				<visible>Control.HasFocus(451)</visible>
-			</control>
-			<control type="label">
-				<left>bottom.dialogbar.left</left>
-				<width>740</width>
-				<height>75</height>
-				<align>top</align>
-				<textoffsety>20</textoffsety>
-				<label>$INFO[ListItem.Label]</label>
-				<visible>!Control.HasFocus(451)</visible>
 			</control>
 		</focusedlayout>
 	</control>

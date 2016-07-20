@@ -9,7 +9,7 @@
 	<left>0</left>
 	<top>0</top>
 	<include>Open_Close_Visible_Hidden_Slide_Animation375</include>
-	<control type="group"><!-- Background -->
+	<control type="group"><!-- Hintergrund -->
 		<description>Hintergrund</description>
 		<left>-43</left>
 		<include>Sideblade_Left_BG</include>
@@ -17,7 +17,7 @@
 	<control type="image">
 		<width>20</width>
 		<height>1080</height>
-		<texture colordiffuse="$VAR[secondaryCol]" background="true">White.png</texture>
+		<texture background="true" colordiffuse="$VAR[SecondaryCol]">white.png</texture>
 	</control>
 	<control type="grouplist" id="100">
 		<description>Kontextbuttons</description>

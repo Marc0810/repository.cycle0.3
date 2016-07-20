@@ -79,13 +79,13 @@
 			<description>Bestaetigen</description>
 			<include>DialogIconDimension</include>
 			<label>Ĥ</label>
-			<visible>Control.IsEnabled(300) + Control.IsVisible(300)</visible>
+			<visible>Control.IsVisible(300)</visible>
 		</control>
 		<control type="label">
 			<description>Abbrechen</description>
 			<include>DialogIconDimension</include>
 			<label>ģ</label>
-			<visible>Control.IsEnabled(301) + Control.IsVisible(301)</visible>
+			<visible>Control.IsVisible(301)</visible>
 		</control>
 	</control>
 	<control type="grouplist">
@@ -102,13 +102,13 @@
 			<font>RegularSmall</font>
 			<include>DialogIconDimension</include><!-- nur farbe aus include -->
 			<label>$INFO[Control.Getlabel(309)]</label>
-			<visible>Control.IsEnabled(309)</visible>
+			<visible>Control.IsVisible(309)</visible>
 		</control>
 		<control type="label">
 			<description>Tastatur</description>
 			<include>DialogIconDimension</include>
 			<label>r</label>
-			<visible>Control.IsEnabled(309)</visible>
+			<visible>Control.IsVisible(309)</visible>
 		</control>
 	</control>
 	<control type="label" id="311"><!-- Content -->
@@ -138,8 +138,8 @@
 		<width>1231</width>
 		<height>70</height>
 		<textcolor>TextColorFO</textcolor>
-		<texturenofocus border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texturenofocus>
-		<texturefocus border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texturefocus>
+		<texturenofocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturenofocus>
+		<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturefocus>
 		<visible>!Window.IsVisible(numericinput)</visible>
 	</control>
 	<control type="group" id="320"><!-- keyboard buttons -->
@@ -152,19 +152,25 @@
 			<orientation>horizontal</orientation>
 			<control type="radiobutton" id="304">
 				<description>Symbole</description>
-				<include>BigKey</include>
-				<onup>305</onup>
-				<ondown>302</ondown>
+				<width>199</width>
+				<height>80</height>
+				<align>center</align>
+				<aligny>top</aligny>
+				<textoffsety>20</textoffsety>
+				<font>RegularSmall</font>
+				<textcolor>TextColorLight</textcolor>
 				<radioleft>15</radioleft>
 				<radiotop>15</radiotop>
 				<radiowidth>28</radiowidth>
 				<radioheight>28</radioheight>
+				<onup>305</onup>
+				<ondown>302</ondown>
 				<textureradioonfocus>dialogs/keyboard/radio-on.png</textureradioonfocus>
 				<textureradioofffocus>dialogs/keyboard/radio-off.png</textureradioofffocus>
 				<textureradioonnofocus>dialogs/keyboard/radio-on.png</textureradioonnofocus>
 				<textureradiooffnofocus>dialogs/keyboard/radio-off.png</textureradiooffnofocus>
-				<texturefocus>-</texturefocus>
-				<texturenofocus>-</texturenofocus>
+				<texturefocus border="20" colordiffuse="$VAR[PrimaryCol]">dialogs/keyboard/key-nf.png</texturefocus>
+				<texturenofocus border="20">dialogs/keyboard/key-nf.png</texturenofocus>
 				<label>@#!*   </label>
 			</control>
 			<control type="button" id="100">
@@ -251,7 +257,8 @@
 			<orientation>horizontal</orientation>
 			<control type="radiobutton" id="302">
 				<description>SHIFT Taste</description>
-				<include>ShiftKey</include>
+				<width>199</width>
+				<height>80</height>
 				<onup>304</onup>
 				<ondown>303</ondown>
 				<radioleft>15</radioleft>
@@ -262,8 +269,8 @@
 				<textureradioofffocus>dialogs/keyboard/radio-off.png</textureradioofffocus>
 				<textureradioonnofocus>dialogs/keyboard/radio-on.png</textureradioonnofocus>
 				<textureradiooffnofocus>dialogs/keyboard/radio-off.png</textureradiooffnofocus>
-				<texturefocus>-</texturefocus>
-				<texturenofocus>-</texturenofocus>
+				<texturefocus colordiffuse="$VAR[PrimaryCol]">dialogs/keyboard/shiftfocus.png</texturefocus>
+				<texturenofocus>dialogs/keyboard/shiftnofocus.png</texturenofocus>
 				<label>-</label>
 			</control>
 			<control type="button" id="120">
@@ -350,7 +357,8 @@
 			<orientation>horizontal</orientation>
 			<control type="radiobutton" id="303">
 				<description>CAPS LOCK Taste</description>
-				<include>CapsKey</include>
+				<width>199</width>
+				<height>80</height>
 				<onup>302</onup>
 				<ondown>307</ondown>
 				<radioleft>15</radioleft>
@@ -361,8 +369,8 @@
 				<textureradioofffocus>dialogs/keyboard/radio-off.png</textureradioofffocus>
 				<textureradioonnofocus>dialogs/keyboard/radio-on.png</textureradioonnofocus>
 				<textureradiooffnofocus>dialogs/keyboard/radio-off.png</textureradiooffnofocus>
-				<texturefocus>-</texturefocus>
-				<texturenofocus>-</texturenofocus>
+				<texturefocus colordiffuse="$VAR[PrimaryCol]">dialogs/keyboard/capsfocus.png</texturefocus>
+				<texturenofocus>dialogs/keyboard/capsnofocus.png</texturenofocus>
 				<label>-</label>
 			</control>
 			<control type="button" id="140">
@@ -449,10 +457,18 @@
 			<orientation>horizontal</orientation>
 			<control type="button" id="307">
 				<description>IP Adresse Taste</description>
-				<include>BigKey</include>
+				<width>199</width>
+				<height>80</height>
+				<align>center</align>
+				<aligny>top</aligny>
+				<textoffsety>20</textoffsety>
+				<font>RegularSmall</font>
+				<textcolor>TextColorLight</textcolor>
+				<label>IP</label>
 				<onup>303</onup>
 				<ondown>305</ondown>
-				<label>IP</label>
+				<texturefocus border="20" colordiffuse="$VAR[PrimaryCol]">dialogs/keyboard/key-nf.png</texturefocus>
+				<texturenofocus border="20">dialogs/keyboard/key-nf.png</texturenofocus>
 			</control>
 			<control type="button" id="160">
 				<description>(3,0) Taste</description>
@@ -527,12 +543,15 @@
 				<include>SmallKey</include>
 			</control>
 			<control type="button" id="8">
-				<description>:DEL: button</description>
+				<description>:DEL:</description>
+				<width>334</width>
+				<height>80</height>
 				<onleft>90</onleft>
 				<onright>302</onright>
 				<onup>303</onup>
 				<ondown>305</ondown>
-				<include>BackSpace</include>
+				<texturefocus border="81,20,20,20" colordiffuse="$VAR[PrimaryCol]">dialogs/keyboard/backspacefocus.png</texturefocus>
+				<texturenofocus border="81,20,20,20">dialogs/keyboard/backspacenofocus.png</texturenofocus>
 			</control>
 		</control>
 	</control>
@@ -544,33 +563,38 @@
 			<left>2</left>
 			<control type="button" id="305">
 				<description>Nach links Taste</description>
+				<width>104</width>
+				<height>80</height>
 				<onleft>300</onleft>
 				<onright>306</onright>
 				<onup>307</onup>
 				<ondown>9000</ondown>
-				<textoffsety>15</textoffsety>
-				<include>MediumKeyLarr</include>
+				<texturefocus colordiffuse="$VAR[PrimaryCol]">dialogs/keyboard/mediumkeylarrfocus.png</texturefocus>
+				<texturenofocus>dialogs/keyboard/mediumkeylarrnofocus.png</texturenofocus>
 			</control>
 			<control type="button" id="306">
 				<description>Nach rechts Taste</description>
+				<width>104</width>
+				<height>80</height>
 				<left>95</left>
 				<onleft>305</onleft>
 				<onright>32</onright>
 				<onup>307</onup>
 				<ondown>9000</ondown>
-				<textoffsety>15</textoffsety>
-				<include>MediumKeyRarr</include>
+				<texturefocus colordiffuse="$VAR[PrimaryCol]">dialogs/keyboard/mediumkeyrarrfocus.png</texturefocus>
+				<texturenofocus>dialogs/keyboard/mediumkeyrarrnofocus.png</texturenofocus>
 			</control>
 		</control>
 		<control type="button" id="32">
 			<description>Leertaste</description>
+			<width>900</width>
 			<left>192</left>
 			<width>901</width>
 			<onleft>306</onleft>
 			<onright>301</onright>
 			<onup>307</onup>
 			<ondown>9000</ondown>
-			<include>SpaceBar</include>
+			<include>Key</include>
 		</control>
 	</control>
 </control>

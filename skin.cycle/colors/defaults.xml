@@ -33,7 +33,7 @@
 	<color name="primaryCol">FF4178CC</color>
 	
 	<!-- Sekundärfarbe - Im Standard hellere Version von Primär -->
-	<color name="secondaryCol">FF87BEFF</color>
+	<color name="secondaryCol">38D2D2D2</color>
 	
 	<!-- Menüicons aktiv -->
 	<color name="IconFOCol">7FF1F1F1</color>
@@ -50,13 +50,14 @@
 	<!-- Dialoghintergrund -->
 	<color name="DialogCol">FFEBEBEC</color>
 	
-	<!-- Hintergrundfärbung -->
+	<!-- Hintergrundfaerbung -->
 	<color name="BackdropCol">00939393</color>
+	<color name="FocusBackdropCol">0D000000</color>
+	<color name="FocusBackdropCol2">33ffffff</color>
 	
 	<!-- Textcolors -->
 	<color name="TextColorHeavy">FF474747</color>
 	<color name="TextColorMedium">FF686868</color>
 	<color name="TextColorLight">FFA3A3A3</color>
 	<color name="TextColorFO">FFEBEBEC</color>
-	<color name="TextColorFODiff">7FF1F1F1</color>
 </colors>

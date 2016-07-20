@@ -2,6 +2,7 @@
 <window type="dialog">
 <!-- Cycle Dialog 0.3 -->
 <!-- nicht implementiert -->
+<onload>close</onload>
 <controls>
 <control type="group" id="250">
 	<visible>false</visible>
@@ -26,6 +27,5 @@
 		</control>
 	</control>
 </control>
-<include>UnfeaturedWindow</include>
 </controls>
 </window>

@@ -6,28 +6,28 @@
 	<description>Default layout</description>
 	<left>1070</left>
 	<top>-134</top>
-	<visible>!Window.IsVisible(startup) + !Window.IsVisible(DialogMusicInfo.xml) + !Window.IsVisible(fullscreeninfo) + !Window.IsVisible(seekbar) + !Window.IsVisible(musicplaylisteditor) + !Window.IsVisible(Custom_1118_Histroyloader.xml)</visible>
+	<visible>!Window.IsVisible(startup) + !Window.IsVisible(DialogMusicInfo.xml)+ !Window.IsVisible(musicplaylisteditor) + !Window.IsVisible(Custom_1118_Histroyloader.xml)</visible>
 	<include>Dialog_topdown_Animation</include>
 	<control type="image">
-		<description>Avatar border</description>
+		<description>border</description>
 		<left>690</left>
 		<top>15</top>
 		<width>75</width>
 		<height>75</height>
 		<texture colordiffuse="TextColorMedium">views/NotificationDiffuse.png</texture>
-		<visible>!String.StartsWith(Control.GetLabel(400),default)</visible>
+		<visible>!String.StartsWith(Control.GetLabel(400),Default)</visible>
 	</control>
 	<control type="image" id="400">
-		<description>Avatar icon nicht default</description>
+		<description>icon nicht default</description>
 		<left>690</left>
 		<top>15</top>
 		<width>75</width>
 		<height>75</height>
 		<aspectratio>scale</aspectratio>
-		<visible>!String.StartsWith(Control.GetLabel(400),default)</visible>
+		<visible>!String.StartsWith(Control.GetLabel(400),Default)</visible>
 	</control>
 	<control type="label">
-		<description>Avatar icon default</description>
+		<description>icon default</description>
 		<left>675</left>
 		<top>-5</top>
 		<width>105</width>

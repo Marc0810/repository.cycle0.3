@@ -2,17 +2,18 @@
 <window type="dialog" id="1120">
 <!-- Cycle 0.3 -->
 <defaultcontrol always="true">8100</defaultcontrol>
-<onload>ClearProperty(RecentContent,1120)</onload>
+<onload>ClearProperty(RecentContent,home)</onload>
+<onunload>ClearProperty(RecentContent,home)</onunload>
 <controls>
-<control type="label" id="82382">
-	<include>HiddenControl</include>
-	<description>Vergleichslabel Recentcontent Widget nach Buttonposition - Film, Serienplayliste</description>
-	<label>$INFO[Window(1120).Property(RecentContent)]</label>
+<control type="list" id="1069">
+	<description>favourites list compair Empty condition fuer buttonsichtbarkeit falls kein match</description>
+	<include>Compaircontainer</include>
+	<content>favourites://</content>
 </control>
-<control type="group"><!-- Mainmenue -->
+<control type="group"><!--menue -->
 	<include>Open_Close_Visible_Hidden_Slide_Animation375</include>
 	<visible>!Window.IsVisible(favourites) + !Window.IsVisible(shutdownmenu)</visible>
-	<include>HomeMenu_Left_BG</include>
+	<include>Homeblade_Left_BG</include>
 	<control type="grouplist">
 		<description>Uhrzeit Hauptmenueebene 1</description>
 		<left>120</left>
@@ -20,14 +21,12 @@
 		<width>sidebar.breadcumblabel.width</width>
 		<height>100</height>
 		<itemgap>0</itemgap>
-		<orientation>vertical</orientation>
 		<visible>ControlGroup(8100).HasFocus</visible>
 		<control type="label">
 			<description>Zeit</description>
 			<width>sidebar.breadcumblabel.width</width>
 			<height>sidebar.breadcumblabel.height</height>
 			<font>BreadcumbNormal</font>
-			<scroll>false</scroll>
 			<label>$INFO[System.Time]</label>
 		</control>
 		<control type="label">
@@ -35,7 +34,6 @@
 			<width>sidebar.breadcumblabel.width</width>
 			<height>sidebar.breadcumblabel.height</height>
 			<font>BreadcumbSmall</font>
-			<scroll>false</scroll>
 			<label>$VAR[GlobalDateFormat]</label>
 		</control>
 	</control>
@@ -43,14 +41,13 @@
 		<description>Hauptmenueebene</description>
 		<left>100</left>
 		<top>150</top>
-		<include>HomeMenuListDimension</include>
-		<onleft>Dialog.Close(1120)</onleft>
-		<include>HomeMenuListleft</include>
-		<include>HomeMenuListright</include>
+		<include>Homeblade_ListDimension</include>
+		<onleft>Dialog.close(all)</onleft>
+		<include>Homeblade_Listleft</include>
+		<include>Homeblade_Listright</include>
 		<onup>8100</onup>
 		<ondown>8100</ondown>
 		<onback>50</onback>
-		<defaultcontrol>8109</defaultcontrol><!-- check -->
 		<scrolltime tween="sine" easing="out">180</scrolltime>
 		<animation type="Conditional" condition="ControlGroup(8210).HasFocus | ControlGroup(8220).HasFocus| ControlGroup(8230).HasFocus | ControlGroup(8240).HasFocus | ControlGroup(8260).HasFocus | ControlGroup(8270).HasFocus | ControlGroup(8290).HasFocus| ControlGroup(8275).HasFocus">
 			<effect type="fade" start="100" end="0" time="280" />
@@ -58,95 +55,96 @@
 		</animation>
 		<control type="button" id="8108">
 			<description>Laeuft gerade Playercontrols</description>
-			<onclick>Dialog.close(1120)</onclick>
+			<onclick>Dialog.close(all)</onclick>
 			<onclick>ActivateWindow(playercontrols)</onclick>
-			<include>HomeMenuSubButton</include>
-			<include>HomeMenuButtonValues</include>
+			<include>Homeblade_SubButton</include>
+			<include>Homeblade_ButtonValues</include>
 			<label>Abspielkontrolle</label>
 			<visible>Player.HasMedia | System.HasMediadvd</visible>
 		</control>
 		<control type="button" id="8111">
 			<description>Homemenue anzeigen wenn nicht Aktiv</description>
-			<onclick>Dialog.close(1120)</onclick>
+			<onclick>Dialog.close(all)</onclick>
 			<onclick>ActivateWindow(home)</onclick>
-			<include>HomeMenuSubButton</include>
-			<include>HomeMenuButtonValues</include>
+			<include>Homeblade_SubButton</include>
+			<include>Homeblade_ButtonValues</include>
 			<label>Hauptmenue</label>
 			<visible>!Window.IsVisible(home)</visible>
 		</control>
 		<control type="button" id="8109">
 			<description>Pinboard Fokus - wechsel zum Pinboardmenue für Serien, Filme, Addons</description>
 			<onclick>SetFocus(8262)</onclick>
-			<include>HomeMenuSubButton</include>
-			<include>HomeMenuButtonValues</include>
+			<include>Homeblade_SubButton</include>
+			<include>Homeblade_ButtonValues</include>
 			<label>Pinboard</label>
 		</control>
 		<control type="button" id="8101">
 			<description>Videomenue Fokus</description>
 			<onclick>SetFocus(8210)</onclick>
-			<include>HomeMenuEnterButton</include>
-			<include>HomeMenuButtonValues</include>
+			<include>Homeblade_EnterButton</include>
+			<include>Homeblade_ButtonValues</include>
 			<label>Videos</label>
 		</control>
 		<control type="button" id="8110">
 			<description>Musikmenue Fokus</description>
 			<onclick>SetFocus(8290)</onclick>
-			<include>HomeMenuEnterButton</include>
-			<include>HomeMenuButtonValues</include>
+			<include>Homeblade_EnterButton</include>
+			<include>Homeblade_ButtonValues</include>
 			<label>Musik</label>
 		</control>
 		<control type="button" id="8102">
 			<description>Serienmenue Fokus</description>
 			<onclick>SetFocus(8220)</onclick>
-			<include>HomeMenuEnterButton</include>
-			<include>HomeMenuButtonValues</include>
+			<include>Homeblade_EnterButton</include>
+			<include>Homeblade_ButtonValues</include>
 			<label>Serien</label>
 			<visible>Library.HasContent(Tvshows)</visible>
 		</control>
 		<control type="button" id="8103">
 			<description>Filmmenue Fokus</description>
 			<onclick>SetFocus(8230)</onclick>
-			<include>HomeMenuEnterButton</include>
-			<include>HomeMenuButtonValues</include>
+			<include>Homeblade_EnterButton</include>
+			<include>Homeblade_ButtonValues</include>
 			<label>Filme</label>
 			<visible>Library.HasContent(Movies)</visible>
 		</control>
 		<control type="button" id="8104">
-			<description>Custom Dokuwindow Fokus - Uebersicht Serien und Filmdokus</description>
-			<include>HomeMenuButtonValues</include>
-			<include>HomeMenuSubButton</include>
+			<description>Custom Doku window - Uebersicht Serien und Filmdokus</description>
+			<include>Homeblade_ButtonValues</include>
+			<include>Homeblade_SubButton</include>
 			<label>Dokus</label>
-			<onclick>Dialog.Close(1120)</onclick>
+			<onclick>Dialog.close(all)</onclick>
 			<onclick>ActivateWindow(Videos,$INFO[skin.string(TVDokuContent)],return)</onclick>
-			<visible>Library.HasContent(Movies) | Library.HasContent(Tvshows)</visible>
+			<visible>!String.IsEmpty(skin.string(FilmDokuContent)) + !String.IsEmpty(skin.string(TVDokuContent)) + Library.HasContent(Movies) + Library.HasContent(Tvshows)</visible>
 		</control>
 		<control type="button" id="8105">
 			<description>Favoriten</description>
-			<onclick>Dialog.Close(1120)</onclick>
+			<onclick>Dialog.close(all)</onclick>
 			<onclick>ActivateWindow(Favourites)</onclick>
-			<include>HomeMenuButtonValues</include>
-			<include>HomeMenuSubButton</include>
+			<include>Homeblade_ButtonValues</include>
+			<include>Homeblade_SubButton</include>
 			<label>Favoriten</label>
+			<visible>Integer.IsGreater(Container(1069).Numitems,0)</visible>
 		</control>
 		<control type="button" id="8106">
 			<description>Extrasmenue Fokus</description>
 			<onclick>SetFocus(8240)</onclick>
-			<include>HomeMenuEnterButton</include>
-			<include>HomeMenuButtonValues</include>
+			<include>Homeblade_EnterButton</include>
+			<include>Homeblade_ButtonValues</include>
 			<label>Extras</label>
 		</control>
-		<include>HomeMenuDivider</include><!-- divider mit Absteanden von 65 Pixeln fuer verschiedene Containerhoehen damit Farbe ganz unten kommt -->
+		<include>Homeblade_Divider</include><!-- divider mit Absteanden von 65 Pixeln fuer verschiedene Containerhoehen damit Farbe ganz unten kommt -->
 		<control type="button" id="8113">
 			<description>Farbe</description>
-			<onclick>ActivateWindow(1148)</onclick>
-			<textcolor>-</textcolor>
-			<include>HomeMenuSubButton</include>
-			<include>HomeMenuButtonValues</include>
-			<label>Farbeinstellungen</label>
+			<onclick>SetProperty(ColorRefresh,ein,home)</onclick><!-- property setzen - custom window wird sichtbar und wechselt farbe beim onunload -->
+			<textcolor>-</textcolor><!-- unfocus ohne text -->
+			<include>Homeblade_SubButton</include>
+			<include>Homeblade_ButtonValues</include>
+			<label>Farbe wechseln</label>
 		</control>
 	</control>
 	<control type="group"><!-- Untermenue 8210 Videos -->
-		<description>Untermenue Video - Ersatz für Serien und Filme einzeln</description>
+		<description>Untermenue Video - Ersatz fuer Serien und Filme einzeln</description>
 		<visible allowhiddenfocus="true">ControlGroup(8210).HasFocus</visible>
 		<animation type="Conditional" condition="ControlGroup(8210).HasFocus">
 			<effect type="fade" start="0" end="100" time="280" />
@@ -156,61 +154,60 @@
 		<top>150</top>
 		<control type="grouplist" id="8210">
 			<left>100</left>
-			<include>HomeMenuListDimension</include>
-			<include>HomeMenuListright</include>
+			<include>Homeblade_ListDimension</include>
 			<onleft>SetFocus(8101)</onleft>
-			<onup>8210</onup>
+			<include>Homeblade_Listright</include>
+						<onup>8210</onup>
 			<ondown>8210</ondown>
 			<onback>8238</onback>
-			<defaultcontrol>8214</defaultcontrol><!-- defaultcontrol check -->
 			<control type="button" id="8211">
 				<description>Filmtitel</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(Videos,MovieTitles,return)</onclick>
-				<include>HomeMenuArrowButton</include>
-				<include>HomeMenuButtonValues</include>
+				<include>Homeblade_ArrowButton</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Filme</label>
 				<visible>Library.HasContent(Movies)</visible>
 			</control>
 			<control type="button" id="8212">
 				<description>Serientitel</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(Videos,TvShowTitles,return)</onclick>
-				<include>HomeMenuArrowButton</include>
-				<include>HomeMenuButtonValues</include>
+				<include>Homeblade_ArrowButton</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Serien</label>
 				<visible>Library.HasContent(Tvshows)</visible>
 			</control>
-			<control type="button" id="8213"><!-- check -->
+			<control type="button" id="8213">
 				<description>Benutzerverzeichnis Playlisten</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(Videos,special://videoplaylists/,return)</onclick>
-				<include>HomeMenuArrowButton</include>
-				<include>HomeMenuButtonValues</include>
+				<include>Homeblade_ArrowButton</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Playlisten</label>
 			</control>
 			<control type="button" id="8214">
 				<description>Videodateien</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(Videos,Files,return)</onclick>
-				<include>HomeMenuArrowButton</include>
-				<include>HomeMenuButtonValues</include>
+				<include>Homeblade_ArrowButton</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Dateien</label>
 			</control>
 			<control type="button" id="8215">
 				<description>Rootverzeichnis der Datenbank</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(Videos,root)</onclick>
-				<include>HomeMenuArrowButton</include>
-				<include>HomeMenuButtonValues</include>
+				<include>Homeblade_ArrowButton</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Datenbank</label>
 			</control>
 			<control type="button" id="8216">
 				<description>Videoaddons</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(Videos,Addons,return)</onclick>
-				<include>HomeMenuArrowButton</include>
-				<include>HomeMenuButtonValues</include>
+				<include>Homeblade_ArrowButton</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Video Addons</label>
 			</control>
 		</control>
@@ -226,79 +223,81 @@
 		<top>150</top>
 		<control type="grouplist" id="8220">
 			<left>100</left>
-			<include>HomeMenuListDimension</include>
-			<include>HomeMenuListright</include>
+			<include>Homeblade_ListDimension</include>
 			<onleft>SetFocus(8102)</onleft>
+			<include>Homeblade_Listright</include>
 			<onup>8220</onup>
 			<ondown>8220</ondown>
 			<onback>8238</onback>
 			<control type="button" id="8221">
 				<description>Hauptverzeichnis</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(Videos,videodb://tvshows)</onclick>
-				<include>HomeMenuArrowButton</include>
-				<include>HomeMenuButtonValues</include>
+				<include>Homeblade_ArrowButton</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Root</label>
 			</control>
 			<control type="button" id="8222">
 				<description>Titel</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(videos,tvshowtitles,return)</onclick>
-				<include condition="!String.Contains(Container.Folderpath,tvshows/titles)">HomeMenuArrowButton</include>
-				<include condition="String.Contains(Container.Folderpath,tvshows/titles)">HomeMenuArrowButtonFO</include>
-				<include>HomeMenuButtonValues</include>
+				<include condition="!String.Contains(Container.Folderpath,tvshows/titles)">Homeblade_ArrowButton</include>
+				<include condition="String.Contains(Container.Folderpath,tvshows/titles)">Homeblade_ArrowButtonFO</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Titel</label>
 			</control>
 			<control type="button" id="8223">
 				<description>Genre</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(videos,tvshowgenres,return)</onclick>
-				<include condition="!String.Contains(Container.Folderpath,tvshows/genres)">HomeMenuArrowButton</include>
-				<include condition="String.Contains(Container.Folderpath,tvshows/genres)">HomeMenuArrowButtonFO</include>
-				<include>HomeMenuButtonValues</include>
+				<include condition="!String.Contains(Container.Folderpath,tvshows/genres)">Homeblade_ArrowButton</include>
+				<include condition="String.Contains(Container.Folderpath,tvshows/genres)">Homeblade_ArrowButtonFO</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Genres</label>
 			</control>
 			<control type="button" id="8224">
 				<description>Jahre</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(videos,tvshowyears,return)</onclick>
-				<include condition="!String.Contains(Container.Folderpath,tvshows/years)">HomeMenuArrowButton</include>
-				<include condition="String.Contains(Container.Folderpath,tvshows/years)">HomeMenuArrowButtonFO</include>
-				<include>HomeMenuButtonValues</include>
+				<include condition="!String.Contains(Container.Folderpath,tvshows/years)">Homeblade_ArrowButton</include>
+				<include condition="String.Contains(Container.Folderpath,tvshows/years)">Homeblade_ArrowButtonFO</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Jahre</label>
 			</control>
 			<control type="button" id="8225">
 				<description>Seriendarsteller</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(videos,tvshowactors,return)</onclick>
-				<include condition="!String.Contains(Container.Folderpath,tvshows/actors)">HomeMenuArrowButton</include>
-				<include condition="String.Contains(Container.Folderpath,tvshows/actors)">HomeMenuArrowButtonFO</include>
-				<include>HomeMenuButtonValues</include>
+				<include condition="!String.Contains(Container.Folderpath,tvshows/actors)">Homeblade_ArrowButton</include>
+				<include condition="String.Contains(Container.Folderpath,tvshows/actors)">Homeblade_ArrowButtonFO</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Darsteller</label>
 			</control>
 			<control type="button" id="8226">
 				<description>Studios</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(videos,tvshowstudios,return)</onclick>
-				<include condition="!String.Contains(Container.Folderpath,tvshows/studios)">HomeMenuArrowButton</include>
-				<include condition="String.Contains(Container.Folderpath,tvshows/studios)">HomeMenuArrowButtonFO</include>
-				<include>HomeMenuButtonValues</include>
+				<include condition="!String.Contains(Container.Folderpath,tvshows/studios)">Homeblade_ArrowButton</include>
+				<include condition="String.Contains(Container.Folderpath,tvshows/studios)">Homeblade_ArrowButtonFO</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Studios</label>
 			</control>
 			<control type="button" id="8227">
 				<description>Neue episoden</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(videos,recentlyaddedepisodes,return)</onclick>
-				<include>HomeMenuArrowButton</include>
-				<include>HomeMenuButtonValues</include>
-				<label>Neu hinzugefügte</label>
+				<include condition="!String.Contains(Container.Folderpath,videodb://recentlyaddedepisodes)">Homeblade_ArrowButton</include>
+				<include condition="String.Contains(Container.Folderpath,videodb://recentlyaddedepisodes)">Homeblade_ArrowButtonFO</include>
+				<include>Homeblade_ButtonValues</include>
+				<label>Neu Episoden</label>
 			</control>
 			<control type="button" id="8229">
 				<description>Begonnene serien</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(videos,videodb://inprogresstvshows/,return)</onclick>
-				<include>HomeMenuArrowButton</include>
-				<include>HomeMenuButtonValues</include>
+				<include condition="!String.Contains(Container.Folderpath,inprogresstvshows/)">Homeblade_ArrowButton</include>
+				<include condition="String.Contains(Container.Folderpath,inprogresstvshows/)">Homeblade_ArrowButtonFO</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Begonnene</label>
 			</control>
 		</control>
@@ -314,98 +313,98 @@
 		<top>150</top>
 		<control type="grouplist" id="8230">
 			<left>100</left>
-			<include>HomeMenuListDimension</include>
-			<include>HomeMenuListright</include>
+			<include>Homeblade_ListDimension</include>
 			<onleft>SetFocus(8103)</onleft>
+			<include>Homeblade_Listright</include>
 			<onup>8230</onup>
 			<ondown>8230</ondown>
 			<onback>8238</onback>
 			<control type="button" id="8231">
 				<description>Hauptverzeichnis</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(Videos,videodb://movies)</onclick>
-				<include>HomeMenuArrowButton</include>
-				<include>HomeMenuButtonValues</include>
+				<include>Homeblade_ArrowButton</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Root</label>
 			</control>
 			<control type="button" id="8232">
 				<description>Titel</description>
-				<onclick>Dialog.Close(1120)</onclick>
-				<onclick>ActivateWindow(video,movieTitles,return)</onclick>
-				<include condition="!String.Contains(Container.Folderpath,movies/titles)">HomeMenuArrowButton</include>
-				<include condition="String.Contains(Container.Folderpath,movies/titles)">HomeMenuArrowButtonFO</include>
-				<include>HomeMenuButtonValues</include>
+				<onclick>Dialog.close(all)</onclick>
+				<onclick>ActivateWindow(videos,movieTitles,return)</onclick>
+				<include condition="!String.Contains(Container.Folderpath,movies/titles)">Homeblade_ArrowButton</include>
+				<include condition="String.Contains(Container.Folderpath,movies/titles)">Homeblade_ArrowButtonFO</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Titel</label>
 			</control>
 			<control type="button" id="8233">
 				<description>Moviesets</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(videos,moviesets,return)</onclick>
-				<include condition="!String.Contains(Container.Folderpath,movies/sets)">HomeMenuArrowButton</include>
-				<include condition="String.Contains(Container.Folderpath,movies/sets)">HomeMenuArrowButtonFO</include>
-				<include>HomeMenuButtonValues</include>
+				<include condition="!String.Contains(Container.Folderpath,movies/sets)">Homeblade_ArrowButton</include>
+				<include condition="String.Contains(Container.Folderpath,movies/sets)">Homeblade_ArrowButtonFO</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Moviesets</label>
 			</control>
 			<control type="button" id="8234">
 				<description>Genres</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(videos,moviegenres,return)</onclick>
-				<include condition="!String.Contains(Container.Folderpath,movies/genres)">HomeMenuArrowButton</include>
-				<include condition="String.Contains(Container.Folderpath,movies/genres)">HomeMenuArrowButtonFO</include>
-				<include>HomeMenuButtonValues</include>
+				<include condition="!String.Contains(Container.Folderpath,movies/genres)">Homeblade_ArrowButton</include>
+				<include condition="String.Contains(Container.Folderpath,movies/genres)">Homeblade_ArrowButtonFO</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Genres</label>
 			</control>
 			<control type="button" id="8235">
 				<description>Jahre</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(videos,movieyears,return)</onclick>
-				<include condition="!String.Contains(Container.Folderpath,movies/years)">HomeMenuArrowButton</include>
-				<include condition="String.Contains(Container.Folderpath,movies/years)">HomeMenuArrowButtonFO</include>
-				<include>HomeMenuButtonValues</include>
+				<include condition="!String.Contains(Container.Folderpath,movies/years)">Homeblade_ArrowButton</include>
+				<include condition="String.Contains(Container.Folderpath,movies/years)">Homeblade_ArrowButtonFO</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Jahre</label>
 			</control>
 			<control type="button" id="8236">
 				<description>Darstellern</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(videos,movieactors,return)</onclick>
-				<include condition="!String.Contains(Container.Folderpath,movies/actors)">HomeMenuArrowButton</include>
-				<include condition="String.Contains(Container.Folderpath,movies/actors)">HomeMenuArrowButtonFO</include>
-				<include>HomeMenuButtonValues</include>
+				<include condition="!String.Contains(Container.Folderpath,movies/actors)">Homeblade_ArrowButton</include>
+				<include condition="String.Contains(Container.Folderpath,movies/actors)">Homeblade_ArrowButtonFO</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Darsteller</label>
 			</control>
 			<control type="button" id="8237">
 				<description>Studios</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(videos,moviestudios,return)</onclick>
-				<include condition="!String.Contains(Container.Folderpath,movies/studios)">HomeMenuArrowButton</include>
-				<include condition="String.Contains(Container.Folderpath,movies/studios)">HomeMenuArrowButtonFO</include>
-				<include>HomeMenuButtonValues</include>
+				<include condition="!String.Contains(Container.Folderpath,movies/studios)">Homeblade_ArrowButton</include>
+				<include condition="String.Contains(Container.Folderpath,movies/studios)">Homeblade_ArrowButtonFO</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Studios</label>
 			</control>
 			<control type="button" id="8238">
 				<description>Land</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(videos,moviecountries,return)</onclick>
-				<include condition="!String.Contains(Container.Folderpath,movies/countries)">HomeMenuArrowButton</include>
-				<include condition="String.Contains(Container.Folderpath,movies/countries)">HomeMenuArrowButtonFO</include>
-				<include>HomeMenuButtonValues</include>
+				<include condition="!String.Contains(Container.Folderpath,movies/countries)">Homeblade_ArrowButton</include>
+				<include condition="String.Contains(Container.Folderpath,movies/countries)">Homeblade_ArrowButtonFO</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Länder</label>
 			</control>
 			<control type="button" id="8239">
 				<description>Datenbanktag</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(videos,movietags,return)</onclick>
-				<include condition="!String.Contains(Container.Folderpath,movies/tags)">HomeMenuArrowButton</include>
-				<include condition="String.Contains(Container.Folderpath,movies/tags)">HomeMenuArrowButtonFO</include>
-				<include>HomeMenuButtonValues</include>
+				<include condition="!String.Contains(Container.Folderpath,movies/tags)">Homeblade_ArrowButton</include>
+				<include condition="String.Contains(Container.Folderpath,movies/tags)">Homeblade_ArrowButtonFO</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Tags</label>
 			</control>
 			<control type="button" id="8390">
 				<description>Zuletzt hinzugefuegte Filme</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(videos,recentlyaddedmovies,return)</onclick>
-				<include>HomeMenuArrowButton</include>
-				<include>HomeMenuButtonValues</include>
+				<include>Homeblade_ArrowButton</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Neu hinzugefügte</label>
 			</control>
 		</control>
@@ -423,74 +422,58 @@
 		<height>975</height>
 		<control type="grouplist" id="8240">
 			<left>100</left>
-			<include>HomeMenuListDimension</include>
-			<include>HomeMenuListright</include>
+			<include>Homeblade_ListDimension</include>
 			<onleft>SetFocus(8106)</onleft>
+			<include>Homeblade_Listright</include>
 			<onup>8240</onup>
 			<ondown>8240</ondown>
 			<onback>8238</onback>
 			<control type="button" id="8241">
-				<description>Wetteruebersicht</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<description>Wetter</description>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(weather)</onclick>
-				<include>HomeMenuArrowButton</include>
-				<include>HomeMenuButtonValues</include>
+				<include>Homeblade_ArrowButton</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Wetter</label>
 			</control>
 			<control type="button" id="8242">
-				<description>Bilderuebersicht</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<description>Bilder</description>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(pictures)</onclick>
-				<include>HomeMenuArrowButton</include>
-				<include>HomeMenuButtonValues</include>
+				<include>Homeblade_ArrowButton</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Bilder</label>
 			</control>
 			<control type="button" id="8243">
 				<description>Dateimanager</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(filemanager)</onclick>
-				<include>HomeMenuArrowButton</include>
-				<include>HomeMenuButtonValues</include>
+				<include>Homeblade_ArrowButton</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Dateimanager</label>
 			</control>
 			<control type="button" id="8244">
 				<description>Addonbrowser</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(addonbrowser)</onclick>
-				<include>HomeMenuArrowButton</include>
-				<include>HomeMenuButtonValues</include>
+				<include>Homeblade_ArrowButton</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Addonbrowser</label>
-			</control>
-			<control type="button" id="8245">
-				<description>Systeminfo</description>
-				<onclick>Dialog.Close(1120)</onclick>
-				<onclick>ActivateWindow(systeminfo)</onclick>
-				<include>HomeMenuArrowButton</include>
-				<include>HomeMenuButtonValues</include>
-				<label>Systeminfo</label>
-			</control>
-			<control type="button" id="8246">
-				<description>Profileinstellungen</description>
-				<onclick>Dialog.Close(1120)</onclick>
-				<onclick>ActivateWindow(profiles)</onclick>
-				<include>HomeMenuArrowButton</include>
-				<include>HomeMenuButtonValues</include>
-				<label>Profile</label>
 			</control>
 			<control type="button" id="8247">
 				<description>Programme</description>
-				<onclick>Dialog.Close(1120)</onclick>
-				<onclick>ActivateWindow(programs)</onclick>
-				<include>HomeMenuArrowButton</include>
-				<include>HomeMenuButtonValues</include>
+				<onclick>Dialog.close(all)</onclick>
+				<onclick>ActivateWindow(programs,addons://sources/executable/,return)</onclick>
+				<include>Homeblade_ArrowButton</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Programme</label>
 			</control>
 			<control type="button" id="8248">
 				<description>Einstellungen</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(Settings)</onclick>
-				<include>HomeMenuArrowButton</include>
-				<include>HomeMenuButtonValues</include>
+				<include>Homeblade_ArrowButton</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Einstellungen</label>
 			</control>
 		</control>
@@ -512,33 +495,33 @@
 			<width>375</width>
 			<height>705</height>
 			<onleft>8262</onleft>
-			<include>HomeMenuListright</include>
+			<include>Homeblade_Listright</include>
 			<onup>8265</onup>
 			<ondown>8265</ondown>
 			<scrolltime>200</scrolltime>
-			<animation type="Conditional" condition="Control.HasFocus(8263) | Control.HasFocus(8264) | Control.HasFocus(8266) | Control.HasFocus(8267) | Control.HasFocus(8268) | Control.HasFocus(8269) | Control.HasFocus(8280) | Control.HasFocus(8700) | Control.HasFocus(8701) | Control.HasFocus(8703)">
+			<animation type="Conditional" condition="Control.HasFocus(8264) | Control.HasFocus(8267) | Control.HasFocus(8268) | Control.HasFocus(8280) | Control.HasFocus(8700) | Control.HasFocus(8701) | Control.HasFocus(8703)">
 				<effect type="fade" start="100" end="0" time="280" />
 				<effect type="slide" start="0,0" tween="quadratic" easing="out" end="-375,0" time="300"/>
 			</animation>
 			<itemlayout width="375" height="70">
 				<control type="label">
-					<include>HomeMenuLabelDimension</include>
+					<include>Homeblade_LabelDimension</include>
 				</control>
 			</itemlayout>
 			<focusedlayout width="375" height="70">
 				<control type="image">
 					<width>350</width>
-					<height>75</height>
-					<texture border="0,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/right-11.png</texture>
+					<height>button.top.height65</height>
+					<texture border="0,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texture>
 					<visible>Control.HasFocus(8265)</visible>
 				</control>
 				<control type="label">
-					<include>HomeMenuLabelDimension</include>
+					<include>Homeblade_LabelDimension</include>
 					<textcolor>TextColorFO</textcolor>
 					<visible>Control.HasFocus(8265)</visible>
 				</control>
 				<control type="label">
-					<include>HomeMenuLabelDimension</include>
+					<include>Homeblade_LabelDimension</include>
 					<visible>!Control.HasFocus(8265)</visible>
 				</control>
 			</focusedlayout>
@@ -546,173 +529,67 @@
 				<!-- Serienitems - Nur belegete und Item der zu Einstellungen fuehrt -->
 				<item id="30">
 					<label>$INFO[Skin.String(ShowList1TVShowTitle)]</label>
-					<onclick>Dialog.Close(1120)</onclick>
+					<onclick>Dialog.close(all)</onclick>
 					<onclick>ActivateWindow(10025,&quot;videodb://tvshows/titles/$INFO[Skin.String(ShowList1ID)]/&quot;)</onclick>
 					<visible>!String.IsEmpty(Skin.String(ShowList1TVShowTitle))</visible>
 				</item>
 				<item id="31">
 					<label>$INFO[Skin.String(ShowList2TVShowTitle)]</label>
-					<onclick>Dialog.Close(1120)</onclick>
+					<onclick>Dialog.close(all)</onclick>
 					<onclick>ActivateWindow(10025,&quot;videodb://tvshows/titles/$INFO[Skin.String(ShowList2ID)]/&quot;)</onclick>
 					<visible>!String.IsEmpty(Skin.String(ShowList2TVShowTitle))</visible>
 				</item>
 				<item id="32">
 					<label>$INFO[Skin.String(ShowList3TVShowTitle)]</label>
-					<onclick>Dialog.Close(1120)</onclick>
+					<onclick>Dialog.close(all)</onclick>
 					<onclick>ActivateWindow(10025,&quot;videodb://tvshows/titles/$INFO[Skin.String(ShowList3ID)]/&quot;)</onclick>
 					<visible>!String.IsEmpty(Skin.String(ShowList3TVShowTitle))</visible>
 				</item>
 				<item id="33">
 					<label>$INFO[Skin.String(ShowList4TVShowTitle)]</label>
-					<onclick>Dialog.Close(1120)</onclick>
+					<onclick>Dialog.close(all)</onclick>
 					<onclick>ActivateWindow(10025,&quot;videodb://tvshows/titles/$INFO[Skin.String(ShowList4ID)]/&quot;)</onclick>
 					<visible>!String.IsEmpty(Skin.String(ShowList4TVShowTitle))</visible>
 				</item>
 				<item id="34">
 					<label>$INFO[Skin.String(ShowList5TVShowTitle)]</label>
-					<onclick>Dialog.Close(1120)</onclick>
+					<onclick>Dialog.close(all)</onclick>
 					<onclick>ActivateWindow(10025,&quot;videodb://tvshows/titles/$INFO[Skin.String(ShowList5ID)]/&quot;)</onclick>
 					<visible>!String.IsEmpty(Skin.String(ShowList5TVShowTitle))</visible>
 				</item>
 				<item id="35">
 					<label>$INFO[Skin.String(ShowList6TVShowTitle)]</label>
-					<onclick>Dialog.Close(1120)</onclick>
+					<onclick>Dialog.close(all)</onclick>
 					<onclick>ActivateWindow(10025,&quot;videodb://tvshows/titles/$INFO[Skin.String(ShowList6ID)]/&quot;)</onclick>
 					<visible>!String.IsEmpty(Skin.String(ShowList6TVShowTitle))</visible>
 				</item>
 				<item id="36">
 					<label>$INFO[Skin.String(ShowList7TVShowTitle)]</label>
-					<onclick>Dialog.Close(1120)</onclick>
+					<onclick>Dialog.close(all)</onclick>
 					<onclick>ActivateWindow(10025,&quot;videodb://tvshows/titles/$INFO[Skin.String(ShowList7ID)]/&quot;)</onclick>
 					<visible>!String.IsEmpty(Skin.String(ShowList7TVShowTitle))</visible>
 				</item>
 				<item id="37">
 					<label>$INFO[Skin.String(ShowList8TVShowTitle)]</label>
-					<onclick>Dialog.Close(1120)</onclick>
+					<onclick>Dialog.close(all)</onclick>
 					<onclick>ActivateWindow(10025,&quot;videodb://tvshows/titles/$INFO[Skin.String(ShowList8ID)]/&quot;)</onclick>
 					<visible>!String.IsEmpty(Skin.String(ShowList8TVShowTitle))</visible>
 				</item>
 				<item id="38">
 					<label>$INFO[Skin.String(ShowList9TVShowTitle)]</label>
-					<onclick>Dialog.Close(1120)</onclick>
+					<onclick>Dialog.close(all)</onclick>
 					<onclick>ActivateWindow(10025,&quot;videodb://tvshows/titles/$INFO[Skin.String(ShowList9ID)]/&quot;)</onclick>
 					<visible>!String.IsEmpty(Skin.String(ShowList9TVShowTitle))</visible>
 				</item>
 				<item id="39">
 					<label>$INFO[Skin.String(ShowList10TVShowTitle)]</label>
-					<onclick>Dialog.Close(1120)</onclick>
+					<onclick>Dialog.close(all)</onclick>
 					<onclick>ActivateWindow(10025,&quot;videodb://tvshows/titles/$INFO[Skin.String(ShowList10ID)]/&quot;)</onclick>
 					<visible>!String.IsEmpty(Skin.String(ShowList10TVShowTitle))</visible>
 				</item>
 				<item id="40">
-					<label>Serien auswählen</label>
+					<label>Pinboard bearbeiten</label>
 					<onclick>SetFocus(8268)</onclick>
-				</item>
-			</content>
-		</control>
-		<control type="list" id="8266">
-			<description>Film Pinboard</description>
-			<left>-455</left>
-			<width>375</width>
-			<height>705</height>
-			<onleft>8263</onleft>
-			<include>HomeMenuListright</include>
-			<onup>8266</onup>
-			<ondown>8266</ondown>
-			<scrolltime>200</scrolltime>
-			<visible allowhiddenfocus="true">Control.HasFocus(8266) | Control.HasFocus(8263)</visible>
-			<animation type="Conditional" condition="Control.HasFocus(8266) | Control.HasFocus(8263)">
-				<effect type="fade" start="0" end="100" time="280" />
-				<effect type="slide" start="0,0" end="535,0" tween="quadratic" easing="out" time="300" />
-			</animation>
-			<itemlayout width="375" height="70">
-				<control type="label">
-					<include>HomeMenuLabelDimension</include>
-				</control>
-			</itemlayout>
-			<focusedlayout width="375" height="70">
-				<control type="image">
-					<width>350</width>
-					<height>75</height>
-					<texture border="0,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/right-11.png</texture>
-					<visible>Control.HasFocus(8266)</visible>
-				</control>
-				<control type="label">
-					<include>HomeMenuLabelDimension</include>
-					<textcolor>TextColorFO</textcolor>
-					<visible>Control.HasFocus(8266)</visible>
-				</control>
-				<control type="label">
-					<include>HomeMenuLabelDimension</include>
-					<visible>!Control.HasFocus(8266)</visible>
-				</control>
-			</focusedlayout>
-			<content>
-				<!-- Filmitems - Nur belegete und Item der zu Einstellungen fuehrt -->
-				<item id="30">
-					<label>$INFO[Skin.String(MovieList1Title)]</label>
-					<onclick>Dialog.Close(1120)</onclick>
-					<onclick>PlayMedia($ESCINFO[Skin.String(MovieList1Path)])</onclick>
-					<visible>!String.IsEmpty(Skin.String(MovieList1Title))</visible>
-				</item>
-				<item id="31">
-					<label>$INFO[Skin.String(MovieList2Title)]</label>
-					<onclick>Dialog.Close(1120)</onclick>
-					<onclick>PlayMedia($ESCINFO[Skin.String(MovieList2Path)])</onclick>
-					<visible>!String.IsEmpty(Skin.String(MovieList2Title))</visible>
-				</item>
-				<item id="32">
-					<label>$INFO[Skin.String(MovieList3Title)]</label>
-					<onclick>Dialog.Close(1120)</onclick>
-					<onclick>PlayMedia($ESCINFO[Skin.String(MovieList3Path)])</onclick>
-					<visible>!String.IsEmpty(Skin.String(MovieList3Title))</visible>
-				</item>
-				<item id="33">
-					<label>$INFO[Skin.String(MovieList4Title)]</label>
-					<onclick>Dialog.Close(1120)</onclick>
-					<onclick>PlayMedia($ESCINFO[Skin.String(MovieList4Path)])</onclick>
-					<visible>!String.IsEmpty(Skin.String(MovieList4Title))</visible>
-				</item>
-				<item id="34">
-					<label>$INFO[Skin.String(MovieList5Title)]</label>
-					<onclick>Dialog.Close(1120)</onclick>
-					<onclick>PlayMedia($ESCINFO[Skin.String(MovieList5Path)])</onclick>
-					<visible>!String.IsEmpty(Skin.String(MovieList5Title))</visible>
-				</item>
-				<item id="35">
-					<label>$INFO[Skin.String(MovieList6Title)]</label>
-					<onclick>Dialog.Close(1120)</onclick>
-					<onclick>PlayMedia($ESCINFO[Skin.String(MovieList6Path)])</onclick>
-					<visible>!String.IsEmpty(Skin.String(MovieList6Title))</visible>
-				</item>
-				<item id="36">
-					<label>$INFO[Skin.String(MovieList7Title)]</label>
-					<onclick>Dialog.Close(1120)</onclick>
-					<onclick>PlayMedia($ESCINFO[Skin.String(MovieList7Path)])</onclick>
-					<visible>!String.IsEmpty(Skin.String(MovieList7Title))</visible>
-				</item>
-				<item id="37">
-					<label>$INFO[Skin.String(MovieList8Title)]</label>
-					<onclick>Dialog.Close(1120)</onclick>
-					<onclick>PlayMedia($ESCINFO[Skin.String(MovieList8Path)])</onclick>
-					<visible>!String.IsEmpty(Skin.String(MovieList8Title))</visible>
-				</item>
-				<item id="38">
-					<label>$INFO[Skin.String(MovieList9Title)]</label>
-					<onclick>Dialog.Close(1120)</onclick>
-					<onclick>PlayMedia($ESCINFO[Skin.String(MovieList9Path)])</onclick>
-					<visible>!String.IsEmpty(Skin.String(MovieList9Title))</visible>
-				</item>
-				<item id="39">
-					<label>$INFO[Skin.String(MovieList10Title)]</label>
-					<onclick>Dialog.Close(1120)</onclick>
-					<onclick>PlayMedia($ESCINFO[Skin.String(MovieList10Path)])</onclick>
-					<visible>!String.IsEmpty(Skin.String(MovieList10Title))</visible>
-				</item>
-				<item id="40">
-					<label>Filme auswählen</label>
-					<icon>-</icon>
-					<onclick>SetFocus(8269)</onclick>
 				</item>
 			</content>
 		</control>
@@ -722,7 +599,7 @@
 			<width>375</width>
 			<height>705</height>
 			<onleft>8265</onleft>
-			<include>HomeMenuListright</include>
+			<include>Homeblade_Listright</include>
 			<onup>8267</onup>
 			<ondown>8267</ondown>
 			<scrolltime>200</scrolltime>
@@ -733,23 +610,23 @@
 			</animation>
 			<itemlayout width="375" height="70">
 				<control type="label">
-					<include>HomeMenuLabelDimension</include>
+					<include>Homeblade_LabelDimension</include>
 				</control>
 			</itemlayout>
 			<focusedlayout width="375" height="70">
 				<control type="image">
 					<width>350</width>
-					<height>75</height>
-					<texture border="0,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/right-11.png</texture>
+					<height>button.top.height65</height>
+					<texture border="0,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texture>
 					<visible>Control.HasFocus(8267)</visible>
 				</control>
 				<control type="label">
-					<include>HomeMenuLabelDimension</include>
+					<include>Homeblade_LabelDimension</include>
 					<textcolor>TextColorFO</textcolor>
 					<visible>Control.HasFocus(8267)</visible>
 				</control>
 				<control type="label">
-					<include>HomeMenuLabelDimension</include>
+					<include>Homeblade_LabelDimension</include>
 					<visible>!Control.HasFocus(8267)</visible>
 				</control>
 			</focusedlayout>
@@ -758,35 +635,35 @@
 				<item id="30">
 					<label>$INFO[system.addontitle(Skin.String(AddonList1Path))]</label>
 					<icon>$INFO[System.AddonIcon(Skin.string(AddonList1Path))]</icon>
-					<onclick>Dialog.Close(1120)</onclick>
+					<onclick>Dialog.close(all)</onclick>
 					<onclick>RunAddon($INFO[Skin.String(AddonList1Path)])</onclick>
 					<visible>!String.IsEmpty(Skin.String(AddonList1Path))</visible>
 				</item>
 				<item id="31">
 					<label>$INFO[system.addontitle(Skin.String(AddonList2Path))]</label>
 					<icon>$INFO[System.AddonIcon(Skin.string(AddonList2Path))]</icon>
-					<onclick>Dialog.Close(1120)</onclick>
+					<onclick>Dialog.close(all)</onclick>
 					<onclick>RunAddon($INFO[Skin.String(AddonList2Path)])</onclick>
 					<visible>!String.IsEmpty(Skin.String(AddonList2Path))</visible>
 				</item>
 				<item id="32">
 					<label>$INFO[system.addontitle(Skin.String(AddonList3Path))]</label>
 					<icon>$INFO[System.AddonIcon(Skin.string(AddonList3Path))]</icon>
-					<onclick>Dialog.Close(1120)</onclick>
+					<onclick>Dialog.close(all)</onclick>
 					<onclick>RunAddon($INFO[Skin.String(AddonList3Path)])</onclick>
 					<visible>!String.IsEmpty(Skin.String(AddonList3Path))</visible>
 				</item>
 				<item id="33">
 					<label>$INFO[system.addontitle(Skin.String(AddonList4Path))]</label>
 					<icon>$INFO[System.AddonIcon(Skin.string(AddonList4Path))]</icon>
-					<onclick>Dialog.Close(1120)</onclick>
+					<onclick>Dialog.close(all)</onclick>
 					<onclick>RunAddon($INFO[Skin.String(AddonList4Path)])</onclick>
 					<visible>!String.IsEmpty(Skin.String(AddonList4Path))</visible>
 				</item>
 				<item id="34">
 					<label>$INFO[system.addontitle(Skin.String(AddonList5Path))]</label>
 					<icon>$INFO[System.AddonIcon(Skin.string(AddonList5Path))]</icon>
-					<onclick>Dialog.Close(1120)</onclick>
+					<onclick>Dialog.close(all)</onclick>
 					<onclick>RunAddon($INFO[Skin.String(AddonList5Path)])</onclick>
 					<visible>!String.IsEmpty(Skin.String(AddonList5Path))</visible>
 				</item>
@@ -807,19 +684,6 @@
 				<textcolor>TextColorMedium</textcolor>
 				<label>Das Serien Pinboard ist momentan leer - über den Button [B]Serie auswählen[/B][CR]können die Plätze über das Kontextmenue oder durch Klick auf ein leeres Item gefüllt werden.[CR]Ein Klick auf einen belegten Slot löscht ihn.</label>
 				<visible>[Control.HasFocus(8265) | Control.HasFocus(8262)] + String.IsEmpty(Skin.String(ShowList1TVShowTitle)) + String.IsEmpty(Skin.String(ShowList2TVShowTitle)) + String.IsEmpty(Skin.String(ShowList3TVShowTitle)) + String.IsEmpty(Skin.String(ShowList4TVShowTitle)) + String.IsEmpty(Skin.String(ShowList5TVShowTitle)) + String.IsEmpty(Skin.String(ShowList6TVShowTitle)) + String.IsEmpty(Skin.String(ShowList7TVShowTitle)) + String.IsEmpty(Skin.String(ShowList8TVShowTitle)) + String.IsEmpty(Skin.String(ShowList9TVShowTitle)) + String.IsEmpty(Skin.String(ShowList10TVShowTitle))</visible>
-				<animation type="Visible">
-					<effect type="fade" start="0" end="100" time="280" />
-				</animation>
-			</control>
-			<control type="textbox">
-				<left>120</left>
-				<top>95</top>
-				<width>290</width>
-				<height>552</height>
-				<font>RegularSmall</font>
-				<textcolor>TextColorMedium</textcolor>
-				<label>Das Film Pinboard ist momentan leer - über den Button [B]Filme auswählen[/B][CR]können die Plätze über das Kontextmenue oder durch Klick auf ein leeres Item gefüllt werden.[CR]Ein Klick auf einen belegten Slot löscht ihn.</label>
-				<visible>[Control.HasFocus(8266) | Control.HasFocus(8263)] + String.IsEmpty(Skin.String(MovieList1Title)) + String.IsEmpty(Skin.String(MovieList2Title)) + String.IsEmpty(Skin.String(MovieList3Title)) + String.IsEmpty(Skin.String(MovieList4Title)) + String.IsEmpty(Skin.String(MovieList5Title)) + String.IsEmpty(Skin.String(MovieList6Title)) + String.IsEmpty(Skin.String(MovieList7Title)) + String.IsEmpty(Skin.String(MovieList8Title)) + String.IsEmpty(Skin.String(MovieList9Title)) + String.IsEmpty(Skin.String(MovieList10Title))</visible>
 				<animation type="Visible">
 					<effect type="fade" start="0" end="100" time="280" />
 				</animation>
@@ -869,10 +733,10 @@
 			<left>-455</left>
 			<width>375</width>
 			<height>705</height>
+			<onleft condition="String.IsEqual(Window(1120).Property(RecentContent),TV)">8700</onleft><!-- Zurueckbutton zu den jeweiligen Icons -->
+			<onleft condition="String.IsEqual(Window(1120).Property(RecentContent),Movie)">8703</onleft><!-- Zurueckbutton zu den jeweiligen Icons -->
+			<include>Homeblade_Listright</include>
 			<onup>8701</onup>
-			<onleft condition="String.IsEqual(Control.GetLabel(82382),TV)">8700</onleft><!-- Zurueckbutton zu den jeweiligen Icons -->
-			<onleft condition="String.IsEqual(Control.GetLabel(82382),Movie)">8703</onleft><!-- Zurueckbutton zu den jeweiligen Icons -->
-			<include>HomeMenuListright</include>
 			<ondown>8701</ondown>
 			<scrolltime>200</scrolltime>
 			<visible allowhiddenfocus="true">Control.HasFocus(8700) | Control.HasFocus(8701) | Control.HasFocus(8703)</visible>
@@ -882,39 +746,45 @@
 			</animation>
 			<itemlayout width="375" height="70">
 				<control type="label">
-					<include>HomeMenuLabelDimension</include>
+					<include>Homeblade_LabelDimension</include>
 				</control>
 			</itemlayout>
 			<focusedlayout width="375" height="70">
 				<control type="image">
 					<width>350</width>
-					<height>70</height>
-					<texture border="0,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/right-11.png</texture>
+					<height>button.top.height65</height>
+					<texture border="0,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texture>
 					<visible>Control.HasFocus(8701)</visible>
 				</control>
 				<control type="label">
 					<textcolor>TextColorFO</textcolor><!-- include ueberschreiben Farbe -->
-					<include>HomeMenuLabelDimension</include>
+					<include>Homeblade_LabelDimension</include>
 					<visible>Control.HasFocus(8701)</visible>
 				</control>
 				<control type="label">
-					<include>HomeMenuLabelDimension</include>
+					<include>Homeblade_LabelDimension</include>
 					<visible>!Control.HasFocus(8701)</visible>
 				</control>
 			</focusedlayout>
-				<content target="video">$VAR[HomeMenuPinboard]</content>
-				<onclick>Dialog.close(1120)</onclick>
-				<onclick condition="String.IsEqual(Control.GetLabel(82382),TV)">AlarmClock(Delayclick,ActivateWindow(10025,&quot;videodb://tvshows/titles/$INFO[ListItem.DBID]/&quot;),0:01,true)</onclick>
-			<onclick condition="String.IsEqual(Control.GetLabel(82382),Movie)">AlarmClock(Delayclick,PlayMedia($INFO[ListItem.Path]),0:01,true)</onclick>
+				<content target="video">$VAR[Homeblade_Pinboard]</content>
+				<onclick>Dialog.close(all)</onclick>
+				<onclick condition="String.IsEqual(Window(1120).Property(RecentContent),TV)">AlarmClock(Delayclick,ActivateWindow(10025,&quot;videodb://tvshows/titles/$INFO[ListItem.DBID]/&quot;),0:01,true)</onclick>
+			<onclick condition="String.IsEqual(Window(1120).Property(RecentContent),Movie)">AlarmClock(Delayclick,PlayMedia($INFO[ListItem.Path]),0:01,true)</onclick>
+		</control>
+		<control type="label"><!-- Fallback leere playliste -->
+			<left>120</left>
+			<label>Playliste auswählen</label>
+			<include>Homeblade_LabelDimension</include>
+			<visible>[Control.HasFocus(8700) + String.IsEqual(Window(1120).Property(RecentContent),TV) + String.IsEmpty(Skin.String(PinboardRecentTVPls))] | [Control.HasFocus(8703) + String.IsEqual(Window(1120).Property(RecentContent),Movie) + String.IsEmpty(Skin.String(PinboardRecentMoviesPls))]</visible>
 		</control>
 		<control type="list" id="8268"><!-- Serienpinboard Organisieren 8268 -->
 			<description>Serienpinboard Einstellen - Anzeige volle und wenn leer ein leeres Items fuer alle 10 Plaetze. Volle werden durch Klick geloescht, leere fuehren zur Datenbank zum festlegen</description>
 			<left>-455</left>
 			<width>375</width>
 			<height>705</height>
-			<onup>8268</onup>
 			<onleft>8265</onleft>
-			<include>HomeMenuListright</include>
+			<include>Homeblade_Listright</include>
+			<onup>8268</onup>
 			<ondown>8268</ondown>
 			<scrolltime>200</scrolltime>
 			<visible allowhiddenfocus="true">Control.HasFocus(8268)</visible>
@@ -924,23 +794,23 @@
 			</animation>
 			<itemlayout width="375" height="70">
 				<control type="label">
-					<include>HomeMenuLabelDimension</include>
+					<include>Homeblade_LabelDimension</include>
 				</control>
 			</itemlayout>
 			<focusedlayout width="375" height="70">
 				<control type="image">
 					<width>350</width>
-					<height>70</height>
-					<texture border="0,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/right-11.png</texture>
+					<height>button.top.height65</height>
+					<texture border="0,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texture>
 					<visible>Control.HasFocus(8268)</visible>
 				</control>
 				<control type="label">
 					<textcolor>TextColorFO</textcolor><!-- include ueberschreiben Farbe -->
-					<include>HomeMenuLabelDimension</include>
+					<include>Homeblade_LabelDimension</include>
 					<visible>Control.HasFocus(8268)</visible>
 				</control>
 				<control type="label">
-					<include>HomeMenuLabelDimension</include>
+					<include>Homeblade_LabelDimension</include>
 					<visible>!Control.HasFocus(8268)</visible>
 				</control>
 			</focusedlayout>
@@ -953,7 +823,7 @@
 				</item>
 				<item id="11">
 					<label>Item hinzufügen</label>
-					<onclick>Dialog.close(1120)</onclick>
+					<onclick>Dialog.close(all)</onclick>
 					<onclick>ActivateWindow(Videos,special://skin/playlists/TV_Alle.xsp,return)</onclick>
 					<visible>String.IsEmpty(Skin.String(ShowList1TVShowTitle))</visible>
 				</item>
@@ -965,7 +835,7 @@
 				</item>
 				<item id="12">
 					<label>Item hinzufügen</label>
-					<onclick>Dialog.close(1120)</onclick>
+					<onclick>Dialog.close(all)</onclick>
 					<onclick>ActivateWindow(Videos,special://skin/playlists/TV_Alle.xsp,return)</onclick>
 					<visible>String.IsEmpty(Skin.String(ShowList2TVShowTitle))</visible>
 				</item>
@@ -977,7 +847,7 @@
 				</item>
 				<item id="13">
 					<label>Item hinzufügen</label>
-					<onclick>Dialog.close(1120)</onclick>
+					<onclick>Dialog.close(all)</onclick>
 					<onclick>ActivateWindow(Videos,special://skin/playlists/TV_Alle.xsp,return)</onclick>
 					<visible>String.IsEmpty(Skin.String(ShowList3TVShowTitle))</visible>
 				</item>
@@ -989,7 +859,7 @@
 				</item>
 				<item id="13">
 					<label>Item hinzufügen</label>
-					<onclick>Dialog.close(1120)</onclick>
+					<onclick>Dialog.close(all)</onclick>
 					<onclick>ActivateWindow(Videos,special://skin/playlists/TV_Alle.xsp,return)</onclick>
 					<visible>String.IsEmpty(Skin.String(ShowList4TVShowTitle))</visible>
 				</item>
@@ -1001,7 +871,7 @@
 				</item>
 				<item id="13">
 					<label>Item hinzufügen</label>
-					<onclick>Dialog.close(1120)</onclick>
+					<onclick>Dialog.close(all)</onclick>
 					<onclick>ActivateWindow(Videos,special://skin/playlists/TV_Alle.xsp,return)</onclick>
 					<visible>String.IsEmpty(Skin.String(ShowList5TVShowTitle))</visible>
 				</item>
@@ -1013,7 +883,7 @@
 				</item>
 				<item id="13">
 					<label>Item hinzufügen</label>
-					<onclick>Dialog.close(1120)</onclick>
+					<onclick>Dialog.close(all)</onclick>
 					<onclick>ActivateWindow(Videos,special://skin/playlists/TV_Alle.xsp,return)</onclick>
 					<visible>String.IsEmpty(Skin.String(ShowList6TVShowTitle))</visible>
 				</item>
@@ -1036,7 +906,7 @@
 				</item>
 				<item id="13">
 					<label>Item hinzufügen</label>
-					<onclick>Dialog.close(1120)</onclick>
+					<onclick>Dialog.close(all)</onclick>
 					<onclick>ActivateWindow(Videos,special://skin/playlists/TV_Alle.xsp,return)</onclick>
 					<visible>String.IsEmpty(Skin.String(ShowList8TVShowTitle))</visible>
 				</item>
@@ -1048,7 +918,7 @@
 				</item>
 				<item id="13">
 					<label>Item hinzufügen</label>
-					<onclick>Dialog.close(1120)</onclick>
+					<onclick>Dialog.close(all)</onclick>
 					<onclick>ActivateWindow(Videos,special://skin/playlists/TV_Alle.xsp,return)</onclick>
 					<visible>String.IsEmpty(Skin.String(ShowList9TVShowTitle))</visible>
 				</item>
@@ -1060,169 +930,9 @@
 				</item>
 				<item id="13">
 					<label>Item hinzufügen</label>
-					<onclick>Dialog.close(1120)</onclick>
+					<onclick>Dialog.close(all)</onclick>
 					<onclick>ActivateWindow(Videos,special://skin/playlists/TV_Alle.xsp,return)</onclick>
 					<visible>String.IsEmpty(Skin.String(ShowList10TVShowTitle))</visible>
-				</item>
-			</content>
-		</control>
-		<control type="list" id="8269"><!-- Filmepinboard Organisieren 8269 -->
-			<description>Filmepinboard Einstellen - Anzeige volle und wenn leer ein leeres Items fuer alle 10 Plaetze. Volle werden durch Klick geloescht, leere fuehren zur Datenbank zum festlegen</description>
-			<left>-455</left>
-			<width>375</width>
-			<height>705</height>
-			<onup>8269</onup>
-			<onleft>8266</onleft>
-			<include>HomeMenuListright</include>
-			<ondown>8269</ondown>
-			<scrolltime>200</scrolltime>
-			<visible allowhiddenfocus="true">Control.HasFocus(8269)</visible>
-			<animation type="Conditional" condition="Control.HasFocus(8269)">
-				<effect type="fade" start="0" end="100" time="280" />
-				<effect type="slide" start="0,0" end="535,0" tween="quadratic" easing="out" time="300" />
-			</animation>
-			<itemlayout width="375" height="70">
-				<control type="label">
-					<include>HomeMenuLabelDimension</include>
-				</control>
-			</itemlayout>
-			<focusedlayout width="375" height="70">
-				<control type="image">
-					<width>350</width>
-					<height>75</height>
-					<texture border="0,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/right-11.png</texture>
-					<visible>Control.HasFocus(8269)</visible>
-				</control>
-				<control type="label">
-					<include>HomeMenuLabelDimension</include>
-					<textcolor>TextColorFO</textcolor>
-					<visible>Control.HasFocus(8269)</visible>
-				</control>
-				<control type="label">
-					<include>HomeMenuLabelDimension</include>
-					<visible>!Control.HasFocus(8269)</visible>
-				</control>
-			</focusedlayout>
-			<content>
-				<item ID="1">
-					<label>$INFO[Skin.String(MovieList1Title)]</label>
-					<onclick>Skin.Reset(MovieList1Title)</onclick>
-					<onclick>Skin.Reset(MovieList1Path)</onclick>
-					<visible>!String.IsEmpty(Skin.String(MovieList1Title))</visible>
-				</item>
-				<item ID="11">
-					<label>Item hinzufügen</label>
-					<onclick>Dialog.close(1120)</onclick>
-					<onclick>ActivateWindow(Videos,special://skin/playlists/Filme_Alle.xsp,return)</onclick>
-					<visible>String.IsEmpty(Skin.String(MovieList1Title))</visible>
-				</item>
-				<item ID="2">
-					<label>$INFO[Skin.String(MovieList2Title)]</label>
-					<onclick>Skin.Reset(MovieList2Title)</onclick>
-					<onclick>Skin.Reset(MovieList2Path)</onclick>
-					<visible>!String.IsEmpty(Skin.String(MovieList2Title))</visible>
-				</item>
-				<item ID="12">
-					<label>Item hinzufügen</label>
-					<onclick>Dialog.close(1120)</onclick>
-					<onclick>ActivateWindow(Videos,special://skin/playlists/Filme_Alle.xsp,return)</onclick>
-					<visible>String.IsEmpty(Skin.String(MovieList2Title))</visible>
-				</item>
-				<item ID="3">
-					<label>$INFO[Skin.String(MovieList3Title)]</label>
-					<onclick>Skin.Reset(MovieList3Title)</onclick>
-					<onclick>Skin.Reset(MovieList3Path)</onclick>
-					<visible>!String.IsEmpty(Skin.String(MovieList3Title))</visible>
-				</item>
-				<item ID="13">
-					<label>Item hinzufügen</label>
-					<onclick>Dialog.close(1120)</onclick>
-					<onclick>ActivateWindow(Videos,special://skin/playlists/Filme_Alle.xsp,return)</onclick>
-					<visible>String.IsEmpty(Skin.String(MovieList3Title))</visible>
-				</item>
-				<item ID="4">
-					<label>$INFO[Skin.String(MovieList4Title)]</label>
-					<onclick>Skin.Reset(MovieList4Title)</onclick>
-					<onclick>Skin.Reset(MovieList4Path)</onclick>
-					<visible>!String.IsEmpty(Skin.String(MovieList4Title))</visible>
-				</item>
-				<item ID="13">
-					<label>Item hinzufügen</label>
-					<onclick>Dialog.close(1120)</onclick>
-					<onclick>ActivateWindow(Videos,special://skin/playlists/Filme_Alle.xsp,return)</onclick>
-					<visible>String.IsEmpty(Skin.String(MovieList4Title))</visible>
-				</item>
-				<item ID="5">
-					<label>$INFO[Skin.String(MovieList5Title)]</label>
-					<onclick>Skin.Reset(MovieList5Title)</onclick>
-					<onclick>Skin.Reset(MovieList5Path)</onclick>
-					<visible>!String.IsEmpty(Skin.String(MovieList5Title))</visible>
-				</item>
-				<item ID="13">
-					<label>Item hinzufügen</label>
-					<onclick>Dialog.close(1120)</onclick>
-					<onclick>ActivateWindow(Videos,special://skin/playlists/Filme_Alle.xsp,return)</onclick>
-					<visible>String.IsEmpty(Skin.String(MovieList5Title))</visible>
-				</item>
-				<item ID="6">
-					<label>$INFO[Skin.String(MovieList6Title)]</label>
-					<onclick>Skin.Reset(MovieList6Title)</onclick>
-					<onclick>Skin.Reset(MovieList6Path)</onclick>
-					<visible>!String.IsEmpty(Skin.String(MovieList6Title))</visible>
-				</item>
-				<item ID="13">
-					<label>Item hinzufügen</label>
-					<onclick>Dialog.close(1120)</onclick>
-					<onclick>ActivateWindow(Videos,special://skin/playlists/Filme_Alle.xsp,return)</onclick>
-					<visible>String.IsEmpty(Skin.String(MovieList6Title))</visible>
-				</item>
-				<item ID="7">
-					<label>$INFO[Skin.String(MovieList7Title)]</label>
-					<onclick>Skin.Reset(MovieList7Title)</onclick>
-					<onclick>Skin.Reset(MovieList7Path)</onclick>
-					<visible>!String.IsEmpty(Skin.String(MovieList7Title))</visible>
-				</item>
-				<item ID="13">
-					<label>Item hinzufügen</label>
-					<onclick>Dialog.close(1120)</onclick>
-					<onclick>ActivateWindow(Videos,special://skin/playlists/Filme_Alle.xsp,return)</onclick>
-					<visible>String.IsEmpty(Skin.String(MovieList7Title))</visible>
-				</item>
-				<item ID="8">
-					<label>$INFO[Skin.String(MovieList8Title)]</label>
-					<onclick>Skin.Reset(MovieList8Title)</onclick>
-					<onclick>Skin.Reset(MovieList8Path)</onclick>
-					<visible>!String.IsEmpty(Skin.String(MovieList8Title))</visible>
-				</item>
-				<item ID="13">
-					<label>Item hinzufügen</label>
-					<onclick>Dialog.close(1120)</onclick>
-					<onclick>ActivateWindow(Videos,special://skin/playlists/Filme_Alle.xsp,return)</onclick>
-					<visible>String.IsEmpty(Skin.String(MovieList8Title))</visible>
-				</item>
-				<item ID="9">
-					<label>$INFO[Skin.String(MovieList9Title)]</label>
-					<onclick>Skin.Reset(MovieList9Title)</onclick>
-					<onclick>Skin.Reset(MovieList9Path)</onclick>
-					<visible>!String.IsEmpty(Skin.String(MovieList9Title))</visible>
-				</item>
-				<item ID="13">
-					<label>Item hinzufügen</label>
-					<onclick>Dialog.close(1120)</onclick>
-					<onclick>ActivateWindow(Videos,special://skin/playlists/Filme_Alle.xsp,return)</onclick>
-					<visible>String.IsEmpty(Skin.String(MovieList9Title))</visible>
-				</item>
-				<item ID="10">
-					<label>$INFO[Skin.String(MovieList10Title)]</label>
-					<onclick>Skin.Reset(MovieList10Title)</onclick>
-					<onclick>Skin.Reset(MovieList10Path)</onclick>
-					<visible>!String.IsEmpty(Skin.String(MovieList10Title))</visible>
-				</item>
-				<item ID="13">
-					<label>Item hinzufügen</label>
-					<onclick>Dialog.close(1120)</onclick>
-					<onclick>ActivateWindow(Videos,special://skin/playlists/Filme_Alle.xsp,return)</onclick>
-					<visible>String.IsEmpty(Skin.String(MovieList10Title))</visible>
 				</item>
 			</content>
 		</control>
@@ -1231,9 +941,9 @@
 			<left>-455</left>
 			<width>375</width>
 			<height>705</height>
-			<onup>8280</onup>
 			<onleft>8267</onleft>
-			<include>HomeMenuListright</include>
+			<include>Homeblade_Listright</include>
+			<onup>8280</onup>
 			<ondown>8280</ondown>
 			<scrolltime>200</scrolltime>
 			<visible allowhiddenfocus="true">Control.HasFocus(8280)</visible>
@@ -1243,23 +953,23 @@
 			</animation>
 			<itemlayout width="375" height="70">
 				<control type="label">
-					<include>HomeMenuLabelDimension</include>
+					<include>Homeblade_LabelDimension</include>
 				</control>
 			</itemlayout>
 			<focusedlayout width="375" height="70">
 				<control type="image">
 					<width>350</width>
-					<height>75</height>
-					<texture border="0,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/right-11.png</texture>
+					<height>button.top.height65</height>
+					<texture border="0,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texture>
 					<visible>Control.HasFocus(8280)</visible>
 				</control>
 				<control type="label">
-					<include>HomeMenuLabelDimension</include>
+					<include>Homeblade_LabelDimension</include>
 					<textcolor>TextColorFO</textcolor>
 					<visible>Control.HasFocus(8280)</visible>
 				</control>
 				<control type="label">
-					<include>HomeMenuLabelDimension</include>
+					<include>Homeblade_LabelDimension</include>
 					<visible>!Control.HasFocus(8280)</visible>
 				</control>
 			</focusedlayout>
@@ -1328,139 +1038,139 @@
 		<top>150</top>
 		<control type="grouplist" id="8290">
 			<left>100</left>
-			<include>HomeMenuListDimension</include>
-			<include>HomeMenuListright</include>
+			<include>Homeblade_ListDimension</include>
 			<onleft>SetFocus(8110)</onleft>
+			<include>Homeblade_Listright</include>
 			<onup>8290</onup>
 			<ondown>8290</ondown>
 			<onback>8100</onback>
 			<control type="button" id="8391">
 				<description>Hauptverzeichnis</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(Music,root)</onclick>
-				<include>HomeMenuArrowButton</include>
-				<include>HomeMenuButtonValues</include>
+				<include>Homeblade_ArrowButton</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Root</label>
 			</control>
 			<control type="button" id="8404">
 				<description>Abspiellisteneditor</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(musicplaylisteditor)</onclick>
-				<include>HomeMenuArrowButton</include>
-				<include>HomeMenuButtonValues</include>
+				<include>Homeblade_ArrowButton</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Playlist Editor</label>
 			</control>
 			<control type="button" id="8392">
 				<description>Alben</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(Music,Albums,return)</onclick>
-				<include condition="!String.Contains(Container.Folderpath,musicdb://albums/)">HomeMenuArrowButton</include>
-				<include condition="String.Contains(Container.Folderpath,musicdb://albums/)">HomeMenuArrowButtonFO</include>
-				<include>HomeMenuButtonValues</include>
+				<include condition="!String.Contains(Container.Folderpath,musicdb://albums/)">Homeblade_ArrowButton</include>
+				<include condition="String.Contains(Container.Folderpath,musicdb://albums/)">Homeblade_ArrowButtonFO</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Alben</label>
 				<visible>Library.HasContent(music)</visible>
 			</control>
 			<control type="button" id="8402">
 				<description>Singles</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(Music,singles,return)</onclick>
-				<include condition="!String.Contains(Container.Folderpath,musicdb://singles/)">HomeMenuArrowButton</include>
-				<include condition="String.Contains(Container.Folderpath,musicdb://singles/)">HomeMenuArrowButtonFO</include>
-				<include>HomeMenuButtonValues</include>
+				<include condition="!String.Contains(Container.Folderpath,musicdb://singles/)">Homeblade_ArrowButton</include>
+				<include condition="String.Contains(Container.Folderpath,musicdb://singles/)">Homeblade_ArrowButtonFO</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Singles</label>
 				<visible>Library.HasContent(music)</visible>
 			</control>
 			<control type="button" id="8393">
 				<description>Lieder</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(Music,Songs,return)</onclick>
-				<include condition="!String.Contains(Container.Folderpath,musicdb://songs/)">HomeMenuArrowButton</include>
-				<include condition="String.Contains(Container.Folderpath,musicdb://songs/)">HomeMenuArrowButtonFO</include>
-				<include>HomeMenuButtonValues</include>
+				<include condition="!String.Contains(Container.Folderpath,musicdb://songs/)">Homeblade_ArrowButton</include>
+				<include condition="String.Contains(Container.Folderpath,musicdb://songs/)">Homeblade_ArrowButtonFO</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Lieder</label>
 				<visible>Library.HasContent(music)</visible>
 			</control>
 			<control type="button" id="8399">
 				<description>Sampler</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(Music,compilations,return)</onclick>
-				<include condition="!String.Contains(Container.Folderpath,musicdb://compilations/)">HomeMenuArrowButton</include>
-				<include condition="String.Contains(Container.Folderpath,musicdb://compilations/)">HomeMenuArrowButtonFO</include>
-				<include>HomeMenuButtonValues</include>
+				<include condition="!String.Contains(Container.Folderpath,musicdb://compilations/)">Homeblade_ArrowButton</include>
+				<include condition="String.Contains(Container.Folderpath,musicdb://compilations/)">Homeblade_ArrowButtonFO</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Sampler</label>
 				<visible>Library.HasContent(music)</visible>
 			</control>
 			<control type="button" id="8397">
 				<description>Zuletzt hinzugefuegte Alben</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(Music,recentlyaddedalbums,return)</onclick>
-				<include condition="!String.Contains(Container.Folderpath,musicdb://recentlyaddedalbums/)">HomeMenuArrowButton</include>
-				<include condition="String.Contains(Container.Folderpath,musicdb://recentlyaddedalbums/)">HomeMenuArrowButtonFO</include>
-				<include>HomeMenuButtonValues</include>
+				<include condition="!String.Contains(Container.Folderpath,musicdb://recentlyaddedalbums/)">Homeblade_ArrowButton</include>
+				<include condition="String.Contains(Container.Folderpath,musicdb://recentlyaddedalbums/)">Homeblade_ArrowButtonFO</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Neu hinzugefügte</label>
 				<visible>Library.HasContent(music)</visible>
 			</control>
 			<control type="button" id="8398">
 				<description>Zuletzt gehoerte Alben</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(Music,recentlyplayedalbums,return)</onclick>
-				<include condition="!String.Contains(Container.Folderpath,musicdb://recentlyplayedalbums/)">HomeMenuArrowButton</include>
-				<include condition="String.Contains(Container.Folderpath,musicdb://recentlyplayedalbums/)">HomeMenuArrowButtonFO</include>
-				<include>HomeMenuButtonValues</include>
+				<include condition="!String.Contains(Container.Folderpath,musicdb://recentlyplayedalbums/)">Homeblade_ArrowButton</include>
+				<include condition="String.Contains(Container.Folderpath,musicdb://recentlyplayedalbums/)">Homeblade_ArrowButtonFO</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Zuletzt gehört</label>
 				<visible>Library.HasContent(music)</visible>
 			</control>
 			<control type="button" id="8394">
 				<description>Interpreten</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(Music,Artists,return)</onclick>
-				<include condition="!String.Contains(Container.Folderpath,musicdb://artists/)">HomeMenuArrowButton</include>
-				<include condition="String.Contains(Container.Folderpath,musicdb://artists/)">HomeMenuArrowButtonFO</include>
-				<include>HomeMenuButtonValues</include>
+				<include condition="!String.Contains(Container.Folderpath,musicdb://artists/)">Homeblade_ArrowButton</include>
+				<include condition="String.Contains(Container.Folderpath,musicdb://artists/)">Homeblade_ArrowButtonFO</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Interpreten</label>
 				<visible>Library.HasContent(music)</visible>
 			</control>
 			<control type="button" id="8395">
 				<description>Genre</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(Music,genres,return)</onclick>
-				<include condition="!String.Contains(Container.Folderpath,musicdb://genres/)">HomeMenuArrowButton</include>
-				<include condition="String.Contains(Container.Folderpath,musicdb://genres/)">HomeMenuArrowButtonFO</include>
-				<include>HomeMenuButtonValues</include>
+				<include condition="!String.Contains(Container.Folderpath,musicdb://genres/)">Homeblade_ArrowButton</include>
+				<include condition="String.Contains(Container.Folderpath,musicdb://genres/)">Homeblade_ArrowButtonFO</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Genres</label>
 				<visible>Library.HasContent(music)</visible>
 			</control>
 			<control type="button" id="8396">
 				<description>Top100 Alben/Songs</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(Music,top100,return)</onclick>
-				<include condition="!String.Contains(Container.Folderpath,musicdb://top100/)">HomeMenuArrowButton</include>
-				<include condition="String.Contains(Container.Folderpath,musicdb://top100/)">HomeMenuArrowButtonFO</include>
-				<include>HomeMenuButtonValues</include>
+				<include condition="!String.Contains(Container.Folderpath,musicdb://top100/)">Homeblade_ArrowButton</include>
+				<include condition="String.Contains(Container.Folderpath,musicdb://top100/)">Homeblade_ArrowButtonFO</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Top 100</label>
 				<visible>Library.HasContent(music)</visible>
 			</control>
 			<control type="button" id="8401">
 				<description>Jahre</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(Music,years,return)</onclick>
-				<include condition="!String.Contains(Container.Folderpath,musicdb://years/)">HomeMenuArrowButton</include>
-				<include condition="String.Contains(Container.Folderpath,musicdb://years/)">HomeMenuArrowButtonFO</include>
-				<include>HomeMenuButtonValues</include>
+				<include condition="!String.Contains(Container.Folderpath,musicdb://years/)">Homeblade_ArrowButton</include>
+				<include condition="String.Contains(Container.Folderpath,musicdb://years/)">Homeblade_ArrowButtonFO</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Jahre</label>
 				<visible>Library.HasContent(music)</visible>
 			</control>
 			<control type="button" id="8403">
 				<description>Musik-Addons</description>
-				<onclick>Dialog.Close(1120)</onclick>
+				<onclick>Dialog.close(all)</onclick>
 				<onclick>ActivateWindow(Music,Addons,return)</onclick>
-				<include>HomeMenuArrowButton</include>
-				<include>HomeMenuButtonValues</include>
+				<include>Homeblade_ArrowButton</include>
+				<include>Homeblade_ButtonValues</include>
 				<label>Musik Addons</label>
 			</control>
 		</control>
 	</control>
-	<include>HomeMenu_Left_IconBG</include>
+	<include>Homeblade_Left_IconBG</include>
 	<control type="group"><!-- Breadcumb -->
 		<top>20</top>
 		<width>sidebar.breadcumblabel.width</width>
@@ -1478,19 +1188,16 @@
 			<width>sidebar.breadcumblabel.width</width>
 			<height>100</height>
 			<itemgap>0</itemgap>
-			<orientation>vertical</orientation>
 			<control type="label">
 				<width>sidebar.breadcumblabel.width</width>
 				<height>sidebar.breadcumblabel.height</height>
 				<font>BreadcumbNormal</font>
-				<scroll>false</scroll>
 				<label>$VAR[HomeMenuSubBreadcumb1]</label>
 			</control>
 			<control type="label">
 				<width>sidebar.breadcumblabel.width</width>
 				<height>sidebar.breadcumblabel.height</height>
 				<font>BreadcumbSmall</font>
-				<scroll>false</scroll>
 				<label>$VAR[HomeMenuSubBreadcumb2]</label>
 			</control>
 		</control>
@@ -1509,7 +1216,7 @@
 		<control type="grouplist" id="8261"><!-- Hidden Buttons -->
 			<left>20</left>
 			<top>5</top>
-			<include>HomeMenuListDimension</include>
+			<include>Homeblade_ListDimension</include>
 			<onup>8260</onup>
 			<ondown>8260</ondown>
 			<onback>8238</onback>
@@ -1518,7 +1225,7 @@
 				<description>Serie</description>
 				<include>SidebarIconDimension</include>
 				<onup>8264</onup>
-				<ondown>8263</ondown>
+				<ondown>8264</ondown>
 				<onright>8265</onright>
 				<onleft>8100</onleft>
 				<onclick>SetFocus(8265)</onclick>
@@ -1528,24 +1235,10 @@
 				<texturenofocus>-</texturenofocus>
 				<texturefocus>-</texturefocus>
 			</control>
-			<control type="button" id="8263">
-				<description>Film</description>
-				<include>SidebarIconDimension</include>
-				<onup>8262</onup>
-				<ondown>8264</ondown>
-				<onright>8266</onright>
-				<onleft>8100</onleft>
-				<onclick>SetFocus(8266)</onclick>
-				<font>-</font>
-				<textcolor>-</textcolor>
-				<focusedcolor>-</focusedcolor>
-				<texturenofocus>-</texturenofocus>
-				<texturefocus>-</texturefocus>
-			</control>
 			<control type="button" id="8264">
 				<description>Addon</description>
 				<include>SidebarIconDimension</include>
-				<onup>8263</onup>
+				<onup>8262</onup>
 				<ondown>8700</ondown>
 				<onright>8267</onright>
 				<onleft>8100</onleft>
@@ -1564,10 +1257,8 @@
 				<onright>8701</onright>
 				<onleft>8100</onleft>
 				<onfocus>SetProperty(RecentContent,TV,1120)</onfocus><!-- Property fuer Contentvariable -->
-				<onclick condition="String.IsEqual(Control.GetLabel(82382),TV) + String.IsEmpty(skin.string(PinboardRecentTV))">Skin.SetString(PinboardRecentTV,Eigene)</onclick><!-- check eigene? auch bei Film.. -->
-				<onclick condition="String.IsEqual(Control.GetLabel(82382),TV) + String.IsEmpty(skin.string(PinboardRecentTV))">Skin.SetFile(PinboardRecentTVPls,.xsp,special://skin/playlists/)</onclick>
-				<onclick condition="String.IsEqual(Control.GetLabel(82382),TV) + !String.IsEmpty(skin.string(PinboardRecentTV))">Skin.Reset(PinboardRecentTV)</onclick>
-				<onclick condition="String.IsEqual(Control.GetLabel(82382),TV) + !String.IsEmpty(skin.string(PinboardRecentTV))">Skin.Reset(PinboardRecentTVPls)</onclick>
+				<onclick condition="String.IsEmpty(skin.string(PinboardRecentTVPls)">Skin.SetFile(PinboardRecentTVPls,.xsp,special://skin/playlists/)</onclick>
+				<onclick condition="!String.IsEmpty(skin.string(PinboardRecentTVPls)">Skin.Reset(PinboardRecentTVPls)</onclick>
 				<font>-</font>
 				<textcolor>-</textcolor>
 				<focusedcolor>-</focusedcolor>
@@ -1583,10 +1274,8 @@
 				<onleft>8100</onleft>
 				<onclick>noop</onclick>
 				<onfocus>SetProperty(RecentContent,Movie,1120)</onfocus><!-- Property fuer Contentvariable -->
-				<onclick condition="String.IsEqual(Control.GetLabel(82382),Movie) + String.IsEmpty(skin.string(PinboardRecentMovies))">Skin.SetString(PinboardRecentMovies,Eigene)</onclick>
-				<onclick condition="String.IsEqual(Control.GetLabel(82382),Movie) + String.IsEmpty(skin.string(PinboardRecentMovies))">Skin.SetFile(PinboardRecentMoviesPls,.xsp,special://skin/playlists/)</onclick>
-				<onclick condition="String.IsEqual(Control.GetLabel(82382),Movie) + !String.IsEmpty(skin.string(PinboardRecentMovies))">Skin.Reset(PinboardRecentMovies)</onclick>
-				<onclick condition="String.IsEqual(Control.GetLabel(82382),Movie) + !String.IsEmpty(skin.string(PinboardRecentMovies))">Skin.Reset(PinboardRecentMoviesPls)</onclick>
+				<onclick condition="String.IsEmpty(skin.string(PinboardRecentMoviesPls)">Skin.SetFile(PinboardRecentMoviesPls,.xsp,special://skin/playlists/)</onclick>
+				<onclick condition="!String.IsEmpty(skin.string(PinboardRecentMoviesPls)">Skin.Reset(PinboardRecentMoviesPls)</onclick>
 				<font>-</font>
 				<textcolor>-</textcolor>
 				<focusedcolor>-</focusedcolor>
@@ -1609,7 +1298,6 @@
 		<scrolltime tween="cubic" easing="inout">500</scrolltime>
 		<autoscroll time="3000" delay="8000" repeat="5000">true</autoscroll>
 		<visible allowhiddenfocus="true">Control.IsVisible(8100)</visible>
-		<orientation>vertical</orientation>
 		<animation type="Conditional" condition="ControlGroup(8210).HasFocus | ControlGroup(8220).HasFocus| ControlGroup(8230).HasFocus | ControlGroup(8240).HasFocus | ControlGroup(8260).HasFocus | ControlGroup(8270).HasFocus | ControlGroup(8290).HasFocus">
 			<effect type="fade" start="100" end="0" time="200" />
 		</animation>
@@ -1617,7 +1305,7 @@
 			<control type="label">
 				<description>Icon nach Kategorie</description>
 				<top>5</top>
-				<width>45</width>
+				<width>55</width>
 				<height>40</height>
 				<label>$INFO[ListItem.Label2]</label>
 				<textcolor>TextColorLight</textcolor>
@@ -1635,7 +1323,7 @@
 			<control type="label">
 				<description>Icon nach Kategorie</description>
 				<top>5</top>
-				<width>45</width>
+				<width>55</width>
 				<height>40</height>
 				<label>$INFO[ListItem.Label2]</label>
 				<textcolor>TextColorLight</textcolor>
@@ -1650,22 +1338,22 @@
 			</control>
 		</focusedlayout>
 		<content>
-			<!-- system -->
+			<!-- system bei Home Focus -->
 			<item id="1">
 				<label>$INFO[System.FriendlyName]</label>
 				<label2>È</label2>
 				<onclick>noop</onclick>
-				<visible>ControlGroup(8100).HasFocus(8109) | ControlGroup(8100).HasFocus(8104) | ControlGroup(8100).HasFocus(8105) | ControlGroup(8100).HasFocus(8106) | ControlGroup(8100).HasFocus(8107) | ControlGroup(8100).HasFocus(8108)</visible>
+				<visible>ControlGroup(8100).HasFocus(8111) | ControlGroup(8100).HasFocus(8106)</visible>
 			</item>
 			<item id="2">
 				<label>$INFO[System.TotalSpace]</label>
 				<onclick>noop</onclick>
-				<visible>ControlGroup(8100).HasFocus(8109) | ControlGroup(8100).HasFocus(8104) | ControlGroup(8100).HasFocus(8105) | ControlGroup(8100).HasFocus(8106) | ControlGroup(8100).HasFocus(8107) | ControlGroup(8100).HasFocus(8108)</visible>
+				<visible>ControlGroup(8100).HasFocus(8111) | ControlGroup(8100).HasFocus(8106)</visible>
 			</item>
 			<item id="3">
 				<label>$INFO[System.FreeSpace]</label>
 				<onclick>noop</onclick>
-				<visible>ControlGroup(8100).HasFocus(8109) | ControlGroup(8100).HasFocus(8104) | ControlGroup(8100).HasFocus(8105) | ControlGroup(8100).HasFocus(8106) | ControlGroup(8100).HasFocus(8107) | ControlGroup(8100).HasFocus(8108)</visible>
+				<visible>ControlGroup(8100).HasFocus(8111) | ControlGroup(8100).HasFocus(8106)</visible>
 			</item>
 			<!-- Filme -->
 			<item id="4">
@@ -1683,13 +1371,14 @@
 			</item>
 			<!-- Serien -->
 			<item id="5">
-				<label2>D</label2>
+				<label2>B</label2>
 				<label>$INFO[Window(Home).Property(TVShows.Count),, Serien]</label>
 				<onclick>noop</onclick>
 				<visible>Library.HasContent(Tvshows)</visible>
 				<visible>ControlGroup(8100).HasFocus(8101)</visible>
 			</item>
 			<item id="6">
+				<label2>B</label2>
 				<label>$INFO[Window(Home).Property(TVShows.Count),, Serien]</label>
 				<onclick>noop</onclick>
 				<visible>Library.HasContent(Tvshows)</visible>
@@ -1729,11 +1418,11 @@
 			</item>
 		</content>
 	</control>
-	<control type="grouplist"><!-- Icons zu den einzelnen Ebenen-->
+	<control type="grouplist"><!-- Icons zu den einzelnen Ebenen -->
 		<description>Icons home liste</description>
 		<left>20</left>
 		<top>155</top>
-		<include>HomeMenuListDimension</include>
+		<include>Homeblade_ListDimension</include>
 		<visible>ControlGroup(8100).HasFocus | Control.IsVisible(8100)</visible>
 		<animation type="Conditional" condition="ControlGroup(8210).HasFocus | ControlGroup(8220).HasFocus| ControlGroup(8230).HasFocus | ControlGroup(8240).HasFocus | ControlGroup(8260).HasFocus | ControlGroup(8270).HasFocus | ControlGroup(8290).HasFocus | ControlGroup(8275).HasFocus">
 			<effect type="fade" start="100" end="0" time="280" />
@@ -1841,14 +1530,14 @@
 			<description>Doku</description>
 			<include>SidebarIconDimension</include>
 			<label>Ę</label>
-			<visible>Control.HasFocus(8104) + Control.IsVisible(8104) + [Library.HasContent(Movies) | Library.HasContent(Tvshows)]</visible>
+			<visible>Control.HasFocus(8104) + Control.IsVisible(8104) + Library.HasContent(Movies) + Library.HasContent(Tvshows) + !String.IsEmpty(skin.string(FilmDokuContent)) + !String.IsEmpty(skin.string(TVDokuContent))</visible>
 			<include>IconColorFO</include>
 		</control>
 		<control type="label">
 			<description>Doku</description>
 			<include>SidebarIconDimension</include>
 			<label>Ę</label>
-			<visible>!Control.HasFocus(8104) + Control.IsVisible(8104) + [Library.HasContent(Movies) | Library.HasContent(Tvshows)]</visible>
+			<visible>!Control.HasFocus(8104) + Control.IsVisible(8104) + Library.HasContent(Movies) + Library.HasContent(Tvshows) + !String.IsEmpty(skin.string(FilmDokuContent)) + !String.IsEmpty(skin.string(TVDokuContent))</visible>
 			<include>IconColorNF</include>
 		</control>
 		<control type="label">
@@ -1879,7 +1568,7 @@
 			<visible>!Control.HasFocus(8106) + Control.IsVisible(8106)</visible>
 			<include>IconColorNF</include>
 		</control>
-		<include>HomeMenuDivider</include>
+		<include>Homeblade_Divider</include>
 		<control type="label">
 			<description>Farbeinstellungen</description>
 			<include>SidebarIconDimension</include>
@@ -1899,7 +1588,7 @@
 		<description>Icons Videos liste</description>
 		<left>-130</left>
 		<top>155</top>
-		<include>HomeMenuListDimension</include>
+		<include>Homeblade_ListDimension</include>
 		<visible allowhiddenfocus="true">ControlGroup(8210).HasFocus | Control.IsVisible(8210)</visible>
 		<animation type="Conditional" condition="ControlGroup(8210).HasFocus">
 			<effect type="fade" start="0" end="100" time="280" />
@@ -1994,7 +1683,7 @@
 		<description>Icons Music liste</description>
 		<left>-130</left>
 		<top>155</top>
-		<include>HomeMenuListDimension</include>
+		<include>Homeblade_ListDimension</include>
 		<visible allowhiddenfocus="true">ControlGroup(8290).HasFocus | Control.IsVisible(8290)</visible>
 		<animation type="Conditional" condition="ControlGroup(8290).HasFocus">
 			<effect type="fade" start="0" end="100" time="280" />
@@ -2187,7 +1876,7 @@
 		<description>Icons Serien liste</description>
 		<left>-130</left>
 		<top>155</top>
-		<include>HomeMenuListDimension</include>
+		<include>Homeblade_ListDimension</include>
 		<visible allowhiddenfocus="true">ControlGroup(8220).HasFocus | Control.IsVisible(8220)</visible>
 		<animation type="Conditional" condition="ControlGroup(8220).HasFocus">
 			<effect type="fade" start="0" end="100" time="280" />
@@ -2310,7 +1999,7 @@
 		<description>Icons Filme liste</description>
 		<left>-130</left>
 		<top>155</top>
-		<include>HomeMenuListDimension</include>
+		<include>Homeblade_ListDimension</include>
 		<visible allowhiddenfocus="true">ControlGroup(8230).HasFocus | Control.IsVisible(8230)</visible>
 		<animation type="Conditional" condition="ControlGroup(8230).HasFocus">
 			<effect type="fade" start="0" end="100" time="280" />
@@ -2461,7 +2150,7 @@
 		<description>Icons Extras liste</description>
 		<left>-130</left>
 		<top>155</top>
-		<include>HomeMenuListDimension</include>
+		<include>Homeblade_ListDimension</include>
 		<visible allowhiddenfocus="true">ControlGroup(8240).HasFocus | Control.IsVisible(8240)</visible>
 		<animation type="Conditional" condition="ControlGroup(8240).HasFocus">
 			<effect type="fade" start="0" end="100" time="280" />
@@ -2524,44 +2213,16 @@
 			<include>IconColorNF</include>
 		</control>
 		<control type="label">
-			<description>Systeminfo</description>
+			<description>programme</description>
 			<include>SidebarIconDimension</include>
-			<label>È</label>
-			<visible>Control.HasFocus(8245)</visible>
-			<include>IconColorFO</include>
-		</control>
-		<control type="label">
-			<description>Systeminfo</description>
-			<include>SidebarIconDimension</include>
-			<label>È</label>
-			<visible>!Control.HasFocus(8245)</visible>
-			<include>IconColorNF</include>
-		</control>
-		<control type="label">
-			<description>Profiles</description>
-			<include>SidebarIconDimension</include>
-			<label>s</label>
-			<visible>Control.HasFocus(8246)</visible>
-			<include>IconColorFO</include>
-		</control>
-		<control type="label">
-			<description>Profiles</description>
-			<include>SidebarIconDimension</include>
-			<label>s</label>
-			<visible>!Control.HasFocus(8246)</visible>
-			<include>IconColorNF</include>
-		</control>
-		<control type="label">
-			<description>Addonbrowser</description>
-			<include>SidebarIconDimension</include>
-			<label>ĕ</label>
+			<label>ǖ</label>
 			<visible>Control.HasFocus(8247)</visible>
 			<include>IconColorFO</include>
 		</control>
 		<control type="label">
-			<description>Addonbrowser</description>
+			<description>programme</description>
 			<include>SidebarIconDimension</include>
-			<label>ĕ</label>
+			<label>ǖ</label>
 			<visible>!Control.HasFocus(8247)</visible>
 			<include>IconColorNF</include>
 		</control>
@@ -2584,7 +2245,7 @@
 		<description>Icons Pinboard liste</description>
 		<left>-130</left>
 		<top>155</top>
-		<include>HomeMenuListDimension</include>
+		<include>Homeblade_ListDimension</include>
 		<visible allowhiddenfocus="true">ControlGroup(8260).HasFocus | Control.IsVisible(8270)</visible>
 		<animation type="Conditional" condition="ControlGroup(8260).HasFocus | Control.IsVisible(8270)">
 			<effect type="fade" start="0" end="100" time="280" />
@@ -2602,20 +2263,6 @@
 			<include>SidebarIconDimension</include>
 			<label>D</label>
 			<visible>!Control.HasFocus(8262)</visible>
-			<include>IconColorNF</include>
-		</control>
-		<control type="label">
-			<description>Film</description>
-			<include>SidebarIconDimension</include>
-			<label>E</label>
-			<visible>Control.HasFocus(8263)</visible>
-			<include>IconColorFO</include>
-		</control>
-		<control type="label">
-			<description>Film</description>
-			<include>SidebarIconDimension</include>
-			<label>E</label>
-			<visible>!Control.HasFocus(8263)</visible>
 			<include>IconColorNF</include>
 		</control>
 		<control type="label">
@@ -2666,7 +2313,7 @@
 		<left>-80</left>
 		<width>80</width>
 		<height>1080</height>
-		<texture background="true" colordiffuse="$VAR[primaryCol]">White.png</texture>
+		<texture colordiffuse="$VAR[PrimaryCol]">white.png</texture>
 	</control>
 </control>
 </controls>

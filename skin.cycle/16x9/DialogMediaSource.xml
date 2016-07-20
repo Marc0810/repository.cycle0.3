@@ -39,10 +39,22 @@
 		<control type="button" id="18">
 			<description>Bestaetigen</description>
 			<include>DialogFakeIconDimension</include>
+			<visible>Control.IsEnabled(18)</visible>
 		</control>
 		<control type="button" id="19">
 			<description>Abbrechen</description>
 			<include>DialogFakeIconDimension</include>
+			<visible>Control.IsEnabled(19)</visible>
+		</control>
+		<control type="button" id="13">
+			<description>Pfad zur Quelle hinzufuegen</description>
+			<include>DialogFakeIconDimension</include>
+			<visible>Control.IsEnabled(13)</visible>
+		</control>
+		<control type="button" id="14">
+			<description>Pfad aus Quelle entfernen</description>
+			<include>DialogFakeIconDimension</include>
+			<visible>Control.IsEnabled(14)</visible>
 		</control>
 	</control>
 	<control type="grouplist" id="9001">
@@ -61,16 +73,6 @@
 			<include>DialogFakeIconDimension</include>
 			<visible>Control.IsEnabled(11)</visible>
 		</control>
-		<control type="button" id="13">
-			<description>Pfad zur Quelle hinzufuegen</description>
-			<include>DialogFakeIconDimension</include>
-			<visible>Control.IsEnabled(13)</visible>
-		</control>
-		<control type="button" id="14">
-			<description>Pfad aus Quelle entfernen</description>
-			<include>DialogFakeIconDimension</include>
-			<visible>Control.IsEnabled(14)</visible>
-		</control>
 	</control>
 	<control type="grouplist">
 		<description>Button Icons</description>
@@ -81,13 +83,25 @@
 			<description>Bestaetigen</description>
 			<include>DialogIconDimension</include>
 			<label>Ĥ</label>
-			<visible>Control.IsEnabled(18) + Control.IsVisible(18)</visible>
+			<visible>Control.IsVisible(18)</visible>
 		</control>
 		<control type="label">
 			<description>Abbrechen</description>
 			<include>DialogIconDimension</include>
 			<label>ģ</label>
-			<visible>Control.IsEnabled(19) + Control.IsVisible(19)</visible>
+			<visible>Control.IsVisible(19)</visible>
+		</control>
+		<control type="label">
+			<description>Pfad zur Quelle hinzufuegen</description>
+			<include>DialogIconDimension</include>
+			<label>ġ</label>
+			<visible>Control.IsVisible(13)</visible>
+		</control>
+		<control type="label">
+			<description>Pfad aus Quelle loeschen</description>
+			<include>DialogIconDimension</include>
+			<label>Ģ</label>
+			<visible>Control.IsVisible(14)</visible>
 		</control>
 	</control>
 	<control type="grouplist">
@@ -103,19 +117,7 @@
 			<description>Quelle suchen</description>
 			<include>DialogIconDimension</include>
 			<label>Ė</label>
-			<visible>Control.IsVisible(11) + Control.IsVisible(11)</visible>
-		</control>
-		<control type="label">
-			<description>Pfad zur Quelle hinzufuegen</description>
-			<include>DialogIconDimension</include>
-			<label>ġ</label>
-			<visible>Control.IsVisible(13) + Control.IsVisible(13)</visible>
-		</control>
-		<control type="label">
-			<description>Pfad aus Quelle loeschen</description>
-			<include>DialogIconDimension</include>
-			<label>Ģ</label>
-			<visible>Control.IsVisible(14) + Control.IsVisible(14)</visible>
+			<visible>Control.IsVisible(11)</visible>
 		</control>
 	</control>
 	<control type="label" id="2"><!-- content -->
@@ -142,30 +144,28 @@
 		<left>-1</left>
 		<top>158</top>
 		<width>866</width>
-		<height>338</height>
+		<height>300</height>
 		<onup>9000</onup>
 		<onleft>9000</onleft>
 		<onright>9000</onright>
 		<ondown>12</ondown>
 		<pagecontrol>-</pagecontrol>
 		<scrolltime>200</scrolltime>
-		<itemlayout width="866" height="75">
+		<itemlayout width="866" height="button.top.height75">
 			<control type="label">
 				<left>bottom.dialogbar.left</left>
 				<width>840</width>
-				<height>75</height>
-				<aligny>top</aligny>
-				<textoffsety>20</textoffsety>
+				<include>Item.top.height75</include>
 				<info>ListItem.Label</info>
 			</control>
 		</itemlayout>
-		<focusedlayout width="866" height="75">
+		<focusedlayout width="866" height="button.top.height75">
 			<control type="group">
 				<visible>Control.HasFocus(10)</visible>
 				<control type="image">
 					<width>866</width>
-					<height>75</height>
-					<texture border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texture>
+					<height>button.top.height75</height>
+					<texture border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texture>
 				</control>
 				<control type="label">
 					<left>780</left>
@@ -173,16 +173,14 @@
 					<width>50</width>
 					<height>50</height>
 					<font>IconBig</font>
-					<textcolor>$VAR[circlesCol]</textcolor>
+					<textcolor>$VAR[CirclesCol]</textcolor>
 					<selectedcolor>$VAR[SelectedColFO]</selectedcolor>
 					<label>r</label>
 				</control>
 				<control type="label">
 					<left>bottom.dialogbar.left</left>
 					<width>750</width>
-					<height>75</height>
-					<aligny>top</aligny>
-					<textoffsety>20</textoffsety>
+					<include>Item.top.height75</include>
 					<textcolor>TextColorFO</textcolor>
 					<selectedcolor>$VAR[SelectedColFO]</selectedcolor>
 					<info>ListItem.Label</info>
@@ -202,9 +200,7 @@
 				<control type="label">
 					<left>bottom.dialogbar.left</left>
 					<width>710</width>
-					<height>75</height>
-					<aligny>top</aligny>
-					<textoffsety>20</textoffsety>
+					<include>Item.top.height75</include>
 					<info>ListItem.Label</info>
 				</control>
 			</control>
@@ -223,9 +219,7 @@
 		<left>-1</left>
 		<top>555</top>
 		<width>866</width>
-		<height>75</height>
-		<aligny>top</aligny>
-		<textoffsety>20</textoffsety>
+		<include>Item.top.height75</include>
 		<onup>10</onup>
 		<onleft>18</onleft>
 		<onright>14</onright>
@@ -240,7 +234,7 @@
 		<width>50</width>
 		<height>50</height>
 		<font>IconBig</font>
-		<textcolor>whiteDark</textcolor>
+		<textcolor>TextColorFO</textcolor>
 		<label>r</label>
 		<visible>Control.HasFocus(12)</visible>
 	</control>

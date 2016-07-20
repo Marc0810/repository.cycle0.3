@@ -16,7 +16,7 @@
 		<top>594</top>
 		<width>6000</width>
 		<height>152</height>
-		<texture colordiffuse="$VAR[circlesCol]">views/info/bar.png</texture>
+		<texture colordiffuse="$VAR[CirclesCol]">views/info/bar.png</texture>
 	</control>
 	<control type="list" id="9000"><!-- menue -->
 		<top>594</top>
@@ -33,33 +33,33 @@
 			<control type="image">
 				<width>192</width>
 				<height>152</height>
-				<texture colordiffuse="$VAR[circlesColInner]">rings/inner-ring.png</texture>
+				<texture colordiffuse="$VAR[CirclesColInner]">rings/inner-ring.png</texture>
 			</control>
 			<include>CircleInfoIcon</include>
 			<control type="image">
 				<width>192</width>
 				<height>152</height>
-				<texture colordiffuse="$VAR[circlesCol]">rings/outer-ring.png</texture>
+				<texture colordiffuse="$VAR[CirclesCol]">rings/outer-ring.png</texture>
 			</control>
 		</itemlayout>
 		<focusedlayout width="222">
 			<control type="image">
 				<width>192</width>
 				<height>152</height>
-				<texture colordiffuse="$VAR[secondaryCol]">rings/inner-ring.png</texture>
+				<texture colordiffuse="$VAR[SecondaryCol]">rings/inner-ring.png</texture>
 				<visible>Control.HasFocus(9000)</visible>
 			</control>
 			<control type="image">
 				<width>192</width>
 				<height>152</height>
-				<texture colordiffuse="$VAR[circlesColInner]">rings/inner-ring.png</texture>
+				<texture colordiffuse="$VAR[CirclesColInner]">rings/inner-ring.png</texture>
 				<visible>!Control.HasFocus(9000)</visible>
 			</control>
 			<include>CircleInfoIcon</include>
 			<control type="image">
 				<width>192</width>
 				<height>152</height>
-				<texture colordiffuse="$VAR[circlesCol]">rings/outer-ring.png</texture>
+				<texture colordiffuse="$VAR[CirclesCol]">rings/outer-ring.png</texture>
 			</control>
 		</focusedlayout>
 		<content>
@@ -96,13 +96,13 @@
 			<top>-5</top>
 			<width>582</width>
 			<height>582</height>
-			<texture border="8" colordiffuse="whiteDark">views/white8.png</texture>
+			<texture border="8" colordiffuse="TextColorFO">views/white8.png</texture>
 		</control>
 		<control type="image"><!-- Fallback -->
 			<description>Hintergrund Farbe</description>
 			<width>572</width>
 			<height>572</height>
-			<texture colordiffuse="$VAR[primaryCol]">White.png</texture>
+			<texture colordiffuse="$VAR[PrimaryCol]">white.png</texture>
 			<aspectratio>scale</aspectratio>
 		</control>
 		<control type="image">

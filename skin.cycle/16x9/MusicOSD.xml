@@ -19,7 +19,7 @@
 		<top>-30</top>
 		<width>1920</width>
 		<height>135</height>
-		<texture background="true" colordiffuse="$VAR[DialogCol]">White.png</texture>
+		<texture background="true" colordiffuse="$VAR[DialogCol]">white.png</texture>
 	</control>
 	<control type="progress"><!-- Progress -->
 		<description>Progress Bar</description>
@@ -27,10 +27,10 @@
 		<width>1920</width>
 		<height>30</height>
 		<info>Player.Progress</info>
-		<texturebg colordiffuse="$VAR[secondaryCol]">dialogs/progress/bg.png</texturebg>
-		<lefttexture colordiffuse="$VAR[primaryCol]">dialogs/progress/left.png</lefttexture>
-		<midtexture colordiffuse="$VAR[primaryCol]">dialogs/progress/left.png</midtexture>
-		<righttexture colordiffuse="$VAR[primaryCol]">dialogs/progress/right.png</righttexture>
+		<texturebg colordiffuse="$VAR[SecondaryCol]">dialogs/progress/bg.png</texturebg>
+		<lefttexture colordiffuse="$VAR[PrimaryCol]">dialogs/progress/left.png</lefttexture>
+		<midtexture colordiffuse="$VAR[PrimaryCol]">dialogs/progress/left.png</midtexture>
+		<righttexture colordiffuse="$VAR[PrimaryCol]">dialogs/progress/right.png</righttexture>
 	</control>
 	<control type="grouplist" id="9000"><!-- mitte -->
 		<left>715</left>
@@ -56,14 +56,14 @@
 			<height>osdmenue.icon.height</height>
 			<onclick>ActivateWindow(122)</onclick>
 			<enable>Visualisation.HasPresets</enable>
-			<visible>Visualisation.HasPresets</visible>
+			<visible>Visualisation.HasPresets + Skin.HasSetting(DisableMusicMCE)</visible>
 		</control>
 		<control type="button" id="12">
 			<description>Vizualisierungseinstellungen</description>
 			<width>osdmenue.icon.width</width>
 			<height>osdmenue.icon.height</height>
 			<onclick>Addon.Default.OpenSettings(xbmc.player.musicviz)</onclick>
-			<visible>Visualisation.HasPresets</visible>
+			<visible>Visualisation.HasPresets + Skin.HasSetting(DisableMusicMCE)</visible>
 		</control>
 		<control type="button" id="15">
 			<description>Wiederholung an</description>
@@ -206,7 +206,7 @@
 			<width>osdmenue.icon.width</width>
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
-			<textcolor>$VAR[primaryCol]</textcolor>
+			<textcolor>$VAR[PrimaryCol]</textcolor>
 			<label>ŧ</label>
 			<visible>Control.IsVisible(620) + Control.HasFocus(620)</visible>
 		</control>
@@ -216,6 +216,7 @@
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
 			<textcolor>TextColorLight</textcolor>
+			<include>OSDIconsNF</include>
 			<label>ŧ</label>
 			<visible>Control.IsVisible(620) + !Control.HasFocus(620)</visible>
 		</control>
@@ -224,9 +225,9 @@
 			<width>osdmenue.icon.width</width>
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
-			<textcolor>$VAR[primaryCol]</textcolor>
+			<textcolor>$VAR[PrimaryCol]</textcolor>
 			<label>ŵ</label>
-			<visible>Control.IsVisible(10) + Control.HasFocus(10) + Visualisation.HasPresets</visible>
+			<visible>Control.IsVisible(10) + Control.HasFocus(10) + Visualisation.HasPresets + Skin.HasSetting(DisableMusicMCE)</visible>
 		</control>
 		<control type="label">
 			<description>Vizualisierungen</description>
@@ -234,17 +235,18 @@
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
 			<textcolor>TextColorLight</textcolor>
+			<include>OSDIconsNF</include>
 			<label>ŵ</label>
-			<visible>Control.IsVisible(10) + !Control.HasFocus(10) + Visualisation.HasPresets</visible>
+			<visible>Control.IsVisible(10) + !Control.HasFocus(10) + Visualisation.HasPresets + Skin.HasSetting(DisableMusicMCE)</visible>
 		</control>
 		<control type="label">
 			<description>Vizualisierungseinstellungen</description>
 			<width>osdmenue.icon.width</width>
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
-			<textcolor>$VAR[primaryCol]</textcolor>
+			<textcolor>$VAR[PrimaryCol]</textcolor>
 			<label>Ŵ</label>
-			<visible>Control.IsVisible(12) + Control.HasFocus(12) + Visualisation.HasPresets</visible>
+			<visible>Control.IsVisible(12) + Control.HasFocus(12) + Visualisation.HasPresets + Skin.HasSetting(DisableMusicMCE)</visible>
 		</control>
 		<control type="label">
 			<description>Vizualisierungseinstellungen</description>
@@ -252,15 +254,16 @@
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
 			<textcolor>TextColorLight</textcolor>
+			<include>OSDIconsNF</include>
 			<label>Ŵ</label>
-			<visible>Control.IsVisible(12) + !Control.HasFocus(12) + Visualisation.HasPresets</visible>
+			<visible>Control.IsVisible(12) + !Control.HasFocus(12) + Visualisation.HasPresets + Skin.HasSetting(DisableMusicMCE)</visible>
 		</control>
 		<control type="label">
 			<description>Repeat/Random</description>
 			<width>osdmenue.icon.width</width>
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
-			<textcolor>$VAR[primaryCol]</textcolor>
+			<textcolor>$VAR[PrimaryCol]</textcolor>
 			<label>$VAR[OSD-playercontrol-repeat]</label>
 			<visible>Control.IsVisible(15) + Control.HasFocus(15)</visible>
 		</control>
@@ -270,6 +273,7 @@
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
 			<textcolor>TextColorLight</textcolor>
+			<include>OSDIconsNF</include>
 			<label>$VAR[OSD-playercontrol-repeat]</label>
 			<visible>Control.IsVisible(15) + !Control.HasFocus(15)</visible>
 		</control>
@@ -279,6 +283,7 @@
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
 			<textcolor>TextColorLight</textcolor>
+			<include>OSDIconsNF</include>
 			<label>$VAR[OSD-playercontrol-random]</label>
 			<visible>Control.IsVisible(16) + !Control.HasFocus(16)</visible>
 		</control>
@@ -287,7 +292,7 @@
 			<width>osdmenue.icon.width</width>
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
-			<textcolor>$VAR[primaryCol]</textcolor>
+			<textcolor>$VAR[PrimaryCol]</textcolor>
 			<label>$VAR[OSD-playercontrol-random]</label>
 			<visible>Control.IsVisible(16) + Control.HasFocus(16)</visible>
 		</control>
@@ -310,7 +315,7 @@
 			<width>osdmenue.icon.width</width>
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
-			<textcolor>$VAR[primaryCol]</textcolor>
+			<textcolor>$VAR[PrimaryCol]</textcolor>
 			<label>Ŭ</label>
 			<visible>Control.IsVisible(1) + Control.HasFocus(1)</visible>
 		</control>
@@ -320,6 +325,7 @@
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
 			<textcolor>TextColorLight</textcolor>
+			<include>OSDIconsNF</include>
 			<label>Ŭ</label>
 			<visible>Control.IsVisible(1) + !Control.HasFocus(1)</visible>
 		</control>
@@ -328,7 +334,7 @@
 			<width>osdmenue.icon.width</width>
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
-			<textcolor>$VAR[primaryCol]</textcolor>
+			<textcolor>$VAR[PrimaryCol]</textcolor>
 			<label>ŭ</label>
 			<visible>Control.IsVisible(2) + Control.HasFocus(2)</visible>
 		</control>
@@ -338,6 +344,7 @@
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
 			<textcolor>TextColorLight</textcolor>
+			<include>OSDIconsNF</include>
 			<label>ŭ</label>
 			<visible>Control.IsVisible(2) + !Control.HasFocus(2)</visible>
 		</control>
@@ -346,7 +353,7 @@
 			<width>osdmenue.icon.width</width>
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
-			<textcolor>$VAR[primaryCol]</textcolor>
+			<textcolor>$VAR[PrimaryCol]</textcolor>
 			<label>$VAR[playercontrol-play]</label>
 			<visible>Control.IsVisible(3) + Control.HasFocus(3)</visible>
 		</control>
@@ -356,6 +363,7 @@
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
 			<textcolor>TextColorLight</textcolor>
+			<include>OSDIconsNF</include>
 			<label>$VAR[playercontrol-play]</label>
 			<visible>Control.IsVisible(3) + !Control.HasFocus(3)</visible>
 		</control>
@@ -364,7 +372,7 @@
 			<width>osdmenue.icon.width</width>
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
-			<textcolor>$VAR[primaryCol]</textcolor>
+			<textcolor>$VAR[PrimaryCol]</textcolor>
 			<label>Ů</label>
 			<visible>Control.IsVisible(4) + Control.HasFocus(4)</visible>
 		</control>
@@ -374,6 +382,7 @@
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
 			<textcolor>TextColorLight</textcolor>
+			<include>OSDIconsNF</include>
 			<label>Ů</label>
 			<visible>Control.IsVisible(4) + !Control.HasFocus(4)</visible>
 		</control>
@@ -382,7 +391,7 @@
 			<width>osdmenue.icon.width</width>
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
-			<textcolor>$VAR[primaryCol]</textcolor>
+			<textcolor>$VAR[PrimaryCol]</textcolor>
 			<label>Ũ</label>
 			<visible>Control.IsVisible(5) + Control.HasFocus(5)</visible>
 		</control>
@@ -392,6 +401,7 @@
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
 			<textcolor>TextColorLight</textcolor>
+			<include>OSDIconsNF</include>
 			<label>Ũ</label>
 			<visible>Control.IsVisible(5) + !Control.HasFocus(5)</visible>
 		</control>
@@ -400,7 +410,7 @@
 			<width>osdmenue.icon.width</width>
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
-			<textcolor>$VAR[primaryCol]</textcolor>
+			<textcolor>$VAR[PrimaryCol]</textcolor>
 			<label>ũ</label>
 			<visible>Control.IsVisible(6) + Control.HasFocus(6)</visible>
 		</control>
@@ -410,6 +420,7 @@
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
 			<textcolor>TextColorLight</textcolor>
+			<include>OSDIconsNF</include>
 			<label>ũ</label>
 			<visible>Control.IsVisible(6) + !Control.HasFocus(6)</visible>
 		</control>
@@ -432,7 +443,7 @@
 			<width>osdmenue.icon.width</width>
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
-			<textcolor>$VAR[primaryCol]</textcolor>
+			<textcolor>$VAR[PrimaryCol]</textcolor>
 			<label>Ť</label>
 			<visible>Control.IsVisible(14) + Control.HasFocus(14)</visible>
 		</control>
@@ -442,6 +453,7 @@
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
 			<textcolor>TextColorLight</textcolor>
+			<include>OSDIconsNF</include>
 			<label>Ť</label>
 			<visible>Control.IsVisible(14) + !Control.HasFocus(14)</visible>
 		</control>
@@ -450,7 +462,7 @@
 			<width>osdmenue.icon.width</width>
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
-			<textcolor>$VAR[primaryCol]</textcolor>
+			<textcolor>$VAR[PrimaryCol]</textcolor>
 			<label>ţ</label>
 			<visible>Control.IsVisible(17) + Control.HasFocus(17)</visible>
 		</control>
@@ -460,6 +472,7 @@
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
 			<textcolor>TextColorLight</textcolor>
+			<include>OSDIconsNF</include>
 			<label>ţ</label>
 			<visible>Control.IsVisible(17) + !Control.HasFocus(17)</visible>
 		</control>
@@ -468,7 +481,7 @@
 			<width>osdmenue.icon.width</width>
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
-			<textcolor>$VAR[primaryCol]</textcolor>
+			<textcolor>$VAR[PrimaryCol]</textcolor>
 			<label>š</label>
 			<visible>Control.IsVisible(20) + Control.HasFocus(20) + !Skin.HasSetting(DisableMusicMCE)</visible>
 		</control>
@@ -478,6 +491,7 @@
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
 			<textcolor>TextColorLight</textcolor>
+			<include>OSDIconsNF</include>
 			<label>š</label>
 			<visible>Control.IsVisible(20) + !Control.HasFocus(20) + !Skin.HasSetting(DisableMusicMCE)</visible>
 		</control>
@@ -486,7 +500,7 @@
 			<width>osdmenue.icon.width</width>
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
-			<textcolor>$VAR[primaryCol]</textcolor>
+			<textcolor>$VAR[PrimaryCol]</textcolor>
 			<label>Š</label>
 			<visible>Control.IsVisible(22) + Control.HasFocus(22)</visible>
 		</control>
@@ -496,6 +510,7 @@
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
 			<textcolor>TextColorLight</textcolor>
+			<include>OSDIconsNF</include>
 			<label>Š</label>
 			<visible>Control.IsVisible(22) + !Control.HasFocus(22)</visible>
 		</control>
@@ -504,7 +519,7 @@
 			<width>osdmenue.icon.width</width>
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
-			<textcolor>$VAR[primaryCol]</textcolor>
+			<textcolor>$VAR[PrimaryCol]</textcolor>
 			<label>Ţ</label>
 			<visible>Control.IsVisible(24) + Control.HasFocus(24)</visible>
 		</control>
@@ -514,6 +529,7 @@
 			<height>osdmenue.icon.height</height>
 			<font>IconOSDButtons</font>
 			<textcolor>TextColorLight</textcolor>
+			<include>OSDIconsNF</include>
 			<label>Ţ</label>
 			<visible>Control.IsVisible(24) + !Control.HasFocus(24)</visible>
 		</control>

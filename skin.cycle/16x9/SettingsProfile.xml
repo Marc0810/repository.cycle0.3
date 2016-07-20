@@ -22,18 +22,16 @@
 			<left>-100</left>
 			<include>SidebarIconDimension</include>
 			<include>IconColorFO</include>
-			<label>s</label>
+			<label>$VAR[global_topbar_icon]</label>
 		</control>
 		<control type="grouplist">
 			<width>sidebar.breadcumblabel.width</width>
 			<height>100</height>
 			<itemgap>0</itemgap>
-			<orientation>vertical</orientation>
 			<control type="label">
 				<description>Breadcumb1 label</description>
 				<width>sidebar.breadcumblabel.width</width>
 				<height>sidebar.breadcumblabel.height</height>
-				<scroll>false</scroll>
 				<font>BreadcumbNormal</font>
 				<label>$LOCALIZE[5]</label>
 			</control>
@@ -41,7 +39,6 @@
 				<description>Breadcumb2 label</description>
 				<width>sidebar.breadcumblabel.width</width>
 				<height>sidebar.breadcumblabel.height</height>
-				<scroll>false</scroll>
 				<font>BreadcumbSmall</font>
 				<label>$LOCALIZE[13200]</label>
 			</control>
@@ -69,7 +66,7 @@
 			<control type="image">
 				<width>330</width>
 				<height>65</height>
-				<texture border="0,0,14,0" colordiffuse="$VAR[primaryCol]">buttons/MainSliderightSubButton.png</texture>
+				<texture border="0,0,14,0" colordiffuse="$VAR[PrimaryCol]">buttons/mainsliderightsubbutton.png</texture>
 			</control>
 			<control type="label">
 				<textcolor>TextColorFO</textcolor>
@@ -95,27 +92,41 @@
 		<visible>Container(9000).Hasfocus(2) + !String.Contains(Container(2).ListItem.Label,hinzufügen)</visible>
 		<left>120</left>
 		<top>600</top>
-		<control type="image"><!-- Fallback -->
-			<description>Hintergrund Farbe</description>
-			<width>280</width>
-			<height>280</height>
-			<texture background="true" colordiffuse="$VAR[primaryCol]">White.png</texture>
+		<control type="image">
+			<description>Schatten</description>
+			<left>-12</left>
+			<top>-12</top>
+			<width>274</width>
+			<height>274</height>
+			<texture border="8" colordiffuse="ShadowColor">views/shadow8.png</texture>
+		</control>
+		<control type="image">
+			<description>Border</description>
+			<left>-4</left>
+			<top>-4</top>
+			<width>258</width>
+			<height>258</height>
+			<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
+		</control>
+		<control type="image">
+			<description>Hintergrund</description>
+			<width>250</width>
+			<height>250</height>
+			<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
 		</control>
 		<control type="label">
-			<width>280</width>
+			<width>248</width>
 			<height>230</height>
 			<align>center</align>
-			<textcolor>$VAR[circlesCol]</textcolor>
+			<textcolor>$VAR[CirclesCol]</textcolor>
 			<font>IconPosterviewActordefault</font>
 			<label>Z</label>
 		</control>
 		<control type="image">
-			<width>280</width>
-			<height>280</height>
+			<width>248</width>
+			<height>230</height>
 			<aspectratio align="left">keep</aspectratio>
 			<texture>$INFO[Container(2).Listitem.Icon]</texture>
-			<bordertexture border="3" colordiffuse="TextColorMedium">views/white8.png</bordertexture>
-			<bordersize>3</bordersize>
 			<visible>!String.Contains(ListItem.Label,Profil hinzufügen) + !String.StartsWith(ListItem.Icon,Default)</visible>
 		</control>
 		<control type="label">
@@ -161,7 +172,7 @@
 		<top>-30</top>
 		<width>1083</width>
 		<height>670</height>
-		<texture colordiffuse="ListBackgroundDiffuse">White.png</texture>
+		<texture colordiffuse="ListBackgroundDiffuse">white.png</texture>
 	</control>
 	<control type="grouplist" id="9001"><!-- Anmeldung Optionen -->
 		<description>Anmeldung Optionen</description>
@@ -176,28 +187,24 @@
 		<ondown>9001</ondown>
 		<control type="radiobutton" id="4">
 			<description>Anmelden an/aus</description>
-			<height>70</height>
 			<width>1108</width>
 			<textwidth>970</textwidth>
-			<aligny>top</aligny>
-			<textoffsety>15</textoffsety>
+			<include>Item.top.height70</include>
 			<textoffsetx>25</textoffsetx>
 			<radioposx>1020</radioposx>
 			<radioposy>10</radioposy>
 			<label>$LOCALIZE[20096]</label>
-			<texturefocus border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texturefocus>
-			<texturenofocus border="14,0,14,0" colordiffuse="$VAR[primaryCol]">-</texturenofocus>
+			<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturefocus>
+			<texturenofocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">-</texturenofocus>
 		</control>
 		<control type="button" id="5">
 			<description>Automatisch Anmelden</description>
-			<height>70</height>
 			<width>1108</width>
-			<aligny>top</aligny>
-			<textoffsety>15</textoffsety>
+			<include>Item.top.height70</include>
 			<textoffsetx>25</textoffsetx>
 			<label>$LOCALIZE[33084]</label>
 			<label2>$INFO[System.ProfileAutoLogin]</label2>
-			<texturefocus border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texturefocus>
+			<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturefocus>
 			<texturenofocus>-</texturenofocus>
 			<enable>!System.HasLoginScreen</enable>
 		</control>
@@ -238,43 +245,38 @@
 		<onright>9000</onright>
 		<onup>2</onup>
 		<ondown>2</ondown>
-		<orientation>vertical</orientation>
 		<viewtype label="21371">list</viewtype>
 		<pagecontrol>-</pagecontrol>
 		<scrolltime>200</scrolltime>
 		<visible>Container(9000).Hasfocus(2)</visible>
-		<itemlayout height="70" width="1108">
+		<itemlayout width="1108" height="button.top.height70">
 			<control type="label">
 				<width>900</width>
-				<height>70</height>
-				<aligny>top</aligny>
-				<textoffsety>15</textoffsety>
+				<include>Item.top.height70</include>
 				<textoffsetx>30</textoffsetx>
 				<label>$INFO[ListItem.Label]</label>
 			</control>
 			<control type="label">
 				<left>600</left>
 				<width>500</width>
-				<height>70</height>
+				<height>button.top.height70</height>
 				<align>right</align>
 				<aligny>top</aligny>
-				<textoffsety>22</textoffsety><!-- groeßer fuer kleinere schrift -->
+				<textoffsety>22</textoffsety><!-- include ueberschreibung smaller font -->
 				<textoffsetx>30</textoffsetx>
 				<font>RegularSmall</font>
 				<label fallback="13170">$INFO[ListItem.Label2]</label>
 			</control>
 		</itemlayout>
-		<focusedlayout height="70" width="1108">
+		<focusedlayout width="1108" height="button.top.height70">
 			<control type="image">
 				<width>1108</width>
-				<height>70</height>
-				<texture border="14,0,14,0" colordiffuse="$VAR[primaryCol]">cycle/full-11.png</texture>
+				<height>button.top.height70</height>
+				<texture border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texture>
 			</control>
 			<control type="label">
 				<width>900</width>
-				<height>70</height>
-				<aligny>top</aligny>
-				<textoffsety>15</textoffsety>
+				<include>Item.top.height70</include>
 				<textoffsetx>30</textoffsetx>
 				<textcolor>TextColorFO</textcolor>
 				<label>$INFO[ListItem.Label]</label>
@@ -282,10 +284,10 @@
 			<control type="label">
 				<left>600</left>
 				<width>500</width>
-				<height>70</height>
+				<height>button.top.height70</height>
 				<align>right</align>
 				<aligny>top</aligny>
-				<textoffsety>22</textoffsety>
+				<textoffsety>22</textoffsety><!-- include ueberschreibung smaller font -->
 				<textoffsetx>30</textoffsetx>
 				<font>RegularSmall</font>
 				<textcolor>TextColorFO</textcolor>

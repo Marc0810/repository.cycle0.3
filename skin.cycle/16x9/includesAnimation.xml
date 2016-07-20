@@ -2,13 +2,45 @@
 <includes>
 <!-- Cycle 0.3 -->
 <include name="VintageDialogTitel_Animation">
-	<animation type="Conditional" condition="Skin.HasSetting(VintageFont)" reversible="false">
+	<animation type="Conditional" condition="String.IsEqual(skin.string(Fontselection),Vintage)" reversible="false">
 		<effect type="slide" start="0,-8" end="0,-8" time="0" />
 	</animation>
 </include>
 <include name="VintageFont_Animation-12">
-	<animation type="Conditional" condition="Skin.HasSetting(VintageFont)" reversible="false">
+	<animation type="Conditional" condition="String.IsEqual(skin.string(Fontselection),Vintage)" reversible="false">
 		<effect type="slide" start="0,-12" end="0,-12" time="0" />
+	</animation>
+</include>
+	
+<!-- Diffuse Opacity Animationen -->
+<include name="CircleFlagsinnerDiffuse">
+	<animation type="Conditional" condition="true">
+		<effect type="fade" end="70" time="0" />
+	</animation>
+</include>
+<include name="CircleFlagsinnerDiffuse2">
+	<animation type="Conditional" condition="true">
+		<effect type="fade" end="40" time="0" />
+	</animation>
+</include>
+<include name="OSDIconsNF">
+	<animation type="Conditional" condition="true">
+		<effect type="fade" start="80" end="80" time="0" />
+	</animation>
+</include>
+
+<include name="Dimmer_Animation">
+	<animation type="Focus">
+		<effect type="fade" time="250" start="100" end="0" />
+	</animation>
+	<animation type="UnFocus">
+		<effect type="fade" time="250" start="0" end="100" />
+	</animation>
+</include>
+	
+<include name="Conditional_Inaktiv_Fade_Animation">
+	<animation type="Conditional" condition="![Window.IsActive(contextmenu) |Window.IsActive(virtualkeyboard) | Window.IsActive(networksetup) | Window.IsActive(numericinput) | Window.IsActive(mediasource) | Window.IsActive(smartplaylisteditor) | Window.IsActive(smartplaylistrule) | Window.IsActive(addonsettings) | Window.IsVisble(DialogSettings.xml) | Window.IsActive(DialogConfirm.xml)]">
+		<effect type="fade" start="30" end="0" time="300" tween="cubic" easing="inout" />
 	</animation>
 </include>
 
@@ -46,8 +78,12 @@
 
 <include name="Conditional_Viewinaktiv_Zoom_Animation">
 	<animation type="conditional" reversible="true" condition="Control.HasFocus(9900)">
-		<effect type="fade" start="100" end="30" time="150" tween="cubic" easing="inout" />
-		<effect type="zoom" start="100" end="70" time="150" tween="cubic" easing="inout" center="960,540"/>
+		<effect type="fade" start="100" end="30" time="150" tween="cubic" easing="out" />
+		<effect type="zoom" start="100" end="70" time="150" tween="cubic" easing="out" center="960,540"/>
+	</animation>
+	<animation type="conditional" reversible="true" condition="Control.HasFocus(502)"><!-- Trailerwindow 502 -->
+		<effect type="fade" start="100" end="80" time="300" tween="quadratic" easing="out" />
+		<effect type="slide" start="0,0" end="1920,0" time="300" tween="quadratic" easing="out"/>
 	</animation>
 </include>
 
@@ -67,15 +103,6 @@
 	<animation type="Hidden" reversible="false">
 		<effect type="slide" end="0,115" start="0" time="200" tween="sine" easing="inout" />
 		<effect type="fade" end="0" start="100" time="200" tween="sine" easing="inout" />
-	</animation>
-</include>
-
-<include name="Dimmer_Animation">
-	<animation type="Focus">
-		<effect type="fade" time="250" end="0" start="100" />
-	</animation>
-	<animation type="UnFocus">
-		<effect type="fade" time="250" start="0" end="100" />
 	</animation>
 </include>
 
@@ -147,33 +174,11 @@
 	</animation>
 </include>
 
-<include name="Visible_Hidden_Fade_Animation">
-	<animation type="Visible" reversible="false">
-		<effect type="fade" start="0" end="100" delay="100" time="350" tween="cubic" easing="inout" />
-	</animation>
-	<animation type="Hidden" reversible="false">
-		<effect type="fade" start="100" end="0" time="250" tween="cubic" easing="inout" />
-	</animation>
-</include>
-
-<!-- Diffuse Opacity Animationen -->
-<include name="CircleFlagsinnerDiffuse">
-	<animation type="Conditional" condition="true">
-		<effect type="fade" end="50" time="0" />
-	</animation>
-</include>
-
-<include name="Conditional_Inaktiv_Fade_Animation">
-	<animation type="Conditional" condition="![Window.IsActive(contextmenu) |Window.IsActive(virtualkeyboard) | Window.IsActive(networksetup) | Window.IsActive(numericinput) | Window.IsActive(mediasource) | Window.IsActive(smartplaylisteditor) | Window.IsActive(smartplaylistrule) | Window.IsActive(addonsettings) | Window.IsActive(DialogSettings.xml) | Window.IsActive(DialogConfirm.xml)]">
-		<effect type="fade" start="30" end="0" time="300" tween="cubic" easing="inout" />
-	</animation>
-</include>
-
 <include name="Conditional_Left_Slide_Animation395">
-	<animation type="Conditional" condition="!Window.IsVisible(playercontrols) + [ControlGroup(9110).HasFocus | ControlGroup(9300).HasFocus | Window.IsActive(contextmenu) | Window.IsActive(shutdownmenu) | Window.IsVisible(Custom_1141_ViewtypeSimilar.xml)] + !Window.IsVisible(musicplaylisteditor)">
+	<animation type="Conditional" condition="!Window.IsVisible(playercontrols) + [ControlGroup(9110).HasFocus | ControlGroup(9310).HasFocus | Window.IsActive(contextmenu) | Window.IsActive(shutdownmenu) | Window.IsVisible(Custom_1141_ViewtypeSimilar.xml)] + !Window.IsVisible(musicplaylisteditor)">
 		<effect type="slide" end="395,0" time="180" delay="180" tween="quadratic" easing="out" reversible="true" />
 	</animation>
-	<animation type="Conditional" condition="[ControlGroup(9110).HasFocus | ControlGroup(9300).HasFocus] + Window.IsActive(DialogSelect.xml) + String.IsEqual(skin.String(SelectDialog),Search)">
+	<animation type="Conditional" condition="[ControlGroup(9110).HasFocus | ControlGroup(9310).HasFocus] + Window.IsActive(DialogSelect.xml) + String.IsEqual(skin.String(SelectDialog),Search)">
 		<effect type="slide" end="250,0" time="180" delay="180" tween="quadratic" easing="out" reversible="true" />
 	</animation>
 	<animation type="Conditional" condition="Window.IsActive(favourites)">

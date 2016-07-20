@@ -11,26 +11,33 @@
 	<control type="grouplist" id="3110"><!-- liste -->
 		<description>List</description>
 		<left>100</left>
-		<top>199</top>
+		<top>200</top>
 		<width>340</width>
 		<height>900</height>
 		<onleft>close</onleft>
 		<onright>close</onright>
 		<onup>3110</onup>
 		<ondown>3110</ondown>
-		<orientation>vertical</orientation>
+		<control type="button" id="3122">
+			<description>Quicknav</description>
+			<include>ShutdownButtons</include>
+			<label>Quicknav</label>
+			<onclick>ActivateWindow(1120)</onclick>
+			<visible>Window.IsVisible(fullscreenvideo)</visible>
+		</control>
 		<control type="button" id="3114">
 			<description>Kodi Beenden</description>
 			<include>ShutdownButtons</include>
 			<label>$LOCALIZE[13012]</label>
 			<onclick>Quit()</onclick>
-			<visible>System.ShowExitButton</visible>
 		</control>
 		<control type="button" id="3116">
 			<description>Herunterfahren</description>
 			<include>ShutdownButtons</include>
 			<label>$LOCALIZE[13005]</label>
-			<onclick>ShutDown()</onclick>
+			<onclick>Powerdown()</onclick>
+			<!--<onclick>ShutDown()</onclick> check -->
+			<visible>System.CanPowerDown</visible>
 		</control>
 		<control type="button" id="3111">
 			<description>Mastermodus</description>
@@ -46,15 +53,15 @@
 			<onclick>Dialog.Close(all)</onclick>
 			<onclick>ActivateWindow(systeminfo)</onclick>
 			<label>$LOCALIZE[130]</label>
-			<visible>!Window.IsVisible(SettingsSystemInfo.xml)</visible>
+			<visible>!Window.IsVisible(systeminfo)</visible>
 		</control>
 		<control type="button" id="3113">
 			<description>Dateimanager</description>
 			<include>ShutdownButtons</include>
-			<onclick>Dialog.Close(all)</onclick><!-- check waren alle doppelt? -->
+			<onclick>Dialog.Close(all)</onclick>
 			<onclick>ActivateWindow(filemanager)</onclick>
 			<label>$LOCALIZE[10003]</label>
-			<visible>!Window.IsVisible(FileManager.xml)</visible>
+			<visible>!Window.IsVisible(filemanager)</visible>
 		</control>
 		<control type="button" id="3115">
 			<description>LogOff Profile</description>
@@ -76,7 +83,7 @@
 			<label>Settings</label>
 			<onclick>Dialog.Close(all)</onclick>
 			<onclick>ActivateWindow(Settings)</onclick>
-			<visible>!Window.IsVisible(Settings.xml)</visible>
+			<visible>!Window.IsVisible(settings)</visible>
 		</control>
 		<control type="button" id="3121"><!-- load profile -->
 			<label>Profil wechseln</label>
@@ -95,39 +102,52 @@
 		<label>j</label>
 	</control>
 	<control type="grouplist">
-		<description>Icons für Button Liste 3110</description>
+		<description>Button Icons</description>
 		<left>20</left>
-		<top>199</top>
+		<top>200</top>
 		<width>330</width>
 		<height>900</height>
-		<orientation>vertical</orientation>
+		<control type="label">
+			<description>Quicknav focus</description>
+			<include>SidebarIconDimension</include>
+			<include>IconColorFO</include>
+			<label>#</label>
+			<visible>Control.HasFocus(3122) + Control.IsVisible(3122) + Window.IsVisible(fullscreenvideo)</visible>
+		</control>
+		<control type="label">
+			<description>Quicknav unfocus</description>
+			<include>SidebarIconDimension</include>
+			<include>IconColorNF</include>
+			<label>#</label>
+			<visible>!Control.HasFocus(3122) + Control.IsVisible(3122) + Window.IsVisible(fullscreenvideo)</visible>
+		</control>
 		<control type="label">
 			<description>Kodi beenden focus</description>
 			<include>SidebarIconDimension</include>
 			<include>IconColorFO</include>
 			<label>l</label>
-			<visible>Control.HasFocus(3114) + Control.IsVisible(3114) + System.ShowExitButton</visible>
+			<visible>Control.HasFocus(3114) + Control.IsVisible(3114)</visible>
 		</control>
 		<control type="label">
 			<description>Kodi beenden unfocus</description>
 			<include>SidebarIconDimension</include>
 			<include>IconColorNF</include>
 			<label>l</label>
-			<visible>!Control.HasFocus(3114) + Control.IsVisible(3114) + System.ShowExitButton</visible>
+			<visible>!Control.HasFocus(3114) + Control.IsVisible(3114)</visible>
 		</control>
 		<control type="label">
 			<description>Herunterfahren focus</description>
 			<include>SidebarIconDimension</include>
 			<include>IconColorFO</include>
 			<label>j</label>
-			<visible>Control.HasFocus(3116) + Control.IsVisible(3116)</visible>
+			<visible>Control.HasFocus(3116) + Control.IsVisible(3116) + System.CanPowerDown</visible>
 		</control>
 		<control type="label">
 			<description>Herunterfahren unfocus</description>
 			<include>SidebarIconDimension</include>
 			<include>IconColorNF</include>
 			<label>j</label>
-			<visible>!Control.HasFocus(3116) + Control.IsVisible(3116)</visible>
+			<visible>!Control.HasFocus(3116) + Control.IsVisible(3116) + System.CanPowerDown</visible>
 		</control>
 		<control type="label">
 			<description>Mastermodus focus</description>
@@ -148,28 +168,28 @@
 			<include>SidebarIconDimension</include>
 			<include>IconColorFO</include>
 			<label>È</label>
-			<visible>Control.HasFocus(3112) + Control.IsVisible(3112) + !Window.IsVisible(SettingsSystemInfo.xml)</visible>
+			<visible>Control.HasFocus(3112) + Control.IsVisible(3112) + !Window.IsVisible(systeminfo)</visible>
 		</control>
 		<control type="label">
 			<description>Systeminfo unfocus</description>
 			<include>SidebarIconDimension</include>
 			<include>IconColorNF</include>
 			<label>È</label>
-			<visible>!Control.HasFocus(3112) + Control.IsVisible(3112) + !Window.IsVisible(SettingsSystemInfo.xml)</visible>
+			<visible>!Control.HasFocus(3112) + Control.IsVisible(3112) + !Window.IsVisible(systeminfo)</visible>
 		</control>
 		<control type="label">
 			<description>Dateimanager focus</description>
 			<include>SidebarIconDimension</include>
 			<include>IconColorFO</include>
 			<label>Ĕ</label>
-			<visible>Control.HasFocus(3113) + Control.IsVisible(3113) + !Window.IsVisible(FileManager.xml)</visible>
+			<visible>Control.HasFocus(3113) + Control.IsVisible(3113) + !Window.IsVisible(filemanager)</visible>
 		</control>
 		<control type="label">
 			<description>Dateimanager unfocus</description>
 			<include>SidebarIconDimension</include>
 			<include>IconColorNF</include>
 			<label>Ĕ</label>
-			<visible>!Control.HasFocus(3113) + Control.IsVisible(3113) + !Window.IsVisible(FileManager.xml)</visible>
+			<visible>!Control.HasFocus(3113) + Control.IsVisible(3113) + !Window.IsVisible(filemanager)</visible>
 		</control>
 		<control type="label">
 			<description>Profil abmelden focus</description>
@@ -204,14 +224,14 @@
 			<include>SidebarIconDimension</include>
 			<include>IconColorFO</include>
 			<label>ė</label>
-			<visible>Control.HasFocus(3120) + Control.IsVisible(3120) + !Window.IsVisible(Settings.xml)</visible>
+			<visible>Control.HasFocus(3120) + Control.IsVisible(3120) + !Window.IsVisible(settings)</visible>
 		</control>
 		<control type="label">
 			<description>Einstellungen oeffnen unfocus</description>
 			<include>SidebarIconDimension</include>
 			<include>IconColorNF</include>
 			<label>ė</label>
-			<visible>!Control.HasFocus(3120) + Control.IsVisible(3120) + !Window.IsVisible(Settings.xml)</visible>
+			<visible>!Control.HasFocus(3120) + Control.IsVisible(3120) + !Window.IsVisible(settings)</visible>
 		</control>
 		<control type="label">
 			<description>Einstellungen oeffnen focus</description>

@@ -62,7 +62,7 @@
 		<ondown>11</ondown>
 		<orientation>horizontal</orientation>
 		<control type="button" id="99">
-			<description>Abbrechen button</description>
+			<description>Abbrechen</description>
 			<include>DialogFakeIconDimension</include>
 			<onclick>close</onclick>
 		</control>
@@ -76,20 +76,20 @@
 			<description>Lesezeichen erstellen</description>
 			<include>DialogIconDimension</include>
 			<label>ġ</label>
-			<visible>Control.IsEnabled(2) + Control.IsVisible(2)</visible>
+			<visible>Control.IsVisible(2)</visible>
 		</control>
 		<control type="label">
 			<description>Lesezeichen loeschen</description>
 			<include>DialogIconDimension</include>
 			<label>Ģ</label>
-			<visible>Control.IsEnabled(3) + Control.IsVisible(3)</visible>
+			<visible>Control.IsVisible(3)</visible>
 		</control>
 		<control type="label">
 			<description>Episoden Lesezeichen</description>
 			<include>DialogIconDimension</include>
 			<label>ē</label>
 			<visible>videoplayer.content(episodes)</visible>
-			<visible>Control.IsEnabled(4) + Control.IsVisible(4)</visible>
+			<visible>Control.IsVisible(4)</visible>
 		</control>
 	</control>
 	<control type="grouplist">
@@ -98,7 +98,7 @@
 		<top>420</top>
 		<orientation>horizontal</orientation>
 		<control type="label">
-			<description>Abbrechen button</description>
+			<description>Abbrechen</description>
 			<include>DialogIconDimension</include>
 			<label>ģ</label>
 		</control>
@@ -125,8 +125,7 @@
 		<scrolltime>200</scrolltime>
 		<viewtype>icon</viewtype>
 		<pagecontrol>-</pagecontrol>
-		<orientation>vertical</orientation>
-		<itemlayout width="570" height="75">
+		<itemlayout width="570" height="button.top.height75">
 			<control type="image">
 				<left>500</left>
 				<top>15</top>
@@ -136,18 +135,16 @@
 			</control>
 			<control type="label">
 				<width>480</width>
-				<height>75</height>
-				<aligny>top</aligny>
-				<textoffsety>20</textoffsety>
+				<include>Item.top.height75</include>
 				<textoffsetx>30</textoffsetx>
 				<label>$INFO[ListItem.Label]$INFO[ListItem.Label2, (,)]</label>
 			</control>
 		</itemlayout>
-		<focusedlayout width="570" height="75">
+		<focusedlayout width="570" height="button.top.height75">
 			<control type="image">
 				<width>570</width>
-				<height>75</height>
-				<texture flipx="true" border="14,0,0,0" colordiffuse="$VAR[primaryCol]">cycle/right-11.png</texture>
+				<height>button.top.height75</height>
+				<texture flipx="true" border="14,0,0,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texture>
 			</control>
 			<control type="image">
 				<left>500</left>
@@ -158,9 +155,7 @@
 			</control>
 			<control type="label">
 				<width>480</width>
-				<height>75</height>
-				<aligny>top</aligny>
-				<textoffsety>20</textoffsety>
+				<include>Item.top.height75</include>
 				<textoffsetx>30</textoffsetx>
 				<textcolor>TextColorFO</textcolor>
 				<label>$INFO[ListItem.Label]$INFO[ListItem.Label2, (,)]</label>
@@ -171,7 +166,7 @@
 		<description>Lesezeichen focus icon</description>
 		<left>650</left>
 		<top>125</top>
-		<visible>!String.IsEmpty(Container(11).ListItem.Label)</visible>
+		<visible>!String.IsEmpty(Container(11).ListItem.Icon)</visible>
 		<control type="image">
 			<width>398</width>
 			<height>228</height>

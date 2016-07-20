@@ -3,10 +3,6 @@
 <!-- Cycle 0.3 -->
 <defaultcontrol always="true">52</defaultcontrol>
 <controls>
-<control type="button" id="10">
-	<include>HiddenControl</include>
-	<onfocus>AlarmClock(Login,SetFocus(52),00:08,silent)</onfocus>
-</control>
 <include condition="Skin.HasSetting(EnableVintageOverlay)">global_vintagebackground</include>
 <include condition="!Skin.HasSetting(EnableVintageOverlay)">global_background</include>
 <control type="wraplist" id="52">
@@ -21,7 +17,6 @@
 	<onright>510</onright>
 	<focusposition>0</focusposition>
 	<scrolltime tween="cubic" easing="inout">350</scrolltime>
-	<orientation>vertical</orientation>
 	<itemlayout width="874" height="174">
 		<control type="group">
 			<left>20</left>
@@ -48,13 +43,13 @@
 				<top>-4</top>
 				<width>108</width>
 				<height>108</height>
-				<texture border="8" colordiffuse="$VAR[circlesCol]">views/white8.png</texture>
+				<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
 			</control>
 			<control type="image">
 				<description>Hintergrund</description>
 				<width>100</width>
 				<height>100</height>
-				<texture background="true" colordiffuse="$VAR[primaryCol]">White.png</texture>
+				<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
 			</control>
 			<control type="label">
 				<description>Fallback</description>
@@ -62,7 +57,7 @@
 				<height>100</height>
 				<align>center</align>
 				<font>Iconbannerdefault</font>
-				<textcolor>$VAR[circlesCol]</textcolor>
+				<textcolor>$VAR[CirclesCol]</textcolor>
 				<label>Z</label>
 			</control>
 			<control type="image">
@@ -99,13 +94,13 @@
 				<top>-4</top>
 				<width>108</width>
 				<height>108</height>
-				<texture border="8" colordiffuse="$VAR[circlesCol]">views/white8.png</texture>
+				<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
 			</control>
 			<control type="image">
 				<description>Hintergrund</description>
 				<width>100</width>
 				<height>100</height>
-				<texture background="true" colordiffuse="$VAR[primaryCol]">White.png</texture>
+				<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
 			</control>
 			<control type="label">
 				<description>Fallback</description>
@@ -113,7 +108,7 @@
 				<height>100</height>
 				<align>center</align>
 				<font>Iconbannerdefault</font>
-				<textcolor>$VAR[circlesCol]</textcolor>
+				<textcolor>$VAR[CirclesCol]</textcolor>
 				<label>Z</label>
 			</control>
 			<control type="image">

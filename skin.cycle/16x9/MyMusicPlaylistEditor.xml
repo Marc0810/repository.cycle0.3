@@ -2,8 +2,9 @@
 <!-- Cycle 0.3 -->
 <window>
 <defaultcontrol allways="true">9001</defaultcontrol>
-<onunload>ClearProperty(DialogContextSelect,503)</onunload>
-<onload>SetProperty(DialogContextSelect,ContextMPL,503)</onload>
+<onunload>ClearProperty(DialogContextSelect,home)</onunload>
+<onload>SetProperty(DialogContextSelect,ContextMPL,home)</onload>
+<onunload>ClearProperty(DialogContextSelect,home)</onunload>
 <menucontrol>9110</menucontrol>
 <controls>
 <control type="button" id="9110">
@@ -18,154 +19,152 @@
 <include condition="Skin.HasSetting(EnableVintageOverlay)">global_vintagebackground</include>
 <include condition="!Skin.HasSetting(EnableVintageOverlay)">global_background</include>
 <control type="group">
-<animation type="Conditional" condition="Window.IsVisible(Custom_1120_MainMenuSlide.xml)">
-	<effect type="slide" end="395,0" time="180" delay="180" tween="quadratic" easing="out" reversible="true" />
-</animation>
-<control type="image"><!-- Hintergrund -->
-	<description>Hintergrund links content</description>
-	<left>100</left>
-	<top>140</top>
-	<width>700</width>
-	<height>980</height>
-	<texture colordiffuse="whiteDark">White.png</texture>
-	<animation effect="slide" start="-820,0" end="0,0" time="500" tween="quadratic" easing="out">WindowOpen</animation>
-	<animation effect="slide" end="-820,0" start="0,0" time="500" tween="quadratic" easing="out">WindowClose</animation>
-</control>
-<control type="image">
-	<description>Hintergrund links icons</description>
-	<left>100</left>
-	<top>140</top>
-	<width>90</width>
-	<height>980</height>
-	<texture colordiffuse="$VAR[secondaryCol]">White.png</texture>
-	<animation effect="slide" start="-820,0" end="0,0" time="500" tween="quadratic" easing="out">WindowOpen</animation>
-	<animation effect="slide" end="-820,0" start="0,0" time="500" tween="quadratic" easing="out">WindowClose</animation>
-</control>
-<control type="image">
-	<description>Hintergrund rechts content</description>
-	<left>1120</left>
-	<top>140</top>
-	<width>700</width>
-	<height>980</height>
-	<texture colordiffuse="whiteDark">White.png</texture>
-	<animation effect="slide" start="820,0" end="0,0" time="500" tween="quadratic" easing="out">WindowOpen</animation>
-	<animation effect="slide" end="820,0" start="0,0" time="500" tween="quadratic" easing="out">WindowClose</animation>
-</control>
-<control type="image">
-	<description>Hintergrund rechts icons</description>
-	<left>1120</left>
-	<top>140</top>
-	<width>90</width>
-	<height>980</height>
-	<texture colordiffuse="$VAR[secondaryCol]">White.png</texture>
-	<animation effect="slide" start="820,0" end="0,0" time="500" tween="quadratic" easing="out">WindowOpen</animation>
-	<animation effect="slide" end="820,0" start="0,0" time="500" tween="quadratic" easing="out">WindowClose</animation>
-</control>
-<include>global_topbar</include><!-- topbar -->
-<control type="group"><!-- menue -->
-	<description>Menue</description>
-	<top>10</top>
-	<left>20</left>
-	<animation effect="slide" start="-820,0" end="0,0" time="300" tween="quadratic" easing="out">WindowOpen</animation>
-	<animation effect="fade" end="0" start="100" time="300" tween="quadratic" easing="out">WindowClose</animation>
+	<animation type="Conditional" condition="Window.IsVisible(Custom_1120_MainMenuSlide.xml)">
+		<effect type="slide" end="395,0" time="180" delay="180" tween="quadratic" easing="out" reversible="true" />
+	</animation>
+	<control type="image"><!-- Hintergrund -->
+		<description>Hintergrund links content</description>
+		<left>100</left>
+		<top>140</top>
+		<width>700</width>
+		<height>980</height>
+		<texture colordiffuse="TextColorFO">white.png</texture>
+		<animation effect="slide" start="-820,0" end="0,0" time="500" tween="quadratic" easing="out">WindowOpen</animation>
+		<animation effect="slide" end="-820,0" start="0,0" time="500" tween="quadratic" easing="out">WindowClose</animation>
+	</control>
 	<control type="image">
-		<description>Bar</description>
-		<left>863</left>
-		<top>-10</top>
-		<width>148</width>
-		<height>1080</height>
-		<texture colordiffuse="$VAR[circlesCol]">views/barV.png</texture>
+		<description>Hintergrund links icons</description>
+		<left>100</left>
+		<top>140</top>
+		<width>90</width>
+		<height>980</height>
+		<texture colordiffuse="$VAR[SecondaryCol]">white.png</texture>
+		<animation effect="slide" start="-820,0" end="0,0" time="500" tween="quadratic" easing="out">WindowOpen</animation>
+		<animation effect="slide" end="-820,0" start="0,0" time="500" tween="quadratic" easing="out">WindowClose</animation>
 	</control>
-	<control type="list" id="9001">
+	<control type="image">
+		<description>Hintergrund rechts content</description>
+		<left>1120</left>
+		<top>140</top>
+		<width>700</width>
+		<height>980</height>
+		<texture colordiffuse="TextColorFO">white.png</texture>
+		<animation effect="slide" start="820,0" end="0,0" time="500" tween="quadratic" easing="out">WindowOpen</animation>
+		<animation effect="slide" end="820,0" start="0,0" time="500" tween="quadratic" easing="out">WindowClose</animation>
+	</control>
+	<control type="image">
+		<description>Hintergrund rechts icons</description>
+		<left>1120</left>
+		<top>140</top>
+		<width>90</width>
+		<height>980</height>
+		<texture colordiffuse="$VAR[SecondaryCol]">white.png</texture>
+		<animation effect="slide" start="820,0" end="0,0" time="500" tween="quadratic" easing="out">WindowOpen</animation>
+		<animation effect="slide" end="820,0" start="0,0" time="500" tween="quadratic" easing="out">WindowClose</animation>
+	</control>
+	<include>global_topbar</include><!-- topbar -->
+	<control type="group"><!-- menue -->
 		<description>Menue</description>
-		<left>865</left>
-		<top>160</top>
-		<width>320</width>
-		<height>600</height>
-		<onup>9001</onup>
-		<ondown>9001</ondown>
-		<onleft>50</onleft>
-		<onright>100</onright>
-		<animation type="Conditional" condition="Window.IsActive(contextmenu)">
-			<effect type="slide" start="0,0" end="0,1220" time="300" tween="cubic" easing="inout" />
-		</animation>
-		<orientation>vertical</orientation>
-		<itemlayout width="222" height="154">
-			<control type="image">
-				<width>154</width>
-				<height>122</height>
-				<texture colordiffuse="$VAR[circlesColInner]">rings/inner-ring.png</texture>
-			</control>
-			<control type="image">
-				<width>154</width>
-				<height>122</height>
-				<texture colordiffuse="$VAR[circlesCol]">rings/outer-ring.png</texture>
-				<animation effect="rotate" center="auto" start="90" end="90" time="0"condition="true">Conditional</animation>
-			</control>
-			<control type="label">
-				<width>154</width>
-				<height>122</height>
-				<align>center</align>
-				<font>IconMusicPlaylisteditor</font>
-				<textcolor>$VAR[circlesCol]</textcolor>
-				<label>$INFO[ListItem.Label2]</label>
-			</control>
-		</itemlayout>
-		<focusedlayout width="222" height="154">
-			<control type="image">
-				<width>154</width>
-				<height>122</height>
-				<texture colordiffuse="$VAR[secondaryCol]">rings/inner-ring.png</texture>
-				<visible>Control.HasFocus(9001)</visible>
-			</control>
-			<control type="image">
-				<width>154</width>
-				<height>122</height>
-				<texture colordiffuse="$VAR[circlesColInner]">rings/inner-ring.png</texture>
-				<visible>!Control.HasFocus(9001)</visible>
-			</control>
-			<control type="image">
-				<width>154</width>
-				<height>122</height>
-				<texture colordiffuse="$VAR[circlesCol]">rings/outer-ring.png</texture>
-				<animation effect="rotate" center="auto" start="90" end="90" time="0"condition="true">Conditional</animation>
-			</control>
-			<control type="label">
-				<width>154</width>
-				<height>122</height>
-				<align>center</align>
-				<font>IconMusicPlaylisteditor</font>
-				<textcolor>$VAR[circlesCol]</textcolor>
-				<label>$INFO[ListItem.Label2]</label>
-			</control>
-		</focusedlayout>
-		<content>
-			<item id="21">
-				<description>Open Button</description>
-				<label>Öffne Wiedergabeliste</label>
-				<label2>Ė</label2>
-				<onclick>SendClick(6)</onclick>
-				<onclick>SetFocus(9001)</onclick>
-				<visible>Control.IsEnabled(6)</visible>
-			</item>
-			<item id="22">
-				<description>Save Button</description>
-				<label>Wiedergabeliste speichern</label>
-				<onclick>SendClick(7)</onclick>
-				<label2>Ĥ</label2>
-				<visible>Control.IsEnabled(7)</visible>
-			</item>
-			<item id="23">
-				<description>Clear button</description>
-				<label>Wiedergabeliste schließen</label>
-				<onclick>SendClick(8)</onclick>
-				<label2>Ģ</label2>
-				<visible>Control.IsEnabled(8)</visible>
-			</item>
-		</content>
+		<top>10</top>
+		<left>20</left>
+		<animation effect="slide" start="-820,0" end="0,0" time="300" tween="quadratic" easing="out">WindowOpen</animation>
+		<animation effect="fade" end="0" start="100" time="300" tween="quadratic" easing="out">WindowClose</animation>
+		<control type="image">
+			<description>Bar</description>
+			<left>863</left>
+			<top>-10</top>
+			<width>148</width>
+			<height>1080</height>
+			<texture colordiffuse="$VAR[CirclesCol]">views/barv.png</texture>
+		</control>
+		<control type="list" id="9001">
+			<description>Menue</description>
+			<left>865</left>
+			<top>160</top>
+			<width>320</width>
+			<height>600</height>
+			<onup>9001</onup>
+			<ondown>9001</ondown>
+			<onleft>50</onleft>
+			<onright>100</onright>
+			<animation type="Conditional" condition="Window.IsActive(contextmenu)">
+				<effect type="slide" start="0,0" end="0,1220" time="300" tween="cubic" easing="inout" />
+			</animation>
+			<itemlayout width="222" height="154">
+				<control type="image">
+					<width>154</width>
+					<height>122</height>
+					<texture colordiffuse="$VAR[CirclesColInner]">rings/inner-ring.png</texture>
+				</control>
+				<control type="image">
+					<width>154</width>
+					<height>122</height>
+					<texture colordiffuse="$VAR[CirclesCol]">rings/outer-ring.png</texture>
+					<animation effect="rotate" center="auto" start="90" end="90" time="0"condition="true">Conditional</animation>
+				</control>
+				<control type="label">
+					<width>154</width>
+					<height>122</height>
+					<align>center</align>
+					<font>IconMusicPlaylisteditor</font>
+					<textcolor>$VAR[CirclesCol]</textcolor>
+					<label>$INFO[ListItem.Label2]</label>
+				</control>
+			</itemlayout>
+			<focusedlayout width="222" height="154">
+				<control type="image">
+					<width>154</width>
+					<height>122</height>
+					<texture colordiffuse="$VAR[SecondaryCol]">rings/inner-ring.png</texture>
+					<visible>Control.HasFocus(9001)</visible>
+				</control>
+				<control type="image">
+					<width>154</width>
+					<height>122</height>
+					<texture colordiffuse="$VAR[CirclesColInner]">rings/inner-ring.png</texture>
+					<visible>!Control.HasFocus(9001)</visible>
+				</control>
+				<control type="image">
+					<width>154</width>
+					<height>122</height>
+					<texture colordiffuse="$VAR[CirclesCol]">rings/outer-ring.png</texture>
+					<animation effect="rotate" center="auto" start="90" end="90" time="0"condition="true">Conditional</animation>
+				</control>
+				<control type="label">
+					<width>154</width>
+					<height>122</height>
+					<align>center</align>
+					<font>IconMusicPlaylisteditor</font>
+					<textcolor>$VAR[CirclesCol]</textcolor>
+					<label>$INFO[ListItem.Label2]</label>
+				</control>
+			</focusedlayout>
+			<content>
+				<item id="21">
+					<description>Open Button</description>
+					<label>Öffne Wiedergabeliste</label>
+					<label2>Ė</label2>
+					<onclick>SendClick(6)</onclick>
+					<onclick>SetFocus(9001)</onclick>
+					<visible>Control.IsEnabled(6)</visible>
+				</item>
+				<item id="22">
+					<description>Save Button</description>
+					<label>Wiedergabeliste speichern</label>
+					<onclick>SendClick(7)</onclick>
+					<label2>Ĥ</label2>
+					<visible>Control.IsEnabled(7)</visible>
+				</item>
+				<item id="23">
+					<description>Clear</description>
+					<label>Wiedergabeliste schließen</label>
+					<onclick>SendClick(8)</onclick>
+					<label2>Ģ</label2>
+					<visible>Control.IsEnabled(8)</visible>
+				</item>
+			</content>
+		</control>
 	</control>
-</control>
-<control type="group">
 	<control type="group"><!-- linke liste -->
 		<left>100</left>
 		<top>140</top>
@@ -177,7 +176,7 @@
 			<top>20</top>
 			<width>410</width>
 			<height>30</height>
-			<textcolor>$VAR[primaryCol]</textcolor>
+			<textcolor>$VAR[PrimaryCol]</textcolor>
 			<scroll>true</scroll>
 			<label>System-Musikdateien</label>
 		</control>
@@ -205,7 +204,6 @@
 			<top>48r</top>
 			<width>600</width>
 			<height>20</height>
-			<scroll>false</scroll>
 			<font>RegularSmall</font>
 			<textcolor>TextColorFO</textcolor>
 			<label>$INFO[Container(50).CurrentPage]/$INFO[Container(50).NumPages]</label>
@@ -222,12 +220,10 @@
 			<viewtype label="">list</viewtype>
 			<pagecontrol>-</pagecontrol>
 			<scrolltime>200</scrolltime>
-			<itemlayout height="60" width="700">
+			<itemlayout width="700" height="button.top.height60">
 				<control type="label">
 					<width>70</width>
-					<height>60</height>
-					<aligny>top</aligny>
-					<textoffsety>12</textoffsety>
+					<include>Item.top.height60</include>
 					<textcolor>TextColorFO</textcolor>
 					<label>$VAR[TrackPrefix]$INFO[ListItem.Tracknumber]</label>
 					<visible>!String.IsEmpty(ListItem.Tracknumber) + !String.IsEmpty(ListItem.FileExtension)</visible>
@@ -235,35 +231,29 @@
 				<control type="label">
 					<left>80</left>
 					<width>580</width>
-					<height>60</height>
-					<aligny>top</aligny>
-					<textoffsety>12</textoffsety>
+					<include>Item.top.height60</include>
 					<label>$INFO[ListItem.Title]</label>
 					<visible>!String.IsEmpty(ListItem.FileExtension)</visible>
 				</control>
 				<control type="label">
 					<left>80</left>
 					<width>580</width>
-					<height>60</height>
-					<aligny>top</aligny>
-					<textoffsety>12</textoffsety>
+					<include>Item.top.height60</include>
 					<label>$INFO[ListItem.Label]</label>
 					<visible>String.IsEmpty(ListItem.FileExtension)</visible>
 				</control>
 			</itemlayout>
-			<focusedlayout height="60" width="700">
+			<focusedlayout width="700" height="button.top.height60">
 				<control type="image">
 					<left>60</left>
 					<width>620</width>
-					<height>60</height>
-					<texture border="0,0,14,0" colordiffuse="$VAR[secondaryCol]">cycle/right-11.png</texture>
+					<height>button.top.height60</height>
+					<texture border="0,0,14,0" colordiffuse="$VAR[SecondaryCol]">cycle/right-11.png</texture>
 					<visible>Control.HasFocus(50)</visible>
 				</control>
 				<control type="label">
 					<width>70</width>
-					<height>60</height>
-					<aligny>top</aligny>
-					<textoffsety>12</textoffsety>
+					<include>Item.top.height60</include>
 					<textcolor>TextColorFO</textcolor>
 					<label>$VAR[TrackPrefix]$INFO[ListItem.Tracknumber]</label>
 					<visible>!String.IsEmpty(ListItem.Tracknumber) + !String.IsEmpty(ListItem.FileExtension)</visible>
@@ -271,9 +261,7 @@
 				<control type="label">
 					<left>80</left>
 					<width>580</width>
-					<height>60</height>
-					<aligny>top</aligny>
-					<textoffsety>12</textoffsety>
+					<include>Item.top.height60</include>
 					<textcolor>TextColorFO</textcolor>
 					<label>$INFO[ListItem.Title]</label>
 					<visible>!String.IsEmpty(ListItem.FileExtension) + Control.HasFocus(50)</visible>
@@ -281,9 +269,7 @@
 				<control type="label">
 					<left>80</left>
 					<width>580</width>
-					<height>60</height>
-					<aligny>top</aligny>
-					<textoffsety>12</textoffsety>
+					<include>Item.top.height60</include>
 					<textcolor>TextColorFO</textcolor>
 					<label>$INFO[ListItem.Label]</label>
 					<visible>String.IsEmpty(ListItem.FileExtension) + Control.HasFocus(50)</visible>
@@ -291,18 +277,14 @@
 				<control type="label">
 					<left>80</left>
 					<width>580</width>
-					<height>60</height>
-					<aligny>top</aligny>
-					<textoffsety>12</textoffsety>
+					<include>Item.top.height60</include>
 					<label>$INFO[ListItem.Title]</label>
 					<visible>!String.IsEmpty(ListItem.FileExtension) + !Control.HasFocus(50)</visible>
 				</control>
 				<control type="label">
 					<left>80</left>
 					<width>580</width>
-					<height>60</height>
-					<aligny>top</aligny>
-					<textoffsety>12</textoffsety>
+					<include>Item.top.height60</include>
 					<label>$INFO[ListItem.Label]</label>
 					<visible>String.IsEmpty(ListItem.FileExtension) + !Control.HasFocus(50)</visible>
 				</control>
@@ -369,13 +351,14 @@
 		<animation effect="slide" start="820,0" end="0,0" time="500" tween="quadratic" easing="out">WindowOpen</animation>
 		<animation effect="slide" end="820,0" start="0,0" time="500" tween="quadratic" easing="out">WindowClose</animation>
 		<left>1120</left>
+		<top>140</top>
 		<control type="label">
 			<description>Titel</description>
 			<left>100</left>
 			<top>20</top>
 			<width>410</width>
 			<height>30</height>
-			<textcolor>$VAR[primaryCol]</textcolor>
+			<textcolor>$VAR[PrimaryCol]</textcolor>
 			<scroll>true</scroll>
 			<label>Aktuelle Wiedergabeliste</label>
 		</control>
@@ -392,7 +375,6 @@
 			<top>48r</top>
 			<width>600</width>
 			<height>20</height>
-			<scroll>false</scroll>
 			<font>RegularSmall</font>
 			<textcolor>TextColorFO</textcolor>
 			<label>$INFO[Container(100).CurrentPage]/$INFO[Container(100).NumPages]</label>
@@ -409,12 +391,10 @@
 			<viewtype label="">list</viewtype>
 			<pagecontrol>0</pagecontrol>
 			<scrolltime>200</scrolltime>
-			<itemlayout height="60" width="700">
+			<itemlayout width="700" height="button.top.height60">
 				<control type="label">
 					<width>70</width>
-					<height>60</height>
-					<aligny>top</aligny>
-					<textoffsety>12</textoffsety>
+					<include>Item.top.height60</include>
 					<textcolor>TextColorFO</textcolor>
 					<label>$VAR[TrackPrefix]$INFO[ListItem.Tracknumber]</label>
 					<visible>!String.IsEmpty(ListItem.Tracknumber) + !String.IsEmpty(ListItem.FileExtension)</visible>
@@ -422,35 +402,29 @@
 				<control type="label">
 					<left>80</left>
 					<width>580</width>
-					<height>60</height>
-					<aligny>top</aligny>
-					<textoffsety>12</textoffsety>
+					<include>Item.top.height60</include>
 					<label>$INFO[ListItem.Title]</label>
 					<visible>!String.IsEmpty(ListItem.FileExtension)</visible>
 				</control>
 				<control type="label">
 					<left>80</left>
 					<width>580</width>
-					<height>60</height>
-					<aligny>top</aligny>
-					<textoffsety>12</textoffsety>
+					<include>Item.top.height60</include>
 					<label>$INFO[ListItem.Label]</label>
 					<visible>String.IsEmpty(ListItem.FileExtension)</visible>
 				</control>
 			</itemlayout>
-			<focusedlayout height="60" width="700">
+			<focusedlayout width="700" height="button.top.height60">
 				<control type="image">
 					<left>60</left>
 					<width>620</width>
-					<height>60</height>
-					<texture border="0,0,14,0" colordiffuse="$VAR[secondaryCol]">cycle/right-11.png</texture>
+					<height>button.top.height60</height>
+					<texture border="0,0,14,0" colordiffuse="$VAR[SecondaryCol]">cycle/right-11.png</texture>
 					<visible>Control.HasFocus(100)</visible>
 				</control>
 				<control type="label">
 					<width>70</width>
-					<height>60</height>
-					<aligny>top</aligny>
-					<textoffsety>12</textoffsety>
+					<include>Item.top.height60</include>
 					<textcolor>TextColorFO</textcolor>
 					<label>$VAR[TrackPrefix]$INFO[ListItem.Tracknumber]</label>
 					<visible>!String.IsEmpty(ListItem.Tracknumber) + !String.IsEmpty(ListItem.FileExtension)</visible>
@@ -458,9 +432,7 @@
 				<control type="label">
 					<left>80</left>
 					<width>580</width>
-					<height>60</height>
-					<aligny>top</aligny>
-					<textoffsety>12</textoffsety>
+					<include>Item.top.height60</include>
 					<textcolor>TextColorFO</textcolor>
 					<label>$INFO[ListItem.Title]</label>
 					<visible>!String.IsEmpty(ListItem.FileExtension) + Control.HasFocus(100)</visible>
@@ -468,9 +440,7 @@
 				<control type="label">
 					<left>80</left>
 					<width>580</width>
-					<height>60</height>
-					<aligny>top</aligny>
-					<textoffsety>12</textoffsety>
+					<include>Item.top.height60</include>
 					<textcolor>TextColorFO</textcolor>
 					<label>$INFO[ListItem.Label]</label>
 					<visible>String.IsEmpty(ListItem.FileExtension) + Control.HasFocus(100)</visible>
@@ -478,18 +448,14 @@
 				<control type="label">
 					<left>80</left>
 					<width>580</width>
-					<height>60</height>
-					<aligny>top</aligny>
-					<textoffsety>12</textoffsety>
+					<include>Item.top.height60</include>
 					<label>$INFO[ListItem.Title]</label>
 					<visible>!String.IsEmpty(ListItem.FileExtension) + !Control.HasFocus(100)</visible>
 				</control>
 				<control type="label">
 					<left>80</left>
 					<width>580</width>
-					<height>60</height>
-					<aligny>top</aligny>
-					<textoffsety>12</textoffsety>
+					<include>Item.top.height60</include>
 					<label>$INFO[ListItem.Label]</label>
 					<visible>String.IsEmpty(ListItem.FileExtension) + !Control.HasFocus(100)</visible>
 				</control>
@@ -497,7 +463,7 @@
 		</control>
 		<control type="group"><!-- Info rechte seite -->
 			<left>30</left>
-			<top>867</top>
+			<top>727</top>
 			<visible>Control.HasFocus(100) + !String.IsEmpty(ListItem.FileExtension)</visible>
 			<control type="label">
 				<description>Icon info</description>
@@ -581,20 +547,20 @@
 				<top>-4</top>
 				<width>258</width>
 				<height>258</height>
-				<texture border="8" colordiffuse="$VAR[circlesCol]">views/white8.png</texture>
+				<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
 			</control>
 			<control type="image"><!-- Fallback -->
 				<description>Hintergrund Farbe</description>
 				<width>250</width>
 				<height>250</height>
-				<texture colordiffuse="$VAR[primaryCol]">White.png</texture>
+				<texture colordiffuse="$VAR[PrimaryCol]">white.png</texture>
 			</control>
 			<control type="label">
 				<description>Fallback icon</description>
 				<width>250</width>
 				<height>250</height>
 				<align>center</align>
-				<textcolor>$VAR[circlesCol]</textcolor>
+				<textcolor>$VAR[CirclesCol]</textcolor>
 				<font>Iconmusicplaylistdefault</font>
 				<label>$VAR[viewtypefallbacks]</label>
 			</control>
@@ -615,11 +581,10 @@
 			<include content="texture_vintageoverlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
 				<param name="width">250</param>
 				<param name="height">250</param>
-				<param name="texture">views/oldpaperOverlay2.png</param>
+				<param name="texture">views/oldpaperoverlay2.png</param>
 			</include>
 		</control>
 	</control>
-</control>
 </control>
 <control type="button" id="6">
 	<description>Open Button</description>
@@ -630,7 +595,7 @@
 	<include>HiddenControl</include>
 </control>
 <control type="button" id="8">
-	<description>Clear button</description>
+	<description>Clear</description>
 	<include>HiddenControl</include>
 </control>
 </controls>

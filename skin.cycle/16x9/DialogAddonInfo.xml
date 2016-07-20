@@ -7,14 +7,14 @@
 <include condition="!Skin.HasSetting(EnableVintageOverlay)">global_background</include>
 <control type="group">
 	<include>Open_Close_Visible_Hidden_Zoom_Animation</include>
-	<visible>!Window.IsVisible(AddonSettings) + !Window.IsActive(TextViewer) + !Window.IsVisible(Custom_1149_Textbox.xml)</visible>
+	<visible>String.IsEmpty(ListItem.AddonBroken) + !Window.IsVisible(AddonSettings) + !Window.IsActive(TextViewer) + !Window.IsVisible(Custom_1121_Textbox.xml)</visible>
 	<control type="image">
 		<description>Circle Bar</description>
 		<left>-500</left>
 		<top>564</top>
 		<width>3000</width>
 		<height>152</height>
-		<texture colordiffuse="$VAR[circlesCol]">views/info/bar.png</texture>
+		<texture colordiffuse="$VAR[CirclesCol]">views/info/bar.png</texture>
 	</control>
 	<control type="list" id="9000"><!-- menue -->
 		<description>Menue</description>
@@ -24,8 +24,9 @@
 		<height>252</height>
 		<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.Title,$ESCVAR[TextBoxTitle],home)</onup>
 		<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.SubTitle,$ESCVAR[TextBoxSubTitle],home)</onup>
+		<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.SubTitle2,$ESCVAR[TextBoxSubTitle2],home)</onup>
 		<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.Plot,$ESCVAR[TextBoxText],home)</onup>
-		<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">ActivateWindow(1149)</onup>
+		<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">ActivateWindow(1121)</onup>
 		<ondown>Dialog.close(all,true)</ondown>
 		<onleft>noop</onleft>
 		<onright>noop</onright>
@@ -37,13 +38,13 @@
 				<control type="image">
 					<width>192</width>
 					<height>152</height>
-					<texture colordiffuse="$VAR[circlesColInner]">rings/inner-ring.png</texture>
+					<texture colordiffuse="$VAR[CirclesColInner]">rings/inner-ring.png</texture>
 				</control>
 				<include>CircleInfoIcon</include>
 				<control type="image">
 					<width>192</width>
 					<height>152</height>
-					<texture colordiffuse="$VAR[circlesCol]">rings/outer-ring.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">rings/outer-ring.png</texture>
 				</control>
 			</control>
 		</itemlayout>
@@ -53,20 +54,20 @@
 				<control type="image">
 					<width>192</width>
 					<height>152</height>
-					<texture colordiffuse="$VAR[primaryCol]">rings/inner-ring.png</texture>
+					<texture colordiffuse="$VAR[PrimaryCol]">rings/inner-ring.png</texture>
 					<visible>Control.HasFocus(9000)</visible>
 				</control>
 				<control type="image">
 					<width>192</width>
 					<height>152</height>
-					<texture colordiffuse="$VAR[circlesColInner]">rings/inner-ring.png</texture>
+					<texture colordiffuse="$VAR[CirclesColInner]">rings/inner-ring.png</texture>
 					<visible>!Control.HasFocus(9000)</visible>
 				</control>
 				<include>CircleInfoIcon</include>
 				<control type="image">
 					<width>192</width>
 					<height>152</height>
-					<texture colordiffuse="$VAR[circlesCol]">rings/outer-ring.png</texture>
+					<texture colordiffuse="$VAR[CirclesCol]">rings/outer-ring.png</texture>
 				</control>
 			</control>
 			<control type="label">
@@ -92,25 +93,30 @@
 				<label2>Ġ</label2>
 				<visible>!Window.IsActive(addonbrowser) | ListItem.Property(Addon.IsEnabled)</visible>
 			</item>
-			<item id="27"><!-- $INFO[Control.GetLabel(13)]check $VAR[AddonUpdateLabel] -->
-				<description>Auto Update button</description>
-				<label>Update</label>
-				<onclick>SetFocus(9001)</onclick>
+			<item id="27">
+				<description>Auto Update</description>
+				<label>Einstellen</label>
+				<onclick condition="ListItem.Property(addon.isinstalled)">SetFocus(9001)</onclick>
+				<onclick condition="!ListItem.Property(addon.isinstalled)">SendClick(addoninformation,6)</onclick>
 				<label2>x</label2>
 				<visible>[Control.IsEnabled(13) + Control.IsVisible(13) | Control.IsEnabled(8) + Control.IsVisible(8) | Control.IsEnabled(6) + Control.IsVisible(6)]</visible>
 			</item>
 			<item id="25">
-				<description>Enable/Disable Addon button</description>
+				<description>Enable/Disable Addon</description>
 				<label>$INFO[Control.GetLabel(7)]</label>
 				<onclick>SendClick(addoninformation,7)</onclick>
 				<label2>$VAR[AddonEnable-Disable-Label]</label2>
+				<visible>ListItem.Property(addon.isinstalled)</visible>
 			</item>
 			<item id="26">
-				<description>Changelog button</description>
+				<description>AddonNews</description>
 				<label>$LOCALIZE[24036]</label>
-				<onclick>SendClick(addoninformation,10)</onclick>
+				<onclick>SetProperty(TextBox.Title,$ESCVAR[TextBoxTitle],home)</onclick>
+				<onclick>SetProperty(TextBox.SubTitle,$LOCALIZE[24036],home)</onclick>
+				<onclick>SetProperty(TextBox.Plot,$ESCINFO[ListItem.AddonNews],home)</onclick>
+				<onclick>ActivateWindow(1121)</onclick>
 				<label2>È</label2>
-				<visible>Control.IsEnabled(10) + Control.IsVisible(10)</visible>
+				<visible>!String.IsEmpty(ListItem.AddonNews)</visible>
 			</item>
 		</content>
 	</control>
@@ -132,20 +138,20 @@
 			<top>-5</top>
 			<width>582</width>
 			<height>582</height>
-			<texture border="8" colordiffuse="$VAR[circlesCol]">views/white8.png</texture>
+			<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
 		</control>
 		<control type="image"><!-- Fallback -->
 			<description>Hintergrund Farbe</description>
 			<width>572</width>
 			<height>572</height>
-			<texture background="true" colordiffuse="$VAR[primaryCol]">White.png</texture>
+			<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
 		</control>
 		<control type="label">
 			<description>Fallback Icon</description>
 			<width>572</width>
 			<height>572</height>
 			<align>center</align>
-			<textcolor>$VAR[circlesCol]</textcolor>
+			<textcolor>$VAR[CirclesCol]</textcolor>
 			<font>IconInfoThumbdefault</font>
 			<label>$VAR[viewtypefallbacks]</label>
 		</control>
@@ -160,7 +166,7 @@
 		<include content="texture_vintageoverlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
 			<param name="width">572</param>
 			<param name="height">572</param>
-			<param name="texture">views/oldpaperOverlay2.png</param>
+			<param name="texture">views/oldpaperoverlay2.png</param>
 		</include>
 	</control>
 	<control type="group"><!-- Info -->
@@ -171,12 +177,12 @@
 			<width>850</width>
 			<height>60</height>
 			<font>TitleCapsBig</font>
-			<label>$INFO[ListItem.AddonName]$INFO[ListItem.AddonVersion,, - ]</label><!-- check -->
+			<label>$INFO[ListItem.AddonName]$INFO[ListItem.AddonVersion, - ,]</label>
 		</control>
 		<control type="textbox" id="9005">
 			<top>76</top>
 			<width>850</width>
-			<height max="228">auto</height>
+			<height max="222">auto</height>
 			<font>Plot</font>
 			<autoscroll time="5000" delay="8000" repeat="5000">true</autoscroll>
 			<label fallback="Kein Überblick gefunden">$INFO[ListItem.AddonDescription]</label>
@@ -197,7 +203,7 @@
 		</control>
 	</control>
 	<control type="group">
-		<description>zuletzt benutzt</description>
+		<description>Zuletzt Benutzt</description>
 		<left>1360</left>
 		<top>800</top>
 		<control type="label">
@@ -236,7 +242,7 @@
 		</control>
 	</control>
 	<control type="group"><!-- buttonmenue -->
-		<description>update buttonmenue</description>
+		<description>Einstellen Buttonmenue</description>
 		<left>730</left>
 		<top>300</top>
 		<include>Dialog_popup_Animation</include>
@@ -254,7 +260,7 @@
 			<top>-11</top>
 			<width>702</width>
 			<height>80</height>
-			<texture border="14,0,14,0" flipy="true" colordiffuse="$VAR[primaryCol]" background="true">cycle/full-11.png</texture>
+			<texture border="14,0,14,0" flipy="true" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texture>
 		</control>
 		<control type="grouplist">
 			<description>Titel</description>
@@ -288,7 +294,6 @@
 			<height>356</height>
 			<width>701</width>
 			<focusposition>1</focusposition>
-			<orientation>vertical</orientation>
 			<onleft>9000</onleft>
 			<onright>9000</onright>
 			<ondown>9001</ondown>
@@ -296,20 +301,20 @@
 			<onback>9000</onback>
 			<itemgap>0</itemgap>
 			<control type="radiobutton" id="13">
-				<description>Autouptade button</description>
-				<include>ColorMenuButtonValues</include>
+				<description>Autoupdate</description>
+				<include>AddonMenuButtonValues</include>
 				<visible>Control.IsEnabled(13)</visible>
 			</control>
 			<control type="button" id="8">
-				<description>Update Addon button</description>
+				<description>Update Addon</description>
 				<label>Aktualisierung suchen</label>
-				<include>ColorMenuButtonValues</include>
+				<include>AddonMenuButtonValues</include>
 				<visible>Control.IsEnabled(8)</visible>
 			</control>
 			<control type="button" id="6">
-				<description>Install/UnInstall Addon button</description>
-				<include>ColorMenuButtonValues</include>
-				<selected>ListItem.Property(addon.isinstalled) | !Window.IsActive(addonbrowser)</selected>
+				<description>Install/UnInstall Addon</description>
+				<include>AddonMenuButtonValues</include>
+				<visible>Control.IsEnabled(6) + Control.IsVisible(6)</visible>
 			</control>
 		</control>
 	</control>
@@ -321,7 +326,7 @@
 	<control type="label">
 		<description>Icon</description>
 		<left>760</left>
-		<top>140</top>
+		<top>440</top>
 		<width>400</width>
 		<height>200</height>
 		<align>center</align>
@@ -330,19 +335,28 @@
 	</control>
 	<control type="label">
 		<description>Titel</description>
-		<left>760</left>
-		<top>520</top>
-		<width>400</width>
+		<left>560</left>
+		<top>660</top>
+		<width>800</width>
 		<height>80</height>
 		<align>center</align>
 		<font>BoldNormal</font>
-		<label>Fehler</label>
+		<label>Addon ist als Defekt markiert</label>
 	</control>
 	<control type="label">
 		<description>Subtitel</description>
-		<left>760</left>
-		<top>780</top>
-		<width>400</width>
+		<left>560</left>
+		<top>740</top>
+		<width>800</width>
+		<height>50</height>
+		<align>center</align>
+		<label>$INFO[ListItem.AddonName]</label>
+	</control>
+	<control type="label">
+		<description>Subtitel</description>
+		<left>560</left>
+		<top>790</top>
+		<width>800</width>
 		<height>80</height>
 		<align>center</align>
 		<label>$INFO[ListItem.AddonBroken]</label>
@@ -353,16 +367,12 @@
 	<include>HiddenControl</include>
 </control>
 <control type="button" id="7">
-	<description>Enable/Disable Addon button</description>
+	<description>Enable/Disable Addon</description>
 	<include>HiddenControl</include>
 	<selected>!String.StartsWith(Control.GetLabel(7),$LOCALIZE[24022]) | !Window.IsActive(addonbrowser)</selected>
 </control>
-<control type="button" id="10">
-	<description>Changelog button</description>
-	<include>HiddenControl</include>
-</control>
 <control type="button" id="12">
-	<description>Changelog button</description>
+	<description>Changelog</description>
 	<include>HiddenControl</include>
 </control>
 </controls>

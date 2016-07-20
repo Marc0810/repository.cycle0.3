@@ -3,28 +3,28 @@
 <!-- Cycle 0.3 -->
 <defaultcontrol always="true">-</defaultcontrol>
 <coordinates>
-	<left>0</left>
-	<top>0</top>
+	<origin x="0" y="5">!Window.IsVisible(home)</origin>
+	<origin x="0" y="0">Window.IsVisible(home)</origin>
 </coordinates>
 <zorder>154</zorder>
 <controls>
-<control type="group">
+<control type="group"><!-- Volume - mit im custom overlay fuer fullscreens -->
 	<left>1625</left>
-	<top>-120</top>
+	<top>-126</top>
 	<description>Default layout</description>
 	<include>Dialog_topdown_Animation</include>
 	<visible>!Player.Muted + !Window.IsVisible(startup)</visible>
-	<animation type="Conditional" condition="[Window.IsVisible(DialogNotification.xml) | Window.IsActive(busydialog) | Window.IsVisible(Custom_1118_Histroyloader.xml)]" reversible="true">
+	<animation type="Conditional" condition="[Window.IsVisible(Notification) | Window.IsActive(busydialog) | Window.IsVisible(Custom_1118_Histroyloader.xml)]" reversible="true">
 		<effect type="fade" start="100" end="0" time="120" tween="cubic" easing="out" />
 	</animation>
 	<control type="image">
 		<description>Hintergrund oben diffuse</description>
 		<left>-1625</left>
-		<top>-30</top>
+		<top>-63</top>
 		<width>1920</width>
-		<height>206</height>
-		<texture border="1" colordiffuse="VideooverlayVignette">dialogs/NowPlayingOverlay.png</texture>
-		<visible>[Window.IsVisible(fullscreenvideo)] + ![Window.IsVisible(fullscreeninfo) | Window.IsVisible(videoosd) | Window.IsVisible(seekbar)]</visible>
+		<height>266</height>
+		<texture border="1" colordiffuse="VideooverlayVignette">dialogs/nowplayingoverlay.png</texture>
+		<visible>Window.IsVisible(fullscreenvideo) + ![Window.IsVisible(fullscreeninfo) | Window.IsVisible(videoosd) | Window.IsVisible(seekbar)]</visible>
 	</control>
 	<control type="grouplist">
 		<width>240</width>
@@ -48,49 +48,6 @@
 			<label>$INFO[Player.Volume]</label>
 			<visible>!Player.Muted</visible>
 		</control>
-	</control>
-</control>
-<control type="group">
-	<left>1580</left>
-	<top>-120</top>
-	<description>Default layout</description>
-	<include>Dialog_topdown_Animation</include>
-	<control type="image">
-		<description>Hintergrund oben diffuse</description>
-		<left>-12</left>
-		<top>-10</top>
-		<width>100</width>
-		<height>88</height>
-		<texture colordiffuse="VideooverlayVignette">dialogs/NowPlayingRoundOverlay.png</texture>
-		<visible>[Window.IsVisible(fullscreenvideo) | Window.IsVisible(visualisation)] + ![Window.IsVisible(fullscreeninfo) | Window.IsVisible(musicosd) | Window.IsVisible(videoosd) | Window.IsVisible(seekbar)]</visible>
-		<animation type="Conditional" condition="true">
-			<effect type="fade" start="30" end="30" time="0" />
-		</animation>
-	</control>
-	
-	<control type="label">
-		<width>80</width>
-		<height>70</height>
-		<textcolor>$VAR[OSDDialogColor]</textcolor>
-		<font>IconVolume</font>
-		<label>Ÿ</label>
-		<visible>Player.Muted + [Window.IsVisible(fullscreenvideo) | Window.IsVisible(visualisation)]</visible>
-	</control>
-</control>
-<control type="group">
-	<description>Passthrough layout</description>
-	<left>1625</left>
-	<top>-120</top>
-	<visible>player.passthrough</visible>
-	<visible>!Player.Muted + !Window.IsActive(startup)</visible>
-	<control type="label">
-		<description>Passthrough Label</description>
-		<left>90</left>
-		<top>-15</top>
-		<width>495</width>
-		<height>30</height>
-		<label>$LOCALIZE[29802]</label>
-		<textcolor>$VAR[OSDDialogColor]</textcolor>
 	</control>
 </control>
 </controls>

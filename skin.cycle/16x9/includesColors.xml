@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 <!-- Cycle 0.3 -->
-<variable name="primaryCol">
-	<value condition="!String.IsEmpty(Skin.String(primaryCol))">$INFO[Skin.String(primaryCol)]</value>
+<variable name="PrimaryCol">
+	<value condition="!String.IsEmpty(Skin.String(PrimaryCol))">$INFO[Skin.String(PrimaryCol)]</value>
 	<value>primaryCol</value>
 </variable>
 
-<variable name="secondaryCol">
-	<value condition="!String.IsEmpty(Skin.String(secondaryCol))">$INFO[Skin.String(secondaryCol)]</value>
+<variable name="SecondaryCol">
+	<value condition="!String.IsEmpty(Skin.String(SecondaryCol))">$INFO[Skin.String(SecondaryCol)]</value>
 	<value>secondaryCol</value>
 </variable>
 
-<variable name="circlesCol">
-	<value condition="!String.IsEmpty(Skin.String(circlesCol))">$INFO[Skin.String(circlesCol)]</value>
+<variable name="CirclesCol">
+	<value condition="!String.IsEmpty(Skin.String(CirclesCol))">$INFO[Skin.String(CirclesCol)]</value>
 	<value>circlesCol</value>
 </variable>
 
-<variable name="circlesColInner">
-	<value condition="!String.IsEmpty(Skin.String(circlesColInner))">$INFO[Skin.String(circlesColInner)]</value>
+<variable name="CirclesColInner">
+	<value condition="!String.IsEmpty(Skin.String(CirclesColInner))">$INFO[Skin.String(CirclesColInner)]</value>
 	<value>circlesColInner</value>
 </variable>
 
@@ -43,17 +43,17 @@
 
 <variable name="InaktivImageDiffuse">
 	<value condition="!String.IsEmpty(Skin.String(InaktivImageDiffuse))">$INFO[Skin.String(InaktivImageDiffuse)]F1F1F1</value>
-	<value>29F1F1F1</value>
+	<value>66F1F1F1</value>
 </variable>
 
 <variable name="BackgroundCloudsDiffuse">
 	<value condition="!String.IsEmpty(Skin.String(BackgroundCloudsDiffuse))">$INFO[Skin.String(BackgroundCloudsDiffuse)]F1F1F1</value>
-	<value>29F1F1F1</value>
+	<value>FAF1F1F1</value>
 </variable>
 
 <variable name="BackgroundFanartDiffuse">
 	<value condition="!String.IsEmpty(Skin.String(BackgroundFanartDiffuse))">$INFO[Skin.String(BackgroundFanartDiffuse)]F1F1F1</value>
-	<value>29F1F1F1</value>
+	<value>1CF1F1F1</value>
 </variable>
 
 <variable name="SelectedCol">
@@ -64,6 +64,8 @@
 	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">FFFA5B34</value><!-- Vintage -->
 	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">FF990099</value><!-- Lila -->
 	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">FFEB789B</value><!-- grau -->
+	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">FF0B486B</value><!-- blau -->
+	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">FF2E0D23</value><!-- mix -->
 	
 	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">FFEB789B</value><!-- Standard -->
 	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">FFFC580C</value><!-- Orange -->
@@ -72,6 +74,8 @@
 	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">FF809380</value><!-- Vintage -->
 	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">FF8F2583</value><!-- Lila -->
 	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">FFEB789B</value><!-- grau -->
+	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">FF1F998F</value><!-- blau -->
+	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">FFD4A056</value><!-- mix -->
 	<value>red</value>
 </variable>
 
@@ -83,6 +87,8 @@
 	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">FFFDE5C0</value><!-- Vintage -->
 	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">FFE1C7E1</value><!-- Lila -->
 	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">FFEB789B</value><!-- grau -->
+	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">FF6CC3C3</value><!-- blau -->
+	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">FFF54828</value><!-- mix -->
 	
 	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">FF90C0D8</value><!-- Standard -->
 	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">FFFEEBCF</value><!-- Orange -->
@@ -91,10 +97,56 @@
 	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">FFDBFADB</value><!-- Vintage -->
 	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">FFFED7FE</value><!-- Lila -->
 	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">FFEB789B</value><!-- grau -->
+	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">FF56E1D5</value><!-- blau -->
+	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">FFFDE6C5</value><!-- mix -->
 	<value>red</value>
 </variable>
 
-<!-- Colorchangeincludes -->
+<variable name="SecondaryLogoCol">
+	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">FF3D97B5</value><!-- Standard -->
+	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">FFF48663</value><!-- Orange -->
+	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">FFEC638D</value><!-- Rot -->
+	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">FFA3D569</value><!-- Gruen -->
+	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">FFF88D73</value><!-- Vintage -->
+	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">FFC75EC7</value><!-- Lila -->
+	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">FF8C8B84</value><!-- grau -->
+	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">FF367EA7</value><!-- blau -->
+	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">FF903170</value><!-- mix -->
+	
+	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">FF75A5EF</value><!-- Standard -->
+	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">FFFD8A54</value><!-- Orange -->
+	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">FFD66287</value><!-- Rot -->
+	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">FF99B625</value><!-- Gruen -->
+	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">FFA4C1A4</value><!-- Vintage -->
+	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">FFB04FA5</value><!-- Lila -->
+	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">FFACA7A7</value><!-- grau -->
+	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">FF62C6BE</value><!-- blau -->
+	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">FFD4A056</value><!-- mix -->
+	<value>SecondaryCol</value>
+</variable>
+	
+<variable name="LastwatchedCol">
+	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">FFB7E9FA</value><!-- Standard -->
+	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">FFFD4207</value><!-- Orange -->
+	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">FFFD024F</value><!-- Rot -->
+	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">FFD9FDAF</value><!-- Gruen -->
+	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">FFFFE3B8</value><!-- Vintage -->
+	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">FFFA04FA</value><!-- Lila -->
+	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">FFDCDBD8</value><!-- grau -->
+	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">FFAEDFFB</value><!-- blau -->
+	<value condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">FFCC0589</value><!-- mix -->
+	
+	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">FFC6DBFC</value><!-- Standard -->
+	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">FFFDC0A3</value><!-- Orange -->
+	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">FFF40F58</value><!-- Rot -->
+	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">FFB5DE11</value><!-- Gruen -->
+	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">FFAEF7AE</value><!-- Vintage -->
+	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">FFE205C9</value><!-- Lila -->
+	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">FFE3E0E0</value><!-- grau -->
+	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">FF87F6ED</value><!-- blau -->
+	<value condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">FFCC6600</value><!-- mix -->
+	<value>SecondaryCol</value>
+</variable>
 
 <!-- ######################### -->
 <!-- farben:
@@ -164,285 +216,71 @@
 	FA	0,96
 ############################## -->
 
-<include name="ColorchangeClickReset">
-	<!-- reset -->
-	<onclick>Skin.Reset(primaryCol)</onclick>
-	<onclick>Skin.Reset(secondaryCol)</onclick>
-	<onclick>skin.Reset(BackgroundFanartDiffuse)</onclick>
-	<onclick>skin.Reset(InaktivImageDiffuse)</onclick>
-	<onclick>skin.Reset(BackgroundCloudsDiffuse)</onclick>
-	<onclick>skin.Reset(BackdropCol)</onclick>
-	<onclick>Skin.Reset(circlesCol)</onclick>
-	<onclick>Skin.Reset(circlesColInner)</onclick>
-	<onclick>Skin.Reset(IconNFCol)</onclick>
-	<onclick>Skin.Reset(IconFOCol)</onclick>
-	<onclick>Skin.Reset(DialogCol)</onclick>
-</include>
-
-<include name="ColorchangeClickStandard">
-	<!-- vintage blau -->
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(primaryCol,FF186078)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(secondaryCol,FF90C0D8)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(circlesCol,FFEBEBEC)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(circlesColInner,FFA7A7A7)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(IconNFCol,7FF1F1F1)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(IconFOCol,FFF1F1F1)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(DialogCol,FFF1F1F1)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(InaktivImageDiffuse,66)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(BackdropCol,05186078)</onclick>
-	<!-- cycle blau -->
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(primaryCol,FF4178CC)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(secondaryCol,FF87BEFF)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(circlesCol,FFEBEBEC)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(circlesColInner,FFA3A3A3)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(IconNFCol,7FF1F1F1)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(IconFOCol,FFF1F1F1)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(DialogCol,FFF1F1F1)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(InaktivImageDiffuse,66)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(BackgroundCloudsDiffuse,FA)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(BackgroundFanartDiffuse,1C)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(BackdropCol,38D2D2D2)</onclick>
-</include>
-
-<include name="ColorchangeClickOrange">
-	<!-- vintage orange - braeunlich -->
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(primaryCol,FFBF4D28)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(secondaryCol,FFAC3109)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(circlesCol,FFFFF6EF)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(circlesColInner,FFC0B59D)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(IconNFCol,7FFFEDDF)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(IconFOCol,FFFFEDDF)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(DialogCol,FFFFF6EF)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(InaktivImageDiffuse,66)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(BackdropCol,05BF4D28)</onclick>
-	<!-- cycle orange -->
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(primaryCol,FFFC580C)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(secondaryCol,FFF8872E)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(circlesCol,FFFFF6EF)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(circlesColInner,FFFFA927)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(IconNFCol,7FFFEDDF)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(IconFOCol,FFFFEDDF)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(DialogCol,FFFFF6EF)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(InaktivImageDiffuse,66)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(BackgroundCloudsDiffuse,FA)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(BackgroundFanartDiffuse,1C)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(BackdropCol,0A63380E)</onclick>
-</include>
-
-<include name="ColorchangeClickRot">
-	<!-- vintage rot -->
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(primaryCol,FFDA3266)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(secondaryCol,FFAD1A47)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(circlesCol,FFFFF8FB)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(IconNFCol,7FFCE8E8)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(IconFOCol,FFFCE8E8)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(circlesColInner,FFBAA5A7)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(DialogCol,FFEEECED)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(InaktivImageDiffuse,34)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(BackdropCol,05DA3266)</onclick>
-	<!-- cycle rot -->
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(primaryCol,FFBC2455)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(secondaryCol,FFA30538)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(circlesCol,FFEEE5E7)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(IconNFCol,7FFFCCCC)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(IconFOCol,FFFFCCCC)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(circlesColInner,FF9D9C9C)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(DialogCol,FFFEF6FA)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(InaktivImageDiffuse,34)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(BackgroundCloudsDiffuse,FA)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(BackgroundFanartDiffuse,0F)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(BackdropCol,0A2C0310)</onclick>
-</include>
-	
-<include name="ColorchangeClickGruen">
-	<!-- vintage gruen -->
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(primaryCol,FF769B4B)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(secondaryCol,FFAADB71)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(circlesCol,FFF7F7F7)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(IconNFCol,FF91BC5F)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(IconFOCol,FFF5FFF5)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(circlesColInner,FF858C7E)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(DialogCol,FFF7F7F7)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(InaktivImageDiffuse,34)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(BackdropCol,05769B4B)</onclick>
-	<!-- cycle gruen -->
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(primaryCol,FF789018)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(secondaryCol,FF9EC113)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(circlesCol,FFF2FDF1)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(IconNFCol,7FF2FDF1)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(IconFOCol,FFF2FDF1)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(circlesColInner,FF868D6B)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(DialogCol,FFF2FDF1)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(InaktivImageDiffuse,34)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(BackgroundCloudsDiffuse,FA)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(BackgroundFanartDiffuse,0F)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(BackdropCol,0A868D6B)</onclick>
-</include>
-
-<include name="ColorchangeClickVintage">
-	<!-- vintage vintage -->
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(primaryCol,FFFA5B34)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(secondaryCol,FFFF8D71)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(circlesCol,FFF3F4E4)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(IconNFCol,B8FAFFFA)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(IconFOCol,FFFAFFFA)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(circlesColInner,FFB5C3B4)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(DialogCol,FFFAFFFA)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(InaktivImageDiffuse,34)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(BackdropCol,05FA5B34)</onclick>
-	<!-- cycle vintage - graublau -->
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(primaryCol,FF809380)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(secondaryCol,FFC0D8C0)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(circlesCol,FFE4E7E4)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(IconNFCol,B8FAFFFA)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(IconFOCol,FFFAFFFA)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(circlesColInner,FFB6B691)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(DialogCol,FFFAFFFA)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(InaktivImageDiffuse,34)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(BackgroundCloudsDiffuse,FA)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(BackgroundFanartDiffuse,14)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(BackdropCol,1A616C61)</onclick>
-</include>
-	
-<include name="ColorchangeClickLila">
-	<!-- vintage lila -->
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(primaryCol,FF934693)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(secondaryCol,FFCB88CB)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(circlesCol,FFEFEDEF)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(IconNFCol,7FEADAEA)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(IconFOCol,FFEADAEA)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(circlesColInner,FF9B7E9B)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(DialogCol,FFF2F2F2)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(InaktivImageDiffuse,34)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(BackdropCol,05934693)</onclick>
-	<!-- cycle lila -->
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(primaryCol,FF8F2583)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(secondaryCol,FFB74BAB)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(circlesCol,FFF3E9F2)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(IconNFCol,7FF3E9FC)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(IconFOCol,FFF3E9FC)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(circlesColInner,FFB085AB)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(DialogCol,FFFCF4FB)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(InaktivImageDiffuse,34)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(BackgroundCloudsDiffuse,FA)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(BackgroundFanartDiffuse,0F)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(BackdropCol,0A940533)</onclick>
-</include>
-
-<include name="ColorchangeClickGrau">
-	<!-- vintage schwarz -->
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(primaryCol,FF55544F)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(secondaryCol,FF8C8A84)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(circlesCol,FFF0EFEA)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(IconNFCol,7FAAB3AB)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(IconFOCol,FFAAB3AB)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(circlesColInner,FFC4CBB7)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(DialogCol,FFF2F2F2)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(InaktivImageDiffuse,34)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(BackdropCol,0A55544F)</onclick>
-	<!-- cycle schwarz -->
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(primaryCol,FF767676)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(secondaryCol,FF9B9B9A)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(circlesCol,FFEAEAEA)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(IconNFCol,7FECECEC)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(IconFOCol,FFECECEC)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(circlesColInner,FFB5B5B5)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(DialogCol,FFEEEEEE)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(InaktivImageDiffuse,34)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(BackgroundCloudsDiffuse,FA)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(BackgroundFanartDiffuse,1A)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(BackdropCol,1A4D4D4D)</onclick>
-</include>
-	
-<include name="ColorchangeClickDunklesblau">
-	<!-- vintage blau -->
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(primaryCol,FF4C58A4)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(secondaryCol,FFB7BDDC)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(circlesCol,FFEAEEF0)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(IconNFCol,7FF5FDFE)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(IconFOCol,FFF5FDFE)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(circlesColInner,FF8A90AD)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(DialogCol,FFEAEEF0)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(InaktivImageDiffuse,34)</onclick>
-	<onclick condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(BackdropCol,054C58A4)</onclick>
-	<!-- cycle blau -->
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(primaryCol,FF1F998F)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(secondaryCol,FF30BDB1)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(circlesCol,FFF4FFFE)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(IconNFCol,7FE4EEED)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(IconFOCol,FFE4EEED)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(circlesColInner,FF7F9796)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(DialogCol,FFF5FDFD)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(InaktivImageDiffuse,4D)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(BackgroundCloudsDiffuse,FA)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(BackgroundFanartDiffuse,1A)</onclick>
-	<onclick condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(BackdropCol,1A4D4D4D)</onclick>
-</include>
-	
 <!-- MusicVizColor1 -->
 <variable name="MusicVizColor1">
-	<value condition="!String.IsEmpty(Skin.String(primaryCol))">6B$INFO[Skin.String(primaryCol)]</value>
-	<value>primaryCol</value>
+	<value condition="!String.IsEmpty(Skin.String(PrimaryCol))">6B$INFO[Skin.String(PrimaryCol)]</value>
+	<value>PrimaryCol</value>
 </variable>
 
 <variable name="MusicVizColor2">
-	<value condition="!String.IsEmpty(Skin.String(primaryCol))">F5$INFO[Skin.String(primaryCol)]</value>
-	<value>primaryCol</value>
+	<value condition="!String.IsEmpty(Skin.String(PrimaryCol))">F5$INFO[Skin.String(PrimaryCol)]</value>
+	<value>PrimaryCol</value>
 </variable>
 
 <variable name="MusicVizColor3">
-	<value condition="!String.IsEmpty(Skin.String(primaryCol))">FF$INFO[Skin.String(primaryCol)]</value>
-	<value>primaryCol</value>
+	<value condition="!String.IsEmpty(Skin.String(PrimaryCol))">FF$INFO[Skin.String(PrimaryCol)]</value>
+	<value>PrimaryCol</value>
 </variable>
 
 <variable name="MusicVizColor4">
-	<value condition="!String.IsEmpty(Skin.String(primaryCol))">6B$INFO[Skin.String(primaryCol)]</value>
-	<value>primaryCol</value>
+	<value condition="!String.IsEmpty(Skin.String(PrimaryCol))">6B$INFO[Skin.String(PrimaryCol)]</value>
+	<value>PrimaryCol</value>
 </variable>
 
 <variable name="MusicVizColor5">
-	<value condition="!String.IsEmpty(Skin.String(primaryCol))">FA$INFO[Skin.String(primaryCol)]</value>
-	<value>primaryCol</value>
+	<value condition="!String.IsEmpty(Skin.String(PrimaryCol))">FA$INFO[Skin.String(PrimaryCol)]</value>
+	<value>PrimaryCol</value>
 </variable>
 
 <variable name="MusicVizColor6">
-	<value condition="!String.IsEmpty(Skin.String(primaryCol))">F5$INFO[Skin.String(primaryCol)]</value>
-	<value>primaryCol</value>
+	<value condition="!String.IsEmpty(Skin.String(PrimaryCol))">F5$INFO[Skin.String(PrimaryCol)]</value>
+	<value>PrimaryCol</value>
 </variable>
 
 <variable name="MusicVizColor7">
-	<value condition="!String.IsEmpty(Skin.String(primaryCol))">B8$INFO[Skin.String(primaryCol)]</value>
-	<value>primaryCol</value>
+	<value condition="!String.IsEmpty(Skin.String(PrimaryCol))">B8$INFO[Skin.String(PrimaryCol)]</value>
+	<value>PrimaryCol</value>
 </variable>
 
 <variable name="Colorswitch">
-	<value condition="Skin.HasSetting(Colorswitch)">00000000</value>
-	<value>whiteDark</value>
+	<value condition="Skin.HasSetting(Colorswitch)">FF000000</value>
+	<value>TextColorFO</value>
 </variable>
 <variable name="ColorswitchInv">
-	<value condition="!Skin.HasSetting(Colorswitch)">FAFFFFFF</value>
-	<value>FA000000</value>
+	<value condition="Skin.HasSetting(Colorswitch)">TextColorFO</value>
+	<value>00000000</value>
 </variable>
 
 <variable name="MusicVizLight">
-	<value condition="Skin.HasSetting(Colorswitch)">ff5C5C5C</value><!-- dark -->
-	<value>FFA3A3A3</value>
+	<value condition="Skin.HasSetting(Colorswitch)">FF9A9999</value><!-- dark -->
+	<value>TextColorMedium</value>
 </variable>
 
 <variable name="MusicVizMedium">
-	<value condition="Skin.HasSetting(Colorswitch)">ff979797</value><!-- dark -->
-	<value>FF686868</value>
+	<value condition="Skin.HasSetting(Colorswitch)">FFBCBBBB</value><!-- dark -->
+	<value>TextColorMedium</value>
 </variable>
 
 <variable name="MusicVizHeavy">
-	<value condition="Skin.HasSetting(Colorswitch)">ffB8B8B8</value><!-- dark -->
-	<value>FF474747</value>
+	<value condition="Skin.HasSetting(Colorswitch)">FFE5E5E5</value><!-- dark -->
+	<value>TextColorHeavy</value>
 </variable>
-
+	
 <!-- Dialog Heading Farben mit und ohne OSD -->
 <variable name="OSDDialogColor">
-	<value condition="[Window.IsActive(fullscreenvideo) | Window.IsActive(slideshow) | Window.IsActive(screensaver)]">whiteDark</value>
-	<value condition="Window.IsActive(visualisation)">$VAR[MusicVizHeavy]</value>
+	<value condition="Window.IsActive(fullscreenvideo) | Window.IsActive(slideshow) | Window.IsActive(screensaver)">TextColorFO</value>
+	<value condition="Window.IsActive(visualisation) + !Skin.HasSetting(Colorswitch)">FF474747</value>
+	<value condition="Window.IsActive(visualisation) + Skin.HasSetting(Colorswitch)">TextColorFO</value>
 	<value>TextColorMedium</value>
 </variable>
 

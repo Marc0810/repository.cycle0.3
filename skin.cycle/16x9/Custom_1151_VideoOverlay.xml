@@ -3,11 +3,12 @@
 <!-- Cycle 0.3 -->
 <zorder>135</zorder><!-- zorder hoeher fuer volumebar darueber -->
 <onload>SetProperty(RefreshList3,1)</onload>
-<visible>Window.IsVisible(fullscreenvideo) + VideoPlayer.Content(episodes) + [!Window.IsVisible(seekbar) + !Window.IsVisible(fullscreeninfo) + !Window.IsVisible(VideoOSD)]</visible>
+<visible>[Window.IsVisible(fullscreenvideo) | Window.IsVisible(Visualisation)] + [!Window.IsVisible(seekbar) + !Window.IsVisible(fullscreeninfo) + !Window.IsVisible(VideoOSD)]</visible>
 <controls>
-<control type="group"><!-- Next Item Hidden Controls -->
+<control type="group"><!-- aktuelle playliste Hidden Controls -->
 	<top>-200</top>
-	<description>Next playliste item hiden - container autoscroll bis match aktueller titel, offset 1 = neachstes</description>
+	<description>aktuelle playliste - container autoscroll bis match aktueller titel, offset 1 = neachstes</description>
+	<visible>VideoPlayer.Content(episodes)</visible>
 	<control type="label" id="111">
 		<include>HiddenControl</include>
 		<label>$INFO[VideoPlayer.Title]</label>
@@ -56,12 +57,12 @@
 	<width>1920</width>
 	<height>206</height>
 	<visible>[!Window.IsVisible(seekbar) + !Window.IsVisible(fullscreeninfo) + !Player.Muted + !Window.IsVisible(volumebar) + !Window.IsVisible(Custom_1197_ColorTimeRefresh.xml)]</visible>
-	<visible>!Integer.IsGreater(VideoPlayer.Time,30)</visible>
-	<texture border="1" colordiffuse="VideooverlayVignette">dialogs/NowPlayingOverlay.png</texture>
+	<visible>VideoPlayer.Content(episodes) + !Integer.IsGreater(VideoPlayer.Time,30)</visible>
+	<texture border="1" colordiffuse="VideooverlayVignette">dialogs/nowplayingoverlay.png</texture>
 	<include>Open_Close_Fade_Animation</include>
 </control>
 <control type="grouplist">
-	<description>Laeuft gerade 30Sek. am Anfang</description>
+	<description>Laeuft gerade 30 Sekunden am Anfang</description>
 	<left>165</left>
 	<top>30</top>
 	<width>1590</width>
@@ -69,34 +70,39 @@
 	<itemgap>10</itemgap>
 	<orientation>horizontal</orientation>
 	<visible>[!Window.IsVisible(seekbar) + !Window.IsVisible(fullscreeninfo) + !Window.IsVisible(Custom_1197_ColorTimeRefresh.xml)]</visible>
-	<visible>!Integer.IsGreater(VideoPlayer.Time,30)</visible>
+	<visible>VideoPlayer.Content(episodes) + !Integer.IsGreater(VideoPlayer.Time,30)</visible>
 	<include>OSDDialog_popup_Animation</include>
 	<control type="label">
 		<include>OSDInfoIconDimension</include>
 		<label>à</label>
 	</control>
 	<control type="label">
-		<description>Serien</description>
-		<width>1500</width>
+		<description>Serie</description>
+		<width>auto</width>
 		<include>OSDLabelInfoDimension</include>
-		<label>Läuft: $INFO[VideoPlayer.TVShowTitle]$VAR[CustomEnumeration]$VAR[VideoPlayerSeasonPrefix-long, , ]$VAR[VideoPlayerEpisodePrefix-long,, ]$INFO[VideoPlayer.Title]</label>
-		<visible>VideoPlayer.Content(episodes)</visible>
+		<label>Läuft: $INFO[VideoPlayer.TVShowTitle]</label>
 	</control>
 	<control type="label">
-		<description>Filme</description>
-		<width>1500</width>
+		<description>Enum</description>
+		<width>auto</width>
+		<font>EnumBoldNormal</font><!-- include ueberschreibung -->
 		<include>OSDLabelInfoDimension</include>
-		<label>Läuft: $INFO[VideoPlayer.Title]</label>
-		<visible>!VideoPlayer.Content(episodes)</visible>
+		<label>$VAR[CustomEnumeration]</label>
+	</control>
+	<control type="label">
+		<description>details</description>
+		<width>auto</width>
+		<include>OSDLabelInfoDimension</include>
+		<label>$VAR[VideoPlayerSeasonPrefix-long,, ]$VAR[VideoPlayerEpisodePrefix-long,, - ]$INFO[VideoPlayer.Title]</label>
 	</control>
 </control>
 <control type="image"><!-- als naechstes 120 Sekunden am Ende -->
 	<width>2220</width>
 	<height>206</height>
 	<visible>[!Window.IsVisible(seekbar) + !Window.IsVisible(fullscreeninfo) + !Window.IsVisible(Custom_1197_ColorTimeRefresh.xml)]</visible>
-	<visible>!Integer.IsGreater(Player.TimeRemaining,120)</visible>
-	<visible>String.IsEqual(Control.GetLabel(111),Control.GetLabel(112))</visible>
-	<texture border="1" colordiffuse="VideooverlayVignette">dialogs/NowPlayingOverlay.png</texture>
+	<visible>VideoPlayer.Content(episodes) + !Integer.IsGreater(Player.TimeRemaining,120)</visible>
+	<visible>String.IsEqual(Control.GetLabel(111),Control.GetLabel(112)) + Integer.IsGreater(Playlist.Length,1)</visible>
+	<texture border="1" colordiffuse="VideooverlayVignette">dialogs/nowplayingoverlay.png</texture>
 	<include>Open_Close_Fade_Animation</include>
 </control>
 <control type="grouplist">
@@ -108,8 +114,8 @@
 	<itemgap>10</itemgap>
 	<orientation>horizontal</orientation>
 	<visible>[!Window.IsVisible(seekbar) + !Window.IsVisible(fullscreeninfo) + !Window.IsVisible(Custom_1197_ColorTimeRefresh.xml)]</visible>
-	<visible>!Integer.IsGreater(Player.TimeRemaining,120)</visible>
-	<visible>String.IsEqual(Control.GetLabel(111),Control.GetLabel(112))</visible>
+	<visible>VideoPlayer.Content(episodes) + !Integer.IsGreater(Player.TimeRemaining,120)</visible>
+	<visible>String.IsEqual(Control.GetLabel(111),Control.GetLabel(112)) + Integer.IsGreater(Playlist.Length,1)</visible>
 	<include>OSDDialog_popup_Animation</include>
 	<control type="label">
 		<description>Laeuft icon</description>
@@ -117,20 +123,49 @@
 		<label>à</label>
 	</control>
 	<control type="label">
-		<description>Serien</description>
-		<width>1500</width>
+		<description>Serie</description>
+		<width>auto</width>
 		<include>OSDLabelInfoDimension</include>
-		<label>$INFO[Container(222).ListItem(1).TVShowTitle]$VAR[CustomEnumeration]$INFO[Container(222).ListItem(1).Season, Staffel , ]$INFO[Container(222).ListItem(1).Episode,Episode , ]$INFO[Container(222).ListItem(1).Title]</label>
-		<visible>String.IsEqual(Control.GetLabel(111),Control.GetLabel(112))</visible>
-		<visible>VideoPlayer.Content(episodes)</visible>
+		<label>Es Folgt: $INFO[Container(222).ListItem(1).TVShowTitle]</label>
 	</control>
 	<control type="label">
-		<description>Filme</description>
-		<width>1500</width>
+		<description>Enum</description>
+		<width>auto</width>
+		<font>EnumBoldNormal</font><!-- include ueberschreibung -->
 		<include>OSDLabelInfoDimension</include>
-		<label>$INFO[Container(222).ListItem(1).Title]</label>
-		<visible>String.IsEqual(Control.GetLabel(111),Control.GetLabel(112))</visible>
-		<visible>!VideoPlayer.Content(episodes)</visible>
+		<label>$VAR[CustomEnumeration]</label>
+	</control>
+	<control type="label">
+		<description>details</description>
+		<width>auto</width>
+		<include>OSDLabelInfoDimension</include>
+		<label>$INFO[Container(222).ListItem(1).Season,Staffel , ]$INFO[Container(222).ListItem(1).Episode,Episode , -  ]$INFO[Container(222).ListItem(1).Title]</label>
+	</control>
+</control>
+<control type="group"><!-- Mute -->
+	<left>1680</left>
+	<top>-120</top>
+	<description>Default layout</description>
+	<include>Dialog_topdown_Animation</include>
+	<visible>Player.Muted</visible>
+	<control type="image"><!-- check -->
+		<description>Hintergrund oben diffuse</description>
+		<left>-20</left>
+		<top>-15</top>
+		<width>110</width>
+		<height>97</height>
+		<texture colordiffuse="VideooverlayVignette">dialogs/nowplayingroundoverlay.png</texture>
+		<visible>![Window.IsVisible(fullscreeninfo) | Window.IsVisible(musicosd) | Window.IsVisible(videoosd) | Window.IsVisible(seekbar)]</visible>
+		<animation type="Conditional" condition="true">
+			<effect type="fade" start="30" end="30" time="0" />
+		</animation>
+	</control>
+	<control type="label">
+		<width>80</width>
+		<height>70</height>
+		<textcolor>$VAR[OSDDialogColor]</textcolor>
+		<font>IconVolume</font>
+		<label>Ÿ</label>
 	</control>
 </control>
 </controls>

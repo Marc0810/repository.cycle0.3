@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1149">
+<!-- Cycle 0.3 -->
+<defaultcontrol always="true">1153</defaultcontrol>
+<!-- <visible>Window.IsVisible(fullscreenvideo)</visible>
+<zorder>438</zorder>zorder hoeher fuer fullscreen dialoge -->
+<controls>
+<control type="button" id="1153">
+	<description>Hiddenfocus schließen</description>
+	<width>1920</width><!-- include ueberschreibung groeße fuer click falls focus floeten geht -->
+	<height>1080</height>
+	<include>HiddenControl</include>
+	<onclick>Dialog.close(1149)</onclick>
+	<onleft>Dialog.close(1149)</onleft>
+	<onright>Dialog.close(1149)</onright>
+	<oninfo>Dialog.close(1149)</oninfo>
+	<onup>Dialog.close(1149)</onup>
+	<ondown>Dialog.close(1149)</ondown>
+</control>
+<control type="image"><!-- laeuft gerade 30 Sekunden am Anfang -->
+	<width>1920</width>
+	<height>206</height>
+	<texture colordiffuse="VideooverlayVignette">White.png</texture>
+	<include>Open_Close_Fade_Animation</include>
+</control>
+<control type="grouplist">
+	<description>Infoliste</description>
+	<left>165</left>
+	<top>30</top>
+	<width>1700</width>
+	<height>100</height>
+	<itemgap>10</itemgap>
+	<orientation>horizontal</orientation>
+	<include>OSDDialog_popup_Animation</include>
+	<control type="label">
+		<description>Resolution icon</description>
+		<width>80</width>
+		<include>OSDInfoIconDimension</include>
+		<label>E</label>
+	</control>
+	<control type="label">
+		<description>Resolution</description>
+		<width>400</width>
+		<include>OSDLabelInfoDimension</include>
+		<label>$INFO[Player.Process(VideoWidth)]x$INFO[Player.Process(VideoHeight)]</label>
+	</control>
+	<control type="label">
+		<description>Enum</description>
+		<width>100</width>
+		<font>EnumBoldNormal</font><!-- include ueberschreibung -->
+		<include>OSDLabelInfoDimension</include>
+		<label>$VAR[CustomEnumeration]</label>
+	</control>
+	<control type="label">
+		<description>Frames titel</description>
+		<width>200</width>
+		<include>OSDLabelInfoDimension</include>
+		<label>Frames:</label>
+	</control>
+	<control type="label">
+		<description>Frames</description>
+		<width>400</width>
+		<include>OSDLabelInfoDimension</include>
+		<label>xx$INFO[Player.Process(VideoFps)]</label>
+	</control>
+	<control type="label">
+		<description>Frames titel</description>
+		<width>200</width>
+		<include>OSDLabelInfoDimension</include>
+		<label>Deinterlacer:</label>
+	</control>
+	<control type="label">
+		<description>Frames</description>
+		<width>400</width>
+		<include>OSDLabelInfoDimension</include>
+		<label>$INFO[Player.Process(DeintMethod)]</label>
+	</control>
+</control>
+<control type="grouplist">
+	<description>Infoliste</description>
+	<left>165</left>
+	<top>90</top>
+	<width>1590</width>
+	<height>100</height>
+	<itemgap>10</itemgap>
+	<orientation>horizontal</orientation>
+	<include>OSDDialog_popup_Animation</include>
+	<control type="label">
+		<width>80</width>
+		<description>Aspect ratio icon</description>
+		<include>OSDInfoIconDimension</include>
+		<label>é</label>
+	</control>
+	<control type="label">
+		<description>Aspect ratio</description>
+		<width>400</width>
+		<include>OSDLabelInfoDimension</include>
+		<label>$INFO[Player.Process(VideoDar)]</label>
+	</control>
+	<control type="label">
+		<description>Enum</description>
+		<width>80</width>
+		<font>EnumBoldNormal</font><!-- include ueberschreibung -->
+		<include>OSDLabelInfoDimension</include>
+		<label>$VAR[CustomEnumeration]</label>
+	</control>
+	<control type="label">
+		<description>PixFormat label</description>
+		<include>OSDLabelInfoDimension</include>
+		<label>Pixelabmessung</label>
+	</control>
+	<control type="label">
+		<description>PixFormat</description>
+		<width>600</width>
+		<include>OSDLabelInfoDimension</include>
+		<label>$INFO[Player.Process(PixFormat)]</label>
+	</control>
+</control>
+<control type="grouplist">
+	<description>Infoliste</description>
+	<left>165</left>
+	<top>150</top>
+	<width>1590</width>
+	<height>100</height>
+	<itemgap>10</itemgap>
+	<orientation>horizontal</orientation>
+	<include>OSDDialog_popup_Animation</include>
+	<control type="label">
+		<description>VideoDecoder leer</description>
+		<include>OSDInfoIconDimension</include>
+		<label>Ǎ</label>
+	</control>
+	<control type="label">
+		<description>VideoDecoder</description>
+		<width>600</width>
+		<include>OSDLabelInfoDimension</include>
+		<label>$INFO[Player.Process(VideoDecoder)]</label>
+	</control>
+	<control type="label">
+		<description>Enum</description>
+		<width>auto</width>
+		<font>EnumBoldNormal</font><!-- include ueberschreibung -->
+		<include>OSDLabelInfoDimension</include>
+		<label>$VAR[CustomEnumeration]</label>
+	</control>
+	<control type="label">
+		<description>HwDecoder titel</description>
+		<include>OSDLabelInfoDimension</include>
+		<label>Pixelabmessung</label>
+	</control>
+	<control type="label">
+		<description>HwDecoder</description>
+		<width>600</width>
+		<include>OSDLabelInfoDimension</include>
+		<label>$INFO[Player.Process(VideoHwDecoder)]</label>
+	</control>
+</control>
+<control type="grouplist">
+	<description>Infoliste</description>
+	<left>165</left>
+	<top>210</top>
+	<width>1590</width>
+	<height>100</height>
+	<itemgap>10</itemgap>
+	<orientation>horizontal</orientation>
+	<include>OSDDialog_popup_Animation</include>
+	<control type="label">
+		<description>AudioDecoder icon</description>
+		<include>OSDInfoIconDimension</include>
+		<label>ì</label>
+	</control>
+	<control type="label">
+		<description>AudioDecoder</description>
+		<width>600</width>
+		<include>OSDLabelInfoDimension</include>
+		<label>$INFO[Player.Process(AudioDecoder)]</label>
+	</control>
+</control>
+<control type="grouplist">
+	<description>Infoliste</description>
+	<left>165</left>
+	<top>270</top>
+	<width>1590</width>
+	<height>100</height>
+	<itemgap>10</itemgap>
+	<orientation>horizontal</orientation>
+	<include>OSDDialog_popup_Animation</include>
+	<control type="label">
+		<description>Audio channels icon</description>
+		<include>OSDInfoIconDimension</include>
+		<label>ë</label>
+	</control>
+	<control type="label">
+		<description>VideoDecoder</description>
+		<width>600</width>
+		<include>OSDLabelInfoDimension</include>
+		<label>$INFO[Player.Process(AudioChannels)]</label>
+	</control>
+	<control type="label">
+		<description>Enum</description>
+		<width>auto</width>
+		<font>EnumBoldNormal</font><!-- include ueberschreibung -->
+		<include>OSDLabelInfoDimension</include>
+		<label>$VAR[CustomEnumeration]</label>
+	</control>
+	<control type="label">
+		<description>AudioSamplerate titel</description>
+		<include>OSDLabelInfoDimension</include>
+		<label>Abtastrate</label>
+	</control>
+	<control type="label">
+		<description>AudioSamplerate</description>
+		<width>600</width>
+		<include>OSDLabelInfoDimension</include>
+		<label>$INFO[Player.Process(AudioSamplerate)]</label>
+	</control>
+	<control type="label">
+		<description>AudioBitsPerSample titel</description>
+		<include>OSDLabelInfoDimension</include>
+		<label>Bitrate</label>
+	</control>
+	<control type="label">
+		<description>AudioBitsPerSample</description>
+		<width>600</width>
+		<include>OSDLabelInfoDimension</include>
+		<label>$INFO[Player.Process(AudioBitsPerSample)]</label>
+	</control>
+</control>
+	Player.Process(VideoWidth)
+	Player.Process(VideoHeight)
+	Player.Process(VideoFps)
+	Player.Process(VideoDar)
+	Player.Process(PixFormat)
+	Player.Process(VideoHwDecoder)
+	Player.Process(VideoDecoder)
+	Player.Process(AudioDecoder)
+	Player.Process(AudioChannels)
+	Player.Process(AudioSamplerate)
+	Player.Process(AudioBitsPerSample)
+	Player.Process(DeintMethod)
+	
+
+</controls>
+</window>
+

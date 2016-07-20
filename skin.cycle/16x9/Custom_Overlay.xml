@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<window id="1194" type="dialog">
+<window id="1199" type="dialog">
 <!-- Cycle 0.3 -->
 <visible>!Window.IsVisible(startup)</visible>
 <zorder>432</zorder>
@@ -9,8 +9,7 @@
 		<top>0</top>
 		<width>1920</width>
 		<height>1080</height>
-		<texture>debuggrid1080.png</texture>
-		<colordiffuse>88ffffff</colordiffuse>
+		<texture colordiffuse="88ffffff">debuggrid1080.png</texture>
 		<visible>Skin.HasSetting(DebugGrid)</visible>
 	</control>
 	<control type="group"><!-- Debug Info -->
@@ -26,92 +25,687 @@
 				<width>780</width>
 				<height>21</height>
 				<textcolor>FFFF0000</textcolor>
-				<label>Custom_1120_MainMenuSlide.xml</label>
-				<visible>Window.IsVisible(Custom_1120_MainMenuSlide.xml)</visible>
+				<label>Custom_1101</label>
+				<visible>Window.IsVisible(1101)</visible>
 			</control>
 			<control type="label">
 				<width>780</width>
 				<height>21</height>
 				<textcolor>FFFF0000</textcolor>
-				<label>Custom_1101_homewidgets.xml</label>
-				<visible>Window.IsVisible(Custom_1101_homewidgets.xml)</visible>
+				<label>Custom_1102</label>
+				<visible>Window.IsVisible(1102)</visible>
 			</control>
 			<control type="label">
 				<width>780</width>
 				<height>21</height>
 				<textcolor>FFFF0000</textcolor>
-				<label>Custom_1102_setinfo.xml</label>
-				<visible>Window.IsVisible(Custom_1102_setinfo.xml)</visible>
+				<label>Custom_1103</label>
+				<visible>Window.IsVisible(1103)</visible>
 			</control>
 			<control type="label">
 				<width>780</width>
 				<height>21</height>
 				<textcolor>FFFF0000</textcolor>
-				<label>Custom_1103_categoryinfo.xml</label>
-				<visible>Window.IsVisible(Custom_1103_categoryinfo.xml)</visible>
+				<label>Custom_1104</label>
+				<visible>Window.IsVisible(1104)</visible>
 			</control>
 			<control type="label">
 				<width>780</width>
 				<height>21</height>
 				<textcolor>FFFF0000</textcolor>
-				<label>Custom_1118_Histroyloader.xml</label>
-				<visible>Window.IsVisible(Custom_1118_Histroyloader.xml)</visible>
+				<label>Custom_1105</label>
+				<visible>Window.IsVisible(1105)</visible>
 			</control>
 			<control type="label">
 				<width>780</width>
 				<height>21</height>
 				<textcolor>FFFF0000</textcolor>
-				<label>Custom_1141_ViewtypeSimilar.xml</label>
-				<visible>Window.IsVisible(Custom_1141_ViewtypeSimilar.xml)</visible>
+				<label>Custom_1106</label>
+				<visible>Window.IsVisible(1106)</visible>
 			</control>
 			<control type="label">
 				<width>780</width>
 				<height>21</height>
 				<textcolor>FFFF0000</textcolor>
-				<label>Custom_1148_colors.xml</label>
-				<visible>Window.IsVisible(Custom_1148_colors.xml)</visible>
+				<label>Custom_1107</label>
+				<visible>Window.IsVisible(1107)</visible>
 			</control>
 			<control type="label">
 				<width>780</width>
 				<height>21</height>
 				<textcolor>FFFF0000</textcolor>
-				<label>Custom_1150_Screensaver.xml</label>
-				<visible>Window.IsVisible(Custom_1150_Screensaver.xml)</visible>
+				<label>Custom_1108</label>
+				<visible>Window.IsVisible(1108)</visible>
 			</control>
 			<control type="label">
 				<width>780</width>
 				<height>21</height>
 				<textcolor>FFFF0000</textcolor>
-				<label>Custom_1151_VideoOverlay.xml</label>
-				<visible>Window.IsVisible(Custom_1151_VideoOverlay.xml)</visible>
+				<label>Custom_1109</label>
+				<visible>Window.IsVisible(1109)</visible>
 			</control>
 			<control type="label">
 				<width>780</width>
 				<height>21</height>
 				<textcolor>FFFF0000</textcolor>
-				<label>Custom_1152_VideoLogoOverlay.xml</label>
-				<visible>Window.IsVisible(Custom_1152_VideoLogoOverlay.xml)</visible>
+				<label>Custom_1110</label>
+				<visible>Window.IsVisible(1110)</visible>
 			</control>
 			<control type="label">
 				<width>780</width>
 				<height>21</height>
 				<textcolor>FFFF0000</textcolor>
-				<label>script-ExtendedInfo Script-YoutubeList.xml</label>
-				<visible>Window.IsVisible(script-ExtendedInfo Script-YoutubeList.xml)</visible>
+				<label>Custom_1111</label>
+				<visible>Window.IsVisible(1111)</visible>
 			</control>
 			<control type="label">
 				<width>780</width>
 				<height>21</height>
 				<textcolor>FFFF0000</textcolor>
-				<label>Custom_1197_ColorTimeRefresh.xml</label>
-				<visible>Window.IsVisible(Custom_1197_ColorTimeRefresh.xml)</visible>
+				<label>Custom_1112</label>
+				<visible>Window.IsVisible(1112)</visible>
 			</control>
 			<control type="label">
 				<width>780</width>
 				<height>21</height>
 				<textcolor>FFFF0000</textcolor>
-				<label>Custom_1199_ColorRefresh.xml</label>
-				<visible>Window.IsVisible(Custom_1199_ColorRefresh.xml)</visible>
+				<label>Custom_1113</label>
+				<visible>Window.IsVisible(1113)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1114</label>
+				<visible>Window.IsVisible(1114)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1115</label>
+				<visible>Window.IsVisible(1115)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1116</label>
+				<visible>Window.IsVisible(1116)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1117</label>
+				<visible>Window.IsVisible(1117)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1118</label>
+				<visible>Window.IsVisible(1118)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1119</label>
+				<visible>Window.IsVisible(1119)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1120</label>
+				<visible>Window.IsVisible(1120)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1121</label>
+				<visible>Window.IsVisible(1121)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1122</label>
+				<visible>Window.IsVisible(1122)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1123</label>
+				<visible>Window.IsVisible(1123)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1124</label>
+				<visible>Window.IsVisible(1124)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1125</label>
+				<visible>Window.IsVisible(1125)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1126</label>
+				<visible>Window.IsVisible(1126)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1127</label>
+				<visible>Window.IsVisible(1127)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1128</label>
+				<visible>Window.IsVisible(1128)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1129</label>
+				<visible>Window.IsVisible(1129)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1130</label>
+				<visible>Window.IsVisible(1130)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1131</label>
+				<visible>Window.IsVisible(1131)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1132</label>
+				<visible>Window.IsVisible(1132)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1133</label>
+				<visible>Window.IsVisible(1133)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1134</label>
+				<visible>Window.IsVisible(1134)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1135</label>
+				<visible>Window.IsVisible(1135)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1136</label>
+				<visible>Window.IsVisible(1136)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1137</label>
+				<visible>Window.IsVisible(1137)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1138</label>
+				<visible>Window.IsVisible(1138)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1139</label>
+				<visible>Window.IsVisible(1139)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1140</label>
+				<visible>Window.IsVisible(1140)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1141</label>
+				<visible>Window.IsVisible(1141)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1142</label>
+				<visible>Window.IsVisible(1142)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1143</label>
+				<visible>Window.IsVisible(1143)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1144</label>
+				<visible>Window.IsVisible(1144)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1145</label>
+				<visible>Window.IsVisible(1145)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1146</label>
+				<visible>Window.IsVisible(1146)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1147</label>
+				<visible>Window.IsVisible(1147)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1148</label>
+				<visible>Window.IsVisible(1148)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1149</label>
+				<visible>Window.IsVisible(1149)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1150</label>
+				<visible>Window.IsVisible(1150)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1151</label>
+				<visible>Window.IsVisible(1151)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1152</label>
+				<visible>Window.IsVisible(1152)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1153</label>
+				<visible>Window.IsVisible(1153)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1154</label>
+				<visible>Window.IsVisible(1154)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1155</label>
+				<visible>Window.IsVisible(1155)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1156</label>
+				<visible>Window.IsVisible(1156)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1157</label>
+				<visible>Window.IsVisible(1157)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1158</label>
+				<visible>Window.IsVisible(1158)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1159</label>
+				<visible>Window.IsVisible(1159)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1160</label>
+				<visible>Window.IsVisible(1160)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1161</label>
+				<visible>Window.IsVisible(1161)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1162</label>
+				<visible>Window.IsVisible(1162)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1163</label>
+				<visible>Window.IsVisible(1163)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1164</label>
+				<visible>Window.IsVisible(1164)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1165</label>
+				<visible>Window.IsVisible(1165)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1166</label>
+				<visible>Window.IsVisible(1166)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1167</label>
+				<visible>Window.IsVisible(1167)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1168</label>
+				<visible>Window.IsVisible(1168)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1169</label>
+				<visible>Window.IsVisible(1169)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1170</label>
+				<visible>Window.IsVisible(1170)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1171</label>
+				<visible>Window.IsVisible(1171)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1172</label>
+				<visible>Window.IsVisible(1172)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1173</label>
+				<visible>Window.IsVisible(1173)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1174</label>
+				<visible>Window.IsVisible(1174)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1175</label>
+				<visible>Window.IsVisible(1175)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1176</label>
+				<visible>Window.IsVisible(1176)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1177</label>
+				<visible>Window.IsVisible(1177)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1178</label>
+				<visible>Window.IsVisible(1178)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1179</label>
+				<visible>Window.IsVisible(1179)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1180</label>
+				<visible>Window.IsVisible(1180)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1181</label>
+				<visible>Window.IsVisible(1181)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1182</label>
+				<visible>Window.IsVisible(1182)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1183</label>
+				<visible>Window.IsVisible(1183)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1184</label>
+				<visible>Window.IsVisible(1184)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1185</label>
+				<visible>Window.IsVisible(1185)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1186</label>
+				<visible>Window.IsVisible(1186)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1187</label>
+				<visible>Window.IsVisible(1187)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1188</label>
+				<visible>Window.IsVisible(1188)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1189</label>
+				<visible>Window.IsVisible(1189)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1190</label>
+				<visible>Window.IsVisible(1190)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1191</label>
+				<visible>Window.IsVisible(1191)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1192</label>
+				<visible>Window.IsVisible(1192)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1193</label>
+				<visible>Window.IsVisible(1193)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1195</label>
+				<visible>Window.IsVisible(1195)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1196</label>
+				<visible>Window.IsVisible(1196)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1197</label>
+				<visible>Window.IsVisible(1197)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1198</label>
+				<visible>Window.IsVisible(1198)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1199</label>
+				<visible>Window.IsVisible(1199)</visible>
 			</control>
 			<control type="label">
 				<width>780</width>
@@ -344,7 +938,7 @@
 				<height>21</height>
 				<textcolor>FFFF0000</textcolor>
 				<label>DialogNotification.xml</label>
-				<visible>Window.IsVisible(DialogNotification.xml)</visible>
+				<visible>Window.IsVisible(Notification)</visible>
 			</control>
 			<control type="label">
 				<width>780</width>
@@ -591,971 +1185,56 @@
 			<label>$INFO[Container.FolderPath,$LOCALIZE[15311] ]</label>
 		</control>
 	</control>
-
-	<!-- Font Info -->
-	<control type="group">
-		<visible>Skin.HasSetting(Foninfo)</visible><!---->
-		<control type="image">
-			<description>Hintergrund</description>
-			<width>1920</width>
-			<height>1080</height>
-			<texture>White.png</texture>
+	<!-- 
+	<control type="grouplist">
+		<description>Wetter</description>
+		<left>500</left>
+		<top>150</top>
+		<width>1900</width>
+		<height>700</height>
+		<itemgap>20</itemgap>
+		<align>left</align>
+		<control type="button" id="90022">
+			<description>Vintage Overlay</description>
+			<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texturefocus>
+			<texturenofocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texturenofocus>
+			<width>1900</width>
+			<include>Item.top.height60</include>
+			<label>Item.top.height60</label>
+			<textcolor>TextColorFO</textcolor>
+			<onclick>noop</onclick>
 		</control>
-		<!-- Regular -->
-		<control type="grouplist">
-			<left>100</left>
-			<top>150</top>
-			<height>9005</height>
-			<width>1600</width>
-			<onup>noop</onup>
-			<ondown>noop</ondown>
-			<onleft>noop</onleft>
-			<onright>noop</onright>
-			<itemgap>10</itemgap>
-			<orientation>vertical</orientation>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<textcolor>red</textcolor>
-				<font>RegularSmall</font>
-				<label>Regular</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>RegularSmall</font>
-				<label>Max Mustermann   Futura</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>RegularSmall2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>RegularNormal</font>
-				<label>Max Mustermann   Futura</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>RegularNormal2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>RegularBig</font>
-				<label>Max Mustermann   Futura</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>RegularBig2</font>
-				<label>Max Mustermann$VAR[CustomEnumeration]   neue</label>
-			</control>
+		<control type="button" id="90022">
+			<description>Vintage Overlay</description>
+			<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texturefocus>
+			<texturenofocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texturenofocus>
+			<width>1900</width>
+			<include>Item.top.height65</include>
+			<label>Item.top.height65</label>
+			<textcolor>TextColorFO</textcolor>
+			<onclick>noop</onclick>
 		</control>
-
-		<!-- Light -->
-		<control type="grouplist">
-			<left>700</left>
-			<top>150</top>
-			<height>9005</height>
-			<width>1600</width>
-			<onup>noop</onup>
-			<ondown>noop</ondown>
-			<onleft>noop</onleft>
-			<onright>noop</onright>
-			<itemgap>10</itemgap>
-			<orientation>vertical</orientation>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<textcolor>red</textcolor>
-				<font>LightSmall</font>
-				<label>Light</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>LightSmall</font>
-				<label>Max Mustermann   Futura</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>LightSmall2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>LightNormal</font>
-				<label>Max Mustermann   Futura</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>LightNormal2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>LightBig</font>
-				<label>Max Mustermann   Futura</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>LightBig2</font>
-				<label>Max Mustermann$VAR[CustomEnumeration]   neue</label>
-			</control>
+		<control type="button" id="90022">
+			<description>Vintage Overlay</description>
+			<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texturefocus>
+			<texturenofocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texturenofocus>
+			<width>1900</width>
+			<include>Item.top.height70</include>
+			<label>Item.top.height70</label>
+			<textcolor>TextColorFO</textcolor>
+			<onclick>noop</onclick>
 		</control>
-
-		<!-- Bold -->
-		<control type="grouplist">
-			<left>1200</left>
-			<top>150</top>
-			<height>9005</height>
-			<width>1600</width>
-			<onup>noop</onup>
-			<ondown>noop</ondown>
-			<onleft>noop</onleft>
-			<onright>noop</onright>
-			<itemgap>10</itemgap>
-			<orientation>vertical</orientation>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<textcolor>red</textcolor>
-				<aligny>top</aligny>
-				<font>BoldSmall</font>
-				<label>Bold</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>BoldSmall</font>
-				<label>Max Mustermann   Futura</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>BoldSmall2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>BoldNormal</font>
-				<label>Max Mustermann   Futura</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>BoldNormal2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>BoldBig</font>
-				<label>Max Mustermann   Futura</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>BoldBig2</font>
-				<label>Max Mustermann$VAR[CustomEnumeration]   neue</label>
-			</control>
-		</control>
-
-		<!-- Light Condensed -->
-		<control type="grouplist">
-			<left>100</left>
-			<top>600</top>
-			<height>9005</height>
-			<width>1600</width>
-			<onup>noop</onup>
-			<ondown>noop</ondown>
-			<onleft>noop</onleft>
-			<onright>noop</onright>
-			<itemgap>10</itemgap>
-			<orientation>vertical</orientation>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<textcolor>red</textcolor>
-				<aligny>top</aligny>
-				<font>LightCDSmall</font>
-				<label>LightCD</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>LightCDSmall</font>
-				<label>Max Mustermann   Futura</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>LightCDSmall2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>LightCDNormal</font>
-				<label>Max Mustermann   Futura</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>LightCDNormal2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>LightCDBig</font>
-				<label>Max Mustermann   Futura</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>LightCDBig2</font>
-				<label>Max Mustermann$VAR[CustomEnumeration]   neue</label>
-			</control>
-		</control>
-
-		<!-- Condensed -->
-		<control type="grouplist">
-			<left>700</left>
-			<top>600</top>
-			<height>9005</height>
-			<width>1600</width>
-			<onup>noop</onup>
-			<ondown>noop</ondown>
-			<onleft>noop</onleft>
-			<onright>noop</onright>
-			<itemgap>10</itemgap>
-			<orientation>vertical</orientation>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<textcolor>red</textcolor>
-				<aligny>top</aligny>
-				<font>BoldCDSmall</font>
-				<label>BoldCD</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>BoldCDSmall</font>
-				<label>Max Mustermann   Futura</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>BoldCDSmall2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>BoldCDNormal</font>
-				<label>Max Mustermann   Futura</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>BoldCDNormal2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>BoldCDBig</font>
-				<label>Max Mustermann   Futura</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>BoldCDBig2</font>
-				<label>Max Mustermann$VAR[CustomEnumeration]   neue</label>
-			</control>
-		</control>
-
-		<!-- TitleCapsSmall -->
-		<control type="grouplist">
-			<left>1200</left>
-			<top>600</top>
-			<height>9005</height>
-			<width>1600</width>
-			<onup>noop</onup>
-			<ondown>noop</ondown>
-			<onleft>noop</onleft>
-			<onright>noop</onright>
-			<itemgap>10</itemgap>
-			<orientation>vertical</orientation>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<textcolor>red</textcolor>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>TitleCapsSmall</font>
-				<label>TitleCaps</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>TitleCapsSmall</font>
-				<label>Max Mustermann   Futura</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>TitleCapsSmall2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>TitleCapsNormal</font>
-				<label>Max Mustermann   Futura</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>TitleCapsNormal2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>TitleCapsBig</font>
-				<label>Max Mustermann   Futura</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>45</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>TitleCapsBig2</font>
-				<label>Max Mustermann$VAR[CustomEnumeration]   neue</label>
-			</control>
+		<control type="button" id="90022">
+			<description>Vintage Overlay</description>
+			<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texturefocus>
+			<texturenofocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texturenofocus>
+			<width>1900</width>
+			<include>Item.top.height75</include>
+			<label>Item.top.height75</label>
+			<textcolor>TextColorFO</textcolor>
+			<onclick>noop</onclick>
 		</control>
 	</control>
-
-	<!-- Font Info Special -->
-	<control type="group">
-		<visible>Skin.HasSetting(FoninfoSpecial)</visible><!---->
-		<control type="image">
-			<description>Hintergrund</description>
-			<width>1920</width>
-			<height>1080</height>
-			<texture>White.png</texture>
-		</control>
-		<!-- 1 -->
-		<control type="grouplist">
-			<left>100</left>
-			<top>50</top>
-			<height>995</height>
-			<width>1600</width>
-			<onup>noop</onup>
-			<ondown>noop</ondown>
-			<onleft>noop</onleft>
-			<onright>noop</onright>
-			<itemgap>5</itemgap>
-			<orientation>vertical</orientation>
-			<control type="label">
-				<width>1000</width>
-				<height>50</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>SubTitleCapsNormal</font>
-				<label>Max Mustermann   SubTitleCapsNormal</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>80</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>SubTitleCapsNormal2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>50</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>SubTitleCapsBold</font>
-				<label>Max Mustermann   SubTitleCapsBold</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>80</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>SubTitleCapsBold2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>50</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>TitleCategory</font>
-				<label>Max Mustermann   TitleCategory</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>80</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>TitleCategory2</font>
-				<label>Max Mustermann  neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>50</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>TitleCategorySmall</font>
-				<label>Max Mustermann   TitleCategorySmall</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>80</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>TitleCategorySmall2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>50</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>TitleCategoryBig</font>
-				<label>Max Mustermann   TitleCategoryBig</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>80</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>TitleCategoryBig2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>50</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>BreadcumbSmall</font>
-				<label>Max Mustermann   BreadcumbSmall</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>80</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>BreadcumbSmall2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>50</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>BreadcumbNormal</font>
-				<label>Max Mustermann   BreadcumbNormal</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>80</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>BreadcumbNormal2</font>
-				<label>Max Mustermann  neue</label>
-			</control>
-		</control>
-		<!-- 2 -->
-		<control type="grouplist">
-			<left>900</left>
-			<top>50</top>
-			<height>1005</height>
-			<width>1600</width>
-			<onup>noop</onup>
-			<ondown>noop</ondown>
-			<onleft>noop</onleft>
-			<onright>noop</onright>
-			<itemgap>5</itemgap>
-			<orientation>vertical</orientation>
-			<control type="label">
-				<width>1000</width>
-				<height>50</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>BreadcumbTopSmall</font>
-				<label>Max Mustermann   BreadcumbTopSmall</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>80</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>BreadcumbTopSmall2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>50</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>BreadcumbTopNormal</font>
-				<label>Max Mustermann   BreadcumbTopNormal</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>80</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>BreadcumbTopNormal2</font>
-				<label>Max Mustermann  neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>50</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>DialogHeader</font>
-				<label>Max Mustermann   DialogHeader</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>80</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>DialogHeader2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>50</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>DialogHeaderSmaller</font>
-				<label>Max Mustermann   DialogHeaderSmaller</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>80</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>DialogHeaderSmaller2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>50</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>Flags</font>
-				<label>Max Mustermann   Flags</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>80</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>Flags2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>100</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>EpisodeNumber</font>
-				<label>11   EpisodeNumber</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>100</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>EpisodeNumber2</font>
-				<label>11  neue</label>
-			</control>
-		</control>
-	</control>
-
-	<!-- Font Info Special2 -->
-	<control type="group">
-		<visible>Skin.HasSetting(FoninfoSpecial2)</visible><!---->
-		<control type="image">
-			<description>Hintergrund</description>
-			<width>1920</width>
-			<height>1080</height>
-			<texture>White.png</texture>
-		</control>
-		<!-- 1 -->
-		<control type="grouplist">
-			<left>100</left>
-			<top>50</top>
-			<height>995</height>
-			<width>1600</width>
-			<onup>noop</onup>
-			<ondown>noop</ondown>
-			<onleft>noop</onleft>
-			<onright>noop</onright>
-			<itemgap>5</itemgap>
-			<orientation>vertical</orientation>
-			<control type="label">
-				<width>1000</width>
-				<height>100</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>IconSeasonNumber</font>
-				<label>11   IconSeason</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>100</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>IconSeason2</font>
-				<label>11   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>80</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>TrackNumber</font>
-				<label>Max Mustermann   TrackNumber</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>80</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>TrackNumber2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>40</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>Pinboard</font>
-				<label>Max Mustermann   Pinboard</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>80</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>Pinboard2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>50</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>BoldCDProgress</font>
-				<label>Max Mustermann   BoldCDProgress</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>80</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>BoldCDProgress2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>40</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>SMSLetter</font>
-				<label>Max Mustermann   SMSLetter</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>80</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>SMSLetter2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-			<control type="textbox">
-				<width>1000</width>
-				<height max="84">auto</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>Plot</font>
-				<label>Plot Text mit mehreren Zeilen[CR]g gggg  Max Mustermann zh 42 </label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height max="84">auto</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>Plot2</font>
-				<label>Plot2 Text mit mehreren Zeilen[CR]g gggg  Max Mustermann zh 42 </label>
-			</control>
-		</control>
-		<!-- 2 -->
-		<control type="grouplist">
-			<left>900</left>
-			<top>50</top>
-			<height>1005</height>
-			<width>1600</width>
-			<onup>noop</onup>
-			<ondown>noop</ondown>
-			<onleft>noop</onleft>
-			<onright>noop</onright>
-			<itemgap>5</itemgap>
-			<orientation>vertical</orientation>
-			<control type="label">
-				<width>1000</width>
-				<height>108</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>PlotZoom</font>
-				<label>Plotzoom Text mit mehreren Zeilen[CR]g gggg  Max Mustermann zh 54 </label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>108</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>PlotZoom2</font>
-				<label>Plotzoom2 Text mit mehreren Zeilen[CR]g gggg  Max Mustermann zh 54 </label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>40</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>SysteminfoSmall</font>
-				<label>Max Mustermann   SysteminfoSmall</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>80</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>SysteminfoSmall2</font>
-				<label>Max Mustermann  neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>200</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>WeatherTemp</font>
-				<label>22   WeatherTemp</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>200</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>WeatherTemp2</font>
-				<label>22   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>50</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>WeatherSubTitle</font>
-				<label>Max Mustermann   WeatherSubTitle</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>50</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>WeatherSubTitle2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>50</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>WeatherTitle</font>
-				<label>Max Mustermann   WeatherTitle</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>50</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>WeatherTitle2</font>
-				<label>Max Mustermann   neue</label>
-			</control>
-		</control>
-	</control>
-	
-	<!-- Font Info Special3 -->
-	<control type="group">
-		<visible>Skin.HasSetting(FoninfoSpecial2)</visible><!---->
-		<control type="image">
-			<description>Hintergrund</description>
-			<width>1920</width>
-			<height>1080</height>
-			<texture>White.png</texture>
-		</control>
-		<!-- 1 -->
-		<control type="grouplist">
-			<left>100</left>
-			<top>50</top>
-			<height>995</height>
-			<width>1600</width>
-			<onup>noop</onup>
-			<ondown>noop</ondown>
-			<onleft>noop</onleft>
-			<onright>noop</onright>
-			<itemgap>5</itemgap>
-			<orientation>vertical</orientation>
-			<control type="label">
-				<width>1000</width>
-				<height>100</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>WeatherTempunit</font>
-				<label>°C   WeatherTempunit</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>100</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>WeatherTempunit2</font>
-				<label>°C  neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>50</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>VideoinfoCircle</font>
-				<label>Max Mustermann   VideoinfoCircle</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>80</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>VideoinfoCircle2</font>
-				<label>Max Mustermann  neue</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>50</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>KeyboardNormal</font>
-				<label>A B C W Z I   KeyboardNormal</label>
-			</control>
-			<control type="label">
-				<width>1000</width>
-				<height>80</height>
-				<align>left</align>
-				<aligny>top</aligny>
-				<font>KeyboardNormal2</font>
-				<label>A B C W Z I  neue</label>
-			</control>
-		</control>
-	</control>
+-->
 </controls>
 </window>

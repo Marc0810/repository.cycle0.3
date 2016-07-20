@@ -26,13 +26,13 @@
 		<top>200</top>
 		<width>2920</width>
 		<height>152</height>
-		<texture colordiffuse="$VAR[circlesCol]">views/info/bar.png</texture>
+		<texture colordiffuse="$VAR[CirclesCol]">views/info/bar.png</texture>
 	</control>
 	<control type="group"><!-- artworks 1.66, 2.20, 2.35, 2.40, 2.55, 2.76 -->
 		<description>Art 16:9</description>
 		<left>451</left>
 		<top>400</top>
-		<visible>String.IsEqual(ListItem.VideoAspect,1.78) | String.IsEqual(ListItem.VideoAspect,1.85)</visible>
+		<visible>!String.IsEqual(ListItem.VideoAspect,1.37) + !String.IsEqual(ListItem.VideoAspect,1.33)</visible>
 		<control type="image">
 			<description>Schatten</description>
 			<left>-13</left>
@@ -47,13 +47,13 @@
 			<top>-5</top>
 			<width>1028</width>
 			<height>582</height>
-			<texture border="8" colordiffuse="$VAR[circlesCol]">views/white8.png</texture>
+			<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
 		</control>
 		<control type="image"><!-- fallback -->
 			<description>Hintergrund Farbe</description>
 			<width>1018</width>
 			<height>572</height>
-			<texture colordiffuse="$VAR[primaryCol]" background="true">White.png</texture>
+			<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
 		</control>
 		<control type="label">
 			<description>Fallback icon</description>
@@ -61,7 +61,7 @@
 			<height>572</height>
 			<align>center</align>
 			<font>IconInfoposterdefault</font>
-			<textcolor>$VAR[circlesCol]</textcolor>
+			<textcolor>$VAR[CirclesCol]</textcolor>
 			<label>$VAR[viewtypefallbacks]</label>
 		</control>
 		<control type="image"><!-- einzelnes cover fallback falls content leer -->
@@ -91,13 +91,13 @@
 			<top>-5</top>
 			<width>793</width>
 			<height>582</height>
-			<texture border="8" colordiffuse="$VAR[circlesCol]">views/white8.png</texture>
+			<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
 		</control>
 		<control type="image"><!-- fallback -->
 			<description>Hintergrund Farbe</description>
 			<width>783</width>
 			<height>572</height>
-			<texture colordiffuse="$VAR[primaryCol]" background="true">White.png</texture>
+			<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
 		</control>
 		<control type="label">
 			<description>Fallback icon</description>
@@ -105,7 +105,7 @@
 			<height>572</height>
 			<align>center</align>
 			<font>IconInfoposterdefault</font>
-			<textcolor>$VAR[circlesCol]</textcolor>
+			<textcolor>$VAR[CirclesCol]</textcolor>
 			<label>$VAR[viewtypefallbacks]</label>
 		</control>
 		<control type="image"><!-- einzelnes cover fallback falls content leer -->
@@ -125,31 +125,63 @@
 		<scroll>true</scroll>
 		<scrollspeed>20</scrollspeed>
 		<font>TitleCapsBig</font>
-		<label>$INFO[ListItem.Label]</label>
+		<label>$INFO[ListItem.Label][COLOR=$VAR[SecondaryCol]]$INFO[ListItem.Date, (,)][/COLOR]</label>
 	</control>
-	<control type="label">
-		<description>Subtitel mit Playcount</description>
+	<control type="grouplist">
+		<description>SubTitel</description>
 		<left>260</left>
 		<top>180</top>
 		<width>1050</width>
 		<height>50</height>
-		<scroll>true</scroll>
-		<scrollspeed>20</scrollspeed>
-		<font>TitleCapsNormal</font>
-		<label>$INFO[ListItem.Size]$VAR[CustomEnumeration]$INFO[ListItem.Date]$VAR[CustomEnumeration]$INFO[ListItem.Playcount,, mal gesehen]</label>
-		<visible>!String.IsEmpty(ListItem.Playcount)</visible>
-	</control>
-	<control type="label">
-		<description>Subtitel ohne Playcount</description>
-		<left>260</left>
-		<top>180</top>
-		<width>1050</width>
-		<height>50</height>
-		<scroll>true</scroll>
-		<scrollspeed>20</scrollspeed>
-		<font>TitleCapsNormal</font>
-		<label>$INFO[ListItem.Size]$VAR[CustomEnumeration]$INFO[ListItem.Date]</label>
-		<visible>String.IsEmpty(ListItem.Playcount)</visible>
+		<orientation>horizontal</orientation>
+		<control type="label">
+			<description>Size</description>
+			<width>auto</width>
+			<height>50</height>
+			<label>$INFO[ListItem.Size]</label>
+		</control>
+		<control type="label">
+			<description>Enum</description>
+			<width>auto</width>
+			<height>50</height>
+			<font>EnumRegularNormal</font>
+			<label>$VAR[CustomEnumeration]</label>
+			<visible>!String.IsEmpty(ListItem.Date)</visible>
+		</control>
+		<control type="label">
+			<description>Date</description>
+			<width>auto</width>
+			<height>50</height>
+			<label>$INFO[ListItem.Date]</label>
+		</control>
+		<control type="label">
+			<description>Enum</description>
+			<width>auto</width>
+			<height>50</height>
+			<font>EnumRegularNormal</font>
+			<label> $VAR[CustomEnumeration] </label>
+			<visible>!String.IsEmpty(ListItem.Duration)</visible>
+		</control>
+		<control type="label">
+			<description>Duration</description>
+			<width>auto</width>
+			<height>50</height>
+			<label>$INFO[ListItem.Duration,, $LOCALIZE[12391]]</label>
+		</control>
+		<control type="label">
+			<description>Enum</description>
+			<width>auto</width>
+			<height>50</height>
+			<font>EnumRegularNormal</font>
+			<label> $VAR[CustomEnumeration] </label>
+			<visible>!String.IsEmpty(ListItem.Playcount)</visible>
+		</control>
+		<control type="label">
+			<description>Playcount</description>
+			<width>auto</width>
+			<height>50</height>
+			<label>$INFO[ListItem.Playcount,, mal gesehen]</label>
+		</control>
 	</control>
 </control>
 </controls>
