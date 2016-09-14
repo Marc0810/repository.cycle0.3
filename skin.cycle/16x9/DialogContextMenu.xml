@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<window>
-<!-- Cycle 0.3 -->
-<defaultcontrol>1000</defaultcontrol>
-<controls>
-	<include condition="!String.IsEmpty(Window(home).Property(DialogContextSelect))">DialogContextMPL</include>
-	<include condition="String.IsEmpty(Window(home).Property(DialogContextSelect))">DialogContextStandard</include>
-</controls>
-</window>
