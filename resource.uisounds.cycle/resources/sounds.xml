@@ -79,6 +79,14 @@
       <deactivate>out.wav</deactivate>
     </window>
     <window>
+      <name>progressdialog</name>
+      <deactivate>startup.wav</deactivate>
+    </window>
+    <window>
+      <name>extendedprogressdialog</name>
+      <deactivate>startup.wav</deactivate>
+    </window>
+    <window>
       <name>startup</name>
       <activate>startup.wav</activate>
     </window>

@@ -94,5 +94,16 @@
 		<email>-</email>
 	</extension>
 </addon>
+<addon id="resource.images.clock.cycle" name="Cycle Clocks" version="0.0.1" provider-name="Marc0810">
+	<extension point="kodi.resource.images" compile="true" />
+	<requires>
+		<import addon="kodi.resource" version="1.0.0"/>
+	</requires>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Alternative clock</summary>
+		<description lang="en">Cycle Alternative clocks</description>
+		<platform>all</platform>
+	</extension>
+</addon>
 </addons> 
 
