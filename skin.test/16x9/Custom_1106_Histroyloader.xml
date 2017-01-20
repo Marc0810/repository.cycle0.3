@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1106"><!-- Cycle 0.4 -->
+<onload>SetProperty(RefreshList3,1,Home)</onload>
+<onunload>ClearProperty(RefreshList3,Home)</onunload>
+<defaultcontrol always="true">140</defaultcontrol>
+<coordinates>
+	<system>1</system>
+	<origin x="0" y="0">!Window.IsVisible(home)</origin>
+	<origin x="0" y="10">Window.IsVisible(home)</origin>
+</coordinates>
+<controls>
+<control type="list" id="6002"><!-- lastwatched episode -->
+	<include>Compaircontainer</include>
+	<content limit="10" target="video">$VAR[Lastwatched-Episode]</content>
+</control>
+<control type="button" id="140"><!-- history reset -->
+	<onleft>noop</onleft>
+	<onright>noop</onright>
+	<onup>noop</onup>
+	<ondown>noop</ondown>
+	<onclick>noop</onclick>
+	<onfocus>Skin.reset(LastwatchedEpisode0TvShow)</onfocus>
+	<onfocus>Skin.reset(LastwatchedEpisode1TvShow)</onfocus>
+	<onfocus>Skin.reset(LastwatchedEpisode2TvShow)</onfocus>
+	<onfocus>Skin.reset(LastwatchedEpisode3TvShow)</onfocus>
+	<onfocus>Skin.reset(LastwatchedEpisode4TvShow)</onfocus>
+	<onfocus>Skin.reset(LastwatchedEpisode5TvShow)</onfocus>
+	<onfocus>Skin.reset(LastwatchedEpisode0Season)</onfocus>
+	<onfocus>Skin.reset(LastwatchedEpisode1Season)</onfocus>
+	<onfocus>Skin.reset(LastwatchedEpisode2Season)</onfocus>
+	<onfocus>Skin.reset(LastwatchedEpisode3Season)</onfocus>
+	<onfocus>Skin.reset(LastwatchedEpisode4Season)</onfocus>
+	<onfocus>Skin.reset(LastwatchedEpisode5Season)</onfocus>
+	<onfocus>Skin.reset(LastwatchedEpisode0Date)</onfocus>
+	<onfocus>Skin.reset(LastwatchedEpisode1Date)</onfocus>
+	<onfocus>Skin.reset(LastwatchedEpisode2Date)</onfocus>
+	<onfocus>Skin.reset(LastwatchedEpisode3Date)</onfocus>
+	<onfocus>Skin.reset(LastwatchedEpisode4Date)</onfocus>
+	<onfocus>Skin.reset(LastwatchedEpisode5Date)</onfocus>
+	<onfocus>AlarmClock(Beginnloading,SetFocus(141),0:02,true)</onfocus>
+	<include>HiddenControl</include>
+</control>
+<control type="button" id="141"><!-- history loader -->
+	<onleft>noop</onleft>
+	<onright>noop</onright>
+	<onup>noop</onup>
+	<ondown>noop</ondown>
+	<onclick>noop</onclick>
+	<onfocus>Skin.SetString(LastwatchedEpisode0TvShow,$INFO[Container(6002).ListItem.TVShowTitle])</onfocus>
+	<onfocus>Skin.SetString(LastwatchedEpisode1TvShow,$INFO[Container(6002).ListItemNoWrap(1).TVShowTitle])</onfocus>
+	<onfocus>Skin.SetString(LastwatchedEpisode2TvShow,$INFO[Container(6002).ListItemNoWrap(2).TVShowTitle])</onfocus>
+	<onfocus>Skin.SetString(LastwatchedEpisode3TvShow,$INFO[Container(6002).ListItemNoWrap(3).TVShowTitle])</onfocus>
+	<onfocus>Skin.SetString(LastwatchedEpisode4TvShow,$INFO[Container(6002).ListItemNoWrap(4).TVShowTitle])</onfocus>
+	<onfocus>Skin.SetString(LastwatchedEpisode5TvShow,$INFO[Container(6002).ListItemNoWrap(5).TVShowTitle])</onfocus>
+	<onfocus>Skin.SetString(LastwatchedEpisode0Season,$INFO[Container(6002).ListItem.Season])</onfocus>
+	<onfocus>Skin.SetString(LastwatchedEpisode1Season,$INFO[Container(6002).ListItemNoWrap(1).Season])</onfocus>
+	<onfocus>Skin.SetString(LastwatchedEpisode2Season,$INFO[Container(6002).ListItemNoWrap(2).Season])</onfocus>
+	<onfocus>Skin.SetString(LastwatchedEpisode3Season,$INFO[Container(6002).ListItemNoWrap(3).Season])</onfocus>
+	<onfocus>Skin.SetString(LastwatchedEpisode4Season,$INFO[Container(6002).ListItemNoWrap(4).Season])</onfocus>
+	<onfocus>Skin.SetString(LastwatchedEpisode5Season,$INFO[Container(6002).ListItemNoWrap(5).Season])</onfocus>
+	<onfocus>Skin.SetString(LastwatchedEpisode1Date,$INFO[Container(6002).ListItemNoWrap(1).LastPlayed])</onfocus>
+	<onfocus>Skin.SetString(LastwatchedEpisode2Date,$INFO[Container(6002).ListItemNoWrap(2).LastPlayed])</onfocus>
+	<onfocus>Skin.SetString(LastwatchedEpisode3Date,$INFO[Container(6002).ListItemNoWrap(3).LastPlayed])</onfocus>
+	<onfocus>Skin.SetString(LastwatchedEpisode4Date,$INFO[Container(6002).ListItemNoWrap(4).LastPlayed])</onfocus>
+	<onfocus>Skin.SetString(LastwatchedEpisode5Date,$INFO[Container(6002).ListItemNoWrap(5).LastPlayed])</onfocus>
+	<onfocus>AlarmClock(Beginnloading,SetFocus(142),0:01,true)</onfocus>
+	<include>HiddenControl</include>
+</control>
+<control type="button" id="142"><!-- close -->
+	<onleft>noop</onleft>
+	<onright>noop</onright>
+	<onup>noop</onup>
+	<ondown>noop</ondown>
+	<onclick>noop</onclick>
+	<onfocus>Dialog.Close(1106)</onfocus>
+	<onfocus>ReloadSkin()</onfocus>
+	<onfocus>ActivateWindow(1149)</onfocus>
+	<include>HiddenControl</include>
+</control>
+<control type="group"><!-- layoutanzeige -->
+	<include>Animation-Topdown-Dialog</include>
+	<left>1090</left>
+	<top>-137</top>
+	<animation type="Conditional" condition="[Window.IsVisible(volumebar) + !Player.Muted] | Window.IsVisible(startup) | Window.IsVisible(Notification) | Window.IsActive(extendedprogressdialog) | Window.IsActive(busydialog) | Window.IsActive(DialogConfirm.xml) | Window.IsVisible(seekbar) | Window.IsVisible(Custom_1197_ColorTimeRefresh.xml)" reversible="true">
+		<effect type="fade" start="100" end="0" time="120" tween="cubic" easing="out" />
+	</animation>
+	<control type="label" id="20">
+		<label>$VAR[DialogHistory-Progress]</label>
+		<include>HiddenControl</include>
+	</control>
+	<control type="label" id="1">
+		<include>HiddenControl</include>
+		<label>Zuletzt gesehen</label>
+	</control>
+	<control type="textbox" id="2">
+		<include>HiddenControl</include>
+		<label>...bitte warten</label>
+	</control>
+	<include content="Dialog-Progresskringel"><!-- progress -->
+		<param name="id">20</param>
+		<param name="label1id">1</param>
+		<param name="label2id">2</param>
+	</include>
+</control>
+</controls>
+</window>
+

@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- Cycle 0.4 -->
+<defaultcontrol always="true">3</defaultcontrol>
+<coordinates>
+	<system>1</system>
+	<left>0</left>
+	<top>0</top>
+</coordinates>
+<controls>
+<control type="group">
+	<top>985</top>
+	<include>Animation-Popup-OSDDialog</include>
+	<visible>!Window.IsVisible(SelectDialog) + !Window.IsVisible(fullscreeninfo) + !Window.IsVisible(sliderdialog) + !Window.IsVisible(shutdownmenu)</visible>
+	<control type="image">
+		<description>Background</description>
+		<top>-30</top>
+		<width>1920</width>
+		<height>135</height>
+		<texture background="true" colordiffuse="$VAR[DialogCol]">white.png</texture>
+		<include>Animation-Opacity90</include>
+	</control>
+	<control type="progress"><!-- Progress -->
+		<description>Progress Bar</description>
+		<top>-30</top>
+		<width>1920</width>
+		<height>30</height>
+		<info>Player.Progress</info>
+		<texturebg colordiffuse="$VAR[SecondaryCol]">dialogs/progress/bg.png</texturebg>
+		<lefttexture colordiffuse="$VAR[PrimaryCol]">dialogs/progress/left.png</lefttexture>
+		<midtexture colordiffuse="$VAR[PrimaryCol]">dialogs/progress/left.png</midtexture>
+		<righttexture colordiffuse="$VAR[PrimaryCol]">dialogs/progress/right.png</righttexture>
+	</control>
+	<control type="slider" id="21">
+		<top>-60</top>
+		<width>1920</width>
+		<height>90</height>
+		<onup>Close</onup>
+		<ondown>9000</ondown>
+		<info>Player.Progress</info>
+		<texturesliderbar colordiffuse="ACDIF_0">dialogs/progress/bg.png</texturesliderbar>
+		<textureslidernib></textureslidernib>
+		<textureslidernibfocus colordiffuse="$VAR[PrimaryCol]">dialogs/progress/slider.png</textureslidernibfocus>
+		<action>seek</action>
+	</control>
+	<control type="grouplist" id="9000">
+		<left>715</left>
+		<top>5</top>
+		<width>600</width>
+		<height>100</height>
+		<orientation>horizontal</orientation>
+		<onleft>9000</onleft>
+		<onright>9000</onright>
+		<onup>SendClick(musicosd,21)</onup>
+		<onup>21</onup>
+		<ondown>Close</ondown>
+		<defaultcontrol always="true">3</defaultcontrol>
+		<control type="button" id="620">
+			<description>Rating</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<onclick>Skin.SetString(SelectDialog,Rating)</onclick>
+			<onclick>SetRating</onclick>
+		</control>
+		<control type="button" id="10">
+			<description>Vizualisierungen</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<onclick>ActivateWindow(visualisationpresetlist)</onclick>
+			<visible>Visualisation.HasPresets</visible>
+		</control>
+		<control type="button" id="12">
+			<description>Vizualisierungseinstellungen</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<onclick>Addon.Default.OpenSettings(xbmc.player.musicviz)</onclick>
+			<visible>Visualisation.Enabled</visible>
+		</control>
+		<control type="button" id="15">
+			<description>Wiederholung an</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<label></label>
+			<onclick>XBMC.PlayerControl(Repeat)</onclick>
+		</control>
+		<control type="button" id="16">
+			<description>Zufall an/aus</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<label></label>
+			<onclick>XBMC.PlayerControl(Random)</onclick>
+		</control>
+		<control type="label" id="131"><!-- divider -->
+			<description>Divider</description>
+			<width>150</width>
+			<height>osdmenue.icon.height</height>
+			<label></label>
+			<visible>Visualisation.HasPresets</visible>
+		</control>
+		<control type="label" id="141"><!-- divider -->
+			<description>Divider</description>
+			<width>200</width>
+			<height>osdmenue.icon.height</height>
+			<label></label>
+			<visible>!Visualisation.HasPresets</visible>
+		</control>
+		<control type="button" id="1">
+			<description>Vorheriges</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<onclick>playercontrol(previous)</onclick>
+			<visible>Integer.IsGreater(Playlist.Length(music),1)</visible>
+		</control>
+		<control type="button" id="2">
+			<description>Ruecklauf</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<onclick>playercontrol(rewind)</onclick>
+			<animation effect="fade" start="100" end="50" time="100" condition="!Player.SeekEnabled">Conditional</animation>
+			<enable>Player.SeekEnabled</enable>
+		</control>
+		<control type="togglebutton" id="3">
+			<description>Play/Pause</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<label></label>
+			<altlabel></altlabel>
+			<texturefocus></texturefocus>
+			<texturenofocus></texturenofocus>
+			<alttexturefocus></alttexturefocus>
+			<alttexturenofocus></alttexturenofocus>
+			<onclick>playercontrol(play)</onclick>
+		</control>
+		<control type="button" id="4">
+			<description>Stop</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<onclick>playercontrol(stop)</onclick>
+		</control>
+		<control type="button" id="5">
+			<description>Forlauf</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<animation effect="fade" start="100" end="50" time="100" condition="!Player.SeekEnabled">Conditional</animation>
+			<onclick>playercontrol(forward)</onclick>
+			<enable>Player.SeekEnabled</enable>
+		</control>
+		<control type="button" id="6">
+			<description>Naechstes</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<onclick>playercontrol(next)</onclick>
+			<visible>Integer.IsGreater(Playlist.Length(music),1)</visible>
+		</control>
+		<control type="label" id="151"><!-- divider -->
+			<description>Divider</description>
+			<width>150</width>
+			<height>osdmenue.icon.height</height>
+			<label></label>
+			<visible>Visualisation.HasPresets</visible>
+		</control>
+		<control type="label" id="161"><!-- divider -->
+			<description>Divider</description>
+			<width>200</width>
+			<height>osdmenue.icon.height</height>
+			<label></label>
+			<visible>!Visualisation.HasPresets</visible>
+		</control>
+		<control type="button" id="14">
+			<description>Playliste oeffnen</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<onclick>Dialog.close(musicosd)</onclick>
+			<onclick>activateWindow(musicplaylist)</onclick>
+			<visible>!String.IsEqual(Playlist.Length(music),1)</visible>
+		</control>
+		<control type="button" id="17">
+			<description>Info an/aus</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<onclick>Skin.ToggleSetting(DisableShowMusicInfo)</onclick>
+		</control>
+		<control type="button" id="20">
+			<description>MCE theme 1/2</description>
+			<width>osdmenue.icon.width</width>
+			<height>osdmenue.icon.height</height>
+			<onclick>Skin.ToggleSetting(EnableMCEMusicViz)</onclick>
+			<visible>!Visualisation.Enabled</visible>
+		</control>
+	</control>
+	<control type="grouplist"><!-- icons -->
+		<width>1920</width>
+		<height>120</height>
+		<align>center</align>
+		<aligny>center</aligny>
+		<orientation>horizontal</orientation>
+		<control type="label">
+			<description>Rating</description>
+			<include>OSDIconFO</include>
+			<label>ŧ</label>
+			<visible>Control.IsVisible(620) + Control.HasFocus(620)</visible>
+		</control>
+		<control type="label">
+			<description>Rating</description>
+			<include>OSDIconNF</include>
+			<label>ŧ</label>
+			<visible>Control.IsVisible(620) + !Control.HasFocus(620)</visible>
+		</control>
+		<control type="label">
+			<description>Vizualisierungen</description>
+			<include>OSDIconFO</include>
+			<label>ŵ</label>
+			<visible>Control.IsVisible(10) + Control.HasFocus(10)</visible>
+		</control>
+		<control type="label">
+			<description>Vizualisierungen</description>
+			<include>OSDIconNF</include>
+			<label>ŵ</label>
+			<visible>Control.IsVisible(10) + !Control.HasFocus(10)</visible>
+		</control>
+		<control type="label">
+			<description>Vizualisierungseinstellungen</description>
+			<include>OSDIconFO</include>
+			<label>Ŵ</label>
+			<visible>Control.IsVisible(12) + Control.HasFocus(12)</visible>
+		</control>
+		<control type="label">
+			<description>Vizualisierungseinstellungen</description>
+			<include>OSDIconNF</include>
+			<label>Ŵ</label>
+			<visible>Control.IsVisible(12) + !Control.HasFocus(12)</visible>
+		</control>
+		<control type="label">
+			<description>Repeat/Random</description>
+			<include>OSDIconFO</include>
+			<label>$VAR[OSDControl-Repeat]</label>
+			<visible>Control.IsVisible(15) + Control.HasFocus(15)</visible>
+		</control>
+		<control type="label">
+			<description>Repeat/Random</description>
+			<include>OSDIconNF</include>
+			<label>$VAR[OSDControl-Repeat]</label>
+			<visible>Control.IsVisible(15) + !Control.HasFocus(15)</visible>
+		</control>
+		<control type="label">
+			<description>Zufall an/aus</description>
+			<include>OSDIconNF</include>
+			<label>$VAR[OSDControl-Random]</label>
+			<visible>Control.IsVisible(16) + !Control.HasFocus(16)</visible>
+		</control>
+		<control type="label">
+			<description>Zufall an/aus</description>
+			<include>OSDIconFO</include>
+			<label>$VAR[OSDControl-Random]</label>
+			<visible>Control.IsVisible(16) + Control.HasFocus(16)</visible>
+		</control>
+		<control type="label"><!-- divider -->
+			<description>Divider</description>
+			<width>150</width>
+			<height>osdmenue.icon.height</height>
+			<label></label>
+			<visible>Visualisation.HasPresets</visible>
+		</control>
+		<control type="label"><!-- divider -->
+			<description>Divider</description>
+			<width>200</width>
+			<height>osdmenue.icon.height</height>
+			<label></label>
+			<visible>!Visualisation.HasPresets</visible>
+		</control>
+		<control type="label">
+			<description>Prev</description>
+			<include>OSDIconFO</include>
+			<label>Ŭ</label>
+			<visible>Control.IsVisible(1) + Control.HasFocus(1)</visible>
+		</control>
+		<control type="label">
+			<description>Prev</description>
+			<include>OSDIconNF</include>
+			<label>Ŭ</label>
+			<visible>Control.IsVisible(1) + !Control.HasFocus(1)</visible>
+		</control>
+		<control type="label">
+			<description>Rewind</description>
+			<include>OSDIconFO</include>
+			<label>ŭ</label>
+			<visible>Control.IsVisible(2) + Control.HasFocus(2)</visible>
+		</control>
+		<control type="label">
+			<description>Rewind</description>
+			<include>OSDIconNF</include>
+			<label>ŭ</label>
+			<visible>Control.IsVisible(2) + !Control.HasFocus(2)</visible>
+		</control>
+		<control type="label">
+			<description>Play/pause</description>
+			<include>OSDIconFO</include>
+			<label>$VAR[OSDControl-Play]</label>
+			<visible>Control.IsVisible(3) + Control.HasFocus(3)</visible>
+		</control>
+		<control type="label">
+			<description>Play/pause</description>
+			<include>OSDIconNF</include>
+			<label>$VAR[OSDControl-Play]</label>
+			<visible>Control.IsVisible(3) + !Control.HasFocus(3)</visible>
+		</control>
+		<control type="label">
+			<description>Stop</description>
+			<include>OSDIconFO</include>
+			<label>Ů</label>
+			<visible>Control.IsVisible(4) + Control.HasFocus(4)</visible>
+		</control>
+		<control type="label">
+			<description>Stop</description>
+			<include>OSDIconNF</include>
+			<label>Ů</label>
+			<visible>Control.IsVisible(4) + !Control.HasFocus(4)</visible>
+		</control>
+		<control type="label">
+			<description>Ffwd</description>
+			<include>OSDIconFO</include>
+			<label>Ũ</label>
+			<visible>Control.IsVisible(5) + Control.HasFocus(5)</visible>
+		</control>
+		<control type="label">
+			<description>Ffwd</description>
+			<include>OSDIconNF</include>
+			<label>Ũ</label>
+			<visible>Control.IsVisible(5) + !Control.HasFocus(5)</visible>
+		</control>
+		<control type="label">
+			<description>Next</description>
+			<include>OSDIconFO</include>
+			<label>ũ</label>
+			<visible>Control.IsVisible(6) + Control.HasFocus(6)</visible>
+		</control>
+		<control type="label">
+			<description>Next</description>
+			<include>OSDIconNF</include>
+			<label>ũ</label>
+			<visible>Control.IsVisible(6) + !Control.HasFocus(6)</visible>
+		</control>
+		<control type="label"><!-- divider -->
+			<description>Divider</description>
+			<width>150</width>
+			<height>osdmenue.icon.height</height>
+			<label></label>
+			<visible>Visualisation.HasPresets</visible>
+		</control>
+		<control type="label"><!-- divider -->
+			<description>Divider</description>
+			<width>200</width>
+			<height>osdmenue.icon.height</height>
+			<label></label>
+			<visible>!Visualisation.HasPresets</visible>
+		</control>
+		<control type="label">
+			<description>Playliste</description>
+			<include>OSDIconFO</include>
+			<label>Ť</label>
+			<visible>Control.IsVisible(14) + Control.HasFocus(14)</visible>
+		</control>
+		<control type="label">
+			<description>Playliste</description>
+			<include>OSDIconNF</include>
+			<label>Ť</label>
+			<visible>Control.IsVisible(14) + !Control.HasFocus(14)</visible>
+		</control>
+		<control type="label">
+			<description>Info an/aus</description>
+			<include>OSDIconFO</include>
+			<label>ţ</label>
+			<visible>Control.IsVisible(17) + Control.HasFocus(17)</visible>
+		</control>
+		<control type="label">
+			<description>Info an/aus</description>
+			<include>OSDIconNF</include>
+			<label>ţ</label>
+			<visible>Control.IsVisible(17) + !Control.HasFocus(17)</visible>
+		</control>
+		<control type="label">
+			<description>MCE theme 1/2</description>
+			<include>OSDIconFO</include>
+			<label>š</label>
+			<visible>Control.IsVisible(20) + Control.HasFocus(20)</visible>
+		</control>
+		<control type="label">
+			<description>MCE theme 1/2</description>
+			<include>OSDIconNF</include>
+			<label>š</label>
+			<visible>Control.IsVisible(20) + !Control.HasFocus(20)</visible>
+		</control>
+	</control>
+</control>
+</controls>
+</window>

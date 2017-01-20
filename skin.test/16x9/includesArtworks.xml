@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes><!-- Cycle 0.4 -->
+<!-- ######### Art ######### -->
+<variable name="Art-Fallback">
+	<!-- specials windows -->
+	<value condition="Window.IsVisible(Custom_1103_Categoryinfo.xml) + String.Contains(Container(400).ListItem.DBTYPE,movie)">D</value>
+	<value condition="Window.IsVisible(Custom_1103_Categoryinfo.xml)">E</value>
+	<value condition="Window.IsVisible(Custom_1104_Categoryinfolist.xml) + String.Contains(Container(400).ListItem.DBTYPE,movie)">D</value>
+	<value condition="Window.IsVisible(Custom_1104_Categoryinfolist.xml)">E</value>
+	<value condition="Window.IsVisible(Custom_1149_DialogLastWatched.xml)">E</value>
+	<value condition="Control.IsVisible(56) + String.IsEqual(ListItem.DBType,movie)">E</value><!-- Dokuview -->
+	<value condition="Control.IsVisible(56) + ListItem.IsCollection">K</value>
+	<value condition="Control.IsVisible(56)">D</value>
+	<value condition="Window.IsVisible(Custom_1102_Setinfo.xml)">K</value>
+	<value condition="Window.IsVisible(Custom_1141_ViewtypeSimilar.xml) + String.Contains(Container(400).ListItem.DBTYPE,movie)">D</value>
+	<value condition="Window.IsVisible(Custom_1141_ViewtypeSimilar.xml)">E</value>
+	<!-- video -->
+	<value condition="Window.IsVisible(videos) + Container.Content(genres)">P</value>
+	<value condition="Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)">D</value>
+	<value condition="Container.Content(movies) + !ListItem.IsCollection">E</value>
+	<value condition="Container.Content(sets) | ListItem.IsCollection">K</value>
+	<value condition="Container.Content(years)">M</value>
+	<value condition="Container.Content(tags)">O</value>
+	<value condition="Container.Content(directors)">J</value>
+	<value condition="Container.Content(actors)">C</value>
+	<value condition="Container.Content(countries)">N</value>
+	<value condition="Container.Content(studios)">L</value>
+	<!-- music -->
+	<value condition="Window.IsVisible(visualisation)">Ȃ</value>
+	<value condition="Container.Content(albums)">Ȃ</value>
+	<value condition="Container.Content(songs)">Ȃ</value>
+	<value condition="Window.IsVisible(music) + Container.Content(genres)">Ȃ</value>
+	<value condition="Container.Content(artists)">ǲ</value>
+	<!-- rest -->
+	<value condition="Container.Content(addons)">Ĝ</value>
+	<value condition="Window.IsVisible(addonbrowser)">Ĝ</value>
+	<value condition="Window.IsVisible(programs)">ī</value>
+	<value condition="Window.IsVisible(music)">Ĩ</value><!-- audio Dateien -->
+	<value condition="Window.IsVisible(videos)">ĩ</value><!-- video Dateien -->
+	<value>Ī</value><!-- Dateien -->
+</variable>
+
+<!-- Videoinfo aehnliche Liste - Icon im Focus der Liste nach Kategorie fuer videoinfo -->
+<variable name="IconVideoinfoSimilar">
+	<value condition="!Container.Content(movies)">D</value>
+	<value>E</value>
+</variable>
+
+<variable name="Art-Landscape">
+	<value condition="System.HasAddon(resource.images.moviegenrefanart.cycle) + Container.Content(genres) + !String.StartsWith(Container.FolderPath,videodb://tvshows/)">$INFO[ListItem.Label,resource://resource.images.moviegenrefanart.cycle/moviegenres_fanart/,.jpg]</value>
+	<value condition="System.HasAddon(resource.images.moviegenrefanart.cycle) + Container.Content(genres)">$INFO[ListItem.Label,resource://resource.images.moviegenrefanart.cycle/tvgenres_fanart/,.jpg]</value>
+	<value condition="!String.IsEmpty(ListItem.Art(tvshow.landscape))">$INFO[ListItem.Art(tvshow.landscape)]</value>
+	<value condition="!String.IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(landscape)]</value>
+	<value>$INFO[ListItem.Art(fanart)]</value>
+</variable>
+
+<variable name="Art-Poster">
+	<value condition="!Window.IsVisible(Custom_1103_Categoryinfo.xml) + !Window.IsVisible(Custom_1104_Categoryinfolist.xml) + System.HasAddon(resource.images.moviegenrefanart.cycle) + Container.Content(genres) + !String.StartsWith(Container.FolderPath,videodb://tvshows/)">$INFO[ListItem.Label,resource://resource.images.moviegenrefanart.cycle/moviegenres_poster/,.jpg]</value>
+	<value condition="!Window.IsVisible(Custom_1103_Categoryinfo.xml) + !Window.IsVisible(Custom_1104_Categoryinfolist.xml) + System.HasAddon(resource.images.moviegenrefanart.cycle) + Container.Content(genres)">$INFO[ListItem.Label,resource://resource.images.moviegenrefanart.cycle/tvgenres_poster/,.jpg]</value>
+	<value condition="!String.IsEmpty(ListItem.Art(poster))">$INFO[ListItem.Art(poster)]</value>
+	<value condition="!String.IsEmpty(ListItem.Art(tvshow.poster))">$INFO[ListItem.Art(tvshow.poster)]</value>
+</variable>
+
+<variable name="Art-Episode">
+	<value condition="!String.IsEmpty(ListItem.Art(thumb)) + !String.IsEqual(ListItem.DBType,movie)">$INFO[ListItem.Art(thumb)]</value><!-- nur bei Episoden und nicht bei filmlinks -->
+	<value>$INFO[ListItem.Art(fanart)]</value>
+</variable>
+
+<variable name="Art-Info-Poster">
+	<value condition="!String.IsEmpty(ListItem.Art(season.poster))">$INFO[ListItem.Art(season.poster)]</value>
+	<value condition="!String.IsEmpty(ListItem.Art(tvshow.poster))">$INFO[ListItem.Art(tvshow.poster)]</value>
+	<value>$INFO[ListItem.Art(poster)]</value>
+</variable>
+
+<variable name="Art-logo">
+	<value condition="!String.IsEmpty(ListItem.Art(clearlogo))">$INFO[ListItem.Art(clearlogo)]</value>
+	<value condition="!String.IsEmpty(ListItem.Art(tvshow.clearlogo))">$INFO[ListItem.Art(tvshow.clearlogo)]</value>
+	<value condition="String.IsEqual(ListItem.DBType,artist) + !String.IsEmpty(Skin.String(Music_Folder_Path))">$INFO[Skin.String(Music_Folder_Path)]$INFO[ListItem.Artist,,/logo.png]</value>
+	<value condition="String.IsEqual(ListItem.DBType,album) + !String.IsEmpty(Skin.String(Music_Folder_Path))">$INFO[Skin.String(Music_Folder_Path)]$INFO[ListItem.Property(Album_Artist),,/logo.png]</value>
+	<value condition="String.IsEqual(ListItem.DBType,song) + !String.IsEmpty(Skin.String(Music_Folder_Path))">$INFO[Skin.String(Music_Folder_Path)]$INFO[ListItem.Artist,,/logo.png]</value>
+</variable>
+
+<variable name="Art-Info-Widget-Poster">
+	<value condition="!String.IsEmpty(Container(400).ListItem.Art(tvshow.poster))">$INFO[Container(400).ListItem.Art(tvshow.poster)]</value>
+	<value condition="!String.IsEmpty(Container(400).ListItem.Art(poster))">$INFO[Container(400).ListItem.Art(poster)]</value>
+</variable>
+
+<variable name="Art-Widget">
+	<value condition="String.IsEqual(ListItem.DBType,episode) + !String.IsEmpty(ListItem.Art(thumb))">$INFO[ListItem.Art(thumb)]</value><!-- Episode -->
+	<value>$INFO[ListItem.Art(fanart)]</value><!-- rest -->
+</variable>
+
+<variable name="Art-Banner">
+	<value condition="System.HasAddon(resource.images.moviegenrefanart.cycle) + Container.Content(genres) + !String.StartsWith(Container.FolderPath,videodb://tvshows/)">$INFO[ListItem.Label,resource://resource.images.moviegenrefanart.cycle/moviegenres_banner/,.jpg]</value>
+	<value condition="System.HasAddon(resource.images.moviegenrefanart.cycle) + Container.Content(genres)">$INFO[ListItem.Label,resource://resource.images.moviegenrefanart.cycle/tvgenres_banner/,.jpg]</value>
+	<value condition="!String.IsEmpty(ListItem.Art(banner))">$INFO[ListItem.Art(banner)]</value>
+</variable>
+
+</includes>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<onunload condition="!String.IsEmpty(Window(Home).Property(HomeDBUpdate))">AlarmClock(Delayclick,UpdateLibrary(music),0:01,true)</onunload>
+<onunload condition="!String.IsEmpty(Window(Home).Property(HomeDBUpdate))">ClearProperty(HomeDBUpdate,home)</onunload>
+<window><!-- Cycle 0.4 -->
+
+<coordinates>
+	<system>1</system>
+	<origin x="0" y="0">!Window.IsVisible(home)</origin>
+	<origin x="0" y="10">Window.IsVisible(home)</origin>
+</coordinates>
+<zorder>439</zorder><!-- zorder erhoehung für slideshow layout -->
+<controls>
+	<control type="progress" id="32">
+		<left>3000</left>
+		<description>progress control</description>
+		<height>15</height>
+	</control>
+	<control type="fadelabel" id="5178">
+		<description>Hidden fuer 25% Schritte wenn progress 0</description>
+		<top>0</top>
+		<width>80</width>
+		<height>25</height>
+		<pauseatend>0</pauseatend>
+		<scrollout>true</scrollout>
+		<scrollspeed>80</scrollspeed>
+		<textcolor>ACDIF_0</textcolor>
+		<label>$NUMBER[1]</label>
+		<label>$NUMBER[2]</label>
+		<label>$NUMBER[3]</label>
+		<label>$NUMBER[4]</label>
+	</control>
+	<control type="label" id="20">
+		<description>progressid</description>
+		<include>HiddenControl</include>
+		<label>$INFO[Control.GetLabel(32)]</label>
+	</control>
+	<control type="label" id="30">
+		<description>Titel</description>
+		<include>HiddenControl</include>
+		<label></label>
+	</control>
+	<control type="textbox" id="31">
+		<description>Text</description>
+		<label></label>
+		<include>HiddenControl</include>
+	</control>
+	<control type="group"><!-- progress Layout -->
+		<left>1090</left>
+		<top>-137</top>
+		<animation type="Conditional" condition="[Window.IsVisible(volumebar) + !Player.Muted] | Window.IsVisible(Custom_1150_Screensaver.xml) | Window.IsVisible(startup) | Window.IsVisible(Notification) | Window.IsActive(DialogConfirm.xml) | Window.IsActive(busydialog) | Window.IsVisible(seekbar) | Window.IsVisible(Custom_1106_Histroyloader.xml)" reversible="true">
+			<effect type="fade" start="100" end="0" time="120" tween="cubic" easing="out" />
+		</animation>
+		<include>Animation-Topdown-Dialog</include>
+		<include content="Dialog-Progresskringel">
+			<param name="id">32</param>
+			<param name="label1id">30</param>
+			<param name="label2id">31</param>
+		</include>
+	</control>
+	<control type="group"><!-- progress Slideshow Layout -->
+		<left>800</left>
+		<top>960</top>
+		<visible>Window.IsVisible(Custom_1150_Screensaver.xml)</visible>
+		<include>Animation-OpenCloseVisibleHidden-Fade</include>
+		<control type="group">
+			<left>-300</left>
+			<include content="Dialog-Progresskringel">
+				<param name="id">32</param>
+				<param name="label1id">30</param>
+				<param name="label2id">31</param>
+			</include>
+		</control>
+	</control>
+</controls>
+</window>

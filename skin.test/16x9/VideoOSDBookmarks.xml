@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- Cycle 0.4 -->
+<defaultcontrol always="true">2</defaultcontrol>
+<coordinates>
+	<system>1</system>
+	<left>400</left>
+	<top>0</top>
+</coordinates>
+<controls>
+<control type="group">
+	<include>Animation-OpenClose-Fade</include>
+	<control type="image"><!-- Hintergrund -->
+		<description>Hintergrund</description>
+		<left>dialogbar.left</left>
+		<top>dialogbar.top</top>
+		<width>1100</width>
+		<height>445</height>
+		<include>DialogBackground</include>
+	</control>
+	<control type="image"><!-- Buttonmenu -->
+		<description>Hintergrund Buttons height -34</description>
+		<left>bottom.dialogbar.left</left>
+		<top>412</top>
+		<width>1060</width>
+		<height>bottom.dialogbar.height</height>
+		<include>DialogbottomBackground</include>
+	</control>
+	<control type="grouplist" id="9000">
+		<description>Buttonliste fake ohne Icon</description>
+		<left>bottom.dialogicon.left</left>
+		<top>420</top>
+		<onleft>9001</onleft>
+		<onright>9001</onright>
+		<onup>11</onup>
+		<ondown>11</ondown>
+		<orientation>horizontal</orientation>
+		<control type="button" id="2">
+			<description>Lesezeichen erstellen</description>
+			<include>DialogFakeIconDimension</include>
+			<visible>Control.IsEnabled(2)</visible>
+		</control>
+		<control type="button" id="3">
+			<description>Lesezeichen loeschen</description>
+			<include>DialogFakeIconDimension</include>
+			<visible>Control.IsEnabled(3)</visible>
+		</control>
+		<control type="button" id="4">
+			<description>Episoden Lesezeichen</description>
+			<include>DialogFakeIconDimension</include>
+			<visible>videoplayer.content(episodes)</visible>
+			<visible>Control.IsEnabled(4)</visible>
+		</control>
+	</control>
+	<control type="grouplist" id="9001">
+		<description>Buttonliste2 fake ohne Icon</description>
+		<left>1002</left>
+		<top>420</top>
+		<onleft>9000</onleft>
+		<onright>9000</onright>
+		<onup>11</onup>
+		<ondown>11</ondown>
+		<orientation>horizontal</orientation>
+		<control type="button" id="99">
+			<description>Abbrechen</description>
+			<include>DialogFakeIconDimension</include>
+			<onclick>close</onclick>
+		</control>
+	</control>
+	<control type="grouplist">
+		<description>Button Icons</description>
+		<left>bottom.dialogicon.left</left>
+		<top>420</top>
+		<orientation>horizontal</orientation>
+		<control type="label">
+			<description>Lesezeichen erstellen</description>
+			<include>DialogIconDimension</include>
+			<label>ġ</label>
+			<visible>Control.IsVisible(2)</visible>
+		</control>
+		<control type="label">
+			<description>Lesezeichen loeschen</description>
+			<include>DialogIconDimension</include>
+			<label>Ģ</label>
+			<visible>Control.IsVisible(3)</visible>
+		</control>
+		<control type="label">
+			<description>Episoden Lesezeichen</description>
+			<include>DialogIconDimension</include>
+			<label>ĩ</label>
+			<visible>videoplayer.content(episodes)</visible>
+			<visible>Control.IsVisible(4)</visible>
+		</control>
+	</control>
+	<control type="grouplist">
+		<description>Button Icons2</description>
+		<left>1002</left>
+		<top>420</top>
+		<orientation>horizontal</orientation>
+		<control type="label">
+			<description>Abbrechen</description>
+			<include>DialogIconDimension</include>
+			<label>ģ</label>
+		</control>
+	</control>
+	<control type="label"><!-- Content -->
+		<description>Titel</description>
+		<left>bottom.dialogbar.left</left>
+		<top>20</top>
+		<width>970</width>
+		<height>50</height>
+		<font>DialogHeader</font>
+		<label>$INFO[VideoPlayer.Title,Lesezeichen - ,]</label>
+		<include>Animation-VintageFont-8</include>
+	</control>
+	<control type="panel" id="11">
+		<description>Liste mit Lesezeichen</description>
+		<top>110</top>
+		<width>570</width>
+		<height>290</height>
+		<onleft>2</onleft>
+		<onright>3</onright>
+		<onup>2</onup>
+		<ondown>2</ondown>
+		<scrolltime>200</scrolltime>
+		<preloaditems>2</preloaditems>
+		<pagecontrol></pagecontrol>
+		<itemlayout width="570" height="button.top.height75">
+			<control type="image"><!-- Fallback -->
+				<description>Hintergrund fallback</description>
+				<left>500</left>
+				<top>15</top>
+				<width>55</width>
+				<height>55</height>
+				<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+			</control>
+			<control type="label">
+				<description>Fallback icon</description>
+				<left>500</left>
+				<top>15</top>
+				<width>55</width>
+				<height>55</height>
+				<align>center</align>
+				<font>IconSmall</font>
+				<textcolor>$VAR[CirclesCol]</textcolor>
+				<label>$VAR[Art-Fallback]</label>
+				<visible>String.IsEmpty(ListItem.Icon)</visible>
+			</control>
+			<control type="image">
+				<left>500</left>
+				<top>15</top>
+				<width>55</width>
+				<height>55</height>
+				<texture>$INFO[ListItem.Icon]</texture>
+			</control>
+			<control type="label">
+				<width>480</width>
+				<include>Item.top.height75</include>
+				<textoffsetx>30</textoffsetx>
+				<label>$INFO[ListItem.Label]$INFO[ListItem.Label2, (,)]</label>
+			</control>
+		</itemlayout>
+		<focusedlayout width="570" height="button.top.height75">
+			<control type="image">
+				<width>570</width>
+				<height>button.top.height75</height>
+				<texture flipx="true" border="14,0,0,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texture>
+			</control>
+			<control type="label">
+				<description>Fallback icon</description>
+				<left>500</left>
+				<top>15</top>
+				<width>55</width>
+				<height>55</height>
+				<align>center</align>
+				<font>IconSmall</font>
+				<textcolor>$VAR[CirclesCol]</textcolor>
+				<label>$VAR[Art-Fallback]</label>
+				<visible>String.IsEmpty(ListItem.Icon)</visible>
+			</control>
+			<control type="image">
+				<left>500</left>
+				<top>15</top>
+				<width>55</width>
+				<height>55</height>
+				<texture>$INFO[ListItem.Icon]</texture>
+			</control>
+			<control type="label">
+				<width>480</width>
+				<include>Item.top.height75</include>
+				<textoffsetx>30</textoffsetx>
+				<textcolor>TextColorFO</textcolor>
+				<label>$INFO[ListItem.Label]$INFO[ListItem.Label2, (,)]</label>
+			</control>
+		</focusedlayout>
+	</control>
+	<control type="group">
+		<description>Lesezeichen focus icon</description>
+		<left>650</left>
+		<top>125</top>
+		<control type="image">
+			<description>Schatten</description>
+			<left>-8</left>
+			<top>-8</top>
+			<width>408</width>
+			<height>240</height>
+			<texture border="8" colordiffuse="ShadowColor">views/shadow8.png</texture>
+		</control>
+		<control type="image">
+			<description>Border</description>
+			<width>390</width>
+			<height>220</height>
+			<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
+		</control>
+		<control type="image"><!-- Fallback -->
+			<description>Hintergrund fallback</description>
+			<left>4</left>
+			<top>4</top>
+			<width>382</width>
+			<height>212</height>
+			<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+		</control>
+		<control type="label">
+			<description>Fallback icon</description>
+			<left>4</left>
+			<top>4</top>
+			<width>382</width>
+			<height>212</height>
+			<align>center</align>
+			<font>Iconbannerdefault</font>
+			<textcolor>$VAR[CirclesCol]</textcolor>
+			<label>$VAR[Art-Fallback]</label>
+			<visible>String.IsEmpty(Container(11).ListItem.Icon)</visible>
+		</control>
+		<control type="image">
+			<left>4</left>
+			<top>4</top>
+			<width>382</width>
+			<height>212</height>
+			<aspectratio>scale</aspectratio>
+			<texture>$INFO[Container(11).ListItem.Icon]</texture>
+			<visible>!String.IsEmpty(Container(11).ListItem.Icon)</visible>
+		</control>
+	</control>
+</control>
+</controls>
+</window>

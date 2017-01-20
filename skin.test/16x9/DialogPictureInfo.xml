@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- Cycle 0.4 -->
+<backgroundcolor>BackgroundColor</backgroundcolor>
+<defaultcontrol always="true">9000</defaultcontrol>
+<controls>
+<include condition="!Window.IsVisible(Slideshow) + Skin.HasSetting(EnableVintageOverlay)">Vintagebackground</include>
+<include condition="!Window.IsVisible(Slideshow) + !Skin.HasSetting(EnableVintageOverlay)">Cyclebackground</include>
+<control type="group">
+	<left>50</left>
+	<include>Animation-OpenCloseVisibleHidden-Zoom</include>
+	<include>Animation395-Conditional-Slide</include>
+	<visible>!Window.IsVisible(Slideshow)</visible>
+	<control type="image"><!-- Bar -->
+		<description>Circles Bar</description>
+		<left>-500</left>
+		<top>594</top>
+		<width>3000</width>
+		<height>152</height>
+		<texture colordiffuse="$VAR[CirclesCol]">views/info/bar.png</texture>
+	</control>
+	<control type="list" id="9000"><!-- menue -->
+		<left>730</left>
+		<top>594</top>
+		<width>900</width>
+		<height>152</height>
+		<onleft>9000</onleft>
+		<onright>9000</onright>
+		<onup condition="Control.IsVisible(60)">60</onup>
+		<ondown>Dialog.close(all)</ondown>
+		<orientation>horizontal</orientation>
+		<scrolltime tween="sine" easing="out">200</scrolltime>
+		<include content="CircleMenue-Layout">
+			<description>Circle menue</description>
+			<param name="CircleMenue-ID">9000</param>
+		</include>
+		<content>
+			<item id="1">
+				<description>Diashow</description>
+				<onclick>close</onclick>
+				<onclick>SendClick(pictures,6)</onclick>
+				<label2>À</label2>
+			</item>
+			<item id="2">
+				<description>Rekursive Diaschau</description>
+				<onclick>Skin.SetString(SelectDialog,Standard)</onclick>
+				<onclick>close</onclick>
+				<onclick>SendClick(pictures,7)</onclick>
+				<label2>Á</label2>
+			</item>
+		</content>
+	</control>
+	<control type="group"><!-- thumb -->
+		<description>Art</description>
+		<left>100</left>
+		<top>239</top>
+		<control type="image">
+			<description>Schatten</description>
+			<left>-13</left>
+			<top>-13</top>
+			<width>598</width>
+			<height>598</height>
+			<texture border="8" colordiffuse="ShadowColor">views/shadow8.png</texture>
+		</control>
+		<control type="image">
+			<description>Border</description>
+			<left>-5</left>
+			<top>-5</top>
+			<width>582</width>
+			<height>582</height>
+			<texture border="8" colordiffuse="TextColorFO">views/white8.png</texture>
+		</control>
+		<control type="image"><!-- Fallback -->
+			<description>Hintergrundfarbe</description>
+			<width>572</width>
+			<height>572</height>
+			<texture colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+			<aspectratio>scale</aspectratio>
+		</control>
+		<control type="image">
+			<width>572</width>
+			<height>572</height>
+			<texture background="true">$INFO[ListItem.Icon]</texture>
+			<aspectratio align="center" aligny="center">scale</aspectratio>
+		</control>
+	</control>
+	<control type="group"><!-- Top Info -->
+		<left>750</left>
+		<top>139</top>
+		<control type="label">
+			<description>Titel</description>
+			<width>1150</width>
+			<height>60</height>
+			<font>TitleCapsBig</font>
+			<label>$INFO[ListItem.FileName]$INFO[ListItem.Date, [COLOR=TextColorLight(,)[/COLOR]]</label>
+		</control>
+		<control type="list" id="5"><!-- list -->
+			<description>Exif liste</description>
+			<top>96</top>
+			<width>950</width>
+			<height>300</height>
+			<onleft>60</onleft>
+			<onright>60</onright>
+			<onup>noop</onup>
+			<ondown>9000</ondown>
+			<pagecontrol>60</pagecontrol>
+			<scrolltime>200</scrolltime>
+			<itemlayout width="950" height="50">
+				<control type="label">
+					<width>370</width>
+					<height>50</height>
+					<font>Plot</font>
+					<label>$INFO[ListItem.Label]</label>
+					<textcolor>TextColorMedium</textcolor>
+				</control>
+				<control type="label">
+					<left>370</left>
+					<width>600</width>
+					<height>50</height>
+					<font>Plot</font>
+					<label>$INFO[ListItem.Label2]</label>
+				</control>
+			</itemlayout>
+			<focusedlayout width="950" height="50">
+				<control type="label">
+					<width>370</width>
+					<height>50</height>
+					<font>Plot</font>
+					<label>$INFO[ListItem.Label]</label>
+					<textcolor>TextColorMedium</textcolor>
+				</control>
+				<control type="label">
+					<left>370</left>
+					<width>600</width>
+					<height>50</height>
+					<font>Plot</font>
+					<label>$INFO[ListItem.Label2]</label>
+				</control>
+			</focusedlayout>
+		</control>
+		<control type="scrollbar" id="60">
+			<left>980</left>
+			<top>96</top>
+			<height>300</height>
+			<onleft>9000</onleft>
+			<onright>5</onright>
+			<onup>60</onup>
+			<ondown>60</ondown>
+			<visible>Control.IsVisible(5)</visible>
+		</control>
+	</control>
+	<control type="group"><!-- Subinfo -->
+		<description>Belichtung</description>
+		<left>750</left>
+		<top>880</top>
+		<control type="label">
+			<include>InfoDetails-Title</include>
+			<label>Belichtung</label>
+		</control>
+		<control type="label">
+			<include>InfoDetails-Label</include>
+			<label fallback="nicht verfügbar">$INFO[ListItem.PictureISO]</label>
+		</control>
+	</control>
+	<control type="group">
+		<description>Kameramodell</description>
+		<left>1310</left>
+		<top>880</top>
+		<control type="label">
+			<include>InfoDetails-Title</include>
+			<label>Kamera</label>
+		</control>
+		<control type="label">
+			<include>InfoDetails-Label</include>
+			<label fallback="nicht verfügbar">$INFO[ListItem.PictureCamModel]</label>
+		</control>
+	</control>
+</control>
+</controls>
+</window>

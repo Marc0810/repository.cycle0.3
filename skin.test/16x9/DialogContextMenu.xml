@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- Cycle 0.4 -->
+<defaultcontrol>1000</defaultcontrol>
+<onload condition="!String.IsEmpty(Window(home).Property(SidebarPlayfromhere)) + !ListItem.IsResumable">SendClick(106,1005)</onload>
+<onload condition="!String.IsEmpty(Window(home).Property(SidebarPlayfromhere)) + ListItem.IsResumable">SendClick(106,1006)</onload>
+<onunload>ClearProperty(SidebarPlayfromhere,home)</onunload>
+<controls>
+	<include condition="!String.IsEmpty(Window(home).Property(DialogContextSelect))">DialogContext-MPL</include>
+	<include condition="String.IsEmpty(Window(home).Property(DialogContextSelect))">DialogContext-Standard</include>
+</controls>
+</window>

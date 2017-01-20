@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes><!-- Cycle 0.4 
+1-10
+ÿ
+Ā
+ā
+
+
+
+
+
+
+
+-->
+	<!-- ######### flags ######### -->
+	<!-- ##### FSK ##### -->
+	<variable name="FlagLabel-MPAA">
+		<value condition="String.Contains(listitem.mpaa,18)">18</value>
+		<value condition="String.Contains(listitem.mpaa,16)">16</value>
+		<value condition="String.Contains(listitem.mpaa,12)">12</value>
+		<value condition="String.Contains(listitem.mpaa,6)">6</value>
+		<value condition="String.Contains(listitem.mpaa,NR) | String.Contains(ListItem.Mpaa,Germany:o.Al.) | String.Contains(ListItem.Mpaa,0) | String.Contains(ListItem.Mpaa,o.A.) | String.Contains(listitem.mpaa,Rated NR) | String.Contains(listitem.mpaa,USA:NR) | String.Contains(listitem.mpaa,not rated)">NR</value>
+		<value condition="String.Contains(listitem.mpaa,TV-Y) | String.Contains(listitem.mpaa,TV-G)">0</value>
+		<value condition="String.Contains(listitem.mpaa,TV-PG)">12</value>
+		<value condition="String.Contains(listitem.mpaa,TV-14)">16</value>
+		<value condition="String.Contains(listitem.mpaa,TV-MA) | String.Contains(listitem.mpaa,TV-18)">18</value>
+		<value condition="String.Contains(listitem.mpaa,TV-Y7)">6</value>
+		<value condition="String.Contains(listitem.mpaa,PG-13) | String.Contains(listitem.mpaa,Rated PG-13) | String.Contains(listitem.mpaa,USA:PG-13)">12</value>
+		<value condition="String.IsEqual(listitem.mpaa,PG) | String.Contains(listitem.mpaa,Rated PG) | String.Contains(listitem.mpaa,USA:PG)">6</value>
+		<value condition="String.IsEqual(listitem.mpaa,R) | String.Contains(listitem.mpaa,Rated R) | String.Contains(listitem.mpaa,USA:R)">16</value>
+		<value condition="String.Contains(listitem.mpaa,NC-17) | String.Contains(listitem.mpaa,Rated NC-17) | String.Contains(listitem.mpaa,USA:NC-17)">18</value>
+		<value condition="String.IsEqual(listitem.mpaa,G) | String.Contains(listitem.mpaa,Rated G) | String.Contains(listitem.mpaa,USA:G)">0</value>
+		<value>NA</value>
+	</variable>
+	<variable name="FlagLabel-Wigdet-MPAA">
+		<value condition="String.Contains(Container(400).listitem.mpaa,18)">18</value>
+		<value condition="String.Contains(Container(400).listitem.mpaa,16)">16</value>
+		<value condition="String.Contains(Container(400).listitem.mpaa,12)">12</value>
+		<value condition="String.Contains(Container(400).listitem.mpaa,6)">6</value>
+		<value condition="String.Contains(Container(400).listitem.mpaa,NR) | String.Contains(Container(400).listitem.Mpaa,Germany:o.Al.) | String.Contains(Container(400).listitem.Mpaa,0) | String.Contains(Container(400).listitem.Mpaa,o.A.) | String.Contains(Container(400).listitem.mpaa,Rated NR) | String.Contains(Container(400).listitem.mpaa,USA:NR) | String.Contains(Container(400).listitem.mpaa,not rated)">NR</value>
+		<value condition="String.Contains(Container(400).listitem.mpaa,TV-Y) | String.Contains(Container(400).listitem.mpaa,TV-G)">0</value>
+		<value condition="String.Contains(Container(400).listitem.mpaa,TV-PG)">12</value>
+		<value condition="String.Contains(Container(400).listitem.mpaa,TV-14)">16</value>
+		<value condition="String.Contains(Container(400).listitem.mpaa,TV-MA) | String.Contains(Container(400).listitem.mpaa,TV-18)">18</value>
+		<value condition="String.Contains(Container(400).listitem.mpaa,TV-Y7)">6</value>
+		<value condition="String.Contains(Container(400).listitem.mpaa,PG-13) | String.Contains(Container(400).listitem.mpaa,Rated PG-13) | String.Contains(Container(400).listitem.mpaa,USA:PG-13)">12</value>
+		<value condition="String.IsEqual(Container(400).listitem.mpaa,PG) | String.Contains(Container(400).listitem.mpaa,Rated PG) | String.Contains(Container(400).listitem.mpaa,USA:PG)">6</value>
+		<value condition="String.IsEqual(Container(400).listitem.mpaa,R) | String.Contains(Container(400).listitem.mpaa,Rated R) | String.Contains(Container(400).listitem.mpaa,USA:R)">16</value>
+		<value condition="String.Contains(Container(400).listitem.mpaa,NC-17) | String.Contains(Container(400).listitem.mpaa,Rated NC-17) | String.Contains(Container(400).listitem.mpaa,USA:NC-17)">18</value>
+		<value condition="String.IsEqual(Container(400).listitem.mpaa,G) | String.Contains(Container(400).listitem.mpaa,Rated G) | String.Contains(Container(400).listitem.mpaa,USA:G)">0</value>
+		<value>NA</value>
+	</variable>
+	<variable name="FlagLabel-Player-MPAA">
+		<value condition="String.Contains(VideoPlayer.mpaa,18)">18</value>
+		<value condition="String.Contains(VideoPlayer.mpaa,16)">16</value>
+		<value condition="String.Contains(VideoPlayer.mpaa,12)">12</value>
+		<value condition="String.Contains(VideoPlayer.mpaa,6)">6</value>
+		<value condition="String.Contains(VideoPlayer.mpaa,NR) | String.Contains(VideoPlayer.Mpaa,Germany:o.Al.) | String.Contains(VideoPlayer.Mpaa,0) | String.Contains(VideoPlayer.Mpaa,o.A.) | String.Contains(VideoPlayer.mpaa,Rated NR) | String.Contains(VideoPlayer.mpaa,USA:NR) | String.Contains(VideoPlayer.mpaa,not rated)">NR</value>
+		<value condition="String.Contains(VideoPlayer.mpaa,TV-Y) | String.Contains(VideoPlayer.mpaa,TV-G)">0</value>
+		<value condition="String.Contains(VideoPlayer.mpaa,TV-PG)">12</value>
+		<value condition="String.Contains(VideoPlayer.mpaa,TV-14)">16</value>
+		<value condition="String.Contains(VideoPlayer.mpaa,TV-MA) | String.Contains(VideoPlayer.mpaa,TV-18)">18</value>
+		<value condition="String.Contains(VideoPlayer.mpaa,TV-Y7)">6</value>
+		<value condition="String.Contains(VideoPlayer.mpaa,PG-13) | String.Contains(VideoPlayer.mpaa,Rated PG-13) | String.Contains(VideoPlayer.mpaa,USA:PG-13)">12</value>
+		<value condition="String.IsEqual(VideoPlayer.mpaa,PG) | String.Contains(VideoPlayer.mpaa,Rated PG) | String.Contains(VideoPlayer.mpaa,USA:PG)">6</value>
+		<value condition="String.IsEqual(VideoPlayer.mpaa,R) | String.Contains(VideoPlayer.mpaa,Rated R) | String.Contains(VideoPlayer.mpaa,USA:R)">16</value>
+		<value condition="String.Contains(VideoPlayer.mpaa,NC-17) | String.Contains(VideoPlayer.mpaa,Rated NC-17) | String.Contains(VideoPlayer.mpaa,USA:NC-17)">18</value>
+		<value condition="String.IsEqual(VideoPlayer.mpaa,G) | String.Contains(VideoPlayer.mpaa,Rated G) | String.Contains(VideoPlayer.mpaa,USA:G)">0</value>
+		<value>NA</value>
+	</variable>
+	<!-- ##### Rating ##### -->
+	<include name="StarRating-bg">
+		<control type="image">
+			<width>149</width>
+			<height>41</height>
+			<texture colordiffuse="$VAR[SecondaryCol]">flagging/rating_bg.png</texture>
+		</control>
+	</include>
+	<include name="StarRating-Layoutback">
+		<top>ratingstars.top</top>
+		<width>130</width>
+		<height>41</height>
+		<align>center</align>
+		<textcolor>$VAR[PrimaryCol]</textcolor>
+		<selectedcolor>$VAR[PrimaryCol]</selectedcolor><!-- default ueberschreibung -->
+		<font>Rating</font>
+	</include>
+	<include name="StarRating-Layoutfront">
+		<top>ratingstars.top</top>
+		<width>130</width>
+		<height>41</height>
+		<align>center</align>
+		<textcolor>TextColorFO</textcolor>
+		<selectedcolor>TextColorFO</selectedcolor><!-- default ueberschreibung -->
+		<font>Rating</font>
+	</include>
+	<!-- star rating icons -->
+	<variable name="StarRatingback">
+		<value condition="!String.IsEmpty(ListItem.UserRating)">ý</value>
+		<value>Č</value>
+	</variable>
+	<variable name="Widget-StarRatingback">
+		<value condition="!String.IsEmpty(Container(400).ListItem.UserRating)">ý</value>
+		<value>Č</value>
+	</variable>
+	<variable name="Player-StarRatingback">
+		<value condition="Player.HasAudio + !String.IsEmpty(MusicPlayer.UserRating)">ý</value>
+		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.UserRating)">ý</value>
+		<value>Č</value>
+	</variable>
+	<variable name="StarRating">
+		<value condition="!String.IsEmpty(ListItem.UserRating) + String.Contains(ListItem.UserRating,10)">ó</value>
+		<value condition="!String.IsEmpty(ListItem.UserRating) + String.Contains(ListItem.UserRating,9)">ô</value>
+		<value condition="!String.IsEmpty(ListItem.UserRating) + String.Contains(ListItem.UserRating,8)">õ</value>
+		<value condition="!String.IsEmpty(ListItem.UserRating) + String.Contains(ListItem.UserRating,7)">ö</value>
+		<value condition="!String.IsEmpty(ListItem.UserRating) + String.Contains(ListItem.UserRating,6)">÷</value>
+		<value condition="!String.IsEmpty(ListItem.UserRating) + String.Contains(ListItem.UserRating,5)">ø</value>
+		<value condition="!String.IsEmpty(ListItem.UserRating) + String.Contains(ListItem.UserRating,4)">ù</value>
+		<value condition="!String.IsEmpty(ListItem.UserRating) + String.Contains(ListItem.UserRating,3)">ú</value>
+		<value condition="!String.IsEmpty(ListItem.UserRating) + String.Contains(ListItem.UserRating,2)">û</value>
+		<value condition="!String.IsEmpty(ListItem.UserRating) + String.Contains(ListItem.UserRating,1)">ü</value>
+		<value condition="Integer.IsGreaterOrEqual(ListItem.Rating,9)">č</value>
+		<value condition="Integer.IsGreaterOrEqual(ListItem.Rating,8)">Ď</value>
+		<value condition="Integer.IsGreaterOrEqual(ListItem.Rating,7)">ď</value>
+		<value condition="Integer.IsGreaterOrEqual(ListItem.Rating,6)">Đ</value>
+		<value condition="Integer.IsGreaterOrEqual(ListItem.Rating,5)">đ</value>
+		<value condition="Integer.IsGreaterOrEqual(ListItem.Rating,4)">Ē</value>
+		<value condition="Integer.IsGreaterOrEqual(ListItem.Rating,3)">ē</value>
+		<value condition="Integer.IsGreaterOrEqual(ListItem.Rating,2)">Ĕ</value>
+		<value condition="Integer.IsGreaterOrEqual(ListItem.Rating,1)">ĕ</value>
+		<value condition="Integer.IsGreaterOrEqual(ListItem.Rating,10)">Č</value>
+	</variable>
+	<variable name="Widget-StarRating">
+		<value condition="!String.IsEmpty(Container(400).ListItem.UserRating) + String.Contains(Container(400).ListItem.UserRating,10)">ó</value>
+		<value condition="!String.IsEmpty(Container(400).ListItem.UserRating) + String.Contains(Container(400).ListItem.UserRating,9)">ô</value>
+		<value condition="!String.IsEmpty(Container(400).ListItem.UserRating) + String.Contains(Container(400).ListItem.UserRating,8)">õ</value>
+		<value condition="!String.IsEmpty(Container(400).ListItem.UserRating) + String.Contains(Container(400).ListItem.UserRating,7)">ö</value>
+		<value condition="!String.IsEmpty(Container(400).ListItem.UserRating) + String.Contains(Container(400).ListItem.UserRating,6)">÷</value>
+		<value condition="!String.IsEmpty(Container(400).ListItem.UserRating) + String.Contains(Container(400).ListItem.UserRating,5)">đ</value>
+		<value condition="!String.IsEmpty(Container(400).ListItem.UserRating) + String.Contains(Container(400).ListItem.UserRating,4)">ø</value>
+		<value condition="!String.IsEmpty(Container(400).ListItem.UserRating) + String.Contains(Container(400).ListItem.UserRating,3)">ù</value>
+		<value condition="!String.IsEmpty(Container(400).ListItem.UserRating) + String.Contains(Container(400).ListItem.UserRating,2)">ú</value>
+		<value condition="!String.IsEmpty(Container(400).ListItem.UserRating) + String.Contains(Container(400).ListItem.UserRating,1)">û</value>
+		<value condition="Integer.IsGreaterOrEqual(Container(400).ListItem.Rating,9)">č</value>
+		<value condition="Integer.IsGreaterOrEqual(Container(400).ListItem.Rating,8)">Ď</value>
+		<value condition="Integer.IsGreaterOrEqual(Container(400).ListItem.Rating,7)">ď</value>
+		<value condition="Integer.IsGreaterOrEqual(Container(400).ListItem.Rating,6)">Đ</value>
+		<value condition="Integer.IsGreaterOrEqual(Container(400).ListItem.Rating,5)">đ</value>
+		<value condition="Integer.IsGreaterOrEqual(Container(400).ListItem.Rating,4)">Ē</value>
+		<value condition="Integer.IsGreaterOrEqual(Container(400).ListItem.Rating,3)">ē</value>
+		<value condition="Integer.IsGreaterOrEqual(Container(400).ListItem.Rating,2)">Ĕ</value>
+		<value condition="Integer.IsGreaterOrEqual(Container(400).ListItem.Rating,1)">ĕ</value>
+		<value condition="Integer.IsGreaterOrEqual(Container(400).ListItem.Rating,10)">Č</value>
+	</variable>
+	<variable name="Player-StarRating">
+		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.UserRating) + String.Contains(VideoPlayer.UserRating,10)">ó</value>
+		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.UserRating) + String.Contains(VideoPlayer.UserRating,9)">ô</value>
+		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.UserRating) + String.Contains(VideoPlayer.UserRating,8)">õ</value>
+		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.UserRating) + String.Contains(VideoPlayer.UserRating,7)">ö</value>
+		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.UserRating) + String.Contains(VideoPlayer.UserRating,6)">÷</value>
+		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.UserRating) + String.Contains(VideoPlayer.UserRating,5)">ø</value>
+		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.UserRating) + String.Contains(VideoPlayer.UserRating,4)">ù</value>
+		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.UserRating) + String.Contains(VideoPlayer.UserRating,3)">ú</value>
+		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.UserRating) + String.Contains(VideoPlayer.UserRating,2)">û</value>
+		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.UserRating) + String.Contains(VideoPlayer.UserRating,1)">ü</value>
+		<value condition="Player.HasVideo + Integer.IsGreaterOrEqual(VideoPlayer.Rating,9)">č</value>
+		<value condition="Player.HasVideo + Integer.IsGreaterOrEqual(VideoPlayer.Rating,8)">Ď</value>
+		<value condition="Player.HasVideo + Integer.IsGreaterOrEqual(VideoPlayer.Rating,7)">ď</value>
+		<value condition="Player.HasVideo + Integer.IsGreaterOrEqual(VideoPlayer.Rating,6)">Đ</value>
+		<value condition="Player.HasVideo + Integer.IsGreaterOrEqual(VideoPlayer.Rating,5)">đ</value>
+		<value condition="Player.HasVideo + Integer.IsGreaterOrEqual(VideoPlayer.Rating,4)">Ē</value>
+		<value condition="Player.HasVideo + Integer.IsGreaterOrEqual(VideoPlayer.Rating,3)">ē</value>
+		<value condition="Player.HasVideo + Integer.IsGreaterOrEqual(VideoPlayer.Rating,2)">Ĕ</value>
+		<value condition="Player.HasVideo + Integer.IsGreaterOrEqual(VideoPlayer.Rating,1)">ĕ</value>
+		<value condition="Player.HasVideo + Integer.IsGreaterOrEqual(VideoPlayer.Rating,10)">Č</value>
+
+		<value condition="Player.HasAudio + !String.IsEmpty(MusicPlayer.UserRating) + String.Contains(MusicPlayer.UserRating,10)">ó</value>
+		<value condition="Player.HasAudio + !String.IsEmpty(MusicPlayer.UserRating) + String.Contains(MusicPlayer.UserRating,9)">ô</value>
+		<value condition="Player.HasAudio + !String.IsEmpty(MusicPlayer.UserRating) + String.Contains(MusicPlayer.UserRating,8)">õ</value>
+		<value condition="Player.HasAudio + !String.IsEmpty(MusicPlayer.UserRating) + String.Contains(MusicPlayer.UserRating,7)">ö</value>
+		<value condition="Player.HasAudio + !String.IsEmpty(MusicPlayer.UserRating) + String.Contains(MusicPlayer.UserRating,6)">÷</value>
+		<value condition="Player.HasAudio + !String.IsEmpty(MusicPlayer.UserRating) + String.Contains(MusicPlayer.UserRating,5)">ø</value>
+		<value condition="Player.HasAudio + !String.IsEmpty(MusicPlayer.UserRating) + String.Contains(MusicPlayer.UserRating,4)">ù</value>
+		<value condition="Player.HasAudio + !String.IsEmpty(MusicPlayer.UserRating) + String.Contains(MusicPlayer.UserRating,3)">ú</value>
+		<value condition="Player.HasAudio + !String.IsEmpty(MusicPlayer.UserRating) + String.Contains(MusicPlayer.UserRating,2)">û</value>
+		<value condition="Player.HasAudio + !String.IsEmpty(MusicPlayer.UserRating) + String.Contains(MusicPlayer.UserRating,1)">ü</value>
+		<value condition="Player.HasAudio + Integer.IsGreaterOrEqual(MusicPlayer.Rating,9)">č</value>
+		<value condition="Player.HasAudio + Integer.IsGreaterOrEqual(MusicPlayer.Rating,8)">Ď</value>
+		<value condition="Player.HasAudio + Integer.IsGreaterOrEqual(MusicPlayer.Rating,7)">ď</value>
+		<value condition="Player.HasAudio + Integer.IsGreaterOrEqual(MusicPlayer.Rating,6)">Đ</value>
+		<value condition="Player.HasAudio + Integer.IsGreaterOrEqual(MusicPlayer.Rating,5)">đ</value>
+		<value condition="Player.HasAudio + Integer.IsGreaterOrEqual(MusicPlayer.Rating,4)">Ē</value>
+		<value condition="Player.HasAudio + Integer.IsGreaterOrEqual(MusicPlayer.Rating,3)">ē</value>
+		<value condition="Player.HasAudio + Integer.IsGreaterOrEqual(MusicPlayer.Rating,2)">Ĕ</value>
+		<value condition="Player.HasAudio + Integer.IsGreaterOrEqual(MusicPlayer.Rating,1)">ĕ</value>
+		<value condition="Player.HasAudio + Integer.IsGreaterOrEqual(MusicPlayer.Rating,10)">Č</value>
+	</variable>
+	<variable name="OSDPause-StarRating">
+		<value condition="Integer.IsGreaterOrEqual(VideoPlayer.Rating,9)">Ĉ</value>
+		<value condition="Integer.IsGreaterOrEqual(VideoPlayer.Rating,8)">ć</value>
+		<value condition="Integer.IsGreaterOrEqual(VideoPlayer.Rating,7)">Ć</value>
+		<value condition="Integer.IsGreaterOrEqual(VideoPlayer.Rating,6)">ą</value>
+		<value condition="Integer.IsGreaterOrEqual(VideoPlayer.Rating,5)">Ą</value>
+		<value condition="Integer.IsGreaterOrEqual(VideoPlayer.Rating,4)">ă</value>
+		<value condition="Integer.IsGreaterOrEqual(VideoPlayer.Rating,3)">Ă</value>
+		<value condition="Integer.IsGreaterOrEqual(VideoPlayer.Rating,2)">ā</value>
+		<value condition="Integer.IsGreaterOrEqual(VideoPlayer.Rating,1)">Ā</value>
+		<value condition="Integer.IsGreaterOrEqual(VideoPlayer.Rating,10)">ÿ</value>
+		<value condition="!String.IsEmpty(VideoPlayer.UserRating) + String.Contains(VideoPlayer.UserRating,10)">ÿ</value>
+		<value condition="!String.IsEmpty(VideoPlayer.UserRating) + String.Contains(VideoPlayer.UserRating,9)">Ĉ</value>
+		<value condition="!String.IsEmpty(VideoPlayer.UserRating) + String.Contains(VideoPlayer.UserRating,8)">ć</value>
+		<value condition="!String.IsEmpty(VideoPlayer.UserRating) + String.Contains(VideoPlayer.UserRating,7)">Ć</value>
+		<value condition="!String.IsEmpty(VideoPlayer.UserRating) + String.Contains(VideoPlayer.UserRating,6)">ą</value>
+		<value condition="!String.IsEmpty(VideoPlayer.UserRating) + String.Contains(VideoPlayer.UserRating,5)">Ą</value>
+		<value condition="!String.IsEmpty(VideoPlayer.UserRating) + String.Contains(VideoPlayer.UserRating,4)">ă</value>
+		<value condition="!String.IsEmpty(VideoPlayer.UserRating) + String.Contains(VideoPlayer.UserRating,3)">Ă</value>
+		<value condition="!String.IsEmpty(VideoPlayer.UserRating) + String.Contains(VideoPlayer.UserRating,2)">ā</value>
+		<value condition="!String.IsEmpty(VideoPlayer.UserRating) + String.Contains(VideoPlayer.UserRating,1)">Ā</value>
+	</variable>
+	
+	<!-- Rating labels -->
+	<variable name="FlagLabel-Rating">
+		<value condition="!String.IsEmpty(ListItem.Rating) + !Integer.IsGreaterOrEqual(ListItem.Rating,10)">$INFO[ListItem.Rating]</value>
+		<value condition="Integer.IsGreaterOrEqual(ListItem.Rating,10)">10</value>
+		<value>0.0</value>
+	</variable>
+	<variable name="FlagLabel-UserRating">
+		<value condition="!String.IsEmpty(ListItem.UserRating)">$INFO[ListItem.UserRating]</value>
+		<value>0</value>
+	</variable>
+	<variable name="FlagLabel-Wigdet-Rating">
+		<value condition="!String.IsEmpty(Container(400).ListItem.Rating) + !Integer.IsGreaterOrEqual(Container(400).ListItem.Rating,10)">$INFO[Container(400).ListItem.Rating]</value>
+		<value condition="Integer.IsGreaterOrEqual(Container(400).ListItem.Rating,10)">10</value>
+		<value>0.0</value>
+	</variable>
+	<variable name="FlagLabel-Wigdet-UserRating">
+		<value condition="!String.IsEmpty(Container(400).ListItem.UserRating)">$INFO[Container(400).ListItem.UserRating]</value>
+		<value>0</value>
+	</variable>
+	<variable name="FlagLabel-Player-Rating">
+		<value condition="!String.IsEmpty(VideoPlayer.Rating) + !Integer.IsGreaterOrEqual(VideoPlayer.Rating,10)">$INFO[VideoPlayer.Rating]</value>
+		<value condition="Integer.IsGreaterOrEqual(VideoPlayer.Rating,10)">10</value>
+		<value>0.0</value>
+	</variable>
+	<variable name="FlagLabel-Player-UserRating">
+		<value condition="!String.IsEmpty(VideoPlayer.Userrating)">$INFO[VideoPlayer.Userrating]</value>
+		<value>0</value>
+	</variable>
+
+	<!-- ##### flagbars ##### -->
+	<include name="FlagLabel-Layout">
+		<height>70</height>
+		<width min="0" max="300">auto</width>
+		<font>Flags</font>
+	</include>
+	<include name="Flagbar-Video">
+		<control type="group">
+			<left>885</left>
+			<top>970</top>
+			<control type="grouplist">
+				<width>1020</width>
+				<height>76</height>
+				<visible>!String.IsEmpty(ListItem.VideoCodec) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,movie)]</visible>
+				<orientation>horizontal</orientation>
+				<align>left</align>
+				<itemgap>20</itemgap>
+				<control type="label">
+					<description>Video codec icon</description>
+					<font>IconBig</font>
+					<textcolor>$VAR[PrimaryCol]</textcolor>
+					<include>FlagLabel-Layout</include>
+					<label>E</label>
+				</control>
+				<control type="label">
+					<description>Video codec value</description>
+					<include>FlagLabel-Layout</include>
+					<include>Animation-VintageFont-5</include>
+					<label fallback="NA">$INFO[ListItem.VideoCodec]</label>
+				</control>
+				<control type="label">
+					<description>Resolution icon</description>
+					<font>IconBig</font>
+					<textcolor>$VAR[PrimaryCol]</textcolor>
+					<include>FlagLabel-Layout</include>
+					<label>é</label>
+				</control>
+				<control type="label">
+					<description>Resolution value</description>
+					<include>FlagLabel-Layout</include>
+					<include>Animation-VintageFont-5</include>
+					<label fallback="NA">$INFO[ListItem.VideoResolution]</label>
+				</control>
+				<control type="label">
+					<description>Aspect ratio icon</description>
+					<font>IconBig</font>
+					<textcolor>$VAR[PrimaryCol]</textcolor>
+					<include>FlagLabel-Layout</include>
+					<label>ê</label>
+				</control>
+				<control type="label">
+					<description>Aspect ratio value</description>
+					<include>FlagLabel-Layout</include>
+					<include>Animation-VintageFont-5</include>
+					<label fallback="NA">$INFO[ListItem.VideoAspect]</label>
+				</control>
+				<control type="label">
+					<description>Enum</description>
+					<width>auto</width>
+					<height>60</height>
+					<font>EnumBoldBreadcumb</font><!-- include ueberschreibung font -->
+					<include>FlagLabel-Layout</include>
+					<label>$VAR[CustomEnumeration]</label>
+				</control>
+				<control type="label">
+					<description>Audio codec icon</description>
+					<font>IconBig</font>
+					<textcolor>$VAR[PrimaryCol]</textcolor>
+					<include>FlagLabel-Layout</include>
+					<label>ì</label>
+				</control>
+				<control type="label">
+					<description>Audio codec value</description>
+					<include>FlagLabel-Layout</include>
+					<include>Animation-VintageFont-5</include>
+					<label fallback="NA">$INFO[ListItem.AudioCodec]</label>
+				</control>
+				<control type="label">
+					<description>Audio channels icon</description>
+					<font>IconBig</font>
+					<textcolor>$VAR[PrimaryCol]</textcolor>
+					<include>FlagLabel-Layout</include>
+					<label>ë</label>
+				</control>
+				<control type="label">
+					<description>Audio channels value</description>
+					<include>FlagLabel-Layout</include>
+					<include>Animation-VintageFont-5</include>
+					<label fallback="NA">$INFO[ListItem.AudioChannels,, ch]</label>
+				</control>
+			</control>
+		</control>
+	</include>
+	<include name="Flagbar-Cat">
+		<control type="grouplist">
+			<width>1080</width>
+			<height>76</height>
+			<orientation>horizontal</orientation>
+			<align>left</align>
+			<itemgap>20</itemgap>
+			<control type="label">
+				<description>Video codec icon</description>
+				<font>IconBig</font>
+				<textcolor>$VAR[PrimaryCol]</textcolor>
+				<include>FlagLabel-Layout</include>
+				<label>E</label>
+			</control>
+			<control type="label">
+				<description>Video codec value</description>
+				<include>FlagLabel-Layout</include>
+				<include>Animation-VintageFont-5</include>
+				<label fallback="NA">$INFO[Container(400).ListItem.VideoCodec]</label>
+			</control>
+			<control type="label">
+				<description>Resolution icon</description>
+				<font>IconBig</font>
+				<textcolor>$VAR[PrimaryCol]</textcolor>
+				<include>FlagLabel-Layout</include>
+				<label>é</label>
+			</control>
+			<control type="label">
+				<description>Resolution value</description>
+				<include>FlagLabel-Layout</include>
+				<include>Animation-VintageFont-5</include>
+				<label fallback="NA">$INFO[Container(400).ListItem.VideoResolution]</label>
+			</control>
+			<control type="label">
+				<description>Aspect ratio icon</description>
+				<font>IconBig</font>
+				<textcolor>$VAR[PrimaryCol]</textcolor>
+				<include>FlagLabel-Layout</include>
+				<label>ê</label>
+			</control>
+			<control type="label">
+				<description>Aspect ratio value</description>
+				<include>FlagLabel-Layout</include>
+				<include>Animation-VintageFont-5</include>
+				<label fallback="NA">$INFO[Container(400).ListItem.VideoAspect]</label>
+			</control>
+			<control type="label">
+				<description>Enum</description>
+				<width>auto</width>
+				<font>EnumBoldBreadcumb</font><!-- include ueberschreibung font -->
+				<include>FlagLabel-Layout</include>
+				<label>$VAR[CustomEnumeration]</label>
+			</control>
+			<control type="label">
+				<description>Audio codec icon</description>
+				<font>IconBig</font>
+				<textcolor>$VAR[PrimaryCol]</textcolor>
+				<include>FlagLabel-Layout</include>
+				<label>ì</label>
+			</control>
+			<control type="label">
+				<description>Audio codec value</description>
+				<include>FlagLabel-Layout</include>
+				<include>Animation-VintageFont-5</include>
+				<label fallback="NA">$INFO[Container(400).ListItem.AudioCodec]</label>
+			</control>
+			<control type="label">
+				<description>Audio channels icon</description>
+				<font>IconBig</font>
+				<textcolor>$VAR[PrimaryCol]</textcolor>
+				<include>FlagLabel-Layout</include>
+				<label>ë</label>
+			</control>
+			<control type="label">
+				<description>Audio channels value</description>
+				<include>FlagLabel-Layout</include>
+				<include>Animation-VintageFont-5</include>
+				<label fallback="NA">$INFO[Container(400).ListItem.AudioChannels,, ch]</label>
+			</control>
+		</control>
+	</include>
+
+	<!-- ##### lastwatched flags values includesDateVars.xml Episode aus VAR nach Tagen - Serie und Staffel aus Playliste ##### -->
+	<variable name="Lastwatched-Episode">
+		<value condition="!Window.IsVisible(1198)">special://skin/playlists/Episode_Zuletzt_gesehene.xsp</value>
+	</variable>
+	<variable name="Lastwatched-Show">
+		<value condition="!Window.IsVisible(1198)">special://skin/playlists/TV_zuletzt gesehen.xsp</value>
+	</variable>
+	<variable name="Lastwatched-Label">
+		<value condition="String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode0TvShow))">$INFO[skin.string(LastwatchedEpisode0Date)]$INFO[skin.string(LastwatchedEpisode0Season), Staffel ,]</value>
+		<value condition="String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode1TvShow))">$INFO[skin.string(LastwatchedEpisode1Date)]$INFO[skin.string(LastwatchedEpisode1Season), Staffel ,]</value>
+		<value condition="String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode2TvShow))">$INFO[skin.string(LastwatchedEpisode2Date)]$INFO[skin.string(LastwatchedEpisode2Season), Staffel ,]</value>
+		<value condition="String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode3TvShow))">$INFO[skin.string(LastwatchedEpisode3Date)]$INFO[skin.string(LastwatchedEpisode3Season), Staffel ,]</value>
+		<value condition="String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode4TvShow))">$INFO[skin.string(LastwatchedEpisode4Date)]$INFO[skin.string(LastwatchedEpisode4Season), Staffel ,]</value>
+		<value condition="String.IsEqual(ListItem.TVShowTitle,Skin.String(LastwatchedEpisode5TvShow))">$INFO[skin.string(LastwatchedEpisode5Date)]$INFO[skin.string(LastwatchedEpisode5Season), Staffel ,]</value>
+		<value>xxx</value>
+	</variable>
+	<include name="Lastwatched-Overlay">
+		<width>60</width>
+		<height>60</height>
+		<align>center</align>
+		<label>$VAR[Lastwatched-OverlayIcon]</label>
+		<textcolor>$VAR[LastwatchedCol]</textcolor><!-- default ueberschreibung -->
+		<shadowcolor>TextColorLight</shadowcolor><!-- default ueberschreibung -->
+		<selectedcolor>$VAR[LastwatchedCol]</selectedcolor><!-- default ueberschreibung -->
+		<font>IconOverlayBig</font>
+		<visible>!ListItem.IsParentFolder + [Container.Content(episodes) | Container.Content(tvshows) | Container.Content(seasons)]</visible>
+	</include>
+	
+	<!-- ##### videoinfo script serienstatus ##### -->
+	<variable name="ShowStatus-Overlay">
+		<value condition="String.IsEqual(Window(Home).Property(NextAired.StatusID),0)">ŏ</value><!-- Returning Series -->
+		<value condition="String.IsEqual(Window(Home).Property(NextAired.StatusID),11)">Ő</value><!-- Cancelled/Ended -->
+		<value condition="String.IsEqual(Window(Home).Property(NextAired.StatusID),2)">ő</value><!-- TBD/On The Bubble/ Noch festzulegen -->
+		<value condition="String.IsEqual(Window(Home).Property(NextAired.StatusID),4)">Œ</value><!-- New Series -->
+		<value condition="String.IsEqual(Window(Home).Property(NextAired.StatusID),6)">Ŕ</value><!-- Final Season -->
+		<value condition="String.IsEqual(Window(Home).Property(NextAired.StatusID),-1)">ő</value><!-- Undefined -->
+		<value condition="!String.IsEmpty(Window(Home).Property(NextAired.NextDate))">ő</value>
+	</variable>
+	<variable name="ShowStatus-Seasons">
+		<value condition="[String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,Season) | String.IsEqual(ListItem.DBType,episode)] + !Integer.IsGreater(Window(Home).Property(NextAired.LatestSeasonNumber),1)">[B]Onlinestatus: [/B]1 Staffel$COMMA $INFO[Window(Home).Property(NextAired.Status),,]</value>
+		<value condition="[String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,Season) | String.IsEqual(ListItem.DBType,episode)]">[B]Onlinestatus: [/B]$INFO[Window(Home).Property(NextAired.LatestSeasonNumber),, Staffeln]$COMMA $INFO[Window(Home).Property(NextAired.Status),,]</value>
+	</variable>
+
+	<!-- ##### Overlays ##### -->
+	<variable name="WatchedOverlay">
+		<value condition="ListItem.IsCollection">å</value><!-- set -->
+		<!-- zuletzt hinzugefuegt 1-10 episode und Filme -->
+		<value condition="String.IsEqual(ListItem.DBType,movie) + String.IsEmpty(ListItem.PlayCount) + [String.IsEqual(Window(Home).Property(LatestMovie.1.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.2.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.3.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.4.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.5.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.6.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.7.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.8.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.9.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.10.Title),ListItem.Label)]">ç</value>
+		<value condition="String.IsEqual(ListItem.DBType,episode) + String.IsEmpty(ListItem.PlayCount) + [String.IsEqual(Window(Home).Property(LatestEpisode.1.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.2.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.3.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.4.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.5.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.6.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.7.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.8.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.9.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.10.EpisodeTitle),ListItem.Title)]">ç</value>
+
+		<value condition="[String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,tvshow)] + String.IsEqual(ListItem.Property(TotalEpisodes),ListItem.Property(WatchedEpisodes))">è</value><!-- watched -->
+		<value condition="[String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,tvshow)] + !Integer.IsGreater(ListItem.Property(WatchedEpisodes),0)">æ</value><!-- new -->
+		<value condition="[String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,tvshow)] + !String.IsEqual(ListItem.Property(TotalEpisodes),ListItem.Property(UnWatchedEpisodes))">ä</value><!-- ongoing -->
+		
+		<value condition="String.IsEqual(ListItem.DBType,movie) + ListItem.IsResumable">ä</value><!-- ongoing -->
+		<value condition="String.IsEqual(ListItem.DBType,movie) + String.IsEqual(ListItem.Overlay,OverlayWatched.png)">è</value><!-- watched -->
+		<value condition="String.IsEqual(ListItem.DBType,movie) + !Integer.IsGreater(ListItem.PlayCount,0)">æ</value><!-- new -->
+		
+		<value condition="String.IsEqual(ListItem.DBType,episode) + ListItem.IsResumable">ä</value><!-- ongoing -->
+		<value condition="String.IsEqual(ListItem.DBType,episode) + !Integer.IsGreater(ListItem.PlayCount,0)">æ</value><!-- new -->
+		<value condition="String.IsEqual(ListItem.DBType,episode) + Integer.IsGreater(ListItem.PlayCount,0)">è</value><!-- watched -->
+		
+		<value condition="String.IsEqual(ListItem.Overlay,OverlayWatched.png)">è</value><!-- watched -->
+		<value condition="String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)">æ</value><!-- new -->
+	</variable>
+	<variable name="WatchedOverlay400">
+		<value condition="Container(400).ListItem.IsCollection">å</value><!-- set -->
+		<value condition="[String.Contains(Container(400).ListItem.DBTYPE,season) | String.Contains(Container(400).ListItem.DBTYPE,tvshow)] + String.IsEqual(Container(400).ListItem.Property(TotalEpisodes),Container(400).ListItem.Property(WatchedEpisodes))">è</value><!-- watched -->
+		<value condition="[String.Contains(Container(400).ListItem.DBTYPE,season) | String.Contains(Container(400).ListItem.DBTYPE,tvshow)] + !Integer.IsGreater(Container(400).ListItem.Property(WatchedEpisodes),0)">æ</value><!-- new -->
+		<value condition="[String.Contains(Container(400).ListItem.DBTYPE,season) | String.Contains(Container(400).ListItem.DBTYPE,tvshow)] + !String.IsEqual(Container(400).ListItem.Property(TotalEpisodes),Container(400).ListItem.Property(UnWatchedEpisodes))">ä</value><!-- ongoing -->
+		
+		<value condition="String.Contains(Container(400).ListItem.DBTYPE,movie) + Container(400).ListItem.IsResumable">ä</value><!-- ongoing -->
+		<value condition="String.Contains(Container(400).ListItem.DBTYPE,movie) + String.IsEqual(Container(400).ListItem.Overlay,OverlayWatched.png)">è</value><!-- watched -->
+		<value condition="String.Contains(Container(400).ListItem.DBTYPE,movie) + !Integer.IsGreater(Container(400).ListItem.PlayCount,0)">æ</value><!-- new -->
+		
+		<value condition="String.IsEqual(ListItem.DBType,episode) + Container(400).ListItem.IsResumable">ä</value><!-- ongoing -->
+		<value condition="String.IsEqual(ListItem.DBType,episode) + !Integer.IsGreater(Container(400).ListItem.PlayCount,0)">æ</value><!-- new -->
+		<value condition="String.IsEqual(ListItem.DBType,episode) + Integer.IsGreater(Container(400).ListItem.PlayCount,0)">è</value><!-- watched -->
+		
+		<value condition="String.IsEqual(Container(400).ListItem.Overlay,OverlayWatched.png)">è</value><!-- watched -->
+		<value condition="String.IsEqual(Container(400).ListItem.Overlay,OverlayUnwatched.png)">æ</value><!-- new -->
+	</variable>
+	<include name="WatchedOverlay-Layout">
+		<align>center</align>
+		<textcolor>TextColorFO</textcolor>
+		<selectedcolor>TextColorFO</selectedcolor><!-- default ueberschreibung -->
+	</include>
+	<variable name="MusicplaycountOverlay">
+		<value condition="Integer.IsGreater(ListItem.Playcount,4)">ȂȂȂȂġ</value>
+		<value condition="String.StartsWith(ListItem.Playcount,4)">ȂȂȂȂ</value>
+		<value condition="String.StartsWith(ListItem.Playcount,3)">ȂȂȂ</value>
+		<value condition="String.StartsWith(ListItem.Playcount,2)">ȂȂ</value>
+		<value condition="String.StartsWith(ListItem.Playcount,1)">Ȃ</value>
+	</variable>
+</includes>

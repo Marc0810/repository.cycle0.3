@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- Cycle 0.4 -->
+<backgroundcolor>BackgroundColor</backgroundcolor>
+<defaultcontrol always="true">71</defaultcontrol>
+<views>71</views>
+<menucontrol>9110</menucontrol>
+<controls>
+	<control type="button" id="3">
+		<description>Hiddencorebutton Sortieren fuer kurzbezeichnung mit sendclick</description>
+		<include>HiddenControl</include>
+	</control>
+	<include condition="Skin.HasSetting(EnableVintageOverlay)">Vintagebackground</include>
+	<include condition="!Skin.HasSetting(EnableVintageOverlay)">Cyclebackground</include>
+	<include>Topbar</include><!-- topbar -->
+	<include>Viewtype_71_Filelist</include><!-- View -->
+	<include>Sideblade-NF</include><!-- Sideblade menue indikator -->
+	<control type="group"><!-- Sidebar -->
+		<width>420</width>
+		<height>1080</height>
+		<include>Animation375-OpenCloseVisibleHidden-Slide</include>
+		<visible allowhiddenfocus="true">ControlGroup(9110).HasFocus + ![Window.IsVisible(Custom_1120_Options.xml) | Window.IsVisible(Custom_1141_ViewtypeSimilar.xml) | Window.IsVisible(contextmenu) | Window.IsVisible(shutdownmenu) | Window.IsVisible(favourites) | Window.IsVisible(playercontrols)]</visible>
+		<include>Sideblade-FO</include>
+		<include>Sideblade-BG</include>
+		<include>Sideblade-Breadcumb</include>
+		<control type="grouplist" id="9110"><!-- Menue -->
+			<description>Sidebar Menue</description>
+			<include>Sideblade-Dimension</include>
+			<control type="button" id="33">
+				<description>Verkuerzter Sortbutton mit Text aus Variable</description>
+				<include>Sideblade-ButtonValues</include>
+				<onclick>Container.NextSortMethod</onclick>
+				<label>$INFO[Container.SortMethod]</label>
+				<visible>Control.IsEnabled(3)</visible>
+			</control>
+			<control type="togglebutton" id="4">
+				<description>Reihenfolge Auf/Abwaerts</description>
+				<include>Sideblade-ButtonValues</include>
+				<label>Absteigend</label>
+				<altlabel>Aufsteigend</altlabel>
+				<usealttexture>Container.SortDirection(Ascending)</usealttexture>
+			</control>
+			<control type="edit" id="19">
+				<description>Filter</description>
+				<include>Sideblade-ButtonValues</include>
+				<label>Filter</label>
+				<visible>Container.CanFilter + !Container.CanFilterAdvanced</visible>
+			</control>
+			<control type="radiobutton" id="20">
+				<description>Filter</description>
+				<include>Sideblade-ButtonValues</include>
+				<onclick>Right</onclick>
+				<onclick>Filter</onclick>
+				<label>Filter</label>
+				<selected>Container.Filtered</selected>
+				<visible>Container.CanFilterAdvanced</visible>
+			</control>
+			<control type="button" id="6">
+				<description>Slideshow</description>
+				<include>Sideblade-ButtonValues</include>
+				<label>Slideshow</label>
+				<visible>Control.IsEnabled(6)</visible>
+			</control>
+			<control type="button" id="7">
+				<description>Rekursive Slideshow</description>
+				<include>Sideblade-ButtonValues</include>
+				<label>Umkehren</label>
+				<visible>Control.IsEnabled(6)</visible>
+			</control>
+			<control type="radiobutton" id="9">
+				<description>Zufaellig Umschalten</description>
+				<include>Sideblade-ButtonValues</include>
+				<label>Zufall</label>
+				<visible>Control.IsEnabled(6)</visible>
+			</control>
+		</control>
+		<include>Sideblade-IconBG</include>
+		<control type="grouplist"><!-- Icon grouplist -->
+			<include>Sideblade-IconDimension</include>
+			<visible>ControlGroup(9110).HasFocus</visible>
+			<control type="label">
+				<description>Verkuerzter Sortbutton mit Text aus Variable</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorFO</include>
+				<label>a</label>
+				<visible>Control.IsVisible(33) + Control.HasFocus(33)</visible>
+			</control>
+			<control type="label">
+				<description>Verkuerzter Sortbutton mit Text aus Variable</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorNF</include>
+				<label>a</label>
+				<visible>Control.IsVisible(33) + !Control.HasFocus(33)</visible>
+			</control>
+			<control type="label">
+				<description>Reihenfolge Auf/Abwaerts</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorFO</include>
+				<label>b</label>
+				<visible>Control.IsVisible(4) + Control.HasFocus(4) + Container.SortDirection(Ascending)</visible>
+			</control>
+			<control type="label">
+				<description>Reihenfolge Auf/Abwaerts</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorNF</include>
+				<label>b</label>
+				<visible>Control.IsVisible(4) + !Control.HasFocus(4) + Container.SortDirection(Ascending)</visible>
+			</control>
+			<control type="label">
+				<description>Reihenfolge Auf/Abwaerts</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorFO</include>
+				<label>c</label>
+				<visible>Control.IsVisible(4) + Control.HasFocus(4) + !Container.SortDirection(Ascending)</visible>
+			</control>
+			<control type="label">
+				<description>Reihenfolge Auf/Abwaerts</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorNF</include>
+				<label>c</label>
+				<visible>Control.IsVisible(4) + !Control.HasFocus(4) + !Container.SortDirection(Ascending)</visible>
+			</control>
+			<control type="label">
+				<description>Filter</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorFO</include>
+				<label>ĝ</label>
+				<visible>Control.IsVisible(19) + Control.HasFocus(19) + Container.CanFilter + !Container.CanFilterAdvanced</visible>
+				<include>Animation-FilterIndikator</include>
+			</control>
+			<control type="label">
+				<description>Filter</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorNF</include>
+				<label>ĝ</label>
+				<visible>Control.IsVisible(19) + !Control.HasFocus(19) + Container.CanFilter + !Container.CanFilterAdvanced</visible>
+				<include>Animation-FilterIndikator</include>
+			</control>
+			<control type="label">
+				<description>Erweiterter Filter</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorFO</include>
+				<label>ĝ</label>
+				<visible>Control.IsVisible(20) + Control.HasFocus(20) + Container.CanFilterAdvanced</visible>
+				<include>Animation-FilterIndikator</include>
+			</control>
+			<control type="label">
+				<description>Erweiterter Filter</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorNF</include>
+				<label>ĝ</label>
+				<visible>Control.IsVisible(20) + !Control.HasFocus(20) + Container.CanFilterAdvanced</visible>
+				<include>Animation-FilterIndikator</include>
+			</control>
+			<control type="label">
+				<description>Slideshow</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorFO</include>
+				<label>À</label>
+				<visible>Control.IsVisible(6) + Control.HasFocus(6)</visible>
+			</control>
+			<control type="label">
+				<description>Slideshow</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorNF</include>
+				<label>À</label>
+				<visible>Control.IsVisible(6) + !Control.HasFocus(6)</visible>
+			</control>
+			<control type="label">
+				<description>Recursive Slideshow</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorFO</include>
+				<label>Á</label>
+				<visible>Control.IsVisible(7) + Control.HasFocus(7)</visible>
+			</control>
+			<control type="label">
+				<description>Recursive Slideshow</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorNF</include>
+				<label>Á</label>
+				<visible>Control.IsVisible(7) + !Control.HasFocus(7)</visible>
+			</control>
+			<control type="label">
+				<description>Zufaellig Umschalten</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorFO</include>
+				<label>¢</label>
+				<visible>Control.IsVisible(9) + Control.HasFocus(9) + String.IsEqual(Control.GetLabel(9),*)</visible>
+			</control>
+			<control type="label">
+				<description>Zufaellig Umschalten</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorNF</include>
+				<label>¢</label>
+				<visible>Control.IsVisible(9) + !Control.HasFocus(9) + String.IsEqual(Control.GetLabel(9),*)</visible>
+			</control>
+			<control type="label">
+				<description>Zufaellig Umschalten</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorFO</include>
+				<label>¡</label>
+				<visible>Control.IsVisible(9) + Control.HasFocus(9) + !String.IsEqual(Control.GetLabel(9),*)</visible>
+			</control>
+			<control type="label">
+				<description>Zufaellig Umschalten</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorNF</include>
+				<label>¡</label>
+				<visible>Control.IsVisible(9) + !Control.HasFocus(9) + !String.IsEqual(Control.GetLabel(9),*)</visible>
+			</control>
+		</control>
+	</control>
+</controls>
+</window>

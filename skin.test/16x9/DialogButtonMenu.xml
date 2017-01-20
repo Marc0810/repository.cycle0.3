@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- Cycle 0.4 -->
+<defaultcontrol always="true">8100</defaultcontrol>
+<zorder>455</zorder><!-- zorder erhoehung hoechster wert damit es ueber allem kommt -->
+<controls>
+<control type="group">
+	<include>Animation375-OpenCloseVisibleHidden-Slide</include>
+	<include>Sideblade-BG</include>
+	<include>Sideblade-Breadcumb</include>
+	<include>Sideblade-IconBG</include>
+	<control type="list" id="8100">
+		<include>Sideblade-ContainerLayout</include>
+		<content>
+			<item id="1">
+				<description>Kodi Beenden</description>
+				<include>Shutdown-Button</include>
+				<label>Verlassen</label>
+				<label2>l</label2>
+				<onclick>Quit()</onclick>
+				<visible>System.ShowExitButton</visible>
+			</item>
+			<item id="2">
+				<description>Ausschalten</description>
+				<label>Ausschalten</label>
+				<label2>j</label2>
+				<onclick>Powerdown()</onclick>
+				<visible>System.CanPowerDown</visible>
+			</item>
+			<item id="3">
+				<description>Mastermodus</description>
+				<label>Master-Modus</label>
+				<label2>g</label2>
+				<onclick>xbmc.mastermode</onclick>
+				<visible>!System.HasLocks</visible>
+			</item>
+			<item id="5">
+				<description>LogOff Profile</description>
+				<include>Shutdown-Button</include>
+				<label>Abmelden</label>
+				<label2>f</label2>
+				<onclick>dialog.close(all)</onclick>
+				<onclick>System.LogOff</onclick>
+				<!-- 
+				<visible>System.HasLoginScreen | Integer.IsGreater(System.ProfileCount,1)</visible>
+				<visible>System.Loggedon</visible>-->
+				
+
+			</item>
+			<item id="6">
+				<description>Profil wechseln</description>
+				<include>Shutdown-Button</include>
+				<label>Profil wechseln</label>
+				<label2>s</label2>
+				<onclick>Dialog.Close(all)</onclick>
+				<onclick>ActivateWindow(loginscreen)</onclick>
+				<!-- 
+				<visible>[System.HasLoginScreen | Integer.IsGreater(System.ProfileCount,1)] + System.Loggedon + System.HasLoginScreen</visible>-->
+				
+
+				
+
+			</item>
+			<item id="7">
+				<description>Einstellungen oeffnen</description>
+				<label>Einstellungen</label>
+				<label2>ĭ</label2>
+				<onclick>Dialog.Close(all)</onclick>
+				<onclick>ActivateWindow(Settings)</onclick>
+				<visible>!Window.IsVisible(settings)</visible>
+			</item>
+		</content>
+	</control>
+	<control type="label">
+		<description>Breadcumb icon</description>
+		<left>20</left>
+		<top>40</top>
+		<include>SidebarIcon-Dimension</include>
+		<include>SidebarIcon-ColorFO</include>
+		<label>j</label>
+	</control>
+</control>
+</controls>
+</window>

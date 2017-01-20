@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- Cycle 0.4 -->
+<backgroundcolor>BackgroundColor</backgroundcolor>
+<defaultcontrol always="true">9000</defaultcontrol>
+<views>50</views>
+<controls>
+<include condition="Skin.HasSetting(EnableVintageOverlay)">Vintagebackground</include>
+<include condition="!Skin.HasSetting(EnableVintageOverlay)">Cyclebackground</include>
+<control type="button" id="22">
+	<description>Hiddencorebutton nur aktuelles level anzeigen fuer kurzbezeichnung mit sendclick</description>
+	<include>HiddenControl</include>
+</control>
+<!-- Mainmenue -->
+<control type="group">
+	<visible>!Window.IsVisible(shutdownmenu)</visible>
+	<include>Animation375-OpenCloseVisibleHidden-Slide</include>
+	<include>SettingMenu-BG</include><!-- Hintergrund -->
+	<include>SettingMenu-IconBG</include>
+	<include>SettingMenu-Breadcumb</include>
+	<control type="grouplist" id="9000">
+		<left>100</left>
+		<top>150</top>
+		<include>SettingMenu-ListDimension</include>
+		<onleft>PreviousMenu</onleft>
+		<onright>back</onright>
+		<onup>9000</onup>
+		<ondown>9000</ondown>
+		<onback>50</onback>
+		<itemgap>5</itemgap>
+		<control type="togglebutton" id="4">
+			<description>Reihenfolge Auf/Abwaerts</description>
+			<include>Sideblade-ButtonValues</include>
+			<label>Absteigend</label>
+			<altlabel>Aufsteigend</altlabel>
+			<usealttexture>Container.SortDirection(Ascending)</usealttexture>
+		</control>
+		<control type="label" id="201">
+			<description>FakeAbstand dazwischen</description>
+			<width>330</width>
+			<height>65</height>
+			<label></label>
+		</control>
+		<control type="button" id="21">
+			<description>Level</description>
+			<include>Sideblade-ButtonValues</include>
+		</control>
+		<control type="radiobutton" id="222">
+			<description>Nur aktuelles level anzeigen</description>
+			<include>Sideblade-ButtonValues</include>
+			<label>$VAR[EventLog-Levellabel]</label>
+			<onclick>SendClick(22)</onclick>
+			<visible>Control.IsEnabled(22)</visible>
+		</control>
+		<control type="button" id="20">
+			<description>Clear</description>
+			<include>Sideblade-ButtonValues</include>
+			<label>Löschen</label>
+		</control>
+	</control>
+	<control type="grouplist"><!-- Icon grouplist -->
+		<left>20</left>
+		<top>155</top>
+		<itemgap>10</itemgap>
+		<width>388</width>
+		<height>975</height>
+		<control type="label">
+			<description>Reihenfolge Auf/Abwaerts</description>
+			<include>SidebarIcon-Dimension</include>
+			<include>SidebarIcon-ColorFO</include>
+			<label>b</label>
+			<visible>Control.IsVisible(4) + Control.HasFocus(4) + Container.SortDirection(Ascending)</visible>
+		</control>
+		<control type="label">
+			<description>Reihenfolge Auf/Abwaerts</description>
+			<include>SidebarIcon-Dimension</include>
+			<include>SidebarIcon-ColorNF</include>
+			<label>b</label>
+			<visible>Control.IsVisible(4) + !Control.HasFocus(4) + Container.SortDirection(Ascending)</visible>
+		</control>
+		<control type="label">
+			<description>Reihenfolge Auf/Abwaerts</description>
+			<include>SidebarIcon-Dimension</include>
+			<include>SidebarIcon-ColorFO</include>
+			<label>c</label>
+			<visible>Control.IsVisible(4) + Control.HasFocus(4) + !Container.SortDirection(Ascending)</visible>
+		</control>
+		<control type="label">
+			<description>Reihenfolge Auf/Abwaerts</description>
+			<include>SidebarIcon-Dimension</include>
+			<include>SidebarIcon-ColorNF</include>
+			<label>c</label>
+			<visible>Control.IsVisible(4) + !Control.HasFocus(4) + !Container.SortDirection(Ascending)</visible>
+		</control>
+		<control type="label">
+			<description>FakeAbstand dazwischen</description>
+			<width>330</width>
+			<height>50</height>
+			<label></label>
+		</control>
+		<control type="label">
+			<description>Level</description>
+			<include>SidebarIcon-Dimension</include>
+			<include>SidebarIcon-ColorFO</include>
+			<label>ð</label>
+			<visible>Control.IsVisible(21) + Control.HasFocus(21)</visible>
+		</control>
+		<control type="label">
+			<description>Level</description>
+			<include>SidebarIcon-Dimension</include>
+			<include>SidebarIcon-ColorNF</include>
+			<label>ð</label>
+			<visible>Control.IsVisible(21) + !Control.HasFocus(21)</visible>
+		</control>
+		<control type="label">
+			<description>Nur aktuelles level anzeigen</description>
+			<include>SidebarIcon-Dimension</include>
+			<include>SidebarIcon-ColorFO</include>
+			<label>u</label>
+			<visible>Control.IsVisible(222) + Control.HasFocus(222)</visible>
+		</control>
+		<control type="label">
+			<description>Nur aktuelles level anzeigen</description>
+			<include>SidebarIcon-Dimension</include>
+			<include>SidebarIcon-ColorNF</include>
+			<label>u</label>
+			<visible>Control.IsVisible(222) + !Control.HasFocus(222)</visible>
+		</control>
+		<control type="label">
+			<description>Clear</description>
+			<height>45</height><!-- include ueberschreibung -->
+			<include>SidebarIcon-Dimension</include>
+			<include>SidebarIcon-ColorFO</include>
+			<label>Ģ</label>
+			<visible>Control.IsVisible(20) + Control.HasFocus(20)</visible>
+		</control>
+		<control type="label">
+			<description>Clear</description>
+			<height>45</height><!-- include ueberschreibung -->
+			<include>SidebarIcon-Dimension</include>
+			<include>SidebarIcon-ColorNF</include>
+			<label>Ģ</label>
+			<visible>Control.IsVisible(20) + !Control.HasFocus(20)</visible>
+		</control>
+	</control>
+	<control type="image">
+		<left>110</left>
+		<top>990</top>
+		<width>200</width>
+		<height>77</height>
+		<texture>logo.png</texture>
+	</control>
+</control>
+<control type="group"><!-- log texte Group -->
+	<left>600</left>
+	<top>150</top>
+	<include>Animation-OpenCloseVisibleHidden-Fade</include>
+	<control type="image">
+		<width>1125</width>
+		<height>820</height>
+		<texture colordiffuse="ListBackgroundDiffuse">white.png</texture>
+	</control>
+	<control type="list" id="50">
+		<width>1125</width>
+		<height>732</height>
+		<onleft>9000</onleft>
+		<onright condition="Integer.IsGreater(Container(50).NumPages,1)">60</onright>
+		<onup>50</onup>
+		<ondown>50</ondown>
+		<pagecontrol>60</pagecontrol>
+		<scrolltime>400</scrolltime>
+		<itemlayout height="122" width="1125">
+			<control type="image">
+				<description>Border</description>
+				<left>16</left>
+				<top>16</top>
+				<width>92</width>
+				<height>92</height>
+				<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
+			</control>
+			<control type="image"><!-- Fallback -->
+				<description>Hintergrundfarbe</description>
+				<left>18</left>
+				<top>18</top>
+				<width>88</width>
+				<height>88</height>
+				<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+			</control>
+			<control type="label">
+				<description>Fallback icon</description>
+				<left>18</left>
+				<top>18</top>
+				<width>88</width>
+				<height>88</height>
+				<align>center</align>
+				<font>BigIconDimension</font>
+				<textcolor>$VAR[CirclesCol]</textcolor>
+				<label>É</label>
+			</control>
+			<control type="image">
+				<description>Art</description>
+				<left>18</left>
+				<top>18</top>
+				<width>88</width>
+				<height>88</height>
+				<texture>$INFO[Listitem.Icon]</texture>
+				<aspectratio>scale</aspectratio>
+			</control>
+			<control type="label">
+				<left>150</left>
+				<width>487</width>
+				<height>55</height>
+				<textoffsetx>30</textoffsetx>
+				<textcolor>TextColorMedium</textcolor>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+			<control type="label">
+				<left>637</left>
+				<width>487</width>
+				<height>55</height>
+				<align>right</align>
+				<textoffsetx>30</textoffsetx>
+				<textcolor>TextColorMedium</textcolor>
+				<label>$INFO[ListItem.Label2]</label>
+			</control>
+			<control type="textbox">
+				<left>180</left>
+				<top>60</top>
+				<width>914</width>
+				<height>55</height>
+				<font>RegularSmall</font>
+				<textcolor>TextColorMedium</textcolor>
+				<label>$INFO[ListItem.Property(Event.Description)]</label>
+			</control>
+		</itemlayout>
+		<focusedlayout height="122" width="1125">
+			<control type="image"><!-- Hintergrund -->
+				<width>1125</width>
+				<height>122</height>
+				<texture background="true" colordiffuse="ListBackgroundDiffuse">white.png</texture>
+			</control>
+			<control type="image">
+				<description>Border</description>
+				<left>16</left>
+				<top>16</top>
+				<width>92</width>
+				<height>92</height>
+				<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
+			</control>
+			<control type="image"><!-- Fallback -->
+				<description>Hintergrundfarbe</description>
+				<left>18</left>
+				<top>18</top>
+				<width>88</width>
+				<height>88</height>
+				<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+			</control>
+			<control type="label">
+				<description>Fallback icon</description>
+				<left>18</left>
+				<top>18</top>
+				<width>88</width>
+				<height>88</height>
+				<align>center</align>
+				<font>BigIconDimension</font>
+				<textcolor>$VAR[CirclesCol]</textcolor>
+				<label>É</label>
+			</control>
+			<control type="image">
+				<description>Art</description>
+				<left>18</left>
+				<top>18</top>
+				<width>88</width>
+				<height>88</height>
+				<texture>$INFO[Listitem.Icon]</texture>
+				<aspectratio>scale</aspectratio>
+			</control>
+			<control type="label">
+				<left>150</left>
+				<width>487</width>
+				<height>55</height>
+				<textoffsetx>30</textoffsetx>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+			<control type="label">
+				<left>637</left>
+				<width>487</width>
+				<height>55</height>
+				<align>right</align>
+				<textoffsetx>30</textoffsetx>
+				<label>$INFO[ListItem.Label2]</label>
+			</control>
+			<control type="textbox">
+				<left>180</left>
+				<top>60</top>
+				<width>914</width>
+				<height>55</height>
+				<font>RegularSmall</font>
+				<label>$INFO[ListItem.Property(Event.Description)]</label>
+			</control>
+		</focusedlayout>
+	</control>
+	<control type="scrollbar" id="60">
+		<left>1200</left>
+		<top>-20</top>
+		<height>810</height>
+		<onleft>50</onleft>
+		<onright>50</onright>
+		<visible allowhiddenfocus="true">Control.IsVisible(50) + Integer.IsGreater(Container(50).NumPages,1)</visible>
+	</control>
+</control>
+</controls>
+</window>

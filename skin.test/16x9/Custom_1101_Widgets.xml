@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1101"><!-- Cycle 0.4 -->
+<backgroundcolor>BackgroundColor</backgroundcolor>
+<menucontrol>9700</menucontrol>
+<defaultcontrol always="true">400</defaultcontrol>
+<onload>Action(PageUp)</onload><!-- liste zum anfang -->
+<onload>Action(PageUp)</onload><!-- liste zum anfang -->
+<onload>Action(PageUp)</onload><!-- liste zum anfang -->
+<onload>Action(PageUp)</onload><!-- liste zum anfang -->
+<onload condition="Window.IsVisible(home)">SetProperty(SlotclickWidget,MainslotWidgetContent,1101)</onload><!-- Widget string propertys -->
+<onload condition="Window.IsVisible(home)">SetProperty(SlotclickWidgettitle,MainslotWidgetTitle,1101)</onload>
+<onload condition="Window.IsVisible(home) + String.IsEmpty(Skin.string(MainslotWidgetTitle))">SetFocus(9700)</onload><!-- Widgetselection empty zur Auwahl -->
+<onload condition="Window.IsVisible(videos)">SetProperty(SlotclickWidget,VideoslotWidgetContent,1101)</onload><!-- Widget string propertys -->
+<onload condition="Window.IsVisible(videos)">SetProperty(SlotclickWidgettitle,VideoslotWidgetTitle,1101)</onload>
+<onload condition="Window.IsVisible(videos) + String.IsEmpty(Skin.string(VideoslotWidgetTitle))">SetFocus(9700)</onload><!-- Widgetselection empty zur Auwahl -->
+<controls>
+<include condition="Skin.HasSetting(EnableVintageOverlay)">Vintagebackground</include>
+<include condition="!Skin.HasSetting(EnableVintageOverlay)">Cyclebackground</include>
+<include condition="!Skin.HasSetting(EnableVintageOverlay)">CyclebackgroundFanart</include>
+<include>Topbar</include>
+<control type="group"><!-- Widget list -->
+	<visible>![Control.HasFocus(9700) | ControlGroup(9701).HasFocus]</visible>
+	<include>Animation-OpenCloseVisibleHidden-Zoom</include>
+	<include>Animation395-Conditional-Slide</include>
+	<control type="grouplist">
+		<description>Titel</description>
+		<left>315</left>
+		<top>300</top>
+		<width>1290</width>
+		<height>60</height>
+		<itemgap>10</itemgap>
+		<orientation>horizontal</orientation>
+		<visible>!String.IsEqual(Container(400).Numitems,0)</visible>
+		<control type="label">
+			<description>Widget Icon</description>
+			<width>50</width>
+			<height>60</height>
+			<font>IconBig</font>
+			<textcolor>TextColorLight</textcolor>
+			<label>R</label>
+		</control>
+		<control type="label">
+			<description>Widget Titel aus string</description>
+			<width>1000</width>
+			<height>50</height>
+			<textcolor>TextColorMedium</textcolor>
+			<label>$VAR[WidgetView-Title]</label>
+		</control>
+	</control>
+	<control type="label">
+		<description>Icon mehr als eine seite</description>
+		<left>180</left>
+		<top>485</top>
+		<width>100</width>
+		<height>100</height>
+		<align>center</align>
+		<font>IconBackViewList</font>
+		<textcolor>TextColorLight</textcolor>
+		<label>.</label>
+		<visible>Container(400).HasNext</visible>
+	</control>
+	<control type="panel" id="400">
+		<description>Widget panel - Film, Serie, Episode</description>
+		<left>315</left>
+		<top>395</top>
+		<width>1290</width>
+		<height>380</height>
+		<scrolltime tween="cubic" easing="inout">450</scrolltime>
+		<focusposition>1</focusposition>
+		<onleft>Dialog.close(1101)</onleft>
+		<onright>Dialog.close(1101)</onright>
+		<onup>400</onup>
+		<ondown>400</ondown>
+		<visible allowhiddenfocus="true">!Control.HasFocus(9700)</visible>
+		<itemlayout height="380" width="430">
+			<control type="image">
+				<description>Schatten</description>
+				<width>372</width>
+				<height>224</height>
+				<texture border="8" colordiffuse="ShadowColor">views/shadow8.png</texture>
+			</control>
+			<control type="image">
+				<description>Border</description>
+				<left>8</left>
+				<top>8</top>
+				<width>356</width>
+				<height>208</height>
+				<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
+			</control>
+			<control type="image"><!-- Fallback -->
+				<description>Hintergrundfarbe</description>
+				<left>12</left>
+				<top>12</top>
+				<width>348</width>
+				<height>200</height>
+				<texture colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+			</control>
+			<control type="label">
+				<description>Fallback icon</description>
+				<left>12</left>
+				<top>12</top>
+				<width>348</width>
+				<height>185</height>
+				<align>center</align>
+				<font>Iconyoutubedefault</font>
+				<textcolor>$VAR[CirclesCol]</textcolor>
+				<label>$VAR[WidgetView-FallbackIcon]</label>
+			</control>
+			<control type="image">
+				<description>Art</description>
+				<left>12</left>
+				<top>12</top>
+				<width>348</width>
+				<height>200</height>
+				<texture>$VAR[Art-Widget]</texture>
+			</control>
+			<control type="image"><!-- Inaktiv overlay -->
+				<left>12</left>
+				<top>12</top>
+				<width>348</width>
+				<height>200</height>
+				<texture colordiffuse="$VAR[InaktivImageCol]">white.png</texture>
+			</control>
+			<include condition="Skin.HasSetting(EnableVintageOverlay)">VintageOldpaper-WidgetOverlay</include>
+			<control type="group"><!-- Info -->
+				<top>238</top>
+				<width>400</width>
+				<control type="label">
+					<width>370</width>
+					<height>30</height>
+					<font>RegularSmall</font>
+					<label>$VAR[WidgetView-Label]</label>
+				</control>
+				<control type="textbox">
+					<top>33</top>
+					<width>370</width>
+					<height>86</height>
+					<font>RegularSmall</font>
+					<textcolor>TextColorMedium</textcolor>
+					<label>$VAR[WidgetView-Label2]</label>
+				</control>
+			</control>
+		</itemlayout>
+		<focusedlayout height="380" width="430">
+			<control type="group">
+				<animation type="Focus">
+					<effect type="zoom" start="100" end="105" center="175,210" time="250" />
+				</animation>
+				<animation type="UnFocus">
+					<effect type="zoom" start="105" end="100" center="175,210" time="120" />
+				</animation>
+				<control type="image">
+					<description>Schatten</description>
+					<width>372</width>
+					<height>224</height>
+					<texture border="8" colordiffuse="ShadowColor">views/shadow8.png</texture>
+				</control>
+				<control type="image">
+					<description>Border</description>
+					<left>8</left>
+					<top>8</top>
+					<width>356</width>
+					<height>208</height>
+					<texture border="4" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
+				</control>
+				<control type="image"><!-- Fallback -->
+					<description>Hintergrundfarbe</description>
+					<left>12</left>
+					<top>12</top>
+					<width>348</width>
+					<height>200</height>
+					<texture colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+				</control>
+				<control type="label">
+					<description>Fallback icon</description>
+					<left>12</left>
+					<top>12</top>
+					<width>348</width>
+					<height>185</height>
+					<align>center</align>
+					<font>Iconyoutubedefault</font>
+					<textcolor>$VAR[CirclesCol]</textcolor>
+					<label>$VAR[WidgetView-FallbackIcon]</label>
+				</control>
+				<control type="image">
+					<description>Art</description>
+					<left>12</left>
+					<top>12</top>
+					<width>348</width>
+					<height>200</height>
+					<texture>$VAR[Art-Widget]</texture>
+				</control>
+				<control type="image"><!-- Inaktiv overlay -->
+					<left>12</left>
+					<top>12</top>
+					<width>348</width>
+					<height>200</height>
+					<texture colordiffuse="$VAR[InaktivImageCol]">white.png</texture>
+					<include>Animation-Dim</include>
+				</control>
+				<include condition="Skin.HasSetting(EnableVintageOverlay)">VintageOldpaper-WidgetOverlay</include>
+			</control>
+			<control type="group"><!-- Info -->
+				<top>238</top>
+				<width>400</width>
+				<control type="label">
+					<width>370</width>
+					<height>30</height>
+					<font>RegularSmall</font>
+					<include>GlobalScroll</include>
+					<label>$VAR[WidgetView-Label]</label>
+				</control>
+				<control type="textbox">
+					<top>33</top>
+					<width>370</width>
+					<height>86</height>
+					<font>RegularSmall</font>
+					<textcolor>TextColorMedium</textcolor>
+					<label>$VAR[WidgetView-Label2]</label>
+				</control>
+			</control>
+			<control type="group"><!-- Rating -->
+				<left>103</left>
+				<top>189</top>
+				<animation type="Focus">
+					<effect type="fade" start="0" end="100" time="250" />
+					<effect type="zoom" start="80" end="100" center="152,212" time="250" />
+				</animation>
+				<animation type="UnFocus">
+					<effect type="fade" start="100" end="0" time="120" />
+					<effect type="zoom" start="100" end="80" center="152,212" time="120" />
+				</animation>
+				<include>StarRating-bg</include>
+				<control type="label"><!-- -19 -->
+					<label>$VAR[StarRatingback]</label>
+					<include>StarRating-Layoutback</include>
+				</control>
+				<control type="label">
+					<label>$VAR[StarRating]</label>
+					<include>StarRating-Layoutfront</include>
+				</control>
+			</control>
+		</focusedlayout>
+			<content target="video">$VAR[WidgetView-Content]</content>
+			<onclick>Dialog.close(1101)</onclick>
+			<onclick condition="!String.IsEmpty(ListItem.TVShowtitle) + String.IsEmpty(ListItem.Duration)">AlarmClock(Delayclick,ActivateWindow(Videos,&quot;videodb://tvshows/titles/$INFO[ListItem.DBID]/&quot;),0:01,true)</onclick>
+			<onclick condition="!String.IsEmpty(ListItem.TVShowtitle) + !String.IsEmpty(ListItem.Duration)">AlarmClock(Delayclick,PlayMedia($INFO[ListItem.FilenameAndPath]),0:01,true)</onclick>
+			<onclick condition="String.IsEmpty(ListItem.TVShowtitle) + !String.IsEmpty(ListItem.Duration)">AlarmClock(Delayclick,PlayMedia($INFO[ListItem.Path]),0:01,true)</onclick>
+	</control>
+</control>
+<control type="group"><!-- info kein inhalt -->
+	<left>760</left>
+	<top>520</top>
+	<visible>String.IsEqual(Container(400).Numitems,0)</visible>
+	<include>Animation-OpenCloseVisibleHidden-Zoom</include>
+	<control type="label">
+		<width>400</width>
+		<height>200</height>
+		<align>center</align>
+		<font>weatherloading</font>
+		<textcolor>TextColorMedium</textcolor>
+		<label>Ë</label>
+	</control>
+	<control type="label">
+		<top>280</top>
+		<width>400</width>
+		<height>80</height>
+		<align>center</align>
+		<label>Die Widgetauswahl enthält keine Ergebnisse.</label>
+		<wrapmultiline>true</wrapmultiline>
+	</control>
+</control>
+<control type="group"><!-- Widget auswahl -->
+	<left>660</left>
+	<top>210</top>
+	<description>Widget auswahl</description>
+	<include>Animation-Popup-Dialog</include>
+	<visible>Control.HasFocus(9700)</visible>
+	<control type="image">
+		<description>Hintergrund Dialog</description>
+		<left>-8</left>
+		<top>-8</top>
+		<width>695</width>
+		<height>590</height>
+		<include>DialogBackground</include>
+	</control>
+	<control type="image">
+		<left>-11</left>
+		<top>-11</top>
+		<width>702</width>
+		<height>80</height>
+		<texture border="14,0,14,0" flipy="true" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texture>
+	</control>
+	<control type="grouplist">
+		<description>Titel</description>
+		<top>-11</top>
+		<left>10</left>
+		<width>660</width>
+		<height>80</height>
+		<itemgap>5</itemgap>
+		<align>left</align>
+		<orientation>horizontal</orientation>
+		<control type="label">
+			<description>Widget icon</description>
+			<width>60</width>
+			<height>70</height>
+			<font>IconSidebarDimension</font>
+			<textcolor>TextColorFO</textcolor>
+			<label>R</label>
+		</control>
+		<control type="label">
+			<description>Widget Titel aus string</description>
+			<width>auto</width>
+			<height>70</height>
+			<textcolor>TextColorFO</textcolor>
+			<font>DialogHeaderSmaller</font>
+			<include>Animation-VintageFont-8</include>
+			<label>Widget auswählen</label>
+		</control>
+	</control>
+	<control type="panel" id="9700">
+		<left>-14</left>
+		<top>80</top>
+		<height>720</height>
+		<width>707</width>
+		<focusposition>1</focusposition>
+		<onleft>SetFocus(400)</onleft>
+		<onright>SetFocus(400)</onright>
+		<ondown>9700</ondown>
+		<onup>9700</onup>
+		<visible allowhiddenfocus="true">Control.HasFocus(9700)</visible>
+		<scrolltime>200</scrolltime>
+		<itemlayout width="707" height="60">
+			<control type="label">
+				<left>30</left>
+				<width>50</width>
+				<height>60</height>
+				<aligny>top</aligny>
+				<font>IconNormal</font>
+				<textcolor>TextColorMedium</textcolor>
+				<label>$INFO[ListItem.Label2]</label>
+			</control>
+			<control type="label">
+				<left>80</left>
+				<width>600</width>
+				<height>60</height>
+				<aligny>top</aligny>
+				<textoffsety>5</textoffsety><!-- abweichung flip focus image -->
+				<textcolor>TextColorMedium</textcolor>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+		</itemlayout>
+		<focusedlayout width="707" height="60">
+			<control type="image">
+				<width>706</width>
+				<height>60</height>
+				<texture border="14,0,14,0" flipy="true" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texture>
+			</control>
+			<control type="label">
+				<left>30</left>
+				<width>50</width>
+				<height>60</height>
+				<aligny>top</aligny>
+				<font>IconNormal</font>
+				<textcolor>TextColorFO</textcolor>
+				<label>$INFO[ListItem.Label2]</label>
+			</control>
+			<control type="label">
+				<left>80</left>
+				<width>600</width>
+				<height>60</height>
+				<aligny>top</aligny>
+				<textoffsety>5</textoffsety><!-- abweichung flip focus image -->
+				<textcolor>TextColorFO</textcolor>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+		</focusedlayout>
+		<content>
+			<item id="1">
+				<description>Zufaellige Filme</description>
+				<label>Zufällige (Filme)</label>
+				<label2>E</label2>
+				<onclick condition="Window.IsVisible(home)">Skin.reset(HomePlayliste)</onclick>
+				<onclick condition="Window.IsVisible(videos)">Skin.reset(VideoPlayliste)</onclick>
+				<onclick>Skin.SetString($INFO[Window(1101).Property(SlotclickWidget)],plugin://service.library.data.provider?type=randommovies&amp;reload=$INFO[Window(Home).Property(randommovies)])</onclick>
+				<onclick>Skin.SetString($INFO[Window(1101).Property(SlotclickWidgettitle)],Zufällige Filme)</onclick>
+			</item>
+			<item id="2">
+				<description>Neue Filme</description>
+				<label>Neue (Filme)</label>
+				<label2>G</label2>
+				<onclick condition="Window.IsVisible(home)">Skin.reset(HomePlayliste)</onclick>
+				<onclick condition="Window.IsVisible(videos)">Skin.reset(VideoPlayliste)</onclick>
+				<onclick>Skin.SetString($INFO[Window(1101).Property(SlotclickWidget)],plugin://service.library.data.provider?type=recentmovies&amp;reload=$INFO[Window(Home).Property(recentmovies)])</onclick>
+				<onclick>Skin.SetString($INFO[Window(1101).Property(SlotclickWidgettitle)],Neue Filme)</onclick>
+			</item>
+			<item id="3">
+				<description>Laufende Filme</description>
+				<label>Laufende (Filme)</label>
+				<label2>F</label2>
+				<onclick condition="Window.IsVisible(home)">Skin.reset(HomePlayliste)</onclick>
+				<onclick condition="Window.IsVisible(videos)">Skin.reset(VideoPlayliste)</onclick>
+				<onclick>Skin.SetString($INFO[Window(1101).Property(SlotclickWidget)],plugin://service.library.data.provider?type=recommendedmovies&amp;reload=$INFO[Window(Home).Property(recommendedmovies)])</onclick>
+				<onclick>Skin.SetString($INFO[Window(1101).Property(SlotclickWidgettitle)],Laufende Filme)</onclick>
+			</item>
+			<item id="4">
+				<description>Zufaellige Episoden</description>
+				<label>Zufällige (Episoden)</label>
+				<label2>D</label2>
+				<onclick condition="Window.IsVisible(home)">Skin.reset(HomePlayliste)</onclick>
+				<onclick condition="Window.IsVisible(videos)">Skin.reset(VideoPlayliste)</onclick>
+				<onclick>Skin.SetString($INFO[Window(1101).Property(SlotclickWidget)],plugin://service.library.data.provider?type=randomepisodes&amp;reload=$INFO[Window(Home).Property(randomepisodes)])</onclick>
+				<onclick>Skin.SetString($INFO[Window(1101).Property(SlotclickWidgettitle)],Zufällige Episoden)</onclick>
+			</item>
+			<item id="5">
+				<description>Neue Episoden</description>
+				<label>Neue (Episoden)</label>
+				<label2>H</label2>
+				<onclick condition="Window.IsVisible(home)">Skin.reset(HomePlayliste)</onclick>
+				<onclick condition="Window.IsVisible(videos)">Skin.reset(VideoPlayliste)</onclick>
+				<onclick>Skin.SetString($INFO[Window(1101).Property(SlotclickWidget)],plugin://service.library.data.provider?type=recentepisodes&amp;reload=$INFO[Window(Home).Property(recentepisodes)])</onclick>
+				<onclick>Skin.SetString($INFO[Window(1101).Property(SlotclickWidgettitle)],Neue Episoden)</onclick>
+			</item>
+			<item id="6">
+				<description>Laufende Serien</description>
+				<label>Laufende (Serien)</label>
+				<label2>A</label2>
+				<onclick condition="Window.IsVisible(home)">Skin.reset(HomePlayliste)</onclick>
+				<onclick condition="Window.IsVisible(videos)">Skin.reset(VideoPlayliste)</onclick>
+				<onclick>Skin.SetString($INFO[Window(1101).Property(SlotclickWidget)],plugin://service.library.data.provider?type=recommendedepisodes&amp;reload=$INFO[Window(Home).Property(recommendedepisodes)])</onclick>
+				<onclick>Skin.SetString($INFO[Window(1101).Property(SlotclickWidgettitle)],Laufende Serien)</onclick>
+			</item>
+			<item id="7">
+				<description>Video Playliste</description>
+				<label>Eigene Playliste</label>
+				<label2>&lt;</label2>
+				<onclick>SetProperty(CustomKeyboardLabel,Widgettitel auswählen,home)</onclick>
+				<onclick condition="Window.IsVisible(home)">Skin.SetString(HomePlayliste,Film)</onclick>
+				<onclick condition="Window.IsVisible(videos)">Skin.SetString(VideoPlayliste,Film)</onclick>
+				<onclick>Skin.SetString($INFO[Window(1101).Property(SlotclickWidgettitle)])</onclick>
+				<onclick>Skin.SetFile($INFO[Window(1101).Property(SlotclickWidget)],.xsp,special://skin/playlists/)</onclick>
+			</item>
+			<item id="8">
+				<description>letzte serie</description>
+				<label>Serie Fortsetzen</label>
+				<label2>i</label2>
+				<onclick condition="Window.IsVisible(home)">Skin.reset(HomePlayliste)</onclick>
+				<onclick condition="Window.IsVisible(videos)">Skin.reset(VideoPlayliste)</onclick>
+				<onclick>Skin.SetString($INFO[Window(1101).Property(SlotclickWidget)],special://skin/playlists/TV_zuletzt gesehen.xsp)</onclick>
+				<onclick>Skin.SetString($INFO[Window(1101).Property(SlotclickWidgettitle)],Serie Fortsetzen)</onclick>
+			</item>
+		</content>
+	</control>
+	<control type="panel" id="9701">
+		<description>Widget auswahlicons haeckchen</description>
+		<left>620</left>
+		<top>80</top>
+		<width>80</width>
+		<height>530</height>
+		<focusposition>1</focusposition>
+		<onleft>noop</onleft>
+		<onright>noop</onright>
+		<ondown>noop</ondown>
+		<onup>noop</onup>
+		<visible allowhiddenfocus="true">Control.HasFocus(9700)</visible>
+		<itemlayout width="80" height="60">
+			<control type="label">
+				<width>80</width>
+				<height>60</height>
+				<align>center</align>
+				<font>IconNormal</font>
+				<textcolor>TextColorMedium</textcolor>
+				<label>$INFO[ListItem.Label2]</label>
+			</control>
+		</itemlayout>
+		<focusedlayout width="80" height="60">
+			<control type="label">
+				<width>80</width>
+				<height>60</height>
+				<align>center</align>
+				<font>IconNormal</font>
+				<textcolor>TextColorMedium</textcolor>
+				<label>$INFO[ListItem.Label2]</label>
+			</control>
+		</focusedlayout>
+		<content>
+			<item id="9">
+				<description>oeffnen</description>
+				<label></label>
+				<label2> </label2>
+				<onclick>noop</onclick>
+				<visible>[Window.IsVisible(home) + !String.IsEmpty(MainslotWidgetContent)] | [Window.IsVisible(videos) + !String.IsEmpty(VideoslotWidgetContent)]</visible>
+			</item>
+			<item id="1">
+				<description>Zufaellige Filme</description>
+				<label></label>
+				<label2>Ĥ</label2>
+				<onclick>noop</onclick>
+				<visible>[Window.IsVisible(home) + String.StartsWith(Skin.String(MainslotWidgetContent),plugin://service.library.data.provider?type=randommovies)] | [Window.IsVisible(videos) + String.StartsWith(skin.string(VideoslotWidgetContent),plugin://service.library.data.provider?type=randommovies)]</visible>
+			</item>
+			<item id="1">
+				<description>Zufaellige Filme</description>
+				<label></label>
+				<label2></label2>
+				<onclick>noop</onclick>
+				<visible>[Window.IsVisible(home) + !String.StartsWith(Skin.String(MainslotWidgetContent),plugin://service.library.data.provider?type=randommovies)] | [Window.IsVisible(videos) + !String.StartsWith(skin.string(VideoslotWidgetContent),plugin://service.library.data.provider?type=randommovies)]</visible>
+			</item>
+			<item id="2">
+				<description>Neue Filme</description>
+				<label></label>
+				<label2>Ĥ</label2>
+				<onclick>noop</onclick>
+				<visible>[Window.IsVisible(home) + String.StartsWith(Skin.String(MainslotWidgetContent),plugin://service.library.data.provider?type=recentmovies)] | [Window.IsVisible(videos) + String.StartsWith(skin.string(VideoslotWidgetContent),plugin://service.library.data.provider?type=recentmovies)]</visible>
+			</item>
+			<item id="2">
+				<description>Neue Filme</description>
+				<label></label>
+				<label2></label2>
+				<onclick>noop</onclick>
+				<visible>[Window.IsVisible(home) + !String.StartsWith(Skin.String(MainslotWidgetContent),plugin://service.library.data.provider?type=recentmovies)] | [Window.IsVisible(videos) + !String.StartsWith(skin.string(VideoslotWidgetContent),plugin://service.library.data.provider?type=recentmovies)]</visible>
+			</item>
+			<item id="3">
+				<description>Laufende Filme</description>
+				<label></label>
+				<label2>Ĥ</label2>
+				<onclick>noop</onclick>
+				<visible>[Window.IsVisible(home) + String.StartsWith(Skin.String(MainslotWidgetContent),plugin://service.library.data.provider?type=recommendedmovies)] | [Window.IsVisible(videos) + String.StartsWith(skin.string(VideoslotWidgetContent),plugin://service.library.data.provider?type=recommendedmovies)]</visible>
+			</item>
+			<item id="3">
+				<description>Laufende Filme</description>
+				<label></label>
+				<label2></label2>
+				<onclick>noop</onclick>
+				<visible>[Window.IsVisible(home) + !String.StartsWith(Skin.String(MainslotWidgetContent),plugin://service.library.data.provider?type=recommendedmovies)] | [Window.IsVisible(videos) + !String.StartsWith(skin.string(VideoslotWidgetContent),plugin://service.library.data.provider?type=recommendedmovies)]</visible>
+			</item>
+			<item id="4">
+				<description>Zufaellige Episoden</description>
+				<label></label>
+				<label2>Ĥ</label2>
+				<onclick>noop</onclick>
+				<visible>[Window.IsVisible(home) + String.StartsWith(Skin.String(MainslotWidgetContent),plugin://service.library.data.provider?type=randomepisodes)] | [Window.IsVisible(videos) + String.StartsWith(skin.string(VideoslotWidgetContent),plugin://service.library.data.provider?type=randomepisodes)]</visible>
+			</item>
+			<item id="4">
+				<description>Zufaellige Episoden</description>
+				<label></label>
+				<label2></label2>
+				<onclick>noop</onclick>
+				<visible>[Window.IsVisible(home) + !String.StartsWith(Skin.String(MainslotWidgetContent),plugin://service.library.data.provider?type=randomepisodes)] | [Window.IsVisible(videos) + !String.StartsWith(skin.string(VideoslotWidgetContent),plugin://service.library.data.provider?type=randomepisodes)]</visible>
+			</item>
+			<item id="5">
+				<description>Neue Episoden</description>
+				<label></label>
+				<label2>Ĥ</label2>
+				<onclick>noop</onclick>
+				<visible>[Window.IsVisible(home) + String.StartsWith(Skin.String(MainslotWidgetContent),plugin://service.library.data.provider?type=recentepisodes)] | [Window.IsVisible(videos) + String.StartsWith(skin.string(VideoslotWidgetContent),plugin://service.library.data.provider?type=recentepisodes)]</visible>
+			</item>
+			<item id="5">
+				<description>Neue Episoden</description>
+				<label></label>
+				<label2></label2>
+				<onclick>noop</onclick>
+				<visible>[Window.IsVisible(home) + !String.StartsWith(Skin.String(MainslotWidgetContent),plugin://service.library.data.provider?type=recentepisodes)] | [Window.IsVisible(videos) + !String.StartsWith(skin.string(VideoslotWidgetContent),plugin://service.library.data.provider?type=recentepisodes)]</visible>
+			</item>
+			<item id="6">
+				<description>Laufende Serien</description>
+				<label></label>
+				<label2>Ĥ</label2>
+				<onclick>noop</onclick>
+				<visible>[Window.IsVisible(home) + String.StartsWith(Skin.String(MainslotWidgetContent),plugin://service.library.data.provider?type=recommendedepisodes)] | [Window.IsVisible(videos) + String.StartsWith(skin.string(VideoslotWidgetContent),plugin://service.library.data.provider?type=recommendedepisodes)]</visible>
+			</item>
+			<item id="6">
+				<description>Laufende Serien</description>
+				<label></label>
+				<label2></label2>
+				<onclick>noop</onclick>
+				<visible>[Window.IsVisible(home) + !String.StartsWith(Skin.String(MainslotWidgetContent),plugin://service.library.data.provider?type=recommendedepisodes)] | [Window.IsVisible(videos) + !String.StartsWith(skin.string(VideoslotWidgetContent),plugin://service.library.data.provider?type=recommendedepisodes)]</visible>
+			</item>
+			<item id="7">
+				<description>Video Playliste</description>
+				<label></label>
+				<label2>Ĥ</label2>
+				<onclick>noop</onclick>
+				<visible>[Window.IsVisible(home) + String.IsEqual(Skin.String(HomePlayliste),Film)] | [Window.IsVisible(videos) + String.IsEqual(skin.string(VideoPlayliste),Film)]</visible>
+			</item>
+			<item id="7">
+				<description>Video Playliste</description>
+				<label></label>
+				<label2></label2>
+				<onclick>noop</onclick>
+				<visible>[Window.IsVisible(home) + !String.IsEqual(Skin.String(HomePlayliste),Film)] | [Window.IsVisible(videos) + !String.IsEqual(skin.string(VideoPlayliste),Film)]</visible>
+			</item>
+			<item id="8">
+				<description>letzte serie</description>
+				<label></label>
+				<label2>Ĥ</label2>
+				<onclick>noop</onclick>
+				<visible>[Window.IsVisible(home) + String.StartsWith(Skin.String(MainslotWidgetTitle),Serie Fortsetzen)] | [Window.IsVisible(videos) + String.StartsWith(skin.string(VideoslotWidgetTitle),Serie Fortsetzen)]</visible>
+			</item>
+			<item id="8">
+				<description>letzte serie</description>
+				<label></label>
+				<label2></label2>
+				<onclick>noop</onclick>
+				<visible>[Window.IsVisible(home) + !String.StartsWith(Skin.String(MainslotWidgetTitle),Serie Fortsetzen)] | [Window.IsVisible(videos) + !String.StartsWith(skin.string(VideoslotWidgetTitle),Serie Fortsetzen)]</visible>
+			</item>
+		</content>
+	</control>
+</control>
+
+</controls>
+</window>
+

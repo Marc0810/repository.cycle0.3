@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- Cycle 0.4 -->
+<backgroundcolor>BackgroundColor</backgroundcolor>
+<defaultcontrol>3</defaultcontrol>
+<onload>Skin.SetString(SelectDialog,Standard)</onload>
+<menucontrol>9600</menucontrol>
+<controls>
+<include condition="Skin.HasSetting(EnableVintageOverlay)">Vintagebackground</include>
+<include condition="!Skin.HasSetting(EnableVintageOverlay)">Cyclebackground</include>
+<include>Topbar</include><!-- topbar -->
+<control type="button" id="9600">
+	<include>HiddenControl</include>
+	<onleft>ActivateWindow(1120)</onleft>
+	<onright>ActivateWindow(1120)</onright>
+	<onup>ActivateWindow(1120)</onup>
+	<ondown>ActivateWindow(1120)</ondown>
+	<onfocus>ActivateWindow(1120)</onfocus>
+</control>
+<control type="label" id="2">
+	<description>Corebutton Breadcumb2 Titel</description>
+	<include>HiddenControl</include>
+	<label></label>
+</control>
+<control type="group">
+	<visible>!Window.IsVisible(shutdownmenu) + !Window.IsVisible(addonsettings) + !Window.IsVisible(Custom_1120_Options.xml) + !Window.IsVisible(favourites) + !Window.IsVisible(playercontrols)</visible>
+	<control type="group"><!-- slide menue -->
+		<visible>![Window.IsVisible(script-RSS_Editor-rssEditor.xml) | Window.IsVisible(script-RSS_Editor-setEditor.xml)]</visible>
+		<include>Animation375-OpenCloseVisibleHidden-Slide</include>
+		<include>SettingMenu-BG</include><!-- Hintergrund -->
+		<include>SettingMenu-IconBG</include>
+		<include>SettingMenu-Breadcumb</include>
+		<control type="grouplist" id="3"><!-- menue -->
+			<left>100</left>
+			<top>150</top>
+			<include>SettingMenu-ListDimension</include>
+			<onleft>back</onleft>
+			<onright>5</onright>
+			<onup>3</onup>
+			<ondown>20</ondown>
+			<itemgap>5</itemgap>
+		</control>
+		<control type="button" id="10">
+			<description>Default menue Button</description>
+			<include>SettingMenu-MenueButton</include>
+		</control>
+		<control type="grouplist" id="200"><!-- Levelchange menue -->
+			<left>100</left>
+			<top>800</top>
+			<include>SettingMenu-ListDimension</include>
+			<onleft>5</onleft>
+			<onright>5</onright>
+			<onup>3</onup>
+			<onup>200</onup>
+			<ondown>200</ondown>
+			<ondown>3</ondown>
+			<itemgap>5</itemgap>
+			<control type="button" id="20">
+				<description>Levelchange</description>
+				<onleft>3</onleft>
+				<onright>3</onright>
+				<onup>3</onup>
+				<ondown>3</ondown>
+				<include>SettingMenu-MenueButton</include>
+				<onclick>SettingsLevelChange</onclick>
+			</control>
+		</control>
+		<control type="label">
+			<description>Icon Level</description>
+			<left>20</left>
+			<top>805</top>
+			<include>SidebarIcon-Dimension</include>
+			<label>ð</label>
+			<include>SidebarIcon-ColorFO</include>
+			<visible>Control.HasFocus(20)</visible>
+		</control>
+		<control type="label">
+			<description>Icon Level</description>
+			<left>20</left>
+			<top>805</top>
+			<include>SidebarIcon-Dimension</include>
+			<label>ð</label>
+			<include>SidebarIcon-ColorNF</include>
+			<visible>!Control.HasFocus(20)</visible>
+		</control>
+		<control type="image">
+			<description>Kodi logo</description>
+			<left>110</left>
+			<top>990</top>
+			<width>200</width>
+			<height>77</height>
+			<texture>logo.png</texture>
+		</control>
+	</control>
+	<control type="group"><!-- content -->
+		<left>550</left>
+		<top>150</top>
+		<include>Animation-OpenCloseVisibleHidden-Fade</include>
+		<control type="image">
+			<description>Hintergrund</description>
+			<left>12</left>
+			<top>-30</top>
+			<width>1103</width>
+			<height>835</height>
+			<texture colordiffuse="ListBackgroundDiffuse">white.png</texture>
+		</control>
+		<control type="group"><!-- settings -->
+			<control type="grouplist" id="5"><!-- setting menue -->
+				<description>Control area</description>
+				<width>1125</width>
+				<height>770</height>
+				<pagecontrol>60</pagecontrol>
+				<onleft>3</onleft>
+				<onright>60</onright>
+				<onup>5</onup>
+				<ondown>5</ondown>
+			</control>
+			<control type="scrollbar" id="60">
+				<left>1220</left>
+				<top>-20</top>
+				<height>810</height>
+				<onleft>5</onleft>
+				<onright>5</onright>
+			</control>
+			<control type="button" id="7">
+				<description>Default Button</description>
+				<width>1108</width>
+				<include>Item.top.height70</include>
+				<textoffsetx>25</textoffsetx>
+				<invalidcolor>$VAR[SelectedCol]</invalidcolor>
+				<onfocus>SetProperty(Skinfont,$INFO[System.CurrentControl],home)</onfocus>
+				<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturefocus>
+			</control>
+			<control type="label" id="14">
+				<description>Default label</description>
+				<width>1108</width>
+				<font>BoldNormal</font>
+				<include>Item.top.height70</include>
+				<textoffsetx>25</textoffsetx>
+			</control>
+			<control type="radiobutton" id="8">
+				<description>Default RadioButton</description>
+				<width>1108</width>
+				<textwidth>900</textwidth>
+				<include>Item.top.height70</include>
+				<textoffsetx>25</textoffsetx>
+				<radioposx>1042</radioposx>
+				<radioposy>10</radioposy>
+				<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturefocus>
+			</control>
+			<control type="spincontrolex" id="9">
+				<description>Content Picker</description>
+				<width>1108</width>
+				<include>Item.top.height70</include>
+				<textwidth>500</textwidth>
+				<textoffsetx>25</textoffsetx>
+				<texturefocus border="14,0,14,0" flipx="true" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturefocus>
+				<reverse>yes</reverse>
+			</control>
+			<control type="sliderex" id="13">
+				<description>Default Slider</description>
+				<width>1108</width>
+				<textwidth>500</textwidth>
+				<include>Item.top.height70</include>
+				<textoffsetx>25</textoffsetx>
+				<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturefocus>
+			</control>
+			<control type="textbox" id="6">
+				<description>Description area</description>
+				<left>25</left>
+				<top>815</top>
+				<width>1104</width>
+				<height>90</height>
+				<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
+				<visible>!String.IsEqual(control.GetLabel(6),$LOCALIZE[36107])</visible>
+			</control>
+			<control type="textbox">
+				<description>Description area Schriftauswahl abweichender Text</description>
+				<left>25</left>
+				<top>815</top>
+				<width>1104</width>
+				<height max="90">auto</height>
+				<label>$LOCALIZE[31391]</label>
+				<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
+				<visible>String.IsEqual(control.GetLabel(6),$LOCALIZE[36107])</visible>
+			</control>
+		</control>
+		<control type="group"><!-- hinweis schriftauswahl im skin -->
+			<description>Default layout</description>
+			<top>654</top>
+			<visible>ControlGroup(5).HasFocus + String.Contains(System.CurrentControl,$LOCALIZE[13303])</visible><!-- label Schriftarten -->
+			<include>Animation-Topdown-Dialog</include>
+			<control type="label">
+				<description>icon default</description>
+				<top>-5</top>
+				<width>105</width>
+				<height>105</height>
+				<align>center</align>
+				<font>Iconkaitoast</font>
+				<textcolor>$VAR[OSDDialogCol]</textcolor>
+				<label>Ê</label>
+			</control>
+			<control type="label">
+				<description>Titel</description>
+				<left>110</left>
+				<top>22</top>
+				<width>665</width>
+				<height>27</height>
+				<font>BoldSmall</font>
+				<textcolor>$VAR[OSDDialogCol]</textcolor>
+				<label>Hinweis</label>
+			</control>
+			<control type="label">
+				<description>Subtitel</description>
+				<left>110</left>
+				<top>52</top>
+				<width>665</width>
+				<height>30</height>
+				<font>RegularSmall</font>
+				<textcolor>$VAR[OSDDialogCol]</textcolor>
+				<label>In Skinsettings bitte Text-Positionen anpassen</label>
+			</control>
+		</control>
+	</control>
+</control>
+</controls>
+</window>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window type="dialog" id="1119"><!-- Cycle 0.4 -->
+<defaultcontrol always="true">8100</defaultcontrol>
+<controls>
+<control type="group">
+	<include>Animation375-OpenCloseVisibleHidden-Slide</include>
+	<include>Sideblade-BG</include>
+	<include>Sideblade-Breadcumb</include>
+	<include>Sideblade-IconBG</include>
+	<control type="list" id="8100">
+		<description>Serien Pinboard</description>
+		<left>0</left>
+		<top>200</top>
+		<width>475</width>
+		<height>790</height>
+		<onleft>Dialog.Close(all)</onleft>
+		<onleft>ActivateWindow(1120)</onleft>
+		<onright>Dialog.Close(all)</onright>
+		<onright>ActivateWindow(1120)</onright>
+		<onup>3110</onup>
+		<ondown>3110</ondown>
+		<scrolltime>200</scrolltime>
+		<focusposition>3</focusposition>
+		<itemlayout width="475" height="70">
+			<control type="label">
+				<width>100</width>
+				<height>70</height>
+				<textoffsetx>0</textoffsetx>
+				<aligny>center</aligny>
+				<align>center</align>
+				<font>IconSidebarDimension</font>
+				<textcolor>TextColorLight</textcolor>
+				<label>$INFO[ListItem.Label2]</label>
+			</control>
+			<control type="label">
+				<left>120</left>
+				<height>70</height>
+				<include>Homeblade-LabelDimension</include>
+			</control>
+		</itemlayout>
+		<focusedlayout width="475" height="70">
+			<control type="image">
+				<left>100</left>
+				<width>10</width>
+				<height>70</height>
+				<texture colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+				<visible>Control.HasFocus(8100)</visible>
+			</control>
+			<control type="label">
+				<width>100</width>
+				<height>70</height>
+				<textoffsetx>0</textoffsetx>
+				<aligny>center</aligny>
+				<align>center</align>
+				<font>IconSidebarDimension</font>
+				<textcolor>$VAR[PrimaryCol]</textcolor>
+				<label>$INFO[ListItem.Label2]</label>
+			</control>
+			<control type="label">
+				<left>120</left>
+				<height>70</height>
+				<textcolor>$VAR[PrimaryCol]</textcolor>
+				<include>Homeblade-LabelDimension</include>
+				<visible>Control.HasFocus(8100)</visible>
+			</control>
+			<control type="label">
+				<left>120</left>
+				<height>70</height>
+				<include>Homeblade-LabelDimension</include>
+				<visible>!Control.HasFocus(8100)</visible>
+			</control>
+		</focusedlayout>
+		<content>
+			<item id="1">
+				<description>DB aktualisieren</description>
+				<label>DB´s Updaten</label>
+				<label2>ǝ</label2>
+				<onclick>Dialog.Close(all)</onclick>
+				<onclick condition="Library.HasContent(Movies) | Library.HasContent(TVShows)">SetProperty(HomeDBUpdate,true,home)</onclick>
+				<onclick condition="Library.HasContent(Movies) | Library.HasContent(TVShows)">UpdateLibrary(video)</onclick>
+				<onclick condition="!Library.HasContent(Movies) + !Library.HasContent(TVShows)">UpdateLibrary(music)</onclick>
+			</item>
+			<item id="1">
+				<description>DB aktualisieren</description>
+				<label>Video-DB Export</label>
+				<label2>ǝ</label2>
+				<onclick>Dialog.Close(all)</onclick>
+				<onclick>exportlibrary(video,true,thumbs,overwrite,actorthumbs)</onclick>
+			</item>
+			<item id="1">
+				<description>DB aktualisieren</description>
+				<label>Music-DB Export</label>
+				<label2>ǝ</label2>
+				<onclick>Dialog.Close(all)</onclick>
+				<onclick>exportlibrary(music,false,filepath)</onclick>
+			</item>
+			<item id="1">
+				<description>artworks</description>
+				<label>Artwork-DB update</label>
+				<label2>Ĝ</label2>
+				<onclick>Dialog.Close(all)</onclick>
+				<onclick>XBMC.RunScript(script.artwork.downloader)</onclick>
+				<visible>System.HasAddon(script.artwork.downloader)</visible>
+			</item>
+			<item id="2">
+				<description>Video quellen</description>
+				<label>Videos hinzufügen</label>
+				<label2>S</label2>
+				<onclick>Dialog.Close(all)</onclick>
+				<onclick>ActivateWindow(videos,sources://video/,return)</onclick>
+			</item>
+			<item id="3">
+				<description>Audio quellen</description>
+				<label>Musik hinzufügen</label>
+				<label2>ǳ</label2>
+				<onclick>Dialog.Close(all)</onclick>
+				<onclick>ActivateWindow(music,sources://music/,return)</onclick>
+			</item>
+			<item id="2">
+				<description>Video playlisten</description>
+				<label>Video Playlisten</label>
+				<label2>&gt;</label2>
+				<onclick>Dialog.Close(all)</onclick>
+				<onclick>ActivateWindow(videos,special://videoplaylists/,return)</onclick>
+			</item>
+			<item id="2">
+				<description>Musik playlisten</description>
+				<label>Musik Playlisten</label>
+				<label2>&gt;</label2>
+				<onclick>Dialog.Close(all)</onclick>
+				<onclick>ActivateWindow(music,special://musicplaylists/,return)</onclick>
+			</item>
+		</content>
+	</control>
+</control>
+</controls>
+</window>

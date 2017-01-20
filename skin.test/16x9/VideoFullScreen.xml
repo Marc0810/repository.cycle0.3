@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- Cycle 0.4 -->
+<defaultcontrol></defaultcontrol>
+<onload>SetProperty(RefreshList3,1,Home)</onload>
+<onunload>SetProperty(RefreshList3,1,Home)</onunload>
+<controls>
+<control type="label" id="1">
+	<description>seek label</description><!-- check keine ahnung wofuer -->
+	<left>45</left>
+	<top>285</top>
+	<width>1770</width>
+	<height>100</height>
+	<label>$INFO[Player.SeekNumeric]</label>
+</control>
+<control type="group" id="1"><!-- progress kreis -->
+	<left>860</left>
+	<top>440</top>
+	<width>200</width>
+	<height>200</height>
+	<control type="progress" id="230">
+		<include>HiddenControl</include>
+	</control>
+	<visible>Player.Caching | Window.IsVisible(seekbar)</visible>
+	<include>Animation-OpenCloseVisibleHidden-Fade</include>
+	<control type="label" id="1">
+		<width>200</width>
+		<height>200</height>
+		<align>center</align>
+		<font>Iconkaitoast</font>
+		<textcolor>$VAR[OSDDialogCol]</textcolor>
+		<label>Ȧ</label>
+		<include>Animation-Busyloader</include>
+	</control>
+	<control type="label" id="1">
+		<width>200</width>
+		<height>200</height>
+		<align>center</align>
+		<font>Iconkaitoast</font>
+		<textcolor>$VAR[PrimaryCol]</textcolor>
+		<label>$VAR[OSDSeekbar-Value]</label>
+		<include>Animation-Busyloader</include>
+	</control>
+	<control type="label" id="1">
+		<width>200</width>
+		<height>200</height>
+		<align>center</align>
+		<font>Iconkaitoast</font>
+		<textcolor>$VAR[PrimaryCol]</textcolor>
+		<label>$VAR[OSDSeekbar-Value-Inlay]</label>
+		<include>Animation-Busyloader</include>
+	</control>
+</control>
+</controls>
+</window>

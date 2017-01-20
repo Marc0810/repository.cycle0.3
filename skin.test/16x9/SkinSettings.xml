@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- Cycle 0.4 -->
+<backgroundcolor>BackgroundColor</backgroundcolor>
+<defaultcontrol always="true">9000</defaultcontrol>
+<onload condition="!String.IsEmpty(Window(home).Property(Reloader))">SetFocus(9002)</onload>
+<onload condition="!String.IsEmpty(Window(home).Property(Reloader))">ClearProperty(Reloader,home)</onload>
+<onunload>ClearProperty(Reloader,home)</onunload>
+<onunload condition="!String.IsEqual(skin.string(HomeMenueStartItem),Filmplayliste) + !String.IsEqual(skin.string(HomeMenueStartItem),Serienplayliste) + !String.IsEqual(skin.string(HomeMenueStartItem),Episodenplayliste)">skin.reset(HomeMenueStartItemPLS)</onunload>
+<menucontrol>9600</menucontrol>
+<controls>
+<control type="button" id="9600">
+	<include>HiddenControl</include>
+	<onleft>ActivateWindow(1120)</onleft>
+	<onright>ActivateWindow(1120)</onright>
+	<onup>ActivateWindow(1120)</onup>
+	<ondown>ActivateWindow(1120)</ondown>
+	<onfocus>ActivateWindow(1120)</onfocus>
+</control>
+<include condition="Skin.HasSetting(EnableVintageOverlay)">Vintagebackground</include>
+<include condition="!Skin.HasSetting(EnableVintageOverlay)">Cyclebackground</include>
+<include>Topbar</include><!-- topbar -->
+<control type="group"><!-- slide menue -->
+	<visible>!Window.IsVisible(shutdownmenu) + !Window.IsVisible(Custom_1121_Textbox.xml) + !Window.IsVisible(Custom_1120_Options.xml) + !Window.IsVisible(favourites) + !Window.IsVisible(AddonSettings) + !Window.IsVisible(selectdialog) + !Window.IsVisible(playercontrols)</visible>
+	<include>Animation375-OpenCloseVisibleHidden-Slide</include>
+	<include>SettingMenu-BG</include><!-- Hintergrund -->
+	<include>SettingMenu-IconBG</include>
+	<include>SettingMenu-Breadcumb</include>
+	<control type="group"><!-- cycle logo -->
+		<left>130</left>
+		<top>870</top>
+		<description>Skin Logo</description>
+		<control type="image">
+			<left>-11</left>
+			<top>0</top>
+			<width>195</width>
+			<height>195</height>
+			<texture colordiffuse="ShadowColor">logo/logo_border.png</texture>
+		</control>
+		<control type="label">
+			<width>200</width>
+			<height>200</height>
+			<font>IconLogoSmall</font>
+			<textcolor>$VAR[PrimaryCol]</textcolor>
+			<label>ķ</label>
+		</control>
+		<control type="label">
+			<width>200</width>
+			<height>200</height>
+			<font>IconLogoSmall</font>
+			<textcolor>$VAR[SecondaryLogoCol]</textcolor>
+			<label>ĸ</label>
+		</control>
+		<control type="label">
+			<width>200</width>
+			<height>200</height>
+			<font>IconLogoSmall</font>
+			<textcolor>$VAR[SecondaryLogoCol]</textcolor>
+			<label>Ĺ</label>
+		</control>
+		<control type="label">
+			<width>200</width>
+			<height>200</height>
+			<font>IconLogoSmall</font>
+			<textcolor>$VAR[CirclesCol]</textcolor>
+			<label>ĺ</label>
+		</control>
+		<control type="label">
+			<description>StartupLogo label</description>
+			<width>200</width>
+			<height>200</height>
+			<font>IconLogoSmall</font>
+			<label>Ļ</label>
+			<textcolor>TextColorFO</textcolor>
+		</control>
+	</control>
+	<control type="grouplist" id="9000"><!-- menue -->
+		<description>Menue</description>
+		<left>100</left>
+		<top>150</top>
+		<include>SettingMenu-ListDimension</include>
+		<onleft>back</onleft>
+		<onright condition="Control.HasFocus(8101)">SetFocus(9001)</onright>
+		<onright condition="Control.HasFocus(8102)">SetFocus(9002)</onright>
+		<onright condition="Control.HasFocus(8103)">SetFocus(9003)</onright>
+		<onright condition="Control.HasFocus(8105)">noop</onright>
+		<onright condition="Control.HasFocus(8104)">SetFocus(9004)</onright>
+		<onright condition="Control.HasFocus(8105)">ActivateWindow(InterfaceSettings)</onright>
+		<onup>9000</onup>
+		<ondown>9000</ondown>
+		<itemgap>5</itemgap>
+		<control type="button" id="8101">
+			<description>Allgemein</description>
+			<include>SettingMenu-MenueButton</include>
+			<onclick>9001</onclick>
+			<onright>9001</onright>
+			<label>Allgemein</label>
+		</control>
+		<control type="button" id="8102">
+			<description>Design</description>
+			<include>SettingMenu-MenueButton</include>
+			<onclick>9002</onclick>
+			<onright>9002</onright>
+			<label>Design</label>
+		</control>
+		<control type="button" id="8103">
+			<description>Optionen</description>
+			<include>SettingMenu-MenueButton</include>
+			<onclick>9003</onclick>
+			<onright>9003</onright>
+			<label>Extras</label>
+		</control>
+		<control type="button" id="8104">
+			<description>Uhr</description>
+			<include>SettingMenu-MenueButton</include>
+			<onclick>9004</onclick>
+			<onright>9004</onright>
+			<label>Uhr</label>
+			<visible>System.HasAddon(resource.images.clock.cycle)</visible>
+		</control>
+		<control type="button" id="8105">
+			<description>InterfaceSettings</description>
+			<include>SettingMenu-MenueButton</include>
+			<onclick>ActivateWindow(InterfaceSettings)</onclick>
+			<label>Oberfläche</label>
+		</control>
+	</control>
+</control>
+<control type="group"><!-- content -->
+	<left>550</left>
+	<top>150</top>
+	<include>Animation-OpenCloseVisibleHidden-Fade</include>
+	<visible>!Control.HasFocus(8105) + !Window.IsVisible(shutdownmenu) + !Window.IsVisible(Custom_1121_Textbox.xml) + !Window.IsVisible(Custom_1120_Options.xml) + !Window.IsVisible(favourites) + !Window.IsVisible(AddonSettings) + !Window.IsVisible(selectdialog) + !Window.IsVisible(playercontrols)</visible>
+	<control type="image">
+		<description>Hintergrund</description>
+		<left>12</left>
+		<top>-30</top>
+		<width>1103</width>
+		<height>860</height>
+		<texture colordiffuse="ListBackgroundDiffuse">white.png</texture>
+	</control>
+	<control type="grouplist" id="9001"><!-- Allgemein -->
+		<description>Allgemeine einstellungen</description>
+		<visible>Control.Hasfocus(8101) | ControlGroup(9001).HasFocus</visible>
+		<width>1125</width>
+		<height>855</height>
+		<onleft>9000</onleft>
+		<onright>noop</onright>
+		<onup>9001</onup>
+		<ondown>9001</ondown>
+		<control type="label" id="90011">
+			<include>SettingMenu-SettingLabel</include>
+			<label>Home Aktionen</label>
+		</control>
+		<control type="button" id="90012">
+			<description>Home mitte/klick Aktion</description>
+			<include>SettingMenu-SettingButton</include>
+			<label>Hauptklick im Menü auswählen</label>
+			<label2>$INFO[skin.string(HomeMenueStartItem)]</label2>
+			<onclick>skin.Reset(HomeMenueStartItem)</onclick>
+			<onclick>skin.SetString(HomeMenueStartItem,Filme)</onclick>
+			<onclick>SetProperty(HomeMenueStartItemChange,On,Home)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItem),Filme)">skin.setstring(HomeMenueStartItem,Serien)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItem),Serien)">skin.setstring(HomeMenueStartItem,Video)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItem),Video)">skin.setstring(HomeMenueStartItem,Musik)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItem),Musik)">skin.setstring(HomeMenueStartItem,Einstellungen)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItem),Einstellungen)">skin.setstring(HomeMenueStartItem,Wetter)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItem),Wetter)">skin.setstring(HomeMenueStartItem,Addons)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItem),Addons)">skin.setstring(HomeMenueStartItem,Programme)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItem),Programme)">skin.setstring(HomeMenueStartItem,Bilder)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItem),Bilder)">skin.setstring(HomeMenueStartItem,Favoriten)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItem),Favoriten)">skin.setstring(HomeMenueStartItem,Filmplayliste)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItem),Filmplayliste)">skin.setstring(HomeMenueStartItem,Serienplayliste)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItem),Serienplayliste)">skin.setstring(HomeMenueStartItem,Episodenplayliste)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItem),Episodenplayliste)">skin.setstring(HomeMenueStartItem,Filme)</onclick>
+			<onunfocus condition="!String.IsEmpty(Window(Home).Property(HomeMenueStartItemChange)) + [String.IsEqual(skin.string(HomeMenueStartItem),Filmplayliste) | String.IsEqual(skin.string(HomeMenueStartItem),Serienplayliste) | String.IsEqual(skin.string(HomeMenueStartItem),Episodenplayliste)]">Skin.SetFile(HomeMenueStartItemPLS,.xsp,special://skin/playlists/)</onunfocus>
+			<onunfocus>ClearProperty(HomeMenueStartItemChange,home)</onunfocus>
+		</control>
+		<control type="button" id="90013">
+			<description>Home links aktion</description>
+			<include>SettingMenu-SettingButton</include>
+			<label>Links Aktion im Menü auswählen</label>
+			<label2>$INFO[skin.string(HomeMenueStartItemL)]</label2>
+			<onclick>skin.Reset(HomeMenueStartItemL)</onclick>
+			<onclick>skin.SetString(HomeMenueStartItemL,Filme)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItemL),Filme)">skin.setstring(HomeMenueStartItemL,Serien)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItemL),Serien)">skin.setstring(HomeMenueStartItemL,Video)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItemL),Video)">skin.setstring(HomeMenueStartItemL,Musik)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItemL),Musik)">skin.setstring(HomeMenueStartItemL,Einstellungen)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItemL),Einstellungen)">skin.setstring(HomeMenueStartItemL,Wetter)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItemL),Wetter)">skin.setstring(HomeMenueStartItemL,Addons)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItemL),Addons)">skin.setstring(HomeMenueStartItemL,Programme)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItemL),Programme)">skin.setstring(HomeMenueStartItemL,Bilder)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItemL),Bilder)">skin.setstring(HomeMenueStartItemL,Favoriten)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItemL),Favoriten)">skin.setstring(HomeMenueStartItemL,Deaktivieren)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItemL),Deaktivieren)">skin.setstring(HomeMenueStartItemL,Filme)</onclick>
+		</control>
+		<control type="button" id="90014">
+			<description>Home rechts aktion</description>
+			<include>SettingMenu-SettingButton</include>
+			<label>Rechts Aktion im Menü auswählen</label>
+			<label2>$INFO[skin.string(HomeMenueStartItemR)]</label2>
+			<onclick>skin.Reset(HomeMenueStartItemR)</onclick>
+			<onclick>skin.SetString(HomeMenueStartItemR,Filme)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItemR),Filme)">skin.setstring(HomeMenueStartItemR,Serien)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItemR),Serien)">skin.setstring(HomeMenueStartItemR,Video)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItemR),Video)">skin.setstring(HomeMenueStartItemR,Musik)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItemR),Musik)">skin.setstring(HomeMenueStartItemR,Einstellungen)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItemR),Einstellungen)">skin.setstring(HomeMenueStartItemR,Wetter)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItemR),Wetter)">skin.setstring(HomeMenueStartItemR,Addons)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItemR),Addons)">skin.setstring(HomeMenueStartItemR,Programme)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItemR),Programme)">skin.setstring(HomeMenueStartItemR,Bilder)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItemR),Bilder)">skin.setstring(HomeMenueStartItemR,Favoriten)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItemR),Favoriten)">skin.setstring(HomeMenueStartItemR,Deaktivieren)</onclick>
+			<onclick condition="String.IsEqual(skin.string(HomeMenueStartItemR),Deaktivieren)">skin.setstring(HomeMenueStartItemR,Filme)</onclick>
+		</control>
+		<control type="label" id="90016">
+			<description>Videofenster menue optionen</description>
+			<include>SettingMenu-SettingLabel</include>
+			<label>Videofenster - "Shortmenü links/rechts"</label>
+		</control>
+		<control type="button" id="90017">
+			<description>Videofenster menue rechts aktion bei Serie</description>
+			<include>SettingMenu-SettingButton</include>
+			<label>Serienplayliste Auswählen</label>
+			<label2>$INFO[Skin.string(CycleMyNavVideoTVQuicklinkTitle)]</label2>
+			<onclick>SetProperty(CustomKeyboardLabel,Titel auswählen,home)</onclick>
+			<onclick>Skin.SetFile(CycleMyNavVideoTVQuicklinkContent,.xsp,special://skin/playlists/)</onclick>
+			<onclick>Skin.SetString(CycleMyNavVideoTVQuicklinkTitle)</onclick>
+		</control>
+		<control type="button" id="90018">
+			<description>Videofenster menue rechts aktion bei Film</description>
+			<include>SettingMenu-SettingButton</include>
+			<label>Filmplayliste Auswählen</label>
+			<label2>$INFO[Skin.string(CycleMyNavVideoMovieQuicklinkTitle)]</label2>
+			<onclick>SetProperty(CustomKeyboardLabel,Titel auswählen,home)</onclick>
+			<onclick>Skin.SetFile(CycleMyNavVideoMovieQuicklinkContent,.xsp,special://skin/playlists/)</onclick>
+			<onclick>Skin.SetString(CycleMyNavVideoMovieQuicklinkTitle)</onclick>
+		</control>
+		<control type="label" id="900020">
+			<description>Dokumentationsansicht optionen</description>
+			<include>SettingMenu-SettingLabel</include>
+			<label>Dokumentationsansicht</label>
+		</control>
+		<control type="button" id="900021">
+			<description>Dokumentationsansicht serienseite playliste</description>
+			<include>SettingMenu-SettingButton</include>
+			<label>Serienplayliste Auswählen</label>
+			<label2>$INFO[Skin.string(TVDokuContent)]</label2>
+			<onclick condition="String.IsEmpty(skin.string(TVDokuContent))">Skin.SetFile(TVDokuContent,.xsp,special://skin/playlists/)</onclick>
+			<onclick condition="!String.IsEmpty(skin.string(TVDokuContent))">Skin.Reset(TVDokuContent)</onclick>
+		</control>
+		<control type="button" id="900022">
+			<description>Dokumentationsansicht filmseite playliste</description>
+			<include>SettingMenu-SettingButton</include>
+			<label>Filmplayliste Auswählen</label>
+			<label2>$INFO[Skin.string(FilmDokuContent)]</label2>
+			<onclick condition="String.IsEmpty(skin.string(FilmDokuContent))">Skin.SetFile(FilmDokuContent,.xsp,special://skin/playlists/)</onclick>
+			<onclick condition="!String.IsEmpty(skin.string(FilmDokuContent))">Skin.Reset(FilmDokuContent)</onclick>
+		</control>
+		<control type="label" id="900023">
+			<description>Musikpfad fuer logo</description>
+			<include>SettingMenu-SettingLabel</include>
+			<label>Musikpfad</label>
+		</control>
+		<control type="button" id="900024">
+			<description>Musikpfad fuer logo</description>
+			<include>SettingMenu-SettingButton</include>
+			<label>Pfad für Musiklogo setzen</label>
+			<label2>$INFO[Skin.String(Music_Folder_Path)]</label2>
+			<onclick>Skin.SetPath(Music_Folder_Path)</onclick>
+		</control>
+	</control>
+	<control type="grouplist" id="9002"><!-- Design -->
+		<description>Designoptionen</description>
+		<visible allowhiddenfocus="true">Control.Hasfocus(8102) | ControlGroup(9002).HasFocus</visible>
+		<width>1125</width>
+		<height>806</height>
+		<onleft>9000</onleft>
+		<onright>noop</onright>
+		<onup>9002</onup>
+		<ondown>9002</ondown>
+		<control type="label" id="90020">
+			<include>SettingMenu-SettingLabel</include>
+			<label>Designoptionen</label>
+		</control>
+		<!-- 
+		<control type="button" id="90021">
+			<description>Font korrekturen positionen</description>
+			<include>SettingMenu-SettingButton</include>
+			<label>Schriftkorrekturen (erfordert ein Neuladen des Skins)</label>
+			<label2>$INFO[skin.string(Fontselection)]</label2>
+			<onclick>skin.setstring(Fontselection,Default)</onclick>
+			<onclick>SetProperty(Reloader,True,Home)</onclick>
+			<onclick condition="String.IsEqual(skin.string(Fontselection),Default)">skin.SetString(Fontselection,Vintage)</onclick>
+			<onclick condition="String.IsEqual(skin.string(Fontselection),Vintage)">skin.setstring(Fontselection,Default)</onclick>
+			<onunfocus condition="!String.IsEmpty(Window(home).Property(Reloader))">ReloadSkin()</onunfocus>
+		</control>-->
+		<control type="radiobutton" id="90022">
+			<description>Vintage Overlay</description>
+			<include>SettingMenu-SettingButton</include>
+			<label>Vintage Overlay (erfordert ein Neuladen des Skins)</label>
+			<onclick>SetProperty(Reloader,True,Home)</onclick>
+			<onclick>Skin.ToggleSetting(EnableVintageOverlay)</onclick>
+			<onclick>Skin.SetString(ColorChangePosition,1)</onclick>
+			<onclick>SetProperty(ColorRefresh,ein,home)</onclick>
+			<onunfocus condition="Skin.HasSetting(EnableVintageOverlay)">skin.setstring(ClockLayout,Retro)</onunfocus>
+			<onunfocus condition="!String.IsEmpty(Window(home).Property(Reloader))">ReloadSkin()</onunfocus>
+			<selected>Skin.HasSetting(EnableVintageOverlay)</selected>
+		</control>
+		<control type="button" id="90023">
+			<description>Trennzeichen</description>
+			<include>SettingMenu-SettingButton</include>
+			<label>Trennzeichen</label>
+			<onclick>skin.Reset(CustomEnumeration)</onclick>
+			<onclick>skin.SetString(CustomEnumeration,1)</onclick>
+			<onclick condition="String.IsEqual(skin.string(CustomEnumeration),1)">skin.setstring(CustomEnumeration,2)</onclick>
+			<onclick condition="String.IsEqual(skin.string(CustomEnumeration),2)">skin.setstring(CustomEnumeration,3)</onclick>
+			<onclick condition="String.IsEqual(skin.string(CustomEnumeration),3)">skin.setstring(CustomEnumeration,4)</onclick>
+			<onclick condition="String.IsEqual(skin.string(CustomEnumeration),4)">skin.setstring(CustomEnumeration,5)</onclick>
+			<onclick condition="String.IsEqual(skin.string(CustomEnumeration),5)">skin.setstring(CustomEnumeration,6)</onclick>
+			<onclick condition="String.IsEqual(skin.string(CustomEnumeration),6)">skin.setstring(CustomEnumeration,7)</onclick>
+			<onclick condition="String.IsEqual(skin.string(CustomEnumeration),7)">skin.setstring(CustomEnumeration,8)</onclick>
+			<onclick condition="String.IsEqual(skin.string(CustomEnumeration),8)">skin.setstring(CustomEnumeration,9)</onclick>
+			<onclick condition="String.IsEqual(skin.string(CustomEnumeration),9)">skin.setstring(CustomEnumeration,10)</onclick>
+			<onclick condition="String.IsEqual(skin.string(CustomEnumeration),10)">skin.setstring(CustomEnumeration,11)</onclick>
+			<onclick condition="String.IsEqual(skin.string(CustomEnumeration),11)">skin.setstring(CustomEnumeration,12)</onclick>
+			<onclick condition="String.IsEqual(skin.string(CustomEnumeration),12)">skin.setstring(CustomEnumeration,13)</onclick>
+			<onclick condition="String.IsEqual(skin.string(CustomEnumeration),13)">skin.setstring(CustomEnumeration,14)</onclick>
+			<onclick condition="String.IsEqual(skin.string(CustomEnumeration),14)">skin.setstring(CustomEnumeration,15)</onclick>
+			<onclick condition="String.IsEqual(skin.string(CustomEnumeration),15)">skin.setstring(CustomEnumeration,16)</onclick>
+			<onclick condition="String.IsEqual(skin.string(CustomEnumeration),16)">skin.setstring(CustomEnumeration,17)</onclick>
+			<onclick condition="String.IsEqual(skin.string(CustomEnumeration),17)">skin.setstring(CustomEnumeration,1)</onclick>
+		</control>
+		<control type="radiobutton" id="90024">
+			<description>Fanart Overlay</description>
+			<include>SettingMenu-SettingButton</include>
+			<label>Verstecke Hintergrund-Fanart</label>
+			<onclick>Skin.ToggleSetting(HideBackGroundFanart)</onclick>
+			<selected>Skin.HasSetting(HideBackGroundFanart)</selected>
+			<visible>!Skin.HasSetting(EnableVintageOverlay)</visible>
+		</control>
+		<control type="label" id="90026">
+			<description>Divider</description>
+			<include>SettingMenu-SettingButton</include>
+			<label></label>
+		</control>
+		<control type="label" id="90027">
+			<include>SettingMenu-SettingLabel</include>
+			<label>Genre Artworks (Banner, Fanart und Poster)</label>
+		</control>
+		<control type="radiobutton" id="90028">
+			<description>Videogenre Artworks</description>
+			<include>SettingMenu-SettingButton</include>
+			<label>Videogenre Artworks verwenden</label>
+			<onclick condition="!System.HasAddon(resource.images.moviegenrefanart.cycle)">InstallAddon(resource.images.moviegenrefanart.cycle)</onclick>
+			<onclick condition="System.HasAddon(resource.images.moviegenrefanart.cycle)">Notification(Hinweis,Das Addon hat keine Einstellungen,3,DefaultIconInfo.png)</onclick>
+			<selected>System.HasAddon(resource.images.moviegenrefanart.cycle)</selected>
+		</control>
+	</control>
+	<control type="label">
+		<description>Trennzeichen label 2 andere schrift</description>
+		<top>155</top>
+		<width>1085</width>
+		<include>Item.top.height65</include>
+		<align>right</align>
+		<font>EnumRegularNormal</font>
+		<label>$VAR[CustomEnumeration]</label>
+		<visible>!Control.Hasfocus(90023) + [Control.Hasfocus(8102) | ControlGroup(9002).HasFocus]</visible>
+	</control>
+	<control type="label">
+		<description>Trennzeichen label 2 andere schrift</description>
+		<top>155</top>
+		<width>1085</width>
+		<include>Item.top.height65</include>
+		<align>right</align>
+		<font>EnumRegularNormal</font>
+		<textcolor>TextColorFO</textcolor>
+		<label>$VAR[CustomEnumeration]</label>
+		<visible>Control.Hasfocus(90023) + [Control.Hasfocus(8102) | ControlGroup(9002).HasFocus]</visible>
+	</control>
+	<control type="grouplist" id="9003"><!-- Extras -->
+		<description>Extra einstellungen</description>
+		<visible>Control.Hasfocus(8103) | ControlGroup(9003).HasFocus</visible>
+		<width>1125</width>
+		<height>730</height>
+		<onleft>9000</onleft>
+		<onright>noop</onright>
+		<onup>9003</onup>
+		<ondown>9003</ondown>
+		<control type="label" id="90033">
+			<include>SettingMenu-SettingLabel</include>
+			<label>Addons Installieren/Konfigurieren</label>
+		</control>
+		<control type="radiobutton" id="90034">
+			<description>Cycle skin-sound</description>
+			<include>SettingMenu-SettingButton</include>
+			<label>Cycle UI-sound Addon (Klangschema für Cycle)</label>
+			<oninfo>SetProperty(TextBox.Title,resource.uisounds.cycle,home)</oninfo>
+			<oninfo>SetProperty(TextBox.SubTitle,Skin-Sounds,home)</oninfo>
+			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBox-Text],home)</oninfo>
+			<oninfo>ActivateWindow(1121)</oninfo>
+			<onclick condition="System.HasAddon(resource.uisounds.cycle)">Notification(Hinweis,Das Addon hat keine Einstellungen,3,DefaultIconInfo.png)</onclick>
+			<onclick condition="!System.HasAddon(resource.uisounds.cycle)">InstallAddon(resource.uisounds.cycle)</onclick>
+			<selected>System.HasAddon(resource.uisounds.cycle)</selected>
+		</control>
+		<control type="radiobutton" id="90038">
+			<description>Cycle skin-clock</description>
+			<include>SettingMenu-SettingButton</include>
+			<label>Cycle skin-clock Addon</label>
+			<onclick condition="System.HasAddon(resource.images.clock.cycle)">Notification(Hinweis,Das Addon hat keine Einstellungen,3,DefaultIconInfo.png)</onclick>
+			<onclick condition="!System.HasAddon(resource.images.clock.cycle)">InstallAddon(resource.images.clock.cycle)</onclick>
+			<selected>System.HasAddon(resource.images.clock.cycle)</selected>
+		</control>
+		<control type="radiobutton" id="90035">
+			<description>Script.artwork.downloader</description>
+			<include>SettingMenu-SettingButton</include>
+			<label>script.artwork.downloader (Artworks herunterladen)</label>
+			<oninfo>SetProperty(TextBox.Title,script.artwork.downloader,home)</oninfo>
+			<oninfo>SetProperty(TextBox.SubTitle,Der Skin benötigt Logos/Staffelposter und Landscapes in den Ansichten,home)</oninfo>
+			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBox-Text],home)</oninfo>
+			<oninfo>ActivateWindow(1121)</oninfo>
+			<onclick condition="System.HasAddon(script.artwork.downloader)">SetProperty(Settingaddon,Running,home)</onclick>
+			<onclick condition="System.HasAddon(script.artwork.downloader)">Addon.OpenSettings(script.artwork.downloader)</onclick>
+			<onclick condition="!System.HasAddon(script.artwork.downloader)">InstallAddon(script.artwork.downloader)</onclick>
+			<selected>System.HasAddon(script.artwork.downloader)</selected>
+		</control>
+		<control type="radiobutton" id="90036">
+			<description>Script-lazytv</description>
+			<include>SettingMenu-SettingButton</include>
+			<label>script.lazytv (Serienwidget)</label>
+			<oninfo>SetProperty(TextBox.Title,script.lazytv,home)</oninfo>
+			<oninfo>SetProperty(TextBox.SubTitle,Unterstützung für die Ansichten (Userinterface) Standard und Poster,home)</oninfo>
+			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBox-Text],home)</oninfo>
+			<oninfo>ActivateWindow(1121)</oninfo>
+			<onclick condition="System.HasAddon(script.lazytv)">SetProperty(Settingaddon,Running,home)</onclick>
+			<onclick condition="System.HasAddon(script.lazytv)">Addon.OpenSettings(script.lazytv)</onclick>
+			<onclick condition="!System.HasAddon(script.lazytv)">InstallAddon(script.lazytv)</onclick>
+			<selected>System.HasAddon(script.lazytv)</selected>
+		</control>
+		<control type="radiobutton" id="90037">
+			<description>Service.library.data.provider</description>
+			<include>SettingMenu-SettingButton</include>
+			<label>service.library.data.provider (Widgetscript)</label>
+			<oninfo>SetProperty(TextBox.Title,Widgets script,home)</oninfo>
+			<oninfo>SetProperty(TextBox.SubTitle,Verschiedene Widgets,home)</oninfo>
+			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBox-Text],home)</oninfo>
+			<oninfo>ActivateWindow(1121)</oninfo>
+			<onclick condition="System.HasAddon(service.library.data.provider)">Addon.OpenSettings(service.library.data.provider)</onclick>
+			<onclick condition="!System.HasAddon(service.library.data.provider)">InstallAddon(service.library.data.provider)</onclick>
+			<selected>System.HasAddon(service.library.data.provider)</selected>
+		</control>
+		<control type="label" id="900040">
+			<description>Divider</description>
+			<include>SettingMenu-SettingButton</include>
+			<label></label>
+		</control>
+		<control type="radiobutton" id="90043">
+			<description>weather.openweathermap.extended</description>
+			<include>SettingMenu-SettingButton</include>
+			<label>weather.openweathermap.extended (Wetterinformationen)</label>
+			<oninfo>SetProperty(TextBox.Title,weather.openweathermap.extended,home)</oninfo>
+			<oninfo>SetProperty(TextBox.SubTitle,Wettervorhersage von openweathermap.org,home)</oninfo>
+			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBox-Text],home)</oninfo>
+			<oninfo>ActivateWindow(1121)</oninfo>
+			<onclick condition="System.HasAddon(weather.openweathermap.extended)">ActivateWindow(MyWeatherSettings)</onclick>
+			<onclick condition="!System.HasAddon(weather.openweathermap.extended)">InstallAddon(weather.openweathermap.extended)</onclick>
+			<selected>System.HasAddon(weather.openweathermap.extended)</selected>
+		</control>
+		<control type="radiobutton" id="90044">
+			<description>script.tv.show.next.aired</description>
+			<include>SettingMenu-SettingButton</include>
+			<label>script.tv.show.next.aired (Serienstatus für Videoinfodialog)</label>
+			<oninfo>SetProperty(TextBox.Title,script.tv.show.next.aired,home)</oninfo>
+			<oninfo>SetProperty(TextBox.SubTitle,Cycle nutzt dieses script nur für die Serienstatus Anzeige in der Info,home)</oninfo>
+			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBox-Text],home)</oninfo>
+			<oninfo>ActivateWindow(1121)</oninfo>
+			<onclick condition="System.HasAddon(script.tv.show.next.aired)">Addon.OpenSettings(script.tv.show.next.aired)</onclick>
+			<onclick condition="!System.HasAddon(script.tv.show.next.aired)">InstallAddon(script.tv.show.next.aired)</onclick>
+			<selected>System.HasAddon(script.tv.show.next.aired)</selected>
+		</control>
+		<control type="radiobutton" id="90045">
+			<description>Script.info.service</description>
+			<include>SettingMenu-SettingButton</include>
+			<label>script.skin.info.service (Moviesetinfos)</label>
+			<oninfo>SetProperty(TextBox.Title,script.skin.info.service,home)</oninfo>
+			<oninfo>SetProperty(TextBox.SubTitle,Wird benötigt für die Anzeige von Movieset-Infos,home)</oninfo>
+			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBox-Text],home)</oninfo>
+			<oninfo>ActivateWindow(1121)</oninfo>
+			<onclick condition="!System.HasAddon(script.skin.info.service)">InstallAddon(script.skin.info.service)</onclick>
+			<onclick condition="System.HasAddon(script.skin.info.service)">Notification(Hinweis,Das Addon hat keine Einstellungen,3,DefaultIconInfo.png)</onclick>
+			<selected>System.HasAddon(script.skin.info.service)</selected>
+		</control>
+		<control type="radiobutton" id="90046">
+			<description>script.libraryeditor</description>
+			<include>SettingMenu-SettingButton</include>
+			<label>script.libraryeditor (Datenbankeditor)</label>
+			<oninfo>SetProperty(TextBox.Title,script.libraryeditor,home)</oninfo>
+			<oninfo>SetProperty(TextBox.SubTitle,Datenbankeditor für das Contextmenü,home)</oninfo>
+			<oninfo>SetProperty(TextBox.Plot,$ESCVAR[TextBox-Text],home)</oninfo>
+			<oninfo>ActivateWindow(1121)</oninfo>
+			<onclick condition="!System.HasAddon(script.libraryeditor)">InstallAddon(script.libraryeditor)</onclick>
+			<onclick condition="System.HasAddon(script.libraryeditor)">Notification(Hinweis,Das Addon hat keine Einstellungen,3,DefaultIconInfo.png)</onclick>
+			<selected>System.HasAddon(script.libraryeditor)</selected>
+		</control>
+		<control type="label" id="900047">
+			<description>Divider</description>
+			<include>SettingMenu-SettingButton</include>
+			<label></label>
+		</control>
+		<control type="label" id="900048">
+			<description>Divider</description>
+			<include>SettingMenu-SettingLabel</include>
+			<label>Skindebug</label>
+		</control>
+		<control type="button" id="900049">
+			<description>Skinreset</description>
+			<textcolor>$VAR[PrimaryCol]</textcolor><!-- include ueberschreibung Farbe -->
+			<include>SettingMenu-SettingButton</include>
+			<label>Alle Skin-Einstellungen wieder zurücksetzen</label>
+			<onclick>Skin.Reset()</onclick>
+			<onclick>Skin.ResetSettings</onclick>
+			<onclick>Skin.SetString(ColorChangePosition,1)</onclick>
+			<onclick>ReloadSkin()</onclick>
+			<onclick>ActivateWindow(1195)</onclick>
+		</control>
+		<control type="radiobutton" id="900050">
+			<description>Skin Debug</description>
+			<include>SettingMenu-SettingButton</include>
+			<label>Skin debugoverlay anzeigen</label>
+			<onclick>Skin.ToggleSetting(DebugInfo)</onclick>
+			<selected>Skin.HasSetting(DebugInfo)</selected>
+		</control>
+		<control type="radiobutton" id="900051">
+			<description>Skin Debug</description>
+			<include>SettingMenu-SettingButton</include>
+			<label>Skin raster anzeigen</label>
+			<onclick>Skin.ToggleSetting(DebugGrid)</onclick>
+			<selected>Skin.HasSetting(DebugGrid)</selected>
+		</control>
+	</control>
+	<control type="grouplist" id="9004"><!-- Uhr -->
+		<description>Uhr einstellungen</description>
+		<visible>Control.Hasfocus(8104) | ControlGroup(9004).HasFocus</visible>
+		<width>1125</width>
+		<height>730</height>
+		<onleft>9000</onleft>
+		<onright>noop</onright>
+		<onup>9004</onup>
+		<ondown>9004</ondown>
+		<control type="label" id="90043">
+			<include>SettingMenu-SettingLabel</include>
+			<label>Klicken um eine andere Uhr zu verwenden</label>
+		</control>
+		<control type="button" id="90044">
+			<description>Cycle skin-sound</description>
+			<include>SettingMenu-SettingButton</include>
+			<label>Ausgewählt</label>
+			<label2>$INFO[skin.string(ClockLayout)]</label2>
+			<onclick condition="System.HasAddon(resource.images.clock.cycle)">skin.setstring(ClockLayout,Default)</onclick>
+			<onclick condition="System.HasAddon(resource.images.clock.cycle) + String.IsEqual(skin.string(ClockLayout),Default)">skin.setstring(ClockLayout,Retro)</onclick>
+			<onclick condition="System.HasAddon(resource.images.clock.cycle) + String.IsEqual(skin.string(ClockLayout),Retro)">skin.setstring(ClockLayout,Cycle)</onclick>
+			<onclick condition="System.HasAddon(resource.images.clock.cycle) + String.IsEqual(skin.string(ClockLayout),Cycle)">skin.setstring(ClockLayout,SBB)</onclick>
+			<onclick condition="System.HasAddon(resource.images.clock.cycle) + String.IsEqual(skin.string(ClockLayout),SBB)">skin.setstring(ClockLayout,Default)</onclick>
+		</control>
+	</control>
+	<control type="group">
+		<left>170</left>
+		<top>150</top>
+		<visible>Control.Hasfocus(8104) | ControlGroup(9004).HasFocus</visible>
+		<include>CycleClock</include>
+	</control>
+</control>
+<control type="group"><!-- info Overview -->
+	<left>550</left>
+	<top>150</top>
+	<visible>Control.HasFocus(8105) + !Window.IsVisible(shutdownmenu) + !Window.IsVisible(Custom_1121_Textbox.xml) + !Window.IsVisible(Custom_1120_Options.xml) + !Window.IsVisible(favourites) + !Window.IsVisible(AddonSettings) + !Window.IsVisible(selectdialog) + !Window.IsVisible(playercontrols)</visible>
+	<include>Animation-OpenCloseVisibleHidden-Fade</include>
+	<include>Settings-Overview</include>
+</control>
+</controls>
+</window>

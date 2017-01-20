@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- Cycle 0.4 -->
+<defaultcontrol>11</defaultcontrol>
+<coordinates>
+	<system>1</system>
+	<left>810</left>
+	<top>0</top>
+</coordinates>
+<controls>
+<control type="group">
+	<include>Animation-Popup-Dialog</include>
+	<control type="image"><!-- Hintergrund -->
+		<description>Hintergrund</description>
+		<left>dialogbar.left</left>
+		<top>dialogbar.top</top>
+		<width>490</width>
+		<height>150</height>
+		<include>DialogBackground</include>
+	</control>
+	<control type="image">
+		<description>Hintergrund Titel</description>
+		<width>497</width>
+		<height>60</height>
+		<texture border="14,0,14,0" flipy="true" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texture>
+	</control>
+	<control type="label" id="10"><!-- content -->
+		<description>Titel</description>
+		<left>bottom.dialogbar.left</left>
+		<width>500</width>
+		<font>DialogHeaderSmaller</font>
+		<textcolor>TextColorFO</textcolor>
+		<height>40</height>
+	</control>
+	<control type="slider" id="11">
+		<description>Slider</description>
+		<left>65</left>
+		<top>70</top>
+		<width>360</width>
+		<height>37</height>
+		<onleft>11</onleft>
+		<onright>11</onright>
+		<onup>close</onup>
+		<ondown>close</ondown>
+	</control>
+	<control type="label" id="12">
+		<description>Slider Wert als fullscreen osd text</description>
+		<left>-810</left>
+		<top>360</top>
+		<width>1920</width>
+		<height>360</height>
+		<align>center</align>
+		<font>OSDBig</font>
+		<textcolor>TextColorFO</textcolor>
+		<include>Animation-Opacity30</include>
+	</control>
+</control>
+</controls>
+</window>

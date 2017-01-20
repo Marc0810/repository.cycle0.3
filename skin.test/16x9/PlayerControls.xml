@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- Cycle 0.4 -->
+<defaultcontrol always="true">600</defaultcontrol>
+<controls>
+	<include condition="!Window.IsActive(home)">DialogPlayercontrol-Standard</include>
+	<include condition="Window.IsActive(home)">DialogPlayercontrol-Cycle-HomeMenue</include>
+</controls>
+</window>

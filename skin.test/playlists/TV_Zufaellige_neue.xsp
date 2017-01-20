@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<smartplaylist type="tvshows">
+    <name>Serie - zufällige neue Serie</name>
+    <match>all</match>
+    <rule field="numwatched" operator="lessthan">
+        <value>1</value>
+    </rule>
+    <limit>10</limit>
+    <order direction="ascending">random</order>
+</smartplaylist>

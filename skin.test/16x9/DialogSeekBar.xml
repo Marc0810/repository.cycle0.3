@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- Cycle 0.4 -->
+<visible>!Window.IsVisible(fullscreeninfo) + [VideoPlayer.IsFullscreen | Window.IsVisible(visualisation)] + [Player.Seeking | Player.DisplayAfterSeek | Player.Forwarding | Player.Rewinding | Player.Paused + !System.IdleTime(10)]</visible>
+<controls>
+<control type="image">
+	<description>Hintergrund oben diffuse</description>
+	<width>1920</width>
+	<height>206</height>
+	<texture border="1" colordiffuse="VideooverlayVignette">dialogs/nowplayingoverlay.png</texture>
+	<include>Animation-OpenClose-Fade</include>
+	<visible>!Window.IsVisible(visualisation)</visible>
+</control>
+<control type="group">
+	<visible>!Window.IsVisible(SelectDialog) + !System.IdleTime(10)</visible>
+	<include>Animation-Popup-OSDDialog2</include>
+	<control type="group">
+		<description>Status oben info left - player status</description>
+		<left>155</left>
+		<top>42</top>
+		<visible>!Window.IsVisible(videobookmarks) + !Window.IsVisible(DialogSettings.xml)</visible>
+		<include>OSDTopinfo-Left</include>
+	</control>
+	<control type="group">
+		<left>1334</left>
+		<top>42</top>
+		<description>Status oben info right - Zeit und Endzeit</description>
+		<include>OSDTopinfo-Right</include>
+	</control>
+	<control type="group">
+		<top>110</top>
+		<visible>!Window.IsVisible(DialogPlayerProcessInfo.xml)</visible>
+		<description>Status unten</description>
+		<include>OSDBottominfo</include>
+	</control>
+</control>
+</controls>
+</window>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- Cycle 0.4 -->
+<backgroundcolor>BackgroundColor</backgroundcolor>
+<defaultcontrol always="true">71</defaultcontrol>
+<menucontrol>9110</menucontrol>
+<views>71</views>
+<controls>
+	<control type="list" id="20000">
+		<description>Hidden focus fuer numitems container</description>
+		<include>Compaircontainer</include>
+		<content>$VAR[Content-Focus]</content>
+	</control>
+	<control type="button" id="3">
+		<description>Hiddencorebutton Sortieren fuer kurzbezeichnung mit sendclick</description>
+		<include>HiddenControl</include>
+	</control>
+	<include condition="Skin.HasSetting(EnableVintageOverlay)">Vintagebackground</include>
+	<include condition="!Skin.HasSetting(EnableVintageOverlay)">Cyclebackground</include>
+	<include>Topbar</include><!-- topbar -->
+	<include>Sideblade-NF</include><!-- Sideblade menue indikator -->
+	<include>Viewtype_71_Filelist</include><!-- View -->
+	<control type="group"><!-- Sidebar -->
+		<width>420</width>
+		<height>1080</height>
+		<include>Animation375-OpenCloseVisibleHidden-Slide</include>
+		<visible allowhiddenfocus="true">ControlGroup(9110).HasFocus + ![Window.IsVisible(Custom_1120_Options.xml) | Window.IsVisible(Custom_1141_ViewtypeSimilar.xml) | Window.IsVisible(contextmenu) | Window.IsVisible(shutdownmenu) | Window.IsVisible(favourites) | Window.IsVisible(playercontrols)]</visible>
+		<include>Sideblade-FO</include>
+		<include>Sideblade-BG</include>
+		<include>Sideblade-Breadcumb</include>
+		<control type="grouplist" id="9110"><!-- Menue -->
+			<description>Sidebar Menue</description>
+			<include>Sideblade-Dimension</include>
+			<control type="button" id="33">
+				<description>Verkuerzter Sortbutton mit Text aus Variable</description>
+				<include>Sideblade-ButtonValues</include>
+				<label>$INFO[Container.SortMethod]</label>
+				<onclick>Container.NextSortMethod</onclick>
+				<visible>Control.IsEnabled(3)</visible>
+			</control>
+			<control type="togglebutton" id="4">
+				<description>Reihenfolge Auf/Abwaerts</description>
+				<include>Sideblade-ButtonValues</include>
+				<label>Absteigend</label>
+				<altlabel>Aufsteigend</altlabel>
+				<usealttexture>Container.SortDirection(Ascending)</usealttexture>
+			</control>
+			<control type="label" id="291">
+				<description>Fake Abstand dazwischen</description>
+				<width>330</width>
+				<height>65</height>
+				<aligny>top</aligny>
+				<label></label>
+			</control>
+			<control type="label" id="201">
+				<description>Subtitel</description>
+				<width>330</width>
+				<height>65</height>
+				<textoffsetx>20</textoffsetx>
+				<textcolor>TextColorLight</textcolor>
+				<label>Optionen</label>
+			</control>
+			<control type="radiobutton" id="5">
+				<description>Automatische aktualisierung</description>
+				<include>Sideblade-ButtonValues</include>
+				<label>Updates</label>
+			</control>
+			<control type="radiobutton" id="7">
+				<description>Auslaendische ausblenden</description>
+				<include>Sideblade-ButtonValues</include>
+				<label>Ausländische</label>
+			</control>
+			<control type="radiobutton" id="8">
+				<description>Als deffeckt markierte ausblenden</description>
+				<include>Sideblade-ButtonValues</include>
+				<label>Inkompatible</label>
+			</control>
+			<control type="radiobutton" id="9">
+				<description>Automatisches update aktivieren</description>
+				<include>Sideblade-ButtonValues</include>
+				<label>Updatecheck</label>
+			</control>
+		</control>
+		<include>Sideblade-IconBG</include>
+		<control type="grouplist"><!-- Icon grouplist -->
+			<include>Sideblade-IconDimension</include>
+			<visible>ControlGroup(9110).HasFocus</visible>
+			<control type="label">
+				<description>Verkuerzter Sortbutton mit Text aus Variable</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorFO</include>
+				<label>a</label>
+				<visible>Control.IsVisible(33) + Control.HasFocus(33)</visible>
+			</control>
+			<control type="label">
+				<description>Verkuerzter Sortbutton mit Text aus Variable</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorNF</include>
+				<label>a</label>
+				<visible>Control.IsVisible(33) + !Control.HasFocus(33)</visible>
+			</control>
+			<control type="label">
+				<description>Reihenfolge Auf/Abwaerts</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorFO</include>
+				<label>b</label>
+				<visible>Control.IsVisible(4) + Control.HasFocus(4) + Container.SortDirection(Ascending)</visible>
+			</control>
+			<control type="label">
+				<description>Reihenfolge Auf/Abwaerts</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorNF</include>
+				<label>b</label>
+				<visible>Control.IsVisible(4) + !Control.HasFocus(4) + Container.SortDirection(Ascending)</visible>
+			</control>
+			<control type="label">
+				<description>Reihenfolge Auf/Abwaerts</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorFO</include>
+				<label>c</label>
+				<visible>Control.IsVisible(4) + Control.HasFocus(4) + !Container.SortDirection(Ascending)</visible>
+			</control>
+			<control type="label">
+				<description>Reihenfolge Auf/Abwaerts</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorNF</include>
+				<label>c</label>
+				<visible>Control.IsVisible(4) + !Control.HasFocus(4) + !Container.SortDirection(Ascending)</visible>
+			</control>
+			<control type="label">
+				<description>Fake Abstand</description>
+				<width>330</width>
+				<height>130</height>
+			</control>
+			<control type="label">
+				<description>Automatische aktualisierung</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorFO</include>
+				<label>i</label>
+				<visible>Control.IsVisible(5) + Control.HasFocus(5)</visible>
+			</control>
+			<control type="label">
+				<description>Automatische aktualisierung</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorNF</include>
+				<label>i</label>
+				<visible>Control.IsVisible(5) + !Control.HasFocus(5)</visible>
+			</control>
+			<control type="label">
+				<description>Auslaendische ausblenden</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorFO</include>
+				<label>N</label>
+				<visible>Control.IsVisible(7) + Control.HasFocus(7)</visible>
+			</control>
+			<control type="label">
+				<description>Auslaendische ausblenden</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorNF</include>
+				<label>N</label>
+				<visible>Control.IsVisible(7) + !Control.HasFocus(7)</visible>
+			</control>
+			<control type="label">
+				<description>Als deffeckt markierte</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorFO</include>
+				<label>É</label>
+				<visible>Control.IsVisible(8) + Control.HasFocus(8)</visible>
+			</control>
+			<control type="label">
+				<description>Als deffeckt markierte</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorNF</include>
+				<label>É</label>
+				<visible>Control.IsVisible(8) + !Control.HasFocus(8)</visible>
+			</control>
+			<control type="label">
+				<description>Automatisches update</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorFO</include>
+				<label>i</label>
+				<visible>Control.IsVisible(9) + Control.HasFocus(9)</visible>
+			</control>
+			<control type="label">
+				<description>Automatisches update</description>
+				<include>SidebarIcon-Dimension</include>
+				<include>SidebarIcon-ColorNF</include>
+				<label>i</label>
+				<visible>Control.IsVisible(9) + !Control.HasFocus(9)</visible>
+			</control>
+		</control>
+	</control>
+
+		<control type="label">
+			<description>XBMC BUILD Version Title</description>
+			<left>25</left>
+			<top>740</top>
+			<width>460</width>
+			<height>50</height>
+			<label>xxx$INFO[ListItem.Icon]</label>
+		</control>
+	
+	
+</controls>
+</window>

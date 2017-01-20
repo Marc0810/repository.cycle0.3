@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1102"><!-- Cycle 0.4 -->
+<backgroundcolor>BackgroundColor</backgroundcolor>
+<defaultcontrol always="true">9001</defaultcontrol>
+<controls>
+<control type="list" id="400">
+	<description>Setinhalt</description>
+	<include>Compaircontainer</include>
+	<content>videodb://movies/sets/$INFO[ListItem.DBID]/</content>
+</control>
+<control type="button" id="9001"><!-- focus fuer oninfo close -->
+	<oninfo>Dialog.close(1102)</oninfo><!-- back -->
+	<onleft>Dialog.close(1102)</onleft><!-- back -->
+	<onright>Dialog.close(1102)</onright><!-- back -->
+	<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.Title,$ESCVAR[TextBox-Title],home)</onup>
+	<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.Plot,$ESCVAR[TextBox-Text],home)</onup>
+	<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">ActivateWindow(1121)</onup>
+	<ondown>Dialog.close(1102)</ondown><!-- back -->
+	<onclick>Dialog.close(1102)</onclick>
+	<onclick>ActivateWindow(Videos,videodb://movies/sets/$INFO[Container(400).ListItem.SetID],return)</onclick>
+	<include>HiddenControl</include>
+</control>
+<include condition="Skin.HasSetting(EnableVintageOverlay)">Vintagebackground</include>
+<include condition="!Skin.HasSetting(EnableVintageOverlay)">Cyclebackground</include>
+<include condition="!Skin.HasSetting(EnableVintageOverlay)">CyclebackgroundFanart</include>
+<include>InfoBackground-Fade</include>
+<include>Topbar</include>
+<control type="group">
+	<include>Animation-OpenCloseVisibleHidden-Zoom</include>
+	<visible>!Window.IsVisible(Custom_1121_Textbox.xml)</visible>
+	<control type="image"><!-- Bar -->
+		<description>Circles Bar</description>
+		<left>-500</left>
+		<top>624</top>
+		<width>3000</width>
+		<height>152</height>
+		<texture colordiffuse="$VAR[CirclesCol]">views/info/bar.png</texture>
+	</control>
+	<control type="group"><!-- info -->
+		<description>Hauptseite</description>
+		<top>30</top>
+		<include>Animation395-Conditional-Slide</include>
+		<control type="list" id="9000">
+			<description>Menue</description>
+			<left>860</left>
+			<top>594</top>
+			<width>900</width>
+			<height>152</height>
+			<oninfo>Dialog.close(1102)</oninfo><!-- back -->
+			<onleft>Dialog.close(1102)</onleft><!-- back -->
+			<onright>Dialog.close(1102)</onright><!-- back -->
+			<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.Title,$ESCVAR[TextBox-Title],home)</onup>
+			<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">SetProperty(TextBox.Plot,$ESCVAR[TextBox-Text],home)</onup>
+			<onup condition="!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)">ActivateWindow(1121)</onup>
+			<ondown>Dialog.close(1102)</ondown><!-- back -->
+			<orientation>horizontal</orientation>
+			<focusposition>1</focusposition>
+			<scrolltime tween="sine" easing="out">200</scrolltime>
+			<include content="CircleMenue-Layout">
+				<description>Circle menue</description>
+				<param name="CircleMenue-ID">9001</param>
+			</include>
+			<content>
+				<item id="21">
+					<description>Oeffnen</description>
+					<label></label>
+					<label2>v</label2>
+					<onclick>Dialog.close(1102)</onclick>
+					<onclick>ActivateWindow(Videos,videodb://movies/sets/$INFO[Container(400).ListItem.SetID],return)</onclick>
+				</item>
+			</content>
+		</control>
+		<control type="group">
+			<description>Art</description>
+			<left>206</left>
+			<top>119</top>
+			<control type="image">
+				<description>Schatten</description>
+				<left>-13</left>
+				<top>-13</top>
+				<width>598</width>
+				<height>867</height>
+				<texture border="8" colordiffuse="ShadowColor">views/shadow8.png</texture>
+			</control>
+			<control type="image">
+				<description>Border</description>
+				<left>-5</left>
+				<top>-5</top>
+				<width>582</width>
+				<height>851</height>
+				<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
+			</control>
+			<control type="image"><!-- fallback -->
+				<description>Hintergrundfarbe</description>
+				<width>572</width>
+				<height>841</height>
+				<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+			</control>
+			<control type="label">
+				<description>Fallback icon</description>
+				<width>572</width>
+				<height>641</height>
+				<align>center</align>
+				<font>IconInfoposterdefault</font>
+				<textcolor>$VAR[CirclesCol]</textcolor>
+				<label>$VAR[Art-Fallback]</label>
+			</control>
+			<control type="image"><!-- Art aus fadelabel einzelne cover -->
+				<width>572</width>
+				<height>841</height>
+				<fadetime>400</fadetime>
+				<aspectratio>scale</aspectratio>
+				<fadetime>400</fadetime>
+				<texture background="true">$INFO[Control.GetLabel(55177)]</texture>
+				<visible>!String.IsEmpty(Control.GetLabel(55177))</visible>
+			</control>
+			<control type="fadelabel" id="55177"><!-- einzelne cover aus hiddencontent -->
+				<left>-320</left>
+				<top>-2230</top>
+				<width>1280</width>
+				<height>25</height>
+				<pauseatend>0</pauseatend>
+				<scrollout>true</scrollout>
+				<scrollspeed>60</scrollspeed>
+				<textcolor>ACDIF_0</textcolor>
+				<label>$INFO[Container(400).ListItem.Icon]</label>
+				<label>$INFO[Container(400).ListItem(1).Icon]</label>
+				<label>$INFO[Container(400).ListItem(2).Icon]</label>
+				<label>$INFO[Container(400).ListItem(3).Icon]</label>
+				<label>$INFO[Container(400).ListItem(4).Icon]</label>
+				<label>$INFO[Container(400).ListItem(5).Icon]</label>
+				<label>$INFO[Container(400).ListItem(6).Icon]</label>
+				<label>$INFO[Container(400).ListItem(7).Icon]</label>
+				<label>$INFO[Container(400).ListItem(8).Icon]</label>
+				<label>$INFO[Container(400).ListItem(9).Icon]</label>
+				<label>$INFO[Container(400).ListItem(10).Icon]</label>
+			</control>
+			<include content="VintageOldpaper-Overlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
+				<param name="width">572</param>
+				<param name="height">841</param>
+				<param name="texture">views/oldpaperoverlay2.png</param>
+			</include>
+		</control>
+		<control type="group">
+			<description>Circleinfos auf Poster</description>
+			<left>175</left>
+			<top>618</top>
+			<control type="image">
+				<width>70</width>
+				<height>125</height>
+				<texture colordiffuse="$VAR[CirclesCol]">circles/posterinfoleft.png</texture>
+			</control>
+			<control type="image">
+				<left>40</left>
+				<width>127</width>
+				<height>125</height>
+				<texture colordiffuse="$VAR[CirclesCol]">circles/circledivider50.png</texture>
+			</control>
+			<include content="CircleFlag-Kringel">
+				<description>Circle 1 Dauer</description>
+				<param name="CircleFlag-Label">$INFO[Window(home).Property(Set.Movies.Runtime)]</param>
+				<param name="CircleFlag-Inner">circles/circledurationin.png</param>
+				<param name="CircleFlag-Outer">circles/circledurationout.png</param>
+				<param name="CircleFlag-Visible">true</param>
+				<param name="CircleFlag-Left">136</param>
+			</include>
+			<include content="CircleFlag-Kringel">
+				<description>Circle 2 numitems</description>
+				<param name="CircleFlag-Label">$INFO[Container(400).NumItems]</param>
+				<param name="CircleFlag-Inner">circles/circleinbg.png</param><!-- neutrale grafiken fuer anzahl -->
+				<param name="CircleFlag-Outer">circles/circlegeseheneout.png</param><!-- neutrale grafiken fuer anzahl -->
+				<param name="CircleFlag-Visible">true</param>
+				<param name="CircleFlag-Left">306</param>
+			</include>
+			<control type="image">
+				<left>436</left>
+				<width>127</width>
+				<height>125</height>
+				<texture colordiffuse="$VAR[CirclesCol]">circles/circledivider50.png</texture>
+			</control>
+			<control type="image">
+				<left>561</left>
+				<width>70</width>
+				<height>125</height>
+				<texture colordiffuse="$VAR[CirclesCol]">circles/posterinforight.png</texture>
+			</control>
+		</control>
+		<control type="group">
+			<description>Top Info</description>
+			<left>880</left>
+			<top>105</top>
+			<control type="label">
+				<width>900</width>
+				<height>60</height>
+				<include>GlobalScroll</include>
+				<font>TitleCapsBig</font>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+			<control type="textbox" id="9005">
+				<top>96</top>
+				<width>850</width>
+				<height max="222">auto</height>
+				<font>Plot</font>
+				<label fallback="Kein Überblick gefunden">$INFO[Window(home).Property(Set.Movies.Plot)]</label>
+			</control>
+			<control type="label">
+				<top>330</top>
+				<width>850</width>
+				<height>60</height>
+				<font>SubTitleCapsBold</font>
+				<label fallback="Kein Genre gefunden">$INFO[Window(home).Property(Set.Movies.Genre)]</label>
+			</control>
+		</control>
+		<control type="group">
+			<description>Drehbuch</description>
+			<left>880</left>
+			<top>830</top>
+			<control type="label">
+				<include>InfoDetails-Title</include>
+				<label>Drehbuch</label>
+			</control>
+			<control type="label">
+				<include>InfoDetails-Label</include>
+				<label fallback="nicht verfügbar">$INFO[Window(home).Property(Set.Movies.Writer)]</label>
+			</control>
+		</control>
+		<control type="group">
+			<description>Regie</description>
+			<left>1360</left>
+			<top>830</top>
+			<control type="label">
+				<include>InfoDetails-Title</include>
+				<label>Regie</label>
+			</control>
+			<control type="label">
+				<include>InfoDetails-Label</include>
+				<label fallback="nicht verfügbar">$INFO[Window(home).Property(Set.Movies.Director)]</label>
+			</control>
+		</control>
+		<control type="label">
+			<description>Textbox icon</description>
+			<left>1750</left>
+			<top>190</top>
+			<height>50</height>
+			<width>80</width>
+			<align>center</align>
+			<font>IconPlotzoom</font>
+			<textcolor>TextColorLight</textcolor>
+			<label>o</label>
+			<visible>!String.Contains(Control.GetLabel(9005),Kein Überblick gefunden)</visible>
+		</control>
+	</control>
+</control>
+<control type="group"><!-- plotzoom logo fade aus container -->
+	<visible>Window.IsVisible(Custom_1121_Textbox.xml)</visible>
+	<include>Animation-OpenCloseVisibleHidden-Fade</include>
+	<control type="fadelabel" id="55178">
+		<description>Hidden logo slideshow pfade</description>
+		<top>-200</top>
+		<width>1280</width>
+		<height>25</height>
+		<pauseatend>0</pauseatend>
+		<scrollout>true</scrollout>
+		<scrollspeed>60</scrollspeed>
+		<textcolor>ACDIF_0</textcolor>
+		<label>$INFO[Container(400).ListItem.Art(clearlogo)]</label>
+		<label>$INFO[Container(400).ListItem(1).Art(clearlogo)]</label>
+		<label>$INFO[Container(400).ListItem(2).Art(clearlogo)]</label>
+		<label>$INFO[Container(400).ListItem(3).Art(clearlogo)]</label>
+		<label>$INFO[Container(400).ListItem(4).Art(clearlogo)]</label>
+		<label>$INFO[Container(400).ListItem(5).Art(clearlogo)]</label>
+		<label>$INFO[Container(400).ListItem(6).Art(clearlogo)]</label>
+		<label>$INFO[Container(400).ListItem(7).Art(clearlogo)]</label>
+		<label>$INFO[Container(400).ListItem(8).Art(clearlogo)]</label>
+		<label>$INFO[Container(400).ListItem(9).Art(clearlogo)]</label>
+		<label>$INFO[Container(400).ListItem(10).Art(clearlogo)]</label>
+	</control>
+	<control type="image">
+		<description>Art logo</description>
+		<include>TextBox-Art-Logo</include>
+		<texture background="true">$INFO[Control.GetLabel(55178)]</texture>
+	</control>
+</control>
+</controls>
+</window>
+

@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- Cycle 0.4 -->
+<backgroundcolor>BackgroundColor</backgroundcolor>
+<defaultcontrol always="true">8100</defaultcontrol>
+<previouswindow>startup</previouswindow>
+<menucontrol>9600</menucontrol>
+<controls>
+<include condition="Skin.HasSetting(EnableVintageOverlay)">Vintagebackground</include>
+<include condition="!Skin.HasSetting(EnableVintageOverlay)">Cyclebackground</include>
+<control type="button" id="9800">
+	<description>Default Focusbutton damit uhr auch focus haben kann und nicht nur das menue</description>
+	<include>HiddenControl</include>
+	<oninfo>ActivateWindow(1101)</oninfo>
+	<onleft>9900</onleft>
+	<onright>9900</onright>
+	<onup>9900</onup>
+	<ondown>9900</ondown>
+	<onclick>$VAR[Cycle-HomeMenue-Action]</onclick>
+</control>
+<control type="button" id="9600">
+	<description>Hidden - quicknav menue oeffnen</description>
+	<include>HiddenControl</include>
+	<onleft>SetFocus(8100)</onleft>
+	<onright>SetFocus(8100)</onright>
+	<onup>SetFocus(8100)</onup>
+	<ondown>SetFocus(8100)</ondown>
+	<onfocus condition="!Control.HasFocus(8100)">SetFocus(8100)</onfocus>
+</control>
+	<control type="group"><!-- Uhr -->
+		<description>Uhr</description>
+		<left>3603</left>
+		<top>183</top>
+		<include>Animation-OpenCloseVisibleHidden-Fade</include>
+		<include>CycleClock</include>
+	</control>
+	<control type="image">
+		<left>890</left>
+		<top>442</top>
+		<width>130</width>
+		<height>130</height>
+		<texture colordiffuse="$VAR[CirclesCol]">logo-skin.png</texture>
+		<animation type="Conditional" condition="true">
+			<effect type="fade" end="70" time="0" />
+		</animation>
+	</control>
+	
+<control type="group"><!-- breadcumbs -->
+	<control type="grouplist"><!-- rechts - datum -->
+		<description>datum</description>
+		<left>1440</left>
+		<top>32</top>
+		<width>660</width>
+		<height>70</height>
+		<visible>!Control.HasFocus(9800)</visible>
+		<visible>!Window.IsVisible(Custom_1197_ColorTimeRefresh.xml) + !Window.IsVisible(startup) + !Window.IsVisible(extendedprogressdialog) + !Window.IsVisible(DialogNotification.xml) + !Window.IsVisible(DialogConfirm.xml) + !Window.IsVisible(busydialog) + !Window.IsVisible(Custom_1106_Histroyloader.xml) + String.IsEmpty(Window(home).Property(Trailerpreview))</visible>
+		<animation type="Conditional" condition="Window.IsVisible(volumebar) + !Player.Muted" reversible="true">
+			<effect type="fade" start="100" end="0" time="120" tween="cubic" easing="inout" />
+		</animation>
+		<animation type="Conditional" condition="Window.IsVisible(volumebar) + Player.Muted" reversible="true">
+			<effect type="slide" end="-120,0" time="0" />
+		</animation>
+		<include>Animation-OpenCloseVisibleHidden-Fade</include>
+		<orientation>horizontal</orientation>
+		<control type="label">
+			<description>Datum</description>
+			<width>400</width>
+			<height>45</height>
+			<align>right</align>
+			<font>BreadcumbTopNormal</font>
+			<textcolor>TextColorFO</textcolor>
+			<label>$INFO[System.Time] </label>
+		</control>
+		<control type="label">
+			<description>Enum</description>
+			<width>60</width>
+			<height>45</height>
+			<font>EnumBoldNormal</font>
+			<label>$VAR[CustomEnumeration] </label>
+			<visible>Player.Muted</visible>
+		</control>
+		<control type="label">
+			<width>200</width>
+			<height>45</height>
+			<textcolor>$VAR[OSDDialogCol]</textcolor>
+			<font>IconBreadcumbs</font>
+			<label>$VAR[DialogVolume-Value]</label>
+			<visible>Player.Muted</visible>
+		</control>
+	</control>
+</control>
+<include>Trailerwindow502</include>
+<include>MainMenuSlide</include>
+<control type="group">
+	<visible>!String.IsEmpty(Window(Home).Property(WidgetFocus))</visible>
+	<include content="Keyboard1234-Icons">
+		<param name="Keyboard-Icon-red">ę</param><!-- favoriten -->
+		<param name="Keyboard-Icon-green">Ġ</param><!-- einstellen -->
+		<param name="Keyboard-Icon-blue">R</param><!-- widgetauswahl -->
+		<param name="Keyboard-Icon-yellow">ě</param><!-- optionen -->
+	</include>
+</control>
+<control type="group">
+	<visible>String.IsEmpty(Window(Home).Property(WidgetFocus))</visible>
+	<include content="Keyboard124-Icons">
+		<param name="Keyboard-Icon-red">ę</param><!-- favoriten -->
+		<param name="Keyboard-Icon-green">Ġ</param><!-- einstellen -->
+		<param name="Keyboard-Icon-yellow">ě</param><!-- optionen -->
+	</include>
+</control>
+<control type="group"><!-- widgets -->
+<control type="group" id="300">
+	<left>1170</left>
+	<visible>![Window.IsVisible(shutdownmenu) | Window.IsVisible(favourites) | Window.IsVisible(Custom_1120_Options.xml) | Window.IsVisible(Custom_1119_DBOptions.xml) | Window.IsVisible(Custom_1118_WidgetOptions.xml)]</visible>
+	<animation type="Conditional" condition="ControlGroup(300).HasFocus">
+		<effect type="slide" end="-1170,0" delay="180" time="300" tween="quadratic" easing="out" reversible="true"/>
+	</animation>
+	<control type="image">
+		<left>700</left>
+		<top>585</top>
+		<width>1260</width>
+		<height>400</height>
+		<texture colordiffuse="$VAR[PrimaryCol]">widget-BG-nf.png</texture>
+	</control>
+	<control type="image">
+		<left>700</left>
+		<top>585</top>
+		<width>1260</width>
+		<height>400</height>
+		<texture colordiffuse="$VAR[CirclesCol]">widget-BG-fo.png</texture>
+	</control>
+	<control type="label">
+		<left>730</left>
+		<top>610</top>
+		<width>60</width>
+		<height>60</height>
+		<font>IconWidgetblade</font>
+		<textcolor>TextColorFO</textcolor>
+		<label>Í</label>
+		<angle>90</angle>
+		<visible>!ControlGroup(300).HasFocus</visible>
+	</control>
+	<control type="label">
+		<left>730</left>
+		<top>610</top>
+		<width>60</width>
+		<height>60</height>
+		<font>IconWidgetblade</font>
+		<textcolor>TextColorFO</textcolor>
+		<label>Í</label>
+		<angle>90</angle>
+		<visible>Integer.IsGreater(Container(311).NumItems,0)</visible>
+	</control>
+	<control type="label">
+		<left>660</left>
+		<top>575</top>
+		<width>1180</width>
+		<height>80</height>
+		<align>right</align>
+		<textcolor>TextColorMedium</textcolor>
+		<label>$INFO[Container(8100).ListItem.Property(Homeblade-Widget1-Title)]</label>
+	</control>
+	<control type="button" id="302">
+		<left>1850</left>
+		<top>580</top>
+		<width>60</width>
+		<height>80</height>
+		<font>IconWidgetblade</font>
+		<textoffsetx>0</textoffsetx>
+		<textcolor>TextColorMedium</textcolor>
+		<focusedcolor>$VAR[PrimaryCol]</focusedcolor>
+		<label>Ì</label>
+		<onleft>301</onleft>
+		<onright>301</onright>
+		<onup>301</onup>
+		<ondown>301</ondown>
+		<onfocus>SetProperty(WidgetFocus,Widget1,home)</onfocus>
+		<onclick>ActivateWindow($INFO[Container(8100).ListItem.Property(Homeblade-Widget1-Target)],$INFO[Container(8100).ListItem.Property(Homeblade-Widget1-Content)],return)</onclick>
+	</control>
+	<control type="list" id="301">
+		<left>700</left>
+		<top>650</top>
+		<width>630</width>
+		<height>320</height>
+		<onleft>8100</onleft>
+		<onfocus>SetProperty(WidgetFocus,Widget1,home)</onfocus>
+		<onright condition="Integer.IsGreater(Container(311).NumItems,0)">SetFocus(312)</onright>
+		<onup>302</onup>
+		<animation type="Conditional" condition="[!String.IsEqual(Container(301).ListItem.DBType,tvshow) + !String.IsEqual(Container(301).ListItem.DBType,episode) + !String.IsEqual(Container(301).ListItem.DBType,movie)]">
+			<effect type="slide" end="233,0" time="0" />
+		</animation>
+		<include content="Widget-ContainerLayout">
+			<param name="Container-ID">301</param>
+		</include>
+			<content target="videos" limit="5">$INFO[Container(8100).ListItem.Property(Homeblade-Widget1-Content)]</content>
+	</control>
+	<control type="image"><!-- Artworks -->
+		<description>Fanart hintergrund</description>
+		<left>1360</left>
+		<top>670</top>
+		<width>533</width>
+		<height>300</height>
+		<texture background="true" colordiffuse="black">white.png</texture>
+		<visible>[String.IsEqual(Container(301).ListItem.DBType,tvshow) | String.IsEqual(Container(301).ListItem.DBType,episode) | String.IsEqual(Container(301).ListItem.DBType,movie)] + String.IsEqual(Control.GetLabel(303),leer.png)</visible>
+	</control>
+	<control type="label">
+		<description>Fanart Fallback icon</description>
+		<left>1360</left>
+		<top>670</top>
+		<width>533</width>
+		<height>300</height>
+		<align>center</align>
+		<font>IconWidgetFanartdefault</font>
+		<textcolor>$VAR[CirclesCol]</textcolor>
+		<label>$VAR[Widget1-FallbackIcon]</label>
+		<visible>[String.IsEqual(Container(301).ListItem.DBType,tvshow) | String.IsEqual(Container(301).ListItem.DBType,episode) | String.IsEqual(Container(301).ListItem.DBType,movie)] + String.IsEqual(Control.GetLabel(303),leer.png)</visible>
+	</control>
+	<control type="image" id="303">
+		<description>Fanart</description>
+		<left>1360</left>
+		<top>670</top>
+		<width>533</width>
+		<height>300</height>
+		<texture background="true" fallback="leer.png">$INFO[Container(301).ListItem.Art(fanart)]</texture>
+		<aspectratio align="left" aligny="top">keep</aspectratio>
+		<visible>[String.IsEqual(Container(301).ListItem.DBType,tvshow) | String.IsEqual(Container(301).ListItem.DBType,episode) | String.IsEqual(Container(301).ListItem.DBType,movie)] + !String.IsEmpty(Container(301).ListItem.Art(fanart))</visible>
+	</control>
+	<control type="image">
+		<description>Thumb hintergrund</description>
+		<left>1593</left>
+		<top>670</top>
+		<width>300</width>
+		<height>300</height>
+		<texture background="true" colordiffuse="black">white.png</texture>
+		<visible>[!String.IsEqual(Container(301).ListItem.DBType,tvshow) + !String.IsEqual(Container(301).ListItem.DBType,episode) + !String.IsEqual(Container(301).ListItem.DBType,movie)] + String.IsEqual(Control.GetLabel(304),leer.png)</visible>
+	</control>
+	<control type="label">
+		<description>Thumb Fallback icon</description>
+		<left>1593</left>
+		<top>670</top>
+		<width>300</width>
+		<height>300</height>
+		<align>center</align>
+		<font>IconWidgetThumbdefault</font>
+		<textcolor>$VAR[CirclesCol]</textcolor>
+		<label>$VAR[Widget1-FallbackIcon]</label>
+		<visible>[!String.IsEqual(Container(301).ListItem.DBType,tvshow) + !String.IsEqual(Container(301).ListItem.DBType,episode) + !String.IsEqual(Container(301).ListItem.DBType,movie)] + String.IsEqual(Control.GetLabel(304),leer.png)</visible>
+	</control>
+	<control type="image" id="304">
+		<description>Thumb</description>
+		<left>1593</left>
+		<top>670</top>
+		<width>300</width>
+		<height>300</height>
+		<texture background="true" fallback="leer.png">$INFO[Container(301).ListItem.Art(thumb)]</texture>
+		<aspectratio align="left" aligny="top">keep</aspectratio>
+		<visible>[!String.IsEqual(Container(301).ListItem.DBType,tvshow) + !String.IsEqual(Container(301).ListItem.DBType,episode) + !String.IsEqual(Container(301).ListItem.DBType,movie)] + !String.IsEmpty(Container(301).ListItem.Art(thumb))</visible>
+	</control>
+	
+</control>
+<control type="group" id="310">
+	<left>1220</left>
+	<animation type="Conditional" condition="ControlGroup(310).HasFocus">
+		<effect type="slide" end="-1220,0" delay="180" time="300" tween="quadratic" easing="out" reversible="true"/>
+	</animation>
+	<control type="image">
+		<left>700</left>
+		<top>585</top>
+		<width>1260</width>
+		<height>400</height>
+		<texture colordiffuse="$VAR[PrimaryCol]">widget-BG-nf.png</texture>
+	</control>
+	<control type="image">
+		<left>700</left>
+		<top>585</top>
+		<width>1260</width>
+		<height>400</height>
+		<texture colordiffuse="$VAR[CirclesCol]">widget-BG-fo.png</texture>
+	</control>
+	<control type="label">
+		<left>730</left>
+		<top>610</top>
+		<width>60</width>
+		<height>60</height>
+		<font>IconWidgetblade</font>
+		<textcolor>TextColorFO</textcolor>
+		<label>Í</label>
+		<angle>90</angle>
+	</control>
+	<control type="label">
+		<left>660</left>
+		<top>575</top>
+		<width>1180</width>
+		<height>80</height>
+		<align>right</align>
+		<textcolor>TextColorMedium</textcolor>
+		<label>$INFO[Container(8100).ListItem.Property(Homeblade-Widget2-Title)]</label>
+	</control>
+	<control type="button" id="312">
+		<left>1850</left>
+		<top>580</top>
+		<width>60</width>
+		<height>80</height>
+		<font>IconWidgetblade</font>
+		<textoffsetx>0</textoffsetx>
+		<aligny>center</aligny>
+		<textcolor>TextColorMedium</textcolor>
+		<focusedcolor>$VAR[PrimaryCol]</focusedcolor>
+		<label>Ì</label>
+		<onleft>311</onleft>
+		<onright>311</onright>
+		<onup>311</onup>
+		<ondown>311</ondown>
+		<onfocus>SetProperty(WidgetFocus,Widget2,home)</onfocus>
+		<onclick>$INFO[Container(8100).ListItem.Property(Homeblade-Widget2-Click)]</onclick>
+	</control>
+	<control type="list" id="311">
+		<left>700</left>
+		<top>650</top>
+		<width>630</width>
+		<height>320</height>
+		<onleft>SetFocus(8100)</onleft>
+		<onright>SetFocus(301)</onright>
+		<onup>312</onup>
+		<onfocus>SetProperty(WidgetFocus,Widget2,home)</onfocus>
+		<include content="Widget-ContainerLayout">
+			<param name="Container-ID">311</param>
+		</include>
+		<content target="$INFO[Container(8100).ListItem.Property(Homeblade-Widget2-Target)]" limit="5">$INFO[Container(8100).ListItem.Property(Homeblade-Widget2-Content)]</content>
+	</control>
+	<control type="image"><!-- Artworks -->
+		<description>Fanart hintergrund</description>
+		<left>1360</left>
+		<top>670</top>
+		<width>533</width>
+		<height>300</height>
+		<texture background="true" colordiffuse="black">white.png</texture>
+		<visible>[String.IsEqual(Container(311).ListItem.DBType,tvshow) | String.IsEqual(Container(311).ListItem.DBType,episode) | String.IsEqual(Container(311).ListItem.DBType,movie)] + String.IsEqual(Control.GetLabel(313),leer.png)</visible>
+	</control>
+	<control type="label">
+		<description>Fanart Fallback icon</description>
+		<left>1360</left>
+		<top>670</top>
+		<width>533</width>
+		<height>300</height>
+		<align>center</align>
+		<font>IconWidgetFanartdefault</font>
+		<textcolor>$VAR[CirclesCol]</textcolor>
+		<label>$VAR[Widget1-FallbackIcon]</label>
+		<visible>[String.IsEqual(Container(311).ListItem.DBType,tvshow) | String.IsEqual(Container(311).ListItem.DBType,episode) | String.IsEqual(Container(311).ListItem.DBType,movie)] + String.IsEqual(Control.GetLabel(313),leer.png)</visible>
+	</control>
+	<control type="image" id="313">
+		<description>Fanart</description>
+		<left>1360</left>
+		<top>670</top>
+		<width>533</width>
+		<height>300</height>
+		<texture background="true" fallback="leer.png">$INFO[Container(311).ListItem.Art(fanart)]</texture>
+		<aspectratio align="left" aligny="top">keep</aspectratio>
+		<visible>[String.IsEqual(Container(311).ListItem.DBType,tvshow) | String.IsEqual(Container(311).ListItem.DBType,episode) | String.IsEqual(Container(311).ListItem.DBType,movie)] + !String.IsEmpty(Container(311).ListItem.Art(fanart))</visible>
+	</control>
+	<control type="image">
+		<description>Thumb hintergrund</description>
+		<left>1593</left>
+		<top>670</top>
+		<width>300</width>
+		<height>300</height>
+		<texture background="true" colordiffuse="black">white.png</texture>
+		<visible>[!String.IsEqual(Container(311).ListItem.DBType,tvshow) + !String.IsEqual(Container(311).ListItem.DBType,episode) + !String.IsEqual(Container(311).ListItem.DBType,movie)] + String.IsEqual(Control.GetLabel(314),leer.png)</visible>
+	</control>
+	<control type="label">
+		<description>Thumb Fallback icon</description>
+		<left>1593</left>
+		<top>670</top>
+		<width>300</width>
+		<height>300</height>
+		<align>center</align>
+		<font>IconWidgetThumbdefault</font>
+		<textcolor>$VAR[CirclesCol]</textcolor>
+		<label>$VAR[Widget1-FallbackIcon]</label>
+		<visible>[!String.IsEqual(Container(311).ListItem.DBType,tvshow) + !String.IsEqual(Container(311).ListItem.DBType,episode) + !String.IsEqual(Container311301).ListItem.DBType,movie)] + String.IsEqual(Control.GetLabel(314),leer.png)</visible>
+	</control>
+	<control type="image" id="314">
+		<description>Thumb</description>
+		<left>1593</left>
+		<top>670</top>
+		<width>300</width>
+		<height>300</height>
+		<texture background="true" fallback="leer.png">$INFO[Container(311).ListItem.Art(thumb)]</texture>
+		<aspectratio align="left" aligny="top">keep</aspectratio>
+		<visible>[!String.IsEqual(Container(311).ListItem.DBType,tvshow) + !String.IsEqual(Container(311).ListItem.DBType,episode) + !String.IsEqual(Container(311).ListItem.DBType,movie)] + !String.IsEmpty(Container(311).ListItem.Art(thumb))</visible>
+	</control>
+	
+</control>
+
+
+
+</control>
+
+
+	<control type="label">
+		<left>340</left>
+		<width>1833</width>
+		<height>80</height>
+		<font>LightBig</font>
+		<textcolor>TextColorMedium</textcolor>
+		<label>$INFO[Skin.string(Homeblade-Widget1.1-Content)]xxx$INFO[Window(home).Property(Widget-Content)]</label>
+	</control>
+
+
+</controls>
+</window>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- Cycle 0.4 -->
+<onload>close</onload><!-- nicht implementiert -->
+<controls>
+<control type="group" id="250">
+	<visible>false</visible>
+	<control type="label" id="100"><!-- header -->
+		<include>HiddenControl</include>
+	</control>
+	<control type="label" id="140"><!-- Numitems -->
+		<include>HiddenControl</include>
+	</control>
+	<control type="list" id="120"><!-- Auswahl Sub links -->
+		<include>Compaircontainer</include>
+	</control>
+	<control type="group" id="130"><!-- Info Suchergebnis -->
+	</control>
+	<control type="group"><!-- Provider -->
+		<left>1150</left>
+		<control type="list" id="150">
+			<include>Compaircontainer</include>
+		</control>
+		<control type="button" id="160">
+			<include>HiddenControl</include>
+		</control>
+	</control>
+</control>
+</controls>
+</window>

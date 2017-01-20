@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- Cycle 0.4 -->
+<backgroundcolor>BackgroundColor</backgroundcolor>
+<defaultcontrol always="true">9000</defaultcontrol>
+<controls>
+<include condition="Skin.HasSetting(EnableVintageOverlay)">Vintagebackground</include>
+<include condition="!Skin.HasSetting(EnableVintageOverlay)">Cyclebackground</include>
+<include>Topbar</include><!-- topbar -->
+<control type="group"><!-- slide menue -->
+	<visible>!Window.IsVisible(Custom_1120_Options.xml) + !Window.IsVisible(favourites) + !Window.IsVisible(contextmenu) + !Window.IsVisible(FileBrowser) + !Window.IsActive(virtualkeyboard) + !Window.IsVisible(playercontrols)</visible>
+	<include>Animation375-OpenCloseVisibleHidden-Slide</include>
+	<include>SettingMenu-BG</include><!-- Hintergrund -->
+	<include>SettingMenu-IconBG</include>
+	<include>SettingMenu-Breadcumb</include>
+	<control type="list" id="9000"><!-- menue -->
+		<description>Menue</description>
+		<left>100</left>
+		<top>150</top>
+		<width>388</width>
+		<height>265</height>
+		<onleft>close</onleft>
+		<onright>9010</onright>
+		<onup>9000</onup>
+		<ondown>9000</ondown>
+		<pagecontrol></pagecontrol>
+		<scrolltime>200</scrolltime>
+		<itemlayout height="65" width="388">
+			<control type="label">
+				<include>SettingMenu-MenueButton</include>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+		</itemlayout>
+		<focusedlayout height="65" width="388">
+			<control type="image">
+				<width>330</width>
+				<height>65</height>
+				<texture border="0,0,14,0" colordiffuse="$VAR[PrimaryCol]">buttons/mainsliderightsubbutton.png</texture>
+			</control>
+			<control type="label">
+				<textcolor>TextColorFO</textcolor>
+				<include>SettingMenu-MenueButton</include>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+		</focusedlayout>
+		<content>
+			<item id="1">
+				<label>Anmeldung</label>
+				<onclick>SetFocus(9001)</onclick>
+				<icon></icon>
+			</item>
+			<item id="2">
+				<label>Profile</label>
+				<onclick>SetFocus(2)</onclick>
+				<icon></icon>
+			</item>
+		</content>
+	</control>
+	<control type="group"><!-- Profile info unter menue -->
+		<description>Profilbild + info</description>
+		<visible>Container(9000).Hasfocus(2) + !String.Contains(Container(2).ListItem.Label,hinzufügen)</visible>
+		<left>120</left>
+		<top>600</top>
+		<control type="image">
+			<description>Schatten</description>
+			<left>-12</left>
+			<top>-12</top>
+			<width>274</width>
+			<height>274</height>
+			<texture border="8" colordiffuse="ShadowColor">views/shadow8.png</texture>
+		</control>
+		<control type="image">
+			<description>Border</description>
+			<left>-4</left>
+			<top>-4</top>
+			<width>258</width>
+			<height>258</height>
+			<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
+		</control>
+		<control type="image">
+			<description>Hintergrund</description>
+			<width>250</width>
+			<height>250</height>
+			<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+		</control>
+		<control type="label">
+			<width>248</width>
+			<height>230</height>
+			<align>center</align>
+			<textcolor>$VAR[CirclesCol]</textcolor>
+			<font>IconPosterviewActordefault</font>
+			<label>Q</label>
+		</control>
+		<control type="image">
+			<width>248</width>
+			<height>230</height>
+			<aspectratio align="left">keep</aspectratio>
+			<texture>$INFO[Container(2).Listitem.Icon]</texture>
+			<visible>!String.Contains(ListItem.Label,Profil hinzufügen) + !String.StartsWith(Container(2).ListItem.Icon,Default)</visible>
+		</control>
+		<control type="label">
+			<top>310</top>
+			<width>300</width>
+			<height>20</height>
+			<font>RegularSmall</font>
+			<textcolor>TextColorMedium</textcolor>
+			<label>Ausgewähltes Profil</label>
+		</control>
+		<control type="label">
+			<top>350</top>
+			<width>300</width>
+			<height>20</height>
+			<font>RegularSmall</font>
+			<label>$INFO[Container(2).ListItem.Label]</label>
+		</control>
+		<control type="label">
+			<top>400</top>
+			<width>300</width>
+			<height>30</height>
+			<font>RegularSmall</font>
+			<textcolor>TextColorMedium</textcolor>
+			<label>Letzte Anmeldung</label>
+		</control>
+		<control type="label">
+			<top>440</top>
+			<width>300</width>
+			<height>20</height>
+			<font>RegularSmall</font>
+			<label fallback="Nie">$INFO[Container(2).ListItem.Label2]</label>
+		</control>
+	</control>
+</control>
+<control type="group" id="9010"><!-- content -->
+	<left>550</left>
+	<top>150</top>
+	<visible>!Window.IsVisible(Custom_1120_Options.xml) + !Window.IsVisible(favourites) + !Window.IsVisible(contextmenu) + !Window.IsVisible(FileBrowser.xml) + !Window.IsVisible(playercontrols)</visible>
+	<include>Animation-OpenCloseVisibleHidden-Fade</include>
+	<control type="image">
+		<description>Hintergrund</description>
+		<left>12</left>
+		<top>-30</top>
+		<width>1083</width>
+		<height>670</height>
+		<texture colordiffuse="ListBackgroundDiffuse">white.png</texture>
+	</control>
+	<control type="grouplist" id="9001"><!-- Anmeldung Optionen -->
+		<description>Anmeldung Optionen</description>
+		<visible>Container(9000).Hasfocus(1)</visible>
+		<width>1108</width>
+		<height>660</height>
+		<onleft>9000</onleft>
+		<onright>9000</onright>
+		<onup>9001</onup>
+		<ondown>9001</ondown>
+		<control type="radiobutton" id="4">
+			<description>Anmelden an/aus</description>
+			<width>1108</width>
+			<textwidth>970</textwidth>
+			<include>Item.top.height70</include>
+			<textoffsetx>25</textoffsetx>
+			<radioposx>1020</radioposx>
+			<radioposy>10</radioposy>
+			<label>Anmeldung</label>
+			<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturefocus>
+		</control>
+		<control type="button" id="5">
+			<description>Automatisch Anmelden</description>
+			<width>1108</width>
+			<include>Item.top.height70</include>
+			<textoffsetx>25</textoffsetx>
+			<label>Automatische Anmeldung</label>
+			<label2>$INFO[System.ProfileAutoLogin]</label2>
+			<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texturefocus>
+			<enable>!System.HasLoginScreen</enable>
+		</control>
+	</control>
+	<control type="group"><!-- Hinweitext Beschreibung Anmeldung -->
+		<description>Hinweistext Beschreibung Anmeldung</description>
+		<visible>Container(9000).Hasfocus(1)</visible>
+		<left>25</left>
+		<top>650</top>
+		<width>750</width>
+		<height>40</height>
+		<control type="textbox">
+			<description>Beschreibung Anmelden an/aus</description>
+			<left>10</left>
+			<top>45</top>
+			<width>1104</width>
+			<height>128</height>
+			<label>Den Anmeldebildschirm beim Start anzeigen oder verstecken</label>
+			<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
+			<visible>Control.Hasfocus(4)</visible>
+		</control>
+		<control type="textbox">
+			<description>Beschreibung Automatisch Anmelden</description>
+			<left>10</left>
+			<top>45</top>
+			<width>1104</width>
+			<height>128</height>
+			<label>Profil, das beim Start verwendet werden soll, wenn der Anmeldebildschirm deaktiviert ist.</label>
+			<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
+			<visible>Control.Hasfocus(5)</visible>
+		</control>
+	</control>
+	<control type="panel" id="2"><!-- Verfuegbare Profile -->
+		<description>Liste mit Profilen</description>
+		<width>1108</width>
+		<height>500</height>
+		<onleft>9000</onleft>
+		<onright>9000</onright>
+		<onup>2</onup>
+		<ondown>2</ondown>
+		<pagecontrol></pagecontrol>
+		<scrolltime>200</scrolltime>
+		<visible>Container(9000).Hasfocus(2)</visible>
+		<itemlayout width="1108" height="button.top.height70">
+			<control type="label">
+				<width>900</width>
+				<include>Item.top.height70</include>
+				<textoffsetx>30</textoffsetx>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+			<control type="label">
+				<left>600</left>
+				<width>500</width>
+				<height>button.top.height70</height>
+				<align>right</align>
+				<aligny>top</aligny>
+				<textoffsety>22</textoffsety><!-- include ueberschreibung smaller font -->
+				<textoffsetx>30</textoffsetx>
+				<font>RegularSmall</font>
+				<label fallback="Nie">$INFO[ListItem.Label2]</label>
+			</control>
+		</itemlayout>
+		<focusedlayout width="1108" height="button.top.height70">
+			<control type="image">
+				<width>1108</width>
+				<height>button.top.height70</height>
+				<texture border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/full-11.png</texture>
+			</control>
+			<control type="label">
+				<width>900</width>
+				<include>Item.top.height70</include>
+				<textoffsetx>30</textoffsetx>
+				<textcolor>TextColorFO</textcolor>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+			<control type="label">
+				<left>600</left>
+				<width>500</width>
+				<height>button.top.height70</height>
+				<align>right</align>
+				<aligny>top</aligny>
+				<textoffsety>22</textoffsety><!-- include ueberschreibung smaller font -->
+				<textoffsetx>30</textoffsetx>
+				<font>RegularSmall</font>
+				<textcolor>TextColorFO</textcolor>
+				<label fallback="Nie">$INFO[ListItem.Label2]</label>
+			</control>
+		</focusedlayout>
+	</control>
+</control>
+</controls>
+</window>

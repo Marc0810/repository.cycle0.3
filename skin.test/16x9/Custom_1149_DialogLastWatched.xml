@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1149"><!-- Cycle 0.4 -->
+<backgroundcolor>BackgroundColor</backgroundcolor>
+<defaultcontrol always="true">9000</defaultcontrol>
+<onload>SetProperty(RefreshList3,1,Home)</onload>
+<onunload>ClearProperty(RefreshList3,Home)</onunload>
+<controls>
+<include condition="Skin.HasSetting(EnableVintageOverlay)">Vintagebackground</include>
+<include condition="!Skin.HasSetting(EnableVintageOverlay)">Cyclebackground</include>
+<include condition="!Skin.HasSetting(EnableVintageOverlay)">CyclebackgroundFanart</include>
+<include>InfoBackground-Fade</include>
+<include>Topbar</include>
+<control type="list" id="400"><!-- lastwatched show -->
+	<include>Compaircontainer</include>
+	<content limit="1" target="video">$VAR[Lastwatched-Show]</content>
+</control>
+<control type="group">
+	<top>30</top>
+	<include>Animation395-Conditional-Slide</include>
+	<include>Animation-OpenCloseVisibleHidden-Zoom</include>
+	<visible>!String.IsEmpty(Container(400).ListItem.DBID) + !Window.IsVisible(1198)</visible><!-- check oeffnen delay animation damit der container zeit hat vielleicht auch mit defaultinclude und dem visible OK? 
+	<animation type="WindowOpen" reversible="false">
+		<effect type="fade" start="0" end="100" delay="800" time="350" tween="cubic" easing="inout" />
+		<effect type="zoom" start="70" end="100" center="960,540" delay="800" time="350" tween="cubic" easing="inout"/>
+	</animation>
+	<animation type="Visible" reversible="false">
+		<effect type="fade" start="0" end="100" delay="800" time="350" tween="cubic" easing="inout" />
+		<effect type="zoom" start="70" end="100" center="960,540" delay="800" time="350" tween="cubic" easing="inout"/>
+	</animation>
+	<animation type="WindowClose" reversible="false">
+		<effect type="fade" start="100" end="0" time="250" tween="cubic" easing="inout" />
+		<effect type="zoom" start="100" end="70" center="960,540" time="250" tween="cubic" easing="inout"/>
+	</animation>
+	<animation type="Hidden" reversible="false">
+		<effect type="fade" start="100" end="0" time="250" tween="cubic" easing="inout" />
+		<effect type="zoom" start="100" end="70" center="960,540" time="250" tween="cubic" easing="inout" />
+	</animation>
+	<animation type="Conditional" condition="Window.IsActive(shutdownmenu)">
+		<effect type="slide" end="395,0" delay="180" time="180" tween="quadratic" easing="out" reversible="true" />
+	</animation>-->
+	<control type="image"><!-- Bar -->
+		<description>Circles Bar ueber alle 3 "Seiten"</description>
+		<left>-500</left>
+		<top>594</top>
+		<width>3000</width>
+		<height>152</height>
+		<texture colordiffuse="$VAR[CirclesCol]">views/info/bar.png</texture>
+	</control>
+	<control type="group"><!-- Hauptseite -->
+		<description>Hauptseite</description>
+		<control type="list" id="9000"><!-- Menue -->
+			<description>Menue1</description>
+			<left>860</left>
+			<top>594</top>
+			<width>900</width>
+			<height>152</height>
+			<onup>Dialog.close(all)</onup>
+			<ondown>Dialog.close(all)</ondown>
+			<onleft>noop</onleft>
+			<onright>noop</onright>
+			<orientation>horizontal</orientation>
+			<focusposition>1</focusposition>
+			<scrolltime tween="sine" easing="out">200</scrolltime>
+			<include content="CircleMenue-Layout">
+				<description>Circle menue</description>
+				<param name="CircleMenue-ID">9000</param>
+			</include>
+			<content>
+				<item id="21">
+					<description>oeffnen</description>
+					<label></label>
+					<label2>v</label2>
+					<onclick>Dialog.close(all)</onclick>
+					<onclick>ActivateWindow(Videos,&quot;videodb://tvshows/titles/$INFO[Container(400).ListItem.DBID]/$INFO[Skin.string(LastwatchedEpisode0Season)]/&quot;)</onclick>
+				</item>
+				<item id="22">
+					<description>aktualisieren</description>
+					<label></label>
+					<label2>i</label2>
+					<onclick>Dialog.Close(all)</onclick>
+					<onclick>ActivateWindow(1106)</onclick>
+				</item>
+				<item id="23">
+					<description>playliste oeffnen</description>
+					<label></label>
+					<label2>R</label2>
+					<onclick>Dialog.Close(all)</onclick>
+					<onclick>ActivateWindow(Videos,special://skin/playlists/TV_zuletzt gesehen.xsp,return)</onclick>
+				</item>
+			</content>
+		</control>
+		<control type="group"><!-- Art -->
+			<description>Poster</description>
+			<left>206</left>
+			<top>119</top>
+			<control type="image">
+				<description>Schatten</description>
+				<left>-13</left>
+				<top>-13</top>
+				<width>598</width>
+				<height>867</height>
+				<texture border="8" colordiffuse="ShadowColor">views/shadow8.png</texture>
+			</control>
+			<control type="image">
+				<description>Border</description>
+				<left>-5</left>
+				<top>-5</top>
+				<width>582</width>
+				<height>851</height>
+				<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
+			</control>
+			<control type="image"><!-- Fallback -->
+				<description>Hintergrundfarbe</description>
+				<width>572</width>
+				<height>841</height>
+				<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+			</control>
+			<control type="label">
+				<description>Fallback icon</description>
+				<width>572</width>
+				<height>641</height>
+				<align>center</align>
+				<textcolor>$VAR[CirclesCol]</textcolor>
+				<font>IconInfoposterdefault</font>
+				<label>$VAR[Art-Fallback]</label>
+			</control>
+			<control type="image"><!-- Art -->
+				<description>Art</description>
+				<width>572</width>
+				<height>841</height>
+				<fadetime>400</fadetime>
+				<texture background="true" fallback="leer">$INFO[Container(400).ListItem.Art(poster)]</texture>
+				<aspectratio>scale</aspectratio>
+			</control>
+			<include content="VintageOldpaper-Overlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
+				<param name="width">572</param>
+				<param name="height">841</param>
+				<param name="texture">views/oldpaperoverlay2.png</param>
+			</include>
+			<control type="group"><!-- Media Overlay -->
+				<description>Media Overlay - neu, angefangene usw.</description>
+				<control type="image">
+					<left>-12</left>
+					<top>-12</top>
+					<width>96</width>
+					<height>96</height>
+					<texture flipx="true" colordiffuse="$VAR[PrimaryCol]">flagging/watched_bg.png</texture>
+				</control>
+				<control type="label">
+					<left>-8</left>
+					<top>-12</top>
+					<width>96</width>
+					<height>45</height>
+					<align>left</align><!-- include ueberschreibung -->
+					<label>$VAR[WatchedOverlay400]</label>
+					<include>WatchedOverlay-Layout</include>
+					<font>IconOverlayBig</font>
+				</control>
+			</control>
+			<control type="group"><!-- rating -->
+				<left>222</left>
+				<top>817</top>
+				<description>Media Overlay rating</description>
+				<include>StarRating-bg</include>
+				<control type="label"><!-- -19 -->
+					<label>$VAR[Widget-StarRatingback]</label>
+					<include>StarRating-Layoutback</include>
+				</control>
+				<control type="label"><!-- -19 -->
+					<label>$VAR[Widget-StarRating]</label>
+					<include>StarRating-Layoutfront</include>
+				</control>
+			</control>
+		</control>
+		<control type="group"><!-- Poster Circleinfo 524 a 131 -->
+			<description>Circleinfos auf Poster</description>
+			<left>175</left>
+			<top>608</top>
+			<control type="image">
+				<width>70</width>
+				<height>125</height>
+				<texture colordiffuse="$VAR[CirclesCol]">circles/posterinfoleft.png</texture>
+			</control>
+			<include content="CircleFlag-Kringel">
+				<description>Circle 1 Episodenanzahl bei Serien</description>
+				<param name="CircleFlag-Label">$INFO[Container(400).ListItem.Property(NumEpisodes)]</param>
+				<param name="CircleFlag-Inner">circles/circleepisodein.png</param>
+				<param name="CircleFlag-Outer">circles/circleepisodeout.png</param>
+				<param name="CircleFlag-Visible">true</param>
+				<param name="CircleFlag-Left">40</param>
+			</include>
+			<include content="CircleFlag-Kringel">
+				<description>Circle 2 Rating bei allen</description>
+				<param name="CircleFlag-Label">$VAR[FlagLabel-Wigdet-Rating]</param>
+				<param name="CircleFlag-Inner">circles/circleratingin.png</param>
+				<param name="CircleFlag-Outer">circles/circleratingout.png</param>
+				<param name="CircleFlag-Visible">true</param>
+				<param name="CircleFlag-Left">170</param>
+			</include>
+			<include content="CircleFlag-Kringel">
+				<description>Circle 3 User rating bei allen</description>
+				<param name="CircleFlag-Label">$VAR[FlagLabel-Wigdet-UserRating]</param>
+				<param name="CircleFlag-Inner">circles/circleuserratingin.png</param>
+				<param name="CircleFlag-Outer">circles/circleuserratingout.png</param>
+				<param name="CircleFlag-Visible">true</param>
+				<param name="CircleFlag-Left">300</param>
+			</include>
+			<include content="CircleFlag-Kringel">
+				<description>Circle 4 MPAA bei allen</description>
+				<param name="CircleFlag-Label">$VAR[FlagLabel-Wigdet-MPAA]</param>
+				<param name="CircleFlag-Inner">circles/circlempaain.png</param>
+				<param name="CircleFlag-Outer">circles/circlempaaout.png</param>
+				<param name="CircleFlag-Visible">true</param>
+				<param name="CircleFlag-Left">430</param>
+			</include>
+			<control type="image">
+				<left>561</left>
+				<width>70</width>
+				<height>125</height>
+				<texture colordiffuse="$VAR[CirclesCol]">circles/posterinforight.png</texture>
+			</control>
+		</control>
+		<control type="group"><!-- Info -->
+			<left>880</left>
+			<top>105</top>
+			<control type="label">
+				<description>Titel</description>
+				<width>900</width>
+				<height>60</height>
+				<include>GlobalScroll</include>
+				<font>TitleCapsBig</font>
+				<label>$INFO[Container(400).ListItem.TVShowTitle][COLOR=$VAR[SecondaryCol]]$INFO[Container(400).ListItem.Year, (,)][/COLOR]</label>
+			</control>
+			<control type="textbox" id="9005">
+				<description>Beschreibung</description>
+				<top>96</top>
+				<width>850</width>
+				<height max="222">auto</height>
+				<font>Plot</font>
+				<label fallback="Kein Überblick gefunden">$INFO[Container(400).ListItem.Plot]</label>
+			</control>
+			<control type="label">
+				<description>Genre</description>
+				<top>330</top>
+				<width>850</width>
+				<height>60</height>
+				<font>SubTitleCapsBold</font>
+				<wrapmultiline>true</wrapmultiline>
+				<label fallback="Kein Genre gefunden">$INFO[Container(400).ListItem.Genre]</label>
+			</control>
+		</control>
+		<control type="group">
+			<description>Studio bei Serie statt Drehbuch</description>
+			<left>880</left>
+			<top>830</top>
+			<control type="label">
+				<include>InfoDetails-Title</include>
+				<label>Studio</label>
+			</control>
+			<control type="label">
+				<include>InfoDetails-Label</include>
+				<label fallback="nicht verfügbar">$INFO[Container(400).ListItem.Studio]</label>
+			</control>
+		</control>
+		<control type="group">
+			<description>Zuletzt gesehene serie statt regie</description>
+			<left>1360</left>
+			<top>830</top>
+			<control type="label">
+				<include>InfoDetails-Title</include>
+				<label>Zuletzt Gesehen</label>
+			</control>
+			<control type="label" id="5126">
+				<include>InfoDetails-Label</include>
+				<label fallback="nicht verfügbar">$INFO[skin.string(LastwatchedEpisode0Date)]$INFO[Skin.string(LastwatchedEpisode0Season), Staffel ,]</label>
+			</control>
+		</control>
+	</control>
+</control>
+</controls>
+</window>
+

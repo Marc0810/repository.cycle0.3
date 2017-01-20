@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window type="dialog" id="1141"><!-- Cycle 0.4 -->
+<defaultcontrol always="true">400</defaultcontrol>
+<controls>
+<control type="group">
+	<include>Animation375-OpenCloseVisibleHidden-Slide</include>
+	<visible>!Window.IsVisible(shutdownmenu) + !Window.IsVisible(Custom_1120_Options.xml) + !Window.IsVisible(contextmenu)</visible>
+	<control type="group"><!-- Hintergrund -->
+		<description>Hintergrund</description>
+		<left>-43</left>
+		<include>Sideblade-BG</include>
+	</control>
+	<control type="image">
+		<description>Trennelement Hintergrund</description>
+		<width>20</width>
+		<height>1080</height>
+		<texture background="true" colordiffuse="$VAR[SecondaryCol]">white.png</texture>
+	</control>
+	<control type="group"><!-- art -->
+		<left>50</left>
+		<top>75</top>
+		<control type="image">
+			<description>Schatten</description>
+			<left>-12</left>
+			<top>-12</top>
+			<width>274</width>
+			<height>391</height>
+			<texture border="8" colordiffuse="ShadowColor">views/shadow8.png</texture>
+		</control>
+		<control type="image">
+			<description>Border</description>
+			<left>-4</left>
+			<top>-4</top>
+			<width>258</width>
+			<height>375</height>
+			<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
+		</control>
+		<control type="image">
+			<description>Hintergrund</description>
+			<width>250</width>
+			<height>367</height>
+			<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+		</control>
+		<control type="label">
+			<description>Fallback icon</description>
+			<width>250</width>
+			<height>367</height>
+			<align>center</align>
+			<textcolor>$VAR[CirclesCol]</textcolor>
+			<font>IconPosterviewdefault</font>
+			<label>$VAR[Art-Fallback]</label>
+		</control>
+		<control type="image">
+			<description>Art</description>
+			<width>250</width>
+			<height>367</height>
+			<texture background="true">$VAR[Art-Info-Widget-Poster]</texture>
+			<fadetime>300</fadetime>
+		</control>
+		<include content="VintageOldpaper-Overlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
+			<param name="width">250</param>
+			<param name="height">367</param>
+			<param name="texture">views/oldpaperoverlay2.png</param>
+		</include>
+		<control type="group">
+			<description>Media Overlay - neu, angefangene usw.</description>
+			<left>200</left>
+			<top>-9</top>
+			<control type="image">
+				<width>59</width>
+				<height>59</height>
+				<texture colordiffuse="$VAR[PrimaryCol]">flagging/watched_bg.png</texture>
+			</control>
+			<control type="label">
+				<left>27</left>
+				<top>-3</top>
+				<width>30</width>
+				<height>30</height>
+				<label>$VAR[WatchedOverlay400]</label>
+				<include>WatchedOverlay-Layout</include>
+				<font>IconOverlay</font>
+			</control>
+		</control>
+	</control>
+	<control type="textbox">
+		<description>Titel</description>
+		<left>40</left>
+		<top>485</top>
+		<width>309</width>
+		<height>80</height>
+		<font>RegularSmall</font>
+		<label>$VAR[Content-Similar-Label,Kategorie: ,]</label>
+	</control>
+	<control type="list" id="400"><!-- list -->
+		<description>Liste</description>
+		<left>20</left>
+		<top>565</top>
+		<width>369</width>
+		<height>500</height>
+		<onleft>close</onleft>
+		<onright>close</onright>
+		<onup>400</onup>
+		<ondown>400</ondown>
+		<scrolltime>200</scrolltime>
+		<itemlayout width="369" height="70">
+			<control type="label">
+				<width>368</width>
+				<height>70</height>
+				<aligny>top</aligny>
+				<textoffsetx>20</textoffsetx>
+				<textoffsety>22</textoffsety><!-- abweichung kleinere schrift -->
+				<font>RegularSmall</font>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+		</itemlayout>
+		<focusedlayout width="369" height="70">
+			<control type="image">
+				<width>368</width>
+				<height>70</height>
+				<texture border="0,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texture>
+				<visible>Control.HasFocus(400)</visible>
+			</control>
+			<control type="label">
+				<width>368</width>
+				<height>70</height>
+				<aligny>top</aligny>
+				<textoffsetx>20</textoffsetx>
+				<textoffsety>22</textoffsety><!-- abweichung kleinere schrift -->d
+				<textoffsety>22</textoffsety><!-- abweichung kleinere schrift -->
+				<font>RegularSmall</font>
+				<textcolor>TextColorFO</textcolor>
+				<label>$INFO[ListItem.Label]</label>
+				<visible>Control.HasFocus(400)</visible>
+			</control>
+			<control type="label">
+				<width>368</width>
+				<height>70</height>
+				<aligny>top</aligny>
+				<textoffsetx>20</textoffsetx>
+				<textoffsety>22</textoffsety><!-- abweichung kleinere schrift -->
+				<font>RegularSmall</font>
+				<label>$INFO[ListItem.Label]</label>
+				<visible>!Control.HasFocus(400)</visible>
+			</control>
+		</focusedlayout>
+			<content target="video">$VAR[Content-Similar]</content>
+			<onclick>Dialog.Close(1141)</onclick>
+			<onclick condition="String.IsEqual(ListItem.DBType,tvshow)">ActivateWindow(Videos,&quot;videodb://tvshows/titles/$INFO[ListItem.DBID]/&quot;)</onclick>
+			<onclick condition="String.IsEqual(ListItem.DBType,movie)">PlayMedia($ESCINFO[ListItem.Path])</onclick>
+	</control>
+</control>
+</controls>
+</window>

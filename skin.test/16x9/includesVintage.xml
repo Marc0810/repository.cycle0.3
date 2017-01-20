@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes><!-- Cycle 0.4 -->
+<variable name="Vintagebackground-Value">
+	<value condition="String.IsEqual(skin.string(ColorChangePosition),1)">special://skin/backgrounds/old-paper-grey.jpg</value>
+	<value condition="String.IsEqual(skin.string(ColorChangePosition),2)">special://skin/backgrounds/old-paper-blue.jpg</value>
+	<value condition="String.IsEqual(skin.string(ColorChangePosition),3)">special://skin/backgrounds/old-paper-orange.jpg</value>
+	<value condition="String.IsEqual(skin.string(ColorChangePosition),4)">special://skin/backgrounds/old-paper-red.jpg</value>
+	<value condition="String.IsEqual(skin.string(ColorChangePosition),5)">special://skin/backgrounds/old-paper-green.jpg</value>
+	<value condition="String.IsEqual(skin.string(ColorChangePosition),6)">special://skin/backgrounds/old-paper-vintage.jpg</value>
+	<value condition="String.IsEqual(skin.string(ColorChangePosition),7)">special://skin/backgrounds/old-paper-purple.jpg</value>
+	<value condition="String.IsEqual(skin.string(ColorChangePosition),8)">special://skin/backgrounds/old-paper-darkblue.jpg</value>
+	<value condition="String.IsEqual(skin.string(ColorChangePosition),9)">special://skin/backgrounds/old-paper-blue.jpg</value>
+	<value condition="String.IsEqual(skin.string(ColorChangePosition),10)">special://skin/backgrounds/old-paper-vintage.jpg</value>
+	<value>special://skin/backgrounds/old-paper-grey.jpg</value>
+</variable>
+
+<variable name="VintageOverlay-Value">
+	<value condition="Window.IsVisible(weather)">special://skin/backgrounds/vintage-weather.png</value>
+	<value condition="Window.IsVisible(addonbrowser) | Window.IsVisible(programs)">special://skin/backgrounds/vintage-addons.png</value>
+	<value condition="Window.IsVisible(pictures)">special://skin/backgrounds/vintage-pictures.png</value>
+	<value condition="Window.IsVisible(music)">special://skin/backgrounds/vintage-musik.png</value>
+	<value condition="!Visualisation.Enabled + Window.IsActive(visualisation)">special://skin/backgrounds/vintage-musik.png</value>
+	<value condition="!Visualisation.Enabled + Window.IsActive(musicplaylist)">special://skin/backgrounds/vintage-musik.png</value>
+	<value condition="Control.IsVisible(57) + Window.IsVisible(videos)">special://skin/backgrounds/vintage-video.png</value><!-- video nur bei root view -->
+	<value condition="Window.IsVisible(settings) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(profiles) | Window.IsVisible(skinsettings) | Window.IsVisible(systeminfo)">special://skin/backgrounds/vintage-settings.png</value>
+</variable>
+
+<include name="Vintagebackground"><!-- Vintage Background -->
+	<control type="image">
+		<description>Hintergrund</description>
+		<width>screen.width</width>
+		<height>screen.height</height>
+		<texture>$VAR[Vintagebackground-Value]</texture>
+	</control>
+	<control type="image">
+		<description>floral overlay</description>
+		<left>1510</left>
+		<width>410</width>
+		<height>1080</height>
+		<texture colordiffuse="$VAR[BackdropCol]">special://skin/backgrounds/floral.png</texture>
+	</control>
+	<control type="image">
+		<description>vintage overlay</description>
+		<left>1112</left>
+		<top>309</top>
+		<width>808</width>
+		<height>771</height>
+		<fadetime>300</fadetime>
+		<texture>$VAR[VintageOverlay-Value]</texture>
+	</control>
+</include>
+
+<!-- Vintage overlay -->
+<include name="VintageOldpaper-Overlay">
+	<control type="image">
+		<width>$PARAM[width]</width>
+		<height>$PARAM[height]</height>
+		<texture border="8">$PARAM[texture]</texture>
+	</control>
+</include>
+
+<include name="VintageOldpaper-WidgetOverlay">
+	<control type="image">
+		<left>12</left>
+		<top>12</top>
+		<width>348</width>
+		<height>200</height>
+		<texture border="8">views/oldpaperoverlaylandscape.png</texture>
+	</control>
+</include>
+
+<include name="VintageOldpaper-EpisodeOverlay">
+	<control type="image">
+		<left>4</left>
+		<top>4</top>
+		<width>390</width>
+		<height>220</height>
+		<texture border="8">views/oldpaperoverlaylandscape.png</texture>
+	</control>
+</include>
+
+</includes>

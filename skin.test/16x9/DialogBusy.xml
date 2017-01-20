@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- Cycle 0.4 -->
+<zorder>439</zorder><!-- zorder erhoehung für slideshow layout -->
+<coordinates>
+	<system>1</system>
+	<origin x="0" y="0">!Window.IsVisible(home)</origin>
+	<origin x="0" y="10">Window.IsVisible(home)</origin>
+</coordinates>
+<controls>
+	<control type="label" id="30">
+		<description>Busy Label</description>
+		<include>HiddenControl</include>
+		<label>...Arbeitet</label>
+	</control>
+	<control type="textbox" id="31">
+		<include>HiddenControl</include>
+		<label>bitte warten</label>
+	</control>
+	<control type="progress" id="10">
+		<include>HiddenControl</include>
+	</control>
+	<control type="label" id="20">
+		<description>progressid</description>
+		<include>HiddenControl</include>
+		<label>$INFO[Control.GetLabel(10)]</label>
+	</control>
+	<control type="group">
+		<left>1090</left>
+		<top>-137</top>
+		<include>Animation-Topdown-Dialog</include>
+		<animation type="Conditional" condition="[Window.IsVisible(volumebar) + !Player.Muted] | Window.IsVisible(Custom_1150_Screensaver.xml) | Window.IsVisible(startup) | Window.IsVisible(Notification) | Window.IsActive(extendedprogressdialog) | Window.IsActive(DialogConfirm.xml) | Window.IsVisible(seekbar) | Window.IsVisible(Custom_1106_Histroyloader.xml)" reversible="true">
+			<effect type="fade" start="100" end="0" time="120" tween="cubic" easing="out" />
+		</animation>
+		<include content="Dialog-Progresskringel">
+			<param name="id">20</param>
+			<param name="label1id">30</param>
+			<param name="label2id">31</param>
+		</include>
+	</control>
+	<control type="group"><!-- Slideshow Layout -->
+		<left>800</left>
+		<top>960</top>
+		<visible>Window.IsVisible(Custom_1150_Screensaver.xml)</visible>
+		<include>Animation-OpenCloseVisibleHidden-Fade</include>
+		<control type="group">
+			<left>-300</left>
+			<include content="Dialog-Progresskringel">
+				<param name="id">20</param>
+				<param name="label1id">30</param>
+				<param name="label2id">31</param>
+			</include>
+		</control>
+	</control>
+</controls>
+</window>

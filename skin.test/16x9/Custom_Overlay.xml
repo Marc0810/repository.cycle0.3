@@ -1,0 +1,1251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="1199" type="dialog"><!-- Cycle 0.4 -->
+<visible>!Window.IsVisible(startup)</visible>
+<zorder>432</zorder>
+<controls>
+	<control type="image"><!-- Global debug grid -->
+		<left>0</left>
+		<top>0</top>
+		<width>1920</width>
+		<height>1080</height>
+		<texture colordiffuse="88ffffff">debuggrid1080.png</texture>
+		<visible>Skin.HasSetting(DebugGrid)</visible>
+	</control>
+	<control type="group"><!-- Debug Info -->
+		<visible>!Skin.HasSetting(DebugInfo)</visible>
+		<control type="grouplist">
+			<left>10</left>
+			<top>0</top>
+			<width>780</width>
+			<height>450</height>
+			<itemgap>12</itemgap>
+			<!-- Custom window labels -->
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1101</label>
+				<visible>Window.IsVisible(1101)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1102</label>
+				<visible>Window.IsVisible(1102)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1103</label>
+				<visible>Window.IsVisible(1103)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1104</label>
+				<visible>Window.IsVisible(1104)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1105</label>
+				<visible>Window.IsVisible(1105)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1106</label>
+				<visible>Window.IsVisible(1106)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1107</label>
+				<visible>Window.IsVisible(1107)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1108</label>
+				<visible>Window.IsVisible(1108)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1109</label>
+				<visible>Window.IsVisible(1109)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1110</label>
+				<visible>Window.IsVisible(1110)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1111</label>
+				<visible>Window.IsVisible(1111)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1112</label>
+				<visible>Window.IsVisible(1112)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1113</label>
+				<visible>Window.IsVisible(1113)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1114</label>
+				<visible>Window.IsVisible(1114)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1115</label>
+				<visible>Window.IsVisible(1115)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1116</label>
+				<visible>Window.IsVisible(1116)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1117</label>
+				<visible>Window.IsVisible(1117)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1118</label>
+				<visible>Window.IsVisible(1118)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1119</label>
+				<visible>Window.IsVisible(1119)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1120</label>
+				<visible>Window.IsVisible(1120)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1121</label>
+				<visible>Window.IsVisible(1121)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1122</label>
+				<visible>Window.IsVisible(1122)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1123</label>
+				<visible>Window.IsVisible(1123)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1124</label>
+				<visible>Window.IsVisible(1124)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1125</label>
+				<visible>Window.IsVisible(1125)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1126</label>
+				<visible>Window.IsVisible(1126)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1127</label>
+				<visible>Window.IsVisible(1127)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1128</label>
+				<visible>Window.IsVisible(1128)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1129</label>
+				<visible>Window.IsVisible(1129)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1130</label>
+				<visible>Window.IsVisible(1130)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1131</label>
+				<visible>Window.IsVisible(1131)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1132</label>
+				<visible>Window.IsVisible(1132)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1133</label>
+				<visible>Window.IsVisible(1133)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1134</label>
+				<visible>Window.IsVisible(1134)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1135</label>
+				<visible>Window.IsVisible(1135)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1136</label>
+				<visible>Window.IsVisible(1136)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1137</label>
+				<visible>Window.IsVisible(1137)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1138</label>
+				<visible>Window.IsVisible(1138)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1139</label>
+				<visible>Window.IsVisible(1139)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1140</label>
+				<visible>Window.IsVisible(1140)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1141</label>
+				<visible>Window.IsVisible(1141)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1142</label>
+				<visible>Window.IsVisible(1142)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1143</label>
+				<visible>Window.IsVisible(1143)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1144</label>
+				<visible>Window.IsVisible(1144)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1145</label>
+				<visible>Window.IsVisible(1145)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1146</label>
+				<visible>Window.IsVisible(1146)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1147</label>
+				<visible>Window.IsVisible(1147)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1148</label>
+				<visible>Window.IsVisible(1148)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1149</label>
+				<visible>Window.IsVisible(1149)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1150</label>
+				<visible>Window.IsVisible(1150)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1151</label>
+				<visible>Window.IsVisible(1151)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1152</label>
+				<visible>Window.IsVisible(1152)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1153</label>
+				<visible>Window.IsVisible(1153)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1154</label>
+				<visible>Window.IsVisible(1154)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1155</label>
+				<visible>Window.IsVisible(1155)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1156</label>
+				<visible>Window.IsVisible(1156)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1157</label>
+				<visible>Window.IsVisible(1157)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1158</label>
+				<visible>Window.IsVisible(1158)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1159</label>
+				<visible>Window.IsVisible(1159)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1160</label>
+				<visible>Window.IsVisible(1160)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1161</label>
+				<visible>Window.IsVisible(1161)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1162</label>
+				<visible>Window.IsVisible(1162)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1163</label>
+				<visible>Window.IsVisible(1163)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1164</label>
+				<visible>Window.IsVisible(1164)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1165</label>
+				<visible>Window.IsVisible(1165)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1166</label>
+				<visible>Window.IsVisible(1166)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1167</label>
+				<visible>Window.IsVisible(1167)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1168</label>
+				<visible>Window.IsVisible(1168)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1169</label>
+				<visible>Window.IsVisible(1169)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1170</label>
+				<visible>Window.IsVisible(1170)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1171</label>
+				<visible>Window.IsVisible(1171)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1172</label>
+				<visible>Window.IsVisible(1172)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1173</label>
+				<visible>Window.IsVisible(1173)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1174</label>
+				<visible>Window.IsVisible(1174)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1175</label>
+				<visible>Window.IsVisible(1175)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1176</label>
+				<visible>Window.IsVisible(1176)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1177</label>
+				<visible>Window.IsVisible(1177)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1178</label>
+				<visible>Window.IsVisible(1178)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1179</label>
+				<visible>Window.IsVisible(1179)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1180</label>
+				<visible>Window.IsVisible(1180)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1181</label>
+				<visible>Window.IsVisible(1181)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1182</label>
+				<visible>Window.IsVisible(1182)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1183</label>
+				<visible>Window.IsVisible(1183)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1184</label>
+				<visible>Window.IsVisible(1184)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1185</label>
+				<visible>Window.IsVisible(1185)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1186</label>
+				<visible>Window.IsVisible(1186)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1187</label>
+				<visible>Window.IsVisible(1187)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1188</label>
+				<visible>Window.IsVisible(1188)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1189</label>
+				<visible>Window.IsVisible(1189)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1190</label>
+				<visible>Window.IsVisible(1190)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1191</label>
+				<visible>Window.IsVisible(1191)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1192</label>
+				<visible>Window.IsVisible(1192)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1193</label>
+				<visible>Window.IsVisible(1193)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1195</label>
+				<visible>Window.IsVisible(1195)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1196</label>
+				<visible>Window.IsVisible(1196)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1197</label>
+				<visible>Window.IsVisible(1197)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1198</label>
+				<visible>Window.IsVisible(1198)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_1199</label>
+				<visible>Window.IsVisible(1199)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>script-cu-lrclyrics-main.xml</label>
+				<visible>Window.IsVisible(script-cu-lrclyrics-main.xml)</visible>
+			</control>
+			<!-- Window labels -->
+			<control type="label"><!-- Jarvis -->
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogPVRRadioRDSInfo.xml</label>
+				<visible>Window.IsVisible(DialogPVRRadioRDSInfo.xml)</visible>
+			</control>
+			<control type="label"><!-- Jarvis -->
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogPVRInfo.xml</label>
+				<visible>Window.IsVisible(DialogPVRInfo.xml)</visible>
+			</control>
+			<control type="label"><!-- Jarvis -->
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>EventLog.xml</label>
+				<visible>Window.IsVisible(EventLog.xml)</visible>
+			</control>
+			<control type="label"><!-- Jarvis -->
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogAudioDSPSettings.xml</label>
+				<visible>Window.IsVisible(DialogAudioDSPSettings.xml)</visible>
+			</control>
+			<control type="label"><!-- Jarvis -->
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogAudioDSPManager.xml</label>
+				<visible>Window.IsVisible(DialogAudioDSPManager.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<label>AddonBrowser.xml</label>
+				<visible>Window.IsVisible(AddonBrowser.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<label>MyPrograms.xml</label>
+				<visible>Window.IsVisible(MyPrograms.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<label>FileManager.xml</label>
+				<visible>Window.IsVisible(FileManager.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<label>Home.xml</label>
+				<visible>Window.IsVisible(Home.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<label>LoginScreen.xml</label>
+				<visible>Window.IsVisible(LoginScreen.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<label>MyMusicNav.xml</label>
+				<visible>Window.IsVisible(MyMusicNav.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<label>MyMusicPlaylistEditor.xml</label>
+				<visible>Window.IsVisible(MyMusicPlaylistEditor.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<label>MyPics.xml</label>
+				<visible>Window.IsVisible(MyPics.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<label>MyPVR.xml</label>
+				<visible>Window.IsVisible(MyPVR.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<label>MyVideoNav.xml</label>
+				<visible>Window.IsVisible(MyVideoNav.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<label>MyPlaylist.xml</label>
+				<visible>Window.IsVisible(MyPlaylist.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<label>MyWeather.xml</label>
+				<visible>Window.IsVisible(MyWeather.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<label>Settings.xml</label>
+				<visible>Window.IsVisible(Settings.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<label>SettingsCategory.xml</label>
+				<visible>Window.IsVisible(SettingsCategory.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<label>DialogSettings.xml</label>
+				<visible>Window.IsVisible(DialogSettings.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<label>SkinSettings.xml</label>
+				<visible>Window.IsVisible(SkinSettings.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<label>VideoFullScreen.xml</label>
+				<visible>Window.IsVisible(VideoFullScreen.xml)</visible>
+			</control>
+			<!-- Dialog labels -->
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogAddonInfo.xml</label>
+				<visible>Window.IsVisible(DialogAddonInfo.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogAddonSettings.xml</label>
+				<visible>Window.IsVisible(DialogAddonSettings.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogMusicInfo.xml</label>
+				<visible>Window.IsVisible(DialogMusicInfo.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogBusy.xml</label>
+				<visible>Window.IsVisible(DialogBusy.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogButtonMenu.xml</label>
+				<visible>Window.IsVisible(DialogButtonMenu.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogContextMenu.xml</label>
+				<visible>Window.IsVisible(DialogContextMenu.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<label>ExtendedProgressBar.xml</label>
+				<visible>Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogFavourites.xml</label>
+				<visible>Window.IsVisible(DialogFavourites.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogFullScreenInfo.xml</label>
+				<visible>Window.IsVisible(DialogFullScreenInfo.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogNotification.xml</label>
+				<visible>Window.IsVisible(Notification)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogKeyboard.xml</label>
+				<visible>Window.IsVisible(DialogKeyboard.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogMediaSource.xml</label>
+				<visible>Window.IsVisible(DialogMediaSource.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogNumeric.xml</label>
+				<visible>Window.IsVisible(DialogNumeric.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogPictureInfo.xml</label>
+				<visible>Window.IsVisible(DialogPictureInfo.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogPVRChannelManager.xml</label>
+				<visible>Window.IsVisible(DialogPVRChannelManager.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogPVRChannelsOSD.xml</label>
+				<visible>Window.IsVisible(DialogPVRChannelsOSD.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogPVRGroupManager.xml</label>
+				<visible>Window.IsVisible(DialogPVRGroupManager.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogPVRGuideOSD.xml</label>
+				<visible>Window.IsVisible(DialogPVRGuideOSD.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogPVRGuideSearch.xml</label>
+				<visible>Window.IsVisible(DialogPVRGuideSearch.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogPVRTimerSettings.xml</label>
+				<visible>Window.IsVisible(DialogPVRTimerSettings.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogSeekbar.xml</label>
+				<visible>Window.IsVisible(DialogSeekbar.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogSelect.xml</label>
+				<visible>Window.IsVisible(DialogSelect.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogSlider.xml</label>
+				<visible>Window.IsVisible(DialogSlider.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogTextViewer.xml</label>
+				<visible>Window.IsVisible(DialogTextViewer.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogVideoInfo.xml</label>
+				<visible>Window.IsVisible(DialogVideoInfo.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogVolumeBar.xml</label>
+				<visible>Window.IsVisible(DialogVolumeBar.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>DialogConfirm.xml</label>
+				<visible>Window.IsVisible(DialogConfirm.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>FileBrowser.xml</label>
+				<visible>Window.IsVisible(FileBrowser.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>MusicOSD.xml</label>
+				<visible>Window.IsVisible(MusicOSD.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>MusicVisualisation.xml</label>
+				<visible>Window.IsVisible(MusicVisualisation.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>PlayerControls.xml</label>
+				<visible>Window.IsVisible(PlayerControls.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>SettingsScreenCalibration.xml</label>
+				<visible>Window.IsVisible(SettingsScreenCalibration.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>SettingsSystemInfo.xml</label>
+				<visible>Window.IsVisible(SettingsSystemInfo.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>SlideShow.xml</label>
+				<visible>Window.IsVisible(SlideShow.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>SmartPlaylistEditor.xml</label>
+				<visible>Window.IsVisible(SmartPlaylistEditor.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>SmartPlaylistRule.xml</label>
+				<visible>Window.IsVisible(SmartPlaylistRule.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>VideoOSD.xml</label>
+				<visible>Window.IsVisible(VideoOSD.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>VideoOSDBookmarks.xml</label>
+				<visible>Window.IsVisible(VideoOSDBookmarks.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>VideoOSDSettings.xml</label>
+				<visible>Window.IsVisible(VideoOSDSettings.xml)</visible>
+			</control>
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FFFF0000</textcolor>
+				<label>Custom_video_Overlay2.xml</label>
+				<visible>Window.IsVisible(Custom_video_Overlay2.xml)</visible>
+			</control>
+		</control>
+		<!-- Control label -->
+		<control type="label">
+			<left>640</left>
+			<top>0</top>
+			<width>1200</width>
+			<height>21</height>
+			<textcolor>FF0000FF</textcolor>
+			<shadowcolor>FF000000</shadowcolor>
+			<align>right</align>
+			<label>$INFO[System.CurrentControl,, - ]$INFO[ListItem.Path]</label>
+		</control>
+		<!-- Folder Name label -->
+		<control type="label">
+			<left>640</left>
+			<top>25</top>
+			<width>1200</width>
+			<height>21</height>
+			<textcolor>FFFF0000</textcolor>
+			<shadowcolor>FF000000</shadowcolor>
+			<align>right</align>
+			<label>$INFO[Container.FolderName,Ordner: ]</label>
+		</control>
+		<!-- Folder Path label -->
+		<control type="label">
+			<left>640</left>
+			<top>60</top>
+			<width>1200</width>
+			<height>21</height>
+			<textcolor>FFFF0000</textcolor>
+			<shadowcolor>FF000000</shadowcolor>
+			<align>right</align>
+			<label>$INFO[Container.FolderPath,Pfad: ]</label>
+		</control>
+		<!-- content label -->
+		<control type="label">
+			<left>640</left>
+			<top>95</top>
+			<width>1200</width>
+			<height>21</height>
+			<textcolor>FFFF0000</textcolor>
+			<shadowcolor>FF000000</shadowcolor>
+			<align>right</align>
+			<label>$INFO[Container.content,content: , ]$INFO[ListItem.DBType,DBType: ,]</label>
+		</control>
+	</control>
+
+	<!-- 
+	<control type="grouplist">
+		<description>Wetter</description>
+		<left>500</left>
+		<top>150</top>
+		<width>1900</width>
+		<height>700</height>
+		<itemgap>20</itemgap>
+		<align>left</align>
+		<control type="button" id="90022">
+			<description>Vintage Overlay</description>
+			<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texturefocus>
+			<texturenofocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texturenofocus>
+			<width>1900</width>
+			<include>Item.top.height60</include>
+			<label>Item.top.height60</label>
+			<textcolor>TextColorFO</textcolor>
+			<onclick>noop</onclick>
+		</control>
+		<control type="button" id="90022">
+			<description>Vintage Overlay</description>
+			<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texturefocus>
+			<texturenofocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texturenofocus>
+			<width>1900</width>
+			<include>Item.top.height65</include>
+			<label>Item.top.height65</label>
+			<textcolor>TextColorFO</textcolor>
+			<onclick>noop</onclick>
+		</control>
+		<control type="button" id="90022">
+			<description>Vintage Overlay</description>
+			<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texturefocus>
+			<texturenofocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texturenofocus>
+			<width>1900</width>
+			<include>Item.top.height70</include>
+			<label>Item.top.height70</label>
+			<textcolor>TextColorFO</textcolor>
+			<onclick>noop</onclick>
+		</control>
+		<control type="button" id="90022">
+			<description>Vintage Overlay</description>
+			<texturefocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texturefocus>
+			<texturenofocus border="14,0,14,0" colordiffuse="$VAR[PrimaryCol]">cycle/right-11.png</texturenofocus>
+			<width>1900</width>
+			<include>Item.top.height75</include>
+			<label>Item.top.height75</label>
+			<textcolor>TextColorFO</textcolor>
+			<onclick>noop</onclick>
+		</control>
+	</control>
+-->
+</controls>
+</window>

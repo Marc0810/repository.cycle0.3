@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- Cycle 0.4 -->
+<defaultcontrol always="true">21</defaultcontrol>
+<controls>
+<control type="group"><!-- OSD -->
+	<top>785</top>
+	<include>Animation-Popup-OSDDialog</include>
+	<visible>!Window.IsVisible(fullscreeninfo) + !Window.IsVisible(sliderdialog)</visible>
+	<control type="image">
+		<description>Background</description>
+		<top>-30</top>
+		<width>1920</width>
+		<height>325</height>
+		<texture colordiffuse="$VAR[DialogCol]">white.png</texture>
+	</control>
+	<control type="progress"><!-- Progress -->
+		<description>Progress Bar</description>
+		<top>-30</top>
+		<width>1920</width>
+		<height>30</height>
+		<texturebg colordiffuse="$VAR[SecondaryCol]">dialogs/progress/bg.png</texturebg>
+		<lefttexture colordiffuse="$VAR[PrimaryCol]">dialogs/progress/left.png</lefttexture>
+		<midtexture colordiffuse="$VAR[PrimaryCol]">dialogs/progress/left.png</midtexture>
+		<righttexture colordiffuse="$VAR[PrimaryCol]">dialogs/progress/right.png</righttexture>
+	</control>
+	<control type="slider" id="21">
+		<top>-60</top>
+		<width>1920</width>
+		<height>90</height>
+		<onup>PreviousMenu</onup>
+		<ondown>9001</ondown>
+		<info>Player.Progress</info>
+		<onback>PreviousMenu</onback>
+		<texturesliderbar colordiffuse="ACDIF_0">dialogs/progress/bg.png</texturesliderbar>
+		<textureslidernib></textureslidernib>
+		<textureslidernibfocus colordiffuse="$VAR[PrimaryCol]">dialogs/progress/slider.png</textureslidernibfocus>
+		<action>seek</action>
+	</control>
+	<control type="group"><!-- codecinfo -->
+		<left>20</left>
+		<top>20</top>
+		<control type="label">
+			<description>Header icon</description>
+			<top>10</top>
+			<width>66</width>
+			<height>30</height>
+			<font>IconOSDButtons</font>
+			<label>é</label>
+		</control>
+		<control type="label">
+			<description>Header</description>
+			<left>60</left>
+			<top>10</top>
+			<width>500</width>
+			<height>30</height>
+			<font>BoldNormal</font>
+			<label>Videoinformationen</label>
+		</control>
+		<control type="label">
+			<description>decoding</description>
+			<left>60</left>
+			<top>50</top>
+			<width>340</width>
+			<height>50</height>
+			<textcolor>TextColorMedium</textcolor>
+			<label>Decoding</label>
+		</control>
+		<control type="label">
+			<description>decoding</description>
+			<left>380</left>
+			<top>50</top>
+			<width>600</width>
+			<height>50</height>
+			<label>Hardware</label>
+			<visible>Player.Process(videohwdecoder)</visible>
+		</control>
+		<control type="label">
+			<description>decoding</description>
+			<left>380</left>
+			<top>50</top>
+			<width>600</width>
+			<height>50</height>
+			<label>Software</label>
+			<visible>!Player.Process(videohwdecoder)</visible>
+		</control>
+		<control type="label">
+			<description>Decoder</description>
+			<left>60</left>
+			<top>100</top>
+			<width>340</width>
+			<height>50</height>
+			<textcolor>TextColorMedium</textcolor>
+			<label>Decoder</label>
+		</control>
+		<control type="label">
+			<description>Decoder</description>
+			<left>380</left>
+			<top>100</top>
+			<width>600</width>
+			<height>50</height>
+			<label fallback="NA">$INFO[Player.Process(videodecoder)]$INFO[Player.Process(pixformat), - ]</label>
+		</control>
+		<control type="label">
+			<description>Deinterlace</description>
+			<left>60</left>
+			<top>150</top>
+			<width>340</width>
+			<height>50</height>
+			<textcolor>TextColorMedium</textcolor>
+			<label>Deinterlace</label>
+		</control>
+		<control type="label">
+			<description>Deinterlace</description>
+			<left>380</left>
+			<top>150</top>
+			<width>600</width>
+			<height>50</height>
+			<label fallback="NA">$INFO[Player.Process(deintmethod)]</label>
+		</control>
+		<control type="label">
+			<description>Resolution</description>
+			<left>60</left>
+			<top>200</top>
+			<width>340</width>
+			<height>50</height>
+			<textcolor>TextColorMedium</textcolor>
+			<label>Auflösung</label>
+		</control>
+		<control type="label">
+			<description>Resolution</description>
+			<left>380</left>
+			<top>200</top>
+			<width>600</width>
+			<height>50</height>
+			<label fallback="NA">$INFO[Player.Process(videowidth),,x]$INFO[Player.Process(videoheight),, px]$INFO[Player.Process(videodar), - , AR]$INFO[Player.Process(videofps), - , FPS]</label>
+		</control>
+	</control>
+	<control type="group"><!-- audio codecinfo -->
+		<left>1000</left>
+		<top>20</top>
+		<control type="label">
+			<description>Header icon</description>
+			<top>10</top>
+			<width>66</width>
+			<height>30</height>
+			<font>IconOSDButtons</font>
+			<label>ë</label>
+		</control>
+		<control type="label">
+			<description>Header</description>
+			<left>60</left>
+			<top>10</top>
+			<width>500</width>
+			<height>30</height>
+			<font>BoldNormal</font>
+			<label>Audioinformationen</label>
+		</control>
+		<control type="label">
+			<description>Decoder</description>
+			<left>60</left>
+			<top>50</top>
+			<width>340</width>
+			<height>50</height>
+			<textcolor>TextColorMedium</textcolor>
+			<label>Decoder</label>
+		</control>
+		<control type="label">
+			<description>Decoder</description>
+			<left>420</left>
+			<top>50</top>
+			<width>500</width>
+			<height>50</height>
+			<label fallback="NA">$INFO[Player.Process(audiodecoder)]</label>
+		</control>
+		<control type="label">
+			<description>Channels</description>
+			<left>60</left>
+			<top>100</top>
+			<width>340</width>
+			<height>50</height>
+			<textcolor>TextColorMedium</textcolor>
+			<label>Kanäle</label>
+		</control>
+		<control type="label">
+			<description>Channels</description>
+			<left>420</left>
+			<top>100</top>
+			<width>500</width>
+			<height>50</height>
+			<label fallback="NA">$INFO[Player.Process(audiochannels)]</label>
+		</control>
+		<control type="label">
+			<description>samplerate</description>
+			<left>60</left>
+			<top>150</top>
+			<width>340</width>
+			<height>50</height>
+			<textcolor>TextColorMedium</textcolor>
+			<label>Frequenz</label>
+		</control>
+		<control type="label">
+			<description>samplerate</description>
+			<left>420</left>
+			<top>150</top>
+			<width>500</width>
+			<height>50</height>
+			<label fallback="NA">$INFO[Player.Process(audiosamplerate)]</label>
+		</control>
+		<control type="label">
+			<description>Bitrate</description>
+			<left>60</left>
+			<top>200</top>
+			<width>340</width>
+			<height>50</height>
+			<textcolor>TextColorMedium</textcolor>
+			<label>Bitrate</label>
+		</control>
+		<control type="label">
+			<description>Bitrate</description>
+			<left>420</left>
+			<top>200</top>
+			<width>500</width>
+			<height>50</height>
+			<label fallback="NA">$INFO[Player.Process(audiobitspersample)]</label>
+		</control>
+	</control>
+</control>
+</controls>
+</window>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<smartplaylist type="episodes">
+    <name>Episode - Sortierung Hinzugefügt</name>
+    <match>all</match>
+    <rule field="title" operator="doesnotcontain">
+        <value>xxx</value>
+    </rule>
+    <rule field="playcount" operator="is">
+        <value>0</value>
+    </rule>
+    <limit>18</limit>
+    <order direction="descending">dateadded</order>
+</smartplaylist>

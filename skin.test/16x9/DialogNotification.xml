@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window><!-- Cycle 0.4 -->
+<controls>
+<control type="group">
+	<description>Default layout</description>
+	<left>1070</left>
+	<top>-134</top>
+	<visible>!Window.IsVisible(startup) + !Window.IsVisible(musicplaylisteditor) + !Window.IsVisible(Custom_1106_Histroyloader.xml)</visible>
+	<include>Animation-Topdown-Dialog</include>
+	<control type="image">
+		<description>border</description>
+		<left>690</left>
+		<top>15</top>
+		<width>75</width>
+		<height>75</height>
+		<texture colordiffuse="TextColorMedium">views/NotificationDiffuse.png</texture>
+		<visible>!String.StartsWith(Control.GetLabel(400),Default)</visible>
+	</control>
+	<control type="image" id="400">
+		<description>icon nicht default</description>
+		<left>690</left>
+		<top>15</top>
+		<width>75</width>
+		<height>75</height>
+		<aspectratio>scale</aspectratio>
+		<visible>!String.StartsWith(Control.GetLabel(400),Default)</visible>
+	</control>
+	<control type="label">
+		<description>icon default</description>
+		<left>675</left>
+		<top>-5</top>
+		<width>105</width>
+		<height>105</height>
+		<align>center</align>
+		<font>Iconkaitoast</font>
+		<textcolor>$VAR[OSDDialogCol]</textcolor>
+		<label>$VAR[DialogKaitoast-Icon]</label>
+	</control>
+	<control type="label" id="401">
+		<description>Titel</description>
+		<top>20</top>
+		<width>665</width>
+		<height>27</height>
+		<align>right</align>
+		<font>BoldSmall</font>
+		<textcolor>$VAR[OSDDialogCol]</textcolor>
+		<scrollout>false</scrollout>
+		<pauseatend>2000</pauseatend>
+	</control>
+	<control type="label" id="402">
+		<description>Subtitel</description>
+		<top>52</top>
+		<width>665</width>
+		<height>36</height>
+		<align>right</align>
+		<font>RegularSmall</font>
+		<textcolor>$VAR[OSDDialogCol]</textcolor>
+		<scrollout>false</scrollout>
+		<pauseatend>2000</pauseatend>
+	</control>
+</control>
+<control type="group">
+	<description>Startup Window layout nur Text ohne icons zentrierter Text</description>
+	<top>950</top>
+	<visible>Window.IsVisible(startup)</visible>
+	<include>Animation-OpenCloseVisibleHidden-Fade</include>
+	<control type="image">
+		<description>border</description>
+		<left>750</left>
+		<top>15</top>
+		<width>75</width>
+		<height>75</height>
+		<texture colordiffuse="TextColorMedium">views/NotificationDiffuse.png</texture>
+		<visible>!String.StartsWith(Control.GetLabel(400),Default)</visible>
+	</control>
+	<control type="image" id="400">
+		<description>icon nicht default</description>
+		<left>750</left>
+		<top>15</top>
+		<width>75</width>
+		<height>75</height>
+		<aspectratio>scale</aspectratio>
+		<visible>!String.StartsWith(Control.GetLabel(400),Default)</visible>
+	</control>
+	<control type="label">
+		<description>icon default</description>
+		<left>735</left>
+		<top>-5</top>
+		<width>105</width>
+		<height>105</height>
+		<align>center</align>
+		<font>Iconkaitoast</font>
+		<textcolor>$VAR[OSDDialogCol]</textcolor>
+		<label>$VAR[DialogKaitoast-Icon]</label>
+	</control>
+	<control type="label">
+		<description>Titel</description>
+		<left>860</left>
+		<top>20</top>
+		<width>665</width>
+		<height>27</height>
+		<scrollout>false</scrollout>
+		<pauseatend>2000</pauseatend>
+		<font>BoldSmall</font>
+		<textcolor>$VAR[OSDDialogCol]</textcolor>
+		<label>$INFO[Control.Getlabel(401)]</label>
+	</control>
+	<control type="label">
+		<description>Subtitel</description>
+		<left>860</left>
+		<top>52</top>
+		<width>665</width>
+		<height>36</height>
+		<scrollout>false</scrollout>
+		<pauseatend>2000</pauseatend>
+		<font>RegularSmall</font>
+		<textcolor>$VAR[OSDDialogCol]</textcolor>
+		<label>$INFO[Control.Getlabel(402)]</label>
+	</control>
+</control>
+</controls>
+</window>

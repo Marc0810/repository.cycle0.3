@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1196"><!-- Cycle 0.4 -->
+<onload>ClearProperty(ColorRefresh,Home)</onload>
+<visible>false</visible>
+<visible>!String.IsEmpty(Window(Home).Property(ColorRefresh))</visible>
+<description>Property fuer playlist refresh</description>
+<!-- Farbwechsel onload -->
+<onload condition="String.IsEmpty(skin.string(ColorChangePosition))">Skin.SetString(ColorChangePosition,1)</onload>
+<onload condition="String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(ColorChangePosition,2)</onload>
+<onload condition="String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(ColorChangePosition,3)</onload>
+<onload condition="String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(ColorChangePosition,4)</onload>
+<onload condition="String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(ColorChangePosition,5)</onload>
+<onload condition="String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(ColorChangePosition,6)</onload>
+<onload condition="String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(ColorChangePosition,7)</onload>
+<onload condition="String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(ColorChangePosition,8)</onload>
+<onload condition="String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(ColorChangePosition,9)</onload>
+<onload condition="String.IsEqual(skin.string(ColorChangePosition),9)">Skin.SetString(ColorChangePosition,1)</onload>
+
+<!-- reset -->
+<onunload>skin.Reset(FanartDiffuseCol)</onunload>
+<onunload>skin.Reset(InaktivImageCol)</onunload>
+<onunload>skin.Reset(CloudsDiffuseCol)</onunload>
+<onunload>skin.Reset(BackdropCol)</onunload>
+<onunload>Skin.Reset(PrimaryCol)</onunload>
+<onunload>Skin.Reset(SecondaryCol)</onunload>
+<onunload>Skin.Reset(CirclesCol)</onunload>
+<onunload>Skin.Reset(CirclesInnerCol)</onunload>
+<onunload>Skin.Reset(IconNFCol)</onunload>
+<onunload>Skin.Reset(IconFOCol)</onunload>
+<onunload>Skin.Reset(DialogCol)</onunload>
+
+<!-- vintage blau -->
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(PrimaryCol,FF186078)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(SecondaryCol,FF90C0D8)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(CirclesCol,FFEBEBEC)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(CirclesInnerCol,FFA7A7A7)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(IconNFCol,7FF1F1F1)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(IconFOCol,FFF1F1F1)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(DialogCol,F1F1F1)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(InaktivImageCol,24)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(BackdropCol,05186078)</onunload>
+<!-- cycle blau -->
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(PrimaryCol,FF4178CC)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(SecondaryCol,FF87BEFF)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(CirclesCol,FFEBEBEC)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(CirclesInnerCol,FFA3A3A3)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(IconNFCol,7FF1F1F1)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(IconFOCol,FFF1F1F1)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(DialogCol,F1F1F1)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(InaktivImageCol,24)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(CloudsDiffuseCol,FA)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(FanartDiffuseCol,1C)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),1)">Skin.SetString(BackdropCol,38D2D2D2)</onunload>
+
+<!-- vintage braeunlich -->
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(PrimaryCol,FFBF4D28)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(SecondaryCol,FFAC3109)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(CirclesCol,FFFFF6EF)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(CirclesInnerCol,FFA4977B)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(IconNFCol,7FFFEDDF)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(IconFOCol,FFFFEDDF)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(DialogCol,FFF6EF)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(InaktivImageCol,24)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(BackdropCol,05BF4D28)</onunload>
+<!-- cycle orange -->
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(PrimaryCol,FFFC580C)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(SecondaryCol,FFF8872E)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(CirclesCol,FFFFF6EF)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(CirclesInnerCol,FFB0A89D)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(IconNFCol,7FFFEDDF)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(IconFOCol,FFFFEDDF)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(DialogCol,FFF6EF)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(InaktivImageCol,24)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(CloudsDiffuseCol,FA)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(FanartDiffuseCol,1C)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),2)">Skin.SetString(BackdropCol,0A63380E)</onunload>
+
+<!-- vintage rot -->
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(PrimaryCol,FFDA3266)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(SecondaryCol,FFAD1A47)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(CirclesCol,FFFFF8FB)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(IconNFCol,7FFCE8E8)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(IconFOCol,FFFCE8E8)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(CirclesInnerCol,FF9D8E90)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(DialogCol,EEECED)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(InaktivImageCol,24)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(BackdropCol,05DA3266)</onunload>
+<!-- cycle rot -->
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(PrimaryCol,FFBC2455)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(SecondaryCol,FFA30538)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(CirclesCol,FFEEE5E7)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(IconNFCol,7FFFCCCC)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(IconFOCol,FFFFCCCC)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(CirclesInnerCol,FF9D9C9C)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(DialogCol,FEF6FA)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(InaktivImageCol,24)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(CloudsDiffuseCol,FA)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(FanartDiffuseCol,0F)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),3)">Skin.SetString(BackdropCol,0A2C0310)</onunload>
+
+<!-- vintage gruen -->
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(PrimaryCol,FF769B4B)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(SecondaryCol,FFAADB71)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(CirclesCol,FFF7F7F7)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(IconNFCol,FF91BC5F)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(IconFOCol,FFF5FFF5)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(CirclesInnerCol,FF858C7E)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(DialogCol,F7F7F7)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(InaktivImageCol,24)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(BackdropCol,05769B4B)</onunload>
+<!-- cycle gruen -->
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(PrimaryCol,FF789018)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(SecondaryCol,FF9EC113)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(CirclesCol,FFF8FEF7)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(IconNFCol,7FF8FEF7)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(IconFOCol,FFF8FEF7)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(CirclesInnerCol,FF868D6B)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(DialogCol,F8FEF7)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(InaktivImageCol,24)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(CloudsDiffuseCol,FA)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(FanartDiffuseCol,0F)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),4)">Skin.SetString(BackdropCol,0A868D6B)</onunload>
+
+<!-- Vintage vintage -->
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(PrimaryCol,FFFA5B34)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(SecondaryCol,FFFF8D71)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(CirclesCol,FFF3F4E4)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(IconNFCol,B8FAFFFA)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(IconFOCol,FFFAFFFA)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(CirclesInnerCol,FF919D90)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(DialogCol,FAFFFA)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(InaktivImageCol,24)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(BackdropCol,05FA5B34)</onunload>
+<!-- cycle vintage graublau -->
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(PrimaryCol,FF809380)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(SecondaryCol,FFABC7AB)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(CirclesCol,FFE4E7E4)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(IconNFCol,B8FAFFFA)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(IconFOCol,FFFAFFFA)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(CirclesInnerCol,FF9E9E62)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(DialogCol,FAFFFA)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(InaktivImageCol,24)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(CloudsDiffuseCol,FA)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(FanartDiffuseCol,14)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),5)">Skin.SetString(BackdropCol,1A616C61)</onunload>
+
+<!-- vintage lila -->
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(PrimaryCol,FF934693)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(SecondaryCol,FFCB88CB)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(CirclesCol,FFEFEDEF)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(IconNFCol,7FEADAEA)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(IconFOCol,FFEADAEA)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(CirclesInnerCol,FF9B7E9B)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(DialogCol,F2F2F2)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(InaktivImageCol,24)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(BackdropCol,05934693)</onunload>
+<!-- cycle lila -->
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(PrimaryCol,FF8F2583)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(SecondaryCol,FFB74BAB)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(CirclesCol,FFF3E9F2)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(IconNFCol,7FF3E9FC)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(IconFOCol,FFF3E9FC)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(CirclesInnerCol,FFB085AB)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(DialogCol,FCF4FB)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(InaktivImageCol,24)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(CloudsDiffuseCol,FA)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(FanartDiffuseCol,0F)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),6)">Skin.SetString(BackdropCol,0A940533)</onunload>
+
+<!-- vintage schwarz -->
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(PrimaryCol,FF55544F)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(SecondaryCol,FF8C8A84)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(CirclesCol,FFF0EFEA)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(IconNFCol,7FAAB3AB)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(IconFOCol,FFAAB3AB)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(CirclesInnerCol,FFA0A793)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(DialogCol,F2F2F2)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(InaktivImageCol,24)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(BackdropCol,0A55544F)</onunload>
+<!-- cycle schwarz -->
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(PrimaryCol,FF767676)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(SecondaryCol,FF9B9B9A)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(CirclesCol,FFEAEAEA)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(IconNFCol,7FECECEC)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(IconFOCol,FFECECEC)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(CirclesInnerCol,FFCECDCD)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(DialogCol,EEEEEE)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(InaktivImageCol,24)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(CloudsDiffuseCol,FA)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(FanartDiffuseCol,1A)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),7)">Skin.SetString(BackdropCol,1A4D4D4D)</onunload>
+
+<!-- vintage blau -->
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(PrimaryCol,FF0B486B)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(SecondaryCol,FF367EA7)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(CirclesCol,FFEFFAFF)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(IconNFCol,7FEFFAFF)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(IconFOCol,FFEFFAFF)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(CirclesInnerCol,FF909E97)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(DialogCol,EFFAFF)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(InaktivImageCol,24)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(BackdropCol,050B486B)</onunload>
+<!-- cycle blau -->
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(PrimaryCol,FF1F998F)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(SecondaryCol,FF30BDB1)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(CirclesCol,FFF4FFFE)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(IconNFCol,7FE4EEED)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(IconFOCol,FFE4EEED)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(CirclesInnerCol,FFA1B7B6)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(DialogCol,F5FDFD)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(InaktivImageCol,24)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(CloudsDiffuseCol,FA)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(FanartDiffuseCol,1A)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),8)">Skin.SetString(BackdropCol,1AB6B8B8)</onunload>
+
+<!-- vintage mix roetlich -->
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">Skin.SetString(PrimaryCol,FF5F1A48)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">Skin.SetString(SecondaryCol,FF903170)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">Skin.SetString(CirclesCol,FFFDFAF2)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">Skin.SetString(IconNFCol,7FFDFAF2)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">Skin.SetString(IconFOCol,FFFDFAF2)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">Skin.SetString(CirclesInnerCol,FF8A8287)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">Skin.SetString(DialogCol,FDFAF2)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">Skin.SetString(InaktivImageCol,24)</onunload>
+<onunload condition="Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">Skin.SetString(BackdropCol,052E0D23)</onunload>
+
+<!-- cycle gruenliches gelb -->
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">Skin.SetString(PrimaryCol,FF946522)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">Skin.SetString(SecondaryCol,FFD4A056)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">Skin.SetString(CirclesCol,FFFFFAF2)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">Skin.SetString(IconNFCol,7FFFFAF2)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">Skin.SetString(IconFOCol,FFFFFAF2)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">Skin.SetString(CirclesInnerCol,FF9b8566)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">Skin.SetString(DialogCol,FFFAF2)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">Skin.SetString(InaktivImageCol,24)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">Skin.SetString(CloudsDiffuseCol,FA)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">Skin.SetString(FanartDiffuseCol,1A)</onunload>
+<onunload condition="!Skin.HasSetting(EnableVintageOverlay) + String.IsEqual(skin.string(ColorChangePosition),9)">Skin.SetString(BackdropCol,1AB2A680)</onunload>
+<animation effect="fade" start="100" end="0" time="0" delay="5">WindowClose</animation>
+<controls>
+</controls>
+</window>
+

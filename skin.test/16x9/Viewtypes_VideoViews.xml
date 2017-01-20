@@ -1,0 +1,3987 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes><!-- Cycle 0.4 --><!-- check viewauswahl und db speicherung im defaultskin fuer playlisten ob das geht, wenn ja, strings nicht notwendig? -->
+<include name="Viewtype_50_CommonRootView">
+	<control type="group">
+		<description>List View (id=50) Einfache liste</description>
+		<visible>Control.IsVisible(50)</visible>
+		<include>Animation395-Conditional-Slide</include>
+		<include>Animation-OpenCloseVisibleHidden-Zoom</include>
+		<include>Animation-Conditional-InaktivZoom</include>
+		<control type="list" id="50"><!-- check filemode view? -->
+			<viewtype label="Root">list</viewtype>
+			<left>168</left>
+			<top>150</top>
+			<width>1580</width>
+			<height>840</height>
+			<oninfo condition="ListItem.IsCollection + System.HasAddon(script.skin.info.service)">ActivateWindow(1102)</oninfo>
+			<oninfo condition="Integer.IsGreater(Container(20000).NumItems,11) + [Container.Content(genres) | Container.Content(years) | Container.Content(actors) | Container.Content(studios) | Container.Content(dircetors) | Container.Content(countries)]">ActivateWindow(1103)</oninfo>
+			<oninfo condition="Integer.IsLess(Container(20000).NumItems,11) + [Container.Content(genres) | Container.Content(years) | Container.Content(actors) | Container.Content(studios) | Container.Content(dircetors) | Container.Content(countries)]">ActivateWindow(1104)</oninfo>
+			<onleft>Setfocus(9900)</onleft>
+			<onright condition="Integer.IsGreater(Container(50).NumPages,1)">60</onright>
+			<onright condition="!Integer.IsGreater(Container(50).NumPages,1)">SetFocus(9900)</onright>
+			<onup>50</onup>
+			<ondown>50</ondown>
+			<pagecontrol>60</pagecontrol>
+			<scrolltime>200</scrolltime>
+			<visible>String.IsEmpty(Container.FolderName)</visible>
+			<!-- 
+			<visible>!String.StartsWith(Container.FolderPath,special://skin/playlists/Doku_) + !Container.Content(seasons) + [[Container.Content(episodes) + String.IsEqual(Skin.String(PLS_EPViewtype),Liste) + String.StartsWith(Container.FolderPath,special://skin/playlists/Episode_)] | [Container.Content(movies) + String.IsEqual(Skin.String(PLS_FilmViewtype),Liste) + String.StartsWith(Container.FolderPath,special://skin/playlists/Film_)] | [Container.Content(movies) + String.IsEqual(Skin.String(FilmViewtype),Liste) + !String.StartsWith(Container.FolderPath,special://skin/playlists/)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(PLS_TVViewtype),Liste) + String.StartsWith(Container.FolderPath,special://skin/playlists/TV_)] | [Container.Content(actors) + String.IsEqual(Skin.String(ActorViewtype),Liste)] | [Container.Content(sets) + String.IsEqual(Skin.String(SetViewtype),Liste)] | [Container.Content(genres) + String.IsEqual(Skin.String(GenreViewtype),Liste)] | [Container.Content(years) + String.IsEqual(Skin.String(YearsViewtype),Liste)] | Container.Content(tags) | Container.Content(directors)] | !String.IsEmpty(Window(home).Property(Viewtypeselection))</visible>
+			
+			 | [Container.Content(episodes) + ![String.StartsWith(Container.Folderpath,videodb:) | String.StartsWith(Container.Folderpath,library://)]] | [Container.Content(seasons) + ![String.StartsWith(Container.Folderpath,videodb:) | String.StartsWith(Container.Folderpath,library://)]]
+			
+			
+			 | [Container.Content(tvshows) + ![String.StartsWith(Container.Folderpath,videodb:) | String.StartsWith(Container.Folderpath,library://)]]
+			
+			
+			 | [Container.Content(tvshows) + [String.StartsWith(Container.FolderPath,videodb://) | String.StartsWith(Container.FolderPath,library://)] + String.IsEqual(Skin.String(TVViewtype),Liste) + !String.StartsWith(Container.FolderPath,special://skin/playlists/)]
+			
+			-->
+			
+			
+			
+			<!-- 
+			
+			<visible>!String.Contains(Container.FolderPath,plugin) + !String.StartsWith(Container.FolderPath,special://skin/playlists/Doku_) + !Container.Content(seasons) + [[Container.Content(episodes) + String.IsEqual(Skin.String(PLS_EPViewtype),Liste) + String.StartsWith(Container.FolderPath,special://skin/playlists/Episode_)] | [Container.Content(movies) + String.IsEqual(Skin.String(PLS_FilmViewtype),Liste) + String.StartsWith(Container.FolderPath,special://skin/playlists/Film_)] | [Container.Content(movies) + String.IsEqual(Skin.String(FilmViewtype),Liste) + !String.StartsWith(Container.FolderPath,special://skin/playlists/)] | [Container.Content(tvshows) + [String.StartsWith(Container.FolderPath,videodb://) | String.StartsWith(Container.FolderPath,library://)] + String.IsEqual(Skin.String(TVViewtype),Liste) + !String.StartsWith(Container.FolderPath,special://skin/playlists/)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(PLS_TVViewtype),Liste) + String.StartsWith(Container.FolderPath,special://skin/playlists/TV_)] | [Container.Content(actors) + String.IsEqual(Skin.String(ActorViewtype),Liste)] | [Container.Content(sets) + String.IsEqual(Skin.String(SetViewtype),Liste)] | [Container.Content(genres) + String.IsEqual(Skin.String(GenreViewtype),Liste)] | [Container.Content(years) + String.IsEqual(Skin.String(YearsViewtype),Liste)] | Container.Content(tags) | Container.Content(directors)] | !String.IsEmpty(Window(home).Property(Viewtypeselection)) | String.StartsWith(Container.FolderPath,plugin://) | [Container.Content(episodes) + ![String.StartsWith(Container.Folderpath,videodb:) | String.StartsWith(Container.Folderpath,library://)]] | [Container.Content(seasons) + ![String.StartsWith(Container.Folderpath,videodb:) | String.StartsWith(Container.Folderpath,library://)]] | [Container.Content(tvshows) + ![String.StartsWith(Container.Folderpath,videodb:) | String.StartsWith(Container.Folderpath,library://)]]</visible>-->
+			<itemlayout width="1580" height="60">
+				<control type="image"><!-- Hintergrund -->
+					<description>Hintergrund</description>
+					<width>1580</width>
+					<height>60</height>
+					<texture background="true" colordiffuse="ListBackgroundDiffuse">white.png</texture>
+				</control>
+				<control type="image">
+					<description>Hintergrund linker streifen</description>
+					<width>100</width>
+					<height>60</height>
+					<texture background="true" colordiffuse="$VAR[SecondaryCol]">white.png</texture>
+				</control>
+				<control type="label"><!-- last watched -->
+					<textcolor>TextColorFO</textcolor><!-- incluede ueberschreibung textfarben -->
+					<selectedcolor>TextColorFO</selectedcolor>
+					<include>Lastwatched-Overlay</include>
+				</control>
+				<control type="label">
+					<description>Label1</description>
+					<left>130</left>
+					<width>1520</width>
+					<height>60</height>
+					<label>$VAR[Global_Label]</label>
+				</control>
+				<control type="label">
+					<description>Label2</description>
+					<left>1200</left>
+					<width>300</width>
+					<height>60</height>
+					<align>right</align>
+					<font>RegularSmall</font>
+					<label>$VAR[Global_Label2]</label>
+					<visible>!ListItem.IsParentFolder</visible>
+				</control>
+				<control type="label"><!-- Media Overlay -->
+					<description>Media Overlay - neu, angefangene usw.</description>
+					<left>1510</left>
+					<right>30</right>
+					<width>50</width>
+					<height>60</height>
+					<aligny>top</aligny>
+					<align>right</align>
+					<font>IconOverlayList</font>
+					<selectedcolor>TextColorHeavy</selectedcolor><!-- default ueberschreibung -->
+					<label>$VAR[WatchedOverlay]</label>
+					<visible>$EXP[VisVideoOverlays]</visible>
+				</control>
+			</itemlayout>
+			<focusedlayout width="1580" height="60">
+				<control type="image"><!-- Hintergrund -->
+					<description>Hintergrund unfocus</description>
+					<width>1580</width>
+					<height>60</height>
+					<texture background="true" colordiffuse="ListBackgroundDiffuse">white.png</texture>
+					<visible>!Control.HasFocus(50)</visible>
+				</control>
+				<control type="image">
+					<description>Hintergrund streifen unfocus</description>
+					<width>100</width>
+					<height>60</height>
+					<texture background="true" colordiffuse="$VAR[SecondaryCol]">white.png</texture>
+					<visible>!Control.HasFocus(50)</visible>
+				</control>
+				<control type="image">
+					<description>Hintergrund streifen unfocus</description>
+					<width>100</width>
+					<height>60</height>
+					<texture background="true" colordiffuse="ListBackgroundDiffuse">white.png</texture>
+				</control>
+				<control type="image">
+					<description>Hintergrund focus</description>
+					<width>1580</width>
+					<height>60</height>
+					<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+					<visible>Control.HasFocus(50)</visible>
+				</control>
+				<control type="label"><!-- back -->
+					<left>40</left>
+					<width>80</width>
+					<height>60</height>
+					<font>IconBackViewList</font>
+					<textcolor>TextColorFO</textcolor>
+					<selectedcolor>$VAR[SelectedCol]</selectedcolor>
+					<label>Û</label>
+					<visible>!Control.HasFocus(50)</visible>
+				</control>
+				<control type="label"><!-- back -->
+					<left>40</left>
+					<width>80</width>
+					<height>60</height>
+					<font>IconBackViewList</font>
+					<textcolor>TextColorFO</textcolor>
+					<selectedcolor>$VAR[SelectedFOCol]</selectedcolor>
+					<label>Û</label>
+					<visible>Control.HasFocus(50)</visible>
+				</control>
+				<control type="label"><!-- last watched -->
+					<textcolor>TextColorFO</textcolor><!-- incluede ueberschreibung textfarben -->
+					<selectedcolor>TextColorFO</selectedcolor>
+					<include>Lastwatched-Overlay</include>
+				</control>
+				<control type="label">
+					<description>Label1 unfocus</description>
+					<left>130</left>
+					<width>1520</width>
+					<height>60</height>
+					<selectedcolor>$VAR[SelectedCol]</selectedcolor>
+					<label>$VAR[Global_Label]</label>
+					<visible>!Control.HasFocus(50)</visible>
+				</control>
+				<control type="label">
+					<description>Label2 unfocus</description>
+					<left>1200</left>
+					<width>300</width>
+					<height>60</height>
+					<align>right</align>
+					<font>RegularSmall</font>
+					<selectedcolor>$VAR[SelectedCol]</selectedcolor>
+					<label>$VAR[Global_Label2]</label>
+					<visible>!ListItem.IsParentFolder + !Control.HasFocus(50)</visible>
+				</control>
+				<control type="label">
+					<description>Label1 focus</description>
+					<left>130</left>
+					<width>1520</width>
+					<height>60</height>
+					<textcolor>TextColorFO</textcolor>
+					<selectedcolor>$VAR[SelectedFOCol]</selectedcolor>
+					<label>$VAR[Global_Label]</label>
+					<visible>Control.HasFocus(50)</visible>
+				</control>
+				<control type="label">
+					<description>Label2 focus</description>
+					<left>1200</left>
+					<width>300</width>
+					<height>60</height>
+					<align>right</align>
+					<font>RegularSmall</font>
+					<textcolor>TextColorFO</textcolor>
+					<selectedcolor>$VAR[SelectedFOCol]</selectedcolor>
+					<label>$VAR[Global_Label2]</label>
+					<visible>!ListItem.IsParentFolder + Control.HasFocus(50)</visible>
+				</control>
+				<control type="label"><!-- Media Overlay -->
+					<description>Media Overlay - neu, angefangene usw. unfocus</description>
+					<left>1510</left>
+					<right>30</right>
+					<width>50</width>
+					<height>60</height>
+					<aligny>top</aligny>
+					<align>right</align>
+					<font>IconOverlayList</font>
+					<selectedcolor>TextColorHeavy</selectedcolor><!-- default ueberschreibung -->
+					<label>$VAR[WatchedOverlay]</label>
+					<visible>$EXP[VisVideoOverlays] + !Control.HasFocus(50)</visible>
+				</control>
+				<control type="label">
+					<description>Media Overlay - neu, angefangene usw. focus</description>
+					<left>1510</left>
+					<right>30</right>
+					<width>50</width>
+					<height>60</height>
+					<aligny>top</aligny>
+					<align>right</align>
+					<font>IconOverlayList</font>
+					<textcolor>TextColorFO</textcolor>
+					<selectedcolor>TextColorFO</selectedcolor><!-- default ueberschreibung -->
+					<label>$VAR[WatchedOverlay]</label>
+					<visible>$EXP[VisVideoOverlays] + Control.HasFocus(50)</visible>
+				</control>
+			</focusedlayout>
+		</control>
+		<control type="scrollbar" id="60"><!-- scroller -->
+			<left>1800</left>
+			<top>150</top>
+			<height>860</height>
+			<onleft>50</onleft>
+			<onright condition="![Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons) | Container.Content(sets)]">SetFocus(9900)</onright><!-- sideblade bei content ohne sms -->
+			<onright condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons) | Container.Content(sets)] + [String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556])]">SetFocus(62)</onright><!-- SMS bei sortierung 551=Name 561=File 556=Title -->
+			<onright condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons) | Container.Content(sets)] + ![String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556])]">SetFocus(9900)</onright><!-- sideblade bei sortierung nicht titel usw. -->
+		</control>
+		<control type="group"><!-- SMS Scroller -->
+			<description>SMS Bar</description>
+			<top>20</top>
+			<include>SMSScrollbar</include>
+		</control>
+		<control type="group"><!-- Sortletter und SMS Jumpletter -->
+			<description>Scroll label + icon</description>
+			<left>1767</left>
+			<top>110</top>
+			<visible>$EXP[VisSMSScroller] + [String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556])]</visible><!-- nur bei 551 Name, 561 Datei, 556 Title -->
+			<include>Animation-SMSLetter-Slide</include>
+			<include>ScrollLetter</include>
+		</control>
+	</control>
+</include>
+
+<include name="Viewtype_51_Banner">
+	<control type="group">
+		<visible>Control.IsVisible(51)</visible>
+		<description>Banner View (id=51) Banner panel</description>
+		<include>Animation-OpenCloseVisibleHidden-Zoom</include>
+		<include>Animation395-Conditional-Slide</include>
+		<include>Animation-Conditional-InaktivZoom</include>
+		<control type="panel" id="51">
+			<viewtype label="Banner">icon</viewtype>
+			<left>170</left>
+			<top>160</top>
+			<width>1780</width>
+			<height>790</height>
+			<oninfo condition="ListItem.IsCollection + System.HasAddon(script.skin.info.service)">ActivateWindow(1102)</oninfo>
+			<oninfo condition="Integer.IsGreater(Container(20000).NumItems,11) + [Container.Content(genres) | Container.Content(years) | Container.Content(actors) | Container.Content(studios) | Container.Content(dircetors) | Container.Content(countries)]">ActivateWindow(1103)</oninfo>
+			<oninfo condition="Integer.IsLess(Container(20000).NumItems,11) + [Container.Content(genres) | Container.Content(years) | Container.Content(actors) | Container.Content(studios) | Container.Content(dircetors) | Container.Content(countries)]">ActivateWindow(1104)</oninfo>
+			<onleft>Setfocus(9900)</onleft>
+			<onright condition="Integer.IsGreater(Container(51).NumPages,1)">60</onright>
+			<onright condition="!Integer.IsGreater(Container(51).NumPages,1)">SetFocus(9900)</onright>
+			<onup>51</onup>
+			<ondown>51</ondown>
+			<pagecontrol>60</pagecontrol>
+			<scrolltime tween="cubic" easing="inout">450</scrolltime>
+			<visible>!String.Contains(Container.FolderPath,plugin) + !String.StartsWith(Container.FolderPath,special://skin/playlists/Doku_) + [Container.Content(movies) + String.IsEqual(Skin.String(PLS_FilmViewtype),Banner) + String.StartsWith(Container.FolderPath,special://skin/playlists/Film_)] | [Container.Content(movies) + String.IsEqual(Skin.String(FilmViewtype),Banner) + !String.StartsWith(Container.FolderPath,special://skin/playlists/)] | [Container.Content(tvshows) + [String.StartsWith(Container.FolderPath,videodb://) | String.StartsWith(Container.FolderPath,library://)] + String.IsEqual(Skin.String(TVViewtype),Banner) + !String.StartsWith(Container.FolderPath,special://skin/playlists/)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(PLS_TVViewtype),Banner) + String.StartsWith(Container.FolderPath,special://skin/playlists/TV_)] | [Container.Content(sets) + String.IsEqual(Skin.String(SetViewtype),Banner)] | [Container.Content(genres) + String.IsEqual(Skin.String(GenreViewtype),Banner)] | [Container.Content(years) + String.IsEqual(Skin.String(YearsViewtype),Banner)] | !String.IsEmpty(Window(home).Property(Viewtypeselection))</visible>
+			<itemlayout width="800" height="188">
+				<control type="label"><!-- back -->
+					<left>70</left>
+					<top>41</top>
+					<width>654</width>
+					<height>125</height>
+					<align>center</align>
+					<font>IconbackBannerview</font>
+					<textcolor>TextColorMedium</textcolor>
+					<label>Ü</label>
+					<visible>ListItem.IsParentFolder</visible>
+					<animation type="Conditional" condition="true">
+						<effect type="fade" start="70" end="70" time="0" />
+						<effect type="zoom" start="80" end="80" center="auto" time="0" />
+					</animation>
+				</control>
+				<control type="group">
+					<left>70</left>
+					<top>51</top>
+					<visible>!ListItem.IsParentFolder</visible>
+					<control type="image">
+						<description>Schatten</description>
+						<left>-12</left>
+						<top>-12</top>
+						<width>654</width>
+						<height>155</height>
+						<texture border="16" colordiffuse="ShadowColor">views/shadow8.png</texture>
+					</control>
+					<control type="image">
+						<description>Border</description>
+						<left>-4</left>
+						<top>-4</top>
+						<width>638</width>
+						<height>139</height>
+						<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
+					</control>
+					<control type="image"><!-- Fallback -->
+						<description>Hintergrundfarbe</description>
+						<width>630</width>
+						<height>131</height>
+						<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+					</control>
+					<control type="label">
+						<description>Label fallback</description>
+						<top>80</top>
+						<width>630</width>
+						<height>31</height>
+						<align>center</align>
+						<font>RegularSmall</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+						<visible>Container.Content(years) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets)</visible>
+					</control>
+					<control type="label">
+						<description>Fallback icon</description>
+						<width>630</width>
+						<height>80</height>
+						<align>center</align>
+						<font>Iconbannerdefault</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[Art-Fallback]</label>
+						<visible>Container.Content(years) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets)</visible>
+					</control>
+					<control type="image"><!-- Artworks -->
+						<description>Art genre movie fallback</description>
+						<width>630</width>
+						<height>131</height>
+						<texture background="true">resource://resource.images.moviegenrefanart.cycle/moviegenres_banner/default.jpg</texture>
+						<visible>$EXP[VisGenre]</visible>
+					</control>
+					<control type="label">
+						<description>Label genre fallback ueber genre default auf weissem teil</description>
+						<width>350</width>
+						<height>131</height>
+						<align>right</align>
+						<font>TitleCategoryBig</font>
+						<label>$INFO[ListItem.Label]</label>
+						<visible>$EXP[VisGenre]</visible>
+					</control>
+					<control type="image">
+						<description>Art</description>
+						<width>630</width>
+						<height>131</height>
+						<texture background="true">$VAR[Art-Banner]</texture>
+					</control>
+					<control type="label"><!-- last watched -->
+						<include>Lastwatched-Overlay</include>
+					</control>
+					<control type="image"><!-- Inaktiv overlay -->
+						<width>630</width>
+						<height>131</height>
+						<texture colordiffuse="$VAR[InaktivImageCol]">white.png</texture>
+					</control>
+					<include content="VintageOldpaper-Overlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
+						<param name="width">630</param>
+						<param name="height">131</param>
+						<param name="texture">views/oldpaperoverlaybanner.png</param>
+					</include>
+					<control type="image"><!-- Inaktiv Fade overlay -->
+						<width>630</width>
+						<height>131</height>
+						<texture colordiffuse="TextColorFO">white.png</texture>
+						<include>Animation-Conditional-InaktivFade</include>
+					</control>
+					<control type="group"><!-- Media Overlay -->
+						<left>584</left>
+						<top>-9</top>
+						<description>Media Overlay - neu, angefangene usw.</description>
+						<visible>$EXP[VisVideoOverlays]</visible>
+						<control type="image">
+							<width>56</width>
+							<height>56</height>
+							<texture colordiffuse="$VAR[PrimaryCol]">flagging/watched_bg.png</texture>
+						</control>
+						<control type="label">
+							<top>-18</top>
+							<width>54</width>
+							<height>56</height>
+							<align>right</align><!-- include ueberschreibung -->
+							<font>IconOverlay</font>
+							<include>WatchedOverlay-Layout</include>
+							<label>$VAR[WatchedOverlay]</label>
+						</control>
+					</control>
+				</control>
+			</itemlayout>
+			<focusedlayout width="800" height="188">
+				<control type="label"><!-- back -->
+					<left>70</left>
+					<top>41</top>
+					<width>654</width>
+					<height>125</height>
+					<align>center</align>
+					<font>IconbackBannerview</font>
+					<textcolor>TextColorMedium</textcolor>
+					<label>Ü</label>
+					<visible>ListItem.IsParentFolder</visible>
+					<animation type="Focus">
+						<effect type="fade" start="70" end="100" time="250" />
+						<effect type="zoom" start="80" end="100" center="auto" time="250" />
+					</animation>
+					<animation type="UnFocus">
+						<effect type="fade" start="100" end="70" time="120" />
+						<effect type="zoom" start="100" end="80" center="auto" time="120" />
+					</animation>
+				</control>
+				<control type="group">
+					<left>70</left>
+					<top>51</top>
+					<visible>!ListItem.IsParentFolder</visible>
+					<animation effect="zoom" start="100" end="120" center="302,127.5" time="250">Focus</animation>
+					<animation effect="zoom" start="120" center="302,127.5" time="100">UnFocus</animation>
+					<control type="image">
+						<description>Schatten</description>
+						<left>-12</left>
+						<top>-12</top>
+						<width>654</width>
+						<height>155</height>
+						<texture border="16" colordiffuse="ShadowColor">views/shadow8.png</texture>
+					</control>
+					<control type="image">
+						<description>Border</description>
+						<left>-4</left>
+						<top>-4</top>
+						<width>638</width>
+						<height>139</height>
+						<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
+					</control>
+					<control type="image"><!-- Fallback -->
+						<description>Hintergrundfarbe</description>
+						<width>630</width>
+						<height>131</height>
+						<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+					</control>
+					<control type="label">
+						<description>Label fallback</description>
+						<top>80</top>
+						<width>630</width>
+						<height>31</height>
+						<align>center</align>
+						<font>RegularSmall</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+						<visible>Container.Content(years) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets)</visible>
+					</control>
+					<control type="label">
+						<description>Fallback icon</description>
+						<width>630</width>
+						<height>80</height>
+						<align>center</align>
+						<font>Iconbannerdefault</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[Art-Fallback]</label>
+						<visible>Container.Content(years) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets)</visible>
+					</control>
+					<control type="image"><!-- Artworks -->
+						<description>Art genre movie fallback</description>
+						<width>630</width>
+						<height>131</height>
+						<texture background="true">resource://resource.images.moviegenrefanart.cycle/moviegenres_banner/default.jpg</texture>
+						<visible>$EXP[VisGenre]</visible>
+					</control>
+					<control type="label">
+						<description>Label genre fallback ueber genre default auf weissem teil</description>
+						<width>350</width>
+						<height>131</height>
+						<align>right</align>
+						<font>TitleCategoryBig</font>
+						<label>$INFO[ListItem.Label]</label>
+						<visible>$EXP[VisGenre]</visible>
+					</control>
+					<control type="image">
+						<description>Art</description>
+						<width>630</width>
+						<height>131</height>
+						<texture background="true">$VAR[Art-Banner]</texture>
+					</control>
+					<control type="label"><!-- last watched -->
+						<include>Lastwatched-Overlay</include>
+					</control>
+					<control type="image"><!-- Inaktiv overlay -->
+						<width>630</width>
+						<height>131</height>
+						<texture colordiffuse="$VAR[InaktivImageCol]">white.png</texture>
+						<include>Animation-Dim</include>
+					</control>
+					<include content="VintageOldpaper-Overlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
+						<param name="width">630</param>
+						<param name="height">131</param>
+						<param name="texture">views/oldpaperoverlaybanner.png</param>
+					</include>
+					<control type="group"><!-- Media Overlay -->
+						<left>584</left>
+						<top>-9</top>
+						<description>Media Overlay - neu, angefangene usw.</description>
+						<visible>$EXP[VisVideoOverlays]</visible>
+						<control type="image">
+							<width>56</width>
+							<height>56</height>
+							<texture colordiffuse="$VAR[PrimaryCol]">flagging/watched_bg.png</texture>
+						</control>
+						<control type="label">
+							<top>-18</top>
+							<width>54</width>
+							<height>56</height>
+							<align>right</align><!-- include ueberschreibung -->
+							<font>IconOverlay</font>
+							<include>WatchedOverlay-Layout</include>
+							<label>$VAR[WatchedOverlay]</label>
+						</control>
+					</control>
+				</control>
+				<control type="group"><!-- Rating -->
+					<description>Rating Overlay - Rating und Userrating</description>
+					<visible>$EXP[VisVideoOverlays]</visible>
+					<animation type="Focus">
+						<effect type="fade" start="0" end="100" time="350" />
+						<effect type="zoom" start="80" end="100" center="265,55" time="350" />
+					</animation>
+					<animation type="UnFocus">
+						<effect type="fade" start="100" end="0" time="100" />
+						<effect type="zoom" start="100" end="80" center="265,55" time="115" />
+					</animation>
+					<left>574.5</left>
+					<top>168</top>
+					<include>StarRating-bg</include>
+					<control type="label"><!-- -19 -->
+						<include>StarRating-Layoutback</include>
+						<label>$VAR[StarRatingback]</label>
+					</control>
+					<control type="label">
+						<include>StarRating-Layoutfront</include>
+						<label>$VAR[StarRating]</label>
+					</control>
+				</control>
+			</focusedlayout>
+		</control>
+		<control type="scrollbar" id="60"><!-- Scroller -->
+			<left>1800</left>
+			<top>190</top>
+			<height>750</height>
+			<onleft>51</onleft>
+			<onright condition="![Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons) | Container.Content(sets)]">SetFocus(9900)</onright><!-- sideblade bei content ohne sms -->
+			<onright condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons) | Container.Content(sets)] + [String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556])]">SetFocus(62)</onright><!-- SMS bei sortierung 551=Name 561=File 556=Title -->
+			<onright condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons) | Container.Content(sets)] + ![String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556])]">SetFocus(9900)</onright><!-- sideblade bei sortierung nicht titel usw. -->
+		</control>
+		<include>SMSScrollbar</include><!-- SMS Bar -->
+		<control type="group"><!-- Sortletter und SMS Jumpletter -->
+			<description>Scroll label + icon</description>
+			<left>1767</left>
+			<top>160</top>
+			<visible>$EXP[VisSMSScroller] + [String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556])]</visible>
+			<include>Animation-SMSLetter-Slide</include>
+			<include>ScrollLetter</include>
+		</control>
+	</control>
+</include>
+
+<include name="Viewtypes-posterInfo-Content">
+	<animation effect="fade" start="0" end="100" delay="2700" time="200" reversible="false" condition="Skin.HasSetting(ShowInfo)">Focus</animation>
+	<control type="label">
+		<width>560</width>
+		<height>60</height>
+		<font>TitleCapsNormal</font>
+		<label>$INFO[ListItem.Label]</label>
+		<textcolor>TextColorFO</textcolor>
+	</control>
+	<control type="textbox">
+		<left>0</left>
+		<top>75</top>
+		<width>528</width>
+		<height max="222">auto</height>
+		<font>RegularSmall</font>
+		<label fallback="Kein Überblick gefunden">$INFO[ListItem.Plot]</label>
+	</control>
+	<control type="label">
+		<top>280</top>
+		<width>418</width>
+		<font>LightCDNormal</font>
+		<label fallback="Kein Genre gefunden">$INFO[ListItem.Genre]</label>
+	</control>
+	<control type="label">
+		<left>418</left>
+		<top>280</top>
+		<width>110</width>
+		<align>right</align>
+		<font>LightCDNormal</font>
+		<label>$INFO[ListItem.Duration,, min.]</label>
+	</control>
+</include>
+
+<include name="Viewtype_52_Poster">
+	<control type="group">
+		<description>List View (id=52) Poster panel</description>
+		<visible>Control.IsVisible(52)</visible>
+		<include>Animation-OpenCloseVisibleHidden-Zoom</include>
+		<include>Animation395-Conditional-Slide</include>
+		<include>Animation-Conditional-InaktivZoom</include>
+		<control type="panel" id="52">
+			<viewtype label="Poster">bigicon</viewtype>
+			<left>200</left>
+			<top>110</top>
+			<width>1580</width>
+			<height>940</height>
+			<oninfo condition="ListItem.IsCollection + System.HasAddon(script.skin.info.service)">ActivateWindow(1102)</oninfo>
+			<oninfo condition="Integer.IsGreater(Container(20000).NumItems,11) + [Container.Content(genres) | Container.Content(years) | Container.Content(actors) | Container.Content(studios) | Container.Content(dircetors) | Container.Content(countries)]">ActivateWindow(1103)</oninfo>
+			<oninfo condition="Integer.IsLess(Container(20000).NumItems,11) + [Container.Content(genres) | Container.Content(years) | Container.Content(actors) | Container.Content(studios) | Container.Content(dircetors) | Container.Content(countries)]">ActivateWindow(1104)</oninfo>
+			<onleft>Setfocus(9900)</onleft>
+			<onright condition="Integer.IsGreater(Container(52).NumPages,1)">60</onright>
+			<onright condition="!Integer.IsGreater(Container(52).NumPages,1)">SetFocus(9900)</onright>
+			<onup>52</onup>
+			<ondown>52</ondown>
+			<pagecontrol>60</pagecontrol>
+			<scrolltime tween="cubic" easing="inout">450</scrolltime>
+			<visible>!String.Contains(Container.FolderPath,plugin) + [Container.Content(movies) + String.IsEqual(Skin.String(PLS_FilmViewtype),Poster) + String.StartsWith(Container.FolderPath,special://skin/playlists/Film_)] | [Container.Content(movies) + String.IsEqual(Skin.String(FilmViewtype),Poster) + !String.StartsWith(Container.FolderPath,special://skin/playlists/)] | [Container.Content(tvshows) + [String.StartsWith(Container.FolderPath,videodb://) | String.StartsWith(Container.FolderPath,library://)] + String.IsEqual(Skin.String(TVViewtype),Poster) + !String.StartsWith(Container.FolderPath,special://skin/playlists/)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(PLS_TVViewtype),Poster) + String.StartsWith(Container.FolderPath,special://skin/playlists/TV_)] | [Container.Content(sets) + String.IsEqual(Skin.String(SetViewtype),Poster)] | [Container.Content(genres) + String.IsEqual(Skin.String(GenreViewtype),Poster)] | [Container.Content(years) + String.IsEqual(Skin.String(YearsViewtype),Poster)] | [Container.Content(actors) + String.IsEqual(Skin.String(ActorViewtype),Poster)] | !String.IsEmpty(Window(home).Property(Viewtypeselection))</visible>
+			<itemlayout width="314" height="470">
+				<control type="label"><!-- back -->
+					<left>17</left>
+					<top>51</top>
+					<width>242</width>
+					<height>360</height>
+					<align>center</align>
+					<label>Ü</label>
+					<font>Iconbackposterview</font>
+					<textcolor>TextColorMedium</textcolor>
+					<visible>ListItem.IsParentFolder</visible>
+					<animation type="Conditional" condition="true">
+						<effect type="fade" start="70" end="70" time="0" />
+						<effect type="zoom" start="80" end="80" center="152,212" time="0" />
+					</animation>
+				</control>
+				<control type="group">
+					<left>17</left>
+					<top>51</top>
+					<visible>!ListItem.IsParentFolder</visible>
+					<control type="image">
+						<description>Schatten</description>
+						<left>-12</left>
+						<top>-12</top>
+						<width>266</width>
+						<height>384</height>
+						<texture border="8" colordiffuse="ShadowColor">views/shadow8.png</texture>
+					</control>
+					<control type="image">
+						<description>Border</description>
+						<left>-4</left>
+						<top>-4</top>
+						<width>250</width>
+						<height>368</height>
+						<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
+					</control>
+					<control type="image"><!-- Fallback -->
+						<description>Hintergrund fallback</description>
+						<width>242</width>
+						<height>360</height>
+						<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+					</control>
+					<control type="label">
+						<description>Icon fallback actor groesser</description>
+						<width>242</width>
+						<height>260</height>
+						<align>center</align>
+						<font>IconPosterviewActordefault</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[Art-Fallback]</label>
+						<visible>Container.Content(actors)</visible>
+					</control>
+					<control type="label">
+						<description>Icon fallback</description>
+						<width>242</width>
+						<height>335</height>
+						<align>center</align>
+						<font>Iconposterviewdefault</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[Art-Fallback]</label>
+						<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(genres) | Container.Content(years)]</visible>
+					</control>
+					<control type="textbox">
+						<description>label fallback</description>
+						<left>20</left>
+						<top>250</top>
+						<width>210</width>
+						<height>90</height>
+						<align>center</align>
+						<font>RegularSmall</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$INFO[ListItem.label]</label>
+						<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(years) | Container.Content(actors)]</visible>
+					</control>
+					<control type="image"><!-- Artworks -->
+						<description>Art genre movie fallback</description>
+						<width>242</width>
+						<height>360</height>
+						<texture background="true">resource://resource.images.moviegenrefanart.cycle/moviegenres_poster/default.jpg</texture>
+						<visible>$EXP[VisGenre]</visible>
+					</control>
+					<control type="image">
+						<description>Art</description>
+						<width>242</width>
+						<height>360</height>
+						<texture background="true">$VAR[Art-Poster]</texture>
+					</control>
+					<control type="label"><!-- last watched -->
+						<include>Lastwatched-Overlay</include>
+					</control>
+					<control type="image"><!-- Inaktiv overlay -->
+						<width>242</width>
+						<height>360</height>
+						<texture colordiffuse="$VAR[InaktivImageCol]">white.png</texture>
+					</control>
+					<control type="image"><!-- Inaktiv Fade overlay -->
+						<width>242</width>
+						<height>360</height>
+						<texture colordiffuse="TextColorFO">white.png</texture>
+						<include>Animation-Conditional-InaktivFade</include>
+					</control>
+					<include content="VintageOldpaper-Overlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
+						<param name="width">242</param>
+						<param name="height">360</param>
+						<param name="texture">views/oldpaperoverlay2.png</param>
+					</include>
+					<control type="group"><!-- Media Overlay -->
+						<description>Media Overlay - neu, angefangene usw.</description>
+						<visible>$EXP[VisVideoOverlays]</visible>
+						<control type="image">
+							<left>185</left>
+							<top>-9</top>
+							<width>66</width>
+							<height>66</height>
+							<texture colordiffuse="$VAR[PrimaryCol]">flagging/watched_bg.png</texture>
+						</control>
+						<control type="label">
+							<left>184</left>
+							<top>-12</top>
+							<width>64</width>
+							<height>40</height>
+							<align>right</align><!-- include ueberschreibung -->
+							<font>IconOverlay</font>
+							<include>WatchedOverlay-Layout</include>
+							<label>$VAR[WatchedOverlay]</label>
+						</control>
+					</control>
+				</control>
+			</itemlayout>
+			<focusedlayout width="314" height="470">
+				<control type="label"><!-- back -->
+					<left>17</left>
+					<top>51</top>
+					<width>242</width>
+					<height>360</height>
+					<align>center</align>
+					<label>Ü</label>
+					<font>Iconbackposterview</font>
+					<textcolor>TextColorMedium</textcolor>
+					<visible>ListItem.IsParentFolder</visible>
+					<animation type="Focus">
+						<effect type="fade" start="70" end="100" time="250" />
+						<effect type="zoom" start="80" end="100" center="152,212" time="250" />
+					</animation>
+					<animation type="UnFocus">
+						<effect type="fade" start="100" end="70" time="120" />
+						<effect type="zoom" start="100" end="80" center="152,212" time="120" />
+					</animation>
+				</control>
+				<!-- Left Poster Info -->
+				<control type="group">
+					<left>17</left>
+					<top>51</top>
+					<visible>Container.Content(movies) + !ListItem.IsCollection + Skin.HasSetting(ShowInfo) + !ListItem.IsParentFolder + [Container(52).Column(0) | Container(52).Column(1) | Container(52).Column(2)]</visible>
+					<animation effect="fade" start="0" end="0" delay="0" time="50" reversible="false">UnFocus</animation>
+					<animation effect="fade" start="0" end="0" delay="0" time="50" reversible="false">Hidden</animation>
+					<control type="image">
+						<left>-4</left>
+						<top>-4</top>
+						<width>866</width>
+						<height>375</height>
+						<texture border="8" colordiffuse="$VAR[DialogCol]">views/white8.png</texture>
+						<animation effect="zoom" start="23,47,1,375" end="23,47,888,375" delay="2500" time="300" reversible="false" condition="Skin.HasSetting(ShowInfo)">Focus</animation>
+					</control>
+					<control type="image">
+						<left>-4</left>
+						<top>-10</top>
+						<width>877</width>
+						<height>81</height>
+						<texture border="0,0,14,0" colordiffuse="$VAR[primaryCol]" flipy="true">cycle/right-11.png</texture>
+						<animation effect="zoom" start="23,41,1,81" end="23,41,899,81" delay="2500" time="300" reversible="false" condition="Skin.HasSetting(ShowInfo)">Focus</animation>
+					</control>
+					<!-- Info -->
+					<control type="group">
+						<left>304</left>
+						<top>-6</top>
+						<include>Viewtypes-posterInfo-Content</include>
+					</control>
+				</control>
+				<!-- Right Poster Info -->
+				<control type="group">
+					<left>-600</left>
+					<top>51</top>
+					<visible>Container.Content(movies) + !ListItem.IsCollection + Skin.HasSetting(ShowInfo) + !ListItem.IsParentFolder + [Container(52).Column(3) | Container(52).Column(4)]</visible>
+					<animation effect="fade" start="0" end="0" delay="0" time="50" reversible="false">UnFocus</animation>
+					<animation effect="fade" start="0" end="0" delay="0" time="50" reversible="false">Hidden</animation>
+					<control type="image">
+						<left>-4</left>
+						<top>-4</top>
+						<width>866</width>
+						<height>375</height>
+						<texture border="8" colordiffuse="$VAR[DialogCol]">views/white8.png</texture>
+						<animation effect="zoom" start="866,47,1,375" end="-866,47,888,375" delay="2500" time="300" reversible="false" condition="Skin.HasSetting(ShowInfo)">Focus</animation>
+					</control>
+					<control type="image">
+						<left>-15</left>
+						<top>-10</top>
+						<width>877</width>
+						<height>81</height>
+						<texture border="14,0,0,0" colordiffuse="$VAR[primaryCol]" flipy="true" flipx="true">cycle/right-11.png</texture>
+						<animation effect="zoom" start="866,41,1,81" end="-877,41,899,81" delay="2500" time="300" reversible="false" condition="Skin.HasSetting(ShowInfo)">Focus</animation>
+					</control>
+					<!-- Info -->
+					<control type="group">
+						<left>0</left>
+						<top>-6</top>
+						<include>Viewtypes-posterInfo-Content</include>
+					</control>
+				</control>
+				<control type="group">
+					<left>17</left>
+					<top>51</top>
+					<visible>!ListItem.IsParentFolder</visible>
+					<animation effect="zoom" start="100" end="115" center="152,212" time="250">Focus</animation>
+					<animation effect="zoom" start="115" center="152,212" time="100">UnFocus</animation>
+					<control type="image">
+						<description>Schatten</description>
+						<left>-12</left>
+						<top>-12</top>
+						<width>266</width>
+						<height>384</height>
+						<texture border="8" colordiffuse="ShadowColor">views/shadow8.png</texture>
+					</control>
+					<control type="image">
+						<description>Border</description>
+						<left>-4</left>
+						<top>-4</top>
+						<width>250</width>
+						<height>368</height>
+						<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
+					</control>
+					<control type="image"><!-- Fallback -->
+						<description>Hintergrund fallback</description>
+						<width>242</width>
+						<height>360</height>
+						<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+					</control>
+					<control type="label">
+						<description>Icon fallback actor groesser</description>
+						<width>242</width>
+						<height>260</height>
+						<align>center</align>
+						<font>IconPosterviewActordefault</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[Art-Fallback]</label>
+						<visible>Container.Content(actors)</visible>
+					</control>
+					<control type="label">
+						<description>Icon fallback</description>
+						<width>242</width>
+						<height>335</height>
+						<align>center</align>
+						<font>Iconposterviewdefault</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[Art-Fallback]</label>
+						<visible>[Container.Content(genres) | Container.Content(years) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets)]</visible>
+					</control>
+					<control type="textbox">
+						<description>label fallback</description>
+						<left>20</left>
+						<top>250</top>
+						<width>210</width>
+						<height>90</height>
+						<align>center</align>
+						<font>RegularSmall</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$INFO[ListItem.label]</label>
+						<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets)]</visible>
+					</control>
+					<control type="image"><!-- Artworks -->
+						<description>Art genre movie fallback</description>
+						<width>242</width>
+						<height>360</height>
+						<texture background="true">resource://resource.images.moviegenrefanart.cycle/moviegenres_poster/default.jpg</texture>
+						<visible>$EXP[VisGenre]</visible>
+					</control>
+					<control type="image">
+						<description>Art</description>
+						<width>242</width>
+						<height>360</height>
+						<texture background="true">$VAR[Art-Poster]</texture>
+					</control>
+					<control type="label"><!-- last watched -->
+						<include>Lastwatched-Overlay</include>
+					</control>
+					<control type="image"><!-- Inaktiv overlay -->
+						<width>242</width>
+						<height>360</height>
+						<texture colordiffuse="$VAR[InaktivImageCol]">white.png</texture>
+						<include>Animation-Dim</include>
+					</control>
+					<include content="VintageOldpaper-Overlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
+						<param name="width">242</param>
+						<param name="height">360</param>
+						<param name="texture">views/oldpaperoverlay2.png</param>
+					</include>
+					<control type="group"><!-- Media Overlay -->
+						<description>Media Overlay - neu, angefangene usw.</description>
+						<visible>$EXP[VisVideoOverlays]</visible>
+						<control type="image">
+							<left>185</left>
+							<top>-9</top>
+							<width>66</width>
+							<height>66</height>
+							<texture colordiffuse="$VAR[PrimaryCol]">flagging/watched_bg.png</texture>
+						</control>
+						<control type="label">
+							<left>184</left>
+							<top>-12</top>
+							<width>64</width>
+							<height>40</height>
+							<align>right</align><!-- include ueberschreibung -->
+							<font>IconOverlay</font>
+							<include>WatchedOverlay-Layout</include>
+							<label>$VAR[WatchedOverlay]</label>
+						</control>
+					</control>
+				</control>
+				<control type="group"><!-- Rating -->
+					<description>Rating Overlay - Rating und Userrating</description>
+					<visible>$EXP[VisVideoOverlays]</visible>
+					<animation type="Focus">
+						<effect type="fade" start="0" end="100" time="350" />
+						<effect type="zoom" start="80" end="100" center="152,212" time="350" />
+					</animation>
+					<animation type="UnFocus">
+						<effect type="fade" start="100" end="0" time="100" />
+						<effect type="zoom" start="100" end="80" center="152,212" time="115" />
+					</animation>
+					<left>70</left>
+					<top>417</top>
+					<include>StarRating-bg</include>
+					<control type="label"><!-- -19 -->
+						<include>StarRating-Layoutback</include>
+						<label>$VAR[StarRatingback]</label>
+					</control>
+					<control type="label">
+						<include>StarRating-Layoutfront</include>
+						<label>$VAR[StarRating]</label>
+					</control>
+				</control>
+				<control type="group"><!-- category label -->
+					<visible>!ListItem.IsParentFolder + [Container.Content(genres) | Container.Content(years) | Container.Content(actors)]</visible>
+					<animation type="Focus">
+						<effect type="fade" start="0" end="100" time="350" />
+						<effect type="zoom" start="80" end="100" center="152,212" time="350" />
+					</animation>
+					<animation type="UnFocus">
+						<effect type="fade" start="100" end="0" time="100" />
+						<effect type="zoom" start="100" end="80" center="152,212" time="115" />
+					</animation>
+					<left>5</left>
+					<top>415</top>
+					<control type="image">
+						<width>269</width>
+						<height>41</height>
+						<texture colordiffuse="$VAR[SecondaryCol]">cycle/categoriebg.png</texture>
+					</control>
+					<control type="label">
+						<top>-5</top>
+						<width>269</width>
+						<height>41</height>
+						<textoffsetx>5</textoffsetx>
+						<align>center</align>
+						<font>TitleCategorySmall</font>
+						<textcolor>TextColorFO</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</control>
+			</focusedlayout>
+		</control>
+		<control type="scrollbar" id="60"><!-- Scroller -->
+			<left>1800</left>
+			<top>140</top>
+			<height>880</height>
+			<onleft>52</onleft>
+			<onright condition="![Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons) | Container.Content(sets)]">SetFocus(9900)</onright><!-- sideblade bei content ohne sms -->
+			<onright condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons) | Container.Content(sets)] + [String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556])]">SetFocus(62)</onright><!-- SMS bei sortierung 551=Name 561=File 556=Title -->
+			<onright condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons) | Container.Content(sets)] + ![String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556])]">SetFocus(9900)</onright><!-- sideblade bei sortierung nicht titel usw. -->
+		</control>
+		<control type="group"><!-- SMS Scroller -->
+			<description>SMS Bar</description>
+			<top>20</top>
+			<include>SMSScrollbar</include>
+		</control>
+		<control type="group"><!-- Sortletter und SMS Jumpletter -->
+			<description>Scroll label + icon</description>
+			<left>1767</left>
+			<top>110</top>
+			<visible>$EXP[VisSMSScroller] + [String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556])]</visible>
+			<include>Animation-SMSLetter-Slide</include>
+			<include>ScrollLetter</include>
+		</control>
+	</control>
+</include>
+
+<include name="Viewtypes-landscapeInfo-Content">
+	<animation effect="fade" start="0" end="100" delay="2700" time="200" reversible="false" condition="Skin.HasSetting(ShowInfo)">Focus</animation>
+	<control type="label">
+		<width>560</width>
+		<height>60</height>
+		<font>TitleCapsNormal</font>
+		<label>$INFO[ListItem.Label]</label>
+		<textcolor>TextColorFO</textcolor>
+	</control>
+	<control type="textbox">
+		<left>0</left>
+		<top>75</top>
+		<width>528</width>
+		<height max="90">auto</height>
+		<font>RegularSmall</font>
+		<label fallback="Kein Überblick gefunden">$INFO[ListItem.Plot]</label>
+	</control>
+	<control type="label">
+		<top>180</top>
+		<width>418</width>
+		<font>LightCDNormal</font>
+		<label fallback="Kein Genre gefunden">$INFO[ListItem.Genre]</label>
+	</control>
+	<control type="label">
+		<left>418</left>
+		<top>180</top>
+		<width>110</width>
+		<align>right</align>
+		<font>LightCDNormal</font>
+		<label>$INFO[ListItem.Duration,, min.]</label>
+	</control>
+</include>
+
+<include name="Viewtype_53_Landscape">
+	<control type="group">
+		<description>Landscape View (id=53) landscape/fanart panel</description>
+		<visible>Control.IsVisible(53)</visible>
+		<include>Animation-OpenCloseVisibleHidden-Zoom</include>
+		<include>Animation395-Conditional-Slide</include>
+		<include>Animation-Conditional-InaktivZoom</include>
+		<!-- content -->
+		<control type="panel" id="53">
+			<viewtype label="Fanart">bigwide</viewtype>
+			<left>210</left>
+			<top>110</top>
+			<width>1770</width>
+			<height>890</height>
+			<oninfo condition="ListItem.IsCollection + System.HasAddon(script.skin.info.service)">ActivateWindow(1102)</oninfo>
+			<oninfo condition="Integer.IsGreater(Container(20000).NumItems,11) + [Container.Content(genres) | Container.Content(years) | Container.Content(actors) | Container.Content(studios) | Container.Content(dircetors) | Container.Content(countries)]">ActivateWindow(1103)</oninfo>
+			<oninfo condition="Integer.IsLess(Container(20000).NumItems,11) + [Container.Content(genres) | Container.Content(years) | Container.Content(actors) | Container.Content(studios) | Container.Content(dircetors) | Container.Content(countries)]">ActivateWindow(1104)</oninfo>
+			<onleft>Setfocus(9900)</onleft>
+			<onright condition="Integer.IsGreater(Container(53).NumPages,1)">60</onright>
+			<onright condition="!Integer.IsGreater(Container(53).NumPages,1)">SetFocus(9900)</onright>
+			<onup>53</onup>
+			<ondown>53</ondown>
+			<preloaditems>2</preloaditems>
+			<pagecontrol>60</pagecontrol>
+			<scrolltime tween="cubic" easing="inout">450</scrolltime>
+			<visible>!String.Contains(Container.FolderPath,plugin) + !String.StartsWith(Container.FolderPath,special://skin/playlists/Doku_) + [Container.Content(movies) + String.IsEqual(Skin.String(PLS_FilmViewtype),Landscape) + String.StartsWith(Container.FolderPath,special://skin/playlists/Film_)] | [Container.Content(movies) + String.IsEqual(Skin.String(FilmViewtype),Landscape) + !String.StartsWith(Container.FolderPath,special://skin/playlists/)] | [Container.Content(tvshows) + [String.StartsWith(Container.FolderPath,videodb://) | String.StartsWith(Container.FolderPath,library://)] + String.IsEqual(Skin.String(TVViewtype),Landscape) + !String.StartsWith(Container.FolderPath,special://skin/playlists/)] | [Container.Content(tvshows) + String.IsEqual(Skin.String(PLS_TVViewtype),Landscape) + String.StartsWith(Container.FolderPath,special://skin/playlists/TV_)] | [Container.Content(sets) + String.IsEqual(Skin.String(SetViewtype),Landscape)] | [Container.Content(genres) + String.IsEqual(Skin.String(GenreViewtype),Landscape)] | [Container.Content(years) + String.IsEqual(Skin.String(YearsViewtype),Landscape)] | !String.IsEmpty(Window(home).Property(Viewtypeselection))</visible>
+			<itemlayout width="520" height="290">
+				<control type="label"><!-- back -->
+					<left>20</left>
+					<top>51</top>
+					<width>422</width>
+					<height>242</height>
+					<align>center</align>
+					<font>Iconbacklandscapeview</font>
+					<textcolor>TextColorMedium</textcolor>
+					<label>Ü</label>
+					<visible>ListItem.IsParentFolder</visible>
+					<animation type="Conditional" condition="true">
+						<effect type="fade" start="100" end="70" time="180" />
+						<effect type="zoom" start="80" end="80" center="211,212" time="180" />
+					</animation>
+				</control>
+				<control type="group">
+					<left>20</left>
+					<top>51</top>
+					<visible>!ListItem.IsParentFolder</visible>
+					<control type="image">
+						<description>Schatten</description>
+						<left>-12</left>
+						<top>-12</top>
+						<width>434</width>
+						<height>254</height>
+						<texture border="8" colordiffuse="ShadowColor">views/shadow8.png</texture>
+					</control>
+					<control type="image">
+						<description>Border</description>
+						<left>-4</left>
+						<top>-4</top>
+						<width>418</width>
+						<height>238</height>
+						<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
+					</control>
+					<control type="image"><!-- Fallback -->
+						<description>Hintergrundfarbe</description>
+						<width>410</width>
+						<height>230</height>
+						<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+					</control>
+					<control type="label">
+						<description>Fallback icon</description>
+						<width>410</width>
+						<height>185</height>
+						<align>center</align>
+						<font>Iconlandscapedefault</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[Art-Fallback]</label>
+					</control>
+					<control type="textbox">
+						<description>Label fallback</description>
+						<left>20</left>
+						<top>140</top>
+						<width>370</width>
+						<height>90</height>
+						<align>center</align>
+						<font>RegularSmall</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$INFO[ListItem.label]</label>
+						<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(years)]</visible>
+					</control>
+					<control type="image"><!-- Artworks -->
+						<description>Art genre movie fallback</description>
+						<width>410</width>
+						<height>230</height>
+						<texture background="true">resource://resource.images.moviegenrefanart.cycle/moviegenres_fanart/default.jpg</texture>
+						<visible>$EXP[VisGenre]</visible>
+					</control>
+					<control type="image">
+						<description>Art</description>
+						<width>410</width>
+						<height>230</height>
+						<texture background="true">$VAR[Art-Landscape]</texture>
+						<aspectratio>scale</aspectratio>
+					</control>
+					<control type="label"><!-- last watched -->
+						<include>Lastwatched-Overlay</include>
+					</control>
+					<control type="image"><!-- Inaktiv overlay -->
+						<width>410</width>
+						<height>230</height>
+						<texture colordiffuse="$VAR[InaktivImageCol]">white.png</texture>
+					</control>
+					<include content="VintageOldpaper-Overlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
+						<param name="width">410</param>
+						<param name="height">230</param>
+						<param name="texture">views/oldpaperoverlaylandscape.png</param>
+					</include>
+					<control type="image"><!-- Inaktiv Fade overlay -->
+						<width>410</width>
+						<height>230</height>
+						<texture colordiffuse="TextColorFO">white.png</texture>
+						<include>Animation-Conditional-InaktivFade</include>
+					</control>
+					<control type="group"><!-- Media Overlay -->
+						<description>Media Overlay - neu, angefangene usw.</description>
+						<visible>$EXP[VisVideoOverlays]</visible>
+						<control type="image">
+							<left>358</left>
+							<top>-9</top>
+							<width>61</width>
+							<height>61</height>
+							<texture colordiffuse="$VAR[PrimaryCol]">flagging/watched_bg.png</texture>
+						</control>
+						<control type="label">
+							<left>356</left>
+							<top>-14</top>
+							<width>60</width>
+							<height>30</height>
+´								<align>right</align><!-- include ueberschreibung -->
+							<label>$VAR[WatchedOverlay]</label>
+							<include>WatchedOverlay-Layout</include>
+							<font>IconOverlay</font>
+						</control>
+					</control>
+				</control>
+			</itemlayout>
+			<focusedlayout width="520" height="290">
+				<control type="label"><!-- back -->
+					<left>20</left>
+					<top>51</top>
+					<width>422</width>
+					<height>242</height>
+					<align>center</align>
+					<font>Iconbacklandscapeview</font>
+					<textcolor>TextColorMedium</textcolor>
+					<label>Ü</label>
+					<visible>ListItem.IsParentFolder</visible>
+					<animation type="Focus">
+						<effect type="fade" start="70" end="100" time="250" />
+						<effect type="zoom" start="80" end="100" center="211,212" time="250" />
+					</animation>
+					<animation type="UnFocus">
+						<effect type="fade" start="100" end="70" time="120" />
+						<effect type="zoom" start="100" end="80" center="211,212" time="120" />
+					</animation>
+				</control>
+				<!-- Left Poster Info -->
+				<control type="group">
+					<left>150</left>
+					<top>51</top>
+					<visible>Container.Content(movies) + !ListItem.IsCollection + Skin.HasSetting(ShowInfo) + !ListItem.IsParentFolder + [Container(53).Column(0) | Container(53).Column(1)]</visible>
+					<animation effect="fade" start="0" end="0" delay="0" time="50" reversible="false">UnFocus</animation>
+					<animation effect="fade" start="0" end="0" delay="0" time="50" reversible="false">Hidden</animation>
+					<control type="image">
+						<left>-4</left>
+						<top>-4</top>
+						<width>866</width>
+						<height>240</height>
+						<texture border="8" colordiffuse="$VAR[DialogCol]">views/white8.png</texture>
+						<animation effect="zoom" start="23,47,1,240" end="23,47,888,240" delay="2500" time="300" reversible="false" condition="Skin.HasSetting(ShowInfo)">Focus</animation>
+					</control>
+					<control type="image">
+						<left>-4</left>
+						<top>-10</top>
+						<width>877</width>
+						<height>81</height>
+						<texture border="0,0,14,0" colordiffuse="$VAR[primaryCol]" flipy="true">cycle/right-11.png</texture>
+						<animation effect="zoom" start="23,41,1,81" end="23,41,899,81" delay="2500" time="300" reversible="false" condition="Skin.HasSetting(ShowInfo)">Focus</animation>
+					</control>
+					<!-- Info -->
+					<control type="group">
+						<left>314</left>
+						<top>-6</top>
+						<include>Viewtypes-landscapeInfo-Content</include>
+					</control>
+				</control>
+				<!-- Right Poster Info -->
+				<control type="group">
+					<left>-600</left>
+					<top>51</top>
+					<visible>Container.Content(movies) + !ListItem.IsCollection + Skin.HasSetting(ShowInfo) + !ListItem.IsParentFolder + [Container(53).Column(2)]</visible>
+					<animation effect="fade" start="0" end="0" delay="0" time="50" reversible="false">UnFocus</animation>
+					<animation effect="fade" start="0" end="0" delay="0" time="50" reversible="false">Hidden</animation>
+					<control type="image">
+						<left>-4</left>
+						<top>-4</top>
+						<width>866</width>
+						<height>240</height>
+						<texture border="8" colordiffuse="$VAR[DialogCol]">views/white8.png</texture>
+						<animation effect="zoom" start="836,47,1,240" end="-866,47,838,240" delay="2500" time="300" reversible="false" condition="Skin.HasSetting(ShowInfo)">Focus</animation>
+					</control>
+					<control type="image">
+						<left>-15</left>
+						<top>-10</top>
+						<width>877</width>
+						<height>81</height>
+						<texture border="14,0,0,0" colordiffuse="$VAR[primaryCol]" flipy="true" flipx="true">cycle/right-11.png</texture>
+						<animation effect="zoom" start="849,41,1,81" end="-877,41,849,81" delay="2500" time="300" reversible="false" condition="Skin.HasSetting(ShowInfo)">Focus</animation>
+					</control>
+					<!-- Info -->
+					<control type="group">
+						<left>34</left>
+						<top>-6</top>
+						<include>Viewtypes-landscapeInfo-Content</include>
+					</control>
+				</control>
+				<control type="group">
+					<left>20</left>
+					<top>51</top>
+					<visible>!ListItem.IsParentFolder</visible>
+					<animation effect="zoom" start="100" end="110" center="275,150" time="250">Focus</animation>
+					<animation effect="zoom" start="110" time="100" center="275,150">UnFocus</animation>
+					<control type="image">
+						<description>Schatten</description>
+						<left>-12</left>
+						<top>-12</top>
+						<width>422</width>
+						<height>242</height>
+						<texture border="8" colordiffuse="ShadowColor">views/shadow8.png</texture>
+					</control>
+					<control type="image">
+						<description>Border</description>
+						<left>-4</left>
+						<top>-4</top>
+						<width>418</width>
+						<height>238</height>
+						<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
+					</control>
+					<control type="image"><!-- Fallback -->
+						<description>Hintergrundfarbe</description>
+						<width>410</width>
+						<height>230</height>
+						<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+					</control>
+					<control type="label">
+						<description>Fallback icon</description>
+						<width>410</width>
+						<height>185</height>
+						<align>center</align>
+						<font>Iconlandscapedefault</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[Art-Fallback]</label>
+					</control>
+					<control type="textbox">
+						<description>Label fallback</description>
+						<left>20</left>
+						<top>140</top>
+						<width>370</width>
+						<height>90</height>
+						<align>center</align>
+						<font>RegularSmall</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$INFO[ListItem.label]</label>
+						<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes)]</visible>
+					</control>
+					<control type="image"><!-- Artworks -->
+						<description>Art genre movie fallback</description>
+						<width>410</width>
+						<height>230</height>
+						<texture background="true">resource://resource.images.moviegenrefanart.cycle/moviegenres_fanart/default.jpg</texture>
+						<visible>$EXP[VisGenre]</visible>
+					</control>
+					<control type="image">
+						<description>Art</description>
+						<width>410</width>
+						<height>230</height>
+						<texture background="true">$VAR[Art-Landscape]</texture>
+						<aspectratio>scale</aspectratio>
+					</control>
+					<control type="label"><!-- last watched -->
+						<include>Lastwatched-Overlay</include>
+					</control>
+					<control type="image"><!-- Inaktiv overlay -->
+						<width>410</width>
+						<height>230</height>
+						<texture colordiffuse="$VAR[InaktivImageCol]">white.png</texture>
+						<include>Animation-Dim</include>
+					</control>
+					<include content="VintageOldpaper-Overlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
+						<param name="width">410</param>
+						<param name="height">230</param>
+						<param name="texture">views/oldpaperoverlaylandscape.png</param>
+					</include>
+					<control type="group"><!-- Media Overlay -->
+						<description>Media Overlay - neu, angefangene usw.</description>
+						<visible>$EXP[VisVideoOverlays]</visible>
+						<control type="image">
+							<left>358</left>
+							<top>-9</top>
+							<width>61</width>
+							<height>61</height>
+							<texture colordiffuse="$VAR[PrimaryCol]">flagging/watched_bg.png</texture>
+						</control>
+						<control type="label">
+							<left>356</left>
+							<top>-13</top>
+							<width>60</width>
+							<height>30</height>
+´								<align>right</align><!-- include ueberschreibung -->
+							<label>$VAR[WatchedOverlay]</label>
+							<include>WatchedOverlay-Layout</include>
+							<font>IconOverlay</font>
+						</control>
+					</control>
+				</control>
+				<control type="group"><!-- Rating -->
+					<description>Rating Overlay - Rating und Userrating</description>
+					<visible>$EXP[VisVideoOverlays]</visible>
+					<animation type="Focus">
+						<effect type="fade" start="0" end="100" time="350" />
+						<effect type="zoom" start="80" end="100" center="152,212" time="350" />
+					</animation>
+					<animation type="UnFocus">
+						<effect type="fade" start="100" end="0" time="100" />
+						<effect type="zoom" start="100" end="80" center="152,212" time="115" />
+					</animation>
+					<left>150.5</left>
+					<top>269</top>
+					<include>StarRating-bg</include>
+					<control type="label"><!-- -19 -->
+						<include>StarRating-Layoutback</include>
+						<label>$VAR[StarRatingback]</label>
+					</control>
+					<control type="label">
+						<include>StarRating-Layoutfront</include>
+						<label>$VAR[StarRating]</label>
+					</control>
+				</control>
+				<control type="group"><!-- category label -->
+					<visible>!ListItem.IsParentFolder + [Container.Content(genres) | Container.Content(years)]</visible>
+					<animation type="Focus">
+						<effect type="fade" start="0" end="100" time="350" />
+						<effect type="zoom" start="80" end="100" center="152,212" time="350" />
+					</animation>
+					<animation type="UnFocus">
+						<effect type="fade" start="100" end="0" time="100" />
+						<effect type="zoom" start="100" end="80" center="152,212" time="115" />
+					</animation>
+					<left>20</left>
+					<top>261</top>
+					<control type="image">
+						<width>400</width>
+						<height>51</height>
+						<texture colordiffuse="$VAR[SecondaryCol]">cycle/categoriebg.png</texture>
+					</control>
+					<control type="label">
+						<top>5</top>
+						<width>400</width>
+						<height>35</height>
+						<textoffsetx>5</textoffsetx>
+						<align>center</align>
+						<textcolor>TextColorFO</textcolor>
+						<font>TitleCategory</font>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</control>
+				<control type="group"><!-- fallback titel bei fehlendem landscape und Fanart als Ersatz -->
+					<visible>!ListItem.IsParentFolder + [Container.Content(movies) + !Skin.HasSetting(ShowInfo) | Container.Content(tvshows) | Container.Content(sets)] + String.IsEmpty(ListItem.Art(landscape)) + $EXP[VisNoDefaultIcon]</visible>
+					<animation type="Focus">
+						<effect type="fade" start="0" end="100" time="350" />
+						<effect type="zoom" start="80" end="100" center="152,212" time="350" />
+					</animation>
+					<animation type="UnFocus">
+						<effect type="fade" start="100" end="0" time="100" />
+						<effect type="zoom" start="100" end="80" center="152,212" time="115" />
+					</animation>
+					<left>20</left>
+					<top>261</top>
+					<control type="image">
+						<width>400</width>
+						<height>51</height>
+						<texture colordiffuse="$VAR[PrimaryCol]">cycle/categoriebg.png</texture>
+					</control>
+					<control type="label">
+						<top>-3</top>
+						<width>380</width>
+						<height>41</height>
+						<textoffsetx>10</textoffsetx>
+						<align>center</align>
+						<include>GlobalScroll</include>
+						<textcolor>TextColorFO</textcolor>
+						<font>TitleCategorySmall</font>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</control>
+			</focusedlayout>
+		</control>
+		<control type="scrollbar" id="60"><!-- scroller -->
+			<left>1800</left>
+			<top>140</top>
+			<height>840</height>
+			<onleft>53</onleft>
+			<onright condition="![Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons) | Container.Content(sets)]">SetFocus(9900)</onright><!-- sideblade bei content ohne sms -->
+			<onright condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons) | Container.Content(sets)] + [String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556])]">SetFocus(62)</onright><!-- SMS bei sortierung 551=Name 561=File 556=Title -->
+			<onright condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons) | Container.Content(sets)] + ![String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556])]">SetFocus(9900)</onright><!-- sideblade bei sortierung nicht titel usw.-->
+		</control>
+		<include>SMSScrollbar</include><!-- SMS Bar -->
+		<control type="group"><!-- Sortletter und SMS Jumpletter -->
+			<description>Scroll label + icon</description>
+			<left>1767</left>
+			<top>110</top>
+			<visible>$EXP[VisSMSScroller] + [String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556])]</visible>
+			<include>Animation-SMSLetter-Slide</include>
+			<include>ScrollLetter</include>
+		</control>
+	</control>
+</include>
+
+<include name="Viewtype_54_Season">
+<control type="group">
+	<visible>Control.IsVisible(54)</visible>
+	<description>List View (id=54) staffelliste</description>
+	<include>Animation395-Conditional-Slide</include>
+	<control type="group">
+		<description>List View</description>
+		<include>Animation-Conditional-InaktivZoom</include>
+		<animation type="WindowOpen" reversible="false">
+			<effect type="fade" start="0" end="100" time="350" tween="cubic" easing="inout" />
+			<effect type="slide" start="-200,0" end="0,0" time="400" tween="cubic" easing="inout" />
+		</animation>
+		<animation type="Visible" reversible="false">
+			<effect type="fade" start="0" end="100" time="350" tween="cubic" easing="inout" />
+			<effect type="slide" start="-300,0" end="0,0" time="400" tween="cubic" easing="inout" />
+		</animation>
+		<animation type="WindowClose" reversible="false">
+			<effect type="fade" start="100" end="0" time="350" tween="cubic" easing="inout" />
+			<effect type="slide" start="0,0" end="800,0" time="400" tween="cubic" easing="inout" />
+		</animation>
+		<animation type="Hidden" reversible="false">
+			<effect type="fade" start="100" end="0" time="350" tween="cubic" easing="inout" />
+			<effect type="slide" start="0,0" end="800,0" time="400" tween="cubic" easing="inout" />
+		</animation>
+		<control type="image">
+			<description>Bar</description>
+			<left>900</left>
+			<width>100</width>
+			<height>1080</height>
+			<texture colordiffuse="$VAR[CirclesCol]">views/barv.png</texture>
+			<visible>!Control.HasFocus(9900)</visible>
+		</control>
+		<control type="wraplist" id="54">
+			<description>Invisible Control List</description>
+			<left>780</left>
+			<top>30</top>
+			<height>1000</height>
+			<width>532</width>
+			<viewtype label="Staffel">wrap</viewtype>
+			<onleft>Setfocus(9900)</onleft>
+			<onright>SetFocus(9900)</onright>
+			<onup condition="!Control.IsVisible(311)">Control.Move(54,-1)</onup>
+			<ondown condition="!Control.IsVisible(312)">Control.Move(54,1)</ondown>
+			<focusposition>2</focusposition>
+			<scrolltime tween="cubic" easing="inout">300</scrolltime>
+			<visible>!String.Contains(Container.FolderPath,plugin) + Container.Content(seasons)</visible>
+			<itemlayout width="232">
+			</itemlayout>
+			<focusedlayout width="232">
+			</focusedlayout>
+		</control>
+		<control type="group"><!-- Statisch -->
+			<left>780</left>
+			<top>30</top>
+			<visible>[!Container(54).OnPrevious + !Container(54).OnNext]</visible>
+			<visible>Integer.IsGreater(Container(54).NumItems,1)</visible>
+			<animation effect="fade" start="0" end="100" delay="250" time="350" tween="cubic" easing="inout" reversible="false">Visible</animation>
+			<control type="group">
+				<description>Statisch -3</description>
+				<top>40</top>
+				<visible>![Control.HasFocus(9900) | ControlGroup(9110).HasFocus | ControlGroup(9310).HasFocus | Window.IsVisible(Custom_1120_Options.xml) | Window.IsVisible(Custom_1141_ViewtypeSimilar.xml) | Window.IsVisible(contextmenu) | Window.IsVisible(shutdownmenu) | Window.IsVisible(favourites)]</visible>
+				<control type="group">
+					<top>20</top>
+					<left>99</left>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesInnerCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesCol]">rings/sub-outer-ring.png</texture>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>SeasonNumberNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[SeasonPrefixLabel-3]$INFO[Container(54).ListItem(-3).Season]</label>
+						<visible>!Container(54).ListItem(-3).IsParentFolder + !String.Contains(Container(54).ListItem(-3).Label,alle Staffeln)</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>Ü</label>
+						<visible>Container(54).ListItem(-3).IsParentFolder</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>!</label>
+						<visible>String.Contains(Container(54).ListItem(-3).Label,alle Staffeln)</visible>
+					</control>
+				</control>
+			</control>
+			<control type="group">
+				<description>Statisch -2</description>
+				<top>40</top>
+				<visible>![Control.HasFocus(9900) | ControlGroup(9110).HasFocus | ControlGroup(9310).HasFocus | Window.IsVisible(Custom_1120_Options.xml) | Window.IsVisible(contextmenu) | Window.IsVisible(shutdownmenu) | Window.IsVisible(favourites)]</visible>
+				<control type="group">
+					<top>20</top>
+					<left>99</left>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesInnerCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesCol]">rings/sub-outer-ring.png</texture>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>SeasonNumberNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[SeasonPrefixLabel-2]$INFO[Container(54).ListItem(-2).Season]</label>
+						<visible>!Container(54).ListItem(-2).IsParentFolder + !String.Contains(Container(54).ListItem(-2).Label,alle Staffeln)</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>Ü</label>
+						<visible>Container(54).ListItem(-2).IsParentFolder</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>!</label>
+						<visible>String.Contains(Container(54).ListItem(-2).Label,alle Staffeln)</visible>
+					</control>
+				</control>
+			</control>
+			<control type="group">
+				<description>Statisch -1</description>
+				<top>240</top>
+				<control type="group">
+					<top>20</top>
+					<left>99</left>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesInnerCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[SecondaryCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesCol]">rings/sub-outer-ring.png</texture>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>SeasonNumberNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[SeasonPrefixLabel-1]$INFO[Container(54).ListItem(-1).Season]</label>
+						<visible>!Container(54).ListItem(-1).IsParentFolder + !String.Contains(Container(54).ListItem(-1).Label,alle Staffeln)</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>Ü</label>
+						<visible>Container(54).ListItem(-1).IsParentFolder</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>!</label>
+						<visible>String.Contains(Container(54).ListItem(-1).Label,alle Staffeln)</visible>
+					</control>
+				</control>
+			</control>
+			<control type="group">
+				<description>Statisch Focus</description>
+				<top>430</top>
+				<control type="group">
+					<left>63</left>
+					<control type="image">
+						<width>215</width>
+						<height>215</height>
+						<texture colordiffuse="$VAR[CirclesInnerCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>215</width>
+						<height>215</height>
+						<texture colordiffuse="$VAR[PrimaryCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>215</width>
+						<height>215</height>
+						<texture colordiffuse="$VAR[CirclesCol]">rings/sub-outer-ring.png</texture>
+					</control>
+					<control type="label">
+						<width>215</width>
+						<height>215</height>
+						<align>center</align>
+						<font>SeasonNumberFO</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[SeasonPrefixLabel0]$INFO[Container(54).ListItem.Season]</label>
+						<visible>!Container(54).ListItem(0).IsParentFolder + !String.Contains(Container(54).ListItem.Label,alle Staffeln)</visible>
+					</control>
+					<control type="label">
+						<width>215</width>
+						<height>215</height>
+						<align>center</align>
+						<font>IconSeasonFO</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>Ü</label>
+						<visible>Container(54).ListItem(0).IsParentFolder</visible>
+					</control>
+					<control type="label">
+						<width>215</width>
+						<height>215</height>
+						<align>center</align>
+						<font>IconSeasonFO</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>!</label>
+						<visible>String.Contains(Container(54).ListItem.Label,alle Staffeln)</visible>
+					</control>
+				</control>
+			</control>
+			<control type="group">
+				<description>Statisch +1</description>
+				<top>650</top>
+				<control type="group">
+					<top>20</top>
+					<left>99</left>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesInnerCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[SecondaryCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesCol]">rings/sub-outer-ring.png</texture>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>SeasonNumberNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[SeasonPrefixLabel1]$INFO[Container(54).ListItem(1).Season]</label>
+						<visible>!Container(54).ListItem(1).IsParentFolder + !String.Contains(Container(54).ListItem(1).Label,alle Staffeln)</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>Ü</label>
+						<visible>Container(54).ListItem(1).IsParentFolder</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>!</label>
+						<visible>String.Contains(Container(54).ListItem(1).Label,alle Staffeln)</visible>
+					</control>
+				</control>
+			</control>
+			<control type="group">
+				<description>Statisch +2</description>
+				<visible>![Control.HasFocus(9900) | ControlGroup(9110).HasFocus | ControlGroup(9310).HasFocus | Window.IsVisible(Custom_1120_Options.xml) | Window.IsVisible(Custom_1141_ViewtypeSimilar.xml) | Window.IsVisible(contextmenu) | Window.IsVisible(shutdownmenu) | Window.IsVisible(favourites)]</visible>
+				<top>850</top>
+				<control type="group">
+					<top>20</top>
+					<left>99</left>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesInnerCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesCol]">rings/sub-outer-ring.png</texture>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>SeasonNumberNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[SeasonPrefixLabel2]$INFO[Container(54).ListItem(2).Season]</label>
+						<visible>!Container(54).ListItem(2).IsParentFolder + !String.Contains(Container(54).ListItem(2).Label,alle Staffeln)</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>Ü</label>
+						<visible>Container(54).ListItem(2).IsParentFolder</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>!</label>
+						<visible>String.Contains(Container(54).ListItem(2).Label,alle Staffeln)</visible>
+					</control>
+				</control>
+			</control>
+			<control type="group">
+				<description>Statisch +3</description>
+				<visible>![Control.HasFocus(9900) | ControlGroup(9110).HasFocus | ControlGroup(9310).HasFocus | Window.IsVisible(Custom_1120_Options.xml) | Window.IsVisible(Custom_1141_ViewtypeSimilar.xml) | Window.IsVisible(contextmenu) | Window.IsVisible(shutdownmenu) | Window.IsVisible(favourites)]</visible>
+				<top>1070</top>
+				<control type="group">
+					<top>20</top>
+					<left>99</left>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesInnerCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesCol]">rings/sub-outer-ring.png</texture>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>SeasonNumberNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[SeasonPrefixLabel3]$INFO[Container(54).ListItem(3).Season]</label>
+						<visible>!Container(54).ListItem(3).IsParentFolder + !String.Contains(Container(54).ListItem(3).Label,alle Staffeln)</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>Ü</label>
+						<visible>Container(54).ListItem(3).IsParentFolder</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>!</label>
+						<visible>String.Contains(Container(54).ListItem(3).Label,alle Staffeln)</visible>
+					</control>
+				</control>
+			</control>
+		</control>
+		<control type="group"><!-- Statisch leere serie -->
+			<left>780</left>
+			<top>460</top>
+			<description>Statisch Focus leere serie 1 item in wraplist</description>
+			<visible>!Integer.IsGreater(Container(54).NumItems,1)</visible>
+			<control type="group">
+				<left>63</left>
+				<control type="image">
+					<width>215</width>
+					<height>215</height>
+					<texture colordiffuse="$VAR[CirclesInnerCol]">rings/sub-inner-ring.png</texture>
+				</control>
+				<control type="image">
+					<width>215</width>
+					<height>215</height>
+					<texture colordiffuse="$VAR[PrimaryCol]">rings/sub-inner-ring.png</texture>
+				</control>
+				<control type="image">
+					<width>215</width>
+					<height>215</height>
+					<texture colordiffuse="$VAR[CirclesCol]">rings/sub-outer-ring.png</texture>
+				</control>
+				<control type="label">
+					<width>215</width>
+					<height>215</height>
+					<align>center</align>
+					<font>EpisodeNumber</font>
+					<textcolor>$VAR[CirclesCol]</textcolor>
+					<label>$VAR[SeasonPrefixLabel0]$INFO[Container(54).ListItem.Season]</label>
+					<visible>!Container(54).ListItem(0).IsParentFolder + !String.Contains(Container(54).ListItem(0).Label,alle Staffeln)</visible>
+				</control>
+				<control type="label">
+					<width>215</width>
+					<height>215</height>
+					<align>center</align>
+					<font>IconSeasonFO</font>
+					<textcolor>$VAR[CirclesCol]</textcolor>
+					<label>Ü</label>
+					<visible>Container(54).ListItem(0).IsParentFolder</visible>
+				</control>
+				<control type="label">
+					<width>215</width>
+					<height>215</height>
+					<align>center</align>
+					<font>IconSeasonFO</font>
+					<textcolor>$VAR[CirclesCol]</textcolor>
+					<label>!</label>
+					<visible>String.Contains(Container(54).ListItem(0).Label,alle Staffeln)</visible>
+				</control>
+			</control>
+		</control>
+		<control type="group" id="312"><!-- Previous Up -->
+			<left>780</left>
+			<top>30</top>
+			<include>Animation-Season-FadeOut</include>
+			<visible>Container(54).OnPrevious</visible>
+			<visible>Integer.IsGreater(Container(54).NumItems,1)</visible>
+			<control type="group">
+				<description>Nach oben -3</description>
+				<top>-250</top>
+				<animation effect="slide" start="0,250" end="0,0" delay="100" time="350" tween="cubic" easing="inout" reversible="false">Hidden</animation>
+				<visible>Container(54).OnPrevious</visible>
+				<control type="group">
+					<top>20</top>
+					<left>99</left>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesInnerCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesCol]">rings/sub-outer-ring.png</texture>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>SeasonNumberNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[SeasonPrefixLabel-3]$INFO[Container(54).ListItem(-3).Season]</label>
+						<visible>!Container(54).ListItem(-3).IsParentFolder + !String.Contains(Container(54).ListItem(-3).Label,alle Staffeln)</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>Ü</label>
+						<visible>Container(54).ListItem(-3).IsParentFolder</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>!</label>
+						<visible>String.Contains(Container(54).ListItem(-3).Label,alle Staffeln)</visible>
+					</control>
+				</control>
+			</control>
+			<control type="group">
+				<description>Nach oben -2</description>
+				<top>40</top>
+				<animation effect="slide" delay="100" start="0,250" end="0,0" time="350" tween="cubic" easing="inout" reversible="false">Hidden</animation>
+				<visible>Container(54).OnPrevious</visible>
+				<control type="group">
+					<top>20</top>
+					<left>99</left>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesInnerCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesCol]">rings/sub-outer-ring.png</texture>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>SeasonNumberNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[SeasonPrefixLabel-2]$INFO[Container(54).ListItem(-2).Season]</label>
+						<visible>!Container(54).ListItem(-2).IsParentFolder + !String.Contains(Container(54).ListItem(-2).Label,alle Staffeln)</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>Ü</label>
+						<visible>Container(54).ListItem(-2).IsParentFolder</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>!</label>
+						<visible>String.Contains(Container(54).ListItem(-2).Label,alle Staffeln)</visible>
+					</control>
+				</control>
+			</control>
+			<control type="group">
+				<description>Nach oben -1</description>
+				<top>240</top>
+				<animation effect="slide" delay="100" start="0,200" end="0,0" time="350" tween="cubic" easing="inout" reversible="false">Hidden</animation>
+				<visible>Container(54).OnPrevious</visible>
+				<control type="group">
+					<top>20</top>
+					<left>99</left>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesInnerCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[SecondaryCol]">rings/sub-inner-ring.png</texture>
+						<visible>Container(54).OnPrevious</visible>
+						<include>Animation-Season-FadeOut</include>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesCol]">rings/sub-outer-ring.png</texture>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>SeasonNumberNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[SeasonPrefixLabel-1]$INFO[Container(54).ListItem(-1).Season]</label>
+						<visible>!Container(54).ListItem(-1).IsParentFolder + !String.Contains(Container(54).ListItem(-1).Label,alle Staffeln)</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>Ü</label>
+						<visible>Container(54).ListItem(-1).IsParentFolder</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>!</label>
+						<visible>String.Contains(Container(54).ListItem(-1).Label,alle Staffeln)</visible>
+					</control>
+				</control>
+			</control>
+			<control type="group">
+				<description>Nach oben focus</description>
+				<top>430</top>
+				<animation effect="slide" delay="100" start="0,200" end="0,0" time="350" tween="cubic" easing="inout" reversible="false">Hidden</animation>
+				<visible>Container(54).OnPrevious</visible>
+				<control type="group">
+					<left>63</left>
+					<control type="image">
+						<width>215</width>
+						<height>215</height>
+						<texture colordiffuse="$VAR[CirclesInnerCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>215</width>
+						<height>215</height>
+						<texture colordiffuse="$VAR[SecondaryCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>215</width>
+						<height>215</height>
+						<texture colordiffuse="$VAR[PrimaryCol]">rings/sub-inner-ring.png</texture>
+						<visible>Container(54).OnPrevious</visible>
+						<include>Animation-Season-FadeOut</include>
+					</control>
+					<control type="image">
+						<width>215</width>
+						<height>215</height>
+						<texture colordiffuse="$VAR[CirclesCol]">rings/sub-outer-ring.png</texture>
+					</control>
+					<control type="label">
+						<width>215</width>
+						<height>215</height>
+						<align>center</align>
+						<font>EpisodeNumber</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[SeasonPrefixLabel0]$INFO[Container(54).ListItem.Season]</label>
+						<visible>!Container(54).ListItem(0).IsParentFolder + !String.Contains(Container(54).ListItem(0).Label,alle Staffeln)</visible>
+					</control>
+					<control type="label">
+						<width>215</width>
+						<height>215</height>
+						<align>center</align>
+						<font>IconSeasonFO</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>Ü</label>
+						<visible>Container(54).ListItem(0).IsParentFolder</visible>
+					</control>
+					<control type="label">
+						<width>215</width>
+						<height>215</height>
+						<align>center</align>
+						<font>IconSeasonFO</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>!</label>
+						<visible>String.Contains(Container(54).ListItem(0).Label,alle Staffeln)</visible>
+					</control>
+				</control>
+			</control>
+			<control type="group">
+				<description>Nach oben +1</description>
+				<top>650</top>
+				<animation effect="slide" delay="100" start="0,200" end="0,0" time="350" tween="cubic" easing="inout" reversible="false">Hidden</animation>
+				<visible>Container(54).OnPrevious</visible>
+				<control type="group">
+					<top>20</top>
+					<left>99</left>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesInnerCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[PrimaryCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<visible>Container(54).OnPrevious</visible>
+						<texture colordiffuse="$VAR[SecondaryCol]">rings/sub-inner-ring.png</texture>
+						<include>Animation-Season-FadeOut</include>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesCol]">rings/sub-outer-ring.png</texture>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>SeasonNumberNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[SeasonPrefixLabel1]$INFO[Container(54).ListItem(1).Season]</label>
+						<visible>!Container(54).ListItem(1).IsParentFolder + !String.Contains(Container(54).ListItem(1).Label,alle Staffeln)</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>Ü</label>
+						<visible>Container(54).ListItem(1).IsParentFolder</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>!</label>
+						<visible>String.Contains(Container(54).ListItem(1).Label,alle Staffeln)</visible>
+					</control>
+				</control>
+			</control>
+			<control type="group">
+				<description>Nach oben +2</description>
+				<top>850</top>
+				<animation effect="slide" delay="100" start="0,250" end="0,0" time="350" tween="cubic" easing="inout" reversible="false">Hidden</animation>
+				<visible>Container(54).OnPrevious</visible>
+				<control type="group">
+					<top>20</top>
+					<left>99</left>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[SecondaryCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesInnerCol]">rings/sub-inner-ring.png</texture>
+						<visible>Container(54).OnPrevious</visible>
+						<include>Animation-Season-FadeOut</include>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesCol]">rings/sub-outer-ring.png</texture>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>SeasonNumberNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[SeasonPrefixLabel2]$INFO[Container(54).ListItem(2).Season]</label>
+						<visible>!Container(54).ListItem(2).IsParentFolder + !String.Contains(Container(54).ListItem(2).Label,alle Staffeln)</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>Ü</label>
+						<visible>Container(54).ListItem(2).IsParentFolder</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>!</label>
+						<visible>String.Contains(Container(54).ListItem(2).Label,alle Staffeln)</visible>
+					</control>
+				</control>
+			</control>
+			<control type="group">
+				<description>Nach oben +3</description>
+				<top>1070</top>
+				<animation effect="slide" delay="100" start="0,250" end="0,0" time="350" tween="cubic" easing="inout" reversible="false">Hidden</animation>
+				<visible>Container(54).OnPrevious</visible>
+				<control type="group">
+					<top>20</top>
+					<left>99</left>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesInnerCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesCol]">rings/sub-outer-ring.png</texture>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>SeasonNumberNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[SeasonPrefixLabel3]$INFO[Container(54).ListItem(3).Season]</label>
+						<visible>!Container(54).ListItem(3).IsParentFolder + !String.Contains(Container(54).ListItem(3).Label,alle Staffeln)</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>Ü</label>
+						<visible>Container(54).ListItem(3).IsParentFolder</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>!</label>
+						<visible>String.Contains(Container(54).ListItem(3).Label,alle Staffeln)</visible>
+					</control>
+				</control>
+			</control>
+		</control>
+		<control type="group" id="312"><!-- Next Down -->
+			<left>780</left>
+			<top>30</top>
+			<include>Animation-Season-FadeOut</include>
+			<visible>Container(54).OnNext</visible>
+			<visible>Integer.IsGreater(Container(54).NumItems,1)</visible>
+			<control type="group">
+				<description>Nach unten -3</description>
+				<top>-250</top>
+				<visible>Container(54).OnNext</visible>
+				<animation effect="slide" start="0,-250" end="0,0" delay="100" time="350" tween="cubic" easing="inout" reversible="false">Hidden</animation>
+				<control type="group">
+					<top>20</top>
+					<left>99</left>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesInnerCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesCol]">rings/sub-outer-ring.png</texture>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>SeasonNumberNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[SeasonPrefixLabel-3]$INFO[Container(54).ListItem(-3).Season]</label>
+						<visible>!Container(54).ListItem(-3).IsParentFolder + !String.Contains(Container(54).ListItem(-3).Label,alle Staffeln)</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>Ü</label>
+						<visible>Container(54).ListItem(-3).IsParentFolder</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>!</label>
+						<visible>String.Contains(Container(54).ListItem(-3).Label,alle Staffeln)</visible>
+					</control>
+				</control>
+			</control>
+			<control type="group">
+				<description>Nach unten -2</description>
+				<top>40</top>
+				<visible>Container(54).OnNext</visible>
+				<animation effect="slide" delay="100" start="0,-250" end="0,0" time="350" tween="cubic" easing="inout" reversible="false">Hidden</animation>
+				<control type="group">
+					<top>20</top>
+					<left>99</left>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[SecondaryCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesInnerCol]">rings/sub-inner-ring.png</texture>
+						<visible>Container(54).OnNext</visible>
+						<include>Animation-Season-FadeOut</include>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesCol]">rings/sub-outer-ring.png</texture>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>SeasonNumberNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[SeasonPrefixLabel-2]$INFO[Container(54).ListItem(-2).Season]</label>
+						<visible>!Container(54).ListItem(-2).IsParentFolder + !String.Contains(Container(54).ListItem(-2).Label,alle Staffeln)</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>Ü</label>
+						<visible>Container(54).ListItem(-2).IsParentFolder</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>!</label>
+						<visible>String.Contains(Container(54).ListItem(-2).Label,alle Staffeln)</visible>
+					</control>
+				</control>
+			</control>
+			<control type="group">
+				<description>Nach unten -1</description>
+				<top>240</top>
+				<animation effect="slide" delay="100" start="0,-200" end="0,0" time="350" tween="cubic" easing="inout" reversible="false">Hidden</animation>
+				<visible>Container(54).OnNext</visible>
+				<control type="group">
+					<top>20</top>
+					<left>99</left>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesInnerCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[SecondaryCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[PrimaryCol]">rings/sub-inner-ring.png</texture>
+						<visible>Container(54).OnPrevious</visible>
+						<include>Animation-Season-FadeIn</include>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesCol]">rings/sub-outer-ring.png</texture>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>SeasonNumberNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[SeasonPrefixLabel-1]$INFO[Container(54).ListItem(-1).Season]</label>
+						<visible>!Container(54).ListItem(-1).IsParentFolder + !String.Contains(Container(54).ListItem(-1).Label,alle Staffeln)</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>Ü</label>
+						<visible>Container(54).ListItem(-1).IsParentFolder</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>!</label>
+						<visible>String.Contains(Container(54).ListItem(-1).Label,alle Staffeln)</visible>
+					</control>
+				</control>
+			</control>
+			<control type="group">
+				<description>Nach unten focus</description>
+				<top>430</top>
+				<animation effect="slide" delay="100" start="0,-200" end="0,0" time="350" tween="cubic" easing="inout" reversible="false">Hidden</animation>
+				<visible>Container(54).OnNext</visible>
+				<control type="group">
+					<left>63</left>
+					<control type="image">
+						<width>215</width>
+						<height>215</height>
+						<texture colordiffuse="$VAR[CirclesInnerCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>215</width>
+						<height>215</height>
+						<texture colordiffuse="$VAR[SecondaryCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>215</width>
+						<height>215</height>
+						<texture colordiffuse="$VAR[PrimaryCol]">rings/sub-inner-ring.png</texture>
+						<visible>Container(54).OnNext</visible>
+						<include>Animation-Season-FadeIn</include>
+					</control>
+					<control type="image">
+						<width>215</width>
+						<height>215</height>
+						<texture colordiffuse="$VAR[CirclesCol]">rings/sub-outer-ring.png</texture>
+					</control>
+					<control type="label">
+						<width>215</width>
+						<height>215</height>
+						<align>center</align>
+						<font>EpisodeNumber</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[SeasonPrefixLabel0]$INFO[Container(54).ListItem.Season]</label>
+						<visible>!Container(54).ListItem(0).IsParentFolder + !String.Contains(Container(54).ListItem(0).Label,alle Staffeln)</visible>
+					</control>
+					<control type="label">
+						<width>215</width>
+						<height>215</height>
+						<align>center</align>
+						<font>IconSeasonFO</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>Ü</label>
+						<visible>Container(54).ListItem(0).IsParentFolder</visible>
+					</control>
+					<control type="label">
+						<width>215</width>
+						<height>215</height>
+						<align>center</align>
+						<font>IconSeasonFO</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>!</label>
+						<visible>String.Contains(Container(54).ListItem(0).Label,alle Staffeln)</visible>
+					</control>
+				</control>
+			</control>
+			<control type="group">
+				<description>Nach unten +1</description>
+				<top>650</top>
+				<animation effect="slide" delay="100" start="0,-200" end="0,0" time="350" tween="cubic" easing="inout" reversible="false">Hidden</animation>
+				<visible>Container(54).OnNext</visible>
+				<control type="group">
+					<top>20</top>
+					<left>99</left>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesInnerCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[SecondaryCol]">rings/sub-inner-ring.png</texture>
+						<visible>Container(54).OnNext</visible>
+						<include>Animation-Season-FadeOut</include>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesCol]">rings/sub-outer-ring.png</texture>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>SeasonNumberNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[SeasonPrefixLabel1]$INFO[Container(54).ListItem(1).Season]</label>
+						<visible>!Container(54).ListItem(1).IsParentFolder + !String.Contains(Container(54).ListItem(1).Label,alle Staffeln)</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>Ü</label>
+						<visible>Container(54).ListItem(1).IsParentFolder</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>!</label>
+						<visible>String.Contains(Container(54).ListItem(1).Label,alle Staffeln)</visible>
+					</control>
+				</control>
+			</control>
+			<control type="group">
+				<description>Nach unten +2</description>
+				<top>850</top>
+				<animation effect="slide" delay="100" start="0,-200" end="0,0" time="350" tween="cubic" easing="inout" reversible="false">Hidden</animation>
+				<visible>Container(54).OnNext</visible>
+				<control type="group">
+					<top>20</top>
+					<left>99</left>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesInnerCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesCol]">rings/sub-outer-ring.png</texture>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>SeasonNumberNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[SeasonPrefixLabel2]$INFO[Container(54).ListItem(2).Season]</label>
+						<visible>!Container(54).ListItem(2).IsParentFolder + !String.Contains(Container(54).ListItem(2).Label,alle Staffeln)</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>Ü</label>
+						<visible>Container(54).ListItem(2).IsParentFolder</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>!</label>
+						<visible>String.Contains(Container(54).ListItem(2).Label,alle Staffeln)</visible>
+					</control>
+				</control>
+			</control>
+			<control type="group">
+				<description>Nach unten +3</description>
+				<top>1070</top>
+				<animation effect="slide" start="0,-200" end="0,0" time="350" tween="cubic" easing="inout" reversible="false">Hidden</animation>
+				<visible>Container(54).OnNext</visible>
+				<control type="group">
+					<top>20</top>
+					<left>99</left>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesInnerCol]">rings/sub-inner-ring.png</texture>
+					</control>
+					<control type="image">
+						<width>143</width>
+						<height>143</height>
+						<texture colordiffuse="$VAR[CirclesCol]">rings/sub-outer-ring.png</texture>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>SeasonNumberNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[SeasonPrefixLabel3]$INFO[Container(54).ListItem(3).Season]</label>
+						<visible>!Container(54).ListItem(3).IsParentFolder + !String.Contains(Container(54).ListItem(3).Label,alle Staffeln)</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>Ü</label>
+						<visible>Container(54).ListItem(3).IsParentFolder</visible>
+					</control>
+					<control type="label">
+						<top>0</top>
+						<width>143</width>
+						<height>143</height>
+						<align>center</align>
+						<font>IconSeasonNF</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>!</label>
+						<visible>String.Contains(Container(54).ListItem(3).Label,alle Staffeln)</visible>
+					</control>
+				</control>
+			</control>
+		</control>
+	</control>
+	<control type="group"><!-- Art -->
+		<left>1246</left>
+		<top>149</top>
+		<include>Animation-OpenCloseVisibleHidden-Fade</include>
+		<visible>!Control.HasFocus(9900) + !Window.IsVisible(selectdialog)</visible>
+		<control type="image">
+			<description>Schatten</description>
+			<left>-13</left>
+			<top>-13</top>
+			<width>598</width>
+			<height>867</height>
+			<texture border="8" colordiffuse="ShadowColor">views/shadow8.png</texture>
+		</control>
+		<control type="image">
+			<description>Border</description>
+			<left>-5</left>
+			<top>-5</top>
+			<width>582</width>
+			<height>851</height>
+			<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
+		</control>
+		<control type="image"><!-- Fallback -->
+			<description>Hintergrundfarbe</description>
+			<width>572</width>
+			<height>841</height>
+			<texture colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+		</control>
+		<control type="label">
+			<description>Fallback icon</description>
+			<width>572</width>
+			<height>641</height>
+			<align>center</align>
+			<font>IconInfoposterdefault</font>
+			<textcolor>$VAR[CirclesCol]</textcolor>
+			<label>$VAR[Art-Fallback]</label>
+		</control>
+		<control type="image"><!-- Artwork -->
+			<description>Art serie bei back und alle staffeln damit was kommt</description>
+			<width>572</width>
+			<height>841</height>
+			<texture background="true">$INFO[Container.Art(tvshow.poster)]</texture>
+			<aspectratio>scale</aspectratio>
+			<visible>ListItem.IsParentFolder | String.StartsWith(ListItem.Label,*)</visible>
+		</control>
+		<control type="image">
+			<description>Art</description>
+			<width>572</width>
+			<height>841</height>
+			<texture background="true">$INFO[ListItem.Art(thumb)]</texture>
+			<aspectratio>scale</aspectratio>
+			<fadetime>200</fadetime>
+			<visible>!ListItem.IsParentFolder</visible>
+		</control>
+		<control type="label"><!-- last watched -->
+			<width>80</width><!-- include ueberschreibung -->
+			<height>80</height><!-- include ueberschreibung -->
+			<font>IconSeasonNF</font><!-- include ueberschreibung -->
+			<include>Lastwatched-Overlay</include>
+		</control>
+		<include content="VintageOldpaper-Overlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
+			<param name="width">572</param>
+			<param name="height">841</param>
+			<param name="texture">views/oldpaperoverlay2.png</param>
+		</include>
+	</control>
+	<control type="group"><!-- Poster Circleinfo -->
+		<description>Circleinfos auf Poster</description>
+		<left>1218</left>
+		<top>609</top>
+		<include>Animation-OpenCloseVisibleHidden-Fade</include>
+		<visible>!ListItem.IsParentFolder + !Control.HasFocus(9900) + !Window.IsVisible(selectdialog)</visible>
+		<control type="image">
+			<width>70</width>
+			<height>125</height>
+			<texture border="14,0,0,0" colordiffuse="$VAR[CirclesCol]">circles/posterinfoleftend.png</texture>
+		</control>
+		<include content="CircleFlag-Kringel">
+			<description>Circle 1 Jahr</description>
+			<param name="CircleFlag-Label">$INFO[Container(400).ListItem.Property(NumEpisodes)]</param>
+			<param name="CircleFlag-Inner">circles/circleyearin.png</param>
+			<param name="CircleFlag-Outer">circles/circleyearout.png</param>
+			<param name="CircleFlag-Visible">!String.IsEmpty(Container(54).ListItem.Year)</param>
+			<param name="CircleFlag-Left">70</param>
+		</include>
+		<control type="image">
+			<description>Fallback DBType empty</description>
+			<left>70</left>
+			<width>180</width>
+			<height>125</height>
+			<texture colordiffuse="$VAR[CirclesCol]">circles/circledivider50.png</texture>
+			<visible>String.IsEmpty(Container(54).ListItem.Year)</visible>
+		</control>
+		<include content="CircleFlag-Kringel">
+			<description>Circle 2 numepisodes</description>
+			<param name="CircleFlag-Label">$INFO[Container(54).ListItem.Property(TotalEpisodes)]</param>
+			<param name="CircleFlag-Inner">circles/circleepisodein.png</param>
+			<param name="CircleFlag-Outer">circles/circleepisodeout.png</param>
+			<param name="CircleFlag-Visible">true</param>
+			<param name="CircleFlag-Left">245</param>
+		</include>
+		<include content="CircleFlag-Kringel">
+			<description>Circle 3 nicht gesehene</description>
+			<param name="CircleFlag-Label">$INFO[Container(54).ListItem.Property(UnWatchedEpisodes)]</param>
+			<param name="CircleFlag-Inner">circles/circleneuein.png</param>
+			<param name="CircleFlag-Outer">circles/circleneueout.png</param>
+			<param name="CircleFlag-Visible">true</param>
+			<param name="CircleFlag-Left">400</param>
+		</include>
+		<control type="image">
+			<left>548</left>
+			<width>80</width>
+			<height>125</height>
+			<texture border="0,0,14,0" flipx="true" colordiffuse="$VAR[CirclesCol]">circles/posterinfoleftend.png</texture>
+		</control>
+	</control>
+</control>
+</include>
+
+<include name="Viewtype_55_Episode">
+	<control type="group">
+		<description>Episode View (id=55) Episode list</description>
+		<visible>Control.IsVisible(55)</visible>
+		<include>Animation-OpenCloseVisibleHidden-Zoom</include>
+		<include>Animation395-Conditional-Slide</include>
+		<include>Animation-Conditional-InaktivZoom</include>
+		<control type="fixedlist" id="55">
+			<viewtype label="Episode">biginfo</viewtype>
+			<left>200</left>
+			<top>170</top>
+			<width>1520</width>
+			<height>880</height>
+			<onleft>Setfocus(9900)</onleft>
+			<onright condition="Integer.IsGreater(Container(55).NumPages,1)">60</onright>
+			<onright condition="!Integer.IsGreater(Container(55).NumPages,1)">SetFocus(9900)</onright>
+			<onup>55</onup>
+			<ondown>55</ondown>
+			<pagecontrol>60</pagecontrol>
+			<preloaditems>2</preloaditems>
+			<focusposition>2</focusposition>
+			<scrolltime>450</scrolltime>
+			<visible>!String.Contains(Container.FolderPath,plugin) + [String.StartsWith(Container.FolderPath,special://skin/playlists/Episode_) + String.StartsWith(Skin.String(PLS_EPViewtype),Episode) + Container.Content(episodes)] | [Container.Content(episodes) + !String.StartsWith(Container.FolderPath,special://skin/playlists/) + [String.StartsWith(Container.Folderpath,videodb:) | String.StartsWith(Container.Folderpath,library://)]] | [Container.Content(episodes) + !String.IsEmpty(Window(home).Property(Viewtypeselection))]</visible>
+			<itemlayout width="1100" height="120">
+				<control type="label"><!-- back -->
+					<left>370</left>
+					<top>-20</top>
+					<width>120</width>
+					<height>100</height>
+					<align>center</align>
+					<font>Iconbackepisodeview</font>
+					<textcolor>TextColorMedium</textcolor>
+					<label>Ü</label>
+					<visible>ListItem.IsParentFolder</visible>
+					<animation type="Conditional" condition="true">
+						<effect type="fade" start="100" end="70" time="180" />
+						<effect type="zoom" start="80" end="80" center="360,50" time="180" />
+					</animation>
+				</control>
+				<control type="group"><!-- Info -->
+					<left>370</left>
+					<animation type="Conditional" condition="[Window.IsActive(contextmenu) |Window.IsActive(virtualkeyboard) | Window.IsActive(numericinput) | Window.IsActive(mediasource) | Window.IsActive(smartplaylisteditor) | Window.IsActive(smartplaylistrule) | Window.IsActive(addonsettings) | Window.IsActive(DialogSettings.xml) | Window.IsActive(DialogConfirm.xml)]">
+						<effect type="fade" start="100" end="30" time="300" tween="cubic" easing="inout" />
+					</animation>
+					<visible>!ListItem.IsParentFolder</visible>
+					<control type="label">
+						<description>Episodennummer</description>
+						<width>100</width>
+						<height>100</height>
+						<font>EpisodeNumber</font>
+						<textcolor>TextColorMedium</textcolor>
+						<label>$VAR[EpisodePrefix-short]</label>
+						<include>Animation-VintageFont-12</include>
+						<visible>!String.IsEmpty(ListItem.Episode)</visible>
+					</control>
+					<control type="label">
+						<description>Filmicon fuer Filmlinks</description>
+						<width>100</width>
+						<height>100</height>
+						<align>center</align>
+						<font>IconEpisodedefault</font>
+						<textcolor>TextColorMedium</textcolor>
+						<label>E</label>
+						<visible>String.Contains(ListItem.DBTYPE,movie)</visible>
+					</control>
+					<control type="group"><!-- db Info -->
+						<description>Datenbank info - kein serientitel</description>
+						<visible>![String.StartsWith(Container.FolderPath,special://skin/playlists/Episode_) | String.StartsWith(Container.Folderpath,videodb://recentlyaddedepisodes)]</visible>
+						<control type="label">
+							<description>Titel</description>
+							<left>120</left>
+							<top>5</top>
+							<width>860</width>
+							<height>40</height>
+							<font>TitleCapsBig</font>
+							<textcolor>TextColorMedium</textcolor>
+							<label>$INFO[ListItem.Title]</label>
+						</control>
+						<control type="label">
+							<left>120</left>
+							<top>60</top>
+							<width>160</width>
+							<height>40</height>
+							<font>RegularSmall</font>
+							<textcolor>TextColorMedium</textcolor>
+							<label>$INFO[ListItem.Duration,, min.]</label>
+							<include>Animation-VintageFont5</include>
+							<visible>!String.IsEmpty(ListItem.Date)</visible><!-- widgets und Empty Date -->
+						</control>
+						<control type="label">
+							<description>Enum</description>
+							<left>250</left>
+							<top>60</top>
+							<width>40</width>
+							<height>40</height>
+							<font>EnumRegularSmall</font>
+							<textcolor>TextColorMedium</textcolor>
+							<label>$VAR[CustomEnumeration]</label>
+							<visible>!String.IsEmpty(ListItem.Date)</visible><!-- widgets und Empty Date -->
+							<include>Animation-VintageFont5</include>
+						</control>
+						<control type="label">
+							<left>325</left>
+							<top>60</top>
+							<width>640</width>
+							<height>40</height>
+							<font>RegularSmall</font>
+							<textcolor>TextColorMedium</textcolor>
+							<label>$VAR[VideoDatePrefix]: $VAR[VideoDate]</label>
+							<visible>!String.IsEmpty(ListItem.Date)</visible><!-- widgets und Empty Date -->
+							<include>Animation-VintageFont5</include>
+						</control>
+						<control type="label">
+							<left>120</left>
+							<top>60</top>
+							<width>860</width>
+							<height>40</height>
+							<font>RegularSmall</font>
+							<textcolor>TextColorMedium</textcolor>
+							<label>$INFO[ListItem.Duration,, min.]</label>
+							<visible>String.IsEmpty(ListItem.Date)</visible><!-- widgets Empty Date -->
+							<include>Animation-VintageFont5</include>
+						</control>
+					</control>
+					<control type="group"><!-- pls + widget Info -->
+						<description>Playliste + Widget info - serientitel</description>
+						<visible>[String.StartsWith(Container.FolderPath,special://skin/playlists/Episode_) | String.StartsWith(Container.Folderpath,videodb://recentlyaddedepisodes)]</visible>
+						<control type="label">
+							<description>Titel</description>
+							<left>120</left>
+							<top>5</top>
+							<width>860</width>
+							<height>40</height>
+							<font>TitleCapsBig</font>
+							<textcolor>TextColorMedium</textcolor>
+							<label>$INFO[ListItem.Title]</label>
+						</control>
+						<control type="label">
+							<left>120</left>
+							<top>60</top>
+							<width>860</width>
+							<height>40</height>
+							<font>RegularSmall</font>
+							<textcolor>TextColorMedium</textcolor>
+							<label>$VAR[SeasonPrefix-long,, - ]$INFO[ListItem.TvShowTitle]</label>
+							<include>Animation-VintageFont5</include>
+						</control>
+					</control>
+					<control type="label"><!-- Media Overlay -->
+						<description>Media Overlay - neu, angefangene usw.</description>
+						<left>1005</left>
+						<top>45</top>
+						<width>45</width>
+						<height>45</height>
+						<align>center</align>
+						<font>IconOverlayBig</font>
+						<textcolor>TextColorMedium</textcolor>
+						<selectedcolor>TextColorMedium</selectedcolor>
+						<label>$VAR[WatchedOverlay]</label>
+					</control>
+				</control>
+			</itemlayout>
+			<focusedlayout width="1100" height="280">
+				<control type="label"><!-- back -->
+					<left>370</left>
+					<top>-20</top>
+					<width>120</width>
+					<height>100</height>
+					<align>center</align>
+					<font>Iconbackepisodeview</font>
+					<textcolor>TextColorMedium</textcolor>
+					<label>Ü</label>
+					<visible>ListItem.IsParentFolder</visible>
+					<animation type="Focus">
+						<effect type="fade" start="70" end="100" time="250" />
+						<effect type="zoom" start="80" end="100" center="360,50" time="250" />
+					</animation>
+					<animation type="UnFocus">
+						<effect type="fade" start="100" end="70" time="120" />
+						<effect type="zoom" start="100" end="80" center="360,50" time="120" />
+					</animation>
+				</control>
+				<control type="group"><!-- Hintergrund -->
+					<visible>!ListItem.IsParentFolder</visible>
+					<control type="image">
+						<description>Bar links</description>
+						<top>57</top>
+						<width>3000</width>
+						<height>152</height>
+						<texture colordiffuse="$VAR[CirclesCol]">views/info/bar.png</texture>
+						<animation type="Conditional" condition="true">
+							<effect type="slide" start="-750,0" end="-750,0" time="0" />
+						</animation>
+					</control>
+					<control type="image">
+						<description>Bar rechts</description>
+						<top>57</top>
+						<width>3000</width>
+						<height>152</height>
+						<texture colordiffuse="$VAR[CirclesCol]">views/info/bar.png</texture>
+						<animation type="Conditional" condition="true">
+							<effect type="slide" start="750,0" end="750,0" time="0" />
+						</animation>
+					</control>
+					<control type="image">
+						<description>Plot hintergrund</description>
+						<left>390</left>
+						<top>125</top>
+						<width>1100</width>
+						<height>100</height>
+						<texture colordiffuse="$VAR[CirclesCol]">white.png</texture>
+					</control>
+				</control>
+				<control type="group"><!-- Art -->
+					<visible>!ListItem.IsParentFolder</visible>
+					<control type="image">
+						<description>Schatten</description>
+						<left>-8</left>
+						<top>-8</top>
+						<width>414</width>
+						<height>244</height>
+						<texture border="8" colordiffuse="ShadowColor">views/shadow8.png</texture>
+					</control>
+					<control type="image">
+						<description>Border</description>
+						<width>398</width>
+						<height>228</height>
+						<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
+					</control>
+					<control type="image"><!-- Fallback -->
+						<description>Hintergrundfarbe</description>
+						<left>4</left>
+						<top>4</top>
+						<width>390</width>
+						<height>220</height>
+						<texture colordiffuse="$VAR[SecondaryCol]">white.png</texture>
+					</control>
+					<control type="label">
+						<description>Fallback icon</description>
+						<left>4</left>
+						<top>4</top>
+						<width>390</width>
+						<height>220</height>
+						<align>center</align>
+						<font>IconEpisodedefault</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[Art-Fallback]</label>
+					</control>
+					<control type="textbox">
+						<description>Label fallback</description>
+						<top>160</top>
+						<width>380</width>
+						<height>80</height>
+						<align>center</align>
+						<font>RegularSmall</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$INFO[ListItem.TVShowTitle]</label>
+					</control>
+					<control type="image"><!-- Artworks -->
+						<description>Art</description>
+						<left>4</left>
+						<top>4</top>
+						<width>390</width>
+						<height>220</height>
+						<fadetime>300</fadetime>
+						<texture>$VAR[Art-Episode]</texture>
+					</control>
+					<control type="label"><!-- last watched -->
+						<include>Lastwatched-Overlay</include>
+					</control>
+					<include condition="Skin.HasSetting(EnableVintageOverlay)">VintageOldpaper-EpisodeOverlay</include>
+				</control>
+				<control type="group"><!-- Number -->
+					<left>348.5</left>
+					<visible>!ListItem.IsParentFolder</visible>
+					<control type="image">
+						<description>Episodennummer hintergrund</description>
+						<top>4</top>
+						<width>130</width>
+						<height>130</height>
+						<texture colordiffuse="$VAR[PrimaryCol]">cycle/right-11_number.png</texture>
+					</control>
+					<control type="label">
+						<description>Episodennummer</description>
+						<left>21.5</left>
+						<width>100</width>
+						<height>100</height>
+						<font>EpisodeNumber</font>
+						<textcolor>TextColorFO</textcolor>
+						<selectedcolor>TextColorFO</selectedcolor><!-- default ueberschreibung -->
+						<label>$VAR[EpisodePrefix-short]</label>
+						<include>Animation-VintageFont5</include>
+						<visible>String.Contains(ListItem.DBTYPE,Episode)</visible>
+					</control>
+					<control type="label">
+						<description>Filmicon fuer Filmlinks</description>
+						<left>21.5</left>
+						<width>100</width>
+						<height>100</height>
+						<align>center</align>
+						<font>IconEpisodedefault</font>
+						<textcolor>TextColorFO</textcolor>
+						<selectedcolor>TextColorFO</selectedcolor><!-- default ueberschreibung -->
+						<label>E</label>
+						<visible>String.Contains(ListItem.DBTYPE,movie)</visible>
+					</control>
+				</control>
+				<control type="group"><!-- Infos -->
+					<left>370</left>
+					<visible>!ListItem.IsParentFolder</visible>
+					<control type="group"><!-- db Info -->
+						<description>Datenbank info - kein serientitel</description>
+						<visible>![String.StartsWith(Container.FolderPath,special://skin/playlists/Episode_) | String.StartsWith(Container.Folderpath,videodb://recentlyaddedepisodes)]</visible>
+						<control type="label">
+							<left>120</left>
+							<top>5</top>
+							<width>860</width>
+							<height>40</height>
+							<font>TitleCapsBig</font>
+							<textcolor>TextColorMedium</textcolor>
+							<label>$INFO[ListItem.Title]</label>
+						</control>
+						<control type="label">
+							<left>120</left>
+							<top>55</top>
+							<width>160</width>
+							<height>40</height>
+							<font>RegularSmall</font>
+							<textcolor>TextColorMedium</textcolor>
+							<label>$INFO[ListItem.Duration,, min.]</label>
+							<visible>!String.IsEmpty(ListItem.Date)</visible><!-- wenn Date vorhanden -->
+							<include>Animation-VintageFont8</include>
+						</control>
+						<control type="label">
+							<description>Enum</description>
+							<left>250</left>
+							<top>55</top>
+							<width>40</width>
+							<height>40</height>
+							<font>EnumRegularSmall</font>
+							<textcolor>TextColorMedium</textcolor>
+							<label>$VAR[CustomEnumeration]</label>
+							<visible>!String.IsEmpty(ListItem.Date)</visible><!-- wenn Date vorhanden -->
+							<include>Animation-VintageFont8</include>
+						</control>
+						<control type="label">
+							<left>325</left>
+							<top>55</top>
+							<width>640</width>
+							<height>40</height>
+							<font>RegularSmall</font>
+							<textcolor>TextColorMedium</textcolor>
+							<label>$VAR[VideoDatePrefix]: $VAR[VideoDate]</label>
+							<visible>!String.IsEmpty(ListItem.Date)</visible><!-- wenn Date vorhanden -->
+							<include>Animation-VintageFont8</include>
+						</control>
+						<control type="label">
+							<left>120</left>
+							<top>55</top>
+							<width>860</width>
+							<height>40</height>
+							<font>RegularSmall</font>
+							<textcolor>TextColorMedium</textcolor>
+							<label>$INFO[ListItem.Duration,, min.]</label>
+							<visible>String.IsEmpty(ListItem.Date)</visible><!-- bei Empty Date -->
+							<include>Animation-VintageFont8</include>
+						</control>
+						<control type="textbox">
+							<left>50</left>
+							<top>135</top>
+							<width>1050</width>
+							<height max="84">auto</height>
+							<font>RegularSmall</font>
+							<label fallback="Kein Überblick gefunden">$INFO[ListItem.Plot]</label>
+						</control>
+					</control>
+					<control type="group"><!-- pls + widget Info -->
+						<description>Playliste + Widget info - serientitel</description>
+						<visible>[String.StartsWith(Container.FolderPath,special://skin/playlists/Episode_) | String.StartsWith(Container.Folderpath,videodb://recentlyaddedepisodes)]</visible>
+						<control type="label">
+							<left>120</left>
+							<top>5</top>
+							<width>860</width>
+							<height>40</height>
+							<font>TitleCapsBig</font>
+							<textcolor>TextColorMedium</textcolor>
+							<label>$INFO[ListItem.Title]</label>
+						</control>
+						<control type="label">
+							<left>120</left>
+							<top>55</top>
+							<width>860</width>
+							<height>40</height>
+							<font>RegularSmall</font>
+							<textcolor>TextColorMedium</textcolor>
+							<label>$VAR[SeasonPrefix-long,, - ]$INFO[ListItem.TvShowTitle]</label>
+							<include>Animation-VintageFont8</include>
+						</control>
+						<control type="textbox">
+							<left>50</left>
+							<top>135</top>
+							<width>1050</width>
+							<height max="84">auto</height>
+							<label fallback="Kein Überblick gefunden">$INFO[ListItem.Plot]</label>
+							<font>RegularSmall</font>
+						</control>
+					</control>
+					<control type="group"><!-- Rating -->
+						<description>Rating Overlay - Rating und Userrating statt watched overlay</description>
+						<left>900</left>
+						<top>30</top>
+						<visible>!ListItem.IsParentFolder</visible>
+						<control type="label">
+							<width>193</width>
+							<height>40</height>
+							<align>center</align>
+							<font>EpisodeRating</font>
+							<textcolor>TextColorLight</textcolor>
+							<selectedcolor>TextColorLight</selectedcolor>
+							<label>$VAR[StarRatingback]</label>
+						</control>
+						<control type="label">
+							<width>193</width>
+							<height>40</height>
+							<align>center</align>
+							<font>EpisodeRating</font>
+							<textcolor>$VAR[PrimaryCol]</textcolor>
+							<selectedcolor>$VAR[PrimaryCol]</selectedcolor><!-- default ueberschreibung -->
+							<label>$VAR[StarRating]</label>
+						</control>
+					</control>
+				</control>
+			</focusedlayout>
+		</control>
+		<control type="scrollbar" id="60"><!-- Scroller -->
+			<left>1800</left>
+			<top>175</top>
+			<height>845</height>
+			<onleft>55</onleft>
+			<onright>SetFocus(9900)</onright>
+		</control>
+	</control>
+</include>
+
+<variable name="ViewtypeDokuContent">
+	<value condition="Container.Content(movies) + !String.IsEmpty(skin.string(TVDokuContent))">$INFO[skin.string(TVDokuContent)]</value>
+	<value condition="Container.Content(tvshows) + !String.IsEmpty(skin.string(FilmDokuContent))">$INFO[skin.string(FilmDokuContent)]</value>
+</variable>
+<include name="Viewtype_56_Dokus">
+	<control type="group">
+		<description>Doku View (id=56) geteiltes Iconpanel Serie/Film</description>
+		<visible>Control.IsVisible(56)</visible>
+		<include>Animation-OpenCloseVisibleHidden-Zoom</include>
+		<include>Animation395-Conditional-Slide</include>
+		<include>Animation-Conditional-InaktivZoom</include>
+		<control type="panel" id="56">
+			<viewtype label="Doku Poster">icon</viewtype>
+			<left>200</left>
+			<top>110</top>
+			<width>852</width>
+			<height>940</height>
+			<oninfo condition="ListItem.IsCollection + System.HasAddon(script.skin.info.service)">ActivateWindow(1102)</oninfo>
+			<onleft>Setfocus(9900)</onleft>
+			<onright condition="Integer.IsGreater(Container(56).NumPages,1)">60</onright>
+			<onright condition="!Integer.IsGreater(Container(56).NumPages,1)">SetFocus(400)</onright>
+			<onup>56</onup>
+			<ondown>56</ondown>
+			<onfocus condition="Container.Content(tvshows) + String.IsEmpty(skin.string(TVDokuContent))">Setfocus(9200)</onfocus>
+			<onfocus condition="Container.Content(movies) + String.IsEmpty(skin.string(FilmDokuContent))">Setfocus(9200)</onfocus>
+			<pagecontrol>60</pagecontrol>
+			<scrolltime tween="cubic" easing="inout">450</scrolltime>
+			<visible>String.StartsWith(Container.FolderPath,special://skin/playlists/Doku_)</visible>
+			<itemlayout width="284" height="470">
+				<control type="label"><!-- back -->
+					<left>17</left>
+					<top>51</top>
+					<width>212</width>
+					<height>318</height>
+					<align>center</align>
+					<font>Iconbackposterview</font>
+					<textcolor>TextColorMedium</textcolor>
+					<label>Ü</label>
+					<visible>ListItem.IsParentFolder</visible>
+					<animation type="Conditional" condition="true">
+						<effect type="fade" start="100" end="70" time="180" />
+						<effect type="zoom" start="80" end="80" center="152,212" time="180" />
+					</animation>
+				</control>
+				<control type="group">
+					<left>17</left>
+					<top>51</top>
+					<visible>!ListItem.IsParentFolder</visible>
+					<control type="image">
+						<description>Schatten</description>
+						<left>-12</left>
+						<top>-12</top>
+						<width>236</width>
+						<height>342</height>
+						<texture border="8" colordiffuse="ShadowColor">views/shadow8.png</texture>
+					</control>
+					<control type="image">
+						<description>Border</description>
+						<left>-4</left>
+						<top>-4</top>
+						<width>220</width>
+						<height>326</height>
+						<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
+					</control>
+					<control type="image"><!-- Fallback -->
+						<description>Hintergrundfarbe</description>
+						<width>212</width>
+						<height>318</height>
+						<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+					</control>
+					<control type="label">
+						<description>Fallback icon</description>
+						<width>212</width>
+						<height>265</height>
+						<align>center</align>
+						<font>IconDokuviewdefault</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[Art-Fallback]</label>
+					</control>
+					<control type="textbox">
+						<description>Label fallback</description>
+						<left>10</left>
+						<top>215</top>
+						<width>190</width>
+						<height>90</height>
+						<align>center</align>
+						<font>RegularSmall</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$INFO[ListItem.label]</label>
+					</control>
+					<control type="image"><!-- Artworks -->
+						<description>Art</description>
+						<width>212</width>
+						<height>318</height>
+						<texture background="true">$VAR[Art-Poster]</texture>
+					</control>
+					<control type="label"><!-- last watched -->
+						<include>Lastwatched-Overlay</include>
+					</control>
+					<control type="image"><!-- Inaktiv overlay -->
+						<width>212</width>
+						<height>318</height>
+						<texture colordiffuse="$VAR[InaktivImageCol]">white.png</texture>
+					</control>
+					<include content="VintageOldpaper-Overlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
+						<param name="width">212</param>
+						<param name="height">318</param>
+						<param name="texture">views/oldpaperoverlay2.png</param>
+					</include>
+					<control type="image"><!-- Inaktiv Fade overlay -->
+						<width>212</width>
+						<height>318</height>
+						<texture colordiffuse="TextColorFO">white.png</texture>
+						<include>Animation-Conditional-InaktivFade</include>
+					</control>
+					<control type="group"><!-- Media Overlay -->
+						<description>Media Overlay - neu, angefangene usw.</description>
+						<visible>$EXP[VisVideoOverlays]</visible>
+						<control type="image">
+							<left>165</left>
+							<top>-9</top>
+							<width>56</width>
+							<height>56</height>
+							<texture colordiffuse="$VAR[PrimaryCol]">flagging/watched_bg.png</texture>
+						</control>
+						<control type="label">
+							<left>165</left>
+							<top>-12</top>
+							<width>54</width>
+							<height>30</height>
+							<align>right</align><!-- include ueberschreibung -->
+							<font>IconOverlay</font>
+							<include>WatchedOverlay-Layout</include>
+							<label>$VAR[WatchedOverlay]</label>
+						</control>
+					</control>
+				</control>
+			</itemlayout>
+			<focusedlayout width="284" height="470">
+				<control type="label"><!-- back -->
+					<left>17</left>
+					<top>51</top>
+					<width>212</width>
+					<height>318</height>
+					<align>center</align>
+					<font>Iconbackposterview</font>
+					<textcolor>TextColorMedium</textcolor>
+					<label>Ü</label>
+					<visible>ListItem.IsParentFolder</visible>
+					<animation type="Focus">
+						<effect type="fade" start="70" end="100" time="250" />
+						<effect type="zoom" start="80" end="100" center="152,212" time="250" />
+					</animation>
+					<animation type="UnFocus">
+						<effect type="fade" start="100" end="70" time="120" />
+						<effect type="zoom" start="100" end="80" center="152,212" time="120" />
+					</animation>
+				</control>
+				<control type="group">
+					<left>17</left>
+					<top>51</top>
+					<animation effect="zoom" start="100" end="115" center="152,212" time="250">Focus</animation>
+					<animation effect="zoom" start="115" center="152,212" time="100">UnFocus</animation>
+					<visible>!ListItem.IsParentFolder</visible>
+					<control type="image">
+						<description>Schatten</description>
+						<left>-12</left>
+						<top>-12</top>
+						<width>236</width>
+						<height>342</height>
+						<texture border="8" colordiffuse="ShadowColor">views/shadow8.png</texture>
+					</control>
+					<control type="image">
+						<description>Border</description>
+						<left>-4</left>
+						<top>-4</top>
+						<width>220</width>
+						<height>326</height>
+						<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
+					</control>
+					<control type="image"><!-- Fallback -->
+						<description>Hintergrundfarbe</description>
+						<width>212</width>
+						<height>318</height>
+						<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+					</control>
+					<control type="label">
+						<description>Fallback icon</description>
+						<width>212</width>
+						<height>265</height>
+						<align>center</align>
+						<font>IconDokuviewdefault</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[Art-Fallback]</label>
+					</control>
+					<control type="textbox">
+						<description>Label fallback</description>
+						<left>10</left>
+						<top>215</top>
+						<width>190</width>
+						<height>90</height>
+						<align>center</align>
+						<font>RegularSmall</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$INFO[ListItem.label]</label>
+					</control>
+					<control type="image"><!-- Artworks -->
+						<description>Art</description>
+						<width>212</width>
+						<height>318</height>
+						<texture background="true">$VAR[Art-Poster]</texture>
+					</control>
+					<control type="label"><!-- last watched -->
+						<include>Lastwatched-Overlay</include>
+					</control>
+					<control type="image"><!-- Inaktiv overlay -->
+						<width>212</width>
+						<height>318</height>
+						<texture colordiffuse="$VAR[InaktivImageCol]">white.png</texture>
+						<include>Animation-Dim</include>
+					</control>
+					<include content="VintageOldpaper-Overlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
+						<param name="width">212</param>
+						<param name="height">318</param>
+						<param name="texture">views/oldpaperoverlay2.png</param>
+					</include>
+					<control type="group"><!-- Media Overlay -->
+						<description>Media Overlay - neu, angefangene usw.</description>
+						<visible>$EXP[VisVideoOverlays]</visible>
+						<control type="image">
+							<left>165</left>
+							<top>-9</top>
+							<width>56</width>
+							<height>56</height>
+							<texture colordiffuse="$VAR[PrimaryCol]">flagging/watched_bg.png</texture>
+						</control>
+						<control type="label">
+							<left>165</left>
+							<top>-12</top>
+							<width>54</width>
+							<height>30</height>
+							<align>right</align><!-- include ueberschreibung -->
+							<font>IconOverlay</font>
+							<include>WatchedOverlay-Layout</include>
+							<label>$VAR[WatchedOverlay]</label>
+						</control>
+					</control>
+				</control>
+				<control type="group"><!-- Rating -->
+					<description>Rating Overlay - Rating und Userrating</description>
+					<visible>$EXP[VisVideoOverlays]</visible>
+					<animation type="Focus">
+						<effect type="fade" start="0" end="100" time="350" />
+						<effect type="zoom" start="80" end="100" center="111,212" time="350" />
+					</animation>
+					<animation type="UnFocus">
+						<effect type="fade" start="100" end="0" time="100" />
+						<effect type="zoom" start="100" end="80" center="111,212" time="115" />
+					</animation>
+					<left>45</left>
+					<top>366</top>
+					<include>StarRating-bg</include>
+					<control type="label"><!-- -19 -->
+						<include>StarRating-Layoutback</include>
+						<label>$VAR[StarRatingback]</label>
+					</control>
+					<control type="label">
+						<include>StarRating-Layoutfront</include>
+						<label>$VAR[StarRating]</label>
+					</control>
+				</control>
+			</focusedlayout>
+		</control>
+		<control type="scrollbar" id="60"><!-- Scroller -->
+			<left>1080</left>
+			<top>140</top>
+			<height>840</height>
+			<onleft>56</onleft>
+			<onright>SetFocus(400)</onright>
+		</control>
+		<control type="panel" id="400"><!-- list 2 gegensatz zu 1 wenn 1 filme 2 Serie und anders rum -->
+			<viewtype label="Doku Poster">icon</viewtype>
+			<left>1198</left>
+			<top>110</top>
+			<width>790</width>
+			<height>940</height>
+			<oninfo condition="Container(400).ListItem.IsCollection + System.HasAddon(script.skin.info.service)">ActivateWindow(1102)</oninfo>
+			<onleft>SetFocus(56)</onleft>
+			<onright condition="Integer.IsGreater(Container(400).NumPages,1)">61</onright>
+			<onright condition="!Integer.IsGreater(Container(400).NumPages,1)">SetFocus(9900)</onright>
+			<onup>400</onup>
+			<ondown>400</ondown>
+			<pagecontrol>61</pagecontrol>
+			<scrolltime tween="cubic" easing="inout">450</scrolltime>
+			<visible>String.StartsWith(Container.FolderPath,special://skin/playlists/Doku_)</visible>
+			<itemlayout width="284" height="470">
+				<control type="label"><!-- back -->
+					<left>17</left>
+					<top>51</top>
+					<width>212</width>
+					<height>318</height>
+					<align>center</align>
+					<font>Iconbackposterview</font>
+					<textcolor>TextColorMedium</textcolor>
+					<label>Ü</label>
+					<visible>ListItem.IsParentFolder</visible>
+					<animation type="Conditional" condition="true">
+						<effect type="fade" start="100" end="70" time="180" />
+						<effect type="zoom" start="80" end="80" center="152,212"time="180" />
+					</animation>
+				</control>
+				<control type="group">
+					<left>17</left>
+					<top>51</top>
+					<visible>!ListItem.IsParentFolder</visible>
+					<control type="image">
+						<description>Schatten</description>
+						<left>-12</left>
+						<top>-12</top>
+						<width>236</width>
+						<height>342</height>
+						<texture border="8" colordiffuse="ShadowColor">views/shadow8.png</texture>
+					</control>
+					<control type="image">
+						<description>Border</description>
+						<left>-4</left>
+						<top>-4</top>
+						<width>220</width>
+						<height>326</height>
+						<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
+					</control>
+					<control type="image"><!-- Fallback -->
+						<description>Hintergrundfarbe</description>
+						<width>212</width>
+						<height>318</height>
+						<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+					</control>
+					<control type="label">
+						<description>Fallback icon</description>
+						<width>212</width>
+						<height>265</height>
+						<align>center</align>
+						<font>IconDokuviewdefault</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[Art-Fallback]</label>
+					</control>
+					<control type="textbox">
+						<description>Label fallback</description>
+						<left>10</left>
+						<top>215</top>
+						<width>190</width>
+						<height>90</height>
+						<align>center</align>
+						<font>RegularSmall</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$INFO[ListItem.label]</label>
+					</control>
+					<control type="image"><!-- Artworks -->
+						<description>Art</description>
+						<width>212</width>
+						<height>318</height>
+						<texture background="true">$VAR[Art-Poster]</texture>
+					</control>
+					<control type="label"><!-- last watched -->
+						<include>Lastwatched-Overlay</include>
+						<visible>String.IsEqual(ListItem.DBType,tvshow)</visible>
+					</control>
+					<control type="image"><!-- Inaktiv overlay -->
+						<width>212</width>
+						<height>318</height>
+						<texture colordiffuse="$VAR[InaktivImageCol]">white.png</texture>
+					</control>
+					<include content="VintageOldpaper-Overlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
+						<param name="width">212</param>
+						<param name="height">318</param>
+						<param name="texture">views/oldpaperoverlay2.png</param>
+					</include>
+					<control type="image"><!-- Inaktiv Fade overlay -->
+						<width>212</width>
+						<height>318</height>
+						<texture colordiffuse="TextColorFO">white.png</texture>
+						<include>Animation-Conditional-InaktivFade</include>
+					</control>
+					<control type="group"><!-- Media Overlay -->
+						<description>Media Overlay - neu, angefangene usw.</description>
+						<visible>$EXP[VisVideoOverlays]</visible>
+						<control type="image">
+							<left>165</left>
+							<top>-9</top>
+							<width>56</width>
+							<height>56</height>
+							<texture colordiffuse="$VAR[PrimaryCol]">flagging/watched_bg.png</texture>
+						</control>
+						<control type="label">
+							<left>165</left>
+							<top>-12</top>
+							<width>54</width>
+							<height>30</height>
+							<align>right</align><!-- include ueberschreibung -->
+							<font>IconOverlay</font>
+							<include>WatchedOverlay-Layout</include>
+							<label>$VAR[WatchedOverlay]</label>
+						</control>
+					</control>
+				</control>
+			</itemlayout>
+			<focusedlayout width="284" height="470">
+				<control type="label"><!-- back -->
+					<left>17</left>
+					<top>51</top>
+					<width>212</width>
+					<height>318</height>
+					<align>center</align>
+					<font>Iconbackposterview</font>
+					<textcolor>TextColorMedium</textcolor>
+					<label>Ü</label>
+					<visible>ListItem.IsParentFolder</visible>
+					<animation type="Focus">
+						<effect type="fade" start="70" end="100" time="250" />
+						<effect type="zoom" start="80" end="100" center="152,212" time="250" />
+					</animation>
+					<animation type="UnFocus">
+						<effect type="fade" start="100" end="70" time="120" />
+						<effect type="zoom" start="100" end="80" center="152,212" time="120" />
+					</animation>
+				</control>
+				<control type="group">
+					<left>17</left>
+					<top>51</top>
+					<animation effect="zoom" start="100" end="115" center="152,212" time="250">Focus</animation>
+					<animation effect="zoom" start="115" end="100" center="152,212" time="100">UnFocus</animation>
+					<visible>!ListItem.IsParentFolder</visible>
+					<control type="image">
+						<description>Schatten</description>
+						<left>-12</left>
+						<top>-12</top>
+						<width>236</width>
+						<height>342</height>
+						<texture border="8" colordiffuse="ShadowColor">views/shadow8.png</texture>
+					</control>
+					<control type="image">
+						<description>Border</description>
+						<left>-4</left>
+						<top>-4</top>
+						<width>220</width>
+						<height>326</height>
+						<texture border="8" colordiffuse="$VAR[CirclesCol]">views/white8.png</texture>
+					</control>
+					<control type="image"><!-- Fallback -->
+						<description>Hintergrundfarbe</description>
+						<width>212</width>
+						<height>318</height>
+						<texture background="true" colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+					</control>
+					<control type="label">
+						<description>Fallback icon</description>
+						<width>212</width>
+						<height>265</height>
+						<align>center</align>
+						<font>IconDokuviewdefault</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$VAR[Art-Fallback]</label>
+					</control>
+					<control type="textbox">
+						<description>Label fallback</description>
+						<left>10</left>
+						<top>215</top>
+						<width>190</width>
+						<height>90</height>
+						<align>center</align>
+						<font>RegularSmall</font>
+						<textcolor>$VAR[CirclesCol]</textcolor>
+						<label>$INFO[ListItem.label]</label>
+					</control>
+					<control type="image"><!-- Artworks -->
+						<description>Art</description>
+						<width>212</width>
+						<height>318</height>
+						<texture background="true">$VAR[Art-Poster]</texture>
+					</control>
+					<control type="label"><!-- last watched -->
+						<include>Lastwatched-Overlay</include>
+						<visible>String.IsEqual(ListItem.DBType,tvshow)</visible>
+					</control>
+					<control type="image"><!-- Inaktiv overlay -->
+						<width>212</width>
+						<height>318</height>
+						<texture colordiffuse="$VAR[InaktivImageCol]">white.png</texture>
+						<include>Animation-Dim</include>
+					</control>
+					<include content="VintageOldpaper-Overlay" condition="Skin.HasSetting(EnableVintageOverlay)"><!-- Vintage overlay -->
+						<param name="width">212</param>
+						<param name="height">318</param>
+						<param name="texture">views/oldpaperoverlay2.png</param>
+					</include>
+					<control type="group"><!-- Media Overlay -->
+						<description>Media Overlay - neu, angefangene usw.</description>
+						<visible>$EXP[VisVideoOverlays]</visible>
+						<control type="image">
+							<left>165</left>
+							<top>-9</top>
+							<width>56</width>
+							<height>56</height>
+							<texture colordiffuse="$VAR[PrimaryCol]">flagging/watched_bg.png</texture>
+						</control>
+						<control type="label">
+							<left>165</left>
+							<top>-12</top>
+							<width>54</width>
+							<height>30</height>
+							<align>right</align><!-- include ueberschreibung -->
+							<font>IconOverlay</font>
+							<include>WatchedOverlay-Layout</include>
+							<label>$VAR[WatchedOverlay]</label>
+						</control>
+					</control>
+				</control>
+				<control type="group"><!-- Rating -->
+					<visible>$EXP[VisVideoOverlays]</visible>
+					<animation type="Focus">
+						<effect type="fade" start="0" end="100" time="350" />
+						<effect type="zoom" start="80" end="100" center="111,212" time="350" />
+					</animation>
+					<animation type="UnFocus">
+						<effect type="fade" start="100" end="0" time="100" />
+						<effect type="zoom" start="100" end="80" center="111,212" time="115" />
+					</animation>
+					<left>45</left>
+					<top>366</top>
+					<include>StarRating-bg</include>
+					<control type="label"><!-- -19 -->
+						<include>StarRating-Layoutback</include>
+						<label>$VAR[StarRatingback]</label>
+					</control>
+					<control type="label">
+						<include>StarRating-Layoutfront</include>
+						<label>$VAR[StarRating]</label>
+					</control>
+				</control>
+			</focusedlayout>
+				<content target="video">$VAR[ViewtypeDokuContent]</content>
+				<onclick condition="String.IsEqual(ListItem.DBType,tvshow)">ActivateWindow(Videos,&quot;videodb://tvshows/titles/$INFO[ListItem.DBID]/&quot;)</onclick>
+				<onclick condition="String.IsEqual(ListItem.DBType,movie)">PlayMedia($ESCINFO[ListItem.Path])</onclick>
+		</control>
+		<control type="scrollbar" id="61"><!-- Scroller -->
+			<left>1800</left>
+			<top>140</top>
+			<height>880</height>
+			<onleft>400</onleft>
+			<onright>SetFocus(9900)</onright><!-- sideblade -->
+		</control>
+	</control>
+</include>
+
+<include name="Viewtype_57_Filelist">
+	<control type="group">
+		<visible>Control.IsVisible(57)</visible>
+		<description>List View (id=57) nicht DB Ansicht</description>
+		<include>Animation-OpenCloseVisibleHidden-Zoom</include>
+		<include>Animation395-Conditional-Slide</include>
+		<include>Animation-Conditional-InaktivZoom</include>
+		<control type="list" id="57">
+			<viewtype label="FileList">biglist</viewtype>
+			<left>150</left>
+			<top>120</top>
+			<width>1600</width>
+			<height>870</height>
+			<oninfo condition="!String.IsEmpty(ListItem.Duration)">ActivateWindow(1105)</oninfo>
+			<onleft>back</onleft>
+			<onright condition="Integer.IsGreater(Container(57).NumPages,1)">60</onright>
+			<onright condition="!Integer.IsGreater(Container(57).NumPages,1)">SetFocus(9900)</onright>
+			<onup>57</onup>
+			<ondown>57</ondown>
+			<pagecontrol>60</pagecontrol>
+			<scrolltime>400</scrolltime>
+			<visible>String.StartsWith(Container.FolderPath,special://skin/playlists) | String.StartsWith(Container.FolderPath,plugin:) | ![Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(genres) | Container.Content(years) | Container.Content(directors) | Container.Content(actors) | Container.Content(years) | String.IsEmpty(Container.FolderName)]</visible>
+			<itemlayout width="1520" height="171"><!-- alle außer songs sortierung titel + rating sonst label2 -->
+				<control type="label"><!-- info -->
+					<description>Label1</description>
+					<left>190</left>
+					<top>30</top>
+					<width>1000</width>
+					<height>60</height>
+					<label>$VAR[Global_Label]</label>
+				</control>
+				<control type="label">
+					<description>Label3</description>
+					<left>190</left>
+					<top>80</top>
+					<width>600</width>
+					<height>60</height>
+					<font>RegularSmall</font>
+					<label>$INFO[ListItem.Duration,, min.  ]$INFO[ListItem.Date]</label>
+					<visible>!ListItem.IsParentFolder + !String.IsEmpty(ListItem.Duration)</visible>
+				</control>
+				<control type="label">
+					<description>Label2</description>
+					<left>820</left>
+					<top>30</top>
+					<width>600</width>
+					<height>60</height>
+					<align>right</align>
+					<font>RegularSmall</font>
+					<label>$VAR[Global_Label2]</label>
+					<visible>!ListItem.IsParentFolder</visible>
+				</control>
+				<control type="label">
+					<description>Media Overlay - neu, angefangene usw. focus</description>
+					<left>1450</left>
+					<top>25</top>
+					<width>50</width>
+					<height>60</height>
+					<font>IconOverlayList</font>
+					<label>$VAR[WatchedOverlay]</label>
+					<visible>!ListItem.IsParentFolder + !ListItem.IsFolder</visible>
+				</control>
+				<include>Viewtype_layout_filesArtNF</include>
+			</itemlayout>
+			<focusedlayout width="1520" height="171">
+				<control type="image"><!-- Hintergrund -->
+					<description>Hintergrund streifen links</description>
+					<top>30</top>
+					<width>30</width>
+					<height>120</height>
+					<texture colordiffuse="$VAR[PrimaryCol]">white.png</texture>
+					<include>Animation-ListFocusBG</include>
+				</control>
+				<control type="image">
+					<description>Hintergrund</description>
+					<left>30</left>
+					<top>30</top>
+					<width>1490</width>
+					<height>120</height>
+					<texture colordiffuse="ListBackgroundDiffuse">white.png</texture>
+					<include>Animation-ListFocusBG</include>
+				</control>
+				<control type="image">
+					<description>Hintergrund diffuse nach scrollen</description>
+					<left>30</left>
+					<top>30</top>
+					<width>1490</width>
+					<height>120</height>
+					<texture colordiffuse="ListBackgroundDiffuse">white.png</texture>
+					<include>Animation-ListFocusBG</include>
+				</control>
+				<control type="label"><!-- info -->
+					<description>Label1 unfocus</description>
+					<left>190</left>
+					<top>30</top>
+					<width>1000</width>
+					<height>60</height>
+					<label>$VAR[Global_Label]</label>
+				</control>
+				<control type="label">
+					<description>Label2</description>
+					<left>820</left>
+					<top>30</top>
+					<width>600</width>
+					<height>60</height>
+					<align>right</align>
+					<font>RegularSmall</font>
+					<label>$VAR[Global_Label2]</label>
+					<visible>!ListItem.IsParentFolder</visible>
+				</control>
+				<control type="label">
+					<description>Label3</description>
+					<left>190</left>
+					<top>80</top>
+					<width>600</width>
+					<height>60</height>
+					<font>RegularSmall</font>
+					<label>$INFO[ListItem.Duration,, min.  ]$INFO[ListItem.Date]</label>
+					<visible>!ListItem.IsParentFolder + !String.IsEmpty(ListItem.Duration)</visible>
+				</control>
+				<control type="label">
+					<description>Media Overlay - neu, angefangene usw. focus</description>
+					<left>1450</left>
+					<top>25</top>
+					<width>50</width>
+					<height>60</height>
+					<font>IconOverlayList</font>
+					<label>$VAR[WatchedOverlay]</label>
+					<visible>!ListItem.IsParentFolder + !ListItem.IsFolder</visible>
+				</control>
+				<include>Viewtype_layout_filesArtFO</include>
+			</focusedlayout>
+		</control>
+		<control type="scrollbar" id="60"><!-- Scroller -->
+			<left>1800</left>
+			<top>140</top>
+			<height>825</height>
+			<onleft>57</onleft>
+			<onright>SetFocus(9900)</onright><!-- sideblade bei content ohne sms -->
+		</control>
+		<control type="group"><!-- Sortletter und SMS Jumpletter -->
+			<description>Scroll label + icon</description>
+			<left>1767</left>
+			<top>110</top>
+			<visible>$EXP[VisSMSScroller]</visible>
+			<include>Animation-SMSLetter-Slide</include>
+			<include>ScrollLetter</include>
+		</control>
+	</control>
+</include>
+</includes>
