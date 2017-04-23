@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<smartplaylist type="tvshows">
-    <name>Serie - Sortierung Aufsteigend</name>
-    <match>all</match>
-    <rule field="title" operator="doesnotcontain">
-        <value>xxx</value>
-    </rule>
-    <order direction="ascending">title</order>
-</smartplaylist>

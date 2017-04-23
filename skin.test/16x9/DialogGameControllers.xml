@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<window><!-- Cycle 0.4 -->
-<defaultcontrol>3</defaultcontrol><!-- nicht implementiert -->
-<controls>
-	<include>UnfeaturedWindow</include>
-</controls>
-</window>

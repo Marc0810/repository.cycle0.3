@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<smartplaylist type="tvshows">
-    <name>Serien Genre Dokumentation</name>
-    <match>all</match>
-    <rule field="genre" operator="contain">
-        <value>Dokumentation</value>
-    </rule>
-    <order direction="ascending">title</order>
-</smartplaylist>
